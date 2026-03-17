@@ -10,7 +10,7 @@ type MobileNavProps = {
 export function MobileNav({ isOpen, onLinkClick, menuRef }: MobileNavProps) {
   return (
     <div
-      className={`fixed flex flex-col items-center gap-4 justify-center left-5 right-5 top-12.5 z-40 rounded-[20px] bg-[#161513]/20 p-[10px] backdrop-blur transition-all duration-300  ${
+      className={`fixed flex flex-col items-center gap-4 justify-center left-5 right-5 top-12.5 z-40 rounded-[20px] bg-[#161513]/50 p-[10px] backdrop-blur transition-all duration-300  ${
         isOpen
           ? "pointer-events-auto max-h-90 opacity-100 translate-y-0 "
           : "pointer-events-none max-h-0 opacity-0 -translate-y-2"
