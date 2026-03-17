@@ -59,18 +59,30 @@ export const techGroups = [
         icon: "https://www.figma.com/api/mcp/asset/6ef6875d-3116-4012-b088-a19907d631a8",
       },
       {
-        label: "VS Code",
-        icon: "https://www.figma.com/api/mcp/asset/bef81ffd-f4a7-4aec-b66c-b39c5a126000",
-      },
-      {
-        label: "Linux",
-        icon: "https://www.figma.com/api/mcp/asset/54f624fb-bd9d-4d4a-bf99-593c6b9aa34a",
+        label: "Figma",
+        icon: "https://www.figma.com/api/mcp/asset/9a996364-6c80-460c-835b-300c77848cb2",
       },
     ],
   },
   {
     title: "Other",
     items: [
+      {
+        label: "VS code",
+        icon: "https://www.figma.com/api/mcp/asset/bef81ffd-f4a7-4aec-b66c-b39c5a126000",
+      },
+      {
+        label: "Linux",
+        icon: "https://www.figma.com/api/mcp/asset/54f624fb-bd9d-4d4a-bf99-593c6b9aa34a",
+      },
+      {
+        label: "Postman",
+        icon: "https://cdn.simpleicons.org/postman/FF6C37",
+      },
+      {
+        label: "Git",
+        icon: "https://www.figma.com/api/mcp/asset/49ae1585-6e74-4182-86a5-e1cbd93814b1",
+      },
       {
         label: "HTML",
         icon: "https://www.figma.com/api/mcp/asset/dc002a3d-3cff-4f86-aa3e-f82362cc6229",

@@ -2,19 +2,59 @@ import { assets } from "../../../constants/assets";
 
 export function ContactSection() {
   return (
-    <footer id="contact" className="footer">
-      <h2>Contact</h2>
-      <div className="footer-icons">
-        <img className="img-desktop" src={assets.phoneIcon} alt="" />
-        <img className="img-desktop" src={assets.gmailIcon} alt="" />
-        <img className="img-desktop" src={assets.linkedinIcon} alt="" />
-        <img className="img-desktop" src={assets.dribbbleIcon} alt="" />
-        <img className="img-mobile" src={assets.phoneIconMobile} alt="" />
-        <img className="img-mobile" src={assets.gmailIconMobile} alt="" />
-        <img className="img-mobile" src={assets.linkedinIconMobile} alt="" />
-        <img className="img-mobile" src={assets.dribbbleIconMobile} alt="" />
+    <footer
+      id="contact"
+      className="flex flex-col items-center gap-[20px] text-center"
+    >
+      <h2 className="font-['Itim'] text-[36px] text-white max-[600px]:font-['Poppins'] max-[600px]:font-semibold">
+        Contact
+      </h2>
+      <div className="flex items-center gap-[40px]">
+        <img
+          className="hidden h-[25px] w-[25px] max-[600px]:block"
+          src={assets.phoneIconMobile}
+          alt=""
+        />
+        <img
+          className="hidden h-[25px] w-[25px] max-[600px]:block"
+          src={assets.gmailIconMobile}
+          alt=""
+        />
+        <img
+          className="hidden h-[25px] w-[25px] max-[600px]:block"
+          src={assets.linkedinIconMobile}
+          alt=""
+        />
+        <img
+          className="hidden h-[22.97px] w-[22.97px] max-[600px]:block"
+          src={assets.dribbbleIconMobile}
+          alt=""
+        />
+
+        <img
+          className="h-[25px] w-[25px] max-[600px]:hidden"
+          src={assets.phoneIcon}
+          alt=""
+        />
+        <img
+          className="h-[25px] w-[25px] max-[600px]:hidden"
+          src={assets.gmailIcon}
+          alt=""
+        />
+        <img
+          className="h-[25px] w-[25px] max-[600px]:hidden"
+          src={assets.linkedinIcon}
+          alt=""
+        />
+        <img
+          className="h-[25px] w-[25px] max-[600px]:hidden"
+          src={assets.dribbbleIcon}
+          alt=""
+        />
       </div>
-      <p className="footer-note">Loucif tamer Ahmed© 2023 All rights reserved.</p>
+      <p className="font-['Itim'] text-[16px] lowercase tracking-[0.4px] text-[#a9a9a9] max-[600px]:font-['Inter']">
+        Loucif tamer Ahmed© 2023 All rights reserved.
+      </p>
     </footer>
   );
 }
