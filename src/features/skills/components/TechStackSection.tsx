@@ -29,7 +29,13 @@ export function TechStackSection() {
                   className="flex items-center gap-[8px] rounded-[22.712px] bg-[#303030] px-[12px] py-[10px] font-['Poppins'] text-[20px] text-white"
                   key={item.label}
                 >
-                  <img className="h-[26px] w-[26px]" src={item.icon} alt="" />
+                  <img
+                    className="h-[26px] w-[26px]"
+                    src={item.icon}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
                   <span>{item.label}</span>
                 </div>
               ))}
@@ -54,7 +60,13 @@ export function TechStackSection() {
                   className="flex items-center gap-[8px] rounded-[22.712px] bg-[#303030] px-[12px] py-[10px] font-['Poppins'] text-[20px] text-white"
                   key={`other-${item.label}`}
                 >
-                  <img className="h-[26px] w-[26px]" src={item.icon} alt="" />
+                  <img
+                    className="h-[26px] w-[26px]"
+                    src={item.icon}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
                   <span>{item.label}</span>
                 </div>
               ))}
@@ -64,7 +76,13 @@ export function TechStackSection() {
                   className="flex items-center gap-[8px] rounded-[22.712px] bg-[#303030] px-[12px] py-[10px] font-['Poppins'] text-[20px] text-white"
                   key={`other-dup-${item.label}`}
                 >
-                  <img className="h-[26px] w-[26px]" src={item.icon} alt="" />
+                  <img
+                    className="h-[26px] w-[26px]"
+                    src={item.icon}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
                   <span>{item.label}</span>
                 </div>
               ))}

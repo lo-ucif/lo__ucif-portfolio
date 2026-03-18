@@ -73,6 +73,8 @@ export function MobileNav({ isOpen, onLinkClick, menuRef }: MobileNavProps) {
           className="h-[17.664px] w-[56.355px]"
           src={assets.socialIconsMobile}
           alt="Social icons"
+          loading="lazy"
+          decoding="async"
         />
       </div>
     </div>

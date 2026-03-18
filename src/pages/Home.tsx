@@ -7,8 +7,8 @@ import { ProjectsSection } from "../features/projects/components/ProjectsSection
 import { ContactSection } from "../features/contact/components/ContactSection";
 
 export default function Home() {
-  const sectionIds = useMemo(() => ["home", "stack", "projects", "contact"], []);
-  const [activeSection, setActiveSection] = useState("home");
+  const sectionIds = useMemo(() => ["about", "projects", "contact"], []);
+  const [activeSection, setActiveSection] = useState("about");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
@@ -74,18 +74,19 @@ export default function Home() {
         />
 
         <main className="flex flex-col items-center gap-[160px] max-[600px]:gap-[200px]">
-          <section id="home" className="flex flex-col items-center gap-[25px] text-center">
+          <section id="about" className="flex flex-col items-center gap-[25px] text-center">
             <div className="relative grid h-[213px] w-[213px] place-items-center overflow-hidden rounded-full bg-[#262626]">
-              <img
-                className="hidden h-[136%] w-[136%] -translate-y-[20px] object-cover max-[600px]:block"
-                src={assets.avatarMobile}
-                alt="Ahmed Loucif"
-              />
-              <img
-                className="h-[136%] w-[136%] -translate-y-[20px] object-cover max-[600px]:hidden"
-                src={assets.avatar}
-                alt="Ahmed Loucif"
-              />
+              <picture>
+                <source media="(max-width: 600px)" srcSet={assets.avatarMobile} />
+                <img
+                  className="h-[136%] w-[136%] -translate-y-[20px] object-cover"
+                  src={assets.avatar}
+                  alt="Ahmed Loucif"
+                  loading="eager"
+                  decoding="async"
+                  fetchPriority="high"
+                />
+              </picture>
             </div>
             <div className="flex w-full flex-col items-center gap-[10px]">
               <div className="flex flex-col items-center">
@@ -95,7 +96,13 @@ export default function Home() {
                 <div className="flex items-center gap-[10px] font-['Itim'] text-[26px] max-[600px]:text-[19.58px]">
                   <span className="text-[#a9a9a9]">Web</span>
                   <span className="text-[#5197ff]">Developer</span>
-                  <img className="h-[40px] w-[40px] max-[600px]:hidden" src={assets.pcLogo} alt="" />
+                  <img
+                    className="h-[40px] w-[40px] max-[600px]:hidden"
+                    src={assets.pcLogo}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
               </div>
               <div className="inline-flex items-center gap-[6px] rounded-[20px] bg-[#2e2e2e] px-[10px] py-[6px] font-['Itim'] text-[12px] text-white max-[600px]:rounded-[15px] max-[600px]:px-[7.5px] max-[600px]:py-[4.5px] max-[600px]:font-['Poppins'] max-[600px]:text-[7.5px]">
@@ -118,8 +125,16 @@ export default function Home() {
                 href="https://github.com/"
               >
                 Git Hub
-                <img className="hidden h-[21px] w-[21px] max-[600px]:block" src={assets.githubArrowMobile} alt="" />
-                <img className="h-[21px] w-[21px] max-[600px]:hidden" src={assets.githubArrow} alt="" />
+                <picture>
+                  <source media="(max-width: 600px)" srcSet={assets.githubArrowMobile} />
+                  <img
+                    className="h-[21px] w-[21px]"
+                    src={assets.githubArrow}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
               </a>
             </div>
           </section>
@@ -144,8 +159,16 @@ export default function Home() {
               Education
             </h2>
             <div className="flex w-full flex-col items-center gap-[10px] p-[10px]">
-              <img className="hidden h-[35px] w-[35px] max-[600px]:block" src={assets.universityMobile} alt="" />
-              <img className="h-[35px] w-[35px] max-[600px]:hidden" src={assets.university} alt="" />
+              <picture>
+                <source media="(max-width: 600px)" srcSet={assets.universityMobile} />
+                <img
+                  className="h-[35px] w-[35px]"
+                  src={assets.university}
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
               <div className="font-['Poppins'] text-[22px] font-bold text-white max-[600px]:text-[21.74px]">
                 <p>Student At University of Constantine 2 Abdelhamid Mehri</p>
                 <p>NTIC</p>
