@@ -1,4 +1,5 @@
 import { assets } from "../../constants/assets";
+import logo from "../../assets/8.png";
 
 type SiteHeaderProps = {
   activeSection: string;
@@ -22,14 +23,14 @@ export function SiteHeader({
         <div className="mx-auto flex w-full max-w-[1200px] items-center justify-between gap-6 px-[80px] py-[14px] max-[1024px]:px-[40px]">
           <div className="h-[50px] w-[89px]">
             <img
-              className="h-full w-full object-contain"
-              src={assets.logo}
+              className="object-contain w-full h-full"
+              src={logo}
               alt="Loucif logo"
             />
           </div>
           <nav className="flex items-center gap-[70px] font-['Itim'] text-[15px] tracking-[0.3px] text-white">
-            <a className={linkClass("home")} href="#home">
-              Home
+            <a className={linkClass("home")} href="#about">
+              About
             </a>
             <a className={linkClass("stack")} href="#stack">
               Tech Stack
@@ -51,8 +52,8 @@ export function SiteHeader({
         </div>
       </header>
 
-      <header className="fixed left-0 right-0 top-0 z-50 hidden w-full items-center justify-between bg-[#161513]/95 px-5 py-[12px] backdrop-blur max-[600px]:flex">
-        <img className="h-[34px] w-[60px]" src={assets.logoMobile} alt="Loucif logo" />
+      <header className="fixed left-0 right-0 top-0 z-50 hidden w-full items-center justify-between bg-[#161513]/20 px-5 py-[12px] backdrop-blur max-[600px]:flex">
+        <img className="h-[34px] w-[60px]" src={logo} alt="Loucif logo" />
         <button
           className="h-[21px] w-[30px]"
           type="button"
