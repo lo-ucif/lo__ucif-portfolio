@@ -4,9 +4,26 @@ type MobileNavProps = {
   isOpen: boolean;
   onLinkClick: () => void;
   menuRef: React.RefObject<HTMLDivElement | null>;
+  links?: Array<{ label: string; href: string }>;
+  availabilityText?: string;
+  availabilityClassName?: string;
 };
 
-export function MobileNav({ isOpen, onLinkClick, menuRef }: MobileNavProps) {
+const defaultLinks = [
+  { label: "About", href: "#about" },
+  { label: "Tech Stack", href: "#stack" },
+  { label: "Projects", href: "#projects" },
+  { label: "Contact", href: "#contact" },
+];
+
+export function MobileNav({
+  isOpen,
+  onLinkClick,
+  menuRef,
+  links = defaultLinks,
+  availabilityText = "available for work",
+  availabilityClassName = "lowercase",
+}: MobileNavProps) {
   return (
     <div
       className={`fixed flex flex-col items-center gap-4 justify-center left-5 right-5 top-12.5 z-40 rounded-[20px] bg-[#161513]/50 p-2.5 backdrop-blur transition-all duration-300  ${
@@ -19,53 +36,23 @@ export function MobileNav({ isOpen, onLinkClick, menuRef }: MobileNavProps) {
     >
       <div className=" flex flex-row w-fit items-center gap-[3.75px] rounded-[10px] bg-[#2e2e2e] px-[7.5px] py-[4.5px] font-['Poppins'] text-[7.5px] text-white">
         <div className="h-1.5 w-1.5 rounded-full bg-[#73ff2d] shadow-[0px_0px_3.75px_0.75px_#73ff2d]" />
-        <div className="lowercase">available for work</div>
+        <div className={availabilityClassName}>{availabilityText}</div>
       </div>
       <nav className=" flex flex-col items-center gap-5 font-['Itim'] text-[15px] tracking-[0.3px] text-white">
-        <motion.a
-          className="transition-colors"
-          style={{ color: "#ffffff" }}
-          href="#about"
-          onClick={onLinkClick}
-          whileHover={{ color: "#5197ff" }}
-          whileTap={{ color: "#5197ff" }}
-          transition={{ duration: 0.2 }}
-        >
-          About
-        </motion.a>
-        <motion.a
-          className="transition-colors"
-          style={{ color: "#ffffff" }}
-          href="#stack"
-          onClick={onLinkClick}
-          whileHover={{ color: "#5197ff" }}
-          whileTap={{ color: "#5197ff" }}
-          transition={{ duration: 0.2 }}
-        >
-          Tech Stack
-        </motion.a>
-        <motion.a
-          className="transition-colors"
-          style={{ color: "#ffffff" }}
-          href="#projects"
-          onClick={onLinkClick}
-          whileHover={{ color: "#5197ff" }}
-          whileTap={{ color: "#5197ff" }}
-          transition={{ duration: 0.2 }}
-        >
-          Projects
-        </motion.a>
-        <motion.a
-          className="transition-colors"
-          style={{ color: "#ffffff" }}
-          href="#contact"
-          onClick={onLinkClick}
-          whileHover={{ color: "#5197ff" }}
-          whileTap={{ color: "#5197ff" }}
-          transition={{ duration: 0.2 }}
-        >
-          Contact
-        </motion.a>
+        {links.map((link) => (
+          <motion.a
+            className="transition-colors"
+            style={{ color: "#ffffff" }}
+            href={link.href}
+            onClick={onLinkClick}
+            whileHover={{ color: "#5197ff" }}
+            whileTap={{ color: "#5197ff" }}
+            transition={{ duration: 0.2 }}
+            key={link.href}
+          >
+            {link.label}
+          </motion.a>
+        ))}
       </nav>
       <div className=" flex items-center justify-center rounded-[25.234px] px-[16.822px] py-[8.411px]">
         <img

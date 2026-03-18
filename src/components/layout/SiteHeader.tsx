@@ -1,5 +1,6 @@
 import { assets } from "../../constants/assets";
-import logo from "../../assets/8.png";
+import logo from "../../assets/8.webp";
+import { Link } from "react-router-dom";
 
 type SiteHeaderProps = {
   activeSection: string;
@@ -22,23 +23,31 @@ export function SiteHeader({
       <header className="fixed left-0 right-0 top-0 z-50 hidden w-full bg-[#161513]/95 backdrop-blur min-[601px]:flex">
         <div className="mx-auto flex w-full max-w-[1200px] items-center justify-between gap-6 px-[80px] py-[14px] max-[1024px]:px-[40px]">
           <div className="h-[50px] w-[89px]">
-            <img
-              className="object-contain w-full h-full"
-              src={logo}
-              alt="Loucif logo"
-            />
+            <Link to="/">
+              <img
+                className="object-contain w-full h-full"
+                src={logo}
+                alt="Loucif logo"
+              />{" "}
+              {/* <img
+                className="object-contain w-full h-full"
+                src={logo}
+                alt="Loucif logo"
+              /> */}
+            </Link>
           </div>
           <nav className="flex items-center gap-[70px] font-['Itim'] text-[15px] tracking-[0.3px] text-white">
-            <a className={linkClass("home")} href="#about">
+            <a className={linkClass("about")} href="/#about">
               About
             </a>
-            <a className={linkClass("stack")} href="#stack">
+
+            <a className={linkClass("stack")} href="/#stack">
               Tech Stack
             </a>
-            <a className={linkClass("projects")} href="#projects">
+            <a className={linkClass("projects")} href="/#projects">
               Projects
             </a>
-            <a className={linkClass("contact")} href="#contact">
+            <a className={linkClass("contact")} href="/#contact">
               Contact
             </a>
           </nav>
@@ -53,7 +62,9 @@ export function SiteHeader({
       </header>
 
       <header className="fixed left-0 right-0 top-0 z-50 hidden w-full items-center justify-between bg-[#161513]/20 px-5 py-[12px] backdrop-blur max-[600px]:flex">
-        <img className="h-[34px] w-[60px]" src={logo} alt="Loucif logo" />
+        <Link to="/">
+          <img className="h-[34px] w-[60px]" src={logo} alt="Loucif logo" />
+        </Link>
         <button
           className="h-[21px] w-[30px]"
           type="button"

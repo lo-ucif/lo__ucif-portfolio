@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Home from "./pages/Home";
+import Projects from "./pages/Projects";
+
 import { LoadingScreen } from "./components/LoadingScreen";
+import { AppLayout } from "./components/layout/AppLayout";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -16,12 +21,19 @@ function App() {
     };
   }, []);
 
-  return isLoading ? (
-    <LoadingScreen isHiding={isHiding} />
-  ) : (
-    <div className="home-enter">
-      <Home />
-    </div>
+  if (isLoading) {
+    return <LoadingScreen isHiding={isHiding} />;
+  }
+
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route element={<AppLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/projects" element={<Projects />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

@@ -1,81 +1,15 @@
-import { useEffect, useMemo, useRef, useState } from "react";
 import { assets } from "../constants/assets";
-import { MobileNav } from "../components/layout/MobileNav";
-import { SiteHeader } from "../components/layout/SiteHeader";
 import { TechStackSection } from "../features/skills/components/TechStackSection";
 import { ProjectsSection } from "../features/projects/components/ProjectsSection";
 import { ContactSection } from "../features/contact/components/ContactSection";
 
-import myimg from "../assets/7.png";
-import univimg from "../assets/6.png";
+import myimg from "../assets/7.webp";
+import univimg from "../assets/6.webp";
 
 export default function Home() {
-  const sectionIds = useMemo(() => ["about", "projects", "contact"], []);
-  const [activeSection, setActiveSection] = useState("about");
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const mobileMenuRef = useRef<HTMLDivElement>(null);
-  const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    const sections = sectionIds
-      .map((id) => document.getElementById(id))
-      .filter(Boolean) as HTMLElement[];
-
-    if (sections.length === 0) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-
-        if (visible[0]?.target?.id) {
-          setActiveSection(visible[0].target.id);
-        }
-      },
-      {
-        rootMargin: "-20% 0px -60% 0px",
-        threshold: [0.1, 0.4, 0.7],
-      },
-    );
-
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
-  }, [sectionIds]);
-
-  useEffect(() => {
-    if (!isMobileMenuOpen) return;
-
-    const handleClick = (event: MouseEvent) => {
-      const target = event.target as Node;
-      if (
-        mobileMenuRef.current?.contains(target) ||
-        mobileMenuButtonRef.current?.contains(target)
-      ) {
-        return;
-      }
-      setIsMobileMenuOpen(false);
-    };
-
-    document.addEventListener("mousedown", handleClick);
-    return () => document.removeEventListener("mousedown", handleClick);
-  }, [isMobileMenuOpen]);
-
   return (
     <div className="min-h-screen bg-[#161513] px-5 pb-[80px] pt-[20px] text-[#e1e1e1] sm:px-[40px] lg:px-[80px] min-[601px]:pt-[120px] max-[600px]:pt-[90px]">
       <div className="mx-auto flex min-h-screen flex-col gap-[80px]">
-        <SiteHeader
-          activeSection={activeSection}
-          isMobileMenuOpen={isMobileMenuOpen}
-          onToggleMobileMenu={() => setIsMobileMenuOpen((prev) => !prev)}
-          menuButtonRef={mobileMenuButtonRef}
-        />
-        <MobileNav
-          isOpen={isMobileMenuOpen}
-          onLinkClick={() => setIsMobileMenuOpen(false)}
-          menuRef={mobileMenuRef}
-        />
-
         <main className="flex flex-col items-center gap-[160px] max-[600px]:gap-[200px]">
           <section className="flex flex-col items-center gap-[25px] text-center">
             <div className="relative grid h-53.25 w-53.25 place-items-center overflow-hidden rounded-full bg-[#262626]">

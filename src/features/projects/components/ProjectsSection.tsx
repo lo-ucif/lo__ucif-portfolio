@@ -1,5 +1,6 @@
 import { projects } from "../../../constants/data";
 import { assets } from "../../../constants/assets";
+import { Link } from "react-router-dom";
 
 export function ProjectsSection() {
   return (
@@ -10,23 +11,23 @@ export function ProjectsSection() {
       <h2 className="font-['Itim'] text-[36px] text-white max-[600px]:font-['Poppins'] max-[600px]:font-semibold">
         Projects
       </h2>
-      <div className="grid w-full max-w-[1200px] grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+      <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
         {projects.map((project, index) => (
           <article
             className="flex flex-col overflow-hidden rounded-[15.135px] bg-[#303030] max-[600px]:bg-[#262626]"
             key={`${project.title}-${index}`}
           >
             <div className="h-[179px] w-full">
-              <picture>
-                <source media="(max-width: 600px)" srcSet={assets.projectShotMobile} />
-                <img
-                  className="h-full w-full object-cover"
-                  src={assets.projectShot}
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                />
-              </picture>
+              <img
+                className="hidden h-full w-full object-cover max-[600px]:block"
+                src={assets.projectShotMobile}
+                alt=""
+              />
+              <img
+                className="h-full w-full object-cover max-[600px]:hidden"
+                src={assets.projectShot}
+                alt=""
+              />
             </div>
             <div className="flex flex-col gap-[15px] px-[18px] py-[15px] text-left">
               <div className="flex items-center justify-between">
@@ -108,11 +109,12 @@ export function ProjectsSection() {
           </article>
         ))}
       </div>
+
       <button
         className="rounded-[38.182px] border border-white px-[16.76px] py-[12.57px] font-['Poppins'] text-[16.327px] text-white"
         type="button"
       >
-        View All
+        <Link to="/projects">View All</Link>
       </button>
     </section>
   );
