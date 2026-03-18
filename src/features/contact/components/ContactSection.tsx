@@ -6,7 +6,7 @@ export function ContactSection() {
       id="contact"
       className="flex flex-col items-center gap-[20px] text-center"
     >
-      <h2 className="font-['Itim'] text-[36px] text-white max-[600px]:font-['Poppins'] max-[600px]:font-semibold">
+      <h2 className="font-['Itim'] text-[36px] text-white">
         Contact
       </h2>
       <div className="flex items-center gap-[40px]">

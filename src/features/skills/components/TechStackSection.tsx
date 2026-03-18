@@ -10,7 +10,7 @@ export function TechStackSection() {
       id="stack"
       className="flex w-full flex-col items-center gap-[30px] text-center"
     >
-      <h2 className="font-['Itim'] text-[36px] text-[#5197ff] max-[600px]:font-['Poppins'] max-[600px]:font-semibold">
+      <h2 className="font-['Itim'] text-[36px] text-[#5197ff]">
         Tech Stack
       </h2>
 

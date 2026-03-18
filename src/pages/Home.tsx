@@ -89,10 +89,10 @@ export default function Home() {
             </div>
             <div className="flex w-full flex-col items-center gap-[10px]">
               <div className="flex flex-col items-center">
-                <h1 className="font-['Itim'] text-[64px] text-white max-[600px]:w-[330px] max-[600px]:font-['Poppins'] max-[600px]:text-[48px]">
+                <h1 className="font-['Itim'] text-[64px] text-white max-[600px]:w-[330px] max-[600px]:text-[48px]">
                   Ahmed Loucif
                 </h1>
-                <div className="flex items-center gap-[10px] font-['Itim'] text-[26px] max-[600px]:font-['Poppins'] max-[600px]:text-[19.58px]">
+                <div className="flex items-center gap-[10px] font-['Itim'] text-[26px] max-[600px]:text-[19.58px]">
                   <span className="text-[#a9a9a9]">Web</span>
                   <span className="text-[#5197ff]">Developer</span>
                   <img className="h-[40px] w-[40px] max-[600px]:hidden" src={assets.pcLogo} alt="" />
@@ -125,7 +125,7 @@ export default function Home() {
           </section>
 
           <section className="flex flex-col items-center gap-[30px] text-center">
-            <h2 className="font-['Itim'] text-[36px] text-white max-[600px]:font-['Poppins'] max-[600px]:font-semibold">
+            <h2 className="font-['Itim'] text-[36px] text-white">
               About Me
             </h2>
             <p className="max-w-[900px] font-['Inter'] text-[17px] leading-[1.6] text-[#e1e1e1]">
@@ -140,7 +140,7 @@ export default function Home() {
           <ProjectsSection />
 
           <section className="flex w-full flex-col items-center gap-[30px] text-center">
-            <h2 className="font-['Itim'] text-[36px] text-white max-[600px]:font-['Poppins'] max-[600px]:font-semibold">
+            <h2 className="font-['Itim'] text-[36px] text-white">
               Education
             </h2>
             <div className="flex w-full flex-col items-center gap-[10px] p-[10px]">
