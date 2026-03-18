@@ -16,11 +16,12 @@ function App() {
     };
   }, []);
 
-  return (
-    <>
-      {isLoading && <LoadingScreen isHiding={isHiding} />}
+  return isLoading ? (
+    <LoadingScreen isHiding={isHiding} />
+  ) : (
+    <div className="home-enter">
       <Home />
-    </>
+    </div>
   );
 }
 

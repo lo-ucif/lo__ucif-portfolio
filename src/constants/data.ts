@@ -126,18 +126,33 @@ export const techGroups = [
 
 export const projects = [
   {
-    title: "Project Tiltle",
+    title: "Project Title",
     description:
-      "Tech stack stack stackstacks tackstackst ackstackstackstackstackstackstac kstackstackstack stack stack stack stack stack stack stack stack stack stack",
+      "Short, clear summary of what the project does and why it matters.",
+    image: "/images/project-1.png",
+    github: "https://github.com/yourname/project-repo",
+    figma: "https://www.figma.com/file/your-file-id",
+    liveDemo: "https://your-live-demo.com",
+    tech: ["React", "Tailwind", "Node.js"],
   },
   {
-    title: "Project Tiltle",
+    title: "Project Title",
     description:
-      "Tech stack stack stackstacks tackstackst ackstackstackstackstackstackstac kstackstackstack stack stack stack stack stack stack stack stack stack stack",
+      "Short, clear summary of what the project does and why it matters.",
+    image: "/images/project-2.png",
+    github: "https://github.com/yourname/project-repo",
+    figma: "https://www.figma.com/file/your-file-id",
+    liveDemo: "https://your-live-demo.com",
+    tech: ["React", "Tailwind", "Node.js"],
   },
   {
-    title: "Project Tiltle",
+    title: "Project Title",
     description:
-      "Tech stack stack stackstacks tackstackst ackstackstackstackstackstackstac kstackstackstack stack stack stack stack stack stack stack stack stack stack",
+      "Short, clear summary of what the project does and why it matters.",
+    image: "/images/project-3.png",
+    github: "https://github.com/yourname/project-repo",
+    figma: "https://www.figma.com/file/your-file-id",
+    liveDemo: "https://your-live-demo.com",
+    tech: ["React", "Tailwind", "Node.js"],
   },
 ];
