@@ -8,10 +8,10 @@ import univimg from "../assets/6.webp";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#161513] px-5 pb-[80px] pt-[20px] text-[#e1e1e1] sm:px-[40px] lg:px-[80px] min-[601px]:pt-[120px] max-[600px]:pt-[90px]">
-      <div className="mx-auto flex min-h-screen flex-col gap-[80px]">
-        <main className="flex flex-col items-center gap-[160px] max-[600px]:gap-[200px]">
-          <section className="flex flex-col items-center gap-[25px] text-center">
+    <div className="min-h-screen bg-[#161513] px-5 pb-20 pt-5 text-[#e1e1e1] sm:px-10 lg:px-20 min-[601px]:pt-30 max-[600px]:pt-22.5">
+      <div className="flex flex-col min-h-screen gap-20 mx-auto">
+        <main className="flex flex-col items-center gap-40 max-[600px]:gap-50">
+          <section className="flex flex-col items-center gap-6.25 text-center">
             <div className="relative grid h-53.25 w-53.25 place-items-center overflow-hidden rounded-full bg-[#262626]">
               <picture>
                 <source
@@ -28,24 +28,24 @@ export default function Home() {
                 />
               </picture>
             </div>
-            <div className="flex w-full flex-col items-center gap-[10px]">
+            <div className="flex w-full flex-col items-center gap-2.5">
               <div className="flex flex-col items-center">
-                <h1 className="font-['Itim'] text-[64px] text-white max-[600px]:w-[330px] max-[600px]:text-[48px]">
+                <h1 className="font-['Itim'] text-[64px] text-white max-[600px]:w-82.5 max-[600px]:text-[48px]">
                   Ahmed Loucif
                 </h1>
-                <div className="flex items-center gap-[10px] font-['Itim'] text-[26px] max-[600px]:text-[19.58px]">
+                <div className="flex items-center gap-2.5 font-['Itim'] text-[26px] max-[600px]:text-[19.58px]">
                   <span className="text-[#a9a9a9]">Web</span>
                   <span className="text-[#5197ff]">Developer</span>
                 </div>
               </div>
-              <div className="inline-flex items-center gap-[6px] rounded-[20px] bg-[#2e2e2e] px-[10px] py-[6px] font-['Itim'] text-[12px] text-white max-[600px]:rounded-[15px] max-[600px]:px-[7.5px] max-[600px]:py-[4.5px] max-[600px]:font-['Poppins'] max-[600px]:text-[7.5px]">
-                <span className="h-[8px] w-[8px] rounded-full bg-[#73ff2d] shadow-[0px_0px_5px_1px_#73ff2d] max-[600px]:h-[6px] max-[600px]:w-[6px] max-[600px]:shadow-[0px_0px_3.75px_0.75px_#73ff2d]" />
+              <div className="inline-flex items-center gap-1.5 rounded-[20px] bg-[#2e2e2e] px-2.5 py-1.5 font-['Itim'] text-[12px] text-white max-[600px]:rounded-[15px] max-[600px]:px-[7.5px] max-[600px]:py-[4.5px] max-[600px]:font-['Poppins'] max-[600px]:text-[7.5px]">
+                <span className="h-2 w-2 rounded-full bg-[#73ff2d] shadow-[0px_0px_5px_1px_#73ff2d] max-[600px]:h-1.5 max-[600px]:w-1.5 max-[600px]:shadow-[0px_0px_3.75px_0.75px_#73ff2d]" />
                 <span className="max-[600px]:lowercase">
                   Available for work
                 </span>
               </div>
             </div>
-            <p className="max-w-[720px] font-['Poppins'] text-[16px] leading-[1.6] text-[#e1e1e1]">
+            <p className="max-w-180 font-['Poppins'] text-[16px] leading-[1.6] text-[#e1e1e1]">
               I build modern and scalable web applications using React,
               TypeScript, Node.js, and MongoDB. I create clean user interfaces
               and efficient backend systems focused on performance and
@@ -69,7 +69,7 @@ export default function Home() {
                     srcSet={assets.githubArrowMobile}
                   />
                   <img
-                    className="h-[21px] w-[21px]"
+                    className="h-5.25 w-5.25"
                     src={assets.githubArrow}
                     alt=""
                     loading="lazy"
@@ -82,10 +82,10 @@ export default function Home() {
 
           <section
             id="about"
-            className="flex flex-col items-center gap-[30px] text-center"
+            className="flex flex-col items-center gap-7.5 text-center"
           >
             <h2 className="font-['Itim'] text-[36px] text-white">About Me</h2>
-            <p className="max-w-[900px] font-['Inter'] text-[17px] leading-[1.6] text-[#e1e1e1]">
+            <p className="max-w-225 font-['Inter'] text-[17px] leading-[1.6] text-[#e1e1e1]">
               Hello! I'm Ahmed Loucif, a passionate Full Stack Web Developer
               specializing in modern web technologies and user-centered design.
               I build fast and scalable web applications using React, Vite,
@@ -106,9 +106,9 @@ export default function Home() {
           <TechStackSection />
           <ProjectsSection />
 
-          <section className="flex w-full flex-col items-center gap-[30px] text-center">
+          <section className="flex w-full flex-col items-center gap-7.5 text-center">
             <h2 className="font-['Itim'] text-[36px] text-white">Education</h2>
-            <div className="flex w-full flex-col items-center gap-[10px] p-[10px]">
+            <div className="flex w-full flex-col items-center gap-2.5 p-2.5">
               <picture>
                 <source media="(max-width: 600px)" srcSet={univimg} />
                 <img
