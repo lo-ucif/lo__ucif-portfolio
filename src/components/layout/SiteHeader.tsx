@@ -21,8 +21,8 @@ export function SiteHeader({
   return (
     <>
       <header className="fixed left-0 right-0 top-0 z-50 hidden w-full bg-[#161513]/95 backdrop-blur min-[601px]:flex">
-        <div className="mx-auto flex w-full max-w-[1200px] items-center justify-between gap-6 px-[80px] py-[14px] max-[1024px]:px-[40px]">
-          <div className="h-[50px] w-[89px]">
+        <div className="mx-auto flex w-full max-w-300 items-center justify-between gap-6 px-20 py-3.5 max-[1024px]:px-[40px]">
+          <div className="h-[50px] w-22.25">
             <Link to="/">
               <img
                 className="object-contain w-full h-full"
@@ -36,20 +36,13 @@ export function SiteHeader({
               /> */}
             </Link>
           </div>
-          <nav className="flex items-center gap-[70px] font-['Itim'] text-[15px] tracking-[0.3px] text-white">
-            <a className={linkClass("about")} href="/#about">
-              About
-            </a>
-
-            <a className={linkClass("stack")} href="/#stack">
-              Tech Stack
-            </a>
-            <a className={linkClass("projects")} href="/#projects">
+          <nav className="flex items-center gap-17.5 font-['Itim'] text-[15px] tracking-[0.3px] text-white">
+            <Link className={linkClass("home")} to="/">
+              Home
+            </Link>
+            <Link className={linkClass("projects")} to="/projects">
               Projects
-            </a>
-            <a className={linkClass("contact")} href="/#contact">
-              Contact
-            </a>
+            </Link>
           </nav>
           <div className="flex items-center justify-center rounded-[30px] bg-[#232323] px-5 py-2.5">
             <img
@@ -63,10 +56,10 @@ export function SiteHeader({
 
       <header className="fixed left-0 right-0 top-0 z-50 hidden w-full items-center justify-between bg-[#161513]/20 px-5 py-[12px] backdrop-blur max-[600px]:flex">
         <Link to="/">
-          <img className="h-[34px] w-[60px]" src={logo} alt="Loucif logo" />
+          <img className="h-[34px] w-15" src={logo} alt="Loucif logo" />
         </Link>
         <button
-          className="h-[21px] w-[30px]"
+          className="h-5.25 w-7.5"
           type="button"
           aria-label="Toggle menu"
           aria-expanded={isMobileMenuOpen}

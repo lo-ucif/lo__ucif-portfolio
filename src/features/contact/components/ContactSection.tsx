@@ -4,21 +4,21 @@ export function ContactSection() {
   return (
     <footer
       id="contact"
-      className="flex flex-col items-center gap-[20px] text-center"
+      className="flex flex-col items-center gap-5 text-center"
     >
       <h2 className="font-['Itim'] text-[36px] text-white">
         Contact
       </h2>
-      <div className="flex items-center gap-[40px]">
+      <div className="flex items-center gap-10">
         <img
-          className="hidden h-[25px] w-[25px] max-[600px]:block"
+          className="hidden h-6.25 w-[25px] max-[600px]:block"
           src={assets.phoneIconMobile}
           alt=""
           loading="lazy"
           decoding="async"
         />
         <img
-          className="hidden h-[25px] w-[25px] max-[600px]:block"
+          className="hidden h-[25px] w-6.25 max-[600px]:block"
           src={assets.gmailIconMobile}
           alt=""
           loading="lazy"

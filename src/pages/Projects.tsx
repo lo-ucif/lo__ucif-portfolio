@@ -73,7 +73,7 @@ export default function Projects() {
                       {project.title}
                     </h2>
                     <img
-                      className="h-[20px] w-[20px]"
+                      className="h-5 w-[20px]"
                       src={assets.figmaIcon}
                       alt="Figma"
                       loading="lazy"
@@ -115,7 +115,7 @@ export default function Projects() {
                   </p>
 
                   <div className="flex flex-wrap items-center gap-[7.467px]">
-                    <span className="flex h-[16.649px] items-center gap-[4px] rounded-[7.568px] bg-[#303030] px-[6px] text-[7.568px] text-white">
+                    <span className="flex h-[16.649px] items-center gap-1 rounded-[7.568px] bg-[#303030] px-1.5ext-[7.568px] text-white">
                       <img
                         className="h-[8.173px] w-[9.081px]"
                         src={assets.reactIcon}
@@ -125,7 +125,7 @@ export default function Projects() {
                       />
                       React
                     </span>
-                    <span className="flex h-[16.649px] items-center gap-[4px] rounded-[7.568px] bg-[#303030] px-[6px] text-[7.568px] text-white">
+                    <span className="flex h-[16.649px] items-center gap-1nded-[7.568px] bg-[#303030] px-[6px] text-[7.568px] text-white">
                       <img
                         className="h-[9.081px] w-[9.081px]"
                         src={assets.jsIcon}

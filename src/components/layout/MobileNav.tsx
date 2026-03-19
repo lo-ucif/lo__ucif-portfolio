@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { assets } from "../../constants/assets";
+import { Link } from "react-router-dom";
 type MobileNavProps = {
   isOpen: boolean;
   onLinkClick: () => void;
@@ -10,10 +11,8 @@ type MobileNavProps = {
 };
 
 const defaultLinks = [
-  { label: "About", href: "#about" },
-  { label: "Tech Stack", href: "#stack" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "Projects", href: "/projects" },
 ];
 
 export function MobileNav({
@@ -40,18 +39,18 @@ export function MobileNav({
       </div>
       <nav className=" flex flex-col items-center gap-5 font-['Itim'] text-[15px] tracking-[0.3px] text-white">
         {links.map((link) => (
-          <motion.a
-            className="transition-colors"
-            style={{ color: "#ffffff" }}
-            href={link.href}
-            onClick={onLinkClick}
+          <motion.div
+            key={link.href}
             whileHover={{ color: "#5197ff" }}
             whileTap={{ color: "#5197ff" }}
             transition={{ duration: 0.2 }}
-            key={link.href}
+            style={{ color: "#ffffff" }}
+            className="transition-colors"
           >
-            {link.label}
-          </motion.a>
+            <Link className="block" to={link.href} onClick={onLinkClick}>
+              {link.label}
+            </Link>
+          </motion.div>
         ))}
       </nav>
       <div className=" flex items-center justify-center rounded-[25.234px] px-[16.822px] py-[8.411px]">

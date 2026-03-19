@@ -5,51 +5,17 @@ import { MobileNav } from "./MobileNav";
 import { SiteHeader } from "./SiteHeader";
 
 const navLinks = [
-  { label: "About", href: "/#about" },
-  { label: "Tech Stack", href: "/#stack" },
-  { label: "Projects", href: "/#projects" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Home", href: "/" },
+  { label: "Projects", href: "/projects" },
 ];
-
-const homeSectionIds = ["about", "stack", "projects", "contact"];
 
 export function AppLayout() {
   const location = useLocation();
   const isHome = location.pathname === "/";
 
-  const [activeSection, setActiveSection] = useState("about");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    if (!isHome) return;
-
-    const sections = homeSectionIds
-      .map((id) => document.getElementById(id))
-      .filter(Boolean) as HTMLElement[];
-
-    if (sections.length === 0) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-
-        if (visible[0]?.target?.id) {
-          setActiveSection(visible[0].target.id);
-        }
-      },
-      {
-        rootMargin: "-20% 0px -60% 0px",
-        threshold: [0.1, 0.4, 0.7],
-      },
-    );
-
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
-  }, [isHome]);
 
   useEffect(() => {
     if (!isMobileMenuOpen) return;
@@ -69,7 +35,7 @@ export function AppLayout() {
     return () => document.removeEventListener("mousedown", handleClick);
   }, [isMobileMenuOpen]);
 
-  const headerActiveSection = isHome ? activeSection : "projects";
+  const headerActiveSection = isHome ? "home" : "projects";
 
   return (
     <div className="home-enter">
