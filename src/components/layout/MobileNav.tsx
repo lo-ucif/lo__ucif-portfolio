@@ -25,7 +25,7 @@ export function MobileNav({
 }: MobileNavProps) {
   return (
     <div
-      className={`fixed flex flex-col items-center gap-4 justify-center left-5 right-5 top-12.5 z-40 rounded-[20px] bg-[#161513]/50 p-2.5 backdrop-blur transition-all duration-300  ${
+      className={`fixed flex flex-col items-center gap-4 justify-center left-0 right-0 top-13 z-40 rounded-[20px] bg-[#161513]/40 p-2.5 backdrop-blur transition-all duration-300  ${
         isOpen
           ? "pointer-events-auto max-h-90 opacity-100 translate-y-0 "
           : "pointer-events-none max-h-0 opacity-0 -translate-y-2"
@@ -53,14 +53,26 @@ export function MobileNav({
           </motion.div>
         ))}
       </nav>
-      <div className=" flex items-center justify-center rounded-[25.234px] px-[16.822px] py-[8.411px]">
-        <img
-          className="h-[17.664px] w-[56.355px]"
-          src={assets.socialIconsMobile}
-          alt="Social icons"
-          loading="lazy"
-          decoding="async"
-        />
+      <div className="flex flex-row gap-6 items-center justify-center rounded-[30px]  px-5 py-2.5">
+        <a
+          href="https://github.com/lo-ucif"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img className="h-5.25 w-5.25" src={assets.githubIcon} alt="GitHub" />
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/ahmed-loucif-757854342?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            className="h-5.25 w-5.25"
+            src={assets.linkedinIcon}
+            alt="LinkedIn"
+          />
+        </a>
       </div>
     </div>
   );

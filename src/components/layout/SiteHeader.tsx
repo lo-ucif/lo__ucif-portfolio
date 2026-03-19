@@ -21,19 +21,14 @@ export function SiteHeader({
   return (
     <>
       <header className="fixed left-0 right-0 top-0 z-50 hidden w-full bg-[#161513]/95 backdrop-blur min-[601px]:flex">
-        <div className="mx-auto flex w-full max-w-300 items-center justify-between gap-6 px-20 py-3.5 max-[1024px]:px-[40px]">
-          <div className="h-[50px] w-22.25">
+        <div className="mx-auto flex w-full max-w-300 items-center justify-between gap-6 px-20 py-3.5 max-[1024px]:px-10">
+          <div className="h-12.5 w-22.25">
             <Link to="/">
               <img
                 className="object-contain w-full h-full"
                 src={logo}
                 alt="Loucif logo"
-              />{" "}
-              {/* <img
-                className="object-contain w-full h-full"
-                src={logo}
-                alt="Loucif logo"
-              /> */}
+              />
             </Link>
           </div>
           <nav className="flex items-center gap-17.5 font-['Itim'] text-[15px] tracking-[0.3px] text-white">
@@ -44,19 +39,37 @@ export function SiteHeader({
               Projects
             </Link>
           </nav>
-          <div className="flex items-center justify-center rounded-[30px] bg-[#232323] px-5 py-2.5">
-            <img
-              className="h-[21px] w-[67px]"
-              src={assets.socialIcons}
-              alt="Social icons"
-            />
+          <div className="flex flex-row gap-6 items-center justify-center rounded-[30px] bg-[#232323] px-5 py-2.5">
+            <a
+              href="https://github.com/lo-ucif"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                className="h-5.25 w-5.25"
+                src={assets.githubIcon}
+                alt="GitHub"
+              />
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/ahmed-loucif-757854342?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                className="h-5.25 w-5.25"
+                src={assets.linkedinIcon}
+                alt="LinkedIn"
+              />
+            </a>
           </div>
         </div>
       </header>
 
-      <header className="fixed left-0 right-0 top-0 z-50 hidden w-full items-center justify-between bg-[#161513]/20 px-5 py-[12px] backdrop-blur max-[600px]:flex">
+      <header className="fixed left-0 right-0 top-0 z-40 hidden w-full items-center justify-between bg-[#161513]/40 px-5 py-3 backdrop-blur max-[600px]:flex">
         <Link to="/">
-          <img className="h-[34px] w-15" src={logo} alt="Loucif logo" />
+          <img className="h-8.5 w-15" src={logo} alt="Loucif logo" />
         </Link>
         <button
           className="h-5.25 w-7.5"

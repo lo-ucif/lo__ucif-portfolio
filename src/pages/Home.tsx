@@ -54,7 +54,7 @@ export default function Home() {
             <div className="flex flex-wrap items-center justify-center gap-[16.76px]">
               <a
                 className="rounded-[38.182px] border border-white bg-white px-[16.76px] py-[12.57px] font-['Poppins'] text-[16.327px] text-[#161513]"
-                href="#contact"
+                href="https://mail.google.com/mail/?view=cm&to=louciftamer3@gmail.com"
               >
                 Get In Touch
               </a>

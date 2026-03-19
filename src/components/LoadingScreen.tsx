@@ -33,7 +33,7 @@ export function LoadingScreen({ isHiding = false }: LoadingScreenProps) {
     >
       <div className="loading-content">
         <div className="loading-text">
-          <h1 className="loading-title">Welcome to my portfolio</h1>
+          <h1 className="loading-title">Hi, I’m Ahmed <br /> explore my work!</h1>
         </div>
         <div className="h-8 loader-wrap" aria-hidden="true">
           <div
