@@ -25,7 +25,7 @@ export function MobileNav({
 }: MobileNavProps) {
   return (
     <div
-      className={`fixed flex flex-col items-center gap-4 justify-center left-0 right-0 top-13 z-40 rounded-[20px] bg-[#161513]/40 p-2.5 backdrop-blur transition-all duration-300  ${
+      className={`fixed flex flex-col items-center gap-4 justify-center left-0 right-0 top-14 z-30 rounded-[20px] bg-[#161513]/40 p-2.5 backdrop-blur transition-all duration-300  ${
         isOpen
           ? "pointer-events-auto max-h-90 opacity-100 translate-y-0 "
           : "pointer-events-none max-h-0 opacity-0 -translate-y-2"
