@@ -6,6 +6,7 @@ import Projects from "./pages/Projects";
 
 import { LoadingScreen } from "./components/LoadingScreen";
 import { AppLayout } from "./components/layout/AppLayout";
+import { BackgroundWrapper } from "./components/Backround";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -26,14 +27,16 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<AppLayout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/projects" element={<Projects />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <BackgroundWrapper>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<AppLayout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/projects" element={<Projects />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </BackgroundWrapper>
   );
 }
 

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 import { Outlet, useLocation } from "react-router-dom";
 
 import { MobileNav } from "./MobileNav";
@@ -38,7 +39,11 @@ export function AppLayout() {
   const headerActiveSection = isHome ? "home" : "projects";
 
   return (
-    <div className="home-enter">
+    <motion.div
+      initial={{ opacity: 0, y: 22, scale: 0.99 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+    >
       <SiteHeader
         activeSection={headerActiveSection}
         isMobileMenuOpen={isMobileMenuOpen}
@@ -52,6 +57,6 @@ export function AppLayout() {
         links={navLinks}
       />
       <Outlet />
-    </div>
+    </motion.div>
   );
 }

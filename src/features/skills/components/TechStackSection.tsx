@@ -1,5 +1,7 @@
-import { motion } from "framer-motion";
+﻿import { motion } from "framer-motion";
 import { techGroups } from "../../../constants/data";
+
+const easeOut = [0.22, 1, 0.36, 1] as const;
 
 export function TechStackSection() {
   const mainGroups = techGroups.filter((group) => group.title !== "Other");
@@ -10,13 +12,25 @@ export function TechStackSection() {
       id="stack"
       className="flex w-full flex-col items-center gap-7.5 text-center"
     >
-      <h2 className="font-['Itim'] text-[36px] text-[#5197ff]">Tech Stack</h2>
+      <motion.h2
+        className="font-['Itim'] text-[36px] text-[#5197ff]"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.6, ease: easeOut }}
+      >
+        Tech Stack
+      </motion.h2>
 
       <div className="grid w-full grid-cols-1 gap-7.5 sm:grid-cols-2 lg:grid-cols-5">
-        {mainGroups.map((group) => (
-          <div
-            className="flex font-['Itim'] text-[20px] flex-col items-center gap-7.5"
+        {mainGroups.map((group, groupIndex) => (
+          <motion.div
+            className="flex flex-col items-center gap-7.5 font-['Itim'] text-[20px]"
             key={group.title}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, ease: easeOut, delay: groupIndex * 0.08 }}
           >
             <h3 className="font-['Poppins'] text-[20px] tracking-[2.4px] text-[#8491a0]">
               {group.title}
@@ -27,22 +41,33 @@ export function TechStackSection() {
                 const Icon = item.icon;
 
                 return (
-                  <div
-                    className="flex items-center gap-1.5 rounded-[22px] bg-[#303030] px-3 py-2.5 text-white hover:scale-105 transition"
+                  <motion.div
+                    className="flex items-center gap-1.5 rounded-[22px] bg-[#303030] px-3 py-2.5 text-white"
                     key={item.label}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.25 }}
+                    whileHover={{ scale: 1.04 }}
+                    transition={{ duration: 0.35, ease: "easeOut" }}
                   >
                     <Icon />
                     <span>{item.label}</span>
-                  </div>
+                  </motion.div>
                 );
               })}
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
 
       {otherGroup && (
-        <div className="flex flex-col font-['Itim'] items-center w-full gap-5">
+        <motion.div
+          className="flex w-full flex-col items-center gap-5 font-['Itim']"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: easeOut }}
+        >
           <h3 className="font-['Poppins'] text-[20px] tracking-[2.4px] text-[#8491a0]">
             Other
           </h3>
@@ -57,18 +82,20 @@ export function TechStackSection() {
                 const Icon = item.icon;
 
                 return (
-                  <div
+                  <motion.div
                     key={i}
                     className="flex items-center gap-1.5 rounded-[22px] bg-[#303030] px-3 py-2.5 text-white"
+                    whileHover={{ scale: 1.04 }}
+                    transition={{ duration: 0.35, ease: "easeOut" }}
                   >
                     <Icon />
                     <span>{item.label}</span>
-                  </div>
+                  </motion.div>
                 );
               })}
             </motion.div>
           </div>
-        </div>
+        </motion.div>
       )}
     </section>
   );
