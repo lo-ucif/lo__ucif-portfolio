@@ -8,7 +8,7 @@ export function TechStackSection() {
   return (
     <section
       id="stack"
-      className="flex w-full flex-col items-center gap-[30px] text-center"
+      className="flex w-full flex-col items-center gap-7.5 text-center"
     >
       <h2 className="font-['Itim'] text-[36px] text-[#5197ff]">Tech Stack</h2>
 
@@ -42,7 +42,7 @@ export function TechStackSection() {
       </div>
 
       {otherGroup && (
-        <div className="flex flex-col items-center w-full gap-5">
+        <div className="flex flex-col font-['Itim'] items-center w-full gap-5">
           <h3 className="font-['Poppins'] text-[20px] tracking-[2.4px] text-[#8491a0]">
             Other
           </h3>
@@ -59,7 +59,7 @@ export function TechStackSection() {
                 return (
                   <div
                     key={i}
-                    className="flex items-center gap-[8px] rounded-[22px] bg-[#303030] px-[12px] py-[10px] text-white"
+                    className="flex items-center gap-2 rounded-[22px] bg-[#303030] px-3 py-2.5 text-white"
                   >
                     <Icon />
                     <span>{item.label}</span>

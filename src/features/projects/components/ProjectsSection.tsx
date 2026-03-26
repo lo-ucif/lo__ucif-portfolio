@@ -6,7 +6,7 @@ export function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="flex w-full flex-col items-center gap-[30px] text-center"
+      className="flex w-full flex-col items-center gap-7.5 text-center"
     >
       <h2 className="font-['Itim'] text-[36px] text-white max-[600px]:font-['Poppins'] max-[600px]:font-semibold">
         Projects
@@ -17,7 +17,7 @@ export function ProjectsSection() {
             className="flex flex-col overflow-hidden rounded-[15.135px] bg-[#303030] max-[600px]:bg-[#262626]"
             key={`${project.title}-${index}`}
           >
-            <div className="h-[179px] w-full">
+            <div className="h-44.75 w-full">
               <img
                 className="hidden h-full w-full object-cover max-[600px]:block"
                 src={assets.projectShotMobile}
@@ -29,13 +29,13 @@ export function ProjectsSection() {
                 alt=""
               />
             </div>
-            <div className="flex flex-col gap-[15px] px-[18px] py-[15px] text-left">
+            <div className="flex flex-col gap-3.75 px-4.5 py-3.75 text-left">
               <div className="flex items-center justify-between">
                 <h3 className="font-['Poppins'] text-[22.4px] text-white">
                   {project.title}
                 </h3>
                 <img
-                  className="h-[20px] w-[20px]"
+                  className="w-5 h-5"
                   src={assets.projectTool}
                   alt=""
                   loading="lazy"
@@ -74,7 +74,7 @@ export function ProjectsSection() {
                 {project.description}
               </p>
               <div className="flex flex-wrap gap-[7.467px]">
-                <span className="flex items-center gap-[6px] rounded-[7.568px] bg-[#303030] px-[3.784px] py-[3.784px] text-[7.568px] text-white">
+                <span className="flex items-center gap-1.5 rounded-[7.568px] bg-[#303030] px-[3.784px] py-[3.784px] text-[7.568px] text-white">
                   <img
                     className="h-[9.081px] w-[9.081px]"
                     src={assets.tagReact}
@@ -84,7 +84,7 @@ export function ProjectsSection() {
                   />
                   React
                 </span>
-                <span className="flex items-center gap-[6px] rounded-[7.568px] bg-[#303030] px-[3.784px] py-[3.784px] text-[7.568px] text-white">
+                <span className="flex items-center gap-1.5 rounded-[7.568px] bg-[#303030] px-[3.784px] py-[3.784px] text-[7.568px] text-white">
                   <img
                     className="h-[9.081px] w-[9.081px]"
                     src={assets.tagJs}
@@ -94,9 +94,9 @@ export function ProjectsSection() {
                   />
                   Java script
                 </span>
-                <span className="flex items-center gap-[6px] rounded-[7.568px] bg-[#303030] px-[3.784px] py-[3.784px] text-[7.568px] text-white">
+                <span className="flex items-center gap-1.5 rounded-[7.568px] bg-[#303030] px-[3.784px] py-[3.784px] text-[7.568px] text-white">
                   <img
-                    className="h-[10px] w-[10px]"
+                    className="h-2.5 w-2.5"
                     src={assets.tagFigma}
                     alt=""
                     loading="lazy"
