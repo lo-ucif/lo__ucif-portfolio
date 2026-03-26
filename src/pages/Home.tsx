@@ -1,9 +1,9 @@
-import { assets } from "../constants/assets";
 import { TechStackSection } from "../features/skills/components/TechStackSection";
 import { ProjectsSection } from "../features/projects/components/ProjectsSection";
 import { ContactSection } from "../features/contact/components/ContactSection";
+import { GithubIcon } from "../constants/Icon";
 
-import myimg from "../assets/7.webp";
+import myimg from "../assets/portfolio img.png";
 import univimg from "../assets/6.webp";
 
 export default function Home() {
@@ -14,10 +14,7 @@ export default function Home() {
           <section className="flex flex-col items-center gap-6.25 text-center">
             <div className="relative grid h-53.25 w-53.25 place-items-center overflow-hidden rounded-full bg-[#262626]">
               <picture>
-                <source
-                  media="(max-width: 600px)"
-                  srcSet={assets.avatarMobile}
-                />
+                <source media="(max-width: 600px)" />
                 <img
                   className="h-[200%] w-[200%]  object-cover"
                   src={myimg}
@@ -64,17 +61,7 @@ export default function Home() {
               >
                 Git Hub
                 <picture>
-                  <source
-                    media="(max-width: 600px)"
-                    srcSet={assets.githubArrowMobile}
-                  />
-                  <img
-                    className="h-5.25 w-5.25"
-                    src={assets.githubArrow}
-                    alt=""
-                    loading="lazy"
-                    decoding="async"
-                  />
+                  <GithubIcon />
                 </picture>
               </a>
             </div>
