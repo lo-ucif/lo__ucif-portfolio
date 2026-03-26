@@ -28,7 +28,7 @@ export function TechStackSection() {
 
                 return (
                   <div
-                    className="flex items-center gap-2 rounded-[22px] bg-[#303030] px-3 py-2.5 text-white hover:scale-105 transition"
+                    className="flex items-center gap-1.5 rounded-[22px] bg-[#303030] px-3 py-2.5 text-white hover:scale-105 transition"
                     key={item.label}
                   >
                     <Icon />
@@ -59,7 +59,7 @@ export function TechStackSection() {
                 return (
                   <div
                     key={i}
-                    className="flex items-center gap-2 rounded-[22px] bg-[#303030] px-3 py-2.5 text-white"
+                    className="flex items-center gap-1.5 rounded-[22px] bg-[#303030] px-3 py-2.5 text-white"
                   >
                     <Icon />
                     <span>{item.label}</span>
