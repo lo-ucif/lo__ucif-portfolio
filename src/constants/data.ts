@@ -1,3 +1,4 @@
+import type { ComponentType } from "react";
 import {
   JavascriptIcon,
   TypescriptIcon,
@@ -80,35 +81,62 @@ export const techGroups = [
   },
 ];
 
-export const projects = [
+type TechItem = {
+  label: string;
+  icon: ComponentType;
+};
+
+export const projects: Array<{
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  tech: TechItem[];
+  liveDemo: string;
+  github: string;
+}> = [
   {
-    title: "Project Title",
+    id: 1,
+    title: "Weather Dashboard",
     description:
-      "Short, clear summary of what the project does and why it matters.",
-    image: "/images/project-1.png",
-    github: "https://github.com/yourname/project-repo",
-    figma: "https://www.figma.com/file/your-file-id",
-    liveDemo: "https://your-live-demo.com",
-    tech: ["React", "Tailwind", "Node.js"],
+      "A weather dashboard application that displays current weather and forecasts for multiple cities with interactive charts.",
+    image: "/assets/weather-dashboard.png",
+    tech: [
+      { label: "React", icon: ReactIcon },
+      { label: "JavaScript", icon: JavascriptIcon },
+      { label: "Tailwind", icon: TaillwindIcon },
+    ],
+    liveDemo: "https://your-weather-app.com",
+    github: "https://github.com/yourusername/weather-dashboard",
   },
   {
-    title: "Project Title",
+    id: 2,
+    title: "Blog Platform",
     description:
-      "Short, clear summary of what the project does and why it matters.",
-    image: "/images/project-2.png",
-    github: "https://github.com/yourname/project-repo",
-    figma: "https://www.figma.com/file/your-file-id",
-    liveDemo: "https://your-live-demo.com",
-    tech: ["React", "Tailwind", "Node.js"],
+      "A full-featured blog platform with markdown support, comments, and user authentication system.",
+    image: "/assets/blog-platform.png",
+    tech: [
+      { label: "React", icon: ReactIcon },
+      { label: "Node.js", icon: NodejsIcon },
+      { label: "MongoDB", icon: MongodbIcon },
+      { label: "Tailwind", icon: TaillwindIcon },
+    ],
+    liveDemo: "https://your-blog.com",
+    github: "https://github.com/yourusername/blog-platform",
   },
   {
-    title: "Project Title",
+    id: 3,
+    title: "Chat Application",
     description:
-      "Short, clear summary of what the project does and why it matters.",
-    image: "/images/project-3.png",
-    github: "https://github.com/yourname/project-repo",
-    figma: "https://www.figma.com/file/your-file-id",
-    liveDemo: "https://your-live-demo.com",
-    tech: ["React", "Tailwind", "Node.js"],
+      "Real-time chat application with private messaging, group chats, and file sharing capabilities.",
+    image: "src/assets/Screenshot 2026-03-15 151330.png",
+    tech: [
+      { label: "React", icon: ReactIcon },
+      { label: "Node.js", icon: NodejsIcon },
+      { label: "Express", icon: ExpressjsIcon },
+      { label: "MongoDB", icon: MongodbIcon },
+    ],
+    liveDemo: "https://your-chat-app.com",
+    github: "https://github.com/yourusername/chat-app",
   },
 ];

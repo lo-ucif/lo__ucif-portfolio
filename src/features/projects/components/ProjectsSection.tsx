@@ -1,9 +1,7 @@
 ﻿import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { projects } from "../../../constants/data";
-import { FigmaIcon } from "../../../constants/Icon";
 import { GithubIcon, LinkIcon } from "../../../constants/Icon";
-import img01 from "../../../assets/Screenshot 2026-03-15 151330.png";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
@@ -26,40 +24,64 @@ export function ProjectsSection() {
       <div className="flex flex-wrap items-center justify-center w-full gap-8 max-w-260">
         {projects.map((project, index) => (
           <motion.div
-            className="font-['Poppins'] flex flex-col overflow-hidden rounded-[15px] bg-[#303030]  max-w-80"
-            key={`${project.title}-${index}`}
+            className="project-card bg-[#303030] border border-white/10 rounded-xl overflow-hidden max-w-80 w-full"
+            key={project.id}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, ease: easeOut, delay: index * 0.08 }}
           >
-            <div className="flex flex-col justify-center gap-1 ">
-              <img className="w-full max-h-60" src={img01} />
-              <div className="flex flex-col items-start justify-center gap-4 p-4">
-                <div className="flex flex-row justify-between w-full ">
-                  <div className="text-[22px]">Project Tiltle</div>
-                  <FigmaIcon />
-                </div>
-                <div className="flex flex-row justify-between w-full">
-                  <div className="flex flex-row items-center gap-2">
-                    <LinkIcon />
-                    <a
-                      href="https://example.com"
-                      style={{ textDecoration: "underline" }}
+            <div className="relative h-48 overflow-hidden">
+              <img
+                src={project.image}
+                alt={project.title}
+                className="object-cover w-full h-full transition-transform duration-300 hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#303030] to-transparent" />
+            </div>
+
+            <div className="p-6">
+              <h3 className="mb-2 text-xl font-semibold text-white">
+                {project.title}
+              </h3>
+              <p className="text-[#9CA3AF] text-sm mb-4 line-clamp-2">
+                {project.description}
+              </p>
+
+              <div className="flex flex-wrap gap-2 mb-4">
+                {project.tech.map((tech) => {
+                  const Icon = tech.icon;
+                  return (
+                    <span
+                      key={tech.label}
+                      className="flex items-center gap-1.5 px-2 py-1 text-xs rounded-md bg-[#FF4D00]/10 text-[#FF4D00]"
                     >
-                      Live Demo
-                    </a>
-                  </div>
-                  <div className="flex flex-row items-center gap-2">
-                    <GithubIcon />
-                    <a
-                      href="https://example.com"
-                      style={{ textDecoration: "underline" }}
-                    >
-                      View Code
-                    </a>
-                  </div>
-                </div>
+                      <Icon />
+                      {tech.label}
+                    </span>
+                  );
+                })}
+              </div>
+
+              <div className="flex gap-3">
+                <a
+                  href={project.liveDemo}
+                  className="flex-1 border border-white/50 text-white py-2 px-4 rounded-md transition-colors duration-300 flex items-center justify-center gap-2 text-sm hover:bg-[#FF4D00]/10 hover:text-[#FF4D00] hover:border-[#FF4D00]"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <LinkIcon />
+                  Live
+                </a>
+                <a
+                  href={project.github}
+                  className="flex-1 border border-white/50 text-white py-2 px-4 rounded-md transition-colors duration-300 flex items-center justify-center gap-2 text-sm hover:bg-[#FF4D00]/10 hover:text-[#FF4D00] hover:border-[#FF4D00]"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <GithubIcon />
+                  Code
+                </a>
               </div>
             </div>
           </motion.div>
@@ -74,8 +96,7 @@ export function ProjectsSection() {
         viewport={{ once: true, amount: 0.2 }}
         whileHover={{ scale: 1.03 }}
         whileTap={{ scale: 0.95 }}
-        transition={{ duration: 0.18, ease: "easeOut" }}
-      >
+        transition={{ duration: 0.18, ease: "easeOut" }}    >
         <Link to="/projects">View All</Link>
       </motion.button>
     </section>
