@@ -1,4 +1,4 @@
-import type { ComponentType } from "react";
+import type { ComponentType, SVGProps } from "react";
 import {
   JavascriptIcon,
   TypescriptIcon,
@@ -83,7 +83,7 @@ export const techGroups = [
 
 type TechItem = {
   label: string;
-  icon: ComponentType;
+  icon: ComponentType<SVGProps<SVGSVGElement>>;
 };
 
 export const projects: Array<{
@@ -100,11 +100,12 @@ export const projects: Array<{
     title: "Weather Dashboard",
     description:
       "A weather dashboard application that displays current weather and forecasts for multiple cities with interactive charts.",
-    image: "/assets/weather-dashboard.png",
+    image: "src/assets/Screenshot 2026-03-15 151330.png",
     tech: [
       { label: "React", icon: ReactIcon },
-      { label: "JavaScript", icon: JavascriptIcon },
+      { label: "MongoDB", icon: MongodbIcon },
       { label: "Tailwind", icon: TaillwindIcon },
+      { label: "JavaScript", icon: JavascriptIcon },
     ],
     liveDemo: "https://your-weather-app.com",
     github: "https://github.com/yourusername/weather-dashboard",
@@ -114,7 +115,7 @@ export const projects: Array<{
     title: "Blog Platform",
     description:
       "A full-featured blog platform with markdown support, comments, and user authentication system.",
-    image: "/assets/blog-platform.png",
+    image: "src/assets/Screenshot 2026-03-15 151330.png",
     tech: [
       { label: "React", icon: ReactIcon },
       { label: "Node.js", icon: NodejsIcon },

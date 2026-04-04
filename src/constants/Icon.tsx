@@ -1,10 +1,13 @@
-export const GithubIcon = () => (
+import type { SVGProps } from "react";
+
+export const GithubIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="21"
     height="21"
     viewBox="0 0 21 21"
     fill="none"
+    {...props}
   >
     <path
       d="M10.5 0C9.12112 0 7.75574 0.278333 6.48182 0.819108C5.2079 1.35988 4.05039 2.15251 3.07538 3.15173C1.10625 5.16975 0 7.90677 0 10.7607C0 15.5169 3.0135 19.5522 7.182 20.9833C7.707 21.0694 7.875 20.7358 7.875 20.4453V18.6267C4.9665 19.2724 4.347 17.1848 4.347 17.1848C3.864 15.9366 3.1815 15.603 3.1815 15.603C2.226 14.9358 3.255 14.9573 3.255 14.9573C4.305 15.0327 4.8615 16.0657 4.8615 16.0657C5.775 17.7013 7.3185 17.2171 7.917 16.9588C8.0115 16.2594 8.2845 15.7859 8.5785 15.5169C6.2475 15.2479 3.801 14.3225 3.801 10.2226C3.801 9.02821 4.2 8.07051 4.8825 7.3065C4.7775 7.03749 4.41 5.91838 4.9875 4.46568C4.9875 4.46568 5.8695 4.17515 7.875 5.56327C8.7045 5.32654 9.6075 5.20817 10.5 5.20817C11.3925 5.20817 12.2955 5.32654 13.125 5.56327C15.1305 4.17515 16.0125 4.46568 16.0125 4.46568C16.59 5.91838 16.2225 7.03749 16.1175 7.3065C16.8 8.07051 17.199 9.02821 17.199 10.2226C17.199 14.3332 14.742 15.2371 12.4005 15.5061C12.7785 15.8397 13.125 16.4961 13.125 17.4969V20.4453C13.125 20.7358 13.293 21.0802 13.8285 20.9833C17.997 19.5414 21 15.5169 21 10.7607C21 9.34757 20.7284 7.94829 20.2007 6.64275C19.6731 5.3372 18.8996 4.15095 17.9246 3.15173C16.9496 2.15251 15.7921 1.35988 14.5182 0.819108C13.2443 0.278333 11.8789 0 10.5 0Z"
@@ -13,13 +16,14 @@ export const GithubIcon = () => (
   </svg>
 );
 
-export const LinkedinIcon = () => (
+export const LinkedinIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="21"
     height="21"
     viewBox="0 0 21 21"
     fill="none"
+    {...props}
   >
     <path
       d="M18.6667 0C19.2855 0 19.879 0.245833 20.3166 0.683417C20.7542 1.121 21 1.71449 21 2.33333V18.6667C21 19.2855 20.7542 19.879 20.3166 20.3166C19.879 20.7542 19.2855 21 18.6667 21H2.33333C1.71449 21 1.121 20.7542 0.683417 20.3166C0.245833 19.879 0 19.2855 0 18.6667V2.33333C0 1.71449 0.245833 1.121 0.683417 0.683417C1.121 0.245833 1.71449 0 2.33333 0H18.6667ZM18.0833 18.0833V11.9C18.0833 10.8913 17.6826 9.9239 16.9694 9.21064C16.2561 8.49737 15.2887 8.09667 14.28 8.09667C13.2883 8.09667 12.1333 8.70333 11.5733 9.61333V8.31833H8.31833V18.0833H11.5733V12.3317C11.5733 11.4333 12.2967 10.6983 13.195 10.6983C13.6282 10.6983 14.0436 10.8704 14.3499 11.1767C14.6562 11.483 14.8283 11.8985 14.8283 12.3317V18.0833H18.0833ZM4.52667 6.48667C5.04649 6.48667 5.54502 6.28017 5.9126 5.9126C6.28017 5.54502 6.48667 5.04649 6.48667 4.52667C6.48667 3.44167 5.61167 2.555 4.52667 2.555C4.00375 2.555 3.50225 2.76273 3.13249 3.13249C2.76273 3.50225 2.555 4.00375 2.555 4.52667C2.555 5.61167 3.44167 6.48667 4.52667 6.48667ZM6.14833 18.0833V8.31833H2.91667V18.0833H6.14833Z"
@@ -27,14 +31,30 @@ export const LinkedinIcon = () => (
     />
   </svg>
 );
+export const Github2Icon = (props: SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="26"
+    height="26"
+    viewBox="0 0 26 26"
+    fill="none"
+    {...props}
+  >
+    <path
+      d="M6.84121 6.69064C6.57038 5.99947 6.58121 5.20972 6.70146 4.48714C7.52908 4.73583 8.30649 5.1282 8.99813 5.64631C9.30146 5.87814 9.69905 5.95289 10.0695 5.84131C11.0201 5.5562 12.0076 5.4131 13 5.41664C14.041 5.41664 15.0301 5.56831 15.9282 5.84022C16.2987 5.95289 16.6963 5.87706 16.9985 5.64522C17.6899 5.12723 18.4669 4.73486 19.2941 4.48606C19.4144 5.20864 19.4241 5.99839 19.1555 6.68847C18.993 7.10447 19.0742 7.58331 19.3808 7.92347C20.1651 8.79339 20.5833 9.79331 20.5833 10.8333C20.5833 13.1235 18.4491 15.3692 15.0215 16.0528C14.1635 16.224 13.8287 17.3041 14.4852 17.9226C14.9066 18.3191 15.1666 18.8781 15.1666 19.5V22.75C15.1666 23.0373 15.2808 23.3128 15.4839 23.516C15.6871 23.7192 15.9626 23.8333 16.25 23.8333C16.5373 23.8333 16.8128 23.7192 17.016 23.516C17.2192 23.3128 17.3333 23.0373 17.3333 22.75V19.5C17.3333 18.8825 17.2033 18.2953 16.9715 17.7634C20.2399 16.6291 22.75 14.0757 22.75 10.8333C22.75 9.37406 22.2256 8.03289 21.3557 6.90947C21.5832 6.02114 21.5626 5.12631 21.476 4.43947C21.399 3.82414 21.2918 3.01814 20.8585 2.53714C20.2139 1.82322 19.1468 2.24356 18.3885 2.50247C17.5746 2.77679 16.8005 3.15745 16.0864 3.63456C15.0779 3.37681 14.0409 3.24759 13 3.24997C11.9231 3.24997 10.8842 3.38539 9.91138 3.63564C9.19723 3.15853 8.42317 2.77788 7.6093 2.50356C6.85096 2.24356 5.7828 1.82322 5.13821 2.53714C4.69621 3.02681 4.60413 3.76889 4.52505 4.39939L4.51963 4.44056C4.43296 5.12847 4.41346 6.02439 4.64096 6.91381C3.7743 8.03614 3.24996 9.37514 3.24996 10.8333C3.24996 14.0746 5.76005 16.6291 9.02846 17.7634C8.7923 18.3044 8.66917 18.888 8.66663 19.4783L8.48463 19.5151C7.70788 19.6224 7.21063 19.526 6.87263 19.383C6.0493 19.0341 5.62463 18.1556 5.1068 17.4839C4.78396 17.0668 4.3138 16.5457 3.5923 16.3052C3.45729 16.2603 3.31474 16.2423 3.17281 16.2525C3.03087 16.2626 2.89232 16.3006 2.76506 16.3643C2.50806 16.4929 2.31267 16.7183 2.22188 16.991C2.13109 17.2636 2.15233 17.5612 2.28093 17.8182C2.40954 18.0752 2.63497 18.2706 2.90763 18.3614C3.51213 18.5629 3.9303 19.5986 4.3138 20.0579C4.71788 20.5432 5.25521 21.0502 6.02546 21.3774C6.7643 21.6916 7.63205 21.8031 8.66663 21.6764V22.75C8.66663 23.0373 8.78077 23.3128 8.98393 23.516C9.1871 23.7192 9.46265 23.8333 9.74996 23.8333C10.0373 23.8333 10.3128 23.7192 10.516 23.516C10.7192 23.3128 10.8333 23.0373 10.8333 22.75V19.5C10.8333 18.8781 11.0933 18.3191 11.5147 17.9226C12.1723 17.303 11.8365 16.224 10.9785 16.0528C7.54971 15.3692 5.41663 13.1235 5.41663 10.8333C5.41663 9.79547 5.83371 8.79556 6.61696 7.92564C6.92355 7.58547 7.00371 7.10664 6.84121 6.69064Z"
+      fill="white"
+    />
+  </svg>
+);
 
-export const GmailIcon = () => (
+export const GmailIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="25"
     height="25"
     viewBox="0 0 25 25"
     fill="none"
+    {...props}
   >
     <path
       d="M19.5102 5.63548L18.1769 6.67714L12.4998 10.8959L6.82274 6.63548L5.48941 5.59381C5.1753 5.33396 4.79186 5.17198 4.38659 5.12792C3.98131 5.08387 3.57202 5.15969 3.20942 5.34598C2.84682 5.53227 2.54683 5.82085 2.34664 6.17597C2.14645 6.53109 2.05484 6.93713 2.08316 7.34381V19.4167C2.08316 19.7924 2.23242 20.1528 2.49809 20.4185C2.76377 20.6841 3.1241 20.8334 3.49983 20.8334H6.82274V12.7917L12.4998 17.0521L18.1769 12.7917V20.8334H21.4998C21.8755 20.8334 22.2359 20.6841 22.5016 20.4185C22.7672 20.1528 22.9165 19.7924 22.9165 19.4167V7.34381C22.9361 6.94064 22.8381 6.54048 22.6345 6.19196C22.4309 5.84344 22.1304 5.56157 21.7696 5.38061C21.4088 5.19966 21.0032 5.12741 20.6021 5.17266C20.201 5.2179 19.8217 5.37869 19.5102 5.63548Z"
@@ -43,13 +63,14 @@ export const GmailIcon = () => (
   </svg>
 );
 
-export const CallIcon = () => (
+export const CallIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="25"
     height="25"
     viewBox="0 0 25 25"
     fill="none"
+    {...props}
   >
     <path
       fill-rule="evenodd"
@@ -59,13 +80,14 @@ export const CallIcon = () => (
     />
   </svg>
 );
-export const InstagramIcon = () => (
+export const InstagramIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="25"
     height="25"
     viewBox="0 0 25 25"
     fill="none"
+    {...props}
   >
     <path
       d="M12.4423 17.5465C13.7961 17.5465 15.0944 17.0087 16.0517 16.0514C17.0089 15.0942 17.5467 13.7958 17.5467 12.4421C17.5467 11.0883 17.0089 9.78996 16.0517 8.83269C15.0944 7.87543 13.7961 7.33765 12.4423 7.33765C11.0885 7.33765 9.7902 7.87543 8.83294 8.83269C7.87567 9.78996 7.33789 11.0883 7.33789 12.4421C7.33789 13.7958 7.87567 15.0942 8.83294 16.0514C9.7902 17.0087 11.0885 17.5465 12.4423 17.5465Z"
@@ -88,13 +110,14 @@ export const InstagramIcon = () => (
     />
   </svg>
 );
-export const JavascriptIcon = () => (
+export const JavascriptIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="25"
     height="25"
     viewBox="0 0 26 26"
     fill="none"
+    {...props}
   >
     <path d="M1.62109 1.625H24.3711V24.375H1.62109V1.625Z" fill="#F5DE19" />
     <path
@@ -103,13 +126,14 @@ export const JavascriptIcon = () => (
     />
   </svg>
 );
-export const ReactIcon = () => (
+export const ReactIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="25"
     height="25"
     viewBox="0 0 26 24"
     fill="none"
+    {...props}
   >
     <g clip-path="url(#clip0_67_874)">
       <path
@@ -124,13 +148,14 @@ export const ReactIcon = () => (
     </defs>
   </svg>
 );
-export const NodejsIcon = () => (
+export const NodejsIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="25"
     height="25"
     viewBox="0 0 26 29"
     fill="none"
+    {...props}
   >
     <g clip-path="url(#clip0_67_880)">
       <path
@@ -145,13 +170,14 @@ export const NodejsIcon = () => (
     </defs>
   </svg>
 );
-export const MongodbIcon = () => (
+export const MongodbIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="25"
     height="25"
     viewBox="0 0 30 30"
     fill="none"
+    {...props}
   >
     <path
       fill-rule="evenodd"
@@ -287,13 +313,14 @@ export const MongodbIcon = () => (
     />
   </svg>
 );
-export const TypescriptIcon = () => (
+export const TypescriptIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="25"
     height="25"
     viewBox="0 0 26 26"
     fill="none"
+    {...props}
   >
     <g clip-path="url(#clip0_67_870)">
       <path
@@ -312,13 +339,14 @@ export const TypescriptIcon = () => (
     </defs>
   </svg>
 );
-export const TaillwindIcon = () => (
+export const TaillwindIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="25"
     height="25"
     viewBox="0 0 26 26"
     fill="none"
+    {...props}
   >
     <g clip-path="url(#clip0_67_877)">
       <path
@@ -334,13 +362,14 @@ export const TaillwindIcon = () => (
   </svg>
 );
 
-export const ExpressjsIcon = () => (
+export const ExpressjsIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="26"
     height="24"
     viewBox="0 0 26 24"
     fill="none"
+    {...props}
   >
     <path
       d="M19.9062 0H6.09375C2.72826 0 0 2.50091 0 5.58594V18.2474C0 21.3324 2.72826 23.8333 6.09375 23.8333H19.9062C23.2717 23.8333 26 21.3324 26 18.2474V5.58594C26 2.50091 23.2717 0 19.9062 0Z"
@@ -352,13 +381,14 @@ export const ExpressjsIcon = () => (
     />
   </svg>
 );
-export const MysqlIcon = () => (
+export const MysqlIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="38"
     height="26"
     viewBox="0 0 38 26"
     fill="none"
+    {...props}
   >
     <g clip-path="url(#clip0_67_917)">
       <path
@@ -381,13 +411,14 @@ export const MysqlIcon = () => (
     </defs>
   </svg>
 );
-export const FigmaIcon = () => (
+export const FigmaIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="26"
     height="26"
     viewBox="0 0 26 26"
     fill="none"
+    {...props}
   >
     <g clipPath="url(#clip0_67_930)">
       <path
@@ -438,13 +469,14 @@ export const FigmaIcon = () => (
     </defs>
   </svg>
 );
-export const VScodeIcon = () => (
+export const VScodeIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="26"
     height="26"
     viewBox="0 0 26 26"
     fill="none"
+    {...props}
   >
     <g clip-path="url(#clip0_67_1017)">
       <path
@@ -475,13 +507,14 @@ export const VScodeIcon = () => (
     </defs>
   </svg>
 );
-export const LinuxIcon = () => (
+export const LinuxIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="26"
     height="26"
     viewBox="0 0 26 26"
     fill="none"
+    {...props}
   >
     <g clip-path="url(#clip0_67_956)">
       <path
@@ -524,13 +557,14 @@ export const LinuxIcon = () => (
     </defs>
   </svg>
 );
-export const MobilePhoneIcon = () => (
+export const MobilePhoneIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="26"
     height="24"
     viewBox="0 0 26 24"
     fill="none"
+    {...props}
   >
     <path
       d="M19.9062 0H6.09375C2.72826 0 0 2.50091 0 5.58594V18.2474C0 21.3324 2.72826 23.8333 6.09375 23.8333H19.9062C23.2717 23.8333 26 21.3324 26 18.2474V5.58594C26 2.50091 23.2717 0 19.9062 0Z"
@@ -542,13 +576,14 @@ export const MobilePhoneIcon = () => (
     />
   </svg>
 );
-export const PostmanIcon = () => (
+export const PostmanIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="26"
     height="26"
     viewBox="0 0 26 26"
     fill="none"
+    {...props}
   >
     <g clip-path="url(#clip0_67_1073)">
       <path
@@ -635,13 +670,14 @@ export const PostmanIcon = () => (
     </defs>
   </svg>
 );
-export const GitIcon = () => (
+export const GitIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="26"
     height="26"
     viewBox="0 0 26 26"
     fill="none"
+    {...props}
   >
     <g clip-path="url(#clip0_67_1095)">
       <path
@@ -656,13 +692,14 @@ export const GitIcon = () => (
     </defs>
   </svg>
 );
-export const HtmlIcon = () => (
+export const HtmlIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="26"
     height="26"
     viewBox="0 0 26 26"
     fill="none"
+    {...props}
   >
     <path
       d="M4.79444 22.1011L2.96875 1.62524H23.0294L21.2012 22.0978L12.9869 24.3752L4.79444 22.1011Z"
@@ -682,13 +719,14 @@ export const HtmlIcon = () => (
     />
   </svg>
 );
-export const CssIcon = () => (
+export const CssIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="26"
     height="26"
     viewBox="0 0 26 26"
     fill="none"
+    {...props}
   >
     <path
       d="M4.80605 22.0452L2.97656 1.62109H23.0863L21.2543 22.0419L13.0192 24.3136L4.80605 22.0452Z"
@@ -717,13 +755,14 @@ export const CssIcon = () => (
   </svg>
 );
 
-export const BootsrapIcon = () => (
+export const BootsrapIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="26"
     height="26"
     viewBox="0 0 26 26"
     fill="none"
+    {...props}
   >
     <g clip-path="url(#clip0_67_1122)">
       <path
@@ -789,13 +828,14 @@ export const BootsrapIcon = () => (
     </defs>
   </svg>
 );
-export const JavaIcon = () => (
+export const JavaIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="26"
     height="26"
     viewBox="0 0 26 26"
     fill="none"
+    {...props}
   >
     <g clip-path="url(#clip0_67_1304)">
       <path
@@ -830,13 +870,14 @@ export const JavaIcon = () => (
     </defs>
   </svg>
 );
-export const ViteIcon = () => (
+export const ViteIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="26"
     height="26"
     viewBox="0 0 26 26"
     fill="none"
+    {...props}
   >
     <path
       d="M23.8169 9.75006H18.4024C18.1958 9.73969 17.9957 9.67424 17.823 9.56049C17.6502 9.44674 17.511 9.28883 17.4198 9.10315C17.3286 8.91746 17.2888 8.71077 17.3044 8.50449C17.32 8.29822 17.3906 8.09988 17.5087 7.93006L21.082 2.50581C21.1364 2.42189 21.1678 2.32518 21.173 2.22534C21.1783 2.1255 21.1572 2.02603 21.112 1.93687C21.0667 1.84771 20.9989 1.77199 20.9152 1.71727C20.8316 1.66255 20.735 1.63076 20.6352 1.62506H6.84785C6.75929 1.62142 6.67134 1.64122 6.59288 1.68245C6.51442 1.72368 6.44822 1.78488 6.40098 1.85987L1.71285 8.86931C1.65851 8.95322 1.62714 9.04994 1.62188 9.14978C1.61663 9.24962 1.63767 9.34909 1.68291 9.43824C1.72815 9.5274 1.79599 9.60313 1.87967 9.65784C1.96334 9.71256 2.05991 9.74436 2.15973 9.75006H8.80192C9.00845 9.76056 9.20842 9.82611 9.38109 9.93992C9.55376 10.0537 9.69285 10.2116 9.78393 10.3973C9.87502 10.583 9.9148 10.7896 9.89914 10.9958C9.88347 11.202 9.81294 11.4003 9.69485 11.5701L6.05485 16.9943C6.0003 17.0781 5.96871 17.1747 5.96326 17.2745C5.9578 17.3743 5.97866 17.4738 6.02375 17.5629C6.06885 17.6521 6.13659 17.7279 6.22019 17.7827C6.30379 17.8375 6.40032 17.8693 6.5001 17.8751L11.9398 17.8767C12.2283 17.8841 12.502 18.0058 12.7009 18.215C12.8997 18.4242 13.0073 18.7037 13.0001 18.9922V23.8136C12.9939 23.9266 13.024 24.0386 13.0861 24.1332C13.1481 24.2278 13.2388 24.3 13.3449 24.3394C13.451 24.3787 13.5669 24.383 13.6756 24.3517C13.7843 24.3204 13.8802 24.2551 13.9491 24.1654L24.263 10.6893C24.3266 10.6034 24.3657 10.5019 24.376 10.3955C24.3864 10.2891 24.3676 10.182 24.3217 10.0855C24.2758 9.98894 24.2044 9.90674 24.1154 9.84766C24.0263 9.78858 23.9237 9.75484 23.8169 9.75006Z"
@@ -844,13 +885,14 @@ export const ViteIcon = () => (
     />
   </svg>
 );
-export const ReactRouterIcon = () => (
+export const ReactRouterIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="26"
     height="26"
     viewBox="0 0 26 26"
     fill="none"
+    {...props}
   >
     <g clip-path="url(#clip0_67_1324)">
       <path
@@ -869,13 +911,14 @@ export const ReactRouterIcon = () => (
     </defs>
   </svg>
 );
-export const RestApiIcon = () => (
+export const RestApiIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="26"
     height="26"
     viewBox="0 0 26 26"
     fill="none"
+    {...props}
   >
     <g clip-path="url(#clip0_67_1317)">
       <path
@@ -893,13 +936,14 @@ export const RestApiIcon = () => (
     </defs>
   </svg>
 );
-export const AxiosIcon = () => (
+export const AxiosIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="26"
     height="26"
     viewBox="0 0 26 26"
     fill="none"
+    {...props}
   >
     <g clip-path="url(#clip0_67_1329)">
       <path
@@ -914,13 +958,14 @@ export const AxiosIcon = () => (
     </defs>
   </svg>
 );
-export const CIcon = () => (
+export const CIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="26"
     height="26"
     viewBox="0 0 26 26"
     fill="none"
+    {...props}
   >
     <path
       fill-rule="evenodd"
@@ -930,13 +975,14 @@ export const CIcon = () => (
     />
   </svg>
 );
-export const LinkIcon = () => (
+export const LinkIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="20"
     height="20"
     viewBox="0 0 16 16"
     fill="none"
+    {...props}
   >
     <path
       d="M8.54214 6.59381C8.02558 6.07747 7.32511 5.78741 6.59475 5.78741C5.86438 5.78741 5.16391 6.07747 4.64736 6.59381L2.69934 8.5412C2.18278 9.05776 1.89258 9.75837 1.89258 10.4889C1.89258 11.2194 2.18278 11.92 2.69934 12.4366C3.21591 12.9532 3.91652 13.2434 4.64705 13.2434C5.37758 13.2434 6.07819 12.9532 6.59475 12.4366L7.56844 11.4629"
@@ -954,3 +1000,7 @@ export const LinkIcon = () => (
     />
   </svg>
 );
+
+
+
+

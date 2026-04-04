@@ -3,7 +3,7 @@ import { TechStackSection } from "../features/skills/components/TechStackSection
 import { ProjectsSection } from "../features/projects/components/ProjectsSection";
 import { ContactSection } from "../features/contact/components/ContactSection";
 import { GithubIcon } from "../constants/Icon";
-
+import pdf from "../../public/Ahmed_Loucif_CV.pdf";
 import myimg from "../assets/portfolio img.png";
 import univimg from "../assets/6.webp";
 
@@ -189,9 +189,10 @@ export default function Home() {
               build better digital products.
             </motion.p>
 
-            <motion.button
-              className="rounded-[38.182px] border border-white px-[16.76px] py-[12.57px] font-['Poppins'] text-[16.327px] text-white transition-colors duration-300 hover:bg-white hover:text-[#161513]"
-              type="button"
+            <motion.a
+              href={pdf}
+              download
+              className="inline-block rounded-[38.182px] border border-white px-[16.76px] py-[12.57px] font-['Poppins'] text-[16.327px] text-white transition-colors duration-300 hover:bg-white hover:text-[#161513]"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
@@ -200,7 +201,7 @@ export default function Home() {
               transition={{ duration: 0.18, ease: "easeOut" }}
             >
               Download CV
-            </motion.button>
+            </motion.a>
           </section>
 
           <TechStackSection />
