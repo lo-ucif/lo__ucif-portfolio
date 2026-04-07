@@ -94,6 +94,7 @@ export const projects: Array<{
   tech: TechItem[];
   liveDemo: string;
   github: string;
+  figma: string;
 }> = [
   {
     id: 1,
@@ -109,6 +110,7 @@ export const projects: Array<{
     ],
     liveDemo: "https://your-weather-app.com",
     github: "https://github.com/yourusername/weather-dashboard",
+    figma: "https://www.figma.com/file/your-weather-design",
   },
   {
     id: 2,
@@ -124,6 +126,7 @@ export const projects: Array<{
     ],
     liveDemo: "https://your-blog.com",
     github: "https://github.com/yourusername/blog-platform",
+    figma: "https://www.figma.com/file/your-weather-design",
   },
   {
     id: 3,
@@ -139,5 +142,54 @@ export const projects: Array<{
     ],
     liveDemo: "https://your-chat-app.com",
     github: "https://github.com/yourusername/chat-app",
+    figma: "https://www.figma.com/file/your-weather-design",
+  },
+  {
+    id: 4,
+    title: "Chat Application",
+    description:
+      "Real-time chat application with private messaging, group chats, and file sharing capabilities.",
+    image: "src/assets/Screenshot 2026-03-15 151330.png",
+    tech: [
+      { label: "React", icon: ReactIcon },
+      { label: "Node.js", icon: NodejsIcon },
+      { label: "Express", icon: ExpressjsIcon },
+      { label: "MongoDB", icon: MongodbIcon },
+    ],
+    liveDemo: "https://your-chat-app.com",
+    github: "https://github.com/yourusername/chat-app",
+    figma: "https://www.figma.com/file/your-weather-design",
+  },
+  {
+    id: 5,
+    title: "Chat Application",
+    description:
+      "Real-time chat application with private messaging, group chats, and file sharing capabilities.",
+    image: "src/assets/Screenshot 2026-03-15 151330.png",
+    tech: [
+      { label: "React", icon: ReactIcon },
+      { label: "Node.js", icon: NodejsIcon },
+      { label: "Express", icon: ExpressjsIcon },
+      { label: "MongoDB", icon: MongodbIcon },
+    ],
+    liveDemo: "https://your-chat-app.com",
+    github: "https://github.com/yourusername/chat-app",
+    figma: "https://www.figma.com/file/your-weather-design",
+  },
+  {
+    id: 6,
+    title: "Chat Application",
+    description:
+      "Real-time chat application with private messaging, group chats, and file sharing capabilities.",
+    image: "src/assets/Screenshot 2026-03-15 151330.png",
+    tech: [
+      { label: "React", icon: ReactIcon },
+      { label: "Node.js", icon: NodejsIcon },
+      { label: "Express", icon: ExpressjsIcon },
+      { label: "MongoDB", icon: MongodbIcon },
+    ],
+    liveDemo: "https://your-chat-app.com",
+    github: "https://github.com/yourusername/chat-app",
+    figma: "https://www.figma.com/file/your-weather-design",
   },
 ];
