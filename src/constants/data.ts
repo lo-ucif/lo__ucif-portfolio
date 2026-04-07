@@ -1,4 +1,5 @@
 import type { ComponentType, SVGProps } from "react";
+import img from "../assets/Weather app UI UX Design.jpg";
 import {
   JavascriptIcon,
   TypescriptIcon,
@@ -117,7 +118,7 @@ export const projects: Array<{
     title: "Blog Platform",
     description:
       "A full-featured blog platform with markdown support, comments, and user authentication system.",
-    image: "src/assets/Screenshot 2026-03-15 151330.png",
+    image: img,
     tech: [
       { label: "React", icon: ReactIcon },
       { label: "Node.js", icon: NodejsIcon },
