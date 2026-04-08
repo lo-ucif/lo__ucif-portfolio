@@ -1,5 +1,10 @@
 import type { ComponentType, SVGProps } from "react";
-import img from "../assets/Weather app UI UX Design.jpg";
+import booklibrary from "../assets/Screenshot 2026-04-08 185728.png";
+import noteapp from "../assets/image.png";
+import headphone from "../assets/Screenshot 2026-03-15 151330.png";
+import weather from "../assets/Screenshot 2026-04-08 194802.png";
+import oop from "../assets/Screenshot 2026-04-08 200005.png";
+import profd from "../assets/Screenshot 2026-04-08 195815.png";
 import {
   JavascriptIcon,
   TypescriptIcon,
@@ -99,79 +104,101 @@ export const projects: Array<{
 }> = [
   {
     id: 1,
-    title: "Weather Dashboard",
+    title: "library book Hero Section",
     description:
-      "A weather dashboard application that displays current weather and forecasts for multiple cities with interactive charts.",
-    image: "src/assets/Screenshot 2026-03-15 151330.png",
+      "Web application for browsing and managing a digital library with a responsive and user-friendly UI.",
+    image: booklibrary,
     tech: [
       { label: "React", icon: ReactIcon },
-      { label: "MongoDB", icon: MongodbIcon },
-      { label: "Tailwind", icon: TaillwindIcon },
+      { label: "css", icon: CssIcon },
       { label: "JavaScript", icon: JavascriptIcon },
+      { label: "figma", icon: FigmaIcon },
     ],
-    liveDemo: "https://your-weather-app.com",
-    github: "https://github.com/yourusername/weather-dashboard",
-    figma: "https://www.figma.com/file/your-weather-design",
+    liveDemo: "https://library-book-imur.vercel.app/",
+    github: "https://github.com/lo-ucif/library-book.git",
+    figma:
+      "https://www.figma.com/design/jqsnmcwi1RK0rZuzMR3ESr/book-library?node-id=0-1&t=JBJeWvcJ6pyxEyGx-1",
   },
   {
     id: 2,
-    title: "Blog Platform",
+    title: "Note Web App",
     description:
-      "A full-featured blog platform with markdown support, comments, and user authentication system.",
-    image: img,
+      "Full-stack note-taking application with authentication and CRUD features using REST APIs.",
+    image: noteapp,
     tech: [
       { label: "React", icon: ReactIcon },
       { label: "Node.js", icon: NodejsIcon },
       { label: "MongoDB", icon: MongodbIcon },
+      { label: "TypeScript", icon: TypescriptIcon },
+      { label: "Express.js", icon: ExpressjsIcon },
       { label: "Tailwind", icon: TaillwindIcon },
+      { label: "figma", icon: FigmaIcon },
     ],
-    liveDemo: "https://your-blog.com",
-    github: "https://github.com/yourusername/blog-platform",
-    figma: "https://www.figma.com/file/your-weather-design",
+    liveDemo: "https://note-web-seven-smoky.vercel.app/",
+    github: "https://github.com/lo-ucif/note_web.git",
+    figma:
+      "https://www.figma.com/design/rm2Fvk9U1lDoC3paoBDvge/note-app?node-id=0-1&t=JMrUlY7hLogXADuu-1",
   },
   {
     id: 3,
-    title: "Chat Application",
+    title: "Headphone Website",
     description:
-      "Real-time chat application with private messaging, group chats, and file sharing capabilities.",
-    image: "src/assets/Screenshot 2026-03-15 151330.png",
+      "Modern product landing page with clean UI/UX design and a fully responsive layout.",
+    image: headphone,
     tech: [
       { label: "React", icon: ReactIcon },
-      { label: "Node.js", icon: NodejsIcon },
-      { label: "Express", icon: ExpressjsIcon },
-      { label: "MongoDB", icon: MongodbIcon },
+      { label: "JavaScript,", icon: JavascriptIcon },
+      { label: "css", icon: CssIcon },
+      { label: "figma", icon: FigmaIcon },
     ],
-    liveDemo: "https://your-chat-app.com",
-    github: "https://github.com/yourusername/chat-app",
-    figma: "https://www.figma.com/file/your-weather-design",
+    liveDemo: "https://headphone-olive.vercel.app/",
+    github: "https://github.com/lo-ucif/headphone.git",
+    figma:
+      "https://www.figma.com/design/8CyxT9T0MwuaRxzPNhJDl3/headbods?node-id=0-1&t=hLAwadaGzomyeBGf-1",
   },
   {
     id: 4,
-    title: "Chat Application",
+    title: "Weather App",
     description:
-      "Real-time chat application with private messaging, group chats, and file sharing capabilities.",
-    image: "src/assets/Screenshot 2026-03-15 151330.png",
+      "Weather forecasting app using external APIs with real-time data and an interactive UI.",
+    image: weather,
     tech: [
       { label: "React", icon: ReactIcon },
-      { label: "Node.js", icon: NodejsIcon },
-      { label: "Express", icon: ExpressjsIcon },
-      { label: "MongoDB", icon: MongodbIcon },
+      { label: "TypeScript", icon: TypescriptIcon },
+      { label: "Tailwind", icon: TaillwindIcon },
+      { label: "REST API", icon: RestApiIcon },
     ],
-    liveDemo: "https://your-chat-app.com",
-    github: "https://github.com/yourusername/chat-app",
-    figma: "https://www.figma.com/file/your-weather-design",
+    liveDemo: "https://weather-azure-phi.vercel.app/",
+    github: "https://github.com/lo-ucif/weather.git",
+    figma:
+      "https://www.figma.com/design/wXIbw0NNKQHh5LXUW9SMsg/weather-web?node-id=0-1&t=onOswin6pBI3t0Tu-1",
   },
   {
     id: 5,
-    title: "Chat Application",
+    title: "Network Simulation",
     description:
-      "Real-time chat application with private messaging, group chats, and file sharing capabilities.",
-    image: "src/assets/Screenshot 2026-03-15 151330.png",
+      "Network simulation system with visualization, implementing core networking algorithms",
+    image: oop,
     tech: [
-      { label: "React", icon: ReactIcon },
-      { label: "Node.js", icon: NodejsIcon },
-      { label: "Express", icon: ExpressjsIcon },
-      { label: "MongoDB", icon: MongodbIcon },
+      { label: "Java", icon: JavaIcon },
+      { label: "Mysql", icon: MysqlIcon },
+    ],
+    liveDemo: "",
+    github: "https://github.com/lo-ucif/oop-p2.git",
+    figma: "",
+  },
+  {
+    id: 6,
+    title: "Prof Manager Dashboard",
+    description:
+      "A professional profile page for department managers with a clean and structured UI, designed and built to present key information efficiently.",
+    image: profd,
+    tech: [
+      { label: "HTML", icon: HtmlIcon },
+      { label: "CSS", icon: CssIcon },
+      { label: "JavaScript", icon: JavascriptIcon },
+      { label: "Java", icon: JavaIcon },
+      { label: "Mysql", icon: MysqlIcon },
     ],
     liveDemo: "https://your-chat-app.com",
     github: "https://github.com/yourusername/chat-app",
@@ -179,18 +206,19 @@ export const projects: Array<{
   },
   {
     id: 6,
-    title: "Chat Application",
+    title: "Prof Manager Dashboard",
     description:
-      "Real-time chat application with private messaging, group chats, and file sharing capabilities.",
-    image: "src/assets/Screenshot 2026-03-15 151330.png",
+      "A professional profile page for department managers with a clean and structured UI, designed and built to present key information efficiently.",
+    image: profd,
     tech: [
-      { label: "React", icon: ReactIcon },
-      { label: "Node.js", icon: NodejsIcon },
-      { label: "Express", icon: ExpressjsIcon },
-      { label: "MongoDB", icon: MongodbIcon },
+      { label: "HTML", icon: HtmlIcon },
+      { label: "CSS", icon: CssIcon },
+      { label: "JavaScript", icon: JavascriptIcon },
+      { label: "Java", icon: JavaIcon },
+      { label: "Mysql", icon: MysqlIcon },
     ],
-    liveDemo: "https://your-chat-app.com",
-    github: "https://github.com/yourusername/chat-app",
-    figma: "https://www.figma.com/file/your-weather-design",
+    liveDemo: "",
+    github: "",
+    figma: "",
   },
 ];
