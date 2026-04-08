@@ -49,9 +49,11 @@ export default function Projectcard({
         <div className="flex flex-col items-start self-stretch justify-center gap-3 px-4 py-3">
           <h3 className="flex flex-row justify-between w-full text-xl font-semibold text-white">
             {title}
-            <a href={figma} target="_blank" rel="noopener noreferrer">
-              <FigmaIcon />
-            </a>
+            {figma && figma !== "" && (
+              <a href={figma} target="_blank" rel="noopener noreferrer">
+                <FigmaIcon />
+              </a>
+            )}
           </h3>
           <p className="text-[#9CA3AF] text-sm  text-left">{description}</p>
 
@@ -71,24 +73,29 @@ export default function Projectcard({
           </div>
 
           <div className="flex w-full gap-3">
-            <a
-              href={liveDemo}
-              className="flex items-center justify-center flex-1 gap-2 px-4 py-1 text-white"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <LinkIcon width={20} height={20} />
-              Live
-            </a>
-            <a
-              href={github}
-              className="flex items-center justify-center flex-1 gap-2 px-4 py-1 text-white"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Github2Icon width={20} height={20} />
-              Code
-            </a>
+            {liveDemo && liveDemo !== "" && (
+              <a
+                href={liveDemo}
+                className="flex items-center justify-center flex-1 gap-2 px-4 py-1 text-white"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <LinkIcon width={20} height={20} />
+                Live
+              </a>
+            )}
+
+            {github && github !== "" && (
+              <a
+                href={github}
+                className="flex items-center justify-center flex-1 gap-2 px-4 py-1 text-white"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Github2Icon width={20} height={20} />
+                Code
+              </a>
+            )}
           </div>
         </div>
       </motion.div>

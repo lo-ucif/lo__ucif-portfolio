@@ -200,23 +200,6 @@ export const projects: Array<{
       { label: "Java", icon: JavaIcon },
       { label: "Mysql", icon: MysqlIcon },
     ],
-    liveDemo: "https://your-chat-app.com",
-    github: "https://github.com/yourusername/chat-app",
-    figma: "https://www.figma.com/file/your-weather-design",
-  },
-  {
-    id: 6,
-    title: "Prof Manager Dashboard",
-    description:
-      "A professional profile page for department managers with a clean and structured UI, designed and built to present key information efficiently.",
-    image: profd,
-    tech: [
-      { label: "HTML", icon: HtmlIcon },
-      { label: "CSS", icon: CssIcon },
-      { label: "JavaScript", icon: JavascriptIcon },
-      { label: "Java", icon: JavaIcon },
-      { label: "Mysql", icon: MysqlIcon },
-    ],
     liveDemo: "",
     github: "",
     figma: "",
