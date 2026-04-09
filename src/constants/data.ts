@@ -29,6 +29,7 @@ import {
   RestApiIcon,
   AxiosIcon,
   CIcon,
+  SwingIcon,
 } from "./Icon";
 
 export const techGroups = [
@@ -147,7 +148,7 @@ export const projects: Array<{
     image: headphone,
     tech: [
       { label: "React", icon: ReactIcon },
-      { label: "JavaScript,", icon: JavascriptIcon },
+      { label: "JavaScript", icon: JavascriptIcon },
       { label: "css", icon: CssIcon },
       { label: "figma", icon: FigmaIcon },
     ],
@@ -167,6 +168,7 @@ export const projects: Array<{
       { label: "TypeScript", icon: TypescriptIcon },
       { label: "Tailwind", icon: TaillwindIcon },
       { label: "REST API", icon: RestApiIcon },
+      { label: "Axios", icon: AxiosIcon },
     ],
     liveDemo: "https://weather-azure-phi.vercel.app/",
     github: "https://github.com/lo-ucif/weather.git",
@@ -182,6 +184,7 @@ export const projects: Array<{
     tech: [
       { label: "Java", icon: JavaIcon },
       { label: "Mysql", icon: MysqlIcon },
+      { label: "Java Swing", icon: SwingIcon },
     ],
     liveDemo: "",
     github: "https://github.com/lo-ucif/oop-p2.git",
