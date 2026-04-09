@@ -4,7 +4,7 @@ import { ProjectsSection } from "../features/projects/components/ProjectsSection
 import { ContactSection } from "../features/contact/components/ContactSection";
 import { GithubIcon } from "../constants/Icon";
 import pdf from "../../public/Ahmed_Loucif_CV.pdf";
-import myimg from "../assets/portfolio img.png";
+import myimg from "../assets/portfolio img.webp";
 import univimg from "../assets/6.webp";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;

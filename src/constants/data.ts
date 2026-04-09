@@ -1,10 +1,10 @@
 import type { ComponentType, SVGProps } from "react";
-import booklibrary from "../assets/Screenshot 2026-04-08 185728.png";
-import noteapp from "../assets/image.png";
-import headphone from "../assets/Screenshot 2026-03-15 151330.png";
-import weather from "../assets/Screenshot 2026-04-08 194802.png";
-import oop from "../assets/Screenshot 2026-04-08 200005.png";
-import profd from "../assets/Screenshot 2026-04-08 195815.png";
+import booklibrary from "../assets/Screenshot 2026-04-08 185728.webp";
+import noteapp from "../assets/image.webp";
+import headphone from "../assets/Screenshot 2026-03-15 151330.webp";
+import weather from "../assets/Screenshot 2026-04-08 194802.webp";
+import oop from "../assets/Screenshot 2026-04-08 200005.webp";
+import profd from "../assets/Screenshot 2026-04-08 195815.webp";
 import {
   JavascriptIcon,
   TypescriptIcon,
