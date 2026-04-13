@@ -204,7 +204,6 @@ export default function Home() {
               Download CV
             </motion.a>
           </section>
-
           <TechStackSection />
           <ProjectsSection />
 
