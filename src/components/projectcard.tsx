@@ -57,7 +57,7 @@ export default function Projectcard({
           </h3>
           <p className="text-[#9CA3AF] text-sm  text-left">{description}</p>
 
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 ">
             {tech.map((tech) => {
               const Icon = tech.icon;
               return (
