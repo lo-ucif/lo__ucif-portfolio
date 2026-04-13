@@ -1,110 +1,184 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import {
+  motion,
+  AnimatePresence,
+  useMotionValue,
+  animate,
+} from "framer-motion";
+import { useRef, useState } from "react";
+import img from "../assets/8.webp";
 
-const SIZE = 60;
+const SIZE = 40;
 
-type Position = {
-  x: number;
-  y: number;
+type Side = "left" | "right";
+
+const MENU = [
+  { icon: "💻", label: "Projects" },
+  { icon: "🎓", label: "Education" },
+  { icon: "✉️", label: "Contact" },
+  { icon: "👤", label: "About" },
+];
+
+const CARD_W = 180;
+const CARD_GAP = 10;
+const ITEM_H = 52;
+const CARD_PADDING = 20;
+const CARD_H = MENU.length * ITEM_H + CARD_PADDING;
+
+const getSaved = (): { side: Side; y: number } => {
+  try {
+    const saved = localStorage.getItem("bubble-pos");
+    if (saved) return JSON.parse(saved);
+  } catch {
+    print();
+  }
+  return { side: "left", y: 100 };
 };
 
 const FloatingBubble = () => {
-  const [position, setPosition] = useState<Position>(() => {
-    const saved = localStorage.getItem("bubble-position");
-    return saved ? JSON.parse(saved) : { x: 20, y: 100 };
-  });
+  const initial = getSaved();
 
+  const [side, setSide] = useState<Side>(initial.side);
+  const [posY, setPosY] = useState<number>(initial.y);
   const [open, setOpen] = useState(false);
-  const isDragging = useRef(false);
+  const dragMoved = useRef(false);
 
-  useEffect(() => {
-    localStorage.setItem("bubble-position", JSON.stringify(position));
-  }, [position]);
+  const initX = initial.side === "left" ? 10 : window.innerWidth - SIZE - 10;
+  const x = useMotionValue(initX);
+  const y = useMotionValue(initial.y);
 
-  // 🎯 عناصر دائرية حول البابل
-  const menu = [
-    { icon: "📸", x: 0, y: -80 }, // فوق
-    { icon: "💬", x: 80, y: 0 }, // يمين
-    { icon: "⚙️", x: 0, y: 80 }, // تحت
-    { icon: "🔙", x: -80, y: 0 }, // يسار
-  ];
+  const savePos = (s: Side, newY: number) => {
+    localStorage.setItem("bubble-pos", JSON.stringify({ side: s, y: newY }));
+  };
+
+  const getCardPos = () => {
+    const currentX = side === "left" ? 10 : window.innerWidth - SIZE - 10;
+    const cardX =
+      side === "left"
+        ? currentX + SIZE + CARD_GAP
+        : currentX - CARD_W - CARD_GAP;
+    const cardY = posY + SIZE / 2 - CARD_H / 2;
+    return { cardX, cardY };
+  };
+
+  const { cardX, cardY } = getCardPos();
+  const ballCenterY = posY + SIZE / 2 - CARD_H / 2;
 
   return (
     <>
-      {/* 🔵 Bubble */}
+      {/* ── Ball ── */}
       <motion.div
-        drag
+        drag // ✅ no "x"/"y" restriction — free drag
         dragMomentum={false}
-        onDragStart={() => (isDragging.current = true)}
+        dragElastic={0}
+        dragConstraints={{
+          top: 10,
+          left: 10,
+          right: window.innerWidth - SIZE - 10,
+          bottom: window.innerHeight - SIZE - 10,
+        }}
+        // ✅ cursor grabbing must be here, not in Tailwind
+        whileDrag={{ scale: 1.08, cursor: "grabbing" }}
+        onDragStart={() => {
+          dragMoved.current = false;
+          if (open) setOpen(false);
+        }}
+        onDrag={() => {
+          dragMoved.current = true;
+        }}
         onDragEnd={(_, info) => {
           const w = window.innerWidth;
           const h = window.innerHeight;
+          const newSide: Side = info.point.x < w / 2 ? "left" : "right";
+          const snapX = newSide === "left" ? 10 : w - SIZE - 10;
+          let newY = info.point.y - SIZE / 2;
+          newY = Math.max(10, Math.min(newY, h - SIZE - 10));
 
-          const snapX = info.point.x > w / 2 ? w - SIZE - 10 : 10;
+          animate(x, snapX, { type: "spring", stiffness: 400, damping: 30 });
+          animate(y, newY, { type: "spring", stiffness: 400, damping: 30 });
 
-          let newY = info.point.y;
-          if (newY < 10) newY = 10;
-          if (newY > h - SIZE - 10) newY = h - SIZE - 10;
-
-          setPosition({ x: snapX, y: newY });
-
-          setTimeout(() => {
-            isDragging.current = false;
-          }, 50);
+          setSide(newSide);
+          setPosY(newY);
+          savePos(newSide, newY);
         }}
         onClick={() => {
-          if (!isDragging.current) {
-            setOpen((p) => !p);
-          }
+          if (!dragMoved.current) setOpen((o) => !o);
+          dragMoved.current = false;
         }}
-        animate={{ x: position.x, y: position.y }}
-        transition={{ type: "spring", stiffness: 300, damping: 30 }}
         style={{
           position: "fixed",
           top: 0,
           left: 0,
+          x,
+          y,
           width: SIZE,
           height: SIZE,
+          // ✅ touchAction here in style is what actually stops scroll hijack
+          touchAction: "none",
+          // ✅ zIndex must be inline for stacking to work reliably
           zIndex: 9999,
+          cursor: "grab",
         }}
-        className="flex items-center justify-center text-white bg-blue-500 rounded-full shadow-lg cursor-pointer"
+        // ✅ NO overflow-hidden — it blocks pointer events on PC
+        className="flex items-center justify-center border rounded-full shadow-lg select-none bg-[#161513]/40 p-1 backdrop-blur"
       >
-        ⚡
+        {/* ✅ image sized manually, not via overflow-hidden on parent */}
+        <img
+          src={img}
+          draggable={false} // ✅ prevents browser native image drag fighting Framer
+          style={{
+            width: SIZE,
+            height: SIZE,
+            borderRadius: "50%",
+            objectFit: "cover",
+            pointerEvents: "none", // ✅ image must not capture pointer events
+          }}
+        />
       </motion.div>
 
-      {/* 🧩 Radial Menu */}
+      {/* ── Glass Card Menu ── */}
       <AnimatePresence>
-        {open &&
-          menu.map((item, i) => (
-            <motion.div
-              key={i}
-              initial={{ scale: 0, opacity: 0, x: position.x, y: position.y }}
-              animate={{
-                scale: 1,
-                opacity: 1,
-                x: position.x + item.x,
-                y: position.y + item.y,
-              }}
-              exit={{
-                scale: 0,
-                opacity: 0,
-                x: position.x,
-                y: position.y,
-              }}
-              transition={{ delay: i * 0.05 }}
-              style={{
-                position: "fixed",
-                top: 0,
-                left: 0,
-                width: 50,
-                height: 50,
-                zIndex: 9998,
-              }}
-              className="flex items-center justify-center text-white bg-gray-800 rounded-full shadow-md"
-            >
-              {item.icon}
-            </motion.div>
-          ))}
+        {open && (
+          <motion.div
+            key="menu-card"
+            initial={{ opacity: 0, scale: 0.85, x: cardX, y: ballCenterY }}
+            animate={{ opacity: 1, scale: 1, x: cardX, y: cardY }}
+            exit={{ opacity: 0, scale: 0.85, x: cardX, y: ballCenterY }}
+            transition={{ type: "spring", stiffness: 380, damping: 28 }}
+            style={{
+              position: "fixed",
+              top: 0,
+              left: 0,
+              width: CARD_W,
+              zIndex: 9998,
+              transformOrigin: side === "left" ? "left center" : "right center",
+            }}
+            className="rounded-[20px] bg-white/20 backdrop-blur-xl border border-white/35 shadow-2xl py-2"
+          >
+            {MENU.map((item, i) => (
+              <motion.button
+                key={item.label}
+                initial={{ opacity: 0, x: side === "left" ? -10 : 10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{
+                  delay: i * 0.055,
+                  type: "spring",
+                  stiffness: 350,
+                  damping: 28,
+                }}
+                onClick={() => {
+                  console.log("nav:", item.label);
+                  setOpen(false);
+                }}
+                whileHover={{ backgroundColor: "rgba(255,255,255,0.15)" }}
+                whileTap={{ scale: 0.97 }}
+                className="flex items-center gap-3 w-full px-[18px] py-[10px] bg-transparent border-none cursor-pointer text-white text-[15px] font-medium text-left"
+              >
+                <span className="text-lg">{item.icon}</span>
+                <span>{item.label}</span>
+              </motion.button>
+            ))}
+          </motion.div>
+        )}
       </AnimatePresence>
     </>
   );
