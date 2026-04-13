@@ -7,7 +7,7 @@ import {
 import { useRef, useState } from "react";
 import img from "../assets/8.webp";
 
-const SIZE = 40;
+const SIZE = 50;
 
 type Side = "left" | "right";
 
@@ -18,7 +18,7 @@ const MENU = [
   { label: "About" },
 ];
 
-const CARD_W = 180;
+const CARD_W = 150;
 const CARD_GAP = 10;
 const ITEM_H = 52;
 const CARD_PADDING = 20;

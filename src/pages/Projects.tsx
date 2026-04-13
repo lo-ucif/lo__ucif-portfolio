@@ -4,7 +4,7 @@ import Projectcard from "../components/projectcard";
 export default function Projects() {
   const easeOut = [0.22, 1, 0.36, 1] as const;
   return (
-    <div className="flex flex-col gap-5 justify-center items-center min-h-screen  bg-[#161513] px-5 pb-20 pt-5 text-white sm:px-[40px] lg:px-[80px] min-[601px]:pt-[120px] max-[600px]:pt-[90px]">
+    <div className="flex flex-col gap-5 justify-center items-center min-h-screen  bg-[#161513] px-5 pb-20 pt-5 text-white sm:px-10 lg:px-20 min-[601px]:pt-30 max-[600px]:pt-22.5">
       <motion.h2
         className="font-['Itim'] text-[36px] text-white "
         initial={{ opacity: 0, y: 20 }}
