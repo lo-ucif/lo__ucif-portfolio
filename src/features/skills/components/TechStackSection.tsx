@@ -30,7 +30,11 @@ export function TechStackSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6, ease: easeOut, delay: groupIndex * 0.08 }}
+            transition={{
+              duration: 0.6,
+              ease: easeOut,
+              delay: groupIndex * 0.08,
+            }}
           >
             <h3 className="font-['Poppins'] text-[20px] tracking-[2.4px] text-[#8491a0]">
               {group.title}
@@ -62,7 +66,7 @@ export function TechStackSection() {
 
       {otherGroup && (
         <motion.div
-          className="flex w-full flex-col items-center gap-5 font-['Itim']"
+          className="flex w-[110%] flex-col items-center gap-5 font-['Itim']"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
