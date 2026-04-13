@@ -6,6 +6,7 @@ import { GithubIcon } from "../constants/Icon";
 import pdf from "../../public/Ahmed_Loucif_CV.pdf";
 import myimg from "../assets/portfolio img.webp";
 import univimg from "../assets/6.webp";
+import FloatingBubble from "../components/FloatingBubble";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
@@ -265,6 +266,7 @@ export default function Home() {
         </main>
 
         <ContactSection />
+        <FloatingBubble />
       </div>
     </div>
   );
