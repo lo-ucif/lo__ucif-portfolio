@@ -36,7 +36,7 @@ const FloatingBubble = () => {
         drag
         dragMomentum={false}
         onDragStart={() => (isDragging.current = true)}
-        onDragEnd={(e, info) => {
+        onDragEnd={(_, info) => {
           const w = window.innerWidth;
           const h = window.innerHeight;
 
