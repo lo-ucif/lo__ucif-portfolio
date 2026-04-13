@@ -12,10 +12,10 @@ const SIZE = 40;
 type Side = "left" | "right";
 
 const MENU = [
-  { icon: "💻", label: "Projects" },
-  { icon: "🎓", label: "Education" },
-  { icon: "✉️", label: "Contact" },
-  { icon: "👤", label: "About" },
+  { label: "Projects" },
+  { label: "Education" },
+  { label: "Contact" },
+  { label: "About" },
 ];
 
 const CARD_W = 180;
@@ -27,7 +27,12 @@ const CARD_H = MENU.length * ITEM_H + CARD_PADDING;
 const getSaved = (): { side: Side; y: number } => {
   try {
     const saved = localStorage.getItem("bubble-pos");
-    if (saved) return JSON.parse(saved);
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      const maxY = window.innerHeight - SIZE - 10;
+      parsed.y = Math.max(10, Math.min(parsed.y, maxY));
+      return parsed;
+    }
   } catch {
     print();
   }
@@ -65,9 +70,8 @@ const FloatingBubble = () => {
 
   return (
     <>
-      {/* ── Ball ── */}
       <motion.div
-        drag // ✅ no "x"/"y" restriction — free drag
+        drag
         dragMomentum={false}
         dragElastic={0}
         dragConstraints={{
@@ -76,7 +80,6 @@ const FloatingBubble = () => {
           right: window.innerWidth - SIZE - 10,
           bottom: window.innerHeight - SIZE - 10,
         }}
-        // ✅ cursor grabbing must be here, not in Tailwind
         whileDrag={{ scale: 1.08, cursor: "grabbing" }}
         onDragStart={() => {
           dragMoved.current = false;
@@ -85,13 +88,17 @@ const FloatingBubble = () => {
         onDrag={() => {
           dragMoved.current = true;
         }}
-        onDragEnd={(_, info) => {
+        onDragEnd={() => {
           const w = window.innerWidth;
           const h = window.innerHeight;
-          const newSide: Side = info.point.x < w / 2 ? "left" : "right";
+
+          // ✅ read directly from motion values — zero scroll involvement
+          const currentX = x.get();
+          const currentY = y.get();
+
+          const newSide: Side = currentX < w / 2 ? "left" : "right";
           const snapX = newSide === "left" ? 10 : w - SIZE - 10;
-          let newY = info.point.y - SIZE / 2;
-          newY = Math.max(10, Math.min(newY, h - SIZE - 10));
+          const newY = Math.max(10, Math.min(currentY, h - SIZE - 10));
 
           animate(x, snapX, { type: "spring", stiffness: 400, damping: 30 });
           animate(y, newY, { type: "spring", stiffness: 400, damping: 30 });
@@ -112,30 +119,25 @@ const FloatingBubble = () => {
           y,
           width: SIZE,
           height: SIZE,
-          // ✅ touchAction here in style is what actually stops scroll hijack
           touchAction: "none",
-          // ✅ zIndex must be inline for stacking to work reliably
           zIndex: 9999,
           cursor: "grab",
         }}
-        // ✅ NO overflow-hidden — it blocks pointer events on PC
         className="flex items-center justify-center border rounded-full shadow-lg select-none bg-[#161513]/40 p-1 backdrop-blur"
       >
-        {/* ✅ image sized manually, not via overflow-hidden on parent */}
         <img
           src={img}
-          draggable={false} // ✅ prevents browser native image drag fighting Framer
+          draggable={false}
           style={{
             width: SIZE,
             height: SIZE,
             borderRadius: "50%",
             objectFit: "cover",
-            pointerEvents: "none", // ✅ image must not capture pointer events
+            pointerEvents: "none",
           }}
         />
       </motion.div>
 
-      {/* ── Glass Card Menu ── */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -152,7 +154,7 @@ const FloatingBubble = () => {
               zIndex: 9998,
               transformOrigin: side === "left" ? "left center" : "right center",
             }}
-            className="rounded-[20px] bg-white/20 backdrop-blur-xl border border-white/35 shadow-2xl py-2"
+            className="rounded-[30px] bg-[#161513]/60 backdrop-blur shadow-2xl"
           >
             {MENU.map((item, i) => (
               <motion.button
@@ -171,9 +173,8 @@ const FloatingBubble = () => {
                 }}
                 whileHover={{ backgroundColor: "rgba(255,255,255,0.15)" }}
                 whileTap={{ scale: 0.97 }}
-                className="flex items-center gap-3 w-full px-[18px] py-[10px] bg-transparent border-none cursor-pointer text-white text-[15px] font-medium text-left"
+                className="flex items-center justify-center gap-1 w-full px-0.5 py-1.5 bg-transparent border-none cursor-pointer text-white font-['Itim']"
               >
-                <span className="text-lg">{item.icon}</span>
                 <span>{item.label}</span>
               </motion.button>
             ))}
