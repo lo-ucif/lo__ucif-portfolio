@@ -12,7 +12,7 @@ const easeOut = [0.22, 1, 0.36, 1] as const;
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#161513] px-5 pb-20 pt-5 text-[#e1e1e1] sm:px-10 lg:px-20 min-[601px]:pt-30 max-[600px]:pt-22.5">
+    <div className="min-h-screen bg-[#161513] px-5 pb-10 pt-5 text-[#e1e1e1] sm:px-10 lg:px-20 min-[601px]:pt-30 max-[600px]:pt-22.5">
       <div className="flex flex-col min-h-screen gap-20 mx-auto">
         <main className="flex flex-col items-center gap-40 max-[600px]:gap-50">
           <section className="flex flex-col items-center gap-6.25 text-center">

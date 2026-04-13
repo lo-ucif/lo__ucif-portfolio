@@ -82,7 +82,7 @@ export function ContactSection() {
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.6, ease: easeOut }}
       >
-        Loucif tamer Ahmed (c) 2023 All rights reserved.
+        Ahmed Loucif <br /> 2026 All rights reserved.
       </motion.p>
     </footer>
   );
