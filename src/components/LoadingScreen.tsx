@@ -9,7 +9,7 @@ export function LoadingScreen({ isHiding = false }: LoadingScreenProps) {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const durationMs = 5000;
+    const durationMs = 3000;
     const start = performance.now();
     let rafId = 0;
 

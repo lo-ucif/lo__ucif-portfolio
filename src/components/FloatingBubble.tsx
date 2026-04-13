@@ -5,7 +5,6 @@ import {
   animate,
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-// import img from "../assets/8.webp";
 
 const SIZE = 45;
 
@@ -146,17 +145,6 @@ const FloatingBubble = () => {
         }}
         className="flex items-center justify-center border rounded-full shadow-lg select-none bg-[#161513]/40 p-1 backdrop-blur"
       >
-        {/* <img
-          src={img}
-          draggable={false}
-          style={{
-            width: SIZE,
-            height: SIZE,
-            borderRadius: "50%",
-            objectFit: "cover",
-            pointerEvents: "none",
-          }}
-        /> */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"

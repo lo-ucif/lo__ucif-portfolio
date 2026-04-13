@@ -14,7 +14,7 @@ function App() {
 
   useEffect(() => {
     const hideTimer = window.setTimeout(() => setIsHiding(true), 4500);
-    const removeTimer = window.setTimeout(() => setIsLoading(false), 5000);
+    const removeTimer = window.setTimeout(() => setIsLoading(false), 3000);
 
     return () => {
       window.clearTimeout(hideTimer);
