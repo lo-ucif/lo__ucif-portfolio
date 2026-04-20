@@ -32,6 +32,7 @@ export function ProjectsSection() {
             liveDemo={project.liveDemo}
             github={project.github}
             figma={project.figma}
+            hackathon={project.hackathon}
           />
         ))}
       </div>

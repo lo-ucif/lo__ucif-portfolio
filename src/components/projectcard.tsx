@@ -1,6 +1,11 @@
 import { motion } from "framer-motion";
 import type { ComponentType, SVGProps } from "react";
-import { Github2Icon, LinkIcon, FigmaIcon } from "../constants/Icon";
+import {
+  Github2Icon,
+  LinkIcon,
+  FigmaIcon,
+  HackathonIcon,
+} from "../constants/Icon";
 type TechItem = {
   label: string;
   icon: ComponentType<SVGProps<SVGSVGElement>>;
@@ -14,6 +19,7 @@ export type project = {
   liveDemo: string;
   github: string;
   figma: string;
+  hackathon: string;
 };
 
 export default function Projectcard({
@@ -25,6 +31,7 @@ export default function Projectcard({
   liveDemo,
   github,
   figma,
+  hackathon,
 }: project) {
   const easeOut = [0.22, 1, 0.36, 1] as const;
   return (
@@ -56,8 +63,13 @@ export default function Projectcard({
               </a>
             )}
           </h3>
+          {hackathon && hackathon !== "" && (
+            <span className="flex items-center gap-1 rounded-[22px] bg-[#2966E0] px-2 py-1 text-white font-['Itim'] text-[16px]">
+              <HackathonIcon />
+              {hackathon}
+            </span>
+          )}
           <p className="text-[#9CA3AF] text-sm  text-left">{description}</p>
-
           <div className="flex flex-wrap gap-2 ">
             {tech.map((tech) => {
               const Icon = tech.icon;

@@ -41,6 +41,7 @@ export const techGroups = [
       { label: "JavaScript", icon: JavascriptIcon },
       { label: "TypeScript", icon: TypescriptIcon },
     ],
+    hackathon: "text",
   },
   {
     title: "Frontend",
@@ -48,6 +49,7 @@ export const techGroups = [
       { label: "React", icon: ReactIcon },
       { label: "Tailwind CSS", icon: TaillwindIcon },
     ],
+    hackathon: "text",
   },
   {
     title: "Backend",
@@ -55,6 +57,7 @@ export const techGroups = [
       { label: "Node.js", icon: NodejsIcon },
       { label: "Express.js", icon: ExpressjsIcon },
     ],
+    hackathon: "text",
   },
   {
     title: "Database",
@@ -62,6 +65,7 @@ export const techGroups = [
       { label: "MongoDB", icon: MongodbIcon },
       { label: "MySQL", icon: MysqlIcon },
     ],
+    hackathon: "text",
   },
   {
     title: "Tools",
@@ -69,6 +73,7 @@ export const techGroups = [
       { label: "GitHub", icon: GithubIcon },
       { label: "Figma", icon: FigmaIcon },
     ],
+    hackathon: "text",
   },
   {
     title: "Other",
@@ -88,6 +93,7 @@ export const techGroups = [
       { label: "C", icon: CIcon },
       { label: "n8n", icon: N8nIcon },
     ],
+    hackathon: "text",
   },
 ];
 
@@ -105,6 +111,7 @@ export const projects: Array<{
   liveDemo: string;
   github: string;
   figma: string;
+  hackathon: string;
 }> = [
   {
     id: 1,
@@ -121,6 +128,7 @@ export const projects: Array<{
       { label: "REST API", icon: RestApiIcon },
       { label: "n8n", icon: N8nIcon },
     ],
+    hackathon: "automate & innovate",
     liveDemo: "https://estin-hackathon.vercel.app/",
     github: "https://github.com/lo-ucif/estin-hackathon.git",
     figma:
@@ -141,6 +149,7 @@ export const projects: Array<{
       { label: "Tailwind", icon: TaillwindIcon },
       { label: "figma", icon: FigmaIcon },
     ],
+    hackathon: "",
     liveDemo: "https://note-web-seven-smoky.vercel.app/",
     github: "https://github.com/lo-ucif/note_web.git",
     figma:
@@ -158,6 +167,7 @@ export const projects: Array<{
       { label: "css", icon: CssIcon },
       { label: "figma", icon: FigmaIcon },
     ],
+    hackathon: "",
     liveDemo: "https://headphone-olive.vercel.app/",
     github: "https://github.com/lo-ucif/headphone.git",
     figma:
@@ -176,6 +186,7 @@ export const projects: Array<{
       { label: "REST API", icon: RestApiIcon },
       { label: "Axios", icon: AxiosIcon },
     ],
+    hackathon: "",
     liveDemo: "https://weather-azure-phi.vercel.app/",
     github: "https://github.com/lo-ucif/weather.git",
     figma:
@@ -193,6 +204,7 @@ export const projects: Array<{
       { label: "JavaScript", icon: JavascriptIcon },
       { label: "figma", icon: FigmaIcon },
     ],
+    hackathon: "",
     liveDemo: "https://library-book-imur.vercel.app/",
     github: "https://github.com/lo-ucif/library-book.git",
     figma:
@@ -209,6 +221,7 @@ export const projects: Array<{
       { label: "Mysql", icon: MysqlIcon },
       { label: "Java Swing", icon: SwingIcon },
     ],
+    hackathon: "",
     liveDemo: "",
     github: "https://github.com/lo-ucif/oop-p2.git",
     figma: "",
@@ -226,6 +239,7 @@ export const projects: Array<{
       { label: "Java", icon: JavaIcon },
       { label: "Mysql", icon: MysqlIcon },
     ],
+    hackathon: "",
     liveDemo: "",
     github: "",
     figma: "",
