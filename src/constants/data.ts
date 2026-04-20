@@ -6,6 +6,7 @@ import weather from "../assets/Screenshot 2026-04-08 194802.webp";
 import oop from "../assets/Screenshot 2026-04-08 200005.webp";
 import profd from "../assets/Screenshot 2026-04-08 195815.webp";
 import estinhackathon from "../assets/Screenshot 2026-04-20 114159.png";
+import rihlaweb from "../assets/image.png";
 import {
   JavascriptIcon,
   TypescriptIcon,
@@ -32,6 +33,7 @@ import {
   CIcon,
   SwingIcon,
   N8nIcon,
+  NextjsIcon,
 } from "./Icon";
 
 export const techGroups = [
@@ -212,6 +214,24 @@ export const projects: Array<{
   },
   {
     id: 6,
+    title: "Rihla Web",
+    description:
+      "A full-stack web application that helps users plan and manage trips by organizing destinations, travel details, and itineraries with a clean, responsive UI.",
+    image: rihlaweb,
+    tech: [
+      { label: "Next js", icon: NextjsIcon },
+      { label: "TypeScript", icon: TypescriptIcon },
+      { label: "figma", icon: FigmaIcon },
+      { label: "Tailwind", icon: TaillwindIcon },
+      { label: "REST API", icon: RestApiIcon },
+    ],
+    hackathon: "w-hackathon",
+    liveDemo: "",
+    github: "",
+    figma: "https://www.figma.com/deck/F8gNPiNluy6D8r2CgLmZSQ",
+  },
+  {
+    id: 7,
     title: "Network Simulation",
     description:
       "Network simulation system with visualization, implementing core networking algorithms",
@@ -227,7 +247,7 @@ export const projects: Array<{
     figma: "",
   },
   {
-    id: 7,
+    id: 8,
     title: "Prof Manager Dashboard",
     description:
       "A professional profile page for department managers with a clean and structured UI, designed and built to present key information efficiently.",

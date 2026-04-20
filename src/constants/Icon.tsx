@@ -1058,3 +1058,18 @@ export const HackathonIcon = (props: SVGProps<SVGSVGElement>) => (
     </defs>
   </svg>
 );
+export const NextjsIcon = (props: SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="70"
+    height="70"
+    viewBox="0 0 70 70"
+    fill="none"
+    {...props}
+  >
+    <path
+      d="M34.9987 64.1666C18.8899 64.1666 5.83203 51.1087 5.83203 35C5.83203 18.8912 18.8899 5.83331 34.9987 5.83331C51.1074 5.83331 64.1654 18.8912 64.1654 35C64.1654 51.1087 51.1074 64.1666 34.9987 64.1666ZM46.6654 23.3333H42.7279V35H46.6654V23.3333ZM27.2579 28.3208L44.9299 51.1525L48.0041 48.7929L28.2408 23.3333H23.332V46.6579H27.2579V28.3208Z"
+      fill="white"
+    />
+  </svg>
+);
