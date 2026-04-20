@@ -5,6 +5,7 @@ import headphone from "../assets/Screenshot 2026-03-15 151330.webp";
 import weather from "../assets/Screenshot 2026-04-08 194802.webp";
 import oop from "../assets/Screenshot 2026-04-08 200005.webp";
 import profd from "../assets/Screenshot 2026-04-08 195815.webp";
+import estinhackathon from "../assets/Screenshot 2026-04-20 114159.png";
 import {
   JavascriptIcon,
   TypescriptIcon,
@@ -30,6 +31,7 @@ import {
   AxiosIcon,
   CIcon,
   SwingIcon,
+  N8nIcon,
 } from "./Icon";
 
 export const techGroups = [
@@ -84,6 +86,7 @@ export const techGroups = [
       { label: "REST API", icon: RestApiIcon },
       { label: "Axios", icon: AxiosIcon },
       { label: "C", icon: CIcon },
+      { label: "n8n", icon: N8nIcon },
     ],
   },
 ];
@@ -105,20 +108,23 @@ export const projects: Array<{
 }> = [
   {
     id: 1,
-    title: "library book Hero Section",
+    title: "Al-Powered Job Matching Platform",
     description:
-      "Web application for browsing and managing a digital library with a responsive and user-friendly UI.",
-    image: booklibrary,
+      "AI-powered web application that automates job matching by analyzing user profiles and employer requirements.",
+    image: estinhackathon,
     tech: [
       { label: "React", icon: ReactIcon },
-      { label: "css", icon: CssIcon },
-      { label: "JavaScript", icon: JavascriptIcon },
       { label: "figma", icon: FigmaIcon },
+      { label: "MongoDB", icon: MongodbIcon },
+      { label: "Tailwind", icon: TaillwindIcon },
+      { label: "TypeScript", icon: TypescriptIcon },
+      { label: "REST API", icon: RestApiIcon },
+      { label: "n8n", icon: N8nIcon },
     ],
-    liveDemo: "https://library-book-imur.vercel.app/",
-    github: "https://github.com/lo-ucif/library-book.git",
+    liveDemo: "https://estin-hackathon.vercel.app/",
+    github: "https://github.com/lo-ucif/estin-hackathon.git",
     figma:
-      "https://www.figma.com/design/jqsnmcwi1RK0rZuzMR3ESr/book-library?node-id=0-1&t=JBJeWvcJ6pyxEyGx-1",
+      "https://www.figma.com/deck/h5Pmcq96LZC3Q5065s940j/Untitled?node-id=1-220&viewport=-5849%2C-109%2C0.53&t=08A4QFzdxSyXK653-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1",
   },
   {
     id: 2,
@@ -177,6 +183,23 @@ export const projects: Array<{
   },
   {
     id: 5,
+    title: "library book Hero Section",
+    description:
+      "Web application for browsing and managing a digital library with a responsive and user-friendly UI.",
+    image: booklibrary,
+    tech: [
+      { label: "React", icon: ReactIcon },
+      { label: "css", icon: CssIcon },
+      { label: "JavaScript", icon: JavascriptIcon },
+      { label: "figma", icon: FigmaIcon },
+    ],
+    liveDemo: "https://library-book-imur.vercel.app/",
+    github: "https://github.com/lo-ucif/library-book.git",
+    figma:
+      "https://www.figma.com/design/jqsnmcwi1RK0rZuzMR3ESr/book-library?node-id=0-1&t=JBJeWvcJ6pyxEyGx-1",
+  },
+  {
+    id: 6,
     title: "Network Simulation",
     description:
       "Network simulation system with visualization, implementing core networking algorithms",
@@ -191,7 +214,7 @@ export const projects: Array<{
     figma: "",
   },
   {
-    id: 6,
+    id: 7,
     title: "Prof Manager Dashboard",
     description:
       "A professional profile page for department managers with a clean and structured UI, designed and built to present key information efficiently.",

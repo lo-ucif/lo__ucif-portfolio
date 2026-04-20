@@ -48,7 +48,8 @@ export default function Projectcard({
         </div>
         <div className="flex flex-col items-start self-stretch justify-center gap-3 px-4 py-3">
           <h3 className="flex flex-row justify-between w-full text-xl font-semibold text-white">
-            {title}
+            <div className="flex text-left">{title}</div>
+
             {figma && figma !== "" && (
               <a href={figma} target="_blank" rel="noopener noreferrer">
                 <FigmaIcon />
