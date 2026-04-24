@@ -29,7 +29,10 @@ export function SiteHeader({
       >
         <div className="mx-auto flex w-full max-w-300 items-center justify-between gap-6 px-20 py-3.5 max-[1024px]:px-10">
           <motion.div className="h-12.5 w-22.25" whileHover={{ scale: 1.03 }}>
-            <Link to="/">
+            <Link
+              to="/"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            >
               <img
                 className="object-contain w-full h-full"
                 src={logo}
@@ -79,7 +82,10 @@ export function SiteHeader({
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
       >
-        <Link to="/">
+        <Link
+          to="/"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        >
           <img className="h-8.5 w-15" src={logo} alt="Loucif logo" />
         </Link>
         <motion.button
