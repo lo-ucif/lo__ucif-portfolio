@@ -7,6 +7,7 @@ import oop from "../assets/Screenshot 2026-04-08 200005.webp";
 import profd from "../assets/Screenshot 2026-04-08 195815.webp";
 import estinhackathon from "../assets/Screenshot 2026-04-20 114159.png";
 import rihlaweb from "../assets/image.png";
+import aiweb from "../assets/download (24).jpg";
 import {
   JavascriptIcon,
   TypescriptIcon,
@@ -232,6 +233,21 @@ export const projects: Array<{
   },
   {
     id: 7,
+    title: "Teck web store",
+    description: "Responsive web app built by ai for student project ",
+    image: aiweb,
+    tech: [
+      { label: "HTML", icon: HtmlIcon },
+      { label: "CSS", icon: CssIcon },
+      { label: "JavaScript", icon: JavascriptIcon },
+    ],
+    hackathon: "",
+    liveDemo: "",
+    github: "https://github.com/lo-ucif/p-web-project",
+    figma: "",
+  },
+  {
+    id: 8,
     title: "Network Simulation",
     description:
       "Network simulation system with visualization, implementing core networking algorithms",
@@ -247,7 +263,7 @@ export const projects: Array<{
     figma: "",
   },
   {
-    id: 8,
+    id: 9,
     title: "Prof Manager Dashboard",
     description:
       "A professional profile page for department managers with a clean and structured UI, designed and built to present key information efficiently.",
