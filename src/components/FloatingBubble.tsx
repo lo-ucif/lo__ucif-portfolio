@@ -34,7 +34,7 @@ const getSaved = (): { side: Side; y: number } => {
   } catch {
     /* empty */
   }
-  return { side: "left", y: 100 };
+  return { side: "right", y: 100 };
 };
 
 const FloatingBubble = () => {
