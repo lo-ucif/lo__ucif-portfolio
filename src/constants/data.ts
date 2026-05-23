@@ -7,7 +7,7 @@ import oop from "../assets/Screenshot 2026-04-08 200005.webp";
 import estinhackathon from "../assets/Screenshot 2026-04-20 114159.png";
 import rihlaweb from "../assets/image.png";
 import aiweb from "../assets/download (24).jpg";
-import sewing from "../assets/Screenshot 2026-05-23 235542.png";
+import sewing from "../assets/Screenshot 2026-05-24 000114.png";
 import {
   JavascriptIcon,
   TypescriptIcon,
@@ -150,9 +150,10 @@ export const projects: Array<{
       { label: "Tailwind", icon: TaillwindIcon },
     ],
     hackathon: "",
-    liveDemo: "",
-    github: "",
-    figma: "",
+    liveDemo: "https://sewing-oum-wail-web.vercel.app/",
+    github: "https://github.com/lo-ucif/sewing-web.git",
+    figma:
+      "https://www.figma.com/design/LvzYoaNIgykoqBLv3c3SHR/Untitled?node-id=11-2&t=gQHOkTD7sn2QKCNR-1",
   },
   {
     id: 3,
