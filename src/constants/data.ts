@@ -81,10 +81,6 @@ export const techGroups = [
   {
     title: "Other",
     items: [
-      { label: "VS Code", icon: VScodeIcon },
-      { label: "Linux", icon: LinuxIcon },
-      { label: "Postman", icon: PostmanIcon },
-      { label: "Git", icon: GitIcon },
       { label: "HTML", icon: HtmlIcon },
       { label: "CSS", icon: CssIcon },
       { label: "Bootstrap", icon: BootsrapIcon },
@@ -95,6 +91,10 @@ export const techGroups = [
       { label: "Axios", icon: AxiosIcon },
       { label: "C", icon: CIcon },
       { label: "n8n", icon: N8nIcon },
+      { label: "VS Code", icon: VScodeIcon },
+      { label: "Linux", icon: LinuxIcon },
+      { label: "Postman", icon: PostmanIcon },
+      { label: "Git", icon: GitIcon },
     ],
     hackathon: "text",
   },

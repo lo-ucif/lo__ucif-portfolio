@@ -66,7 +66,7 @@ export function TechStackSection() {
 
       {otherGroup && (
         <motion.div
-          className="flex w-[110%] flex-col items-center gap-5 font-['Itim']"
+          className="flex w-full lg:w-[110%] flex-col items-center gap-5 font-['Itim']"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
@@ -76,7 +76,26 @@ export function TechStackSection() {
             Other
           </h3>
 
-          <div className="w-full overflow-hidden">
+          {/* Mobile view: static wrapped list */}
+          <div className="flex flex-wrap justify-center gap-3 lg:hidden px-4">
+            {otherGroup.items.map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <motion.div
+                  key={i}
+                  className="flex items-center gap-1.5 rounded-[22px] bg-[#303030] px-3 py-2.5 text-white text-[14px] sm:text-[16px]"
+                  whileHover={{ scale: 1.04 }}
+                  transition={{ duration: 0.35, ease: "easeOut" }}
+                >
+                  <Icon />
+                  <span>{item.label}</span>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          {/* Desktop view: marquee animation */}
+          <div className="hidden lg:block w-full overflow-hidden">
             <motion.div
               className="flex w-max items-center gap-3.75"
               animate={{ x: ["0%", "-50%"] }}
