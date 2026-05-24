@@ -1,73 +1,56 @@
-# React + TypeScript + Vite
+# Ahmed Loucif - Full Stack Web Developer Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to my professional portfolio! This project showcases my skills, experience, and the various web development projects I've worked on. I am a passionate Full Stack Developer specializing in building modern, scalable, and user-friendly web applications.
 
-Currently, two official plugins are available:
+## 🚀 Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Frontend:** React, TypeScript, Vite, Tailwind CSS, Framer Motion
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB, MySQL
+- **Tools:** Git, GitHub, Figma, VS Code, Postman, Linux
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Modern UI/UX:** Clean and intuitive design focused on user experience.
+- **Responsive Design:** Fully optimized for all screen sizes, from mobile to desktop.
+- **Interactive Projects:** A showcase of my latest work with live demos and source code.
+- **Performance Optimized:** Built with Vite and modern React patterns for fast loading speeds.
+- **Smooth Animations:** Integrated with Framer Motion for a polished feel.
 
-## Expanding the ESLint configuration
+## 📂 Project Structure
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- `src/components`: Reusable UI components.
+- `src/features`: Feature-based logic and components (Skills, Projects, Contact).
+- `src/pages`: Main page components (Home, Projects).
+- `src/constants`: Project data and static constants.
+- `public`: Static assets and public resources.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Getting Started
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/lo-ucif/lo-ucif-portfolio.git
+    ```
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+3.  **Run the development server:**
+    ```bash
+    npm run dev
+    ```
+4.  **Build for production:**
+    ```bash
+    npm run build
+    ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 📬 Contact Me
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+I'm always open to new opportunities and collaborations. Feel free to reach out!
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **Email:** [louciftamer3@gmail.com](mailto:louciftamer3@gmail.com)
+- **GitHub:** [github.com/lo-ucif](https://github.com/lo-ucif)
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+
+Developed with ❤️ by Ahmed Loucif.
