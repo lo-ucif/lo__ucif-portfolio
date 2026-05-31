@@ -4,7 +4,7 @@ Welcome to my professional portfolio! This project showcases my skills, experien
 
 ## 🚀 Tech Stack
 
-- **Frontend:** React, TypeScript, Vite, Tailwind CSS, Framer Motion
+- **Frontend:** Next js , React, TypeScript, Vite, Tailwind CSS, Framer Motion
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB, MySQL
 - **Tools:** Git, GitHub, Figma, VS Code, Postman, Linux
