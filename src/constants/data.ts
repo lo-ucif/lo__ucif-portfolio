@@ -50,6 +50,7 @@ export const techGroups = [
     title: "Frontend",
     items: [
       { label: "React", icon: ReactIcon },
+      { label: "Next js", icon: NextjsIcon },
       { label: "Tailwind CSS", icon: TaillwindIcon },
     ],
     hackathon: "text",

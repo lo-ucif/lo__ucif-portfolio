@@ -1061,8 +1061,8 @@ export const HackathonIcon = (props: SVGProps<SVGSVGElement>) => (
 export const NextjsIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="70"
-    height="70"
+    width="20"
+    height="20"
     viewBox="0 0 70 70"
     fill="none"
     {...props}
