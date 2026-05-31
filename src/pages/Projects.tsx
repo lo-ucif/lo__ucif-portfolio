@@ -17,8 +17,10 @@ export default function Projects() {
       <div className="flex flex-wrap justify-center w-full gap-8 max-w-260 h-fit">
         {projects.map((project) => (
           <Projectcard
+            key={project.id}
             id={project.id}
             title={project.title}
+            problem={project.problem}
             description={project.description}
             image={project.image}
             tech={project.tech}

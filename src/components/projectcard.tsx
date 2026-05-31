@@ -13,6 +13,7 @@ type TechItem = {
 export type project = {
   id: number;
   title: string;
+  problem: string;
   description: string;
   image: string;
   tech: TechItem[];
@@ -25,6 +26,7 @@ export type project = {
 export default function Projectcard({
   id,
   title,
+  problem,
   description,
   image,
   tech,
@@ -54,7 +56,7 @@ export default function Projectcard({
           <div className="absolute inset-0 " />
         </div>
         <div className="flex flex-col items-start self-stretch justify-center gap-3 px-4 py-3">
-          <h3 className="flex flex-row justify-between w-full text-xl font-semibold text-white">
+          <h3 className="flex flex-row justify-between w-full text-xl font-semibold text-[#ffffff]">
             <div className="flex text-left">{title}</div>
 
             {figma && figma !== "" && (
@@ -69,7 +71,24 @@ export default function Projectcard({
               {hackathon}
             </span>
           )}
-          <p className="text-[#9CA3AF] text-sm  text-left">{description}</p>
+          <div className="flex flex-col w-full gap-2 text-left">
+            <div>
+              <span className="text-[#ffffff] text-[11px] font-semibold uppercase tracking-widest">
+                Problem
+              </span>
+              <p className="text-[#9CA3AF] text-sm text-left mt-0.5">
+                {problem}
+              </p>
+            </div>
+            <div>
+              <span className="text-[#ffffff] text-[11px] font-semibold uppercase tracking-widest">
+                Solution
+              </span>
+              <p className="text-[#9CA3AF] text-sm text-left mt-0.5">
+                {description}
+              </p>
+            </div>
+          </div>
           <div className="flex flex-wrap gap-2 ">
             {tech.map((tech) => {
               const Icon = tech.icon;

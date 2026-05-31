@@ -109,6 +109,7 @@ type TechItem = {
 export const projects: Array<{
   id: number;
   title: string;
+  problem: string;
   description: string;
   image: string;
   tech: TechItem[];
@@ -120,8 +121,10 @@ export const projects: Array<{
   {
     id: 1,
     title: "Al-Powered Job Matching Platform",
+    problem:
+      "Job seekers often struggle to find opportunities that match their skills, while recruiters spend significant time reviewing unsuitable applications manually.",
     description:
-      "AI-powered web application that automates job matching by analyzing user profiles and employer requirements.",
+      "Developed an AI-powered platform that analyzes candidate profiles and job requirements to automate the matching process, improve recruitment efficiency, and recommend the most relevant opportunities.",
     image: estinhackathon,
     tech: [
       { label: "React", icon: ReactIcon },
@@ -141,8 +144,10 @@ export const projects: Array<{
   {
     id: 2,
     title: "Maison de Couture - أم وائل",
+    problem:
+      "Home-based fashion designers often lack a professional online presence to showcase their work and attract potential customers.",
     description:
-      "A premium tailoring portfolio platform for a professional Algerian home-based fashion designer, featuring elegant animations, luxury UI, and an interactive showcase of traditional and modern designs.",
+      "Built a modern portfolio platform featuring elegant design, smooth animations, and a responsive gallery that highlights traditional and modern tailoring creations while strengthening the brand's online visibility.",
     image: sewing,
     tech: [
       { label: "React", icon: ReactIcon },
@@ -159,8 +164,10 @@ export const projects: Array<{
   {
     id: 3,
     title: "Note Web App",
+    problem:
+      "Users need a simple and secure way to create, organize, and manage personal notes across devices.",
     description:
-      "Full-stack note-taking application with authentication and CRUD features using REST APIs.",
+      "Created a full-stack note-taking application with authentication, CRUD functionality, and REST API integration, enabling users to manage their notes efficiently and securely.",
     image: noteapp,
     tech: [
       { label: "React", icon: ReactIcon },
@@ -180,8 +187,10 @@ export const projects: Array<{
   {
     id: 4,
     title: "Headphone Website",
+    problem:
+      "Many product landing pages fail to effectively present product features and provide a seamless user experience across devices.",
     description:
-      "Modern product landing page with clean UI/UX design and a fully responsive layout.",
+      "Designed and developed a responsive landing page with a clean UI/UX, clear product presentation, and optimized layouts for desktop and mobile users.",
     image: headphone,
     tech: [
       { label: "React", icon: ReactIcon },
@@ -198,8 +207,10 @@ export const projects: Array<{
   {
     id: 5,
     title: "Weather App",
+    problem:
+      "Users need quick access to accurate weather information presented in a simple and user-friendly interface.",
     description:
-      "Weather forecasting app using external APIs with real-time data and an interactive UI.",
+      "Built a weather forecasting application that integrates external APIs to display real-time weather data, forecasts, and interactive weather information in a responsive UI.",
     image: weather,
     tech: [
       { label: "React", icon: ReactIcon },
@@ -217,8 +228,10 @@ export const projects: Array<{
   {
     id: 6,
     title: "library book Hero Section",
+    problem:
+      "Digital library platforms often struggle to capture user attention and encourage exploration of available content.",
     description:
-      "Web application for browsing and managing a digital library with a responsive and user-friendly UI.",
+      "Designed and developed an engaging hero section with a responsive layout and intuitive interface to improve user engagement and enhance the browsing experience.",
     image: booklibrary,
     tech: [
       { label: "React", icon: ReactIcon },
@@ -235,8 +248,10 @@ export const projects: Array<{
   {
     id: 7,
     title: "Rihla Web",
+    problem:
+      "Travelers often find it difficult to organize destinations, itineraries, and travel plans within a single platform.",
     description:
-      "A full-stack web application that helps users plan and manage trips by organizing destinations, travel details, and itineraries with a clean, responsive UI.",
+      "Developed a trip management application that helps users plan, organize, and manage travel details through a clean interface and structured itinerary management system.",
     image: rihlaweb,
     tech: [
       { label: "Next js", icon: NextjsIcon },
@@ -253,7 +268,9 @@ export const projects: Array<{
   {
     id: 8,
     title: "Teck web store",
-    description: "Responsive web app built by ai for student project ",
+    problem:
+      "Students need practical experience building e-commerce interfaces that simulate real-world online shopping experiences.",
+    description:       "Created a responsive e-commerce website featuring product displays, navigation, and modern layouts to demonstrate frontend development and responsive design skills.",
     image: aiweb,
     tech: [
       { label: "HTML", icon: HtmlIcon },
@@ -268,8 +285,10 @@ export const projects: Array<{
   {
     id: 9,
     title: "Network Simulation",
+    problem:
+      "Networking concepts and algorithms can be difficult for students to visualize and understand through theory alone.",
     description:
-      "Network simulation system with visualization, implementing core networking algorithms",
+      "Developed a desktop-based network simulation system using Java and MySQL that visualizes networking operations and demonstrates core networking algorithms in an interactive environment.",
     image: oop,
     tech: [
       { label: "Java", icon: JavaIcon },
