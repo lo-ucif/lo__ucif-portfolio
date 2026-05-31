@@ -13,6 +13,7 @@ type Side = "left" | "right";
 const MENU = [
   { label: "About", id: "about" },
   { label: "Projects", id: "projects" },
+  { label: "Tech Stack", id: "stack" },
   { label: "Contact", id: "contact" },
 ];
 
