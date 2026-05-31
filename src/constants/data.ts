@@ -49,9 +49,9 @@ export const techGroups = [
   {
     title: "Frontend",
     items: [
+      { label: "Next js", icon: NextjsIcon },
       { label: "React", icon: ReactIcon },
       { label: "Tailwind CSS", icon: TaillwindIcon },
-      { label: "Next js", icon: NextjsIcon },
     ],
     hackathon: "text",
   },
@@ -270,7 +270,8 @@ export const projects: Array<{
     title: "Teck web store",
     problem:
       "Students need practical experience building e-commerce interfaces that simulate real-world online shopping experiences.",
-    description:       "Created a responsive e-commerce website featuring product displays, navigation, and modern layouts to demonstrate frontend development and responsive design skills.",
+    description:
+      "Created a responsive e-commerce website featuring product displays, navigation, and modern layouts to demonstrate frontend development and responsive design skills.",
     image: aiweb,
     tech: [
       { label: "HTML", icon: HtmlIcon },
