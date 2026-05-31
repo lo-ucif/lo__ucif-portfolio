@@ -127,7 +127,16 @@ export default function Home() {
               and efficient backend systems focused on performance and
               reliability.
             </motion.p>
-
+            {/* <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, ease: easeOut, delay: 0.3 }}
+            >
+              <div className="inline-flex items-center gap-1.5  px-2.5 py-1.5 font-['Itim'] text-[16px] text-[#d5d5d5] max-[600px]:rounded-[15px] max-[600px]:px-0 max-[600px]:py-[1px] max-[600px]:text-[12px]">
+                Last updated information : May 2026
+              </div>
+            </motion.div> */}
             <motion.div
               className="flex flex-wrap items-center justify-center gap-[16.76px]"
               initial={{ opacity: 0, y: 20 }}
@@ -172,7 +181,6 @@ export default function Home() {
             >
               About Me
             </motion.h2>
-
             <motion.p
               className="max-w-225 font-['Inter'] text-[17px] leading-[1.6] text-[#e1e1e1]"
               initial={{ opacity: 0, y: 20 }}
@@ -182,12 +190,12 @@ export default function Home() {
             >
               Hello! I'm Ahmed Loucif, a passionate Full Stack Web Developer
               specializing in modern web technologies and user-centered design.
-              I build fast and scalable web applications using React, Vite,
-              TypeScript, Node.js, Express, and MongoDB. I also have a strong
-              interest in UI/UX design, which helps me create clean, intuitive,
-              and enjoyable user experiences. I enjoy solving complex problems,
-              learning new technologies, and continuously improving my skills to
-              build better digital products.
+              I build fast and scalable web applications using Next JS , React,
+              Vite, TypeScript, Node.js, Express, and MongoDB. I also have a
+              strong interest in UI/UX design, which helps me create clean,
+              intuitive, and enjoyable user experiences. I enjoy solving complex
+              problems, learning new technologies, and continuously improving my
+              skills to build better digital products.
             </motion.p>
 
             <motion.a
