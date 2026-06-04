@@ -144,7 +144,7 @@ export const projects: Array<{
 
   {
     id: 2,
-    title: "Maison de Couture - أم وائل",
+    title: "Works Exhibition - أم وائل",
     problem:
       "Managing tailoring projects manually makes it difficult to organize previous work, pricing, specifications, and customer requests efficiently.",
     description:
