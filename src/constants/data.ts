@@ -109,7 +109,7 @@ type TechItem = {
 export const projects: Array<{
   id: number;
   title: string;
-  problem: string;
+  problem?: string;
   description: string;
   image: string;
   tech: TechItem[];
@@ -120,11 +120,11 @@ export const projects: Array<{
 }> = [
   {
     id: 1,
-    title: "Al-Powered Job Matching Platform",
+    title: "AI-Powered Job Matching Platform",
     problem:
-      "Job seekers often struggle to find opportunities that match their skills, while recruiters spend significant time reviewing unsuitable applications manually.",
+      "Job seekers often struggle to find suitable opportunities that match their skills and portfolios. Recruiters also face difficulties reviewing large numbers of applications, many of which are incomplete or irrelevant, making the hiring process slow and inefficient.",
     description:
-      "Developed an AI-powered platform that analyzes candidate profiles and job requirements to automate the matching process, improve recruitment efficiency, and recommend the most relevant opportunities.",
+      "Developed an AI-powered job matching platform that analyzes candidate profiles and job requirements to calculate compatibility scores and recommend the most suitable opportunities. The system helps job seekers find relevant positions while enabling recruiters to quickly identify the best candidates through AI-driven ranking and filtering.",
     image: estinhackathon,
     tech: [
       { label: "React", icon: ReactIcon },
@@ -145,9 +145,9 @@ export const projects: Array<{
     id: 2,
     title: "Maison de Couture - أم وائل",
     problem:
-      "Home-based fashion designers often lack a professional online presence to showcase their work and attract potential customers.",
+      "Managing tailoring projects manually makes it difficult to find previous work, prices, specifications, dates, and costs when customers request information about past designs.",
     description:
-      "Built a modern portfolio platform featuring elegant design, smooth animations, and a responsive gallery that highlights traditional and modern tailoring creations while strengthening the brand's online visibility.",
+      "Built a digital portfolio platform that centralizes tailoring projects, including photos, specifications, prices, dates, and costs. The platform allows the designer to easily showcase and manage her work from a single place.",
     image: sewing,
     tech: [
       { label: "React", icon: ReactIcon },
@@ -165,9 +165,9 @@ export const projects: Array<{
     id: 3,
     title: "Note Web App",
     problem:
-      "Users need a simple and secure way to create, organize, and manage personal notes across devices.",
+      "Personal notes stored locally on a device can be lost due to hardware issues, system failures, or device changes, making important information difficult to access and manage.",
     description:
-      "Created a full-stack note-taking application with authentication, CRUD functionality, and REST API integration, enabling users to manage their notes efficiently and securely.",
+      "Developed a web-based note-taking application that securely stores notes online, allowing users to access, create, edit, and manage their notes from any device through their account.",
     image: noteapp,
     tech: [
       { label: "React", icon: ReactIcon },
@@ -187,10 +187,8 @@ export const projects: Array<{
   {
     id: 4,
     title: "Headphone Website",
-    problem:
-      "Many product landing pages fail to effectively present product features and provide a seamless user experience across devices.",
     description:
-      "Designed and developed a responsive landing page with a clean UI/UX, clear product presentation, and optimized layouts for desktop and mobile users.",
+      "A modern product landing page designed for showcasing headphones with an attractive user interface, responsive design, and clear presentation of product features and specifications.",
     image: headphone,
     tech: [
       { label: "React", icon: ReactIcon },
@@ -207,10 +205,8 @@ export const projects: Array<{
   {
     id: 5,
     title: "Weather App",
-    problem:
-      "Users need quick access to accurate weather information presented in a simple and user-friendly interface.",
     description:
-      "Built a weather forecasting application that integrates external APIs to display real-time weather data, forecasts, and interactive weather information in a responsive UI.",
+      "A weather forecasting web application that provides real-time weather conditions, forecasts, and location-based weather information through external API integration and a responsive user interface.",
     image: weather,
     tech: [
       { label: "React", icon: ReactIcon },
@@ -227,11 +223,9 @@ export const projects: Array<{
   },
   {
     id: 6,
-    title: "library book Hero Section",
-    problem:
-      "Digital library platforms often struggle to capture user attention and encourage exploration of available content.",
+    title: "Library Book Hero Section",
     description:
-      "Designed and developed an engaging hero section with a responsive layout and intuitive interface to improve user engagement and enhance the browsing experience.",
+      "A modern hero section designed for digital library platforms, featuring an engaging interface, responsive layout, and visually appealing design that encourages users to explore available books and resources.",
     image: booklibrary,
     tech: [
       { label: "React", icon: ReactIcon },
@@ -249,9 +243,9 @@ export const projects: Array<{
     id: 7,
     title: "Rihla Web",
     problem:
-      "Travelers often find it difficult to organize destinations, itineraries, and travel plans within a single platform.",
+      "Tourists often face difficulties planning trips, finding suitable routes, discovering attractions, and connecting with local guides or travel groups for organized experiences.",
     description:
-      "Developed a trip management application that helps users plan, organize, and manage travel details through a clean interface and structured itinerary management system.",
+      "Developed a smart travel planning platform that generates personalized travel routes based on budget, destination preferences, and the number of places users wish to visit. The platform provides route mapping, attraction recommendations, guide search functionality, and group travel coordination features.",
     image: rihlaweb,
     tech: [
       { label: "Next js", icon: NextjsIcon },
@@ -267,11 +261,9 @@ export const projects: Array<{
   },
   {
     id: 8,
-    title: "Teck web store",
-    problem:
-      "Students need practical experience building e-commerce interfaces that simulate real-world online shopping experiences.",
+    title: "Teck Web Store",
     description:
-      "Created a responsive e-commerce website featuring product displays, navigation, and modern layouts to demonstrate frontend development and responsive design skills.",
+      "An educational AI-assisted web project developed for academic purposes. The platform demonstrates modern web development concepts through a responsive e-commerce style interface and interactive user experience.",
     image: aiweb,
     tech: [
       { label: "HTML", icon: HtmlIcon },
@@ -286,10 +278,8 @@ export const projects: Array<{
   {
     id: 9,
     title: "Network Simulation",
-    problem:
-      "Networking concepts and algorithms can be difficult for students to visualize and understand through theory alone.",
     description:
-      "Developed a desktop-based network simulation system using Java and MySQL that visualizes networking operations and demonstrates core networking algorithms in an interactive environment.",
+      "A Java Swing desktop application designed for learning and experimenting with computer networks. The system provides a graphical interface for building network topologies using computers, routers, and networking components, while including a dual-layer security mechanism based on password authentication and USB verification.",
     image: oop,
     tech: [
       { label: "Java", icon: JavaIcon },

@@ -13,7 +13,7 @@ type TechItem = {
 export type project = {
   id: number;
   title: string;
-  problem: string;
+  problem?: string;
   description: string;
   image: string;
   tech: TechItem[];
@@ -72,14 +72,16 @@ export default function Projectcard({
             </span>
           )}
           <div className="flex flex-col w-full gap-2 text-left">
-            <div>
-              <span className="text-[#ffffff] text-[11px] font-semibold uppercase tracking-widest">
-                Problem
-              </span>
-              <p className="text-[#9CA3AF] text-sm text-left mt-0.5">
-                {problem}
-              </p>
-            </div>
+            {problem && (
+              <div>
+                <span className="text-[#ffffff] text-[11px] font-semibold uppercase tracking-widest">
+                  Problem
+                </span>
+                <p className="text-[#9CA3AF] text-sm text-left mt-0.5">
+                  {problem}
+                </p>
+              </div>
+            )}
             <div>
               <span className="text-[#ffffff] text-[11px] font-semibold uppercase tracking-widest">
                 Solution
