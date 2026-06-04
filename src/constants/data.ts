@@ -122,32 +122,33 @@ export const projects: Array<{
     id: 1,
     title: "AI-Powered Job Matching Platform",
     problem:
-      "Job seekers often struggle to find suitable opportunities that match their skills and portfolios. Recruiters also face difficulties reviewing large numbers of applications, many of which are incomplete or irrelevant, making the hiring process slow and inefficient.",
+      "Finding the right job can be challenging for candidates, while recruiters spend significant time reviewing large volumes of applications and identifying qualified profiles.",
     description:
-      "Developed an AI-powered job matching platform that analyzes candidate profiles and job requirements to calculate compatibility scores and recommend the most suitable opportunities. The system helps job seekers find relevant positions while enabling recruiters to quickly identify the best candidates through AI-driven ranking and filtering.",
+      "Built an AI-powered recruitment platform that matches candidates with suitable job opportunities based on their skills and experience. The system analyzes profiles, ranks matches by compatibility score, and helps recruiters quickly identify the most relevant applicants.",
     image: estinhackathon,
     tech: [
       { label: "React", icon: ReactIcon },
-      { label: "figma", icon: FigmaIcon },
+      { label: "Figma", icon: FigmaIcon },
       { label: "MongoDB", icon: MongodbIcon },
       { label: "Tailwind", icon: TaillwindIcon },
       { label: "TypeScript", icon: TypescriptIcon },
       { label: "REST API", icon: RestApiIcon },
       { label: "n8n", icon: N8nIcon },
     ],
-    hackathon: "automate & innovate",
+    hackathon: "Automate & Innovate",
     liveDemo: "https://estin-hackathon.vercel.app/",
     github: "https://github.com/lo-ucif/estin-hackathon.git",
     figma:
       "https://www.figma.com/deck/h5Pmcq96LZC3Q5065s940j/Untitled?node-id=1-220&viewport=-5849%2C-109%2C0.53&t=08A4QFzdxSyXK653-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1",
   },
+
   {
     id: 2,
     title: "Maison de Couture - أم وائل",
     problem:
-      "Managing tailoring projects manually makes it difficult to find previous work, prices, specifications, dates, and costs when customers request information about past designs.",
+      "Managing tailoring projects manually makes it difficult to organize previous work, pricing, specifications, and customer requests efficiently.",
     description:
-      "Built a digital portfolio platform that centralizes tailoring projects, including photos, specifications, prices, dates, and costs. The platform allows the designer to easily showcase and manage her work from a single place.",
+      "Developed a digital portfolio platform that centralizes tailoring projects, allowing customers to browse designs while enabling the designer to manage work details, pricing, and project history from a single location.",
     image: sewing,
     tech: [
       { label: "React", icon: ReactIcon },
@@ -161,13 +162,14 @@ export const projects: Array<{
     figma:
       "https://www.figma.com/design/LvzYoaNIgykoqBLv3c3SHR/Untitled?node-id=11-2&t=gQHOkTD7sn2QKCNR-1",
   },
+
   {
     id: 3,
     title: "Note Web App",
     problem:
-      "Personal notes stored locally on a device can be lost due to hardware issues, system failures, or device changes, making important information difficult to access and manage.",
+      "Locally stored notes are vulnerable to data loss and cannot be easily accessed across multiple devices.",
     description:
-      "Developed a web-based note-taking application that securely stores notes online, allowing users to access, create, edit, and manage their notes from any device through their account.",
+      "Created a secure cloud-based note management application that allows users to create, organize, and access their notes from any device through authentication and real-time data storage.",
     image: noteapp,
     tech: [
       { label: "React", icon: ReactIcon },
@@ -176,7 +178,7 @@ export const projects: Array<{
       { label: "TypeScript", icon: TypescriptIcon },
       { label: "Express.js", icon: ExpressjsIcon },
       { label: "Tailwind", icon: TaillwindIcon },
-      { label: "figma", icon: FigmaIcon },
+      { label: "Figma", icon: FigmaIcon },
     ],
     hackathon: "",
     liveDemo: "https://note-web-seven-smoky.vercel.app/",
@@ -184,17 +186,18 @@ export const projects: Array<{
     figma:
       "https://www.figma.com/design/rm2Fvk9U1lDoC3paoBDvge/note-app?node-id=0-1&t=JMrUlY7hLogXADuu-1",
   },
+
   {
     id: 4,
     title: "Headphone Website",
     description:
-      "A modern product landing page designed for showcasing headphones with an attractive user interface, responsive design, and clear presentation of product features and specifications.",
+      "Designed and developed a modern product landing page for a headphone brand, featuring responsive layouts, engaging visuals, and a user-focused browsing experience.",
     image: headphone,
     tech: [
       { label: "React", icon: ReactIcon },
       { label: "JavaScript", icon: JavascriptIcon },
-      { label: "css", icon: CssIcon },
-      { label: "figma", icon: FigmaIcon },
+      { label: "CSS", icon: CssIcon },
+      { label: "Figma", icon: FigmaIcon },
     ],
     hackathon: "",
     liveDemo: "https://headphone-olive.vercel.app/",
@@ -202,11 +205,12 @@ export const projects: Array<{
     figma:
       "https://www.figma.com/design/8CyxT9T0MwuaRxzPNhJDl3/headbods?node-id=0-1&t=hLAwadaGzomyeBGf-1",
   },
+
   {
     id: 5,
     title: "Weather App",
     description:
-      "A weather forecasting web application that provides real-time weather conditions, forecasts, and location-based weather information through external API integration and a responsive user interface.",
+      "Built a weather forecasting application that integrates external APIs to provide real-time weather conditions, forecasts, and location-based insights through a clean and responsive interface.",
     image: weather,
     tech: [
       { label: "React", icon: ReactIcon },
@@ -221,17 +225,18 @@ export const projects: Array<{
     figma:
       "https://www.figma.com/design/wXIbw0NNKQHh5LXUW9SMsg/weather-web?node-id=0-1&t=onOswin6pBI3t0Tu-1",
   },
+
   {
     id: 6,
     title: "Library Book Hero Section",
     description:
-      "A modern hero section designed for digital library platforms, featuring an engaging interface, responsive layout, and visually appealing design that encourages users to explore available books and resources.",
+      "Designed and implemented a modern hero section for a digital library platform, focused on visual appeal, responsiveness, and improved user engagement.",
     image: booklibrary,
     tech: [
       { label: "React", icon: ReactIcon },
-      { label: "css", icon: CssIcon },
+      { label: "CSS", icon: CssIcon },
       { label: "JavaScript", icon: JavascriptIcon },
-      { label: "figma", icon: FigmaIcon },
+      { label: "Figma", icon: FigmaIcon },
     ],
     hackathon: "",
     liveDemo: "https://library-book-imur.vercel.app/",
@@ -239,31 +244,33 @@ export const projects: Array<{
     figma:
       "https://www.figma.com/design/jqsnmcwi1RK0rZuzMR3ESr/book-library?node-id=0-1&t=JBJeWvcJ6pyxEyGx-1",
   },
+
   {
     id: 7,
     title: "Rihla Web",
     problem:
-      "Tourists often face difficulties planning trips, finding suitable routes, discovering attractions, and connecting with local guides or travel groups for organized experiences.",
+      "Travelers often face difficulties planning efficient trips, discovering attractions, and finding guides or travel groups for organized experiences.",
     description:
-      "Developed a smart travel planning platform that generates personalized travel routes based on budget, destination preferences, and the number of places users wish to visit. The platform provides route mapping, attraction recommendations, guide search functionality, and group travel coordination features.",
+      "Developed a smart travel planning platform that generates personalized itineraries based on budget and destination preferences, while providing route recommendations, guide discovery, and group travel coordination features.",
     image: rihlaweb,
     tech: [
-      { label: "Next js", icon: NextjsIcon },
+      { label: "Next.js", icon: NextjsIcon },
       { label: "TypeScript", icon: TypescriptIcon },
-      { label: "figma", icon: FigmaIcon },
+      { label: "Figma", icon: FigmaIcon },
       { label: "Tailwind", icon: TaillwindIcon },
       { label: "REST API", icon: RestApiIcon },
     ],
-    hackathon: "w-hackathon",
+    hackathon: "W-Hackathon",
     liveDemo: "",
     github: "",
     figma: "https://www.figma.com/deck/F8gNPiNluy6D8r2CgLmZSQ",
   },
+
   {
     id: 8,
     title: "Teck Web Store",
     description:
-      "An educational AI-assisted web project developed for academic purposes. The platform demonstrates modern web development concepts through a responsive e-commerce style interface and interactive user experience.",
+      "An educational AI-assisted web project developed to demonstrate modern web development practices through an interactive e-commerce experience and responsive user interface.",
     image: aiweb,
     tech: [
       { label: "HTML", icon: HtmlIcon },
@@ -275,15 +282,16 @@ export const projects: Array<{
     github: "https://github.com/lo-ucif/p-web-project",
     figma: "",
   },
+
   {
     id: 9,
     title: "Network Simulation",
     description:
-      "A Java Swing desktop application designed for learning and experimenting with computer networks. The system provides a graphical interface for building network topologies using computers, routers, and networking components, while including a dual-layer security mechanism based on password authentication and USB verification.",
+      "Developed a Java Swing-based network simulation interface that enables students to design, visualize, and experiment with network topologies using computers, routers, and security mechanisms in a controlled learning environment.",
     image: oop,
     tech: [
       { label: "Java", icon: JavaIcon },
-      { label: "Mysql", icon: MysqlIcon },
+      { label: "MySQL", icon: MysqlIcon },
       { label: "Java Swing", icon: SwingIcon },
     ],
     hackathon: "",

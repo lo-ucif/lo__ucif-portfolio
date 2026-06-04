@@ -66,7 +66,7 @@ export default function Projectcard({
             )}
           </h3>
           {hackathon && hackathon !== "" && (
-            <span className="flex items-center gap-1 rounded-[22px] bg-[#2966E0] px-2 py-1 text-white font-['Itim'] text-[16px]">
+            <span className="flex items-center gap-1 rounded-[22px] bg-[#5195F0] px-2 py-1 text-white font-['Itim'] text-[16px]">
               <HackathonIcon />
               {hackathon}
             </span>
