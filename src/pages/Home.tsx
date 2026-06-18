@@ -101,7 +101,18 @@ export default function Home() {
                   scale: 1.2,
                 }}
               >
-                <div className="inline-flex items-center gap-1.5 rounded-[20px] bg-[#2e2e2e] px-2.5 py-1.5 font-['Itim'] text-[12px] text-white max-[600px]:rounded-[15px] max-[600px]:px-[7.5px] max-[600px]:py-[4.5px] max-[600px]:font-['Poppins'] max-[600px]:text-[7.5px]">
+                <div className="inline-flex items-center gap-1.5 rounded-[20px] bg-[#2e2e2e] px-2.5 py-1.5 font-['Itim'] text-[12px] text-white max-[600px]:rounded-[15px] max-[600px]:px-[7.5px] max-[600px]:py-[4.5px] max-[600px]:font-['Itim'] max-[600px]:text-[7.5px]">
+                  <motion.span
+                    whileHover={{
+                      scale: 1.8,
+                    }}
+                    className="h-2 w-2 rounded-full bg-[#efefef] shadow-[0px_0px_5px_1px_#efefef] max-[600px]:h-1.5 max-[600px]:w-1.5 max-[600px]:shadow-[0px_0px_3.75px_0.75px_#efefef]"
+                  />
+                  <span className="max-[600px]">
+                    Working On Ongoing Projects
+                  </span>
+                </div>
+                {/* <div className="inline-flex items-center gap-1.5 rounded-[20px] bg-[#2e2e2e] px-2.5 py-1.5 font-['Itim'] text-[12px] text-white max-[600px]:rounded-[15px] max-[600px]:px-[7.5px] max-[600px]:py-[4.5px] max-[600px]:font-['Poppins'] max-[600px]:text-[7.5px]">
                   <motion.span
                     whileHover={{
                       scale: 1.8,
@@ -111,7 +122,7 @@ export default function Home() {
                   <span className="max-[600px]:lowercase">
                     Available for work
                   </span>
-                </div>
+                </div> */}
               </motion.div>
             </div>
 
@@ -127,16 +138,16 @@ export default function Home() {
               and efficient backend systems focused on performance and
               reliability.
             </motion.p>
-            {/* <motion.div
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, ease: easeOut, delay: 0.3 }}
             >
-              <div className="inline-flex items-center gap-1.5  px-2.5 py-1.5 font-['Itim'] text-[16px] text-[#d5d5d5] max-[600px]:rounded-[15px] max-[600px]:px-0 max-[600px]:py-[1px] max-[600px]:text-[12px]">
-                Last updated information : May 2026
+              <div className="inline-flex items-center gap-1.5  px-2.5 py-1.5 font-['Itim'] text-[16px] text-[#8491A0] max-[600px]:rounded-[15px] max-[600px]:px-0 max-[600px]:py-[1px] max-[600px]:text-[12px]">
+                Last updated information : June 2026
               </div>
-            </motion.div> */}
+            </motion.div>
             <motion.div
               className="flex flex-wrap items-center justify-center gap-[16.76px]"
               initial={{ opacity: 0, y: 20 }}

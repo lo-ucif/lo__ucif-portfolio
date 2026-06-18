@@ -20,8 +20,7 @@ export function MobileNav({
   onLinkClick,
   menuRef,
   links = defaultLinks,
-  availabilityText = "available for work",
-  availabilityClassName = "lowercase",
+  availabilityText = "Working On Ongoing Projects",
 }: MobileNavProps) {
   return (
     <motion.div
@@ -40,8 +39,8 @@ export function MobileNav({
         className=" flex w-fit flex-row items-center gap-[3.75px] rounded-[10px] bg-[#2e2e2e] px-[7.5px] py-[4.5px] font-['Poppins'] text-[7.5px] text-white"
         whileHover={{ scale: 1.03 }}
       >
-        <div className="h-1.5 w-1.5 rounded-full bg-[#73ff2d] shadow-[0px_0px_3.75px_0.75px_#73ff2d]" />
-        <div className={availabilityClassName}>{availabilityText}</div>
+        <div className="h-1.5 w-1.5 rounded-full bg-[#efefef] shadow-[0px_0px_3.75px_0.75px_#efefef]" />
+        <div>{availabilityText}</div>
       </motion.div>
       <nav className=" flex flex-col items-center gap-5 font-['Itim'] text-[15px] tracking-[0.3px] text-white">
         {links.map((link) => (
