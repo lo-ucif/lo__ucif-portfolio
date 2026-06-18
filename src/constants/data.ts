@@ -106,9 +106,12 @@ type TechItem = {
   icon: ComponentType<SVGProps<SVGSVGElement>>;
 };
 
+export type ProjectType = "development" | "uiux";
+
 export const projects: Array<{
   id: number;
   title: string;
+  type: ProjectType;
   problem?: string;
   description: string;
   image: string;
@@ -120,6 +123,7 @@ export const projects: Array<{
 }> = [
   {
     id: 1,
+    type: "development",
     title: "AI-Powered Job Matching Platform",
     problem:
       "Finding the right job can be challenging for candidates, while recruiters spend significant time reviewing large volumes of applications and identifying qualified profiles.",
@@ -144,6 +148,7 @@ export const projects: Array<{
 
   {
     id: 2,
+    type: "development",
     title: "Works Exhibition - أم وائل",
     problem:
       "Managing tailoring projects manually makes it difficult to organize previous work, pricing, specifications, and customer requests efficiently.",
@@ -165,6 +170,7 @@ export const projects: Array<{
 
   {
     id: 3,
+    type: "development",
     title: "Note Web App",
     problem:
       "Locally stored notes are vulnerable to data loss and cannot be easily accessed across multiple devices.",
@@ -189,6 +195,7 @@ export const projects: Array<{
 
   {
     id: 4,
+    type: "development",
     title: "Headphone Website",
     description:
       "Designed and developed a modern product landing page for a headphone brand, featuring responsive layouts, engaging visuals, and a user-focused browsing experience.",
@@ -208,6 +215,7 @@ export const projects: Array<{
 
   {
     id: 5,
+    type: "development",
     title: "Weather App",
     description:
       "Built a weather forecasting application that integrates external APIs to provide real-time weather conditions, forecasts, and location-based insights through a clean and responsive interface.",
@@ -228,6 +236,7 @@ export const projects: Array<{
 
   {
     id: 6,
+    type: "development",
     title: "Library Book Hero Section",
     description:
       "Designed and implemented a modern hero section for a digital library platform, focused on visual appeal, responsiveness, and improved user engagement.",
@@ -247,6 +256,7 @@ export const projects: Array<{
 
   {
     id: 7,
+    type: "development",
     title: "Rihla Web",
     problem:
       "Travelers often face difficulties planning efficient trips, discovering attractions, and finding guides or travel groups for organized experiences.",
@@ -268,6 +278,7 @@ export const projects: Array<{
 
   {
     id: 8,
+    type: "development",
     title: "Teck Web Store",
     description:
       "An educational AI-assisted web project developed to demonstrate modern web development practices through an interactive e-commerce experience and responsive user interface.",
@@ -285,6 +296,7 @@ export const projects: Array<{
 
   {
     id: 9,
+    type: "development",
     title: "Network Simulation",
     description:
       "Developed a Java Swing-based network simulation interface that enables students to design, visualize, and experiment with network topologies using computers, routers, and security mechanisms in a controlled learning environment.",

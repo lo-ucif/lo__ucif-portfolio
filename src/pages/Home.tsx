@@ -273,7 +273,13 @@ export default function Home() {
         </main>
 
         <ContactSection />
-        <FloatingBubble />
+        <FloatingBubble
+          items={[
+            { label: "About", id: "about" },
+            { label: "Projects", id: "projects" },
+            { label: "Contact", id: "contact" },
+          ]}
+        />
       </div>
     </div>
   );

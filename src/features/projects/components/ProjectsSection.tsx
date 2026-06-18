@@ -26,6 +26,7 @@ export function ProjectsSection() {
           <Projectcard
             key={project.id}
             id={project.id}
+            type={project.type}
             title={project.title}
             problem={project.problem}
             description={project.description}

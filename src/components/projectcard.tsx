@@ -6,12 +6,14 @@ import {
   FigmaIcon,
   HackathonIcon,
 } from "../constants/Icon";
+import type { ProjectType } from "../constants/data";
 type TechItem = {
   label: string;
   icon: ComponentType<SVGProps<SVGSVGElement>>;
 };
 export type project = {
   id: number;
+  type: ProjectType;
   title: string;
   problem?: string;
   description: string;

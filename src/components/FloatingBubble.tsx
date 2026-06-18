@@ -10,18 +10,21 @@ const SIZE = 45;
 
 type Side = "left" | "right";
 
-const MENU = [
-  { label: "About", id: "about" },
-  { label: "Projects", id: "projects" },
-  // { label: "Stack", id: "stack" },
-  { label: "Contact", id: "contact" },
-];
+export type BubbleItem = {
+  label: string;
+  id: string;
+};
 
-const CARD_W = 120;
+type Props = {
+  items: BubbleItem[];
+  onItemClick?: (item: BubbleItem) => void;
+  activeId?: string;
+};
+
+const CARD_W = 130;
 const CARD_GAP = 10;
 const ITEM_H = 52;
 const CARD_PADDING = 20;
-const CARD_H = MENU.length * ITEM_H + CARD_PADDING;
 
 const getSaved = (): { side: Side; y: number } => {
   try {
@@ -38,8 +41,9 @@ const getSaved = (): { side: Side; y: number } => {
   return { side: "right", y: 100 };
 };
 
-const FloatingBubble = () => {
+const FloatingBubble = ({ items, onItemClick, activeId }: Props) => {
   const initial = getSaved();
+  const CARD_H = items.length * ITEM_H + CARD_PADDING;
 
   const [side, setSide] = useState<Side>(initial.side);
   const [posY, setPosY] = useState<number>(initial.y);
@@ -90,6 +94,17 @@ const FloatingBubble = () => {
 
   const { cardX, cardY } = getCardPos();
   const ballCenterY = posY + SIZE / 2 - CARD_H / 2;
+
+  const handleItemClick = (item: BubbleItem) => {
+    if (onItemClick) {
+      onItemClick(item);
+    } else {
+      // default: scroll to element by id
+      const el = document.getElementById(item.id);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    setOpen(false);
+  };
 
   return (
     <>
@@ -189,31 +204,30 @@ const FloatingBubble = () => {
             }}
             className="rounded-[30px] bg-[#161513]/60 backdrop-blur p-2 shadow-2xl"
           >
-            {MENU.map((item, i) => (
-              <motion.button
-                key={item.label}
-                initial={{ opacity: 0, x: side === "left" ? -10 : 10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{
-                  delay: i * 0.055,
-                  type: "spring",
-                  stiffness: 350,
-                  damping: 28,
-                }}
-                onClick={() => {
-                  // ✅ scroll to section smoothly
-                  const el = document.getElementById(item.id);
-                  if (el)
-                    el.scrollIntoView({ behavior: "smooth", block: "start" });
-                  setOpen(false);
-                }}
-                whileHover={{ backgroundColor: "rgba(255,255,255,0.15)" }}
-                whileTap={{ scale: 0.97 }}
-                className="flex items-center justify-center gap-1 w-full px-0.5 py-1.5 bg-transparent border-none cursor-pointer text-white font-['Itim']"
-              >
-                <span>{item.label}</span>
-              </motion.button>
-            ))}
+            {items.map((item, i) => {
+              const isActive = activeId === item.id;
+              return (
+                <motion.button
+                  key={item.label}
+                  initial={{ opacity: 0, x: side === "left" ? -10 : 10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{
+                    delay: i * 0.055,
+                    type: "spring",
+                    stiffness: 350,
+                    damping: 28,
+                  }}
+                  onClick={() => handleItemClick(item)}
+                  whileHover={{ backgroundColor: "rgba(255,255,255,0.15)" }}
+                  whileTap={{ scale: 0.97 }}
+                  className={`flex items-center justify-center gap-1 w-full px-0.5 py-1.5 bg-transparent border-none cursor-pointer font-['Itim'] ${
+                    isActive ? "text-[#5197ff]" : "text-white"
+                  }`}
+                >
+                  <span>{item.label}</span>
+                </motion.button>
+              );
+            })}
           </motion.div>
         )}
       </AnimatePresence>
