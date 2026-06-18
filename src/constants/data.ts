@@ -8,6 +8,9 @@ import estinhackathon from "../assets/Screenshot 2026-04-20 114159.png";
 import rihlaweb from "../assets/image.png";
 import aiweb from "../assets/download (24).jpg";
 import sewing from "../assets/Screenshot 2026-05-24 000114.png";
+import hotel from "../assets/hotel.png"
+import portfolio from "../assets/portfolio 2.png"
+import shoes from "../assets/shoes 2.png";
 import {
   JavascriptIcon,
   TypescriptIcon,
@@ -310,5 +313,47 @@ export const projects: Array<{
     liveDemo: "",
     github: "https://github.com/lo-ucif/oop-p2.git",
     figma: "",
+  },
+  {
+    id: 10,
+    type: "uiux",
+    title: "Portfolio Website",
+    description:
+      "A professional and responsive portfolio website designed to showcase my skills, projects, and experience through a modern interface and smooth user experience.",
+    image: portfolio,
+    tech: [{ label: "figma", icon: FigmaIcon }],
+    hackathon: "",
+    liveDemo: "",
+    github: "",
+    figma:
+      "https://www.figma.com/design/hx4E6cZLWqvRjPWsZ5nXpN/my-portfolio?node-id=6-310&t=P3qjVYAtE8tB03uI-1",
+  },
+  {
+    id: 11,
+    type: "uiux",
+    title: "Booking Platform",
+    description:
+      "A digital booking platform that simplifies reservation management with clear interfaces, easy navigation, and an efficient user workflow.",
+    image: hotel,
+    tech: [{ label: "figma", icon: FigmaIcon }],
+    hackathon: "",
+    liveDemo: "",
+    github: "",
+    figma:
+      "https://www.figma.com/design/Ud9huPl27nRy6pMLPBIlZb/Latest-Hotel-Booking-Website-Prototype--Community---Copy-?node-id=0-1&t=tG3MIkJrcfgWfCgy-1",
+  },
+  {
+    id: 12,
+    type: "uiux",
+    title: "Shoes E-commerce",
+    description:
+      "A modern online shopping platform for shoes, offering organized product displays, smooth browsing, and a simple purchasing experience.",
+    image: shoes,
+    tech: [{ label: "figma", icon: FigmaIcon }],
+    hackathon: "",
+    liveDemo: "",
+    github: "",
+    figma:
+      "https://www.figma.com/design/u3jcnp3N1n5IUYPxVqatKM/store-web?node-id=0-1&t=wlj0ZBzy51ESbxgt-1",
   },
 ];
