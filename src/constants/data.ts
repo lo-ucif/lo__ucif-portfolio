@@ -362,6 +362,8 @@ export const projects: Array<{
 // Edit these values and they update in BOTH the Home hero badge
 // and the mobile navigation badge at once.
 export const statusBadgeData = {
-  text: "Working On Ongoing Projects",
-  dotColor: "#efefef",
+  text: "Open To Work",
+  dotColor: "#16FF08",
+  // text: "Working On Ongoing Projects",
+  // dotColor: "#efefef",
 };
