@@ -357,3 +357,11 @@ export const projects: Array<{
       "https://www.figma.com/design/u3jcnp3N1n5IUYPxVqatKM/store-web?node-id=0-1&t=wlj0ZBzy51ESbxgt-1",
   },
 ];
+
+// ---------- Status badge (shared via StatusBadgeContext) ----------
+// Edit these values and they update in BOTH the Home hero badge
+// and the mobile navigation badge at once.
+export const statusBadgeData = {
+  text: "Working On Ongoing Projects",
+  dotColor: "#efefef",
+};

@@ -4,6 +4,7 @@ import { Outlet, useLocation } from "react-router-dom";
 
 import { MobileNav } from "./MobileNav";
 import { SiteHeader } from "./SiteHeader";
+import { StatusBadgeProvider } from "../../contexts/StatusBadgeProvider";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -39,24 +40,26 @@ export function AppLayout() {
   const headerActiveSection = isHome ? "home" : "projects";
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 22, scale: 0.99 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-    >
-      <SiteHeader
-        activeSection={headerActiveSection}
-        isMobileMenuOpen={isMobileMenuOpen}
-        onToggleMobileMenu={() => setIsMobileMenuOpen((prev) => !prev)}
-        menuButtonRef={mobileMenuButtonRef}
-      />
-      <MobileNav
-        isOpen={isMobileMenuOpen}
-        onLinkClick={() => setIsMobileMenuOpen(false)}
-        menuRef={mobileMenuRef}
-        links={navLinks}
-      />
-      <Outlet />
-    </motion.div>
+    <StatusBadgeProvider>
+      <motion.div
+        initial={{ opacity: 0, y: 22, scale: 0.99 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <SiteHeader
+          activeSection={headerActiveSection}
+          isMobileMenuOpen={isMobileMenuOpen}
+          onToggleMobileMenu={() => setIsMobileMenuOpen((prev) => !prev)}
+          menuButtonRef={mobileMenuButtonRef}
+        />
+        <MobileNav
+          isOpen={isMobileMenuOpen}
+          onLinkClick={() => setIsMobileMenuOpen(false)}
+          menuRef={mobileMenuRef}
+          links={navLinks}
+        />
+        <Outlet />
+      </motion.div>
+    </StatusBadgeProvider>
   );
 }

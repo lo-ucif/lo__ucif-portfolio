@@ -7,6 +7,7 @@ import pdf from "../../public/Ahmed_Loucif_CV.pdf";
 import myimg from "../assets/portfolio img.webp";
 import univimg from "../assets/6.webp";
 import FloatingBubble from "../components/FloatingBubble";
+import { StatusBadge } from "../components/StatusBadge";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
@@ -101,28 +102,7 @@ export default function Home() {
                   scale: 1.2,
                 }}
               >
-                <div className="inline-flex items-center gap-1.5 rounded-[20px] bg-[#2e2e2e] px-2.5 py-1.5 font-['Itim'] text-[12px] text-white max-[600px]:rounded-[15px] max-[600px]:px-[7.5px] max-[600px]:py-[4.5px] max-[600px]:font-['Itim'] max-[600px]:text-[7.5px]">
-                  <motion.span
-                    whileHover={{
-                      scale: 1.8,
-                    }}
-                    className="h-2 w-2 rounded-full bg-[#efefef] shadow-[0px_0px_5px_1px_#efefef] max-[600px]:h-1.5 max-[600px]:w-1.5 max-[600px]:shadow-[0px_0px_3.75px_0.75px_#efefef]"
-                  />
-                  <span className="max-[600px]">
-                    Working On Ongoing Projects
-                  </span>
-                </div>
-                {/* <div className="inline-flex items-center gap-1.5 rounded-[20px] bg-[#2e2e2e] px-2.5 py-1.5 font-['Itim'] text-[12px] text-white max-[600px]:rounded-[15px] max-[600px]:px-[7.5px] max-[600px]:py-[4.5px] max-[600px]:font-['Poppins'] max-[600px]:text-[7.5px]">
-                  <motion.span
-                    whileHover={{
-                      scale: 1.8,
-                    }}
-                    className="h-2 w-2 rounded-full bg-[#73ff2d] shadow-[0px_0px_5px_1px_#73ff2d] max-[600px]:h-1.5 max-[600px]:w-1.5 max-[600px]:shadow-[0px_0px_3.75px_0.75px_#73ff2d]"
-                  />
-                  <span className="max-[600px]:lowercase">
-                    Available for work
-                  </span>
-                </div> */}
+                <StatusBadge />
               </motion.div>
             </div>
 
