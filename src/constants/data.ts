@@ -1,16 +1,16 @@
 import type { ComponentType, SVGProps } from "react";
-import booklibrary from "../assets/book.png";
-import noteapp from "../assets/note.png";
-import headphone from "../assets/head2.png";
-import weather from "../assets/meteo.png";
+import booklibrary from "../assets/book.webp";
+import noteapp from "../assets/note.webp";
+import headphone from "../assets/head2.webp";
+import weather from "../assets/meteo.webp";
 import oop from "../assets/Screenshot 2026-04-08 200005.webp";
-import estinhackathon from "../assets/n8n.png";
-import rihlaweb from "../assets/image.png";
-import aiweb from "../assets/download (24).jpg";
-import sewing from "../assets/swing.png";
-import hotel from "../assets/hotel.png"
-import portfolio from "../assets/portfolio 2.png"
-import shoes from "../assets/shoes 2.png";
+import estinhackathon from "../assets/n8n.webp";
+import rihlaweb from "../assets/image.webp";
+import aiweb from "../assets/download (24).webp";
+import sewing from "../assets/swing.webp";
+import hotel from "../assets/hotel.webp";
+import portfolio from "../assets/portfolio 2.webp";
+import shoes from "../assets/shoes 2.webp";
 import {
   JavascriptIcon,
   TypescriptIcon,
