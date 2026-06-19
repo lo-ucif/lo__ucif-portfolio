@@ -113,10 +113,8 @@ export default function Home() {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, ease: easeOut }}
             >
-              I build modern and scalable web applications using React,
-              TypeScript, Node.js, and MongoDB. I create clean user interfaces
-              and efficient backend systems focused on performance and
-              reliability.
+              I build fast and scalable web applications using React, Node.js,
+              Express.js, and MongoDB.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -179,14 +177,11 @@ export default function Home() {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, ease: easeOut }}
             >
-              Hello! I'm Ahmed Loucif, a passionate Full Stack Web Developer
-              specializing in modern web technologies and user-centered design.
-              I build fast and scalable web applications using Next JS , React,
-              Vite, TypeScript, Node.js, Express, and MongoDB. I also have a
-              strong interest in UI/UX design, which helps me create clean,
-              intuitive, and enjoyable user experiences. I enjoy solving complex
-              problems, learning new technologies, and continuously improving my
-              skills to build better digital products.
+              Hi, I'm Ahmed Loucif, a Full Stack Web Developer passionate about
+              building modern, scalable, and user-friendly web applications. I
+              work with Next.js, React, TypeScript, Node.js, Express, and
+              MongoDB, combining strong development skills with a keen interest
+              in UI/UX design to create seamless digital experiences.
             </motion.p>
 
             <motion.a
