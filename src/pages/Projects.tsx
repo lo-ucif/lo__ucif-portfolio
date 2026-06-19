@@ -23,6 +23,7 @@ export default function Projects() {
 
   const handleBubbleClick = (item: BubbleItem) => {
     setFilter(item.id as FilterId);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (

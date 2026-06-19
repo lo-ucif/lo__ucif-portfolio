@@ -1,13 +1,13 @@
 import type { ComponentType, SVGProps } from "react";
-import booklibrary from "../assets/Screenshot 2026-04-08 185728.webp";
-import noteapp from "../assets/image.webp";
-import headphone from "../assets/Screenshot 2026-03-15 151330.webp";
-import weather from "../assets/Screenshot 2026-04-08 194802.webp";
+import booklibrary from "../assets/book.png";
+import noteapp from "../assets/note.png";
+import headphone from "../assets/head2.png";
+import weather from "../assets/meteo.png";
 import oop from "../assets/Screenshot 2026-04-08 200005.webp";
-import estinhackathon from "../assets/Screenshot 2026-04-20 114159.png";
+import estinhackathon from "../assets/n8n.png";
 import rihlaweb from "../assets/image.png";
 import aiweb from "../assets/download (24).jpg";
-import sewing from "../assets/Screenshot 2026-05-24 000114.png";
+import sewing from "../assets/swing.png";
 import hotel from "../assets/hotel.png"
 import portfolio from "../assets/portfolio 2.png"
 import shoes from "../assets/shoes 2.png";
