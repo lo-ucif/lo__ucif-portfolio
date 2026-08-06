@@ -1,16 +1,14 @@
 import type { ComponentType, SVGProps } from "react";
-import booklibrary from "../assets/book.webp";
-import noteapp from "../assets/note.webp";
-import headphone from "../assets/head2.webp";
-import weather from "../assets/meteo.webp";
-import oop from "../assets/Screenshot 2026-04-08 200005.webp";
-import estinhackathon from "../assets/n8n.webp";
-import rihlaweb from "../assets/image.webp";
-import aiweb from "../assets/download (24).webp";
-import sewing from "../assets/swing.webp";
-import hotel from "../assets/hotel.webp";
-import portfolio from "../assets/portfolio 2.webp";
-import shoes from "../assets/shoes 2.webp";
+import booklibrary from "../assets/ChatGPT Image Aug 6, 2026, 01_04_31 PM.png";
+import noteapp from "../assets/ChatGPT Image Aug 6, 2026, 01_49_32 PM.png";
+import headphone from "../assets/ChatGPT Image Aug 6, 2026, 01_15_30 PM.png";
+import weather from "../assets/ChatGPT Image Aug 6, 2026, 01_37_13 PM.png";
+import estinhackathon from "../assets/ChatGPT Image Aug 6, 2026, 02_06_12 PM.png";
+import rihlaweb from "../assets/ChatGPT Image Aug 6, 2026, 01_40_47 PM.png";
+import sewing from "../assets/ChatGPT Image Aug 6, 2026, 01_57_53 PM.png";
+import hotel from "../assets/ChatGPT Image Aug 6, 2026, 12_56_04 PM.png";
+import shoes from "../assets/ChatGPT Image Aug 6, 2026, 12_50_35 PM.png";
+import rokhsa from "../assets/ChatGPT Image Aug 5, 2026, 11_48_00 PM 13.png";
 import {
   JavascriptIcon,
   TypescriptIcon,
@@ -35,9 +33,11 @@ import {
   RestApiIcon,
   AxiosIcon,
   CIcon,
-  SwingIcon,
   N8nIcon,
   NextjsIcon,
+  PostgreIcon,
+  DjangoIcon,
+  PythonIcon,
 } from "./Icon";
 
 export const techGroups = [
@@ -46,6 +46,7 @@ export const techGroups = [
     items: [
       { label: "JavaScript", icon: JavascriptIcon },
       { label: "TypeScript", icon: TypescriptIcon },
+      { label: "Python", icon: PythonIcon },
     ],
     hackathon: "text",
   },
@@ -54,7 +55,7 @@ export const techGroups = [
     items: [
       { label: "Next js", icon: NextjsIcon },
       { label: "React", icon: ReactIcon },
-      { label: "Tailwind CSS", icon: TaillwindIcon },
+      { label: "Tailwind", icon: TaillwindIcon },
     ],
     hackathon: "text",
   },
@@ -63,6 +64,7 @@ export const techGroups = [
     items: [
       { label: "Node.js", icon: NodejsIcon },
       { label: "Express.js", icon: ExpressjsIcon },
+      { label: "Django", icon: DjangoIcon },
     ],
     hackathon: "text",
   },
@@ -71,6 +73,7 @@ export const techGroups = [
     items: [
       { label: "MongoDB", icon: MongodbIcon },
       { label: "MySQL", icon: MysqlIcon },
+      { label: "Postgres", icon: PostgreIcon },
     ],
     hackathon: "text",
   },
@@ -79,6 +82,7 @@ export const techGroups = [
     items: [
       { label: "GitHub", icon: GithubIcon },
       { label: "Figma", icon: FigmaIcon },
+      { label: "VS Code", icon: VScodeIcon },
     ],
     hackathon: "text",
   },
@@ -95,7 +99,6 @@ export const techGroups = [
       { label: "Axios", icon: AxiosIcon },
       { label: "C", icon: CIcon },
       { label: "n8n", icon: N8nIcon },
-      { label: "VS Code", icon: VScodeIcon },
       { label: "Linux", icon: LinuxIcon },
       { label: "Postman", icon: PostmanIcon },
       { label: "Git", icon: GitIcon },
@@ -126,6 +129,23 @@ export const projects: Array<{
 }> = [
   {
     id: 1,
+    type: "uiux",
+    title: "Rokhsa - the Smart Driving School Platform",
+    problem:
+      "Learning to drive in Algeria is still largely managed through manual processes. Learners often struggle to find reliable driving schools, track their training progress, and manage appointments, while driving schools spend valuable time handling registrations, schedules, and student records manually.",
+    description:
+      "Built Rokhsa, a modern web and mobile platform that digitizes the entire driving school experience. The platform enables learners to register, book lessons, track their progress, and receive important notifications, while providing driving schools with a centralized dashboard to manage students, instructors, schedules, and administrative tasks efficiently.",
+    image: rokhsa,
+    tech: [{ label: "Figma", icon: FigmaIcon }],
+    hackathon: "",
+    liveDemo:
+      "https://www.linkedin.com/posts/ahmed-loucif-757854342_uiux-uxdesign-figma-ugcPost-7490915921327198208-KWqx/?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAFXpNDMBGYVLG4eX6B6TNBGOovKR8MMeCbM",
+    github: "",
+    figma:
+      "https://www.figma.com/deck/h5Pmcq96LZC3Q5065s940j/Untitled?node-id=1-220&viewport=-5849%2C-109%2C0.53&t=08A4QFzdxSyXK653-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1",
+  },
+  {
+    id: 2,
     type: "development",
     title: "AI-Powered Job Matching Platform",
     problem:
@@ -148,9 +168,8 @@ export const projects: Array<{
     figma:
       "https://www.figma.com/deck/h5Pmcq96LZC3Q5065s940j/Untitled?node-id=1-220&viewport=-5849%2C-109%2C0.53&t=08A4QFzdxSyXK653-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1",
   },
-
   {
-    id: 2,
+    id: 3,
     type: "development",
     title: "Works Exhibition - أم وائل",
     problem:
@@ -172,7 +191,7 @@ export const projects: Array<{
   },
 
   {
-    id: 3,
+    id: 4,
     type: "development",
     title: "Note Web App",
     problem:
@@ -197,7 +216,7 @@ export const projects: Array<{
   },
 
   {
-    id: 4,
+    id: 5,
     type: "development",
     title: "Headphone Website",
     description:
@@ -217,7 +236,7 @@ export const projects: Array<{
   },
 
   {
-    id: 5,
+    id: 6,
     type: "development",
     title: "Weather App",
     description:
@@ -238,7 +257,7 @@ export const projects: Array<{
   },
 
   {
-    id: 6,
+    id: 7,
     type: "development",
     title: "Library Book Hero Section",
     description:
@@ -258,7 +277,7 @@ export const projects: Array<{
   },
 
   {
-    id: 7,
+    id: 8,
     type: "development",
     title: "Rihla Web",
     problem:
@@ -280,56 +299,7 @@ export const projects: Array<{
   },
 
   {
-    id: 8,
-    type: "development",
-    title: "Teck Web Store",
-    description:
-      "An educational AI-assisted web project developed to demonstrate modern web development practices through an interactive e-commerce experience and responsive user interface.",
-    image: aiweb,
-    tech: [
-      { label: "HTML", icon: HtmlIcon },
-      { label: "CSS", icon: CssIcon },
-      { label: "JavaScript", icon: JavascriptIcon },
-    ],
-    hackathon: "",
-    liveDemo: "",
-    github: "https://github.com/lo-ucif/p-web-project",
-    figma: "",
-  },
-
-  {
     id: 9,
-    type: "development",
-    title: "Network Simulation",
-    description:
-      "Developed a Java Swing-based network simulation interface that enables students to design, visualize, and experiment with network topologies using computers, routers, and security mechanisms in a controlled learning environment.",
-    image: oop,
-    tech: [
-      { label: "Java", icon: JavaIcon },
-      { label: "MySQL", icon: MysqlIcon },
-      { label: "Java Swing", icon: SwingIcon },
-    ],
-    hackathon: "",
-    liveDemo: "",
-    github: "https://github.com/lo-ucif/oop-p2.git",
-    figma: "",
-  },
-  {
-    id: 10,
-    type: "uiux",
-    title: "Portfolio Website",
-    description:
-      "A professional and responsive portfolio website designed to showcase my skills, projects, and experience through a modern interface and smooth user experience.",
-    image: portfolio,
-    tech: [{ label: "figma", icon: FigmaIcon }],
-    hackathon: "",
-    liveDemo: "",
-    github: "",
-    figma:
-      "https://www.figma.com/design/hx4E6cZLWqvRjPWsZ5nXpN/my-portfolio?node-id=6-310&t=P3qjVYAtE8tB03uI-1",
-  },
-  {
-    id: 11,
     type: "uiux",
     title: "Booking Platform",
     description:
@@ -343,7 +313,7 @@ export const projects: Array<{
       "https://www.figma.com/design/Ud9huPl27nRy6pMLPBIlZb/Latest-Hotel-Booking-Website-Prototype--Community---Copy-?node-id=0-1&t=tG3MIkJrcfgWfCgy-1",
   },
   {
-    id: 12,
+    id: 10,
     type: "uiux",
     title: "Shoes E-commerce",
     description:

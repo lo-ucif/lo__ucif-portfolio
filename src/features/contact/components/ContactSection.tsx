@@ -9,7 +9,7 @@ import {
 const socials = [
   {
     icon: CallIcon,
-    link: "tel:+213676244189",
+    link: "tel:+2137802802",
     alt: "Phone",
   },
   {

@@ -88,8 +88,8 @@ export default function Home() {
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{ duration: 0.6, ease: easeOut, delay: 0.5 }}
                 >
-                  <span className="text-[#a9a9a9]">Web</span>
-                  <span className="text-[#5197ff]">Developer</span>
+                  <span className="text-[#a9a9a9]">Full Stack</span>
+                  <span className="text-[#5197ff]">Web Developer</span>
                 </motion.div>
               </div>
 
@@ -113,8 +113,7 @@ export default function Home() {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, ease: easeOut }}
             >
-              I build fast and scalable web applications using React, Node.js,
-              Express.js, and MongoDB.
+              Software Engineering Student | Web Developer | Ui / Ux Designer
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -123,7 +122,7 @@ export default function Home() {
               transition={{ duration: 0.6, ease: easeOut, delay: 0.3 }}
             >
               <div className="inline-flex items-center gap-1.5  px-2.5 py-1.5 font-['Itim'] text-[16px] text-[#8491A0] max-[600px]:rounded-[15px] max-[600px]:px-0 max-[600px]:py-px max-[600px]:text-[12px]">
-                Last updated information : June 2026
+                Last updated information : August 2026
               </div>
             </motion.div>
             <motion.div
@@ -177,11 +176,13 @@ export default function Home() {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, ease: easeOut }}
             >
-              Hi, I'm Ahmed Loucif, a Full Stack Web Developer passionate about
-              building modern, scalable, and user-friendly web applications. I
-              work with Next.js, React, TypeScript, Node.js, Express, and
-              MongoDB, combining strong development skills with a keen interest
-              in UI/UX design to create seamless digital experiences.
+              Ahmed Loucif, 20y — Full Stack Web Developer passionate about
+              building modern, scalable, and user-friendly web applications
+              Experienced with Next.js, React, TypeScript, Node.js, Express, and
+              MongoDB Strong focus on UI/UX design to deliver seamless and
+              engaging digital experiences Proven ability to solve real-world
+              problems through projects and hackathons Open to work and
+              collaboration opportunities
             </motion.p>
 
             <motion.a
