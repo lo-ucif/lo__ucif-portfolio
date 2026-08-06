@@ -4,6 +4,7 @@ import {
   GmailIcon,
   InstagramIcon,
   LinkedinIcon,
+  WhatsAppIcon,
 } from "../../../constants/Icon";
 
 const socials = [
@@ -26,6 +27,11 @@ const socials = [
     icon: InstagramIcon,
     link: "https://www.instagram.com/lo__ucif",
     alt: "Instagram",
+  },
+  {
+    icon: WhatsAppIcon,
+    link: "https://wa.me/213676244189",
+    alt: "WhatsApp",
   },
 ];
 
