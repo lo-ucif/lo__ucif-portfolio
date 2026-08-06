@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { LinkedinIcon } from "../../constants/Icon";
 import { GithubIcon } from "../../constants/Icon";
+import { WhatsAppIcon } from "../../constants/Icon";
 
 type SiteHeaderProps = {
   activeSection: string;
@@ -71,6 +72,17 @@ export function SiteHeader({
               whileTap={{ scale: 0.96 }}
             >
               <LinkedinIcon />
+            </motion.a>
+            <motion.a
+              href="https://wa.me/213676244189"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Chat on WhatsApp"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="relative flex items-center justify-center rounded-full"
+            >
+              <WhatsAppIcon />
             </motion.a>
           </div>
         </div>
