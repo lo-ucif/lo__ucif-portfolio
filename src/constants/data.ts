@@ -1,14 +1,14 @@
 import type { ComponentType, SVGProps } from "react";
-import booklibrary from "../assets/ChatGPT Image Aug 6, 2026, 01_04_31 PM.png";
-import noteapp from "../assets/ChatGPT Image Aug 6, 2026, 01_49_32 PM.png";
-import headphone from "../assets/ChatGPT Image Aug 6, 2026, 01_15_30 PM.png";
-import weather from "../assets/ChatGPT Image Aug 6, 2026, 01_37_13 PM.png";
-import estinhackathon from "../assets/ChatGPT Image Aug 6, 2026, 02_06_12 PM.png";
-import rihlaweb from "../assets/ChatGPT Image Aug 6, 2026, 01_40_47 PM.png";
-import sewing from "../assets/ChatGPT Image Aug 6, 2026, 01_57_53 PM.png";
-import hotel from "../assets/ChatGPT Image Aug 6, 2026, 12_56_04 PM.png";
-import shoes from "../assets/ChatGPT Image Aug 6, 2026, 12_50_35 PM.png";
-import rokhsa from "../assets/ChatGPT Image Aug 5, 2026, 11_48_00 PM 13.png";
+import booklibrary from "../assets/ChatGPT Image Aug 6, 2026, 01_04_31 PM.webp";
+import noteapp from "../assets/ChatGPT Image Aug 6, 2026, 01_49_32 PM.webp";
+import headphone from "../assets/ChatGPT Image Aug 6, 2026, 01_15_30 PM.webp";
+import weather from "../assets/ChatGPT Image Aug 6, 2026, 01_37_13 PM.webp";
+import estinhackathon from "../assets/ChatGPT Image Aug 6, 2026, 02_06_12 PM.webp";
+import rihlaweb from "../assets/ChatGPT Image Aug 6, 2026, 01_40_47 PM.webp";
+import sewing from "../assets/ChatGPT Image Aug 6, 2026, 01_57_53 PM.webp";
+import hotel from "../assets/ChatGPT Image Aug 6, 2026, 12_56_04 PM.webp";
+import shoes from "../assets/ChatGPT Image Aug 6, 2026, 12_50_35 PM.webp";
+import rokhsa from "../assets/ChatGPT Image Aug 5, 2026, 11_48_00 PM 13.webp";
 import {
   JavascriptIcon,
   TypescriptIcon,
