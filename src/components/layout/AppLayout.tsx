@@ -5,6 +5,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import { MobileNav } from "./MobileNav";
 import { SiteHeader } from "./SiteHeader";
 import { StatusBadgeProvider } from "../../contexts/StatusBadgeProvider";
+import WhatsAppButton from "../WhatsAppButton";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -59,6 +60,7 @@ export function AppLayout() {
           links={navLinks}
         />
         <Outlet />
+        <WhatsAppButton />
       </motion.div>
     </StatusBadgeProvider>
   );
