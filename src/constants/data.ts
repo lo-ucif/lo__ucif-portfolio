@@ -142,7 +142,7 @@ export const projects: Array<{
       "https://www.linkedin.com/posts/ahmed-loucif-757854342_uiux-uxdesign-figma-ugcPost-7490915921327198208-KWqx/?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAFXpNDMBGYVLG4eX6B6TNBGOovKR8MMeCbM",
     github: "",
     figma:
-      "https://www.figma.com/deck/h5Pmcq96LZC3Q5065s940j/Untitled?node-id=1-220&viewport=-5849%2C-109%2C0.53&t=08A4QFzdxSyXK653-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1",
+      "https://www.figma.com/design/NzHDINBZtitHegyQ5X1jCS/rukhsa-app?node-id=435-2&t=kM44AgQOkcenheHH-1",
   },
   {
     id: 2,
