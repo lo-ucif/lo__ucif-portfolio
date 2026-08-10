@@ -9,6 +9,7 @@ import sewing from "../assets/ChatGPT Image Aug 6, 2026, 01_57_53 PM.webp";
 import hotel from "../assets/ChatGPT Image Aug 6, 2026, 12_56_04 PM.webp";
 import shoes from "../assets/ChatGPT Image Aug 6, 2026, 12_50_35 PM.webp";
 import rokhsa from "../assets/ChatGPT Image Aug 5, 2026, 11_48_00 PM 13.webp";
+import tabib from "../assets/ChatGPT Image Aug 10, 2026, 01_48_18 PM.png";
 import {
   JavascriptIcon,
   TypescriptIcon,
@@ -130,6 +131,22 @@ export const projects: Array<{
   {
     id: 1,
     type: "uiux",
+    title: "Al-Tabib Al-Hafed app design",
+    problem:
+      "Medical students face difficulties managing their time between their studies and Quran memorization, as well as consistently tracking their memorization and revision progress.",
+    description:
+      "I designed Al-Tabib Al-Hafed as an app that helps medical students organize their Quran memorization and revision, track their progress, and build a consistent daily habit. As a UI/UX Designer, I focused on simplicity, easy access to information, and an engaging experience that encourages users to stay consistent with their memorization journey.",
+    image: tabib,
+    tech: [{ label: "Figma", icon: FigmaIcon }],
+    hackathon: "",
+    liveDemo:
+      "",
+    github: "",
+    figma: "",
+  },
+  {
+    id: 2,
+    type: "uiux",
     title: "Rokhsa - the Smart Driving School Platform",
     problem:
       "Learning to drive in Algeria is still largely managed through manual processes. Learners often struggle to find reliable driving schools, track their training progress, and manage appointments, while driving schools spend valuable time handling registrations, schedules, and student records manually.",
@@ -145,7 +162,7 @@ export const projects: Array<{
       "https://www.figma.com/design/NzHDINBZtitHegyQ5X1jCS/rukhsa-app?node-id=435-2&t=kM44AgQOkcenheHH-1",
   },
   {
-    id: 2,
+    id: 3,
     type: "development",
     title: "AI-Powered Job Matching Platform",
     problem:
@@ -169,7 +186,7 @@ export const projects: Array<{
       "https://www.figma.com/deck/h5Pmcq96LZC3Q5065s940j/Untitled?node-id=1-220&viewport=-5849%2C-109%2C0.53&t=08A4QFzdxSyXK653-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1",
   },
   {
-    id: 3,
+    id: 4,
     type: "development",
     title: "Works Exhibition - أم وائل",
     problem:
@@ -191,7 +208,7 @@ export const projects: Array<{
   },
 
   {
-    id: 4,
+    id: 5,
     type: "development",
     title: "Note Web App",
     problem:
@@ -216,7 +233,7 @@ export const projects: Array<{
   },
 
   {
-    id: 5,
+    id: 6,
     type: "development",
     title: "Headphone Website",
     description:
@@ -236,7 +253,7 @@ export const projects: Array<{
   },
 
   {
-    id: 6,
+    id: 7,
     type: "development",
     title: "Weather App",
     description:
@@ -257,7 +274,7 @@ export const projects: Array<{
   },
 
   {
-    id: 7,
+    id: 8,
     type: "development",
     title: "Library Book Hero Section",
     description:
@@ -277,7 +294,7 @@ export const projects: Array<{
   },
 
   {
-    id: 8,
+    id: 9,
     type: "development",
     title: "Rihla Web",
     problem:
@@ -299,7 +316,7 @@ export const projects: Array<{
   },
 
   {
-    id: 9,
+    id: 10,
     type: "uiux",
     title: "Booking Platform",
     description:
@@ -313,7 +330,7 @@ export const projects: Array<{
       "https://www.figma.com/design/Ud9huPl27nRy6pMLPBIlZb/Latest-Hotel-Booking-Website-Prototype--Community---Copy-?node-id=0-1&t=tG3MIkJrcfgWfCgy-1",
   },
   {
-    id: 10,
+    id: 11,
     type: "uiux",
     title: "Shoes E-commerce",
     description:
