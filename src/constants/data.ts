@@ -9,7 +9,7 @@ import sewing from "../assets/ChatGPT Image Aug 6, 2026, 01_57_53 PM.webp";
 import hotel from "../assets/ChatGPT Image Aug 6, 2026, 12_56_04 PM.webp";
 import shoes from "../assets/ChatGPT Image Aug 6, 2026, 12_50_35 PM.webp";
 import rokhsa from "../assets/ChatGPT Image Aug 5, 2026, 11_48_00 PM 13.webp";
-import tabib from "../assets/ChatGPT Image Aug 10, 2026, 01_48_18 PM.png";
+import tabib from "../assets/Slide 4_3 - 1.webp";
 import {
   JavascriptIcon,
   TypescriptIcon,
@@ -140,7 +140,7 @@ export const projects: Array<{
     tech: [{ label: "Figma", icon: FigmaIcon }],
     hackathon: "",
     liveDemo:
-      "",
+      "https://www.linkedin.com/posts/ahmed-loucif-757854342_uiux-uidesign-uxdesign-activity-7492710718945943552-9YBE?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAFXpNDMBGYVLG4eX6B6TNBGOovKR8MMeCbM",
     github: "",
     figma: "",
   },
