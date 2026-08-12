@@ -28,9 +28,12 @@ export function ProjectsSection() {
             id={project.id}
             type={project.type}
             role={project.role}
+            category={project.category}
+            duration={project.duration}
             title={project.title}
             problem={project.problem}
             description={project.description}
+            shortDescription={project.shortDescription}
             image={project.image}
             tech={project.tech}
             liveDemo={project.liveDemo}

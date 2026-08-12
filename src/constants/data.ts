@@ -117,6 +117,12 @@ export type ProjectType = "development" | "uiux";
 
 export type ProjectRole = "fullstack" | "frontend" | "backend" | "design";
 
+export type ProjectCategory =
+  | "personal"
+  | "university"
+  | "client"
+  | "hackathon";
+
 export const roleConfig: Record<ProjectRole, string> = {
   fullstack: "Full Stack",
   frontend: "Front End",
@@ -124,13 +130,23 @@ export const roleConfig: Record<ProjectRole, string> = {
   design: "Design",
 };
 
+export const categoryConfig: Record<ProjectCategory, string> = {
+  personal: "Personal",
+  university: "University",
+  client: "Client",
+  hackathon: "Hackathon",
+};
+
 export const projects: Array<{
   id: number;
   title: string;
   type: ProjectType;
   role: ProjectRole;
+  category: ProjectCategory;
+  duration: string;
   problem?: string;
   description: string;
+  shortDescription: string;
   image: string;
   tech: TechItem[];
   liveDemo: string;
@@ -142,11 +158,15 @@ export const projects: Array<{
     id: 1,
     type: "uiux",
     role: "design",
+    category: "personal",
+    duration: "2026",
     title: "Al-Tabib Al-Hafed app design",
     problem:
       "Medical students face difficulties managing their time between their studies and Quran memorization, as well as consistently tracking their memorization and revision progress.",
     description:
       "I designed Al-Tabib Al-Hafed as an app that helps medical students organize their Quran memorization and revision, track their progress, and build a consistent daily habit. As a UI/UX Designer, I focused on simplicity, easy access to information, and an engaging experience that encourages users to stay consistent with their memorization journey.",
+    shortDescription:
+      "A UI/UX design for an app that helps medical students balance Quran memorization with their studies.",
     image: tabib,
     tech: [{ label: "Figma", icon: FigmaIcon }],
     hackathon: "",
@@ -159,11 +179,15 @@ export const projects: Array<{
     id: 2,
     type: "uiux",
     role: "design",
+    category: "personal",
+    duration: "2026",
     title: "Rokhsa - the Smart Driving School Platform",
     problem:
       "Learning to drive in Algeria is still largely managed through manual processes. Learners often struggle to find reliable driving schools, track their training progress, and manage appointments, while driving schools spend valuable time handling registrations, schedules, and student records manually.",
     description:
       "Built Rokhsa, a modern web and mobile platform that digitizes the entire driving school experience. The platform enables learners to register, book lessons, track their progress, and receive important notifications, while providing driving schools with a centralized dashboard to manage students, instructors, schedules, and administrative tasks efficiently.",
+    shortDescription:
+      "A smart platform that digitizes the driving school experience for both learners and schools.",
     image: rokhsa,
     tech: [{ label: "Figma", icon: FigmaIcon }],
     hackathon: "",
@@ -177,11 +201,15 @@ export const projects: Array<{
     id: 3,
     type: "development",
     role: "fullstack",
+    category: "hackathon",
+    duration: "2026",
     title: "AI-Powered Job Matching Platform",
     problem:
       "Finding the right job can be challenging for candidates, while recruiters spend significant time reviewing large volumes of applications and identifying qualified profiles.",
     description:
       "Built an AI-powered recruitment platform that matches candidates with suitable job opportunities based on their skills and experience. The system analyzes profiles, ranks matches by compatibility score, and helps recruiters quickly identify the most relevant applicants.",
+    shortDescription:
+      "An AI recruitment platform that matches candidates with the right job opportunities.",
     image: estinhackathon,
     tech: [
       { label: "React", icon: ReactIcon },
@@ -202,11 +230,15 @@ export const projects: Array<{
     id: 4,
     type: "development",
     role: "frontend",
+    category: "client",
+    duration: "2026",
     title: "Works Exhibition - أم وائل",
     problem:
       "Managing tailoring projects manually makes it difficult to organize previous work, pricing, specifications, and customer requests efficiently.",
     description:
       "Developed a digital portfolio platform that centralizes tailoring projects, allowing customers to browse designs while enabling the designer to manage work details, pricing, and project history from a single location.",
+    shortDescription:
+      "A digital portfolio platform that centralizes tailoring projects and customer requests.",
     image: sewing,
     tech: [
       { label: "React", icon: ReactIcon },
@@ -225,11 +257,15 @@ export const projects: Array<{
     id: 5,
     type: "development",
     role: "fullstack",
+    category: "personal",
+    duration: "2025",
     title: "Note Web App",
     problem:
       "Locally stored notes are vulnerable to data loss and cannot be easily accessed across multiple devices.",
     description:
       "Created a secure cloud-based note management application that allows users to create, organize, and access their notes from any device through authentication and real-time data storage.",
+    shortDescription:
+      "A secure cloud-based note-taking app accessible from any device.",
     image: noteapp,
     tech: [
       { label: "React", icon: ReactIcon },
@@ -251,9 +287,13 @@ export const projects: Array<{
     id: 6,
     type: "development",
     role: "frontend",
+    category: "personal",
+    duration: "2025",
     title: "Headphone Website",
     description:
       "Designed and developed a modern product landing page for a headphone brand, featuring responsive layouts, engaging visuals, and a user-focused browsing experience.",
+    shortDescription:
+      "A modern product landing page for a headphone brand.",
     image: headphone,
     tech: [
       { label: "React", icon: ReactIcon },
@@ -272,9 +312,13 @@ export const projects: Array<{
     id: 7,
     type: "development",
     role: "frontend",
+    category: "personal",
+    duration: "2025",
     title: "Weather App",
     description:
       "Built a weather forecasting application that integrates external APIs to provide real-time weather conditions, forecasts, and location-based insights through a clean and responsive interface.",
+    shortDescription:
+      "A real-time weather forecasting app with location-based insights.",
     image: weather,
     tech: [
       { label: "React", icon: ReactIcon },
@@ -294,9 +338,13 @@ export const projects: Array<{
     id: 8,
     type: "development",
     role: "frontend",
+    category: "personal",
+    duration: "2025",
     title: "Library Book Hero Section",
     description:
       "Designed and implemented a modern hero section for a digital library platform, focused on visual appeal, responsiveness, and improved user engagement.",
+    shortDescription:
+      "A modern hero section for a digital library platform.",
     image: booklibrary,
     tech: [
       { label: "React", icon: ReactIcon },
@@ -315,11 +363,15 @@ export const projects: Array<{
     id: 9,
     type: "development",
     role: "frontend",
+    category: "hackathon",
+    duration: "2026",
     title: "Rihla Web",
     problem:
       "Travelers often face difficulties planning efficient trips, discovering attractions, and finding guides or travel groups for organized experiences.",
     description:
       "Developed a smart travel planning platform that generates personalized itineraries based on budget and destination preferences, while providing route recommendations, guide discovery, and group travel coordination features.",
+    shortDescription:
+      "A smart travel planning platform that builds personalized itineraries.",
     image: rihlaweb,
     tech: [
       { label: "Next.js", icon: NextjsIcon },
@@ -338,9 +390,13 @@ export const projects: Array<{
     id: 10,
     type: "uiux",
     role: "design",
+    category: "personal",
+    duration: "2025",
     title: "Booking Platform",
     description:
       "A digital booking platform that simplifies reservation management with clear interfaces, easy navigation, and an efficient user workflow.",
+    shortDescription:
+      "A booking platform that simplifies reservation management.",
     image: hotel,
     tech: [{ label: "figma", icon: FigmaIcon }],
     hackathon: "",
@@ -353,9 +409,13 @@ export const projects: Array<{
     id: 11,
     type: "uiux",
     role: "design",
+    category: "personal",
+    duration: "2025",
     title: "Shoes E-commerce",
     description:
       "A modern online shopping platform for shoes, offering organized product displays, smooth browsing, and a simple purchasing experience.",
+    shortDescription:
+      "An online shopping platform for shoes with a smooth browsing experience.",
     image: shoes,
     tech: [{ label: "figma", icon: FigmaIcon }],
     hackathon: "",

@@ -4,6 +4,7 @@ import ScrollToTop from "./ScrollToTop";
 
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
+import ProjectDetail from "./pages/ProjectDetail";
 
 import { LoadingScreen } from "./components/LoadingScreen";
 import { AppLayout } from "./components/layout/AppLayout";
@@ -33,6 +34,7 @@ function App() {
         <Route element={<AppLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/projects" element={<Projects />} />
+          <Route path="/projects/:id" element={<ProjectDetail />} />
         </Route>
       </Routes>
     </BrowserRouter>

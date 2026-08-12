@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import type { ComponentType, SVGProps } from "react";
+import { useNavigate } from "react-router-dom";
+import type { ComponentType, MouseEvent, SVGProps } from "react";
 import {
   Github2Icon,
   LinkIcon,
@@ -10,6 +11,7 @@ import {
   roleConfig,
   type ProjectRole,
   type ProjectType,
+  type ProjectCategory,
 } from "../constants/data";
 type TechItem = {
   label: string;
@@ -19,9 +21,12 @@ export type project = {
   id: number;
   type: ProjectType;
   role: ProjectRole;
+  category: ProjectCategory;
+  duration: string;
   title: string;
   problem?: string;
   description: string;
+  shortDescription: string;
   image: string;
   tech: TechItem[];
   liveDemo: string;
@@ -34,8 +39,7 @@ export default function Projectcard({
   id,
   title,
   role,
-  problem,
-  description,
+  shortDescription,
   image,
   tech,
   liveDemo,
@@ -43,16 +47,27 @@ export default function Projectcard({
   figma,
   hackathon,
 }: project) {
+  const navigate = useNavigate();
   const easeOut = [0.22, 1, 0.36, 1] as const;
+
+  const handleCardClick = () => {
+    navigate(`/projects/${id}`);
+  };
+
+  const stopPropagation = (e: MouseEvent<HTMLAnchorElement>) => {
+    e.stopPropagation();
+  };
+
   return (
     <div>
       <motion.div
-        className="flex flex-col bg-[#1F1F1F] rounded-2xl overflow-hidden max-w-80 w-full h-full gap-3"
+        className="flex flex-col bg-[#1F1F1F] rounded-2xl overflow-hidden max-w-80 w-full h-full gap-3 cursor-pointer"
         key={id}
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         whileHover={{ scale: 1.05 }}
+        onClick={handleCardClick}
         transition={{ duration: 0.6, ease: easeOut, delay: 0.08 }}
       >
         <div className="relative overflow-hidden h-50">
@@ -71,36 +86,26 @@ export default function Projectcard({
             <div className="flex text-left">{title}</div>
 
             {figma && figma !== "" && (
-              <a href={figma} target="_blank" rel="noopener noreferrer">
+              <a
+                href={figma}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={stopPropagation}
+              >
                 <FigmaIcon />
               </a>
             )}
           </h3>
           {hackathon && hackathon !== "" && (
-            <span className="flex items-center gap-1 rounded-[22px] bg-[#5195F0] px-2 py-1 text-white font-['Itim'] text-[16px]">
+            <span className="flex items-center gap-1 rounded-[22px] bg-[#30496b] px-2 py-1 text-white font-['Itim'] text-[16px]">
               <HackathonIcon />
               {hackathon}
             </span>
           )}
           <div className="flex flex-col w-full gap-2 text-left">
-            {problem && (
-              <div>
-                <span className="text-[#ffffff] text-[11px] font-semibold uppercase tracking-widest">
-                  Problem
-                </span>
-                <p className="text-[#9CA3AF] text-sm text-left mt-0.5">
-                  {problem}
-                </p>
-              </div>
-            )}
-            <div>
-              <span className="text-[#ffffff] text-[11px] font-semibold uppercase tracking-widest">
-                Solution
-              </span>
-              <p className="text-[#9CA3AF] text-sm text-left mt-0.5">
-                {description}
-              </p>
-            </div>
+            <p className="text-[#9CA3AF] text-sm text-left mt-0.5">
+              {shortDescription}
+            </p>
           </div>
           <div className="flex flex-wrap gap-2 ">
             {tech.map((tech) => {
@@ -124,6 +129,7 @@ export default function Projectcard({
                 className="flex items-center justify-center flex-1 gap-2 px-4 py-1 text-white"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={stopPropagation}
               >
                 <LinkIcon width={20} height={20} />
                 Live
@@ -136,6 +142,7 @@ export default function Projectcard({
                 className="flex items-center justify-center flex-1 gap-2 px-4 py-1 text-white"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={stopPropagation}
               >
                 <Github2Icon width={20} height={20} />
                 Code
