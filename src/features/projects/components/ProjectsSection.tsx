@@ -27,6 +27,7 @@ export function ProjectsSection() {
             key={project.id}
             id={project.id}
             type={project.type}
+            role={project.role}
             title={project.title}
             problem={project.problem}
             description={project.description}

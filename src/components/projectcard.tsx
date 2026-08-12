@@ -6,7 +6,11 @@ import {
   FigmaIcon,
   HackathonIcon,
 } from "../constants/Icon";
-import type { ProjectType } from "../constants/data";
+import {
+  roleConfig,
+  type ProjectRole,
+  type ProjectType,
+} from "../constants/data";
 type TechItem = {
   label: string;
   icon: ComponentType<SVGProps<SVGSVGElement>>;
@@ -14,6 +18,7 @@ type TechItem = {
 export type project = {
   id: number;
   type: ProjectType;
+  role: ProjectRole;
   title: string;
   problem?: string;
   description: string;
@@ -28,6 +33,7 @@ export type project = {
 export default function Projectcard({
   id,
   title,
+  role,
   problem,
   description,
   image,
@@ -56,6 +62,9 @@ export default function Projectcard({
             className="object-cover w-full h-full transition-transform duration-300 hover:scale-110"
           />
           <div className="absolute inset-0 " />
+          <span className="absolute top-3 left-3 rounded-full bg-[#161513]/80 border border-white/20 px-3 py-1 font-['Itim'] text-[13px] text-white">
+            {roleConfig[role]}
+          </span>
         </div>
         <div className="flex flex-col items-start self-stretch justify-center gap-3 px-4 py-3">
           <h3 className="flex flex-row justify-between w-full text-xl font-semibold text-[#ffffff]">

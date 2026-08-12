@@ -115,10 +115,20 @@ type TechItem = {
 
 export type ProjectType = "development" | "uiux";
 
+export type ProjectRole = "fullstack" | "frontend" | "backend" | "design";
+
+export const roleConfig: Record<ProjectRole, string> = {
+  fullstack: "Full Stack",
+  frontend: "Front End",
+  backend: "Back End",
+  design: "Design",
+};
+
 export const projects: Array<{
   id: number;
   title: string;
   type: ProjectType;
+  role: ProjectRole;
   problem?: string;
   description: string;
   image: string;
@@ -131,6 +141,7 @@ export const projects: Array<{
   {
     id: 1,
     type: "uiux",
+    role: "design",
     title: "Al-Tabib Al-Hafed app design",
     problem:
       "Medical students face difficulties managing their time between their studies and Quran memorization, as well as consistently tracking their memorization and revision progress.",
@@ -147,6 +158,7 @@ export const projects: Array<{
   {
     id: 2,
     type: "uiux",
+    role: "design",
     title: "Rokhsa - the Smart Driving School Platform",
     problem:
       "Learning to drive in Algeria is still largely managed through manual processes. Learners often struggle to find reliable driving schools, track their training progress, and manage appointments, while driving schools spend valuable time handling registrations, schedules, and student records manually.",
@@ -164,6 +176,7 @@ export const projects: Array<{
   {
     id: 3,
     type: "development",
+    role: "fullstack",
     title: "AI-Powered Job Matching Platform",
     problem:
       "Finding the right job can be challenging for candidates, while recruiters spend significant time reviewing large volumes of applications and identifying qualified profiles.",
@@ -188,6 +201,7 @@ export const projects: Array<{
   {
     id: 4,
     type: "development",
+    role: "frontend",
     title: "Works Exhibition - أم وائل",
     problem:
       "Managing tailoring projects manually makes it difficult to organize previous work, pricing, specifications, and customer requests efficiently.",
@@ -210,6 +224,7 @@ export const projects: Array<{
   {
     id: 5,
     type: "development",
+    role: "fullstack",
     title: "Note Web App",
     problem:
       "Locally stored notes are vulnerable to data loss and cannot be easily accessed across multiple devices.",
@@ -235,6 +250,7 @@ export const projects: Array<{
   {
     id: 6,
     type: "development",
+    role: "frontend",
     title: "Headphone Website",
     description:
       "Designed and developed a modern product landing page for a headphone brand, featuring responsive layouts, engaging visuals, and a user-focused browsing experience.",
@@ -255,6 +271,7 @@ export const projects: Array<{
   {
     id: 7,
     type: "development",
+    role: "frontend",
     title: "Weather App",
     description:
       "Built a weather forecasting application that integrates external APIs to provide real-time weather conditions, forecasts, and location-based insights through a clean and responsive interface.",
@@ -276,6 +293,7 @@ export const projects: Array<{
   {
     id: 8,
     type: "development",
+    role: "frontend",
     title: "Library Book Hero Section",
     description:
       "Designed and implemented a modern hero section for a digital library platform, focused on visual appeal, responsiveness, and improved user engagement.",
@@ -296,6 +314,7 @@ export const projects: Array<{
   {
     id: 9,
     type: "development",
+    role: "frontend",
     title: "Rihla Web",
     problem:
       "Travelers often face difficulties planning efficient trips, discovering attractions, and finding guides or travel groups for organized experiences.",
@@ -318,6 +337,7 @@ export const projects: Array<{
   {
     id: 10,
     type: "uiux",
+    role: "design",
     title: "Booking Platform",
     description:
       "A digital booking platform that simplifies reservation management with clear interfaces, easy navigation, and an efficient user workflow.",
@@ -332,6 +352,7 @@ export const projects: Array<{
   {
     id: 11,
     type: "uiux",
+    role: "design",
     title: "Shoes E-commerce",
     description:
       "A modern online shopping platform for shoes, offering organized product displays, smooth browsing, and a simple purchasing experience.",
