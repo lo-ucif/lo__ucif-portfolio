@@ -9,21 +9,21 @@ import {
   HackathonIcon,
 } from "../constants/Icon";
 
-const ArrowLeftIcon = (props: SVGProps<SVGSVGElement>) => (
+const ReturnIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="20"
-    height="20"
-    viewBox="0 0 24 24"
+    width="26"
+    height="26"
+    viewBox="0 0 26 26"
     fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
     {...props}
   >
-    <path d="M19 12H5" />
-    <path d="m12 19-7-7 7-7" />
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M4.33333 10.8333L3.56742 11.5993L2.8015 10.8333L3.56742 10.0674L4.33333 10.8333ZM22.75 19.5C22.75 19.7873 22.6359 20.0629 22.4327 20.266C22.2295 20.4692 21.954 20.5833 21.6667 20.5833C21.3793 20.5833 21.1038 20.4692 20.9006 20.266C20.6975 20.0629 20.5833 19.7873 20.5833 19.5H22.75ZM8.98408 17.0159L3.56742 11.5993L5.09925 10.0674L10.5159 15.4841L8.98408 17.0159ZM3.56742 10.0674L8.98408 4.65076L10.5159 6.18259L5.09925 11.5993L3.56742 10.0674ZM4.33333 9.75001H15.1667V11.9167H4.33333V9.75001ZM22.75 17.3333V19.5H20.5833V17.3333H22.75ZM15.1667 9.75001C17.1779 9.75001 19.1067 10.549 20.5289 11.9711C21.951 13.3933 22.75 15.3221 22.75 17.3333H20.5833C20.5833 15.8968 20.0127 14.519 18.9968 13.5032C17.981 12.4874 16.6033 11.9167 15.1667 11.9167V9.75001Z"
+      fill="white"
+    />
   </svg>
 );
 
@@ -110,18 +110,19 @@ export default function ProjectDetail() {
   }
 
   return (
-    <div className="flex flex-col items-center min-h-screen bg-[#161513] px-5 pb-20 pt-5 text-white sm:px-10 lg:px-20">
+    <div className="flex flex-col items-center min-h-screen bg-[#161513] px-5 pb-20 pt-20 text-white sm:px-10 lg:px-20">
       <div className="flex flex-col w-full gap-6 max-w-260">
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: easeOut }}
+          className="w-full"
         >
           <Link
             to="/projects"
             className="inline-flex items-center gap-2 font-['Poppins'] text-[15px] text-[#9CA3AF] transition-colors duration-300 hover:text-white"
           >
-            <ArrowLeftIcon width={18} height={18} />
+            <ReturnIcon width={18} height={18} />
             Back to Projects
           </Link>
         </motion.div>
