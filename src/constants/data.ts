@@ -113,7 +113,7 @@ type TechItem = {
   icon: ComponentType<SVGProps<SVGSVGElement>>;
 };
 
-export type Type = "development" | "uiux";
+export type Typeproject = "development" | "uiux";
 
 export type ProjectRole = "fullstack" | "frontend" | "backend" | "design";
 
@@ -140,7 +140,7 @@ export const categoryConfig: Record<ProjectCategory, string> = {
 export const projects: Array<{
   id: number;
   title: string;
-  type: Type;
+  type: Typeproject;
   role: ProjectRole;
   category: ProjectCategory;
   projectType: string;

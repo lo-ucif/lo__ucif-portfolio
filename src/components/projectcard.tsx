@@ -10,7 +10,7 @@ import {
 import {
   roleConfig,
   type ProjectRole,
-  type Type,
+  type Typeproject,
   type ProjectCategory,
 } from "../constants/data";
 type TechItem = {
@@ -19,7 +19,7 @@ type TechItem = {
 };
 export type project = {
   id: number;
-  type: Type;
+  type: Typeproject;
   role: ProjectRole;
   category: ProjectCategory;
   title: string;
