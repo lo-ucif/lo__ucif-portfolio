@@ -308,6 +308,20 @@ export default function ProjectDetail() {
             </div>
           </motion.aside>
         </div>
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: easeOut }}
+          className="w-full"
+        >
+          <Link
+            to="/projects"
+            className="inline-flex items-center gap-2 font-['Poppins'] text-[15px] text-[#9CA3AF] transition-colors duration-300 hover:text-white"
+          >
+            <ReturnIcon width={18} height={18} />
+            Back to Projects
+          </Link>
+        </motion.div>
       </div>
     </div>
   );
