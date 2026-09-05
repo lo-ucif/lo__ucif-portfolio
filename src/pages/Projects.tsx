@@ -74,7 +74,6 @@ export default function Projects() {
                   type={project.type}
                   role={project.role}
                   category={project.category}
-                  duration={project.duration}
                   title={project.title}
                   problem={project.problem}
                   description={project.description}

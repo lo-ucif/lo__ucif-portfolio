@@ -115,6 +115,9 @@ type TechItem = {
 
 export type Typeproject = "development" | "uiux";
 
+// Keep the public project-filter type named consistently with its consumers.
+export type ProjectType = Typeproject;
+
 export type ProjectRole = "fullstack" | "frontend" | "backend" | "design";
 
 export type ProjectCategory =
