@@ -55,21 +55,7 @@ const CalendarIcon = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-const UserIcon = (props: SVGProps<SVGSVGElement>) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="25"
-    height="25"
-    viewBox="0 0 30 30"
-    fill="none"
-    {...props}
-  >
-    <path
-      d="M15 3C13.4087 3 11.8826 3.63214 10.7574 4.75736C9.63214 5.88258 9 7.4087 9 9C9 10.5913 9.63214 12.1174 10.7574 13.2426C11.8826 14.3679 13.4087 15 15 15C16.5913 15 18.1174 14.3679 19.2426 13.2426C20.3679 12.1174 21 10.5913 21 9C21 7.4087 20.3679 5.88258 19.2426 4.75736C18.1174 3.63214 16.5913 3 15 3ZM7.5135 16.5C7.1184 16.4982 6.72684 16.5745 6.3613 16.7245C5.99577 16.8744 5.66345 17.0951 5.38345 17.3739C5.10344 17.6526 4.88125 17.984 4.72965 18.3488C4.57804 18.7137 4.5 19.1049 4.5 19.5C4.5 22.0365 5.7495 23.949 7.7025 25.1955C9.6255 26.421 12.2175 27 15 27C17.7825 27 20.3745 26.421 22.2975 25.1955C24.2505 23.9505 25.5 22.035 25.5 19.5C25.5 18.7044 25.1839 17.9413 24.6213 17.3787C24.0587 16.8161 23.2956 16.5 22.5 16.5H7.5135Z"
-      fill="#4176C3"
-    />
-  </svg>
-);
+
 
 const TagIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
@@ -86,6 +72,23 @@ const TagIcon = (props: SVGProps<SVGSVGElement>) => (
       stroke-width="3.75"
       stroke-linecap="round"
       stroke-linejoin="round"
+    />
+  </svg>
+);
+
+const StatusIcon = (props: SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.8"
+    {...props}
+  >
+    <path
+      d="M3 12h4l2.2-7 4 14 2.1-7H21"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -108,6 +111,13 @@ export default function ProjectDetail() {
       </div>
     );
   }
+
+  const summaryDetails = [
+    { label: "role", value: roleConfig[project.role], Icon: CalendarIcon },
+    { label: "Year", value: project.year, Icon: CalendarIcon },
+    { label: "Status", value: project.status, Icon: StatusIcon },
+    { label: "Team", value: project.team, Icon: TagIcon },
+  ];
 
   return (
     <div className="flex flex-col items-center min-h-screen bg-[#161513] px-5 pb-20 pt-20 text-white sm:px-10 lg:px-20">
@@ -136,12 +146,21 @@ export default function ProjectDetail() {
           <h1 className="font-['Itim'] text-[32px] text-white sm:text-[40px]">
             {project.title}
           </h1>
+          <p className="font-['Poppins'] text-[15px] text-[#9CA3AF] leading-relaxed">
+            {project.shortDescription}
+          </p>
           <div className="flex flex-wrap items-center gap-2">
+            <span className="rounded-full bg-[#161513]/80 border border-white/20 px-3 py-1 font-['Itim'] text-[14px] text-white">
+              {project.projectType}
+            </span>
             <span className="rounded-full bg-[#161513]/80 border border-white/20 px-3 py-1 font-['Itim'] text-[14px] text-white">
               {roleConfig[project.role]}
             </span>
             <span className="rounded-full bg-[#1F1F1F] border border-white/20 px-3 py-1 font-['Itim'] text-[14px] text-[#9CA3AF]">
               {categoryConfig[project.category]}
+            </span>
+            <span className="rounded-full bg-[#161513]/80   px-3 py-1 font-['Itim'] text-[14px] text-white/50">
+              {project.year}
             </span>
             {project.hackathon && project.hackathon !== "" && (
               <span className="flex items-center gap-1 rounded-[22px] bg-[#30496b] px-3 py-1 text-white font-['Itim'] text-[14px]">
@@ -204,48 +223,28 @@ export default function ProjectDetail() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: easeOut, delay: 0.2 }}
           >
-            <div className="flex flex-col gap-5 rounded-2xl bg-[#1F1F1F] p-5">
-              <h2 className="font-['Itim'] text-[20px] text-white">
-                Project Info
-              </h2>
-              <div className="flex items-center gap-3">
-                <TagIcon className="text-[#5195F0]" />
-                <div className="flex flex-col">
-                  <span className="font-['Poppins'] text-[11px] uppercase tracking-widest text-[#9CA3AF]">
-                    Project Type
-                  </span>
-                  <span className="font-['Poppins'] text-[15px] text-white">
-                    {categoryConfig[project.category]}
-                  </span>
+            <dl className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
+              {summaryDetails.map(({ label, value, Icon }) => (
+                <div
+                  key={label}
+                  className="relative min-h-28 overflow-hidden rounded-[20px] border border-white/10 bg-[#1D1D1D] p-6 before:absolute before:-right-3 before:-top-7 before:h-24 before:w-24 before:rounded-full before:bg-white/[0.025]"
+                >
+                  <div className="relative z-10 flex flex-col gap-4">
+                    <dt className="flex items-center gap-2 font-['Poppins'] text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8F8F8F]">
+                      <Icon width={20} height={20} aria-hidden="true" />
+                      {label}
+                    </dt>
+                    <dd className="m-0 font-['Itim'] text-[20px] text-white">
+                      {value}
+                    </dd>
+                  </div>
                 </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <UserIcon className="text-[#5195F0]" />
-                <div className="flex flex-col">
-                  <span className="font-['Poppins'] text-[11px] uppercase tracking-widest text-[#9CA3AF]">
-                    My Role
-                  </span>
-                  <span className="font-['Poppins'] text-[15px] text-white">
-                    {roleConfig[project.role]}
-                  </span>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <CalendarIcon className="text-[#5195F0]" />
-                <div className="flex flex-col">
-                  <span className="font-['Poppins'] text-[11px] uppercase tracking-widest text-[#9CA3AF]">
-                    Date
-                  </span>
-                  <span className="font-['Poppins'] text-[15px] text-white">
-                    {project.duration}
-                  </span>
-                </div>
-              </div>
-            </div>
+              ))}
+            </dl>
 
             <div className="flex flex-col gap-4 rounded-2xl bg-[#1F1F1F] p-5">
               <h2 className="font-['Itim'] text-[20px] text-white">
-                Tech Stack
+                Technologies
               </h2>
               <div className="flex flex-wrap gap-2">
                 {project.tech.map((tech) => {
@@ -263,15 +262,15 @@ export default function ProjectDetail() {
               </div>
             </div>
 
-            <div className="flex flex-col gap-5 rounded-2xl bg-[#1F1F1F] p-5">
+            <div className="flex flex-col gap-5 rounded-2xl bg-[#1F1F1F] p-5 ">
               <h2 className="font-['Itim'] text-[20px] text-white">Links</h2>
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-row items-center justify-center gap-3 ">
                 {project.liveDemo && project.liveDemo !== "" && (
                   <a
                     href={project.liveDemo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 rounded-xl bg-[#303030] px-4 py-2.5 transition-colors duration-300 hover:bg-[#3a3a3a]"
+                    className="flex justify-center items-center gap-3 rounded-xl bg-[#303030] px-4 py-2.5 transition-colors duration-300 hover:bg-[#3a3a3a] w-full"
                   >
                     <LinkIcon width={18} height={18} />
                     <span className="font-['Poppins'] text-[15px] text-white">
@@ -284,7 +283,7 @@ export default function ProjectDetail() {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 rounded-xl bg-[#303030] px-4 py-2.5 transition-colors duration-300 hover:bg-[#3a3a3a]"
+                    className="w-full flex justify-center items-center gap-3 rounded-xl bg-[#303030] px-4 py-2.5 transition-colors duration-300 hover:bg-[#3a3a3a]"
                   >
                     <Github2Icon width={18} height={18} />
                     <span className="font-['Poppins'] text-[15px] text-white">
@@ -297,7 +296,7 @@ export default function ProjectDetail() {
                     href={project.figma}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 rounded-xl bg-[#303030] px-4 py-2.5 transition-colors duration-300 hover:bg-[#3a3a3a]"
+                    className="w-full flex justify-center items-center gap-3 rounded-xl bg-[#303030] px-4 py-2.5 transition-colors duration-300 hover:bg-[#3a3a3a] "
                   >
                     <FigmaIcon width={18} height={18} />
                     <span className="font-['Poppins'] text-[15px] text-white">

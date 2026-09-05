@@ -113,7 +113,7 @@ type TechItem = {
   icon: ComponentType<SVGProps<SVGSVGElement>>;
 };
 
-export type ProjectType = "development" | "uiux";
+export type Type = "development" | "uiux";
 
 export type ProjectRole = "fullstack" | "frontend" | "backend" | "design";
 
@@ -124,26 +124,29 @@ export type ProjectCategory =
   | "hackathon";
 
 export const roleConfig: Record<ProjectRole, string> = {
-  fullstack: "Full Stack",
-  frontend: "Front End",
-  backend: "Back End",
-  design: "Design",
+  fullstack: "Full-Stack Developer",
+  frontend: "Frontend Developer",
+  backend: "Backend Developer",
+  design: "UI/UX Designer",
 };
 
 export const categoryConfig: Record<ProjectCategory, string> = {
-  personal: "Personal",
-  university: "University",
-  client: "Client",
+  personal: "Personal Project",
+  university: "University Project",
+  client: "Client Project",
   hackathon: "Hackathon",
 };
 
 export const projects: Array<{
   id: number;
   title: string;
-  type: ProjectType;
+  type: Type;
   role: ProjectRole;
   category: ProjectCategory;
-  duration: string;
+  projectType: string;
+  team: string;
+  status: "Completed" | "In Progress";
+  year: string;
   problem?: string;
   description: string;
   shortDescription: string;
@@ -159,7 +162,10 @@ export const projects: Array<{
     type: "uiux",
     role: "design",
     category: "personal",
-    duration: "2026",
+    projectType: "Mobile App",
+    team: "Solo",
+    status: "Completed",
+    year: "2026",
     title: "Al-Tabib Al-Hafed app design",
     problem:
       "Medical students face difficulties managing their time between their studies and Quran memorization, as well as consistently tracking their memorization and revision progress.",
@@ -171,7 +177,7 @@ export const projects: Array<{
     tech: [{ label: "Figma", icon: FigmaIcon }],
     hackathon: "",
     liveDemo:
-      "https://www.linkedin.com/posts/ahmed-loucif-757854342_uiux-uidesign-uxdesign-activity-7492710718945943552-9YBE?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAFXpNDMBGYVLG4eX6B6TNBGOovKR8MMeCbM",
+      "https://www.linkedin.com/posts/ahmed-loucif-757854342_Ui/Ux Design-uidesign-uxdesign-activity-7492710718945943552-9YBE?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAFXpNDMBGYVLG4eX6B6TNBGOovKR8MMeCbM",
     github: "",
     figma: "",
   },
@@ -180,7 +186,10 @@ export const projects: Array<{
     type: "uiux",
     role: "design",
     category: "personal",
-    duration: "2026",
+    projectType: "Web App / Mobile App",
+    team: "Solo",
+    status: "Completed",
+    year: "2026",
     title: "Rokhsa - the Smart Driving School Platform",
     problem:
       "Learning to drive in Algeria is still largely managed through manual processes. Learners often struggle to find reliable driving schools, track their training progress, and manage appointments, while driving schools spend valuable time handling registrations, schedules, and student records manually.",
@@ -192,7 +201,7 @@ export const projects: Array<{
     tech: [{ label: "Figma", icon: FigmaIcon }],
     hackathon: "",
     liveDemo:
-      "https://www.linkedin.com/posts/ahmed-loucif-757854342_uiux-uxdesign-figma-ugcPost-7490915921327198208-KWqx/?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAFXpNDMBGYVLG4eX6B6TNBGOovKR8MMeCbM",
+      "https://www.linkedin.com/posts/ahmed-loucif-757854342_Ui/Ux Design-uxdesign-figma-ugcPost-7490915921327198208-KWqx/?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAFXpNDMBGYVLG4eX6B6TNBGOovKR8MMeCbM",
     github: "",
     figma:
       "https://www.figma.com/design/NzHDINBZtitHegyQ5X1jCS/rukhsa-app?node-id=435-2&t=kM44AgQOkcenheHH-1",
@@ -202,7 +211,10 @@ export const projects: Array<{
     type: "development",
     role: "fullstack",
     category: "hackathon",
-    duration: "2026",
+    projectType: "Web App / SaaS",
+    team: "3 Developers",
+    status: "Completed",
+    year: "2026",
     title: "AI-Powered Job Matching Platform",
     problem:
       "Finding the right job can be challenging for candidates, while recruiters spend significant time reviewing large volumes of applications and identifying qualified profiles.",
@@ -231,7 +243,10 @@ export const projects: Array<{
     type: "development",
     role: "frontend",
     category: "client",
-    duration: "2026",
+    projectType: "Web App",
+    team: "Solo",
+    status: "Completed",
+    year: "2026",
     title: "Works Exhibition - أم وائل",
     problem:
       "Managing tailoring projects manually makes it difficult to organize previous work, pricing, specifications, and customer requests efficiently.",
@@ -258,7 +273,10 @@ export const projects: Array<{
     type: "development",
     role: "fullstack",
     category: "personal",
-    duration: "2025",
+    projectType: "Web App",
+    team: "Solo",
+    status: "Completed",
+    year: "2025",
     title: "Note Web App",
     problem:
       "Locally stored notes are vulnerable to data loss and cannot be easily accessed across multiple devices.",
@@ -288,12 +306,14 @@ export const projects: Array<{
     type: "development",
     role: "frontend",
     category: "personal",
-    duration: "2025",
+    projectType: "Website",
+    team: "Solo",
+    status: "Completed",
+    year: "2025",
     title: "Headphone Website",
     description:
       "Designed and developed a modern product landing page for a headphone brand, featuring responsive layouts, engaging visuals, and a user-focused browsing experience.",
-    shortDescription:
-      "A modern product landing page for a headphone brand.",
+    shortDescription: "A modern product landing page for a headphone brand.",
     image: headphone,
     tech: [
       { label: "React", icon: ReactIcon },
@@ -313,7 +333,10 @@ export const projects: Array<{
     type: "development",
     role: "frontend",
     category: "personal",
-    duration: "2025",
+    projectType: "Web App",
+    team: "Solo",
+    status: "Completed",
+    year: "2025",
     title: "Weather App",
     description:
       "Built a weather forecasting application that integrates external APIs to provide real-time weather conditions, forecasts, and location-based insights through a clean and responsive interface.",
@@ -339,12 +362,14 @@ export const projects: Array<{
     type: "development",
     role: "frontend",
     category: "personal",
-    duration: "2025",
+    projectType: "Website",
+    team: "Solo",
+    status: "Completed",
+    year: "2025",
     title: "Library Book Hero Section",
     description:
       "Designed and implemented a modern hero section for a digital library platform, focused on visual appeal, responsiveness, and improved user engagement.",
-    shortDescription:
-      "A modern hero section for a digital library platform.",
+    shortDescription: "A modern hero section for a digital library platform.",
     image: booklibrary,
     tech: [
       { label: "React", icon: ReactIcon },
@@ -364,7 +389,10 @@ export const projects: Array<{
     type: "development",
     role: "frontend",
     category: "hackathon",
-    duration: "2026",
+    projectType: "Web App / SaaS",
+    team: "3 Developers",
+    status: "Completed",
+    year: "2026",
     title: "Rihla Web",
     problem:
       "Travelers often face difficulties planning efficient trips, discovering attractions, and finding guides or travel groups for organized experiences.",
@@ -391,7 +419,10 @@ export const projects: Array<{
     type: "uiux",
     role: "design",
     category: "personal",
-    duration: "2025",
+    projectType: "Web App",
+    team: "Solo",
+    status: "Completed",
+    year: "2025",
     title: "Booking Platform",
     description:
       "A digital booking platform that simplifies reservation management with clear interfaces, easy navigation, and an efficient user workflow.",
@@ -410,7 +441,10 @@ export const projects: Array<{
     type: "uiux",
     role: "design",
     category: "personal",
-    duration: "2025",
+    projectType: "Web App",
+    team: "Solo",
+    status: "Completed",
+    year: "2025",
     title: "Shoes E-commerce",
     description:
       "A modern online shopping platform for shoes, offering organized product displays, smooth browsing, and a simple purchasing experience.",
