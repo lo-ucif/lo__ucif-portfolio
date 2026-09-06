@@ -67,7 +67,7 @@ export default function Projectcard({
         viewport={{ once: true, amount: 0.2 }}
         whileHover={{ scale: 1.05 }}
         onClick={handleCardClick}
-        transition={{ duration: 0.6, ease: easeOut, delay: 0.08 }}
+        transition={{ duration: 0.35, ease: easeOut, delay: 0 }}
       >
         <div className="relative overflow-hidden h-50">
           <img

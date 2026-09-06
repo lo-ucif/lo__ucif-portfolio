@@ -33,7 +33,7 @@ export default function Projects() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.6, ease: easeOut }}
+        transition={{ duration: 0.1, ease: easeOut }}
       >
         Projects
       </motion.h2>
@@ -66,7 +66,7 @@ export default function Projects() {
                 initial={{ opacity: 0, scale: 0.92, y: 16 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.92, y: -16 }}
-                transition={{ duration: 0.35, ease: easeOut }}
+                transition={{ duration: 0.3, ease: easeOut }}
               >
                 <Projectcard
                   key={project.id}
