@@ -30,46 +30,77 @@ const ReturnIcon = (props: SVGProps<SVGSVGElement>) => (
 const CalendarIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="25"
-    height="25"
-    viewBox="0 0 30 30"
+    viewBox="0 0 24 24"
     fill="none"
+    stroke="currentColor"
+    strokeWidth="1.8"
     {...props}
   >
-    <path
-      fill-rule="evenodd"
-      clip-rule="evenodd"
-      d="M8.75 5.0225C8.075 5.05125 7.59 5.115 7.16125 5.26C6.42798 5.50552 5.76165 5.91777 5.21464 6.46435C4.66763 7.01092 4.25485 7.67693 4.00875 8.41C3.75 9.18625 3.75 10.1438 3.75 12.0613C3.75 12.18 3.75 12.24 3.76625 12.2875C3.7816 12.3335 3.80743 12.3753 3.84171 12.4095C3.87598 12.4438 3.91777 12.4697 3.96375 12.485C4.01125 12.5012 4.07125 12.5013 4.19125 12.5013H25.8087C25.9287 12.5013 25.9888 12.5012 26.0363 12.485C26.0822 12.4697 26.124 12.4438 26.1583 12.4095C26.1926 12.3753 26.2184 12.3335 26.2337 12.2875C26.25 12.2387 26.25 12.1788 26.25 12.0588C26.25 10.1425 26.25 9.18375 25.9912 8.41125C25.7455 7.67771 25.3328 7.01121 24.7858 6.46418C24.2388 5.91715 23.5723 5.50452 22.8387 5.25875C22.41 5.115 21.9237 5.05125 21.25 5.0225V8.125C21.25 8.62228 21.0525 9.09919 20.7008 9.45083C20.3492 9.80246 19.8723 10 19.375 10C18.8777 10 18.4008 9.80246 18.0492 9.45083C17.6975 9.09919 17.5 8.62228 17.5 8.125V5H12.5V8.125C12.5 8.62228 12.3025 9.09919 11.9508 9.45083C11.5992 9.80246 11.1223 10 10.625 10C10.1277 10 9.65081 9.80246 9.29917 9.45083C8.94754 9.09919 8.75 8.62228 8.75 8.125V5.0225Z"
-      fill="#4176C3"
+    <rect
+      x="3"
+      y="4"
+      width="18"
+      height="17"
+      rx="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
-      d="M3.75 14.375C3.75 14.08 3.75 13.9325 3.84125 13.8412C3.9325 13.75 4.08 13.75 4.375 13.75H25.625C25.92 13.75 26.0675 13.75 26.1588 13.8412C26.25 13.9325 26.25 14.08 26.25 14.375V15C26.25 19.7137 26.25 22.0712 24.785 23.535C23.32 24.9987 20.9637 25 16.25 25H13.75C9.03625 25 6.67875 25 5.215 23.535C3.75125 22.07 3.75 19.7137 3.75 15V14.375Z"
-      fill="#4176C3"
-    />
-    <path
-      d="M10.625 3.125V8.125M19.375 3.125V8.125"
-      stroke="#4176C3"
-      stroke-width="1.25"
-      stroke-linecap="round"
+      d="M16 2v4M8 2v4M3 10h18"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
-
-const TagIcon = (props: SVGProps<SVGSVGElement>) => (
+const RoleIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="25"
-    height="25"
-    viewBox="0 0 30 30"
+    viewBox="0 0 24 24"
     fill="none"
+    stroke="currentColor"
+    strokeWidth="1.8"
     {...props}
   >
+    <rect
+      x="3"
+      y="6"
+      width="18"
+      height="14"
+      rx="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
     <path
-      d="M17.7691 5.13251L12.2291 24.8675M8.12406 9.69626L2.82031 15L8.12406 20.3038M21.8741 9.69626L27.1778 15L21.8741 20.3038"
-      stroke="#4176C3"
-      stroke-width="3.75"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M3 11h18M10 11v2h4v-2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+const TeamIcon = (props: SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.8"
+    {...props}
+  >
+    <circle cx="9" cy="8" r="3" />
+    <path
+      d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M16 5.2a3 3 0 0 1 0 5.6M18 14.2a6 6 0 0 1 3 5.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -111,10 +142,10 @@ export default function ProjectDetail() {
   }
 
   const summaryDetails = [
-    { label: "role", value: roleConfig[project.role], Icon: CalendarIcon },
+    { label: "role", value: roleConfig[project.role], Icon: RoleIcon },
     { label: "Year", value: project.year, Icon: CalendarIcon },
     { label: "Status", value: project.status, Icon: StatusIcon },
-    { label: "Team", value: project.team, Icon: TagIcon },
+    { label: "Team", value: project.team, Icon: TeamIcon },
   ];
 
   return (
@@ -225,7 +256,7 @@ export default function ProjectDetail() {
               {summaryDetails.map(({ label, value, Icon }) => (
                 <div
                   key={label}
-                  className="relative min-h-28 overflow-hidden rounded-[20px] border border-white/10 bg-[#1D1D1D] p-6 before:absolute before:-right-3 before:-top-7 before:h-24 before:w-24 before:rounded-full before:bg-white/[0.025]"
+                  className="relative min-h-28 overflow-hidden rounded-[20px] border border-white/10 bg-[#1D1D1D] p-6 before:absolute before:-right-3 before:-top-7 before:h-24 before:w-24 before:rounded-full before:bg-white/2.5"
                 >
                   <div className="relative z-10 flex flex-col gap-4">
                     <dt className="flex items-center gap-2 font-['Poppins'] text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8F8F8F]">
@@ -240,71 +271,76 @@ export default function ProjectDetail() {
               ))}
             </dl>
 
-            <div className="flex flex-col gap-4 rounded-2xl bg-[#1F1F1F] p-5">
-              <h2 className="font-['Itim'] text-[20px] text-white">
-                Technologies
-              </h2>
-              <div className="flex flex-wrap gap-2">
-                {project.tech.map((tech) => {
-                  const Icon = tech.icon;
-                  return (
-                    <span
-                      key={tech.label}
-                      className="flex items-center gap-1 rounded-[22px] bg-[#303030] px-2.5 py-1 text-white font-['Itim'] text-[15px]"
-                    >
-                      <Icon width={15} height={15} />
-                      {tech.label}
-                    </span>
-                  );
-                })}
+            <section
+              aria-labelledby="technologies-heading"
+              className="relative min-h-44 overflow-hidden rounded-[20px] border border-white/10 bg-[#1D1D1D] p-6"
+            >
+              <div className="pointer-events-none absolute -right-3 -top-7 h-24 w-24 rounded-full bg-white/2.5" />
+              <div className="relative z-10 flex flex-col h-full gap-5">
+                <h2 className="font-['Itim'] text-[20px] text-white">
+                  Technologies
+                </h2>
+                <div className="flex flex-wrap gap-2">
+                  {project.tech.map((tech) => {
+                    const Icon = tech.icon;
+                    return (
+                      <span
+                        key={tech.label}
+                        className="flex items-center gap-1.5 rounded-full bg-[#303030] px-2.5 py-1.5 font-['Itim'] text-[15px] text-white"
+                      >
+                        <Icon width={16} height={16} aria-hidden="true" />
+                        {tech.label}
+                      </span>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
+            </section>
 
-            <div className="flex flex-col gap-5 rounded-2xl bg-[#1F1F1F] p-5 ">
-              <h2 className="font-['Itim'] text-[20px] text-white">Links</h2>
-              <div className="flex flex-col items-center justify-center gap-3 md:flex-row">
-                {" "}
-                {project.liveDemo && project.liveDemo !== "" && (
-                  <a
-                    href={project.liveDemo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex justify-center items-center gap-3 rounded-xl bg-[#303030] px-4 py-2.5 transition-colors duration-300 hover:bg-[#3a3a3a] w-full"
-                  >
-                    <LinkIcon width={18} height={18} />
-                    <span className="font-['Poppins'] text-[15px] text-white">
+            <section
+              aria-labelledby="links-heading"
+              className="relative min-h-44 overflow-hidden rounded-[20px] border border-white/10 bg-[#1D1D1D] p-6"
+            >
+              <div className="pointer-events-none absolute -right-3 -top-7 h-24 w-24 rounded-full bg-white/2.5" />
+              <div className="relative z-10 flex flex-col h-full gap-5">
+                <h2 className="font-['Itim'] text-[20px] text-white">Links</h2>
+                <div className="flex flex-wrap gap-2">
+                  {project.liveDemo && (
+                    <a
+                      href={project.liveDemo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#303030] px-4 py-2 font-['Poppins'] text-[14px] text-white transition-colors hover:bg-[#3a3a3a] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5197ff]"
+                    >
+                      <LinkIcon width={18} height={18} aria-hidden="true" />
                       Live Demo
-                    </span>
-                  </a>
-                )}
-                {project.github && project.github !== "" && (
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full flex justify-center items-center gap-3 rounded-xl bg-[#303030] px-4 py-2.5 transition-colors duration-300 hover:bg-[#3a3a3a]"
-                  >
-                    <Github2Icon width={18} height={18} />
-                    <span className="font-['Poppins'] text-[15px] text-white">
+                    </a>
+                  )}
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#303030] px-4 py-2 font-['Poppins'] text-[14px] text-white transition-colors hover:bg-[#3a3a3a] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5197ff]"
+                    >
+                      <Github2Icon width={18} height={18} aria-hidden="true" />
                       GitHub Repo
-                    </span>
-                  </a>
-                )}
-                {project.figma && project.figma !== "" && (
-                  <a
-                    href={project.figma}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full flex justify-center items-center gap-3 rounded-xl bg-[#303030] px-4 py-2.5 transition-colors duration-300 hover:bg-[#3a3a3a] "
-                  >
-                    <FigmaIcon width={18} height={18} />
-                    <span className="font-['Poppins'] text-[15px] text-white">
+                    </a>
+                  )}
+                  {project.figma && (
+                    <a
+                      href={project.figma}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#303030] px-4 py-2 font-['Poppins'] text-[14px] text-white transition-colors hover:bg-[#3a3a3a] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5197ff]"
+                    >
+                      <FigmaIcon width={18} height={18} aria-hidden="true" />
                       Figma Design
-                    </span>
-                  </a>
-                )}
+                    </a>
+                  )}
+                </div>
               </div>
-            </div>
+            </section>
           </motion.aside>
         </div>
         <motion.div
