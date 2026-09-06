@@ -55,8 +55,6 @@ const CalendarIcon = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-
-
 const TagIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -264,7 +262,8 @@ export default function ProjectDetail() {
 
             <div className="flex flex-col gap-5 rounded-2xl bg-[#1F1F1F] p-5 ">
               <h2 className="font-['Itim'] text-[20px] text-white">Links</h2>
-              <div className="flex flex-row items-center justify-center gap-3 ">
+              <div className="flex flex-col items-center justify-center gap-3 md:flex-row">
+                {" "}
                 {project.liveDemo && project.liveDemo !== "" && (
                   <a
                     href={project.liveDemo}
