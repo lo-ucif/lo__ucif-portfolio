@@ -463,6 +463,42 @@ export const projects: Array<{
   },
 ];
 
+export const experienceItems = [
+  {
+    year: "2026",
+    title: "Full-Stack Web Developer",
+    organization: "Hackathon & personal projects",
+    description:
+      "Built web applications that solve real-world problems, from AI-assisted recruitment and travel planning to digital portfolio platforms.",
+  },
+  {
+    year: "2025 - Present",
+    title: "Frontend Developer & UI/UX Designer",
+    organization: "Independent work",
+    description:
+      "Designing and developing responsive product experiences with React, TypeScript, Tailwind CSS, Figma, and modern web tools.",
+  },
+];
+
+export const certificateItems = [
+  {
+    title: "Automate & Innovate Hackathon",
+    label: "Hackathon achievement",
+    description:
+      "Collaborated on an AI-powered job-matching platform that helps recruiters identify qualified candidates more efficiently.",
+    image: estinhackathon,
+    alt: "AI-powered job matching platform created for the Automate & Innovate Hackathon",
+  },
+  {
+    title: "W-Hackathon",
+    label: "Hackathon achievement",
+    description:
+      "Contributed to Rihla Web, a travel-planning platform that creates personalized itineraries and helps users discover experiences.",
+    image: rihlaweb,
+    alt: "Rihla Web travel planning platform created for W-Hackathon",
+  },
+];
+
 // ---------- Status badge (shared via StatusBadgeContext) ----------
 // Edit these values and they update in BOTH the Home hero badge
 // and the mobile navigation badge at once.

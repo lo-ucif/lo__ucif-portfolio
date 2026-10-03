@@ -8,7 +8,8 @@ import { StatusBadgeProvider } from "../../contexts/StatusBadgeProvider";
 
 const navLinks = [
   { label: "Home", href: "/" },
-  { label: "Projects", href: "/projects" },
+  { label: "Programming", href: "/projects?type=development" },
+  { label: "Design", href: "/projects?type=uiux" },
 ];
 
 export function AppLayout() {
@@ -37,7 +38,12 @@ export function AppLayout() {
     return () => document.removeEventListener("mousedown", handleClick);
   }, [isMobileMenuOpen]);
 
-  const headerActiveSection = isHome ? "home" : "projects";
+  const projectType = new URLSearchParams(location.search).get("type");
+  const headerActiveSection = isHome
+    ? "home"
+    : projectType === "development" || projectType === "uiux"
+      ? projectType
+      : "";
 
   return (
     <StatusBadgeProvider>

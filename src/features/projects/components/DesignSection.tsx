@@ -4,20 +4,25 @@ import { projects } from "../../../constants/data";
 import Projectcard from "../../../components/projectcard";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
-const featuredProgrammingProjects = projects
-  .filter((project) => project.type === "development")
+const featuredDesignProjects = projects
+  .filter((project) => project.type === "uiux")
   .slice(0, 3);
 
 type ProjectGroupProps = {
   title: string;
   description: string;
   filter: "development" | "uiux";
-  projects: typeof featuredProgrammingProjects;
+  projects: typeof featuredDesignProjects;
 };
 
-function ProjectGroup({ filter, projects }: ProjectGroupProps) {
+function ProjectGroup({
+  filter,
+  projects,
+}: ProjectGroupProps) {
+
   return (
     <section className="flex flex-col items-center w-full gap-5">
+
       <div className="flex flex-wrap justify-center w-full gap-8 h-fit max-w-260">
         {projects.map((project) => (
           <Projectcard key={project.id} {...project} />
@@ -43,7 +48,7 @@ function ProjectGroup({ filter, projects }: ProjectGroupProps) {
   );
 }
 
-export function ProjectsSection() {
+export function DesignSection() {
   return (
     <section
       id="projects"
@@ -56,16 +61,13 @@ export function ProjectsSection() {
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.6, ease: easeOut }}
       >
-        Projects
+        Design Projects
       </motion.h2>
 
       <div className="flex flex-col items-center w-full gap-12">
         <ProjectGroup
-          title="Programming Projects"
-          description="Web applications and development work"
-          filter="development"
-          projects={featuredProgrammingProjects}
-        />
+          filter="uiux"
+          projects={featuredDesignProjects} title={""} description={""}        />
       </div>
     </section>
   );

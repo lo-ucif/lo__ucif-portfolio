@@ -1,5 +1,6 @@
 ﻿import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
+import { useSearchParams } from "react-router-dom";
 import { projects, type ProjectType } from "../constants/data";
 import Projectcard from "../components/projectcard";
 import FloatingBubble, { type BubbleItem } from "../components/FloatingBubble";
@@ -14,7 +15,12 @@ const FILTER_ITEMS: BubbleItem[] = [
 
 export default function Projects() {
   const easeOut = [0.22, 1, 0.36, 1] as const;
-  const [filter, setFilter] = useState<FilterId>("all");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const selectedType = searchParams.get("type");
+  const filter: FilterId =
+    selectedType === "development" || selectedType === "uiux"
+      ? selectedType
+      : "all";
 
   const filtered = useMemo(() => {
     if (filter === "all") return projects;
@@ -22,8 +28,8 @@ export default function Projects() {
   }, [filter]);
 
   const handleBubbleClick = (item: BubbleItem) => {
-    setFilter(item.id as FilterId);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    const nextFilter = item.id as FilterId;
+    setSearchParams(nextFilter === "all" ? {} : { type: nextFilter });
   };
 
   return (

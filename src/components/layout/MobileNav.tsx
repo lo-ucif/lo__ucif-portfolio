@@ -13,7 +13,8 @@ type MobileNavProps = {
 
 const defaultLinks = [
   { label: "Home", href: "/" },
-  { label: "Projects", href: "/projects" },
+  { label: "Programming", href: "/projects?type=development" },
+  { label: "Design", href: "/projects?type=uiux" },
 ];
 
 export function MobileNav({

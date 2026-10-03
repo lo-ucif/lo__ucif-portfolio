@@ -40,15 +40,23 @@ export function SiteHeader({
               />
             </Link>
           </motion.div>
-          <nav className="flex items-center gap-17.5 font-['Itim'] text-[15px] tracking-[0.3px] text-white">
+          <nav className="flex items-center gap-8 font-['Itim'] text-[15px] tracking-[0.3px] text-white min-[1100px]:gap-17.5">
             <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
               <Link style={{ color: linkClass("home") }} to="/">
                 Home
               </Link>
             </motion.div>
             <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
-              <Link style={{ color: linkClass("projects") }} to="/projects">
-                Projects
+              <Link
+                style={{ color: linkClass("development") }}
+                to="/projects?type=development"
+              >
+                Programming
+              </Link>
+            </motion.div>
+            <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
+              <Link style={{ color: linkClass("uiux") }} to="/projects?type=uiux">
+                Design
               </Link>
             </motion.div>
           </nav>
