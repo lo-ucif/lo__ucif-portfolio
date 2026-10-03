@@ -1,8 +1,7 @@
 import logo from "../../assets/8.webp";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { LinkedinIcon } from "../../constants/Icon";
-import { GithubIcon } from "../../constants/Icon";
+import { BehanceIcon, GithubIcon, LinkedinIcon } from "../../constants/Icon";
 
 type SiteHeaderProps = {
   activeSection: string;
@@ -79,6 +78,17 @@ export function SiteHeader({
               whileTap={{ scale: 0.96 }}
             >
               <LinkedinIcon />
+            </motion.a>
+
+            <motion.a
+              href="https://www.behance.net/tamerloucif"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="View Behance profile"
+              whileHover={{ scale: 1.08, y: -1 }}
+              whileTap={{ scale: 0.96 }}
+            >
+              <BehanceIcon />
             </motion.a>
 
           </div>

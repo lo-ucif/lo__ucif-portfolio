@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { GithubIcon, LinkedinIcon } from "../../constants/Icon";
+import { BehanceIcon, GithubIcon, LinkedinIcon } from "../../constants/Icon";
 import { StatusBadge } from "../StatusBadge";
 import { WhatsAppIcon } from "../../constants/Icon";
 
@@ -72,6 +72,16 @@ export function MobileNav({
           whileTap={{ scale: 0.96 }}
         >
           <LinkedinIcon />
+        </motion.a>
+        <motion.a
+          href="https://www.behance.net/tamerloucif"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="View Behance profile"
+          whileHover={{ scale: 1.08, y: -1 }}
+          whileTap={{ scale: 0.96 }}
+        >
+          <BehanceIcon />
         </motion.a>
         <motion.a
           href="https://wa.me/213676244189"
