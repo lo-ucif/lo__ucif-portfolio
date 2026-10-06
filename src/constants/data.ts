@@ -10,6 +10,8 @@ import hotel from "../assets/ChatGPT Image Aug 6, 2026, 12_56_04 PM.webp";
 import shoes from "../assets/ChatGPT Image Aug 6, 2026, 12_50_35 PM.webp";
 import rokhsa from "../assets/ChatGPT Image Aug 5, 2026, 11_48_00 PM 13.webp";
 import tabib from "../assets/Slide 4_3 - 1.webp";
+import automate from "../assets/Screenshot 2026-10-06 201845.png";
+import soai from "../assets/Screenshot 2026-10-06 202012.png";
 import {
   JavascriptIcon,
   TypescriptIcon,
@@ -482,19 +484,19 @@ export const experienceItems = [
 
 export const certificateItems = [
   {
-    title: "Automate & Innovate Hackathon",
-    label: "Hackathon achievement",
+    title: "Design Member",
+    label: "School of AI Bejaia ",
     description:
-      "Collaborated on an AI-powered job-matching platform that helps recruiters identify qualified candidates more efficiently.",
-    image: estinhackathon,
+      "Recognized for outstanding dedication and active contribution throughout the 2025/2026 season as a member of the Design team. Contributed to the club’s activities and supported its mission through creative and design-focused work.",
+    image: soai,
     alt: "AI-powered job matching platform created for the Automate & Innovate Hackathon",
   },
   {
-    title: "W-Hackathon",
-    label: "Hackathon achievement",
+    title: "Certificate of Recognition",
+    label: "Automate & Innovate",
     description:
-      "Contributed to Rihla Web, a travel-planning platform that creates personalized itineraries and helps users discover experiences.",
-    image: rihlaweb,
+      "Recognized for outstanding dedication and contribution to organizing the Automate & Innovate event. Contributed through teamwork, creativity, and design while helping support the successful organization and execution of the event.",
+    image: automate,
     alt: "Rihla Web travel planning platform created for W-Hackathon",
   },
 ];

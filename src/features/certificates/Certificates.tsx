@@ -40,7 +40,7 @@ export default function Certificates() {
             }}
           >
             <img
-              className="object-cover w-full h-48"
+              className="object-cover w-full h-65"
               src={certificate.image}
               alt={certificate.alt}
               loading="lazy"
