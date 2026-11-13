@@ -43,8 +43,8 @@ export default function Student() {
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, ease: easeOut }}
         >
-          <p>Student At University of Constantine 2 Abdelhamid Mehri</p>
-          <p>NTIC</p>
+          <p>Software Engineering Student at University of Constantine 2 Abdelhamid Mehri</p>
+          <p className="text-[18px] font-medium text-[#5197ff]">Faculty of NTIC</p>
         </motion.div>
 
         <motion.p

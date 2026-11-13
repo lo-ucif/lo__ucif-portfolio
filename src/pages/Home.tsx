@@ -1,4 +1,4 @@
-﻿import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { TechStackSection } from "../features/skills/components/TechStackSection";
 import { ProjectsSection } from "../features/projects/components/ProjectsSection";
 import { ContactSection } from "../features/contact/components/ContactSection";
@@ -91,8 +91,8 @@ export default function Home() {
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{ duration: 0.6, ease: easeOut, delay: 0.5 }}
                 >
-                  <span className="text-[#a9a9a9]">Full Stack</span>
-                  <span className="text-[#5197ff]">Web Developer</span>
+                  <span className="text-[#a9a9a9]">Designing Experiences.</span>
+                  <span className="text-[#5197ff]">Engineering Solutions.</span>
                 </motion.div>
               </div>
 
@@ -116,7 +116,7 @@ export default function Home() {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, ease: easeOut }}
             >
-              Software Engineering Student | Web Developer | Ui / Ux Designer
+              I'm a Software Engineering Student, Web Developer, and UI/UX Designer passionate about creating modern, functional, and user-centered digital experiences. I turn ideas into intuitive designs and scalable web applications.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -125,7 +125,7 @@ export default function Home() {
               transition={{ duration: 0.6, ease: easeOut, delay: 0.3 }}
             >
               <div className="inline-flex items-center gap-1.5  px-2.5 py-1.5 font-['Itim'] text-[16px] text-[#8491A0] max-[600px]:rounded-[15px] max-[600px]:px-0 max-[600px]:py-px max-[600px]:text-[12px]">
-                Last updated information : August 2026
+                Software Engineering Student · Available for Opportunities
               </div>
             </motion.div>
             <motion.div
@@ -136,22 +136,24 @@ export default function Home() {
               transition={{ duration: 0.6, ease: easeOut }}
             >
               <motion.a
-                className="rounded-[38.182px] border border-white bg-white px-[16.76px] py-[12.57px] font-['Poppins'] text-[16.327px] text-[#161513] transition-colors duration-300 "
-                href="https://mail.google.com/mail/?view=cm&to=louciftamer3@gmail.com"
+                className="rounded-[38.182px] border border-white bg-white px-[16.76px] py-[12.57px] font-['Poppins'] text-[16.327px] text-[#161513] transition-colors duration-300 hover:bg-transparent hover:text-white"
+                href="mailto:louciftamer3@gmail.com"
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ duration: 0.18, ease: "easeOut" }}
               >
-                Get In Touch
+                Let's Talk
               </motion.a>
               <motion.a
-                className="flex items-center gap-[8.38px] rounded-[38.182px] border border-white px-[16.76px] py-[12.57px] font-['Poppins'] text-[16.327px] text-white transition-colors duration-300"
-                href="https://github.com/"
+                className="flex items-center gap-[8.38px] rounded-[38.182px] border border-white px-[16.76px] py-[12.57px] font-['Poppins'] text-[16.327px] text-white transition-colors duration-300 hover:bg-white hover:text-[#161513]"
+                href="https://github.com/lo-ucif"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ duration: 0.18, ease: "easeOut" }}
               >
-                Git Hub
+                GitHub
                 <div>
                   <GithubIcon />
                 </div>
@@ -170,7 +172,7 @@ export default function Home() {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, ease: easeOut }}
             >
-              About Me
+              A Little About Me
             </motion.h2>
             <motion.p
               className="max-w-225 font-['Inter'] text-[17px] leading-[1.6] text-[#e1e1e1]"
@@ -179,13 +181,7 @@ export default function Home() {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, ease: easeOut }}
             >
-              Ahmed Loucif, 20y — Full Stack Web Developer passionate about
-              building modern, scalable, and user-friendly web applications
-              Experienced with Next.js, React, TypeScript, Node.js, Express, and
-              MongoDB Strong focus on UI/UX design to deliver seamless and
-              engaging digital experiences Proven ability to solve real-world
-              problems through projects and hackathons Open to work and
-              collaboration opportunities
+              I'm a Software Engineering student with a passion for web development and UI/UX design. I enjoy solving problems, exploring new technologies, and transforming complex ideas into simple, intuitive, and functional digital products. My approach combines creative thinking with technical skills to build experiences that are both visually appealing and technically reliable.
             </motion.p>
 
             <motion.a

@@ -1,4 +1,4 @@
-﻿import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
+import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import { useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
 import { projects, type ProjectType } from "../constants/data";
@@ -34,15 +34,20 @@ export default function Projects() {
 
   return (
     <div className="flex flex-col gap-5 justify-center items-center min-h-screen  bg-[#161513] px-5 pb-20 pt-5 text-white sm:px-10 lg:px-20 min-[601px]:pt-30 max-[600px]:pt-22.5">
-      <motion.h2
-        className="font-['Itim'] text-[36px] text-white "
+      <motion.div
+        className="flex flex-col items-center gap-2 text-center"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.1, ease: easeOut }}
       >
-        Projects
-      </motion.h2>
+        <h2 className="font-['Itim'] text-[36px] text-white">
+          A Selection of My Work
+        </h2>
+        <p className="font-['Poppins'] text-[15px] sm:text-[16px] text-[#9CA3AF]">
+          Turning Concepts Into Real-World Solutions.
+        </p>
+      </motion.div>
 
       {/* <motion.p
         className="font-['Poppins'] text-[14px] text-[#a9a9a9]"

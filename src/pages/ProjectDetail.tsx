@@ -221,7 +221,7 @@ export default function ProjectDetail() {
             transition={{ duration: 0.6, ease: easeOut, delay: 0.15 }}
           >
             <div className="flex flex-col gap-2">
-              <h2 className="font-['Itim'] text-[22px] text-white">About</h2>
+              <h2 className="font-['Itim'] text-[22px] text-white">Overview</h2>
               <p className="font-['Poppins'] text-[15px] text-[#9CA3AF] leading-relaxed">
                 {project.description}
               </p>
@@ -230,7 +230,7 @@ export default function ProjectDetail() {
             {project.problem && (
               <div className="flex flex-col gap-2">
                 <h2 className="font-['Itim'] text-[22px] text-white">
-                  Problem
+                  The Challenge
                 </h2>
                 <p className="font-['Poppins'] text-[15px] text-[#9CA3AF] leading-relaxed">
                   {project.problem}
@@ -238,12 +238,34 @@ export default function ProjectDetail() {
               </div>
             )}
 
-            <div className="flex flex-col gap-2">
-              <h2 className="font-['Itim'] text-[22px] text-white">Solution</h2>
-              <p className="font-['Poppins'] text-[15px] text-[#9CA3AF] leading-relaxed">
-                {project.description}
-              </p>
-            </div>
+            {project.solution && (
+              <div className="flex flex-col gap-2">
+                <h2 className="font-['Itim'] text-[22px] text-white">The Solution</h2>
+                <p className="font-['Poppins'] text-[15px] text-[#9CA3AF] leading-relaxed">
+                  {project.solution}
+                </p>
+              </div>
+            )}
+
+            {project.keyFeatures && project.keyFeatures.length > 0 && (
+              <div className="flex flex-col gap-2">
+                <h2 className="font-['Itim'] text-[22px] text-white">Key Features</h2>
+                <ul className="flex flex-col gap-1.5 pl-4 list-disc font-['Poppins'] text-[15px] text-[#9CA3AF] leading-relaxed">
+                  {project.keyFeatures.map((feature, idx) => (
+                    <li key={idx}>{feature}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {project.outcome && (
+              <div className="flex flex-col gap-2">
+                <h2 className="font-['Itim'] text-[22px] text-white">The Outcome</h2>
+                <p className="font-['Poppins'] text-[15px] text-[#9CA3AF] leading-relaxed">
+                  {project.outcome}
+                </p>
+              </div>
+            )}
           </motion.div>
 
           <motion.aside

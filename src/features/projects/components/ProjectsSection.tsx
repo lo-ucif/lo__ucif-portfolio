@@ -1,4 +1,4 @@
-﻿import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { projects } from "../../../constants/data";
 import Projectcard from "../../../components/projectcard";
@@ -49,15 +49,20 @@ export function ProjectsSection() {
       id="projects"
       className="flex w-full flex-col items-center gap-7.5 text-center"
     >
-      <motion.h2
-        className="font-['Itim'] text-[36px] text-white "
+      <motion.div
+        className="flex flex-col items-center gap-2"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.6, ease: easeOut }}
       >
-        Projects
-      </motion.h2>
+        <h2 className="font-['Itim'] text-[36px] text-white">
+          A Selection of My Recent Work
+        </h2>
+        <p className="font-['Poppins'] text-[15px] sm:text-[16px] text-[#9CA3AF]">
+          Turning Concepts Into Real-World Solutions.
+        </p>
+      </motion.div>
 
       <div className="flex flex-col items-center w-full gap-12">
         <ProjectGroup
