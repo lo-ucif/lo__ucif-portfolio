@@ -92,55 +92,47 @@ export default function Projectcard({
           {narrative}
         </p>
 
-        {/* Case Study Link & External Actions */}
-        <div className="flex flex-wrap items-center gap-5 mt-1">
-          <button
-            onClick={handleCardClick}
-            className="inline-flex items-center gap-2 font-['Poppins'] text-[15px] font-semibold text-white hover:text-[#5197ff] transition-colors duration-200 group/link cursor-pointer"
-          >
-            <span>View case study</span>
-            <span className="transition-transform duration-200 group-hover/link:translate-x-1">
-              →
-            </span>
-          </button>
-
-          {liveDemo && (
-            <a
-              href={liveDemo}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={stopPropagation}
-              className="inline-flex items-center gap-1.5 font-['Poppins'] text-[13px] text-[#8491A0] hover:text-white transition-colors"
-            >
-              <LinkIcon width={14} height={14} />
-              <span>Live Demo</span>
-            </a>
-          )}
-          {github && (
-            <a
-              href={github}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={stopPropagation}
-              className="inline-flex items-center gap-1.5 font-['Poppins'] text-[13px] text-[#8491A0] hover:text-white transition-colors"
-            >
-              <Github2Icon width={14} height={14} />
-              <span>Code</span>
-            </a>
-          )}
-          {figma && (
-            <a
-              href={figma}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={stopPropagation}
-              className="inline-flex items-center gap-1.5 font-['Poppins'] text-[13px] text-[#8491A0] hover:text-white transition-colors"
-            >
-              <FigmaIcon width={14} height={14} />
-              <span>Figma</span>
-            </a>
-          )}
-        </div>
+        {/* External Actions (Live Demo, GitHub, Figma) */}
+        {(liveDemo || github || figma) && (
+          <div className="flex flex-wrap items-center gap-5 mt-1">
+            {liveDemo && (
+              <a
+                href={liveDemo}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={stopPropagation}
+                className="inline-flex items-center gap-1.5 font-['Poppins'] text-[13px] text-[#8491A0] hover:text-white transition-colors"
+              >
+                <LinkIcon width={14} height={14} />
+                <span>Live Demo</span>
+              </a>
+            )}
+            {github && (
+              <a
+                href={github}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={stopPropagation}
+                className="inline-flex items-center gap-1.5 font-['Poppins'] text-[13px] text-[#8491A0] hover:text-white transition-colors"
+              >
+                <Github2Icon width={14} height={14} />
+                <span>Code</span>
+              </a>
+            )}
+            {figma && (
+              <a
+                href={figma}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={stopPropagation}
+                className="inline-flex items-center gap-1.5 font-['Poppins'] text-[13px] text-[#8491A0] hover:text-white transition-colors"
+              >
+                <FigmaIcon width={14} height={14} />
+                <span>Figma</span>
+              </a>
+            )}
+          </div>
+        )}
 
         {/* Tech Stack Row */}
         <div className="flex flex-wrap items-center gap-4 pt-4 border-t border-white/[0.08] w-full mt-2 font-['Poppins'] text-[13px] text-[#a9a9a9]">
