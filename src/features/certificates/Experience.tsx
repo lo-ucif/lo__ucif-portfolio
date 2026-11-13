@@ -19,12 +19,9 @@ import {
 export const experienceMilestones = [
   {
     num: "01",
-    badge: "University Degree",
-    period: "2023 - Present",
     title: "Software Engineering Degree",
-    organization: "University of Constantine 2 (NTIC)",
     description:
-      "Mastering core computer science algorithms, complex data structures, software architecture, object-oriented design, and database systems with high academic and practical discipline.",
+      "Focused on core computer science foundations, algorithm optimization, software architecture, and distributed database systems. Applied theoretical principles to practical engineering through rigorous problem-solving, clean code standards, and full-lifecycle software design.",
     tech: [
       { label: "C / C++", icon: CIcon },
       { label: "Java", icon: JavaIcon },
@@ -34,12 +31,9 @@ export const experienceMilestones = [
   },
   {
     num: "02",
-    badge: "Client & Freelance",
-    period: "2025 - Present",
     title: "Web Developer & UI/UX Designer",
-    organization: "Independent & Client Projects",
     description:
-      "Designing and architecting modern full-stack web applications. Collaborating directly with clients to build digital solutions with React, TypeScript, Next.js, and Figma — from wireframes and design systems to deployed production products.",
+      "Architecting and delivering production-ready web applications from initial wireframes to deployed cloud systems. Partnering with clients to build responsive, accessible frontends and scalable backends using React, TypeScript, Next.js, and cohesive design systems.",
     tech: [
       { label: "React", icon: ReactIcon },
       { label: "Next.js", icon: NextjsIcon },
@@ -50,12 +44,9 @@ export const experienceMilestones = [
   },
   {
     num: "03",
-    badge: "Tech Community",
-    period: "2025 - 2026",
     title: "Design Team Member & Lead",
-    organization: "School of AI Bejaia",
     description:
-      "Directing visual identity, UI prototyping, event branding, and technical workshops across tech student communities, supporting club activities and community tech growth.",
+      "Directed visual direction and UI/UX prototyping for student tech initiatives, hackathons, and community workshops. Created end-to-end design assets, brand guidelines, and interactive prototypes that elevated engagement across university tech events.",
     tech: [
       { label: "Figma", icon: FigmaIcon },
       { label: "Community", icon: HackathonIcon },
@@ -63,12 +54,9 @@ export const experienceMilestones = [
   },
   {
     num: "04",
-    badge: "Hackathon Finalist",
-    period: "2026",
     title: "Hackathon Finalist",
-    organization: "Automate & Innovate Hackathon",
     description:
-      "Engineered an automated AI-powered talent matching platform MVP within a 48-hour intensive sprint. Built automated screening workflows, match compatibility scoring, and intuitive recruiter dashboards under strict competition deadlines.",
+      "Engineered an AI-driven talent matching platform in a fast-paced 48-hour sprint. Developed automated resume parsing, semantic compatibility scoring, and an intuitive recruiter portal to eliminate manual screening bottlenecks under strict deadlines.",
     tech: [
       { label: "React", icon: ReactIcon },
       { label: "TypeScript", icon: TypescriptIcon },
@@ -78,12 +66,9 @@ export const experienceMilestones = [
   },
   {
     num: "05",
-    badge: "Hackathon Finalist",
-    period: "2026",
     title: "Full-Stack Hackathon Innovator",
-    organization: "W-Hackathon",
     description:
-      "Delivered smart, functional web MVPs and digital solutions with rapid real-world deployment under competitive hackathon pressure and real-time team collaboration.",
+      "Built and deployed a functional full-stack web application under tight competitive deadlines. Focused on resilient architecture, real-time API integrations, and intuitive user flows to solve real-world logistical challenges with rapid sprint delivery.",
     tech: [
       { label: "Next.js", icon: NextjsIcon },
       { label: "TypeScript", icon: TypescriptIcon },
@@ -93,12 +78,9 @@ export const experienceMilestones = [
   },
   {
     num: "06",
-    badge: "Production Architecture",
-    period: "Present & Future",
     title: "Scaling to Production & E-Commerce",
-    organization: "Havana Buy & Modern Platforms",
     description:
-      "Architecting scalable multi-vendor marketplaces with NestJS, Prisma, Docker, and PostgreSQL. Integrating physical warehouse verification steps and multi-wilaya dynamic pricing across all 58 wilayas.",
+      "Engineered a high-performance multi-vendor marketplace with role-based dashboards, automated inventory workflows, and a 58-wilaya dynamic pricing engine. Architected robust microservices and secure database pipelines for high reliability.",
     tech: [
       { label: "Next.js", icon: NextjsIcon },
       { label: "TypeScript", icon: TypescriptIcon },
@@ -114,7 +96,7 @@ export default function Experience() {
       id="experience"
       className="flex w-full flex-col items-center gap-12 text-center"
     >
-      {/* Section Header with exact styling matching ProjectsSection */}
+      {/* Section Header matching ProjectsSection style */}
       <motion.div
         className="flex flex-col items-center gap-2"
         initial={{ opacity: 0, y: 20 }}
@@ -153,7 +135,6 @@ export default function Experience() {
               </defs>
 
               {/* Multi-Strand Ribbon Path */}
-              {/* Outer Glow Line */}
               <path
                 d="M 70,0 C 70,80 25,120 25,240 C 25,380 115,400 115,540 C 115,680 25,720 25,860 C 25,1000 115,1020 115,1160 C 115,1300 25,1340 25,1480 C 25,1600 70,1660 70,1800"
                 fill="none"
@@ -161,8 +142,6 @@ export default function Experience() {
                 strokeWidth="1.2"
                 strokeOpacity="0.4"
               />
-
-              {/* Core Electric Blue Line */}
               <path
                 d="M 70,0 C 70,80 28,120 28,240 C 28,380 112,400 112,540 C 112,680 28,720 28,860 C 28,1000 112,1020 112,1160 C 112,1300 28,1340 28,1480 C 28,1600 70,1660 70,1800"
                 fill="none"
@@ -170,8 +149,6 @@ export default function Experience() {
                 strokeWidth="2.5"
                 filter="url(#exp-vertical-glow)"
               />
-
-              {/* Bright White Accent Strand */}
               <path
                 d="M 70,0 C 70,80 32,120 32,240 C 32,380 108,400 108,540 C 108,680 32,720 32,860 C 32,1000 108,1020 108,1160 C 108,1300 32,1340 32,1480 C 32,1600 70,1660 70,1800"
                 fill="none"
@@ -183,7 +160,7 @@ export default function Experience() {
           </div>
 
           {/* Timeline Milestones List */}
-          <div className="relative z-10 flex flex-col gap-20 py-8">
+          <div className="relative z-10 flex flex-col gap-24 py-6">
             {experienceMilestones.map((item, index) => {
               const isLeft = index % 2 === 0;
 
@@ -205,31 +182,16 @@ export default function Experience() {
                     </div>
                   </div>
 
-                  {/* Clean Editorial Text Block (NO CARD CONTAINER, NO BORDER) */}
+                  {/* Clean Editorial Text Block (NO CARD, NO PILL BADGE, NO BLUE ORG) */}
                   <div className={`w-full md:w-[45%] flex flex-col items-start text-left ${
                     isLeft ? "md:pr-12" : "md:pl-12"
                   }`}>
-                    {/* Status Badge */}
-                    <div className="flex items-center gap-2.5">
-                      <span className="inline-flex items-center rounded-[22px] bg-[#30496b] px-3.5 py-1 font-['Itim'] text-[14px] sm:text-[15px] text-white">
-                        <span>{item.badge}</span>
-                      </span>
-                      <span className="font-['Itim'] text-[13px] text-white/60">
-                        {item.period}
-                      </span>
-                    </div>
-
                     {/* Milestone Title */}
-                    <h3 className="mt-3 font-['Itim'] text-[24px] sm:text-[28px] lg:text-[32px] font-bold text-white tracking-wide uppercase leading-tight hover:text-[#5197ff] transition-colors duration-200">
+                    <h3 className="font-['Itim'] text-[24px] sm:text-[28px] lg:text-[32px] font-bold text-white tracking-wide uppercase leading-tight hover:text-[#5197ff] transition-colors duration-200">
                       {item.title}
                     </h3>
 
-                    {/* Organization Subtitle */}
-                    <p className="mt-1 font-['Itim'] text-[15px] sm:text-[16px] text-[#5197ff] font-medium">
-                      {item.organization}
-                    </p>
-
-                    {/* Narrative Description */}
+                    {/* Optimized Narrative Description */}
                     <p className="mt-2.5 font-['Poppins'] text-[14px] sm:text-[15px] leading-[1.75] text-[#b4b4b4]">
                       {item.description}
                     </p>
@@ -278,29 +240,14 @@ export default function Experience() {
                 <div className="w-1.5 h-1.5 rounded-full bg-white" />
               </div>
 
-              {/* Clean Editorial Text Block (NO CARD CONTAINER, NO BORDER) */}
+              {/* Clean Editorial Text Block */}
               <div className="flex flex-col items-start text-left">
-                {/* Status Badge */}
-                <div className="flex items-center gap-2">
-                  <span className="inline-flex items-center rounded-[22px] bg-[#30496b] px-3 py-0.5 font-['Itim'] text-[13px] text-white">
-                    <span>{item.badge}</span>
-                  </span>
-                  <span className="font-['Itim'] text-xs text-white/60">
-                    {item.period}
-                  </span>
-                </div>
-
                 {/* Milestone Title */}
-                <h3 className="mt-2 font-['Itim'] text-[22px] sm:text-[24px] font-bold text-white tracking-wide uppercase leading-tight">
+                <h3 className="font-['Itim'] text-[22px] sm:text-[24px] font-bold text-white tracking-wide uppercase leading-tight">
                   {item.title}
                 </h3>
 
-                {/* Organization Subtitle */}
-                <p className="mt-0.5 font-['Itim'] text-[14px] text-[#5197ff]">
-                  {item.organization}
-                </p>
-
-                {/* Narrative Description */}
+                {/* Optimized Narrative Description */}
                 <p className="mt-2 font-['Poppins'] text-[13.5px] leading-[1.7] text-[#b4b4b4]">
                   {item.description}
                 </p>
