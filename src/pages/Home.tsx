@@ -7,7 +7,6 @@ import pdf from "../../public/Ahmed_Loucif_CV.pdf";
 import myimg from "../assets/portfolio img.webp";
 import FloatingBubble from "../components/FloatingBubble";
 import { StatusBadge } from "../components/StatusBadge";
-import { DesignSection } from "../features/projects/components/DesignSection";
 import Student from "../features/student/Student";
 import Experience from "../features/certificates/Experience";
 import Certificates from "../features/certificates/Certificates";
@@ -201,7 +200,6 @@ export default function Home() {
           <TechStackSection />
           <Experience />
           <ProjectsSection />
-          <DesignSection />
           <Certificates />
         </main>
 
@@ -211,8 +209,7 @@ export default function Home() {
         <FloatingBubble
           items={[
             { label: "About", id: "about" },
-            { label: "Programming", id: "programming-projects" },
-            { label: "Design", id: "design-projects" },
+            { label: "Projects", id: "projects" },
             { label: "Contact", id: "contact" },
           ]}
         />

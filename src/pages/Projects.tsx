@@ -1,127 +1,62 @@
-import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
-import { useMemo } from "react";
-import { useSearchParams } from "react-router-dom";
-import { projects, type ProjectType } from "../constants/data";
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import { projects } from "../constants/data";
 import Projectcard from "../components/projectcard";
 import FloatingBubble, { type BubbleItem } from "../components/FloatingBubble";
 import { SiteFooter } from "../components/layout/SiteFooter";
 
-type FilterId = "all" | ProjectType;
-
-const FILTER_ITEMS: BubbleItem[] = [
-  { label: "All", id: "all" },
-  { label: "Development", id: "development" },
-  { label: "UI UX Design", id: "uiux" },
+const BUBBLE_NAV: BubbleItem[] = [
+  { label: "Home", id: "home" },
+  { label: "Top ↑", id: "top" },
 ];
 
 export default function Projects() {
   const easeOut = [0.22, 1, 0.36, 1] as const;
-  const [searchParams, setSearchParams] = useSearchParams();
-  const selectedType = searchParams.get("type");
-  const filter: FilterId =
-    selectedType === "development" || selectedType === "uiux"
-      ? selectedType
-      : "all";
-
-  const filtered = useMemo(() => {
-    if (filter === "all") return projects;
-    return projects.filter((p) => p.type === filter);
-  }, [filter]);
+  const navigate = useNavigate();
 
   const handleBubbleClick = (item: BubbleItem) => {
-    const nextFilter = item.id as FilterId;
-    setSearchParams(nextFilter === "all" ? {} : { type: nextFilter });
+    if (item.id === "home") {
+      navigate("/");
+    } else if (item.id === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
   return (
-    <div className="flex flex-col gap-5 justify-center items-center min-h-screen  bg-[#161513] px-5 pb-0 pt-5 text-white sm:px-10 lg:px-20 min-[601px]:pt-30 max-[600px]:pt-22.5">
+    <div className="flex flex-col gap-10 justify-center items-center min-h-screen bg-[#161513] px-5 pb-0 pt-5 text-white sm:px-10 lg:px-20 min-[601px]:pt-30 max-[600px]:pt-22.5">
+      {/* Header */}
       <motion.div
         className="flex flex-col items-center gap-2 text-center"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.1, ease: easeOut }}
+        transition={{ duration: 0.5, ease: easeOut }}
       >
-        <h2 className="font-['Itim'] text-[36px] text-white">
-          A Selection of My Work
+        <h2 className="font-['Itim'] text-[36px] sm:text-[44px] text-white">
+          All Projects
         </h2>
-        <p className="font-['Poppins'] text-[15px] sm:text-[16px] text-[#9CA3AF]">
-          Turning Concepts Into Real-World Solutions.
+        <p className="font-['Poppins'] text-[15px] sm:text-[16px] text-[#9CA3AF] max-w-xl">
+          A unified collection of web applications, full-stack systems, client solutions, and UI/UX design prototypes.
         </p>
       </motion.div>
 
-      {/* <motion.p
-        className="font-['Poppins'] text-[14px] text-[#a9a9a9]"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.4, ease: easeOut, delay: 0.1 }}
-      >
-        Showing{" "}
-        <span className="font-semibold text-white">{filtered.length}</span>{" "}
-        {filter === "all"
-          ? "projects"
-          : filter === "development"
-            ? "development projects"
-            : "UI/UX design projects"}
-      </motion.p> */}
+      {/* Unified Project Showcase Cards (All Projects in One Column) */}
+      <div className="flex flex-col items-center gap-10 sm:gap-14 w-full max-w-6xl">
+        {projects.map((project) => (
+          <Projectcard key={project.id} {...project} />
+        ))}
+      </div>
 
-      <LayoutGroup>
-        <motion.div
-          layout
-          className="flex flex-wrap justify-center w-full gap-8 max-w-260 h-fit"
-        >
-          <AnimatePresence mode="popLayout">
-            {filtered.map((project) => (
-              <motion.div
-                key={project.id}
-                layout
-                initial={{ opacity: 0, scale: 0.92, y: 16 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.92, y: -16 }}
-                transition={{ duration: 0.3, ease: easeOut }}
-              >
-                <Projectcard
-                  key={project.id}
-                  id={project.id}
-                  type={project.type}
-                  role={project.role}
-                  category={project.category}
-                  title={project.title}
-                  problem={project.problem}
-                  description={project.description}
-                  shortDescription={project.shortDescription}
-                  image={project.image}
-                  tech={project.tech}
-                  liveDemo={project.liveDemo}
-                  github={project.github}
-                  figma={project.figma}
-                  hackathon={project.hackathon}
-                />
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
-      </LayoutGroup>
-
-      {filtered.length === 0 && (
-        <motion.p
-          className="font-['Poppins'] text-[16px] text-[#9CA3AF] mt-10"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, ease: easeOut }}
-        >
-          No projects found
-        </motion.p>
-      )}
-
-      <div className="w-full mt-16 max-w-260">
+      {/* Footer */}
+      <div className="w-full mt-16 max-w-6xl">
         <SiteFooter />
       </div>
 
+      {/* Floating Navigation */}
       <FloatingBubble
-        items={FILTER_ITEMS}
+        items={BUBBLE_NAV}
         onItemClick={handleBubbleClick}
-        activeId={filter}
+        activeId="all"
       />
     </div>
   );

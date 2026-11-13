@@ -47,15 +47,10 @@ export function SiteHeader({
             </motion.div>
             <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
               <Link
-                style={{ color: linkClass("development") }}
-                to="/projects?type=development"
+                style={{ color: linkClass("projects") }}
+                to="/projects"
               >
-                Programming
-              </Link>
-            </motion.div>
-            <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
-              <Link style={{ color: linkClass("uiux") }} to="/projects?type=uiux">
-                Design
+                Projects
               </Link>
             </motion.div>
           </nav>

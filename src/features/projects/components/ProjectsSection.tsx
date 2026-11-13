@@ -4,50 +4,19 @@ import { projects } from "../../../constants/data";
 import Projectcard from "../../../components/projectcard";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
-const featuredProgrammingProjects = projects
-  .filter((project) => project.type === "development")
-  .slice(0, 3);
 
-type ProjectGroupProps = {
-  title: string;
-  description: string;
-  filter: "development" | "uiux";
-  projects: typeof featuredProgrammingProjects;
-};
-
-function ProjectGroup({ filter, projects }: ProjectGroupProps) {
-  return (
-    <section className="flex flex-col items-center w-full gap-5">
-      <div className="flex flex-wrap justify-center w-full gap-8 h-fit max-w-260">
-        {projects.map((project) => (
-          <Projectcard key={project.id} {...project} />
-        ))}
-      </div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        whileHover={{ scale: 1.03 }}
-        whileTap={{ scale: 0.95 }}
-        transition={{ duration: 0.18, ease: "easeOut" }}
-      >
-        <Link
-          className="inline-block rounded-[38.182px] border border-white px-[16.76px] py-[12.57px] font-['Poppins'] text-[16.327px] text-white transition-colors duration-300 hover:bg-white hover:text-[#161513]"
-          to={`/projects?type=${filter}`}
-        >
-          View All
-        </Link>
-      </motion.div>
-    </section>
-  );
-}
+// Featured projects spanning full-stack development and UI/UX design (unified showcase)
+// IDs: 3 (AI Matching Platform), 2 (Rokhsa Platform), 4 (Works Exhibition), 1 (Al-Tabib Al-Hafed), 9 (Rihla Web)
+const FEATURED_PROJECT_IDS = [3, 2, 4, 1, 9];
+const featuredProjects = FEATURED_PROJECT_IDS.map((id) =>
+  projects.find((p) => p.id === id)
+).filter((p): p is (typeof projects)[0] => Boolean(p));
 
 export function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="flex w-full flex-col items-center gap-7.5 text-center"
+      className="flex w-full flex-col items-center gap-10 text-center"
     >
       <motion.div
         className="flex flex-col items-center gap-2"
@@ -64,14 +33,30 @@ export function ProjectsSection() {
         </p>
       </motion.div>
 
-      <div className="flex flex-col items-center w-full gap-12">
-        <ProjectGroup
-          title="Programming Projects"
-          description="Web applications and development work"
-          filter="development"
-          projects={featuredProgrammingProjects}
-        />
+      {/* Unified Project Showcase Cards */}
+      <div className="flex flex-col items-center gap-10 sm:gap-14 w-full max-w-6xl">
+        {featuredProjects.map((project) => (
+          <Projectcard key={project.id} {...project} />
+        ))}
       </div>
+
+      {/* CTA to View All Projects */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        whileHover={{ scale: 1.03 }}
+        whileTap={{ scale: 0.95 }}
+        transition={{ duration: 0.18, ease: "easeOut" }}
+        className="mt-4"
+      >
+        <Link
+          className="inline-block rounded-[38.182px] border border-white px-[24px] py-[13px] font-['Poppins'] text-[15px] sm:text-[16px] text-white transition-colors duration-300 hover:bg-white hover:text-[#161513]"
+          to="/projects"
+        >
+          View All Projects ({projects.length})
+        </Link>
+      </motion.div>
     </section>
   );
 }
