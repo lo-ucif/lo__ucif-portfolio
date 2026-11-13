@@ -162,28 +162,28 @@ export default function Experience() {
             </svg>
           </div>
 
-          {/* Timeline Milestones List with Compact Spacing */}
-          <div className="relative z-10 flex flex-col gap-12 lg:gap-14 py-4">
+          {/* Timeline Milestones List with Tight Staggered Spacing */}
+          <div className="relative z-10 flex flex-col gap-0 py-2">
             {experienceMilestones.map((item, index) => {
               const isLeft = index % 2 === 0;
 
               return (
                 <motion.div
                   key={item.num}
-                  initial={{ opacity: 0, y: 25 }}
+                  initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.5, ease: easeOut, delay: index * 0.07 }}
+                  viewport={{ once: true, amount: 0.15 }}
+                  transition={{ duration: 0.45, ease: easeOut, delay: index * 0.05 }}
                   className={`relative flex items-center ${
                     isLeft ? "justify-start" : "justify-end"
-                  }`}
+                  } ${index > 0 ? "md:-mt-14 lg:-mt-18" : ""}`}
                 >
                   {/* Glowing Node Positioned Directly on the Wave Apex */}
                   <div
-                    className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 flex items-center justify-center z-20"
+                    className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 flex items-center justify-center z-20 pointer-events-none"
                     style={{ left: isLeft ? "calc(50% - 85px)" : "calc(50% + 85px)" }}
                   >
-                    <div className="relative flex items-center justify-center w-6 h-6 rounded-full border-2 border-[#5197ff] bg-[#161513] shadow-[0_0_12px_#5197ff] transition-transform duration-300 hover:scale-125">
+                    <div className="relative flex items-center justify-center w-5.5 h-5.5 rounded-full border-2 border-[#5197ff] bg-[#161513] shadow-[0_0_12px_#5197ff]">
                       <div className="w-2 h-2 rounded-full bg-white shadow-[0_0_6px_#5197ff]" />
                     </div>
                   </div>
@@ -195,17 +195,17 @@ export default function Experience() {
                     }`}
                   >
                     {/* Milestone Title */}
-                    <h3 className="font-['Itim'] text-[24px] sm:text-[28px] lg:text-[32px] font-bold text-white tracking-wide uppercase leading-tight hover:text-[#5197ff] transition-colors duration-200">
+                    <h3 className="font-['Itim'] text-[22px] sm:text-[26px] lg:text-[28px] font-bold text-white tracking-wide uppercase leading-tight hover:text-[#5197ff] transition-colors duration-200">
                       {item.title}
                     </h3>
 
                     {/* Optimized Narrative Description */}
-                    <p className="mt-2 font-['Poppins'] text-[14px] sm:text-[15px] leading-[1.7] text-[#b4b4b4]">
+                    <p className="mt-1.5 font-['Poppins'] text-[13.5px] sm:text-[14px] leading-[1.65] text-[#b4b4b4]">
                       {item.description}
                     </p>
 
                     {/* Tech Stack Row */}
-                    <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-3 border-t border-white/[0.08] w-full mt-2 font-['Poppins'] text-[13px] text-[#a9a9a9]">
+                    <div className="flex flex-wrap items-center gap-2.5 sm:gap-3.5 pt-2.5 border-t border-white/[0.08] w-full mt-2 font-['Poppins'] text-[12.5px] text-[#a9a9a9]">
                       {item.tech.map((t) => {
                         const Icon = t.icon;
                         return (
@@ -213,7 +213,7 @@ export default function Experience() {
                             key={t.label}
                             className="flex items-center gap-1.5 text-white/90 whitespace-nowrap"
                           >
-                            <Icon width={16} height={16} />
+                            <Icon width={15} height={15} />
                             <span>{t.label}</span>
                           </div>
                         );
@@ -229,7 +229,7 @@ export default function Experience() {
         {/* ======================================================== */}
         {/* MOBILE TIMELINE WITH LEFT WINDING PATH (< md)            */}
         {/* ======================================================== */}
-        <div className="relative flex flex-col gap-8 sm:gap-9 md:hidden text-left pl-6 py-2">
+        <div className="relative flex flex-col gap-5 sm:gap-6 md:hidden text-left pl-6 py-2">
           
           {/* Vertical Multi-Strand Guide Line on Left */}
           <div className="absolute top-2 bottom-4 left-2 w-[2px] bg-gradient-to-b from-[#5197ff] via-[#ffffff] to-[#5197ff] shadow-[0_0_10px_#5197ff]" />

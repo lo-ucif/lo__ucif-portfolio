@@ -587,7 +587,7 @@ export const experienceItems = [
     title: "Web Developer & UI/UX Designer",
     organization: "Independent & Client Projects",
     description:
-      "Designing and developing responsive, user-centered web applications. Collaborating with clients to build digital solutions with React, TypeScript, Node.js, and Figma — from wireframes and design systems to deployed products.",
+      "Designing and developing responsive.",
   },
   {
     year: "2026",
