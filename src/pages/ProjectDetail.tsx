@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link, useParams } from "react-router-dom";
 import type { SVGProps } from "react";
 import { projects, roleConfig, categoryConfig } from "../constants/data";
+import { SiteFooter } from "../components/layout/SiteFooter";
 import {
   Github2Icon,
   LinkIcon,
@@ -379,6 +380,10 @@ export default function ProjectDetail() {
             Back to Projects
           </Link>
         </motion.div>
+
+        <div className="w-full mt-12">
+          <SiteFooter />
+        </div>
       </div>
     </div>
   );

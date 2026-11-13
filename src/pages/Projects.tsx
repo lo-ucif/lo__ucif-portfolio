@@ -4,6 +4,7 @@ import { useSearchParams } from "react-router-dom";
 import { projects, type ProjectType } from "../constants/data";
 import Projectcard from "../components/projectcard";
 import FloatingBubble, { type BubbleItem } from "../components/FloatingBubble";
+import { SiteFooter } from "../components/layout/SiteFooter";
 
 type FilterId = "all" | ProjectType;
 
@@ -112,6 +113,10 @@ export default function Projects() {
           No projects found
         </motion.p>
       )}
+
+      <div className="w-full mt-16 max-w-260">
+        <SiteFooter />
+      </div>
 
       <FloatingBubble
         items={FILTER_ITEMS}
