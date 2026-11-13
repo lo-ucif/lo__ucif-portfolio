@@ -2,6 +2,12 @@ import logo from "../../assets/8.webp";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import {
+  GithubIcon,
+  LinkedinIcon,
+  BehanceIcon,
+  WhatsAppIcon,
+} from "../../constants/Icon";
 
 type SiteHeaderProps = {
   activeSection: string;
@@ -10,26 +16,15 @@ type SiteHeaderProps = {
   menuButtonRef: React.RefObject<HTMLButtonElement | null>;
 };
 
+// Optimized concise titles for professional navigation
 export const navItems = [
-  { label: "Home", shortLabel: "Home", id: "home" },
-  { label: "About Me", shortLabel: "About", id: "about" },
-  { label: "Tech Stack", shortLabel: "Stack", id: "stack" },
-  { label: "Experience", shortLabel: "Experience", id: "experience" },
-  {
-    label: "A Selection of My Recent Work",
-    shortLabel: "Projects",
-    id: "projects",
-  },
-  {
-    label: "Certificates & Achievements",
-    shortLabel: "Certificates",
-    id: "certificates",
-  },
-  {
-    label: "Let's Build Something Together.",
-    shortLabel: "Contact",
-    id: "contact",
-  },
+  { label: "Home", id: "home" },
+  { label: "About", id: "about" },
+  { label: "Tech Stack", id: "stack" },
+  { label: "Experience", id: "experience" },
+  { label: "Projects", id: "projects" },
+  { label: "Certificates", id: "certificates" },
+  { label: "Contact", id: "contact" },
 ];
 
 export function SiteHeader({
@@ -115,7 +110,7 @@ export function SiteHeader({
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.45, ease: "easeOut" }}
       >
-        <div className="mx-auto flex w-full max-w-300 items-center justify-between gap-6 px-10 xl:px-20 py-3.5">
+        <div className="mx-auto flex w-full max-w-300 items-center justify-between gap-6 px-10 xl:px-16 py-3.5">
           {/* Logo on Left */}
           <motion.div className="h-12.5 w-22.25 shrink-0" whileHover={{ scale: 1.03 }}>
             <Link
@@ -130,29 +125,81 @@ export function SiteHeader({
             </Link>
           </motion.div>
 
-          {/* Navigation Links Aligned to Right (developer X style) */}
-          <nav className="flex items-center gap-4 xl:gap-7 font-['Itim'] text-[14px] xl:text-[15px] tracking-[0.2px] text-white">
-            {navItems.map((item) => {
-              const isActive = activeId === item.id;
-              return (
-                <motion.div
-                  key={item.id}
-                  whileHover={{ y: -2 }}
-                  whileTap={{ scale: 0.97 }}
-                >
-                  <a
-                    href={`/#${item.id}`}
-                    onClick={(e) => handleNavClick(item.id, e)}
-                    style={{ color: isActive ? "#5197ff" : "#ffffff" }}
-                    className="transition-colors duration-200 cursor-pointer whitespace-nowrap hover:text-[#5197ff]"
+          {/* Right Group: Optimized Titles + Social Links at the end */}
+          <div className="flex items-center gap-6 xl:gap-8">
+            <nav className="flex items-center gap-4 xl:gap-6 font-['Itim'] text-[15px] tracking-[0.2px] text-white">
+              {navItems.map((item) => {
+                const isActive = activeId === item.id;
+                return (
+                  <motion.div
+                    key={item.id}
+                    whileHover={{ y: -2 }}
+                    whileTap={{ scale: 0.97 }}
                   >
-                    <span className="hidden 2xl:inline">{item.label}</span>
-                    <span className="2xl:hidden">{item.shortLabel}</span>
-                  </a>
-                </motion.div>
-              );
-            })}
-          </nav>
+                    <a
+                      href={`/#${item.id}`}
+                      onClick={(e) => handleNavClick(item.id, e)}
+                      style={{ color: isActive ? "#5197ff" : "#ffffff" }}
+                      className="transition-colors duration-200 cursor-pointer whitespace-nowrap hover:text-[#5197ff]"
+                    >
+                      {item.label}
+                    </a>
+                  </motion.div>
+                );
+              })}
+            </nav>
+
+            {/* Subtle Divider */}
+            <div className="h-4 w-px bg-white/20" />
+
+            {/* Social Icons at the end of the navigation titles */}
+            <div className="flex items-center gap-4 text-white">
+              <motion.a
+                href="https://github.com/lo-ucif"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub Profile"
+                className="text-white hover:text-[#5197ff] transition-colors duration-200"
+                whileHover={{ scale: 1.15, y: -1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <GithubIcon width={19} height={19} />
+              </motion.a>
+              <motion.a
+                href="https://www.linkedin.com/in/ahmed-loucif-757854342"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn Profile"
+                className="text-white hover:text-[#5197ff] transition-colors duration-200"
+                whileHover={{ scale: 1.15, y: -1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <LinkedinIcon width={19} height={19} />
+              </motion.a>
+              <motion.a
+                href="https://www.behance.net/tamerloucif"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Behance Profile"
+                className="text-white hover:text-[#5197ff] transition-colors duration-200"
+                whileHover={{ scale: 1.15, y: -1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <BehanceIcon width={20} height={20} />
+              </motion.a>
+              <motion.a
+                href="https://wa.me/213676244189"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp Contact"
+                className="text-white hover:text-[#5197ff] transition-colors duration-200"
+                whileHover={{ scale: 1.15, y: -1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <WhatsAppIcon width={20} height={20} />
+              </motion.a>
+            </div>
+          </div>
         </div>
       </motion.header>
 

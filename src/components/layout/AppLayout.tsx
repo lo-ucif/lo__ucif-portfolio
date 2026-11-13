@@ -8,24 +8,12 @@ import { StatusBadgeProvider } from "../../contexts/StatusBadgeProvider";
 
 const navLinks = [
   { label: "Home", href: "/#home", id: "home" },
-  { label: "About Me", href: "/#about", id: "about" },
+  { label: "About", href: "/#about", id: "about" },
   { label: "Tech Stack", href: "/#stack", id: "stack" },
   { label: "Experience", href: "/#experience", id: "experience" },
-  {
-    label: "A Selection of My Recent Work",
-    href: "/#projects",
-    id: "projects",
-  },
-  {
-    label: "Certificates & Achievements",
-    href: "/#certificates",
-    id: "certificates",
-  },
-  {
-    label: "Let's Build Something Together.",
-    href: "/#contact",
-    id: "contact",
-  },
+  { label: "Projects", href: "/#projects", id: "projects" },
+  { label: "Certificates", href: "/#certificates", id: "certificates" },
+  { label: "Contact", href: "/#contact", id: "contact" },
 ];
 
 export function AppLayout() {
