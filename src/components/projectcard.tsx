@@ -134,14 +134,16 @@ export default function Projectcard({
           </div>
         )}
 
-        {/* Tech Stack Row */}
-        <div className="flex flex-wrap items-center gap-4 pt-4 border-t border-white/[0.08] w-full mt-2 font-['Poppins'] text-[13px] text-[#a9a9a9]">
-          {tech.map((t) => {
+        {/* Tech Stack Row - strictly single line */}
+        <div className="flex flex-nowrap items-center gap-4 pt-4 border-t border-white/[0.08] w-full mt-2 font-['Poppins'] text-[13px] text-[#a9a9a9] overflow-hidden">
+          {tech.slice(0, 5).map((t, idx) => {
             const Icon = t.icon;
             return (
               <div
                 key={t.label}
-                className="flex items-center gap-1.5 text-white/90"
+                className={`flex shrink-0 items-center gap-1.5 text-white/90 whitespace-nowrap ${
+                  idx >= 4 ? "hidden sm:flex" : ""
+                }`}
               >
                 <Icon width={16} height={16} />
                 <span>{t.label}</span>
