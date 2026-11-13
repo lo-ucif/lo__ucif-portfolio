@@ -12,28 +12,28 @@ export function SiteFooter() {
   };
 
   return (
-    <footer className="w-full border-t border-white/[0.08] pt-8 pb-4 text-[#e1e1e1]">
-      <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-between gap-6 sm:flex-row">
-        {/* Left: Identity & Copyright */}
-        <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
-          <span className="font-['Poppins'] text-[15px] font-bold text-white">
+    <footer className="w-full border-t border-white/[0.08] pt-8 pb-4 text-[#e1e1e1] font-['Itim']">
+      <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-between gap-5 lg:flex-row">
+        {/* Left: Name and Title in one line */}
+        <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 whitespace-nowrap text-center lg:text-left">
+          <span className="text-[17px] text-white">
             Ahmed Loucif
           </span>
-          <p className="font-['Poppins'] text-[12.5px] text-[#8491A0] mt-0.5">
+          <span className="text-[14px] text-[#8491A0]">
             Full-Stack Engineer & Product Builder · © 2026 All rights reserved.
-          </p>
+          </span>
         </div>
 
-        {/* Center: Navigation & Tech Note */}
-        <div className="flex items-center gap-3 font-['Poppins'] text-[12.5px] text-[#8491A0]">
+        {/* Center: Back to Top and Technologies in one line */}
+        <div className="flex items-center gap-2.5 whitespace-nowrap text-[14px] text-[#8491A0]">
           <button
             onClick={scrollToTop}
-            className="hover:text-white transition-colors duration-200 cursor-pointer"
+            className="text-[#8491A0] hover:text-white transition-colors duration-200 cursor-pointer"
           >
             Back to Top ↑
           </button>
-          <span className="text-[#8491A0]/60">·</span>
-          <span>Built with Vite, React 19, TypeScript & Tailwind</span>
+          <span>·</span>
+          <span>React · Django · Figma · PostgreSQL</span>
         </div>
 
         {/* Right: Social Profiles */}
@@ -87,4 +87,3 @@ export function SiteFooter() {
     </footer>
   );
 }
-
