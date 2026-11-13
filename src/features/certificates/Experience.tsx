@@ -162,8 +162,8 @@ export default function Experience() {
             </svg>
           </div>
 
-          {/* Timeline Milestones List with Tight Staggered Spacing */}
-          <div className="relative z-10 flex flex-col gap-0 py-2">
+          {/* Timeline Milestones List with Clean 10px Gap */}
+          <div className="relative z-10 flex flex-col gap-[10px] py-4">
             {experienceMilestones.map((item, index) => {
               const isLeft = index % 2 === 0;
 
@@ -176,7 +176,7 @@ export default function Experience() {
                   transition={{ duration: 0.45, ease: easeOut, delay: index * 0.05 }}
                   className={`relative flex items-center ${
                     isLeft ? "justify-start" : "justify-end"
-                  } ${index > 0 ? "md:-mt-14 lg:-mt-18" : ""}`}
+                  }`}
                 >
                   {/* Glowing Node Positioned Directly on the Wave Apex */}
                   <div
