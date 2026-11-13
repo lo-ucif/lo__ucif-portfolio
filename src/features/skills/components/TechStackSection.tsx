@@ -1,4 +1,4 @@
-﻿import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { techGroups } from "../../../constants/data";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
@@ -13,7 +13,7 @@ export function TechStackSection() {
       className="flex w-full flex-col items-center gap-7.5 text-center"
     >
       <motion.h2
-        className="font-['Itim'] text-[36px] text-[#5197ff]"
+        className="font-['Itim'] text-[36px] text-white"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}

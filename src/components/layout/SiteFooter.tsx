@@ -1,10 +1,4 @@
-import { motion } from "framer-motion";
-import {
-  GithubIcon,
-  LinkedinIcon,
-  WhatsAppIcon,
-  BehanceIcon,
-} from "../../constants/Icon";
+import { GithubIcon } from "../../constants/Icon";
 
 export function SiteFooter() {
   const scrollToTop = () => {
@@ -12,77 +6,29 @@ export function SiteFooter() {
   };
 
   return (
-    <footer className="w-full border-t border-white/[0.08] pt-8 pb-4 text-[#e1e1e1] font-['Itim']">
-      <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-between gap-5 lg:flex-row">
-        {/* Left: Name and Title in two lines */}
-        <div className="flex flex-col items-center lg:items-start text-center lg:text-left gap-0.5">
-          <span className="text-[18px] text-white">
-            Ahmed Loucif
-          </span>
-          <span className="text-[13.5px] text-[#8491A0] whitespace-nowrap">
-            Full-Stack Engineer & Product Builder · © 2026 All rights reserved.
-          </span>
-        </div>
-
-        {/* Center: Back to Top and Technologies in one line */}
-        <div className="flex items-center gap-2.5 whitespace-nowrap text-[14px] text-[#8491A0]">
-          <button
-            onClick={scrollToTop}
-            className="text-[#8491A0] hover:text-white transition-colors duration-200 cursor-pointer"
-          >
-            Back to Top ↑
-          </button>
-          <span>·</span>
-          <span>React · Django · Figma · PostgreSQL</span>
-        </div>
-
-        {/* Right: Social Profiles */}
-        <div className="flex items-center gap-5 text-white">
-          <motion.a
-            href="https://github.com/lo-ucif"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub Profile"
-            className="text-white hover:text-[#5197ff] transition-colors duration-200"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <GithubIcon width={20} height={20} />
-          </motion.a>
-          <motion.a
-            href="https://www.linkedin.com/in/ahmed-loucif-757854342"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn Profile"
-            className="text-white hover:text-[#5197ff] transition-colors duration-200"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <LinkedinIcon width={20} height={20} />
-          </motion.a>
-          <motion.a
-            href="https://wa.me/213676244189"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="WhatsApp"
-            className="text-white hover:text-[#5197ff] transition-colors duration-200"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <WhatsAppIcon width={22} height={22} />
-          </motion.a>
-          <motion.a
-            href="https://www.behance.net/tamerloucif"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Behance Profile"
-            className="text-white hover:text-[#5197ff] transition-colors duration-200"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <BehanceIcon width={22} height={22} />
-          </motion.a>
-        </div>
+    <footer className="w-full border-t border-white/[0.08] py-6 font-['Itim']">
+      <div className="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-center gap-x-3 gap-y-2 text-center text-[13.5px] sm:text-[14.5px] text-[#A9A9A9]">
+        <span>Full-Stack Engineer &amp; Product Builder · © 2026 All rights reserved.</span>
+        <span className="text-[#A9A9A9]/60">·</span>
+        <button
+          onClick={scrollToTop}
+          className="text-[#A9A9A9] hover:text-white transition-colors duration-200 cursor-pointer"
+        >
+          Back to Top ↑
+        </button>
+        <span className="text-[#A9A9A9]/60">·</span>
+        <span>React · Django · Figma · PostgreSQL</span>
+        <span className="text-[#A9A9A9]/60 mx-1">|</span>
+        <a
+          href="https://github.com/lo-ucif"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub Profile"
+          className="inline-flex items-center gap-1.5 text-[#A9A9A9] hover:text-white transition-colors duration-200"
+        >
+          <GithubIcon width={17} height={17} />
+          <span>GitHub</span>
+        </a>
       </div>
     </footer>
   );
