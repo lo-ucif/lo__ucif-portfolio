@@ -7,7 +7,6 @@ import {
   Github2Icon,
   LinkIcon,
   FigmaIcon,
-  HackathonIcon,
 } from "../constants/Icon";
 
 const ReturnIcon = (props: SVGProps<SVGSVGElement>) => (
@@ -193,8 +192,7 @@ export default function ProjectDetail() {
               {project.year}
             </span>
             {project.hackathon && project.hackathon !== "" && (
-              <span className="flex items-center gap-1 rounded-[22px] bg-[#30496b] px-3 py-1 text-white font-['Itim'] text-[14px]">
-                <HackathonIcon width={14} height={14} />
+              <span className="flex items-center rounded-[22px] bg-[#30496b] px-3 py-1 text-white font-['Itim'] text-[14px]">
                 {project.hackathon}
               </span>
             )}

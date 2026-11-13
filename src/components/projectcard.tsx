@@ -5,7 +5,6 @@ import {
   Github2Icon,
   LinkIcon,
   FigmaIcon,
-  HackathonIcon,
 } from "../constants/Icon";
 import type { project as ProjectType } from "../constants/data";
 
@@ -76,8 +75,7 @@ export default function Projectcard({
       {/* Right Column: Project Story & Details */}
       <div className="w-full lg:w-1/2 flex flex-col items-start gap-4">
         {/* Status Badge */}
-        <span className="inline-flex items-center gap-1.5 rounded-[22px] bg-[#30496b] px-3 py-1 font-['Itim'] text-[15px] sm:text-[16px] text-white">
-          <HackathonIcon width={16} height={16} />
+        <span className="inline-flex items-center rounded-[22px] bg-[#30496b] px-3.5 py-1 font-['Itim'] text-[15px] sm:text-[16px] text-white">
           <span>{badgeText}</span>
         </span>
 
