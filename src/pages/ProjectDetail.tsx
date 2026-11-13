@@ -150,7 +150,7 @@ export default function ProjectDetail() {
   ];
 
   return (
-    <div className="flex flex-col items-center min-h-screen bg-[#161513] px-5 pb-20 pt-20 text-white sm:px-10 lg:px-20">
+    <div className="flex flex-col items-center min-h-screen bg-[#161513] px-5 pb-0 pt-20 text-white sm:px-10 lg:px-20">
       <div className="flex flex-col w-full gap-6 max-w-260">
         <motion.div
           initial={{ opacity: 0, y: -10 }}

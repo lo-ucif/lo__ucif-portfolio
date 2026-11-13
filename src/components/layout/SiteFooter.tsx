@@ -14,12 +14,12 @@ export function SiteFooter() {
   return (
     <footer className="w-full border-t border-white/[0.08] pt-8 pb-4 text-[#e1e1e1] font-['Itim']">
       <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-between gap-5 lg:flex-row">
-        {/* Left: Name and Title in one line */}
-        <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 whitespace-nowrap text-center lg:text-left">
-          <span className="text-[17px] text-white">
+        {/* Left: Name and Title in two lines */}
+        <div className="flex flex-col items-center lg:items-start text-center lg:text-left gap-0.5">
+          <span className="text-[18px] text-white">
             Ahmed Loucif
           </span>
-          <span className="text-[14px] text-[#8491A0]">
+          <span className="text-[13.5px] text-[#8491A0] whitespace-nowrap">
             Full-Stack Engineer & Product Builder · © 2026 All rights reserved.
           </span>
         </div>

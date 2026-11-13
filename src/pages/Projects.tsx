@@ -34,7 +34,7 @@ export default function Projects() {
   };
 
   return (
-    <div className="flex flex-col gap-5 justify-center items-center min-h-screen  bg-[#161513] px-5 pb-20 pt-5 text-white sm:px-10 lg:px-20 min-[601px]:pt-30 max-[600px]:pt-22.5">
+    <div className="flex flex-col gap-5 justify-center items-center min-h-screen  bg-[#161513] px-5 pb-0 pt-5 text-white sm:px-10 lg:px-20 min-[601px]:pt-30 max-[600px]:pt-22.5">
       <motion.div
         className="flex flex-col items-center gap-2 text-center"
         initial={{ opacity: 0, y: 20 }}
