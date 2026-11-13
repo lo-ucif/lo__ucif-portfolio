@@ -1,13 +1,8 @@
 import logo from "../../assets/8.webp";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
-import {
-  GithubIcon,
-  LinkedinIcon,
-  BehanceIcon,
-  WhatsAppIcon,
-} from "../../constants/Icon";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { GithubIcon } from "../../constants/Icon";
 
 type SiteHeaderProps = {
   activeSection: string;
@@ -35,57 +30,6 @@ export function SiteHeader({
   const location = useLocation();
   const navigate = useNavigate();
   const [activeId, setActiveId] = useState<string>("home");
-  const [isSocialMenuOpen, setIsSocialMenuOpen] = useState(false);
-  const socialMenuRef = useRef<HTMLDivElement>(null);
-  const toggleButtonRef = useRef<HTMLButtonElement>(null);
-
-  const socialLinks = [
-    { label: "GitHub", href: "https://github.com/lo-ucif", icon: GithubIcon },
-    {
-      label: "LinkedIn",
-      href: "https://www.linkedin.com/in/ahmed-loucif-757854342",
-      icon: LinkedinIcon,
-    },
-    {
-      label: "Behance",
-      href: "https://www.behance.net/tamerloucif",
-      icon: BehanceIcon,
-    },
-    {
-      label: "WhatsApp",
-      href: "https://wa.me/213676244189",
-      icon: WhatsAppIcon,
-    },
-  ];
-
-  // Close social menu when clicking outside or pressing Escape
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        socialMenuRef.current &&
-        !socialMenuRef.current.contains(event.target as Node) &&
-        toggleButtonRef.current &&
-        !toggleButtonRef.current.contains(event.target as Node)
-      ) {
-        setIsSocialMenuOpen(false);
-      }
-    };
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setIsSocialMenuOpen(false);
-      }
-    };
-
-    if (isSocialMenuOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-      document.addEventListener("keydown", handleKeyDown);
-    }
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [isSocialMenuOpen]);
 
   // Track active section as user scrolls
   useEffect(() => {
@@ -200,67 +144,25 @@ export function SiteHeader({
               })}
             </nav>
 
-            {/* Two-Line Menu Button (=) that opens social card */}
-            <div className="relative">
-              <button
-                ref={toggleButtonRef}
-                type="button"
-                onClick={() => setIsSocialMenuOpen((prev) => !prev)}
-                className="flex h-9 w-9 items-center justify-center rounded-lg hover:bg-white/10 transition-colors cursor-pointer group"
-                aria-label="Toggle social links menu"
-                aria-expanded={isSocialMenuOpen}
+            {/* Vertical Separator & Direct GitHub Link */}
+            <div className="flex items-center gap-3 xl:gap-4">
+              <span className="text-white/30 text-[15px] select-none">|</span>
+              <motion.a
+                href="https://github.com/lo-ucif"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub Profile"
+                className="flex items-center gap-2 font-['Itim'] text-[15px] text-white hover:text-[#5197ff] transition-colors duration-200 cursor-pointer group whitespace-nowrap"
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.97 }}
               >
-                <div className="relative w-5 h-3 flex flex-col justify-between items-center">
-                  <span
-                    className={`block h-[2px] w-5 rounded-full transition-all duration-300 origin-center ${
-                      isSocialMenuOpen
-                        ? "absolute top-1 rotate-45 bg-[#5197ff]"
-                        : "bg-white group-hover:bg-[#5197ff]"
-                    }`}
-                  />
-                  <span
-                    className={`block h-[2px] w-5 rounded-full transition-all duration-300 origin-center ${
-                      isSocialMenuOpen
-                        ? "absolute top-1 -rotate-45 bg-[#5197ff]"
-                        : "bg-white group-hover:bg-[#5197ff]"
-                    }`}
-                  />
-                </div>
-              </button>
-
-              {/* Floating Socials Card */}
-              <AnimatePresence>
-                {isSocialMenuOpen && (
-                  <motion.div
-                    ref={socialMenuRef}
-                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 8, scale: 0.95 }}
-                    transition={{ duration: 0.18, ease: "easeOut" }}
-                    className="absolute right-0 top-full mt-3.5 w-44 rounded-2xl border border-white/10 bg-[#161513]/95 px-5 py-5 shadow-2xl backdrop-blur-xl flex flex-col items-center gap-4 z-50 text-center font-['Itim']"
-                  >
-                    {socialLinks.map((social) => (
-                      <motion.a
-                        key={social.label}
-                        href={social.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={() => setIsSocialMenuOpen(false)}
-                        className="group flex items-center justify-center gap-2.5 text-[17px] text-white hover:text-[#5197ff] transition-colors duration-200 cursor-pointer"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <social.icon
-                          width={18}
-                          height={18}
-                          className="shrink-0 text-white/80 transition-transform group-hover:scale-110 group-hover:text-[#5197ff]"
-                        />
-                        <span>{social.label}</span>
-                      </motion.a>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                <GithubIcon
+                  width={18}
+                  height={18}
+                  className="shrink-0 transition-transform group-hover:scale-110"
+                />
+                <span>GitHub</span>
+              </motion.a>
             </div>
           </div>
         </div>
