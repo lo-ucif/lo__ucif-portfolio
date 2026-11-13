@@ -73,7 +73,7 @@ export default function Projectcard({
       </div>
 
       {/* Right Column: Project Story & Details */}
-      <div className="w-full lg:w-1/2 flex flex-col items-start gap-4">
+      <div className="w-full lg:w-1/2 flex flex-col items-start gap-4 min-w-0">
         {/* Status Badge */}
         <span className="inline-flex items-center rounded-[22px] bg-[#30496b] px-3.5 py-1 font-['Itim'] text-[15px] sm:text-[16px] text-white">
           <span>{badgeText}</span>
@@ -134,15 +134,19 @@ export default function Projectcard({
           </div>
         )}
 
-        {/* Tech Stack Row - strictly single line */}
-        <div className="flex flex-nowrap items-center gap-4 pt-4 border-t border-white/[0.08] w-full mt-2 font-['Poppins'] text-[13px] text-[#a9a9a9] overflow-hidden">
+        {/* Tech Stack Row - strictly single line, responsive fit without overflow */}
+        <div className="flex flex-nowrap items-center gap-3 sm:gap-4 pt-4 border-t border-white/[0.08] w-full mt-2 font-['Poppins'] text-[13px] text-[#a9a9a9] overflow-hidden min-w-0">
           {tech.slice(0, 5).map((t, idx) => {
             const Icon = t.icon;
             return (
               <div
                 key={t.label}
-                className={`flex shrink-0 items-center gap-1.5 text-white/90 whitespace-nowrap ${
-                  idx >= 4 ? "hidden sm:flex" : ""
+                className={`shrink-0 items-center gap-1.5 text-white/90 whitespace-nowrap ${
+                  idx >= 4
+                    ? "hidden lg:flex"
+                    : idx >= 3
+                      ? "hidden sm:flex"
+                      : "flex"
                 }`}
               >
                 <Icon width={16} height={16} />
