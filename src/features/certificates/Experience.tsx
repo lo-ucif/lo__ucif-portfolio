@@ -121,83 +121,91 @@ export default function Experience() {
         <div className="relative hidden md:block">
           
           {/* Central Vertical Multi-Strand Curved Ribbon Path */}
-          <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-[140px] pointer-events-none select-none z-0">
+          <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-[240px] pointer-events-none select-none z-0">
             <svg
               className="w-full h-full overflow-visible"
-              viewBox="0 0 140 1800"
+              viewBox="0 0 240 1200"
               preserveAspectRatio="none"
               xmlns="http://www.w3.org/2000/svg"
             >
               <defs>
                 <filter id="exp-vertical-glow" x="-50%" y="-50%" width="200%" height="200%">
-                  <feDropShadow dx="0" dy="0" stdDeviation="6" floodColor="#5197ff" floodOpacity="0.75" />
+                  <feDropShadow dx="0" dy="0" stdDeviation="6" floodColor="#5197ff" floodOpacity="0.8" />
                 </filter>
               </defs>
 
-              {/* Multi-Strand Ribbon Path */}
+              {/* Multi-Strand Ribbon Path with Deeper Organic Curvature */}
+              {/* Outer Cyan/Blue Glow Strand */}
               <path
-                d="M 70,0 C 70,80 25,120 25,240 C 25,380 115,400 115,540 C 115,680 25,720 25,860 C 25,1000 115,1020 115,1160 C 115,1300 25,1340 25,1480 C 25,1600 70,1660 70,1800"
+                d="M 119,0 C 119,35 31,45 31,100 C 31,230 209,170 209,300 C 209,430 31,370 31,500 C 31,630 209,570 209,700 C 209,830 31,770 31,900 C 31,1030 209,970 209,1100 C 209,1155 121,1165 121,1200"
                 fill="none"
                 stroke="#5197ff"
-                strokeWidth="1.2"
-                strokeOpacity="0.4"
+                strokeWidth="1.4"
+                strokeOpacity="0.45"
               />
+              {/* Core Electric Blue Strand with Drop Glow */}
               <path
-                d="M 70,0 C 70,80 28,120 28,240 C 28,380 112,400 112,540 C 112,680 28,720 28,860 C 28,1000 112,1020 112,1160 C 112,1300 28,1340 28,1480 C 28,1600 70,1660 70,1800"
+                d="M 120,0 C 120,35 35,45 35,100 C 35,230 205,170 205,300 C 205,430 35,370 35,500 C 35,630 205,570 205,700 C 205,830 35,770 35,900 C 35,1030 205,970 205,1100 C 205,1155 120,1165 120,1200"
                 fill="none"
                 stroke="#5197ff"
-                strokeWidth="2.5"
+                strokeWidth="2.6"
                 filter="url(#exp-vertical-glow)"
               />
+              {/* Sharp White Luminous Accent Strand */}
               <path
-                d="M 70,0 C 70,80 32,120 32,240 C 32,380 108,400 108,540 C 108,680 32,720 32,860 C 32,1000 108,1020 108,1160 C 108,1300 32,1340 32,1480 C 32,1600 70,1660 70,1800"
+                d="M 121,0 C 121,35 38,45 38,100 C 38,230 202,170 202,300 C 202,430 38,370 38,500 C 38,630 202,570 202,700 C 202,830 38,770 38,900 C 38,1030 202,970 202,1100 C 202,1155 119,1165 119,1200"
                 fill="none"
                 stroke="#ffffff"
-                strokeWidth="1.5"
-                strokeOpacity="0.85"
+                strokeWidth="1.4"
+                strokeOpacity="0.9"
               />
             </svg>
           </div>
 
-          {/* Timeline Milestones List */}
-          <div className="relative z-10 flex flex-col gap-24 py-6">
+          {/* Timeline Milestones List with Compact Spacing */}
+          <div className="relative z-10 flex flex-col gap-12 lg:gap-14 py-4">
             {experienceMilestones.map((item, index) => {
               const isLeft = index % 2 === 0;
 
               return (
                 <motion.div
                   key={item.num}
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 25 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.55, ease: easeOut, delay: index * 0.08 }}
+                  transition={{ duration: 0.5, ease: easeOut, delay: index * 0.07 }}
                   className={`relative flex items-center ${
                     isLeft ? "justify-start" : "justify-end"
                   }`}
                 >
-                  {/* Glowing Node on Central Axis */}
-                  <div className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center z-20">
+                  {/* Glowing Node Positioned Directly on the Wave Apex */}
+                  <div
+                    className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 flex items-center justify-center z-20"
+                    style={{ left: isLeft ? "calc(50% - 85px)" : "calc(50% + 85px)" }}
+                  >
                     <div className="relative flex items-center justify-center w-6 h-6 rounded-full border-2 border-[#5197ff] bg-[#161513] shadow-[0_0_12px_#5197ff] transition-transform duration-300 hover:scale-125">
                       <div className="w-2 h-2 rounded-full bg-white shadow-[0_0_6px_#5197ff]" />
                     </div>
                   </div>
 
-                  {/* Clean Editorial Text Block (NO CARD, NO PILL BADGE, NO BLUE ORG) */}
-                  <div className={`w-full md:w-[45%] flex flex-col items-start text-left ${
-                    isLeft ? "md:pr-12" : "md:pl-12"
-                  }`}>
+                  {/* Clean Editorial Text Block */}
+                  <div
+                    className={`w-full md:w-[42%] lg:w-[43%] flex flex-col items-start text-left ${
+                      isLeft ? "md:pr-8 lg:pr-10" : "md:pl-8 lg:pl-10"
+                    }`}
+                  >
                     {/* Milestone Title */}
                     <h3 className="font-['Itim'] text-[24px] sm:text-[28px] lg:text-[32px] font-bold text-white tracking-wide uppercase leading-tight hover:text-[#5197ff] transition-colors duration-200">
                       {item.title}
                     </h3>
 
                     {/* Optimized Narrative Description */}
-                    <p className="mt-2.5 font-['Poppins'] text-[14px] sm:text-[15px] leading-[1.75] text-[#b4b4b4]">
+                    <p className="mt-2 font-['Poppins'] text-[14px] sm:text-[15px] leading-[1.7] text-[#b4b4b4]">
                       {item.description}
                     </p>
 
                     {/* Tech Stack Row */}
-                    <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-3.5 border-t border-white/[0.08] w-full mt-2 font-['Poppins'] text-[13px] text-[#a9a9a9]">
+                    <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-3 border-t border-white/[0.08] w-full mt-2 font-['Poppins'] text-[13px] text-[#a9a9a9]">
                       {item.tech.map((t) => {
                         const Icon = t.icon;
                         return (
@@ -221,7 +229,7 @@ export default function Experience() {
         {/* ======================================================== */}
         {/* MOBILE TIMELINE WITH LEFT WINDING PATH (< md)            */}
         {/* ======================================================== */}
-        <div className="relative flex flex-col gap-12 md:hidden text-left pl-6">
+        <div className="relative flex flex-col gap-8 sm:gap-9 md:hidden text-left pl-6 py-2">
           
           {/* Vertical Multi-Strand Guide Line on Left */}
           <div className="absolute top-2 bottom-4 left-2 w-[2px] bg-gradient-to-b from-[#5197ff] via-[#ffffff] to-[#5197ff] shadow-[0_0_10px_#5197ff]" />
