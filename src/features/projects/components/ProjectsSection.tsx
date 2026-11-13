@@ -34,7 +34,7 @@ export function ProjectsSection() {
       </motion.div>
 
       {/* Unified Project Showcase Cards */}
-      <div className="flex flex-col items-center gap-10 sm:gap-14 w-full max-w-6xl">
+      <div className="flex flex-col items-center gap-16 sm:gap-24 w-full max-w-6xl">
         {featuredProjects.map((project) => (
           <Projectcard key={project.id} {...project} />
         ))}

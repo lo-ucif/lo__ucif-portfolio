@@ -41,7 +41,7 @@ export default function Projects() {
       </motion.div>
 
       {/* Unified Project Showcase Cards (All Projects in One Column) */}
-      <div className="flex flex-col items-center gap-10 sm:gap-14 w-full max-w-6xl">
+      <div className="flex flex-col items-center gap-16 sm:gap-24 w-full max-w-6xl">
         {projects.map((project) => (
           <Projectcard key={project.id} {...project} />
         ))}

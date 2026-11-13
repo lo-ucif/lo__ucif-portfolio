@@ -5,6 +5,7 @@ import {
   Github2Icon,
   LinkIcon,
   FigmaIcon,
+  HackathonIcon,
 } from "../constants/Icon";
 import type { project as ProjectType } from "../constants/data";
 
@@ -37,12 +38,12 @@ export default function Projectcard({
   };
 
   const badgeText = hackathon
-    ? "HACKATHON FINALIST"
+    ? hackathon
     : category === "client"
-      ? "CLIENT PROJECT"
+      ? "Client Project"
       : category === "university"
-        ? "UNIVERSITY PROJECT"
-        : "FEATURED WORK";
+        ? "University Project"
+        : "Featured Work";
 
   // Build a rich narrative description in the style of Havana Buy
   const narrative = problem && solution
@@ -55,43 +56,30 @@ export default function Projectcard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.6, ease: easeOut }}
-      className="group relative flex flex-col lg:flex-row items-center gap-8 lg:gap-14 w-full rounded-3xl border border-white/[0.08] bg-[#181818]/70 p-6 sm:p-8 lg:p-10 backdrop-blur-sm transition-all duration-300 hover:border-white/20 hover:shadow-2xl hover:shadow-black/70 text-left"
+      className="group relative flex flex-col lg:flex-row items-center gap-8 lg:gap-14 w-full text-left"
     >
-      {/* Left Column: Desktop Browser Mockup Window */}
+      {/* Left Column: Project Image Preview */}
       <div
         onClick={handleCardClick}
         className="w-full lg:w-1/2 shrink-0 cursor-pointer"
       >
-        <div className="relative w-full overflow-hidden rounded-2xl border border-white/10 bg-[#121212] shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]">
-          {/* macOS Style Window Header */}
-          <div className="flex items-center gap-2 px-4 py-2.5 bg-[#202020] border-b border-white/10">
-            <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F56]/90" />
-            <span className="h-2.5 w-2.5 rounded-full bg-[#FFBD2E]/90" />
-            <span className="h-2.5 w-2.5 rounded-full bg-[#27C93F]/90" />
-            <span className="ml-2 font-mono text-[11px] text-[#8491A0] truncate max-w-56">
-              {title.toLowerCase().replace(/[^a-z0-9]/g, "-")}.app
-            </span>
-          </div>
-
-          {/* Window Image Preview */}
-          <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#1A1A1A]">
-            <img
-              src={image}
-              alt={title}
-              loading="lazy"
-              className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-            />
-          </div>
+        <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl bg-[#121212] shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]">
+          <img
+            src={image}
+            alt={title}
+            loading="lazy"
+            className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+          />
         </div>
       </div>
 
       {/* Right Column: Project Story & Details */}
       <div className="w-full lg:w-1/2 flex flex-col items-start gap-4">
         {/* Status Badge */}
-        <div className="inline-flex items-center gap-2 rounded-full border border-amber-500/40 bg-amber-500/10 px-3 py-1 font-['Itim'] text-[12px] text-amber-400">
-          <span className="h-1.5 w-1.5 rounded-full bg-amber-400 animate-pulse" />
-          <span className="tracking-wider">{badgeText}</span>
-        </div>
+        <span className="inline-flex items-center gap-1.5 rounded-[22px] bg-[#30496b] px-3 py-1 font-['Itim'] text-[15px] sm:text-[16px] text-white">
+          <HackathonIcon width={16} height={16} />
+          <span>{badgeText}</span>
+        </span>
 
         {/* Project Title */}
         <h3

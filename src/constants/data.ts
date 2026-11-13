@@ -265,7 +265,7 @@ export const projects: project[] = [
       { label: "REST API", icon: RestApiIcon },
       { label: "Figma", icon: FigmaIcon },
     ],
-    hackathon: "Automate & Innovate Finalist",
+    hackathon: "Automate & Innovate",
     liveDemo: "https://estin-hackathon.vercel.app/",
     github: "https://github.com/lo-ucif/estin-hackathon.git",
     figma:
