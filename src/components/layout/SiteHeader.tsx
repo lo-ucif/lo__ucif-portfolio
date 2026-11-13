@@ -1,7 +1,7 @@
 import logo from "../../assets/8.webp";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { BehanceIcon, GithubIcon, LinkedinIcon } from "../../constants/Icon";
+import { useEffect, useState } from "react";
 
 type SiteHeaderProps = {
   activeSection: string;
@@ -10,27 +10,117 @@ type SiteHeaderProps = {
   menuButtonRef: React.RefObject<HTMLButtonElement | null>;
 };
 
+export const navItems = [
+  { label: "Home", shortLabel: "Home", id: "home" },
+  { label: "About Me", shortLabel: "About", id: "about" },
+  { label: "Tech Stack", shortLabel: "Stack", id: "stack" },
+  { label: "Experience", shortLabel: "Experience", id: "experience" },
+  {
+    label: "A Selection of My Recent Work",
+    shortLabel: "Projects",
+    id: "projects",
+  },
+  {
+    label: "Certificates & Achievements",
+    shortLabel: "Certificates",
+    id: "certificates",
+  },
+  {
+    label: "Let's Build Something Together.",
+    shortLabel: "Contact",
+    id: "contact",
+  },
+];
+
 export function SiteHeader({
-  activeSection,
   isMobileMenuOpen,
   onToggleMobileMenu,
   menuButtonRef,
 }: SiteHeaderProps) {
-  const linkClass = (id: string) => (id === activeSection ? "#5197ff" : "#fff");
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [activeId, setActiveId] = useState<string>("home");
+
+  // Track active section as user scrolls
+  useEffect(() => {
+    if (location.pathname !== "/") {
+      if (location.pathname.startsWith("/projects")) {
+        setActiveId("projects");
+      } else {
+        setActiveId("");
+      }
+      return;
+    }
+
+    const sectionIds = [
+      "contact",
+      "certificates",
+      "projects",
+      "experience",
+      "stack",
+      "about",
+    ];
+
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      if (scrollY < 200) {
+        setActiveId("home");
+        return;
+      }
+
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (el) {
+          const top = el.getBoundingClientRect().top + window.scrollY;
+          if (scrollY >= top - 250) {
+            setActiveId(id);
+            return;
+          }
+        }
+      }
+      setActiveId("home");
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [location.pathname]);
+
+  const handleNavClick = (id: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    if (location.pathname === "/") {
+      if (id === "home") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    } else {
+      if (id === "home") {
+        navigate("/");
+      } else {
+        navigate(`/#${id}`);
+      }
+    }
+  };
 
   return (
     <>
+      {/* Desktop Header */}
       <motion.header
         className="fixed left-0 right-0 top-0 z-50 hidden w-full bg-[#161513]/95 backdrop-blur min-[601px]:flex"
         initial={{ opacity: 0, y: -16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.45, ease: "easeOut" }}
       >
-        <div className="mx-auto flex w-full max-w-300 items-center justify-between gap-6 px-20 py-3.5 max-[1024px]:px-10">
-          <motion.div className="h-12.5 w-22.25" whileHover={{ scale: 1.03 }}>
+        <div className="mx-auto flex w-full max-w-300 items-center justify-between gap-6 px-10 xl:px-20 py-3.5">
+          {/* Logo on Left */}
+          <motion.div className="h-12.5 w-22.25 shrink-0" whileHover={{ scale: 1.03 }}>
             <Link
               to="/"
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              onClick={(e) => handleNavClick("home", e)}
             >
               <img
                 className="object-contain w-full h-full"
@@ -39,57 +129,34 @@ export function SiteHeader({
               />
             </Link>
           </motion.div>
-          <nav className="flex items-center gap-8 font-['Itim'] text-[15px] tracking-[0.3px] text-white min-[1100px]:gap-17.5">
-            <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
-              <Link style={{ color: linkClass("home") }} to="/">
-                Home
-              </Link>
-            </motion.div>
-            <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
-              <Link
-                style={{ color: linkClass("projects") }}
-                to="/projects"
-              >
-                Projects
-              </Link>
-            </motion.div>
+
+          {/* Navigation Links Aligned to Right (developer X style) */}
+          <nav className="flex items-center gap-4 xl:gap-7 font-['Itim'] text-[14px] xl:text-[15px] tracking-[0.2px] text-white">
+            {navItems.map((item) => {
+              const isActive = activeId === item.id;
+              return (
+                <motion.div
+                  key={item.id}
+                  whileHover={{ y: -2 }}
+                  whileTap={{ scale: 0.97 }}
+                >
+                  <a
+                    href={`/#${item.id}`}
+                    onClick={(e) => handleNavClick(item.id, e)}
+                    style={{ color: isActive ? "#5197ff" : "#ffffff" }}
+                    className="transition-colors duration-200 cursor-pointer whitespace-nowrap hover:text-[#5197ff]"
+                  >
+                    <span className="hidden 2xl:inline">{item.label}</span>
+                    <span className="2xl:hidden">{item.shortLabel}</span>
+                  </a>
+                </motion.div>
+              );
+            })}
           </nav>
-          <div className="flex flex-row gap-6 items-center justify-center rounded-[30px] bg-[#232323] px-5 py-2.5">
-            <motion.a
-              href="https://github.com/lo-ucif"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.08, y: -1 }}
-              whileTap={{ scale: 0.96 }}
-            >
-              <GithubIcon />
-            </motion.a>
-
-            <motion.a
-              href="https://www.linkedin.com/in/ahmed-loucif-757854342?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.08, y: -1 }}
-              whileTap={{ scale: 0.96 }}
-            >
-              <LinkedinIcon />
-            </motion.a>
-
-            <motion.a
-              href="https://www.behance.net/tamerloucif"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="View Behance profile"
-              whileHover={{ scale: 1.08, y: -1 }}
-              whileTap={{ scale: 0.96 }}
-            >
-              <BehanceIcon />
-            </motion.a>
-
-          </div>
         </div>
       </motion.header>
 
+      {/* Mobile Header */}
       <motion.header
         className="fixed left-0 right-0 top-0 z-40 hidden w-full items-center justify-between bg-[#161513]/40 px-5 py-3 backdrop-blur max-[600px]:flex"
         initial={{ opacity: 0, y: -12 }}
@@ -98,7 +165,7 @@ export function SiteHeader({
       >
         <Link
           to="/"
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          onClick={(e) => handleNavClick("home", e)}
         >
           <img className="h-8.5 w-15" src={logo} alt="Loucif logo" />
         </Link>
@@ -145,7 +212,6 @@ export function SiteHeader({
           )}
         </motion.button>
       </motion.header>
-
     </>
   );
 }
