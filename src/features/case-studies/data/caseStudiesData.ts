@@ -1,6 +1,8 @@
 import rokhsaImg from "../../../assets/ChatGPT Image Aug 5, 2026, 11_48_00 PM 13.webp";
 import tabibMockup from "../../../assets/case-studies/mockups/al-tabib-transparent.webp";
+import tabibFramed from "../../../assets/case-studies/mockups/al-tabib-framed.webp";
 import rokhsaMockup from "../../../assets/case-studies/mockups/rokhsa-transparent.webp";
+import rokhsaFramed from "../../../assets/case-studies/mockups/rokhsa-framed.webp";
 import splashImg from "../../../assets/case-studies/al-tabib/screen-1-splash.webp";
 import onboardingImg from "../../../assets/case-studies/al-tabib/screen-2-onboarding.webp";
 import loginImg from "../../../assets/case-studies/al-tabib/screen-3-login.webp";
@@ -36,6 +38,19 @@ export const caseStudies: CaseStudy[] = [
     organization: "Faculty of Medicine — Constantine (كلية الطب - قسنطينة)",
     heroImage: tabibMockup,
     mockupImage: tabibMockup,
+    framedMockupImage: tabibFramed,
+    galleryMockups: [
+      {
+        title: "Transparent Isometric Perspective",
+        image: tabibMockup,
+        caption: "Hi-Fi Mobile Mockup in Figma",
+      },
+      {
+        title: "Framed Presentation Showcase",
+        image: tabibFramed,
+        caption: "Framed Device Portfolio Presentation",
+      },
+    ],
     presentationHeading: "Mobile Presentation",
     tools: [{ label: "Figma", icon: FigmaIcon }],
     liveDemo:
@@ -236,6 +251,43 @@ export const caseStudies: CaseStudy[] = [
           "Dashboard Overview (Immediate Status Assessment)",
           "Virtual Room (Direct 1-Click Launch to Teacher Session)",
         ],
+        nodes: [
+          {
+            step: 1,
+            title: "Launch & Splash",
+            touchpoint: "Splash Screen",
+            userAction: "Opens app during hospital break or transit",
+            systemResponse: "Displays medical emblem & faculty accreditation",
+          },
+          {
+            step: 2,
+            title: "Onboarding Choice",
+            touchpoint: "Onboarding View",
+            userAction: "Reviews platform mission and selects Sign In",
+            systemResponse: "Presents clear path tailored for medical students",
+          },
+          {
+            step: 3,
+            title: "Medical Auth",
+            touchpoint: "Login Portal",
+            userAction: "Enters student credentials with instant validation",
+            systemResponse: "Authenticates and routes directly to student workspace",
+          },
+          {
+            step: 4,
+            title: "Dashboard Overview",
+            touchpoint: "Main Hub",
+            userAction: "Reviews daily revision targets & attendance score",
+            systemResponse: "Displays 30-Hizb tracker & attendance analytics donut",
+          },
+          {
+            step: 5,
+            title: "Virtual Classroom",
+            touchpoint: "Virtual Room Card",
+            userAction: "Taps 1-click persistent join button",
+            systemResponse: "Directly opens Sheikh's active live recitation session",
+          },
+        ],
       },
       wireframes: {
         description:
@@ -404,6 +456,20 @@ export const caseStudies: CaseStudy[] = [
         "Arabic typography alignment & baseline balance: Ensuring right-to-left layout hierarchy, numeral formatting, and Islamic terminology rendered seamlessly across screen sizes.",
         "Balancing technical precision with spiritual warmth: Creating an interface that feels as clean as modern medical software while retaining the serene dignity of a Quranic platform.",
       ],
+      approaches: [
+        {
+          challenge: "Extreme Cognitive Fatigue & Dense Medical Workload",
+          approach: "Ruthlessly pruned visual noise, reduced primary path to under 3 taps, and placed the daily virtual classroom link persistently on the primary home dashboard.",
+        },
+        {
+          challenge: "Arabic Right-to-Left Typography & Baseline Harmony",
+          approach: "Engineered an 8-point spatial system in Figma with dedicated Arabic font scales and optical margin adjustments to ensure effortless readability across all mobile viewports.",
+        },
+        {
+          challenge: "Balancing Medical Rigor with Spiritual Serenity",
+          approach: "Harmonized deep dark slate surfaces (#161513) with calming teal and cyan accents, using generous negative space to evoke reverence while maintaining clinical clarity.",
+        },
+      ],
       learnings: [
         "Empathy in UI is about reducing friction, not adding decorative elements. Persistent links and clear status indicators carry immense real-world value.",
         "Design systems in Figma are substantially more effective when built with strict Auto Layout constraints and variables from the very first wireframe.",
@@ -448,6 +514,19 @@ export const caseStudies: CaseStudy[] = [
     organization: "Driving Education Ecosystem",
     heroImage: rokhsaMockup,
     mockupImage: rokhsaMockup,
+    framedMockupImage: rokhsaFramed,
+    galleryMockups: [
+      {
+        title: "Transparent Perspective Mockup",
+        image: rokhsaMockup,
+        caption: "Cross-Device Driving Education Platform",
+      },
+      {
+        title: "Framed Presentation Showcase",
+        image: rokhsaFramed,
+        caption: "Framed Portfolio Showcase",
+      },
+    ],
     presentationHeading: "Mobile Presentation",
     tools: [{ label: "Figma", icon: FigmaIcon }],
     liveDemo:
@@ -643,6 +722,43 @@ export const caseStudies: CaseStudy[] = [
           "Instructor Conducts Session & Logs Progress",
           "System Verifies Exam Readiness Threshold",
         ],
+        nodes: [
+          {
+            step: 1,
+            title: "Candidate Enrollment",
+            touchpoint: "Web Admin Portal",
+            userAction: "Admin registers student dossier & licensing category",
+            systemResponse: "Generates credentials and initiates exam roadmap",
+          },
+          {
+            step: 2,
+            title: "Credential Dispatch",
+            touchpoint: "Learner Mobile App",
+            userAction: "Learner signs into mobile companion app",
+            systemResponse: "Loads personalized highway code & road hours roadmap",
+          },
+          {
+            step: 3,
+            title: "Lesson Slot Booking",
+            touchpoint: "Interactive Schedule",
+            userAction: "Selects preferred instructor, vehicle, and date slot",
+            systemResponse: "Verifies fleet availability and locks reservation",
+          },
+          {
+            step: 4,
+            title: "Progress & Competency",
+            touchpoint: "Evaluation Module",
+            userAction: "Instructor logs completed road hours and maneuvers",
+            systemResponse: "Updates candidate exam readiness percentage",
+          },
+          {
+            step: 5,
+            title: "Exam Readiness Sign-off",
+            touchpoint: "State Exam Dossier",
+            userAction: "Admin generates certified candidate exam list",
+            systemResponse: "Prepares official Wilaya transport submission file",
+          },
+        ],
       },
       wireframes: {
         description:
@@ -767,6 +883,20 @@ export const caseStudies: CaseStudy[] = [
         "Designing for varying digital literacy: Driving school owners often have decades of paper-based habits; the desktop dashboard had to feel immediately familiar and reassuring.",
         "Synchronizing two distinct user personas: Creating a unified brand experience that feels rigorous for school administrators yet approachable and modern for young learner drivers.",
         "Navigating local Algerian driving regulations: Accommodating Wilaya-specific licensing workflows, official exam dossiers, and bilingual Arabic/French requirements.",
+      ],
+      approaches: [
+        {
+          challenge: "Overcoming Decades of Paper-Based Administrative Habits",
+          approach: "Designed the desktop dashboard around intuitive tabular layouts and drag-and-drop calendar slots that mirror physical scheduling books without steep learning curves.",
+        },
+        {
+          challenge: "Synchronizing Administrator and Learner Personas",
+          approach: "Engineered a dual-sided architecture: dense high-throughput controls for desktop managers, paired with a fast thumb-friendly mobile app for learner lesson booking.",
+        },
+        {
+          challenge: "Accommodating Algerian Wilaya Transport Regulations",
+          approach: "Structured candidate dossiers to strictly match official Ministry of Transport paperwork requirements with bilingual Arabic and French metadata support.",
+        },
       ],
       learnings: [
         "Dual-interface systems require designing the shared data model first before drawing individual screens to prevent architectural mismatches.",

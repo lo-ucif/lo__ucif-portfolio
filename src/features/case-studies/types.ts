@@ -53,6 +53,19 @@ export type DesignSystemItem = {
   details: string[];
 };
 
+export type ChallengeApproach = {
+  challenge: string;
+  approach: string;
+};
+
+export type FlowDiagramNode = {
+  step: number;
+  title: string;
+  userAction: string;
+  systemResponse: string;
+  touchpoint: string;
+};
+
 export type CaseStudy = {
   id: string;
   slug: string;
@@ -71,6 +84,8 @@ export type CaseStudy = {
   organization?: string;
   heroImage: string;
   mockupImage?: string;
+  framedMockupImage?: string;
+  galleryMockups?: { title: string; image: string; caption?: string }[];
   liveDemo?: string;
   figmaLink?: string;
   linkedin?: string;
@@ -83,7 +98,7 @@ export type CaseStudy = {
     objectives: string[];
   };
 
-  // 02 — The Problem
+  // 02 — Problem & User Needs
   problem: {
     statement: string;
     context: string;
@@ -91,7 +106,7 @@ export type CaseStudy = {
     challenges: ProblemChallenge[];
   };
 
-  // 03 — Research & Discovery
+  // 03 — Research & Discovery / User Needs
   research: {
     overview: string;
     userNeeds: string[];
@@ -100,7 +115,7 @@ export type CaseStudy = {
     keyInsights: KeyInsight[];
   };
 
-  // 04 — Design Process
+  // 04 — Design Process & User Flow
   designProcess: {
     overview: string;
     informationArchitecture: {
@@ -110,6 +125,7 @@ export type CaseStudy = {
     userFlow: {
       description: string;
       steps: string[];
+      nodes?: FlowDiagramNode[];
     };
     wireframes: {
       description: string;
@@ -142,8 +158,9 @@ export type CaseStudy = {
   // 06 — Reflection & Learnings
   reflection: {
     challenges: string[];
+    approaches?: ChallengeApproach[];
     learnings: string[];
     improvements: string[];
-    futurePossibilities: string[];
+    futurePossibilities?: string[];
   };
 };
