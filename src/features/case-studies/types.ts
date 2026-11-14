@@ -61,6 +61,7 @@ export type CaseStudy = {
   subtitle: string;
   shortDescription: string;
   projectType: string;
+  platformType?: "app" | "web";
   role: string;
   designResponsibilities: string[];
   mainDesignFocus: string;

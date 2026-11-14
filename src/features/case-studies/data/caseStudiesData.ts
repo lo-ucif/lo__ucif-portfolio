@@ -1,4 +1,5 @@
 import tabibImg from "../../../assets/Slide 4_3 - 1.webp";
+import rokhsaImg from "../../../assets/ChatGPT Image Aug 5, 2026, 11_48_00 PM 13.webp";
 import splashImg from "../../../assets/case-studies/al-tabib/screen-1-splash.webp";
 import onboardingImg from "../../../assets/case-studies/al-tabib/screen-2-onboarding.webp";
 import loginImg from "../../../assets/case-studies/al-tabib/screen-3-login.webp";
@@ -16,6 +17,7 @@ export const caseStudies: CaseStudy[] = [
     shortDescription:
       "A digital platform designed to help medical students organize and manage their Quran memorization journey.",
     projectType: "Mobile Application Concept",
+    platformType: "app",
     role: "UI/UX Designer",
     designResponsibilities: [
       "User Interface Design",
@@ -412,6 +414,368 @@ export const caseStudies: CaseStudy[] = [
         "Direct integration with Constantine Faculty of Medicine academic calendars to automatically pause or reschedule Halaqat during exam seasons.",
         "AI-powered speech-to-text recitation assistance providing real-time feedback on Tajweed pronunciation.",
         "Dedicated web portal for Sheikhs and instructors to grade recitations and manage student cohorts in bulk.",
+      ],
+    },
+  },
+  {
+    id: "2",
+    slug: "rokhsa",
+    title: "Rokhsa — Smart Driving School Platform",
+    arabicTitle: "رخصة — منصة ذكية لمدارس تعليم السياقة",
+    subtitle: "Modern Web Dashboard & Mobile Ecosystem for Driving Education",
+    shortDescription:
+      "A smart platform that digitizes driving school operations, lesson bookings, and student tracking.",
+    projectType: "Web App & Mobile Platform",
+    platformType: "web",
+    role: "UI/UX Designer",
+    designResponsibilities: [
+      "User Research",
+      "User Interface Design",
+      "User Experience Design",
+      "Design System & Tokens",
+      "Responsive Desktop Dashboard",
+      "Learner Mobile App",
+      "Figma High-Fidelity Prototype",
+    ],
+    mainDesignFocus:
+      "Dual-interface architecture digitizing driving school operations across desktop management and mobile student booking.",
+    platform: "Responsive Web & Mobile",
+    timeline: "2026",
+    organization: "Driving Education Ecosystem",
+    heroImage: rokhsaImg,
+    tools: [{ label: "Figma", icon: FigmaIcon }],
+    liveDemo:
+      "https://www.linkedin.com/posts/ahmed-loucif-757854342_Ui/Ux Design-uxdesign-figma-ugcPost-7490915921327198208-KWqx/",
+    figmaLink:
+      "https://www.figma.com/design/NzHDINBZtitHegyQ5X1jCS/rukhsa-app?node-id=435-2&t=kM44AgQOkcenheHH-1",
+    linkedin:
+      "https://www.linkedin.com/posts/ahmed-loucif-757854342_Ui/Ux Design-uxdesign-figma-ugcPost-7490915921327198208-KWqx/",
+
+    // 01 — Overview
+    overview: {
+      summary:
+        "Rokhsa (رخصة) is a modern digital platform engineered to modernize driving education across Algeria. By replacing obsolete paper ledgers, telephone scheduling, and manual record keeping with an integrated dual-interface system, Rokhsa delivers a centralized web dashboard for school administrators and instructors, alongside an intuitive mobile interface for student learners.",
+      objectives: [
+        "Digitize driving school operational workflows, lesson booking, and exam readiness tracking.",
+        "Design a high-efficiency desktop dashboard for school owners to manage instructors, fleets, and students.",
+        "Craft an approachable mobile interface empowering learners to book driving slots and review road regulations.",
+        "Establish an accessible design system with over 20 high-fidelity screens spanning desktop and mobile.",
+      ],
+    },
+
+    // 02 — The Problem
+    problem: {
+      statement:
+        "Driving education in Algeria is largely managed through paper ledgers, phone calls, and manual records, leading to scheduling conflicts, lost student files, and administrative overhead.",
+      context:
+        "Traditional driving schools face constant operational friction: lesson bookings written in physical logbooks get double-booked, student progress towards theoretical highway code exams vs practical driving tests is hard to verify, and vehicle fleet maintenance is tracked informally.",
+      targetAudience:
+        "Driving school administrators, certified instructors, and student learner drivers seeking streamlined licensing certification.",
+      challenges: [
+        {
+          number: "01",
+          title: "Paper-Based Administrative Bottlenecks",
+          description:
+            "Managing dozens of concurrent student files through physical logbooks causes scheduling errors and lost paperwork.",
+        },
+        {
+          number: "02",
+          title: "Fragmented Lesson Booking Communication",
+          description:
+            "Coordinating driving sessions via ad-hoc phone calls creates confusion for both instructors and busy students.",
+        },
+        {
+          number: "03",
+          title: "Lack of Clear Exam Readiness Indicators",
+          description:
+            "Students lack real-time visibility into required driving hours completed and readiness for official state exams.",
+        },
+        {
+          number: "04",
+          title: "Fleet & Instructor Coordination Gaps",
+          description:
+            "School owners lack a centralized birds-eye view of which instructors and training vehicles are available at any given hour.",
+        },
+      ],
+    },
+
+    // 03 — Research & Discovery
+    research: {
+      overview:
+        "Research focused on analyzing driving school administrative friction and understanding learner expectations. The discovery phase highlighted the critical need for a dual-sided architecture that serves both high-speed desk administration and on-the-go student actions.",
+      userNeeds: [
+        "A clear, responsive desktop dashboard with instant access to active student files, revenue, and daily schedules.",
+        "A mobile booking interface enabling learners to view available instructor slots and confirm lessons in under a minute.",
+        "Visual exam readiness progress tracking for both traffic law (Code de la route) and practical driving hours.",
+        "Accessible bilingual Arabic and French interface support tailored to local Algerian driving regulations.",
+      ],
+      persona: {
+        name: "School Administrator & Student Learner",
+        tagline: "Driving School Owner & Candidate Driver in Constantine",
+        quote:
+          "Managing schedules across 4 instructors and 60 students on paper ledgers was chaotic. We needed a single dashboard that tells us who is driving, who has paid, and who is ready for the exam.",
+        demographics: [
+          { label: "Target Sector", value: "Driving Schools (Auto-Écoles)" },
+          { label: "Primary Users", value: "School Managers & Learner Drivers" },
+          { label: "Devices", value: "Web (Desktop Admin) & Mobile (Students)" },
+          { label: "Region", value: "Algeria (Wilaya System)" },
+        ],
+        goals: [
+          "Eliminate double-booking of training vehicles and instructors.",
+          "Provide transparent tracking of candidate lesson hours and payment status.",
+          "Enable candidate drivers to practice highway code questions from mobile devices.",
+        ],
+        painPoints: [
+          "Lost student payment receipts and exam paperwork.",
+          "Last-minute lesson cancellations without automatic rescheduling.",
+          "Difficulty tracking which vehicle is undergoing maintenance.",
+        ],
+        isPlaceholder: false,
+      },
+      journey: [
+        {
+          phase: "01. School Onboarding",
+          goal: "Register driving school profile and fleet",
+          action: "Administrator inputs school branches, instructor roster, and training vehicles",
+          touchpoint: "Web Admin Setup",
+          experience: "positive",
+        },
+        {
+          phase: "02. Candidate Registration",
+          goal: "Create new candidate profile",
+          action: "Enrolls student with licensing category, photo ID, and payment package",
+          touchpoint: "Candidate Management Table",
+          experience: "positive",
+        },
+        {
+          phase: "03. Interactive Booking",
+          goal: "Book practical driving slot",
+          action: "Candidate selects instructor, available vehicle, and morning/afternoon slot",
+          touchpoint: "Calendar & Schedule View",
+          experience: "positive",
+        },
+        {
+          phase: "04. Progress Milestones",
+          goal: "Evaluate exam readiness",
+          action: "Instructor logs completed road hours and rates student parking/highway competencies",
+          touchpoint: "Student Progress Card",
+          experience: "positive",
+        },
+        {
+          phase: "05. Exam Scheduling",
+          goal: "Confirm state driving exam date",
+          action: "System verifies completed requirements and generates candidate exam dossier",
+          touchpoint: "Exam Management Module",
+          experience: "positive",
+        },
+      ],
+      keyInsights: [
+        {
+          number: "01",
+          title: "Dual-Interface Synergy",
+          takeaway:
+            "Admins need wide desktop dashboards with dense tabular data, while students need lightweight, visual mobile flows.",
+        },
+        {
+          number: "02",
+          title: "Glanceable Calendar Scheduling",
+          takeaway:
+            "A visual drag-and-drop calendar immediately prevents double-booking cars or instructors during peak hours.",
+        },
+        {
+          number: "03",
+          title: "Exam Readiness Clarity",
+          takeaway:
+            "Clearly separating theoretical traffic law progress from practical behind-the-wheel hours accelerates test success.",
+        },
+        {
+          number: "04",
+          title: "Familiar Arabic Typography",
+          takeaway:
+            "Using clean Arabic interface typography (`إدارة مدرستك من مكان واحد`) establishes instant credibility with Algerian school owners.",
+        },
+      ],
+    },
+
+    // 04 — Design Process
+    designProcess: {
+      overview:
+        "Designed in Figma using a robust responsive grid system, cohesive color tokens matching the Algerian driving school aesthetic (Navy Blue, Clean White, Safety Amber), and extensive component variant sets.",
+      informationArchitecture: {
+        description:
+          "Dual-layer architecture organizing the desktop admin suite and mobile candidate companion.",
+        hierarchy: [
+          {
+            title: "Admin Web Dashboard",
+            items: [
+              "Central Overview (Active students, revenue, today's driving slots)",
+              "Candidate Records (Dossiers, payments, license category)",
+              "Instructor & Vehicle Fleet Management",
+              "Interactive Schedule & Booking Calendar",
+              "Exam Readiness Analytics & Official Lists",
+            ],
+          },
+          {
+            title: "Learner Mobile App",
+            items: [
+              "Home Hub (Next driving lesson countdown, assigned car/instructor)",
+              "Slot Booking & Availability Picker",
+              "Interactive Highway Code Practice Tests",
+              "Personal Progress & Exam Checklist",
+              "Direct Chat with School Administration",
+            ],
+          },
+        ],
+      },
+      userFlow: {
+        description:
+          "End-to-end flow from candidate enrollment to practical driving session completion and exam readiness sign-off.",
+        steps: [
+          "Candidate Enrollment on Web Admin",
+          "Automated Credentials sent to Learner Mobile",
+          "Learner Books Weekly Driving Sessions",
+          "Instructor Conducts Session & Logs Progress",
+          "System Verifies Exam Readiness Threshold",
+        ],
+      },
+      wireframes: {
+        description:
+          "High-density desktop wireframes tested against mobile viewports to ensure seamless cross-device parity.",
+        points: [
+          "Dense data tables with quick sorting, filters, and status pill badges.",
+          "Responsive cards summarizing weekly hours, active cars, and pass rates.",
+          "Mobile-first bottom navigation for student actions.",
+          "Bilingual right-to-left layout balance.",
+        ],
+      },
+      designSystem: [
+        {
+          category: "Color Palette",
+          description: "Professional deep navy blue, clean slate, and safety traffic accents.",
+          details: [
+            "Primary Navy: #1E3A8A (Trust & Institutional Authority)",
+            "Accent Blue: #5197ff (Action CTAs & Interactive Highlights)",
+            "Safety Amber: #F59E0B (Pending Reviews & Exam Milestones)",
+            "Success Emerald: #10B981 (Completed Hours & Passed Tests)",
+            "Surface Dark: #161513 / #1F1F1F (Portfolio Cohesive Shell)",
+          ],
+        },
+        {
+          category: "Typography Scale",
+          description: "Bold Arabic display typography paired with legible Latin numerals.",
+          details: [
+            "Arabic Display: High-impact headline weights for marketing & dashboard banners.",
+            "Body Copy: Clean, high-contrast sans-serif for dense data tables.",
+            "Tabular Numbers: Monospaced numbers for schedule hours and financial entries.",
+          ],
+        },
+        {
+          category: "Responsive Components",
+          description: "Full auto layout frames adapting from 1440px desktop to 375px mobile viewports.",
+          details: [
+            "Data Tables with expandable student rows.",
+            "Visual vehicle status cards showing active training status.",
+            "Calendar time slot buttons with available / booked states.",
+          ],
+        },
+      ],
+      componentsAndVariants: {
+        description:
+          "Engineered over 20 high-fidelity screens and component variant sets in Figma.",
+        items: [
+          "Status Badges: Active, In Training, Exam Ready, Licensed, Suspended.",
+          "Calendar Slot Selectors: Available, Selected, Reserved, Past.",
+          "Metric Cards: Total Students, Active Fleet, Weekly Bookings, Exam Pass Rate.",
+          "Mobile Tab Bar: Home, Bookings, Highway Code, Progress, Profile.",
+          "Dossier Modal: Full student file with documentation upload states.",
+        ],
+      },
+      interactivePrototyping: {
+        description:
+          "Complete Figma interactive prototype with smart animates demonstrating the booking flow and admin management.",
+        features: [
+          "Interactive slot booking on mobile with instant state changes.",
+          "Desktop dashboard table filtering by license category (B, C, D).",
+          "Smooth modal transitions for candidate file inspection.",
+          "Live preview available directly in the Figma file.",
+        ],
+      },
+    },
+
+    // 05 — Final Solution
+    solution: {
+      headline: "A Unified Digital Ecosystem for Modern Driving Schools",
+      description:
+        "Rokhsa delivers an end-to-end digital experience that brings efficiency, transparency, and pride to driving schools in Algeria. The platform seamlessly bridges admin oversight with student convenience.",
+      screens: [
+        {
+          id: "rokhsa-screen-1",
+          number: "01",
+          title: "Centralized Web Management Dashboard",
+          subtitle: "All driving school operations in one unified desktop command center",
+          description:
+            "The web dashboard enables school administrators to manage candidates, assign instructors, monitor vehicle fleets, and review real-time revenue and exam pass rates from any browser.",
+          uxHighlights: [
+            "High-impact Arabic branding banner: 'إدارة مدرستك من مكان واحد'.",
+            "At-a-glance metrics for candidates, exams, payments, and appointments.",
+            "Direct action button 'سجل الآن' with responsive web scaling.",
+          ],
+          image: rokhsaImg,
+        },
+      ],
+      coreFeatures: [
+        {
+          title: "Centralized School Operations Hub",
+          arabicTitle: "إدارة مدرستك من مكان واحد",
+          description:
+            "Replaced physical ledgers with a cloud-connected dashboard that tracks candidate dossiers, payments, and exam scheduling in real time.",
+          impact: "Over 80% reduction in administrative record-keeping time.",
+        },
+        {
+          title: "Frictionless Learner Slot Booking",
+          arabicTitle: "حجز حصص السياقة بسهولة",
+          description:
+            "Learners book practical driving sessions directly from their mobile devices based on real-time instructor and vehicle availability.",
+          impact: "Complete elimination of double-booked vehicles and scheduling disputes.",
+        },
+        {
+          title: "Exam Readiness Analytics",
+          arabicTitle: "متابعة الجاهزية للامتحان",
+          description:
+            "Visual tracking separating highway code knowledge tests from required practical road hours, guaranteeing students meet all state standards.",
+          impact: "Transparent progress monitoring that elevates candidate test pass rates.",
+        },
+        {
+          title: "Complete Figma Design System",
+          arabicTitle: "نظام تصميم شامل ومتجاوب",
+          description:
+            "Over 20 production-ready screens spanning desktop and mobile viewports with comprehensive component variants, auto layout, and responsive tokens.",
+          impact: "Delivered a fully documented design system ready for engineering handoff.",
+        },
+      ],
+    },
+
+    // 06 — Reflection & Learnings
+    reflection: {
+      challenges: [
+        "Designing for varying digital literacy: Driving school owners often have decades of paper-based habits; the desktop dashboard had to feel immediately familiar and reassuring.",
+        "Synchronizing two distinct user personas: Creating a unified brand experience that feels rigorous for school administrators yet approachable and modern for young learner drivers.",
+        "Navigating local Algerian driving regulations: Accommodating Wilaya-specific licensing workflows, official exam dossiers, and bilingual Arabic/French requirements.",
+      ],
+      learnings: [
+        "Dual-interface systems require designing the shared data model first before drawing individual screens to prevent architectural mismatches.",
+        "Component variants in Figma save dozens of hours when designing complex states like calendar time-slots and multi-status candidate tables.",
+        "Clear status color-coding (Green for Exam Ready, Amber for In Progress) immediately reduces administrative scanning fatigue.",
+      ],
+      improvements: [
+        "Incorporate an automated SMS / WhatsApp notification engine to remind students of early morning driving sessions.",
+        "Add a GPS route tracking feature allowing instructors to review candidate driving routes and parking maneuvers.",
+        "Develop an offline practice mode for the mobile Highway Code test simulator.",
+      ],
+      futurePossibilities: [
+        "Direct integration with the Ministry of Transport licensing portal for automated exam date submissions.",
+        "AI-assisted mock driving theory exams with personalized mistake analysis.",
+        "Fleet OBD-II telemetry integration to monitor vehicle fuel efficiency and brake wear during student sessions.",
       ],
     },
   },

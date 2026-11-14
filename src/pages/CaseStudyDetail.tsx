@@ -229,7 +229,7 @@ export default function CaseStudyDetail() {
               loading="eager"
             />
             <div className="absolute bottom-4 right-4 z-10 flex items-center gap-2 rounded-full bg-[#161513]/90 backdrop-blur px-3.5 py-1.5 border border-white/15 text-white font-['Itim'] text-[13px]">
-              <span>Al-Tabib Al-Hafiz Mobile Interface Suite</span>
+              <span>{study.title}</span>
             </div>
           </motion.div>
 
