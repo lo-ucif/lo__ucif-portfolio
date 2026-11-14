@@ -8,8 +8,6 @@ import { FigmaIcon } from "../constants/Icon";
 import { CaseStudyOverview } from "../features/case-studies/components/CaseStudyOverview";
 import { CaseStudyProblems } from "../features/case-studies/components/CaseStudyProblems";
 import { CaseStudyUserNeeds } from "../features/case-studies/components/CaseStudyUserNeeds";
-import { CaseStudyFinalDesign } from "../features/case-studies/components/CaseStudyFinalDesign";
-import { CaseStudyToolsUsed } from "../features/case-studies/components/CaseStudyToolsUsed";
 import { CaseStudyStickyNav } from "../features/case-studies/components/CaseStudyStickyNav";
 import { ImageLightboxModal } from "../features/case-studies/components/ImageLightboxModal";
 
@@ -23,9 +21,6 @@ export default function CaseStudyDetail() {
     (c) => c.slug === slug || c.id === slug
   );
   const study = currentIndex !== -1 ? caseStudies[currentIndex] : null;
-
-  // Active screen index for Section 04 (Final Design)
-  const [activeScreenIndex, setActiveScreenIndex] = useState(0);
 
   // Lightbox modal state
   const [lightboxState, setLightboxState] = useState<{
@@ -69,12 +64,6 @@ export default function CaseStudyDetail() {
       </div>
     );
   }
-
-  // Previous and next case studies for easy browsing
-  const prevStudy =
-    currentIndex > 0 ? caseStudies[currentIndex - 1] : caseStudies[caseStudies.length - 1];
-  const nextStudy =
-    currentIndex < caseStudies.length - 1 ? caseStudies[currentIndex + 1] : caseStudies[0];
 
   return (
     <div className="flex flex-col items-center min-h-screen bg-[#161513] px-5 pb-0 pt-20 text-white sm:px-10 lg:px-20 min-[601px]:pt-28 max-[600px]:pt-22">
@@ -149,62 +138,6 @@ export default function CaseStudyDetail() {
         {/* 03. USER NEEDS (UML USE CASE DIAGRAM)                    */}
         {/* ======================================================== */}
         <CaseStudyUserNeeds study={study} />
-
-        {/* ======================================================== */}
-        {/* 04. FINAL DESIGN                                         */}
-        {/* ======================================================== */}
-        <CaseStudyFinalDesign
-          study={study}
-          activeScreenIndex={activeScreenIndex}
-          onScreenChange={(index) => setActiveScreenIndex(index)}
-          onOpenLightbox={handleOpenLightbox}
-        />
-
-        {/* ======================================================== */}
-        {/* 05. TOOLS USED                                           */}
-        {/* ======================================================== */}
-        <CaseStudyToolsUsed study={study} />
-
-        {/* ======================================================== */}
-        {/* PREV / NEXT CASE STUDY SWITCHER                          */}
-        {/* ======================================================== */}
-        {caseStudies.length > 1 && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-white/[0.08] pt-8 w-full text-left">
-            {prevStudy && (
-              <Link
-                to={`/case-studies/${prevStudy.slug}`}
-                className="group flex flex-col gap-1 p-5 rounded-2xl bg-[#1A1917] border border-white/[0.08] hover:border-[#5197ff]/40 transition-all duration-300"
-              >
-                <span className="font-['Itim'] text-[12px] text-[#8491A0] uppercase tracking-wider">
-                  ← Previous Case Study
-                </span>
-                <span className="font-['Itim'] text-[19px] text-white font-semibold group-hover:text-[#5197ff] transition-colors">
-                  {prevStudy.title}
-                </span>
-                <span className="font-['Poppins'] text-[12px] text-[#A9A9A9] truncate">
-                  {prevStudy.subtitle}
-                </span>
-              </Link>
-            )}
-
-            {nextStudy && (
-              <Link
-                to={`/case-studies/${nextStudy.slug}`}
-                className="group flex flex-col gap-1 p-5 rounded-2xl bg-[#1A1917] border border-white/[0.08] hover:border-[#5197ff]/40 transition-all duration-300 sm:text-right"
-              >
-                <span className="font-['Itim'] text-[12px] text-[#8491A0] uppercase tracking-wider">
-                  Next Case Study →
-                </span>
-                <span className="font-['Itim'] text-[19px] text-white font-semibold group-hover:text-[#5197ff] transition-colors">
-                  {nextStudy.title}
-                </span>
-                <span className="font-['Poppins'] text-[12px] text-[#A9A9A9] truncate">
-                  {nextStudy.subtitle}
-                </span>
-              </Link>
-            )}
-          </div>
-        )}
 
         {/* Collaboration CTA */}
         <div className="flex flex-col items-center gap-4 p-8 sm:p-10 rounded-3xl bg-gradient-to-b from-[#1A1917] to-[#161513] border border-white/[0.1] text-center shadow-xl">
