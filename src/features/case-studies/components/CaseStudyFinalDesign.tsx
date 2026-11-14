@@ -1,6 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
 import type { CaseStudy } from "../types";
-import { FigmaIcon } from "../../../constants/Icon";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
@@ -19,7 +18,6 @@ export function CaseStudyFinalDesign({
 }: CaseStudyFinalDesignProps) {
   const { solution, platformType = "app" } = study;
   const screens = solution?.screens || [];
-  const galleryMockups = study.galleryMockups || [];
 
   const currentScreen = screens[activeScreenIndex] || screens[0];
   const isWeb = platformType === "web";
@@ -252,72 +250,6 @@ export function CaseStudyFinalDesign({
               );
             })}
           </div>
-        </div>
-      )}
-
-      {/* Realistic Mockups Showcase */}
-      {galleryMockups.length > 0 && (
-        <div className="flex flex-col gap-4 pt-4">
-          <div className="flex flex-col gap-1">
-            <span className="font-['Itim'] text-[13px] text-[#5197ff] uppercase tracking-wider">
-              Realistic Mockups
-            </span>
-            <h3 className="font-['Itim'] text-[24px] sm:text-[28px] text-white font-bold">
-              Hardware Perspective Showcase
-            </h3>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {galleryMockups.map((mock, idx) => (
-              <div
-                key={idx}
-                className="group relative flex flex-col p-5 rounded-2xl bg-[#1A1917] border border-white/[0.08] hover:border-white/20 transition-all duration-200"
-              >
-                <div className="w-full aspect-[4/3] rounded-xl overflow-hidden bg-[#121212] flex items-center justify-center p-3">
-                  <img
-                    src={mock.image}
-                    alt={mock.title}
-                    className="max-h-full max-w-full object-contain cursor-pointer transition-transform duration-300 group-hover:scale-105"
-                    onClick={() => onOpenLightbox(mock.image, mock.title, mock.caption)}
-                  />
-                </div>
-                <div className="flex flex-col gap-0.5 pt-3">
-                  <h4 className="font-['Itim'] text-[17px] text-white font-semibold">
-                    {mock.title}
-                  </h4>
-                  {mock.caption && (
-                    <p className="font-['Poppins'] text-[12px] text-[#8491A0]">
-                      {mock.caption}
-                    </p>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* Figma File Action */}
-      {study.figmaLink && (
-        <div className="flex flex-wrap items-center justify-between gap-4 p-5 rounded-2xl bg-[#1A1917] border border-white/[0.08]">
-          <div className="flex flex-col">
-            <span className="font-['Itim'] text-[17px] text-white font-semibold">
-              Inspect Design System &amp; Prototype
-            </span>
-            <span className="font-['Poppins'] text-[13px] text-[#8491A0]">
-              Review the live Auto Layout frames, variables, and component variants in Figma.
-            </span>
-          </div>
-
-          <a
-            href={study.figmaLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 font-['Poppins'] text-[13.5px] font-semibold text-[#161513] transition-colors duration-200 hover:bg-[#5197ff] hover:text-white"
-          >
-            <FigmaIcon width={16} height={16} />
-            <span>Open in Figma</span>
-          </a>
         </div>
       )}
     </section>
