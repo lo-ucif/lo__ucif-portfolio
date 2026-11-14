@@ -200,8 +200,8 @@ export default function Home() {
             </motion.a>
           </section>
           <Experience />
-          <CaseStudiesSection />
           <ProjectsSection />
+          <CaseStudiesSection />
           <TechStackSection />
           <Certificates />
           <Student />
@@ -211,8 +211,8 @@ export default function Home() {
         <FloatingBubble
           items={[
             { label: "About", id: "about" },
-            { label: "Case Studies", id: "case-studies" },
             { label: "Projects", id: "projects" },
+            { label: "Case Studies", id: "case-studies" },
             { label: "Contact", id: "contact" },
           ]}
         />
