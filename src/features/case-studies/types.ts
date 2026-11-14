@@ -62,6 +62,7 @@ export type CaseStudy = {
   shortDescription: string;
   projectType: string;
   platformType?: "app" | "web";
+  presentationHeading?: string;
   role: string;
   designResponsibilities: string[];
   mainDesignFocus: string;
@@ -69,6 +70,7 @@ export type CaseStudy = {
   timeline: string;
   organization?: string;
   heroImage: string;
+  mockupImage?: string;
   liveDemo?: string;
   figmaLink?: string;
   linkedin?: string;

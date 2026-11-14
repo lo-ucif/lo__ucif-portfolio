@@ -4,11 +4,6 @@ import type { MouseEvent } from "react";
 import type { CaseStudy } from "../types";
 import { FigmaIcon, LinkedinIcon } from "../../../constants/Icon";
 
-// Static phone screen imports for the 3D fanned mobile presentation
-import dashboardImg from "../../../assets/case-studies/al-tabib/screen-4-dashboard.webp";
-import loginImg from "../../../assets/case-studies/al-tabib/screen-3-login.webp";
-import onboardingImg from "../../../assets/case-studies/al-tabib/screen-2-onboarding.webp";
-
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
 export function CaseStudyCard(props: CaseStudy) {
@@ -20,6 +15,8 @@ export function CaseStudyCard(props: CaseStudy) {
     role,
     mainDesignFocus,
     heroImage,
+    mockupImage,
+    presentationHeading: customHeading,
     platformType = "app",
     organization,
     figmaLink,
@@ -38,7 +35,8 @@ export function CaseStudyCard(props: CaseStudy) {
   };
 
   const presentationHeading =
-    platformType === "app" ? "Mobile Presentation" : "Web Presentation";
+    customHeading ||
+    (platformType === "app" ? "Mobile Presentation" : "Web Presentation");
 
   const targetLabel =
     platformType === "app" ? "Target Institution" : "Target Sector";
@@ -162,84 +160,30 @@ export function CaseStudyCard(props: CaseStudy) {
       </div>
 
       {/* ========================================================= */}
-      {/* RIGHT COLUMN: Visual Showcase (App 3D Phones or Web Mockup)*/}
+      {/* RIGHT COLUMN: Visual Showcase (Figma Mockup Presentation) */}
       {/* ========================================================= */}
       <div
         onClick={handleCardClick}
-        className="relative w-full lg:w-1/2 shrink-0 flex items-center justify-center cursor-pointer select-none perspective-[1200px] min-h-[360px] sm:min-h-[440px] lg:min-h-[480px]"
+        className="relative w-full lg:w-1/2 shrink-0 flex items-center justify-center cursor-pointer select-none min-h-[340px] sm:min-h-[420px] lg:min-h-[460px]"
       >
         {/* Ambient Spotlight & Ground Shadow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] sm:w-[400px] h-[280px] sm:h-[400px] bg-[#5197ff]/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[240px] sm:w-[400px] h-[26px] bg-black/90 rounded-full blur-2xl pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] sm:w-[420px] h-[280px] sm:h-[420px] bg-[#5197ff]/12 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 w-[240px] sm:w-[380px] h-[24px] bg-black/90 rounded-full blur-2xl pointer-events-none" />
 
-        {platformType === "app" ? (
-          /* Mobile 3D Layered Fanned Phones Stack */
-          <div className="relative w-[280px] sm:w-[380px] lg:w-[420px] h-[360px] sm:h-[440px] flex items-center justify-center">
-            {/* Back Phone (Rightmost / Angled Back) */}
-            <motion.div
-              className="absolute w-[160px] sm:w-[210px] rounded-[28px] sm:rounded-[36px] overflow-hidden bg-[#121212] border-2 border-white/20 shadow-2xl shadow-black/80"
-              style={{
-                zIndex: 1,
-                transform: "translateX(80px) translateY(30px) rotateY(-22deg) rotateZ(14deg) scale(0.86)",
-                transformOrigin: "center bottom",
-              }}
-              whileHover={{
-                transform: "translateX(95px) translateY(20px) rotateY(-20deg) rotateZ(16deg) scale(0.89)",
-              }}
-              transition={{ duration: 0.4, ease: easeOut }}
-            >
-              <img
-                src={onboardingImg}
-                alt="Onboarding Screen"
-                className="w-full h-auto object-contain block opacity-85"
-                loading="lazy"
-              />
-            </motion.div>
-
-            {/* Middle Phone (Behind Front, Angled) */}
-            <motion.div
-              className="absolute w-[170px] sm:w-[220px] rounded-[28px] sm:rounded-[36px] overflow-hidden bg-[#121212] border-2 border-white/30 shadow-2xl shadow-black/90"
-              style={{
-                zIndex: 2,
-                transform: "translateX(40px) translateY(15px) rotateY(-14deg) rotateZ(7deg) scale(0.93)",
-                transformOrigin: "center bottom",
-              }}
-              whileHover={{
-                transform: "translateX(50px) translateY(8px) rotateY(-12deg) rotateZ(8deg) scale(0.96)",
-              }}
-              transition={{ duration: 0.4, ease: easeOut }}
-            >
-              <img
-                src={loginImg}
-                alt="Login Screen"
-                className="w-full h-auto object-contain block opacity-95"
-                loading="lazy"
-              />
-            </motion.div>
-
-            {/* Front Phone (Prominent, High-Resolution Dashboard) */}
-            <motion.div
-              className="absolute w-[180px] sm:w-[235px] rounded-[30px] sm:rounded-[38px] overflow-hidden bg-[#121212] border-2 border-white/50 shadow-2xl shadow-black ring-1 ring-[#5197ff]/40"
-              style={{
-                zIndex: 3,
-                transform: "translateX(-35px) translateY(-5px) rotateY(-6deg) rotateZ(-3deg) scale(1)",
-                transformOrigin: "center bottom",
-              }}
-              whileHover={{
-                transform: "translateX(-40px) translateY(-12px) rotateY(-4deg) rotateZ(-2deg) scale(1.03)",
-              }}
-              transition={{ duration: 0.4, ease: easeOut }}
-            >
-              <img
-                src={dashboardImg}
-                alt="Al-Tabib Al-Hafiz Dashboard"
-                className="w-full h-auto object-contain block"
-                loading="eager"
-              />
-            </motion.div>
-          </div>
+        {mockupImage ? (
+          <motion.div
+            className="relative w-full max-w-[440px] sm:max-w-[490px] flex items-center justify-center p-2"
+            whileHover={{ scale: 1.04, y: -6 }}
+            transition={{ duration: 0.4, ease: easeOut }}
+          >
+            <img
+              src={mockupImage}
+              alt={`${title} Mockup Presentation`}
+              loading="lazy"
+              className="w-full h-auto object-contain filter drop-shadow-[0_20px_35px_rgba(0,0,0,0.85)]"
+            />
+          </motion.div>
         ) : (
-          /* Web Platform Laptop Mockup Display */
           <motion.div
             className="relative w-full max-w-[480px] rounded-2xl overflow-hidden bg-[#121212] border border-white/[0.1] shadow-2xl shadow-black/80"
             whileHover={{ scale: 1.025 }}

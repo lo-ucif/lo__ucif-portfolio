@@ -1,5 +1,6 @@
-import tabibImg from "../../../assets/Slide 4_3 - 1.webp";
 import rokhsaImg from "../../../assets/ChatGPT Image Aug 5, 2026, 11_48_00 PM 13.webp";
+import tabibMockup from "../../../assets/case-studies/mockups/al-tabib-transparent.webp";
+import rokhsaMockup from "../../../assets/case-studies/mockups/rokhsa-transparent.webp";
 import splashImg from "../../../assets/case-studies/al-tabib/screen-1-splash.webp";
 import onboardingImg from "../../../assets/case-studies/al-tabib/screen-2-onboarding.webp";
 import loginImg from "../../../assets/case-studies/al-tabib/screen-3-login.webp";
@@ -33,13 +34,16 @@ export const caseStudies: CaseStudy[] = [
     platform: "Mobile App (iOS & Android)",
     timeline: "2026",
     organization: "Faculty of Medicine — Constantine (كلية الطب - قسنطينة)",
-    heroImage: tabibImg,
+    heroImage: tabibMockup,
+    mockupImage: tabibMockup,
+    presentationHeading: "Mobile Presentation",
     tools: [{ label: "Figma", icon: FigmaIcon }],
     liveDemo:
       "https://www.linkedin.com/posts/ahmed-loucif-757854342_Ui/Ux Design-uidesign-uxdesign-activity-7492710718945943552-9YBE",
     linkedin:
       "https://www.linkedin.com/posts/ahmed-loucif-757854342_Ui/Ux Design-uidesign-uxdesign-activity-7492710718945943552-9YBE",
-    figmaLink: "",
+    figmaLink:
+      "https://www.figma.com/design/hx4E6cZLWqvRjPWsZ5nXpN/my-portfolio?node-id=585-24",
 
     // 01 — Overview
     overview: {
@@ -442,12 +446,14 @@ export const caseStudies: CaseStudy[] = [
     platform: "Responsive Web & Mobile",
     timeline: "2026",
     organization: "Driving Education Ecosystem",
-    heroImage: rokhsaImg,
+    heroImage: rokhsaMockup,
+    mockupImage: rokhsaMockup,
+    presentationHeading: "Mobile Presentation",
     tools: [{ label: "Figma", icon: FigmaIcon }],
     liveDemo:
       "https://www.linkedin.com/posts/ahmed-loucif-757854342_Ui/Ux Design-uxdesign-figma-ugcPost-7490915921327198208-KWqx/",
     figmaLink:
-      "https://www.figma.com/design/NzHDINBZtitHegyQ5X1jCS/rukhsa-app?node-id=435-2&t=kM44AgQOkcenheHH-1",
+      "https://www.figma.com/design/hx4E6cZLWqvRjPWsZ5nXpN/my-portfolio?node-id=585-131",
     linkedin:
       "https://www.linkedin.com/posts/ahmed-loucif-757854342_Ui/Ux Design-uxdesign-figma-ugcPost-7490915921327198208-KWqx/",
 

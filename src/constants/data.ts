@@ -257,7 +257,8 @@ export const projects: project[] = [
     liveDemo:
       "https://www.linkedin.com/posts/ahmed-loucif-757854342_Ui/Ux Design-uidesign-uxdesign-activity-7492710718945943552-9YBE",
     github: "",
-    figma: "",
+    figma:
+      "https://www.figma.com/design/hx4E6cZLWqvRjPWsZ5nXpN/my-portfolio?node-id=585-24",
   },
   {
     id: 2,
