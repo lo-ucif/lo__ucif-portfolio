@@ -1,61 +1,77 @@
 import { motion } from "framer-motion";
-import { techGroups } from "../../../constants/data";
+import { skillCategories } from "../../../constants/data";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
 export function TechStackSection() {
-  const mainGroups = techGroups.filter((group) => group.title !== "Other");
-  const otherGroup = techGroups.find((group) => group.title === "Other");
-
   return (
     <section
       id="stack"
-      className="flex w-full flex-col items-center gap-7.5 text-center"
+      className="flex w-full flex-col items-center gap-10 sm:gap-12 text-center"
     >
-      <motion.h2
-        className="font-['Itim'] text-[36px] text-white"
+      {/* Section Header */}
+      <motion.div
+        className="flex flex-col items-center gap-2"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.6, ease: easeOut }}
       >
-        Tech Stack
-      </motion.h2>
+        <h2 className="font-['Itim'] text-[36px] sm:text-[40px] text-white">
+          Skills &amp; Technologies
+        </h2>
+        <p className="font-['Itim'] text-[16px] sm:text-[17px] text-[#A9A9A9] max-w-2xl">
+          A structured breakdown of my technical stack, architecture patterns, and engineering workflow.
+        </p>
+      </motion.div>
 
-      <div className="grid w-full grid-cols-1 gap-7.5 sm:grid-cols-2 lg:grid-cols-5">
-        {mainGroups.map((group, groupIndex) => (
+      {/* 4 Architecture Categories without card background or stroke */}
+      <div className="grid w-full max-w-6xl grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-10 sm:gap-y-12 text-left">
+        {skillCategories.map((category, groupIndex) => (
           <motion.div
-            className="flex flex-col items-center gap-7.5 font-['Itim'] text-[20px]"
-            key={group.title}
-            initial={{ opacity: 0, y: 20 }}
+            key={category.title}
+            className="flex flex-col gap-4"
+            initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: true, amount: 0.15 }}
             transition={{
               duration: 0.6,
               ease: easeOut,
               delay: groupIndex * 0.08,
             }}
           >
-            <h3 className="font-['Poppins'] text-[20px] tracking-[2.4px] text-[#8491a0]">
-              {group.title}
-            </h3>
+            <div>
+              {/* Category Title in Itim */}
+              <h3 className="font-['Itim'] text-[24px] sm:text-[26px] text-white">
+                {category.title}
+              </h3>
+              {/* Category Subtitle in Itim */}
+              <p className="font-['Itim'] text-[15px] sm:text-[16px] leading-relaxed text-[#A9A9A9] mt-1">
+                {category.description}
+              </p>
+            </div>
 
-            <div className="flex flex-col items-center gap-3.75">
-              {group.items.map((item) => {
+            {/* Skill Pills matching the last card style */}
+            <div className="flex flex-wrap gap-2.5 sm:gap-3 pt-1">
+              {category.items.map((item) => {
                 const Icon = item.icon;
 
                 return (
                   <motion.div
-                    className="flex items-center gap-1.5 rounded-[22px] bg-[#303030] px-3 py-2.5 text-white"
                     key={item.label}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.25 }}
-                    whileHover={{ scale: 1.04 }}
-                    transition={{ duration: 0.35, ease: "easeOut" }}
+                    className="inline-flex items-center gap-2 rounded-[22px] bg-[#303030] px-3.5 py-2 text-white font-['Itim'] text-[15px] sm:text-[16px] transition-colors duration-200 hover:bg-[#3d3d3d] cursor-default"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.97 }}
+                    transition={{ duration: 0.2, ease: "easeOut" }}
                   >
-                    <Icon />
-                    <span>{item.label}</span>
+                    <div className="flex h-5 w-5 shrink-0 items-center justify-center">
+                      <Icon
+                        width={20}
+                        height={20}
+                        className="max-h-5 max-w-5 shrink-0 object-contain"
+                      />
+                    </div>
+                    <span className="whitespace-nowrap">{item.label}</span>
                   </motion.div>
                 );
               })}
@@ -63,63 +79,6 @@ export function TechStackSection() {
           </motion.div>
         ))}
       </div>
-
-      {otherGroup && (
-        <motion.div
-          className="flex w-full lg:w-[110%] flex-col items-center gap-5 font-['Itim']"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, ease: easeOut }}
-        >
-          <h3 className="font-['Poppins'] text-[20px] tracking-[2.4px] text-[#8491a0]">
-            Other
-          </h3>
-
-          {/* Mobile view: static wrapped list */}
-          <div className="flex flex-wrap justify-center gap-3 lg:hidden px-4">
-            {otherGroup.items.map((item, i) => {
-              const Icon = item.icon;
-              return (
-                <motion.div
-                  key={i}
-                  className="flex items-center gap-1.5 rounded-[22px] bg-[#303030] px-3 py-2.5 text-white text-[14px] sm:text-[16px]"
-                  whileHover={{ scale: 1.04 }}
-                  transition={{ duration: 0.35, ease: "easeOut" }}
-                >
-                  <Icon />
-                  <span>{item.label}</span>
-                </motion.div>
-              );
-            })}
-          </div>
-
-          {/* Desktop view: marquee animation */}
-          <div className="hidden lg:block w-full overflow-hidden">
-            <motion.div
-              className="flex w-max items-center gap-3.75"
-              animate={{ x: ["0%", "-50%"] }}
-              transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
-            >
-              {[...otherGroup.items, ...otherGroup.items].map((item, i) => {
-                const Icon = item.icon;
-
-                return (
-                  <motion.div
-                    key={i}
-                    className="flex items-center gap-1.5 rounded-[22px] bg-[#303030] px-3 py-2.5 text-white"
-                    whileHover={{ scale: 1.04 }}
-                    transition={{ duration: 0.35, ease: "easeOut" }}
-                  >
-                    <Icon />
-                    <span>{item.label}</span>
-                  </motion.div>
-                );
-              })}
-            </motion.div>
-          </div>
-        </motion.div>
-      )}
     </section>
   );
 }
