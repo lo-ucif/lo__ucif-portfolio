@@ -8,6 +8,7 @@ import { FigmaIcon } from "../constants/Icon";
 import { CaseStudyOverview } from "../features/case-studies/components/CaseStudyOverview";
 import { CaseStudyProblems } from "../features/case-studies/components/CaseStudyProblems";
 import { CaseStudyUserNeeds } from "../features/case-studies/components/CaseStudyUserNeeds";
+import { CaseStudyFinalDesign } from "../features/case-studies/components/CaseStudyFinalDesign";
 import { CaseStudyStickyNav } from "../features/case-studies/components/CaseStudyStickyNav";
 import { ImageLightboxModal } from "../features/case-studies/components/ImageLightboxModal";
 
@@ -138,6 +139,14 @@ export default function CaseStudyDetail() {
         {/* 03. USER NEEDS (UML USE CASE DIAGRAM)                    */}
         {/* ======================================================== */}
         <CaseStudyUserNeeds study={study} />
+
+        {/* ======================================================== */}
+        {/* 04. FINAL DESIGN / PRESENTATION RESULT                   */}
+        {/* ======================================================== */}
+        <CaseStudyFinalDesign
+          study={study}
+          onOpenLightbox={handleOpenLightbox}
+        />
 
         {/* Collaboration CTA */}
         <div className="flex flex-col items-center gap-4 p-8 sm:p-10 rounded-3xl bg-gradient-to-b from-[#1A1917] to-[#161513] border border-white/[0.1] text-center shadow-xl">

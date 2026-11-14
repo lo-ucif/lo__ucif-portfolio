@@ -11,6 +11,7 @@ const SECTIONS: CaseStudyNavSection[] = [
   { id: "overview", label: "01. Overview", shortLabel: "01. Overview" },
   { id: "problems", label: "02. Problems", shortLabel: "02. Problems" },
   { id: "user-needs", label: "03. User Needs", shortLabel: "03. Needs" },
+  { id: "final-design", label: "04. Final Design", shortLabel: "04. Design" },
 ];
 
 export function CaseStudyStickyNav() {
