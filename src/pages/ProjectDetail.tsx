@@ -7,6 +7,7 @@ import {
   Github2Icon,
   LinkIcon,
   FigmaIcon,
+  LinkedinIcon,
 } from "../constants/Icon";
 
 const ReturnIcon = (props: SVGProps<SVGSVGElement>) => (
@@ -357,6 +358,17 @@ export default function ProjectDetail() {
                     >
                       <FigmaIcon width={18} height={18} aria-hidden="true" />
                       Figma Design
+                    </a>
+                  )}
+                  {project.linkedin && (
+                    <a
+                      href={project.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#303030] px-4 py-2 font-['Poppins'] text-[14px] text-white transition-colors hover:bg-[#3a3a3a] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5197ff]"
+                    >
+                      <LinkedinIcon width={18} height={18} aria-hidden="true" />
+                      LinkedIn Post
                     </a>
                   )}
                 </div>

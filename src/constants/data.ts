@@ -156,6 +156,7 @@ export type project = {
   liveDemo: string;
   github: string;
   figma: string;
+  linkedin?: string;
   hackathon: string;
 };
 
@@ -270,6 +271,8 @@ export const projects: project[] = [
     github: "https://github.com/lo-ucif/estin-hackathon.git",
     figma:
       "https://www.figma.com/deck/h5Pmcq96LZC3Q5065s940j/Untitled?node-id=1-220&viewport=-5849%2C-109%2C0.53&t=08A4QFzdxSyXK653-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1",
+    linkedin:
+      "https://www.linkedin.com/posts/ahmed-loucif-757854342_ai-powered-job-matching-platform-activity-7492710718945943552-9YBE",
   },
   {
     id: 4,

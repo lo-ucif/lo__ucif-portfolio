@@ -5,6 +5,7 @@ import {
   Github2Icon,
   LinkIcon,
   FigmaIcon,
+  LinkedinIcon,
 } from "../constants/Icon";
 import type { project as ProjectType } from "../constants/data";
 
@@ -23,6 +24,7 @@ export default function Projectcard({
   liveDemo,
   github,
   figma,
+  linkedin,
   hackathon,
 }: ProjectType) {
   const navigate = useNavigate();
@@ -92,8 +94,8 @@ export default function Projectcard({
           {narrative}
         </p>
 
-        {/* External Actions (Live Demo, GitHub, Figma) */}
-        {(liveDemo || github || figma) && (
+        {/* External Actions (Live Demo, GitHub, Figma, LinkedIn) */}
+        {(liveDemo || github || figma || linkedin) && (
           <div className="flex flex-wrap items-center gap-5 mt-1">
             {liveDemo && (
               <a
@@ -129,6 +131,18 @@ export default function Projectcard({
               >
                 <FigmaIcon width={14} height={14} />
                 <span>Figma</span>
+              </a>
+            )}
+            {linkedin && (
+              <a
+                href={linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={stopPropagation}
+                className="inline-flex items-center gap-1.5 font-['Poppins'] text-[13px] text-[#8491A0] hover:text-white transition-colors"
+              >
+                <LinkedinIcon width={14} height={14} />
+                <span>LinkedIn</span>
               </a>
             )}
           </div>
