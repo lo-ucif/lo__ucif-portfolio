@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+﻿import { motion } from "framer-motion";
 import { TechStackSection } from "../features/skills/components/TechStackSection";
 import { ProjectsSection } from "../features/projects/components/ProjectsSection";
 import { ContactSection } from "../features/contact/components/ContactSection";
@@ -90,8 +90,9 @@ export default function Home() {
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{ duration: 0.6, ease: easeOut, delay: 0.5 }}
                 >
-                  <span className="text-[#a9a9a9]">Designing Experiences.</span>
-                  <span className="text-[#5197ff]">Engineering Solutions.</span>
+                  <span className="text-[#a9a9a9]">
+                    Designing Experiences & <span className="text-[#5197FF]">Engineering Solutions.</span>
+                  </span>
                 </motion.div>
               </div>
 
@@ -115,7 +116,7 @@ export default function Home() {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, ease: easeOut }}
             >
-              I'm a Software Engineering Student, Web Developer, and UI/UX Designer passionate about creating modern, functional, and user-centered digital experiences. I turn ideas into intuitive designs and scalable web applications.
+              Software Engineering Student | Web Developer | UI/UX Designer <br /> building modern digital experiences through , clean design, creative thinking, innovative development.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}

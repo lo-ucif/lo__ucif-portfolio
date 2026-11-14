@@ -20,7 +20,7 @@ export function ContactSection() {
           Let's Build Something Together.
         </h2>
         <p className="max-w-160 font-['Poppins'] text-[15px] sm:text-[17px] leading-[1.6] text-[#a9a9a9]">
-          Have an idea, a project, or an opportunity in mind? I'd love to hear about it. Let's connect and create something meaningful.
+          Have an idea, a project, or a challenge to solve? Let's connect and turn your vision into a meaningful digital experience with smart solutions and creative design.
         </p>
       </motion.div>
 
