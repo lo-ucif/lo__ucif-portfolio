@@ -37,7 +37,7 @@ export function CaseStudyCard(props: CaseStudy) {
   };
 
   // =========================================================================
-  // APP PRESENTATION (Style 1: Mobile 3D Layered Fanned Phones)
+  // APP PRESENTATION (Left Text & Info + Right 3D Fanned Phones)
   // =========================================================================
   if (platformType === "app") {
     return (
@@ -46,150 +46,64 @@ export function CaseStudyCard(props: CaseStudy) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.7, ease: easeOut }}
-        className="group relative flex flex-col w-full text-left rounded-3xl bg-gradient-to-b from-[#1A1917] via-[#161513] to-[#121212] border border-white/[0.08] p-6 sm:p-10 lg:p-12 overflow-hidden shadow-2xl transition-all duration-500 hover:border-[#5197ff]/40"
+        className="group relative flex flex-col lg:flex-row items-center gap-10 lg:gap-14 w-full text-left"
       >
-        {/* Top Header: Starburst Accent + "Mobile Presentation" Title + Subtitle */}
-        <div className="flex flex-col items-center text-center gap-3 w-full max-w-2xl mx-auto z-10">
-          {/* Glowing Starburst Accent in #5197ff */}
-          <div className="flex items-center justify-center w-8 h-8 rounded-full bg-[#5197ff]/15 text-[#5197ff] shadow-lg shadow-[#5197ff]/20 animate-pulse">
-            <svg
-              className="w-5 h-5 fill-current"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
-            </svg>
-          </div>
-
+        {/* ========================================================= */}
+        {/* LEFT COLUMN: Text, Narrative, Metadata & Actions         */}
+        {/* ========================================================= */}
+        <div className="flex flex-col items-start gap-5 w-full lg:w-1/2 z-10">
+          {/* Title & Arabic Subtitle */}
           <div className="flex flex-col gap-1">
             <h3
               onClick={handleCardClick}
-              className="font-['Itim'] text-[34px] sm:text-[46px] lg:text-[50px] font-bold text-white tracking-wide leading-tight cursor-pointer hover:text-[#5197ff] transition-colors"
+              className="font-['Itim'] text-[32px] sm:text-[42px] lg:text-[46px] font-bold text-white tracking-wide leading-tight cursor-pointer hover:text-[#5197ff] transition-colors"
             >
               Mobile Presentation
             </h3>
             {arabicTitle && (
-              <span className="font-['Inter'] text-[18px] sm:text-[20px] text-[#5197ff] font-medium">
+              <span className="font-['Inter'] text-[17px] sm:text-[19px] text-[#5197ff] font-medium">
                 {title} · {arabicTitle}
               </span>
             )}
           </div>
 
-          <p className="font-['Poppins'] text-[14px] sm:text-[15.5px] text-[#9CA3AF] max-w-lg leading-relaxed">
+          {/* Description */}
+          <p className="font-['Poppins'] text-[14px] sm:text-[15.5px] text-[#b4b4b4] leading-relaxed">
             {shortDescription}
           </p>
-        </div>
 
-        {/* Center: 3D Layered Fanned-Out Mobile Phones Showcase */}
-        <div
-          onClick={handleCardClick}
-          className="relative w-full py-12 sm:py-16 my-4 flex items-center justify-center cursor-pointer select-none perspective-[1200px]"
-        >
-          {/* Ambient Spotlight & Ground Shadow */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[500px] h-[340px] sm:h-[400px] bg-[#5197ff]/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-[280px] sm:w-[460px] h-[30px] bg-black/90 rounded-full blur-2xl pointer-events-none" />
-
-          {/* Fanned Mobile Phones Stack */}
-          <div className="relative w-[300px] sm:w-[460px] lg:w-[520px] h-[380px] sm:h-[480px] flex items-center justify-center">
-
-            {/* Back Phone (Rightmost / Angled Back) */}
-            <motion.div
-              className="absolute w-[180px] sm:w-[240px] rounded-[30px] sm:rounded-[40px] overflow-hidden bg-[#121212] border-2 border-white/20 shadow-2xl shadow-black/80"
-              style={{
-                zIndex: 1,
-                transform: "translateX(90px) translateY(35px) rotateY(-22deg) rotateZ(14deg) scale(0.86)",
-                transformOrigin: "center bottom",
-              }}
-              whileHover={{
-                transform: "translateX(110px) translateY(25px) rotateY(-20deg) rotateZ(16deg) scale(0.89)",
-              }}
-              transition={{ duration: 0.4, ease: easeOut }}
-            >
-              <img
-                src={onboardingImg}
-                alt="Onboarding Screen"
-                className="w-full h-auto object-contain block opacity-85"
-                loading="lazy"
-              />
-            </motion.div>
-
-            {/* Middle Phone (Behind Front, Angled) */}
-            <motion.div
-              className="absolute w-[190px] sm:w-[250px] rounded-[30px] sm:rounded-[40px] overflow-hidden bg-[#121212] border-2 border-white/30 shadow-2xl shadow-black/90"
-              style={{
-                zIndex: 2,
-                transform: "translateX(45px) translateY(18px) rotateY(-14deg) rotateZ(7deg) scale(0.93)",
-                transformOrigin: "center bottom",
-              }}
-              whileHover={{
-                transform: "translateX(55px) translateY(10px) rotateY(-12deg) rotateZ(8deg) scale(0.96)",
-              }}
-              transition={{ duration: 0.4, ease: easeOut }}
-            >
-              <img
-                src={loginImg}
-                alt="Login Screen"
-                className="w-full h-auto object-contain block opacity-95"
-                loading="lazy"
-              />
-            </motion.div>
-
-            {/* Front Phone (Prominent, High-Resolution Dashboard) */}
-            <motion.div
-              className="absolute w-[200px] sm:w-[265px] rounded-[32px] sm:rounded-[42px] overflow-hidden bg-[#121212] border-2 border-white/50 shadow-2xl shadow-black ring-1 ring-[#5197ff]/40"
-              style={{
-                zIndex: 3,
-                transform: "translateX(-40px) translateY(-5px) rotateY(-6deg) rotateZ(-3deg) scale(1)",
-                transformOrigin: "center bottom",
-              }}
-              whileHover={{
-                transform: "translateX(-45px) translateY(-15px) rotateY(-4deg) rotateZ(-2deg) scale(1.03)",
-              }}
-              transition={{ duration: 0.4, ease: easeOut }}
-            >
-              <img
-                src={dashboardImg}
-                alt="Al-Tabib Al-Hafiz Dashboard"
-                className="w-full h-auto object-contain block"
-                loading="eager"
-              />
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Bottom Editorial Information Row */}
-        <div className="flex flex-col gap-6 pt-6 border-t border-white/[0.08] w-full z-10">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {/* Metadata Grid (Role, Institution, Design Focus) */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 pb-2 border-t border-white/[0.08] w-full">
             <div className="flex flex-col">
-              <span className="font-['Itim'] text-[13px] text-[#5197ff] uppercase tracking-wider">
+              <span className="font-['Itim'] text-[12.5px] text-[#5197ff] uppercase tracking-wider">
                 • Role &amp; Methodology
               </span>
-              <span className="font-['Poppins'] text-[14px] text-white font-medium mt-1">
+              <span className="font-['Poppins'] text-[13.5px] text-white font-medium mt-1">
                 {role} · Auto Layout &amp; Tokens
               </span>
             </div>
 
             <div className="flex flex-col">
-              <span className="font-['Itim'] text-[13px] text-[#5197ff] uppercase tracking-wider">
+              <span className="font-['Itim'] text-[12.5px] text-[#5197ff] uppercase tracking-wider">
                 • Target Institution
               </span>
-              <span className="font-['Poppins'] text-[14px] text-[#d1d1d1] mt-1">
+              <span className="font-['Poppins'] text-[13.5px] text-[#d1d1d1] mt-1">
                 Constantine Faculty of Medicine
               </span>
             </div>
 
             <div className="flex flex-col">
-              <span className="font-['Itim'] text-[13px] text-[#5197ff] uppercase tracking-wider">
+              <span className="font-['Itim'] text-[12.5px] text-[#5197ff] uppercase tracking-wider">
                 • Design Focus
               </span>
-              <span className="font-['Poppins'] text-[14px] text-[#d1d1d1] mt-1 line-clamp-2">
+              <span className="font-['Poppins'] text-[13.5px] text-[#d1d1d1] mt-1 line-clamp-2">
                 {mainDesignFocus}
               </span>
             </div>
           </div>
 
           {/* Action Row */}
-          <div className="flex flex-wrap items-center justify-between gap-4 pt-2">
+          <div className="flex flex-wrap items-center justify-between gap-4 pt-3 w-full">
             <Link
               to={`/case-studies/${slug}`}
               className="inline-flex items-center gap-2 rounded-full border border-white bg-white px-6 py-3 font-['Poppins'] text-[15px] font-semibold text-[#161513] transition-all duration-300 hover:bg-transparent hover:text-white group/btn"
@@ -237,12 +151,91 @@ export function CaseStudyCard(props: CaseStudy) {
             </div>
           </div>
         </div>
+
+        {/* ========================================================= */}
+        {/* RIGHT COLUMN: 3D Layered Fanned-Out Mobile Phones Showcase*/}
+        {/* ========================================================= */}
+        <div
+          onClick={handleCardClick}
+          className="relative w-full lg:w-1/2 shrink-0 flex items-center justify-center cursor-pointer select-none perspective-[1200px] min-h-[360px] sm:min-h-[440px] lg:min-h-[480px]"
+        >
+          {/* Ambient Spotlight & Ground Shadow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] sm:w-[380px] h-[280px] sm:h-[380px] bg-[#5197ff]/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[240px] sm:w-[380px] h-[26px] bg-black/90 rounded-full blur-2xl pointer-events-none" />
+
+          {/* Fanned Mobile Phones Stack */}
+          <div className="relative w-[280px] sm:w-[380px] lg:w-[420px] h-[360px] sm:h-[440px] flex items-center justify-center">
+
+            {/* Back Phone (Rightmost / Angled Back) */}
+            <motion.div
+              className="absolute w-[160px] sm:w-[210px] rounded-[28px] sm:rounded-[36px] overflow-hidden bg-[#121212] border-2 border-white/20 shadow-2xl shadow-black/80"
+              style={{
+                zIndex: 1,
+                transform: "translateX(80px) translateY(30px) rotateY(-22deg) rotateZ(14deg) scale(0.86)",
+                transformOrigin: "center bottom",
+              }}
+              whileHover={{
+                transform: "translateX(95px) translateY(20px) rotateY(-20deg) rotateZ(16deg) scale(0.89)",
+              }}
+              transition={{ duration: 0.4, ease: easeOut }}
+            >
+              <img
+                src={onboardingImg}
+                alt="Onboarding Screen"
+                className="w-full h-auto object-contain block opacity-85"
+                loading="lazy"
+              />
+            </motion.div>
+
+            {/* Middle Phone (Behind Front, Angled) */}
+            <motion.div
+              className="absolute w-[170px] sm:w-[220px] rounded-[28px] sm:rounded-[36px] overflow-hidden bg-[#121212] border-2 border-white/30 shadow-2xl shadow-black/90"
+              style={{
+                zIndex: 2,
+                transform: "translateX(40px) translateY(15px) rotateY(-14deg) rotateZ(7deg) scale(0.93)",
+                transformOrigin: "center bottom",
+              }}
+              whileHover={{
+                transform: "translateX(50px) translateY(8px) rotateY(-12deg) rotateZ(8deg) scale(0.96)",
+              }}
+              transition={{ duration: 0.4, ease: easeOut }}
+            >
+              <img
+                src={loginImg}
+                alt="Login Screen"
+                className="w-full h-auto object-contain block opacity-95"
+                loading="lazy"
+              />
+            </motion.div>
+
+            {/* Front Phone (Prominent, High-Resolution Dashboard) */}
+            <motion.div
+              className="absolute w-[180px] sm:w-[235px] rounded-[30px] sm:rounded-[38px] overflow-hidden bg-[#121212] border-2 border-white/50 shadow-2xl shadow-black ring-1 ring-[#5197ff]/40"
+              style={{
+                zIndex: 3,
+                transform: "translateX(-35px) translateY(-5px) rotateY(-6deg) rotateZ(-3deg) scale(1)",
+                transformOrigin: "center bottom",
+              }}
+              whileHover={{
+                transform: "translateX(-40px) translateY(-12px) rotateY(-4deg) rotateZ(-2deg) scale(1.03)",
+              }}
+              transition={{ duration: 0.4, ease: easeOut }}
+            >
+              <img
+                src={dashboardImg}
+                alt="Al-Tabib Al-Hafiz Dashboard"
+                className="w-full h-auto object-contain block"
+                loading="eager"
+              />
+            </motion.div>
+          </div>
+        </div>
       </motion.article>
     );
   }
 
   // =========================================================================
-  // WEB PRESENTATION (Style 2: Editorial Web Layout inspired by Image 2)
+  // WEB PRESENTATION (Style 2: Editorial Web Layout without card background)
   // =========================================================================
   return (
     <motion.article
@@ -250,7 +243,7 @@ export function CaseStudyCard(props: CaseStudy) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.7, ease: easeOut }}
-      className="group relative flex flex-col w-full text-left rounded-3xl bg-gradient-to-b from-[#1A1917] via-[#161513] to-[#121212] border border-white/[0.08] p-6 sm:p-10 lg:p-14 overflow-hidden shadow-2xl transition-all duration-500 hover:border-[#5197ff]/40"
+      className="group relative flex flex-col w-full text-left"
     >
       {/* Editorial Header Section (like Image 2): Motive Dot + Headline */}
       <div className="flex flex-col gap-5 w-full border-b border-white/[0.08] pb-8">
