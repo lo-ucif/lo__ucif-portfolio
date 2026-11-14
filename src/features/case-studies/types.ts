@@ -66,6 +66,26 @@ export type FlowDiagramNode = {
   touchpoint: string;
 };
 
+export type UseCaseActor = {
+  id: string;
+  name: string;
+  arabicName?: string;
+  role: string;
+  useCases: string[];
+};
+
+export type UseCaseDiagramData = {
+  systemName: string;
+  actors: UseCaseActor[];
+};
+
+export type DesignTool = {
+  name: string;
+  category: string;
+  icon?: ComponentType<SVGProps<SVGSVGElement>>;
+  description?: string;
+};
+
 export type CaseStudy = {
   id: string;
   slug: string;
@@ -92,13 +112,14 @@ export type CaseStudy = {
   github?: string;
   tools: TechItem[];
 
-  // 01 — Overview
+  // 01 — Project Overview
   overview: {
     summary: string;
     objectives: string[];
   };
 
-  // 02 — Problem & User Needs
+  // 02 — Problems (Short bullet points)
+  problemsList?: { title: string; description: string }[];
   problem: {
     statement: string;
     context: string;
@@ -106,7 +127,8 @@ export type CaseStudy = {
     challenges: ProblemChallenge[];
   };
 
-  // 03 — Research & Discovery / User Needs
+  // 03 — User Needs (UML Use Case Diagram)
+  useCaseDiagram?: UseCaseDiagramData;
   research: {
     overview: string;
     userNeeds: string[];
@@ -142,7 +164,7 @@ export type CaseStudy = {
     };
   };
 
-  // 05 — Final Solution
+  // 04 — Final Design
   solution: {
     headline: string;
     description: string;
@@ -155,7 +177,10 @@ export type CaseStudy = {
     }[];
   };
 
-  // 06 — Reflection & Learnings
+  // 05 — Tools Used
+  toolsUsed?: DesignTool[];
+
+  // Reflection (optional)
   reflection: {
     challenges: string[];
     approaches?: ChallengeApproach[];

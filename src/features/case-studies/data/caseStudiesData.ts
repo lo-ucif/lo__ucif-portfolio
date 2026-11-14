@@ -72,6 +72,84 @@ export const caseStudies: CaseStudy[] = [
       ],
     },
 
+    // 02 — Problems (Short, Clear Bullet Points)
+    problemsList: [
+      {
+        title: "Cognitive Fatigue & Time Fragmentation",
+        description:
+          "Intensive clinical hospital shifts and demanding coursework leave medical students with zero mental bandwidth to navigate complicated, multi-step menus.",
+      },
+      {
+        title: "Disorganized Study Circle Access",
+        description:
+          "Virtual recitation circles (حلقات) rely on scattered chat groups, causing students to frequently lose meeting links and miss live sessions.",
+      },
+      {
+        title: "Lack of Granular Revision Tracking",
+        description:
+          "Traditional paper notes fail to distinguish newly memorized verses (حفظ) from active recurring revision (مراجعة), risking memory retention loss.",
+      },
+      {
+        title: "Visual Noise in Generic Applications",
+        description:
+          "Commercial apps are overloaded with advertisements and intrusive notifications that create friction rather than spiritual serenity.",
+      },
+    ],
+
+    // 03 — User Needs (UML Use Case Diagram)
+    useCaseDiagram: {
+      systemName: "Al-Tabib Al-Hafiz Mobile Platform",
+      actors: [
+        {
+          id: "student",
+          name: "Medical Student",
+          arabicName: "طالب الطب",
+          role: "Learner & Reciter",
+          useCases: [
+            "Join Virtual Recitation Circle (1-Click)",
+            "Track Memorization & Revision (Ahzab)",
+            "Review Attendance & Absence Records",
+            "Consult Daily Revision Schedule",
+          ],
+        },
+        {
+          id: "instructor",
+          name: "Sheikh / Instructor",
+          arabicName: "الشيخ المشرف",
+          role: "Study Circle Lead",
+          useCases: [
+            "Host Live Recitation Halaqa",
+            "Evaluate Student Recitations & Score",
+            "Record & Justify Attendance Logs",
+          ],
+        },
+      ],
+    },
+
+    // 05 — Tools Used
+    toolsUsed: [
+      {
+        name: "Figma",
+        category: "UI/UX Interface Design",
+        description: "Engineered high-fidelity responsive screens, atomic components, and dark surface tokens.",
+      },
+      {
+        name: "Auto Layout 5.0",
+        category: "Spatial Grid Architecture",
+        description: "8-point spacing system ensuring fluid adaptation across diverse mobile viewports.",
+      },
+      {
+        name: "Design System Tokens",
+        category: "Variables & Color Palette",
+        description: "Constructed soothing medical teal, dark slate (#161513), and Arabic typography tokens.",
+      },
+      {
+        name: "Interactive Prototyping",
+        category: "Interaction & Motion Design",
+        description: "Smart animations, ease-out screen linkages, and realistic 1-tap room launch flows.",
+      },
+    ],
+
     // 02 — The Problem
     problem: {
       statement:
@@ -547,6 +625,163 @@ export const caseStudies: CaseStudy[] = [
         "Establish an accessible design system with over 20 high-fidelity screens spanning desktop and mobile.",
       ],
     },
+
+    // 02 — Problems (Short, Clear Bullet Points)
+    problemsList: [
+      {
+        title: "Paper-Based Administrative Bottlenecks",
+        description:
+          "Managing dozens of concurrent candidate files in physical paper ledgers causes lost paperwork and administrative overhead.",
+      },
+      {
+        title: "Fragmented Lesson Scheduling",
+        description:
+          "Coordinating driving sessions via ad-hoc phone calls creates confusion and double-booked training vehicles.",
+      },
+      {
+        title: "Lack of Clear Exam Readiness Indicators",
+        description:
+          "Students and school owners lack real-time visibility into required road hours completed vs state exam criteria.",
+      },
+      {
+        title: "Fleet and Instructor Coordination Gaps",
+        description:
+          "School owners lack a centralized, live overview of instructor rosters and vehicle fleet availability.",
+      },
+    ],
+
+    // 03 — User Needs (UML Use Case Diagram)
+    useCaseDiagram: {
+      systemName: "Rokhsa Driving Education Ecosystem",
+      actors: [
+        {
+          id: "candidate",
+          name: "Candidate Driver",
+          arabicName: "المترشح للسياقة",
+          role: "Learner & Candidate",
+          useCases: [
+            "Book Practical Driving Slots",
+            "Practice Highway Code Tests",
+            "Track Lesson Hours & Exam Readiness",
+            "Communicate with School Admin",
+          ],
+        },
+        {
+          id: "admin",
+          name: "School Administrator",
+          arabicName: "مدير مدرسة السياقة",
+          role: "School Manager",
+          useCases: [
+            "Manage Candidate Dossiers & Fees",
+            "Schedule Instructors & Fleet Vehicles",
+            "Verify Exam Readiness & Submit Lists",
+            "Monitor Real-Time School Analytics",
+          ],
+        },
+      ],
+    },
+
+    // 05 — Tools Used
+    toolsUsed: [
+      {
+        name: "Figma",
+        category: "UI/UX Interface Design",
+        description: "Dual desktop dashboard and mobile companion application interface design.",
+      },
+      {
+        name: "Auto Layout 5.0",
+        category: "Responsive Architecture",
+        description: "Wide desktop 1440px data tables adapting fluidly to mobile 375px viewports.",
+      },
+      {
+        name: "Component Variants",
+        category: "Design System",
+        description: "Engineered interactive calendar time-slot selectors and multi-status candidate tables.",
+      },
+      {
+        name: "Interactive Prototyping",
+        category: "Interaction & Workflow",
+        description: "Smart animate slot booking flow and interactive candidate dossier review.",
+      },
+    ],
+
+    // 02 — Problems (Short, Clear Bullet Points)
+    problemsList: [
+      {
+        title: "Cognitive Fatigue & Time Fragmentation",
+        description:
+          "Intensive clinical hospital shifts and demanding coursework leave medical students with zero mental bandwidth to navigate complicated, multi-step menus.",
+      },
+      {
+        title: "Disorganized Study Circle Access",
+        description:
+          "Virtual recitation circles (حلقات) rely on scattered chat groups, causing students to frequently lose meeting links and miss live sessions.",
+      },
+      {
+        title: "Lack of Granular Revision Tracking",
+        description:
+          "Traditional paper notes fail to distinguish newly memorized verses (حفظ) from active recurring revision (مراجعة), risking memory retention loss.",
+      },
+      {
+        title: "Visual Noise in Generic Applications",
+        description:
+          "Commercial apps are overloaded with advertisements and intrusive notifications that create friction rather than spiritual serenity.",
+      },
+    ],
+
+    // 03 — User Needs (UML Use Case Diagram)
+    useCaseDiagram: {
+      systemName: "Al-Tabib Al-Hafiz Mobile Platform",
+      actors: [
+        {
+          id: "student",
+          name: "Medical Student",
+          arabicName: "طالب الطب",
+          role: "Learner & Reciter",
+          useCases: [
+            "Join Virtual Recitation Circle (1-Click)",
+            "Track Memorization & Revision (Ahzab)",
+            "Review Attendance & Absence Records",
+            "Consult Daily Revision Schedule",
+          ],
+        },
+        {
+          id: "instructor",
+          name: "Sheikh / Instructor",
+          arabicName: "الشيخ المشرف",
+          role: "Study Circle Lead",
+          useCases: [
+            "Host Live Recitation Halaqa",
+            "Evaluate Student Recitations & Score",
+            "Record & Justify Attendance Logs",
+          ],
+        },
+      ],
+    },
+
+    // 05 — Tools Used
+    toolsUsed: [
+      {
+        name: "Figma",
+        category: "UI/UX Interface Design",
+        description: "Engineered high-fidelity responsive screens, atomic components, and dark surface tokens.",
+      },
+      {
+        name: "Auto Layout 5.0",
+        category: "Spatial Grid Architecture",
+        description: "8-point spacing system ensuring fluid adaptation across diverse mobile viewports.",
+      },
+      {
+        name: "Design System Tokens",
+        category: "Variables & Color Palette",
+        description: "Constructed soothing medical teal, dark slate (#161513), and Arabic typography tokens.",
+      },
+      {
+        name: "Interactive Prototyping",
+        category: "Interaction & Motion Design",
+        description: "Smart animations, ease-out screen linkages, and realistic 1-tap room launch flows.",
+      },
+    ],
 
     // 02 — The Problem
     problem: {

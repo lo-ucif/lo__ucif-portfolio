@@ -9,10 +9,10 @@ export type CaseStudyNavSection = {
 
 const SECTIONS: CaseStudyNavSection[] = [
   { id: "overview", label: "01. Overview", shortLabel: "01. Overview" },
-  { id: "problem-needs", label: "02. Problem & Needs", shortLabel: "02. Problem" },
-  { id: "user-flow", label: "03. User Flow", shortLabel: "03. Flow" },
+  { id: "problems", label: "02. Problems", shortLabel: "02. Problems" },
+  { id: "user-needs", label: "03. User Needs", shortLabel: "03. Needs" },
   { id: "final-design", label: "04. Final Design", shortLabel: "04. Design" },
-  { id: "challenges-learnings", label: "05. Challenges & Learnings", shortLabel: "05. Learnings" },
+  { id: "tools-used", label: "05. Tools Used", shortLabel: "05. Tools" },
 ];
 
 export function CaseStudyStickyNav() {
@@ -22,13 +22,11 @@ export function CaseStudyStickyNav() {
     const handleScroll = () => {
       const scrollY = window.scrollY;
 
-      // If near top
-      if (scrollY < 300) {
+      if (scrollY < 250) {
         setActiveId("overview");
         return;
       }
 
-      // Check sections in reverse
       for (let i = SECTIONS.length - 1; i >= 0; i--) {
         const sec = SECTIONS[i];
         const el = document.getElementById(sec.id);
@@ -86,7 +84,6 @@ export function CaseStudyStickyNav() {
           );
         })}
 
-        {/* Quick Top button */}
         <button
           type="button"
           onClick={() => scrollToSection("top")}
