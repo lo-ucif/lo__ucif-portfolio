@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { caseStudies } from "../features/case-studies/data/caseStudiesData";
@@ -9,10 +9,18 @@ import { CaseStudyOverview } from "../features/case-studies/components/CaseStudy
 import { CaseStudyProblems } from "../features/case-studies/components/CaseStudyProblems";
 import { CaseStudyUserNeeds } from "../features/case-studies/components/CaseStudyUserNeeds";
 import { CaseStudyFinalDesign } from "../features/case-studies/components/CaseStudyFinalDesign";
-import { CaseStudyStickyNav } from "../features/case-studies/components/CaseStudyStickyNav";
+import FloatingBubble, { type BubbleItem } from "../components/FloatingBubble";
 import { ImageLightboxModal } from "../features/case-studies/components/ImageLightboxModal";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
+
+const CASE_STUDY_BUBBLE_NAV: BubbleItem[] = [
+  { label: "Overview", id: "overview" },
+  { label: "Problems", id: "problems" },
+  { label: "User Needs", id: "user-needs" },
+  { label: "Final Design", id: "final-design" },
+  { label: "Top ↑", id: "top" },
+];
 
 export default function CaseStudyDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -47,6 +55,44 @@ export default function CaseStudyDetail() {
 
   const handleCloseLightbox = () => {
     setLightboxState((prev) => ({ ...prev, isOpen: false }));
+  };
+
+  // Track active section for floating bubble
+  const [activeBubbleId, setActiveBubbleId] = useState<string>("overview");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      if (scrollY < 250) {
+        setActiveBubbleId("overview");
+        return;
+      }
+      const sectionIds = ["final-design", "user-needs", "problems", "overview"];
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (el) {
+          const top = el.getBoundingClientRect().top + window.scrollY;
+          if (scrollY >= top - 260) {
+            setActiveBubbleId(id);
+            return;
+          }
+        }
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleBubbleClick = (item: BubbleItem) => {
+    if (item.id === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      const el = document.getElementById(item.id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
   };
 
   if (!study) {
@@ -182,8 +228,12 @@ export default function CaseStudyDetail() {
 
       </div>
 
-      {/* Floating 5-Section Navigation */}
-      <CaseStudyStickyNav />
+      {/* Floating Navigation Bubble */}
+      <FloatingBubble
+        items={CASE_STUDY_BUBBLE_NAV}
+        onItemClick={handleBubbleClick}
+        activeId={activeBubbleId}
+      />
 
       {/* Fullscreen Lightbox Modal */}
       <ImageLightboxModal

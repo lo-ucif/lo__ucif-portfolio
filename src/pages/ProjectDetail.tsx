@@ -1,8 +1,9 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Link, useParams } from "react-router-dom";
-import type { SVGProps } from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { projects, roleConfig, categoryConfig } from "../constants/data";
 import { SiteFooter } from "../components/layout/SiteFooter";
+import FloatingBubble, { type BubbleItem } from "../components/FloatingBubble";
 import {
   Github2Icon,
   LinkIcon,
@@ -10,123 +11,59 @@ import {
   LinkedinIcon,
 } from "../constants/Icon";
 
-const ReturnIcon = (props: SVGProps<SVGSVGElement>) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="26"
-    height="26"
-    viewBox="0 0 26 26"
-    fill="none"
-    {...props}
-  >
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M4.33333 10.8333L3.56742 11.5993L2.8015 10.8333L3.56742 10.0674L4.33333 10.8333ZM22.75 19.5C22.75 19.7873 22.6359 20.0629 22.4327 20.266C22.2295 20.4692 21.954 20.5833 21.6667 20.5833C21.3793 20.5833 21.1038 20.4692 20.9006 20.266C20.6975 20.0629 20.5833 19.7873 20.5833 19.5H22.75ZM8.98408 17.0159L3.56742 11.5993L5.09925 10.0674L10.5159 15.4841L8.98408 17.0159ZM3.56742 10.0674L8.98408 4.65076L10.5159 6.18259L5.09925 11.5993L3.56742 10.0674ZM4.33333 9.75001H15.1667V11.9167H4.33333V9.75001ZM22.75 17.3333V19.5H20.5833V17.3333H22.75ZM15.1667 9.75001C17.1779 9.75001 19.1067 10.549 20.5289 11.9711C21.951 13.3933 22.75 15.3221 22.75 17.3333H20.5833C20.5833 15.8968 20.0127 14.519 18.9968 13.5032C17.981 12.4874 16.6033 11.9167 15.1667 11.9167V9.75001Z"
-      fill="white"
-    />
-  </svg>
-);
+const easeOut = [0.22, 1, 0.36, 1] as const;
 
-const CalendarIcon = (props: SVGProps<SVGSVGElement>) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.8"
-    {...props}
-  >
-    <rect
-      x="3"
-      y="4"
-      width="18"
-      height="17"
-      rx="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M16 2v4M8 2v4M3 10h18"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-const RoleIcon = (props: SVGProps<SVGSVGElement>) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.8"
-    {...props}
-  >
-    <rect
-      x="3"
-      y="6"
-      width="18"
-      height="14"
-      rx="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M3 11h18M10 11v2h4v-2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-const TeamIcon = (props: SVGProps<SVGSVGElement>) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.8"
-    {...props}
-  >
-    <circle cx="9" cy="8" r="3" />
-    <path
-      d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M16 5.2a3 3 0 0 1 0 5.6M18 14.2a6 6 0 0 1 3 5.2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
-const StatusIcon = (props: SVGProps<SVGSVGElement>) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.8"
-    {...props}
-  >
-    <path
-      d="M3 12h4l2.2-7 4 14 2.1-7H21"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
+const PROJECT_BUBBLE_NAV: BubbleItem[] = [
+  { label: "Projects", id: "projects" },
+  { label: "Overview", id: "overview" },
+  { label: "Tech", id: "technologies" },
+  { label: "Top ↑", id: "top" },
+];
 
 export default function ProjectDetail() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const project = projects.find((p) => p.id === Number(id));
-  const easeOut = [0.22, 1, 0.36, 1] as const;
+
+  // Bubble active tracking
+  const [activeBubbleId, setActiveBubbleId] = useState<string>("overview");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      if (scrollY < 200) {
+        setActiveBubbleId("overview");
+        return;
+      }
+      const sectionIds = ["technologies", "overview"];
+      for (const secId of sectionIds) {
+        const el = document.getElementById(secId);
+        if (el) {
+          const top = el.getBoundingClientRect().top + window.scrollY;
+          if (scrollY >= top - 260) {
+            setActiveBubbleId(secId);
+            return;
+          }
+        }
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleBubbleClick = (item: BubbleItem) => {
+    if (item.id === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (item.id === "projects") {
+      navigate("/projects");
+    } else {
+      const el = document.getElementById(item.id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+  };
 
   if (!project) {
     return (
@@ -142,74 +79,191 @@ export default function ProjectDetail() {
     );
   }
 
-  const summaryDetails = [
-    { label: "role", value: roleConfig[project.role], Icon: RoleIcon },
-    { label: "Year", value: project.year, Icon: CalendarIcon },
-    { label: "Status", value: project.status, Icon: StatusIcon },
-    { label: "Team", value: project.team, Icon: TeamIcon },
-  ];
+  const caseStudyUrl =
+    project.id === 1
+      ? "/case-studies/al-tabib-al-hafiz"
+      : project.id === 2
+        ? "/case-studies/rokhsa"
+        : null;
 
   return (
-    <div className="flex flex-col items-center min-h-screen bg-[#161513] px-5 pb-0 pt-20 text-white sm:px-10 lg:px-20">
-      <div className="flex flex-col w-full gap-6 max-w-260">
+    <div className="flex flex-col items-center min-h-screen bg-[#161513] px-5 pb-0 pt-20 text-white sm:px-10 lg:px-20 min-[601px]:pt-28 max-[600px]:pt-22">
+      <div className="flex flex-col w-full gap-10 max-w-5xl">
+
+        {/* Top Navigation Bar (Image 1 style) */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: easeOut }}
-          className="w-full"
+          transition={{ duration: 0.45, ease: easeOut }}
+          className="flex flex-wrap items-center justify-between gap-4 border-b border-white/[0.08] pb-5 w-full"
         >
-          <Link
-            to="/projects"
-            className="inline-flex items-center gap-2 font-['Poppins'] text-[15px] text-[#9CA3AF] transition-colors duration-300 hover:text-white"
-          >
-            <ReturnIcon width={18} height={18} />
-            Back to Projects
-          </Link>
-        </motion.div>
-
-        <motion.div
-          className="flex flex-col gap-4"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: easeOut, delay: 0.05 }}
-        >
-          <h1 className="font-['Itim'] text-[32px] text-white sm:text-[40px]">
-            {project.title}
-          </h1>
-          <p className="font-['Poppins'] text-[15px] text-[#9CA3AF] leading-relaxed">
-            {project.shortDescription}
-          </p>
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="rounded-full bg-[#161513]/80 border border-white/20 px-3 py-1 font-['Itim'] text-[14px] text-white">
-              {project.projectType}
-            </span>
-            <span className="rounded-full bg-[#161513]/80 border border-white/20 px-3 py-1 font-['Itim'] text-[14px] text-white">
-              {roleConfig[project.role]}
-            </span>
-            <span className="rounded-full bg-[#1F1F1F] border border-white/20 px-3 py-1 font-['Itim'] text-[14px] text-[#9CA3AF]">
-              {categoryConfig[project.category]}
-            </span>
-            <span className="rounded-full bg-[#161513]/80   px-3 py-1 font-['Itim'] text-[14px] text-white/50">
-              {project.year}
-            </span>
-            {project.hackathon && project.hackathon !== "" && (
-              <span className="flex items-center rounded-[22px] bg-[#30496b] px-3 py-1 text-white font-['Itim'] text-[14px]">
-                {project.hackathon}
-              </span>
-            )}
-            {project.id === 1 && (
-              <Link
-                to="/case-studies/al-tabib-al-hafiz"
-                className="inline-flex items-center gap-1.5 rounded-full bg-[#5197ff] px-3.5 py-1 text-[#161513] font-['Poppins'] text-[13px] font-semibold transition-all hover:bg-white"
+          <div className="flex items-center gap-4">
+            <Link
+              to="/projects"
+              className="inline-flex items-center gap-2 font-['Poppins'] text-[14px] sm:text-[15px] text-[#9CA3AF] transition-colors duration-200 hover:text-white"
+            >
+              <svg
+                className="w-4 h-4"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
-                <span>Explore Full UI/UX Case Study →</span>
+                <line x1="19" y1="12" x2="5" y2="12" />
+                <polyline points="12 19 5 12 12 5" />
+              </svg>
+              <span>Back to Projects</span>
+            </Link>
+
+            <span className="text-white/20">|</span>
+
+            <Link
+              to="/#projects"
+              className="font-['Poppins'] text-[13px] text-[#8491A0] transition-colors hover:text-white"
+            >
+              Portfolio
+            </Link>
+          </div>
+
+          {/* Quick Action Pills (Image 1 style) */}
+          <div className="flex flex-wrap items-center gap-2.5">
+            {caseStudyUrl && (
+              <Link
+                to={caseStudyUrl}
+                className="inline-flex items-center gap-1.5 rounded-full bg-[#5197ff] px-3.5 py-1.5 text-[#161513] font-['Poppins'] text-[13px] font-semibold hover:bg-white transition-colors"
+              >
+                <span>Explore Case Study →</span>
               </Link>
+            )}
+            {project.liveDemo && (
+              <a
+                href={project.liveDemo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.05] border border-white/10 px-3.5 py-1.5 font-['Poppins'] text-[13px] text-[#d1d1d1] hover:text-[#5197ff] hover:border-[#5197ff]/40 transition-colors"
+              >
+                <LinkIcon width={14} height={14} />
+                <span>Live Demo</span>
+              </a>
+            )}
+            {project.figma && (
+              <a
+                href={project.figma}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.05] border border-white/10 px-3.5 py-1.5 font-['Poppins'] text-[13px] text-[#d1d1d1] hover:text-[#5197ff] hover:border-[#5197ff]/40 transition-colors"
+              >
+                <FigmaIcon width={14} height={14} />
+                <span>Figma Prototype</span>
+              </a>
+            )}
+            {project.github && (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.05] border border-white/10 px-3.5 py-1.5 font-['Poppins'] text-[13px] text-[#d1d1d1] hover:text-[#5197ff] hover:border-[#5197ff]/40 transition-colors"
+              >
+                <Github2Icon width={14} height={14} />
+                <span>GitHub</span>
+              </a>
+            )}
+            {project.linkedin && (
+              <a
+                href={project.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.05] border border-white/10 px-3.5 py-1.5 font-['Poppins'] text-[13px] text-[#d1d1d1] hover:text-[#5197ff] hover:border-[#5197ff]/40 transition-colors"
+              >
+                <LinkedinIcon width={14} height={14} />
+                <span>LinkedIn</span>
+              </a>
             )}
           </div>
         </motion.div>
 
+        {/* Project Header Info */}
         <motion.div
-          className="self-center overflow-hidden rounded-2xl"
+          className="flex flex-col gap-4 text-left"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: easeOut, delay: 0.05 }}
+        >
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="rounded-full bg-[#30496b] px-3.5 py-1 font-['Itim'] text-[13px] sm:text-[14px] text-white">
+              {project.hackathon ? project.hackathon : project.projectType}
+            </span>
+            <span className="rounded-full bg-white/[0.06] border border-white/10 px-3 py-1 font-['Itim'] text-[13px] text-[#A9A9A9]">
+              {categoryConfig[project.category]}
+            </span>
+          </div>
+
+          <h1 className="font-['Itim'] text-[34px] sm:text-[46px] lg:text-[50px] font-bold text-white uppercase tracking-tight leading-tight">
+            {project.title}
+          </h1>
+
+          <p className="font-['Poppins'] text-[16px] sm:text-[17.5px] text-[#d1d1d1] leading-relaxed max-w-3xl">
+            {project.shortDescription}
+          </p>
+
+          {/* Metadata Pills Row (Image 3 style) */}
+          <div className="flex flex-wrap items-center gap-3 pt-2">
+            <div className="flex items-center gap-2 rounded-xl bg-[#1A1917] border border-white/[0.08] px-4 py-2">
+              <span className="font-['Itim'] text-[12.5px] text-[#8491A0] uppercase tracking-wider">
+                My Role:
+              </span>
+              <span className="font-['Poppins'] text-[14px] text-white font-medium">
+                {roleConfig[project.role]}
+              </span>
+            </div>
+
+            <div className="flex items-center gap-2 rounded-xl bg-[#1A1917] border border-white/[0.08] px-4 py-2">
+              <span className="font-['Itim'] text-[12.5px] text-[#8491A0] uppercase tracking-wider">
+                Context:
+              </span>
+              <span className="font-['Poppins'] text-[14px] text-[#d1d1d1]">
+                {categoryConfig[project.category]}
+              </span>
+            </div>
+
+            <div className="flex items-center gap-2 rounded-xl bg-[#1A1917] border border-white/[0.08] px-4 py-2">
+              <span className="font-['Itim'] text-[12.5px] text-[#8491A0] uppercase tracking-wider">
+                Timeline:
+              </span>
+              <span className="font-['Poppins'] text-[14px] text-[#d1d1d1]">
+                {project.year}
+              </span>
+            </div>
+
+            {project.team && (
+              <div className="flex items-center gap-2 rounded-xl bg-[#1A1917] border border-white/[0.08] px-4 py-2">
+                <span className="font-['Itim'] text-[12.5px] text-[#8491A0] uppercase tracking-wider">
+                  Team:
+                </span>
+                <span className="font-['Poppins'] text-[14px] text-[#d1d1d1]">
+                  {project.team}
+                </span>
+              </div>
+            )}
+
+            {project.status && (
+              <div className="flex items-center gap-2 rounded-xl bg-[#1A1917] border border-white/[0.08] px-4 py-2">
+                <span className="font-['Itim'] text-[12.5px] text-[#8491A0] uppercase tracking-wider">
+                  Status:
+                </span>
+                <span className="font-['Poppins'] text-[14px] text-[#5197ff]">
+                  {project.status}
+                </span>
+              </div>
+            )}
+          </div>
+        </motion.div>
+
+        {/* Featured Project Visual */}
+        <motion.div
+          className="w-full overflow-hidden rounded-3xl border border-white/[0.1] bg-[#121212] shadow-2xl"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: easeOut, delay: 0.1 }}
@@ -217,211 +271,180 @@ export default function ProjectDetail() {
           <img
             src={project.image}
             alt={project.title}
-            className="object-cover w-full"
+            className="w-full h-auto object-cover block"
           />
         </motion.div>
 
-        <div className="flex flex-col w-full gap-8 lg:flex-col">
+        {/* Case Study Callout Banner (if available) */}
+        {caseStudyUrl && (
           <motion.div
-            className="flex flex-col flex-1 w-full gap-8"
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: easeOut, delay: 0.15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, ease: easeOut }}
+            className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-6 rounded-2xl bg-gradient-to-r from-[#1A1917] via-[#1f1e1b] to-[#1A1917] border border-[#5197ff]/40 shadow-xl text-left"
           >
-            {project.id === 1 && (
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-5 rounded-2xl bg-[#1A1917] border border-[#5197ff]/40 shadow-lg">
-                <div className="flex flex-col gap-1">
-                  <span className="font-['Itim'] text-[18px] text-white font-bold">
-                    In-Depth UI/UX Case Study Available
-                  </span>
-                  <p className="font-['Poppins'] text-[13.5px] text-[#A9A9A9]">
-                    Explore the complete research, user flows, design system, and screen breakdowns for this platform.
-                  </p>
-                </div>
-                <Link
-                  to="/case-studies/al-tabib-al-hafiz"
-                  className="shrink-0 rounded-full bg-white text-[#161513] px-5 py-2 font-['Poppins'] text-[14px] font-medium hover:bg-[#5197ff] hover:text-white transition-colors"
-                >
-                  Explore Case Study →
-                </Link>
-              </div>
-            )}
-
-            <div className="flex flex-col gap-2">
-              <h2 className="font-['Itim'] text-[22px] text-white">Overview</h2>
-              <p className="font-['Poppins'] text-[15px] text-[#9CA3AF] leading-relaxed">
-                {project.description}
+            <div className="flex flex-col gap-1">
+              <span className="font-['Itim'] text-[13px] text-[#5197ff] uppercase tracking-wider">
+                Comprehensive Case Study
+              </span>
+              <h3 className="font-['Itim'] text-[20px] sm:text-[22px] text-white font-bold">
+                In-Depth UI/UX Case Study Available
+              </h3>
+              <p className="font-['Poppins'] text-[13.5px] text-[#A9A9A9]">
+                Explore the complete problem research, UML user needs diagrams, and high-fidelity interface presentations.
               </p>
             </div>
-
-            {project.problem && (
-              <div className="flex flex-col gap-2">
-                <h2 className="font-['Itim'] text-[22px] text-white">
-                  The Challenge
-                </h2>
-                <p className="font-['Poppins'] text-[15px] text-[#9CA3AF] leading-relaxed">
-                  {project.problem}
-                </p>
-              </div>
-            )}
-
-            {project.solution && (
-              <div className="flex flex-col gap-2">
-                <h2 className="font-['Itim'] text-[22px] text-white">The Solution</h2>
-                <p className="font-['Poppins'] text-[15px] text-[#9CA3AF] leading-relaxed">
-                  {project.solution}
-                </p>
-              </div>
-            )}
-
-            {project.keyFeatures && project.keyFeatures.length > 0 && (
-              <div className="flex flex-col gap-2">
-                <h2 className="font-['Itim'] text-[22px] text-white">Key Features</h2>
-                <ul className="flex flex-col gap-1.5 pl-4 list-disc font-['Poppins'] text-[15px] text-[#9CA3AF] leading-relaxed">
-                  {project.keyFeatures.map((feature, idx) => (
-                    <li key={idx}>{feature}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
-            {project.outcome && (
-              <div className="flex flex-col gap-2">
-                <h2 className="font-['Itim'] text-[22px] text-white">The Outcome</h2>
-                <p className="font-['Poppins'] text-[15px] text-[#9CA3AF] leading-relaxed">
-                  {project.outcome}
-                </p>
-              </div>
-            )}
+            <Link
+              to={caseStudyUrl}
+              className="shrink-0 rounded-full bg-white text-[#161513] px-5 py-2.5 font-['Poppins'] text-[14px] font-semibold hover:bg-[#5197ff] hover:text-white transition-colors"
+            >
+              Explore Case Study →
+            </Link>
           </motion.div>
+        )}
 
-          <motion.aside
-            className="flex flex-col w-full gap-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: easeOut, delay: 0.2 }}
-          >
-            <dl className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
-              {summaryDetails.map(({ label, value, Icon }) => (
-                <div
-                  key={label}
-                  className="relative min-h-28 overflow-hidden rounded-[20px] border border-white/10 bg-[#1D1D1D] p-6 before:absolute before:-right-3 before:-top-7 before:h-24 before:w-24 before:rounded-full before:bg-white/2.5"
-                >
-                  <div className="relative z-10 flex flex-col gap-4">
-                    <dt className="flex items-center gap-2 font-['Poppins'] text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8F8F8F]">
-                      <Icon width={20} height={20} aria-hidden="true" />
-                      {label}
-                    </dt>
-                    <dd className="m-0 font-['Itim'] text-[20px] text-white">
-                      {value}
-                    </dd>
+        {/* Narrative & Details Content */}
+        <div id="overview" className="flex flex-col gap-8 text-left scroll-mt-28">
+          {/* Overview */}
+          <div className="flex flex-col gap-3 p-6 sm:p-8 rounded-2xl bg-[#1A1917] border border-white/[0.08]">
+            <h2 className="font-['Itim'] text-[24px] sm:text-[26px] text-white font-bold">
+              Project Overview
+            </h2>
+            <p className="font-['Poppins'] text-[15px] sm:text-[16px] text-[#d1d1d1] leading-relaxed">
+              {project.description}
+            </p>
+          </div>
+
+          {/* The Challenge & Solution Grid */}
+          {(project.problem || project.solution) && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {project.problem && (
+                <div className="flex flex-col gap-3 p-6 sm:p-7 rounded-2xl bg-[#1A1917] border border-white/[0.08]">
+                  <span className="font-['Itim'] text-[12px] text-[#f87171] uppercase tracking-wider">
+                    The Problem
+                  </span>
+                  <h3 className="font-['Itim'] text-[22px] text-white font-semibold">
+                    The Challenge
+                  </h3>
+                  <p className="font-['Poppins'] text-[14.5px] text-[#b4b4b4] leading-relaxed">
+                    {project.problem}
+                  </p>
+                </div>
+              )}
+
+              {project.solution && (
+                <div className="flex flex-col gap-3 p-6 sm:p-7 rounded-2xl bg-[#1A1917] border border-white/[0.08]">
+                  <span className="font-['Itim'] text-[12px] text-[#5197ff] uppercase tracking-wider">
+                    The Approach
+                  </span>
+                  <h3 className="font-['Itim'] text-[22px] text-white font-semibold">
+                    The Solution
+                  </h3>
+                  <p className="font-['Poppins'] text-[14.5px] text-[#b4b4b4] leading-relaxed">
+                    {project.solution}
+                  </p>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Key Features */}
+          {project.keyFeatures && project.keyFeatures.length > 0 && (
+            <div className="flex flex-col gap-4 p-6 sm:p-8 rounded-2xl bg-[#1A1917] border border-white/[0.08]">
+              <h2 className="font-['Itim'] text-[24px] text-white font-bold">
+                Key Features &amp; Capabilities
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {project.keyFeatures.map((feature, idx) => (
+                  <div
+                    key={idx}
+                    className="flex items-start gap-2.5 p-3 rounded-xl bg-white/[0.02] border border-white/[0.04] font-['Poppins'] text-[14px] text-[#d1d1d1]"
+                  >
+                    <span className="text-[#5197ff] font-bold mt-0.5">✔</span>
+                    <span>{feature}</span>
                   </div>
-                </div>
-              ))}
-            </dl>
-
-            <section
-              aria-labelledby="technologies-heading"
-              className="relative min-h-44 overflow-hidden rounded-[20px] border border-white/10 bg-[#1D1D1D] p-6"
-            >
-              <div className="pointer-events-none absolute -right-3 -top-7 h-24 w-24 rounded-full bg-white/2.5" />
-              <div className="relative z-10 flex flex-col h-full gap-5">
-                <h2 className="font-['Itim'] text-[20px] text-white">
-                  Technologies
-                </h2>
-                <div className="flex flex-wrap gap-2">
-                  {project.tech.map((tech) => {
-                    const Icon = tech.icon;
-                    return (
-                      <span
-                        key={tech.label}
-                        className="flex items-center gap-1.5 rounded-full bg-[#303030] px-2.5 py-1.5 font-['Itim'] text-[15px] text-white"
-                      >
-                        <Icon width={16} height={16} aria-hidden="true" />
-                        {tech.label}
-                      </span>
-                    );
-                  })}
-                </div>
+                ))}
               </div>
-            </section>
+            </div>
+          )}
 
-            <section
-              aria-labelledby="links-heading"
-              className="relative min-h-44 overflow-hidden rounded-[20px] border border-white/10 bg-[#1D1D1D] p-6"
-            >
-              <div className="pointer-events-none absolute -right-3 -top-7 h-24 w-24 rounded-full bg-white/2.5" />
-              <div className="relative z-10 flex flex-col h-full gap-5">
-                <h2 className="font-['Itim'] text-[20px] text-white">Links</h2>
-                <div className="flex flex-wrap gap-2">
-                  {project.liveDemo && (
-                    <a
-                      href={project.liveDemo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#303030] px-4 py-2 font-['Poppins'] text-[14px] text-white transition-colors hover:bg-[#3a3a3a] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5197ff]"
-                    >
-                      <LinkIcon width={18} height={18} aria-hidden="true" />
-                      Live Demo
-                    </a>
-                  )}
-                  {project.github && (
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#303030] px-4 py-2 font-['Poppins'] text-[14px] text-white transition-colors hover:bg-[#3a3a3a] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5197ff]"
-                    >
-                      <Github2Icon width={18} height={18} aria-hidden="true" />
-                      GitHub Repo
-                    </a>
-                  )}
-                  {project.figma && (
-                    <a
-                      href={project.figma}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#303030] px-4 py-2 font-['Poppins'] text-[14px] text-white transition-colors hover:bg-[#3a3a3a] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5197ff]"
-                    >
-                      <FigmaIcon width={18} height={18} aria-hidden="true" />
-                      Figma Design
-                    </a>
-                  )}
-                  {project.linkedin && (
-                    <a
-                      href={project.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#303030] px-4 py-2 font-['Poppins'] text-[14px] text-white transition-colors hover:bg-[#3a3a3a] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5197ff]"
-                    >
-                      <LinkedinIcon width={18} height={18} aria-hidden="true" />
-                      LinkedIn Post
-                    </a>
-                  )}
-                </div>
-              </div>
-            </section>
-          </motion.aside>
+          {/* Outcome */}
+          {project.outcome && (
+            <div className="flex flex-col gap-3 p-6 sm:p-8 rounded-2xl bg-[#1A1917] border border-white/[0.08]">
+              <span className="font-['Itim'] text-[12px] text-[#4ade80] uppercase tracking-wider">
+                Results
+              </span>
+              <h2 className="font-['Itim'] text-[22px] text-white font-bold">
+                The Outcome
+              </h2>
+              <p className="font-['Poppins'] text-[15px] text-[#d1d1d1] leading-relaxed">
+                {project.outcome}
+              </p>
+            </div>
+          )}
+
+          {/* Technologies Used */}
+          <div id="technologies" className="flex flex-col gap-4 p-6 sm:p-8 rounded-2xl bg-[#1A1917] border border-white/[0.08] scroll-mt-28">
+            <h2 className="font-['Itim'] text-[24px] text-white font-bold">
+              Technologies &amp; Architecture
+            </h2>
+            <div className="flex flex-wrap gap-2.5">
+              {project.tech.map((t) => {
+                const Icon = t.icon;
+                return (
+                  <span
+                    key={t.label}
+                    className="flex items-center gap-2 rounded-xl bg-white/[0.05] border border-white/10 px-3.5 py-2 font-['Itim'] text-[14.5px] text-white"
+                  >
+                    <Icon width={17} height={17} aria-hidden="true" />
+                    <span>{t.label}</span>
+                  </span>
+                );
+              })}
+            </div>
+          </div>
         </div>
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: easeOut }}
-          className="w-full"
-        >
-          <Link
-            to="/projects"
-            className="inline-flex items-center gap-2 font-['Poppins'] text-[15px] text-[#9CA3AF] transition-colors duration-300 hover:text-white"
-          >
-            <ReturnIcon width={18} height={18} />
-            Back to Projects
-          </Link>
-        </motion.div>
 
-        <div className="w-full mt-12">
+        {/* Collaboration & Design Inquiries CTA (Image 2 style) */}
+        <div className="flex flex-col items-center gap-4 p-8 sm:p-10 rounded-3xl bg-gradient-to-b from-[#1A1917] to-[#161513] border border-white/[0.1] text-center shadow-xl w-full">
+          <span className="font-['Itim'] text-[14px] text-[#5197ff] uppercase tracking-wider">
+            Collaboration &amp; Design Inquiries
+          </span>
+          <h3 className="font-['Itim'] text-[28px] sm:text-[34px] text-white font-bold">
+            Have a project or concept to design?
+          </h3>
+          <p className="font-['Poppins'] text-[14.5px] text-[#9CA3AF] max-w-lg leading-relaxed">
+            Let's build clean, human-centered digital experiences together.
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+            <a
+              href="mailto:louciftamer3@gmail.com"
+              className="rounded-[38.182px] border border-white bg-white px-6 py-2.5 font-['Poppins'] text-[14.5px] font-medium text-[#161513] transition-colors duration-300 hover:bg-transparent hover:text-white"
+            >
+              Let's Talk
+            </a>
+            <Link
+              to="/projects"
+              className="rounded-[38.182px] border border-white/20 px-6 py-2.5 font-['Poppins'] text-[14.5px] text-white transition-colors duration-300 hover:border-white"
+            >
+              Back to Projects
+            </Link>
+          </div>
+        </div>
+
+        {/* Site Footer */}
+        <div className="w-full">
           <SiteFooter />
         </div>
       </div>
+
+      {/* Floating Navigation Bubble (Image 5 style) */}
+      <FloatingBubble
+        items={PROJECT_BUBBLE_NAV}
+        onItemClick={handleBubbleClick}
+        activeId={activeBubbleId}
+      />
     </div>
   );
 }
