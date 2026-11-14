@@ -15,10 +15,11 @@ type SiteHeaderProps = {
 export const navItems = [
   { label: "Home", id: "home" },
   { label: "About", id: "about" },
-  { label: "Tech Stack", id: "stack" },
   { label: "Experience", id: "experience" },
   { label: "Projects", id: "projects" },
+  { label: "Tech Stack", id: "stack" },
   { label: "Certificates", id: "certificates" },
+  { label: "Education", id: "education" },
   { label: "Contact", id: "contact" },
 ];
 
@@ -44,10 +45,11 @@ export function SiteHeader({
 
     const sectionIds = [
       "contact",
+      "education",
       "certificates",
+      "stack",
       "projects",
       "experience",
-      "stack",
       "about",
     ];
 

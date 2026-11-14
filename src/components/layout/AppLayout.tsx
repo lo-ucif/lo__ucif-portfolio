@@ -9,10 +9,11 @@ import { StatusBadgeProvider } from "../../contexts/StatusBadgeProvider";
 const navLinks = [
   { label: "Home", href: "/#home", id: "home" },
   { label: "About", href: "/#about", id: "about" },
-  { label: "Tech Stack", href: "/#stack", id: "stack" },
   { label: "Experience", href: "/#experience", id: "experience" },
   { label: "Projects", href: "/#projects", id: "projects" },
+  { label: "Tech Stack", href: "/#stack", id: "stack" },
   { label: "Certificates", href: "/#certificates", id: "certificates" },
+  { label: "Education", href: "/#education", id: "education" },
   { label: "Contact", href: "/#contact", id: "contact" },
 ];
 

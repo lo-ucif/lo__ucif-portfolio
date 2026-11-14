@@ -1,4 +1,4 @@
-﻿import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { TechStackSection } from "../features/skills/components/TechStackSection";
 import { ProjectsSection } from "../features/projects/components/ProjectsSection";
 import { ContactSection } from "../features/contact/components/ContactSection";
@@ -198,13 +198,12 @@ export default function Home() {
               Download CV
             </motion.a>
           </section>
-          <TechStackSection />
           <Experience />
           <ProjectsSection />
+          <TechStackSection />
           <Certificates />
+          <Student />
         </main>
-
-        <Student />
 
         <ContactSection />
         <FloatingBubble

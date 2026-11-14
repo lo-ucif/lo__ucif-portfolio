@@ -3,7 +3,10 @@ import univimg from "../../assets/6.webp";
 
 export default function Student() {
   return (
-    <section className="flex w-full flex-col items-center gap-7.5 text-center">
+    <section
+      id="education"
+      className="flex w-full flex-col items-center gap-7.5 text-center"
+    >
       <motion.h2
         className="font-['Itim'] text-[36px] text-white"
         initial={{ opacity: 0, y: 20 }}
