@@ -16,6 +16,7 @@ export const navItems = [
   { label: "Home", id: "home" },
   { label: "About", id: "about" },
   { label: "Experience", id: "experience" },
+  { label: "Case Studies", id: "case-studies" },
   { label: "Projects", id: "projects" },
   { label: "Tech Stack", id: "stack" },
   { label: "Certificates", id: "certificates" },
@@ -37,6 +38,8 @@ export function SiteHeader({
     if (location.pathname !== "/") {
       if (location.pathname.startsWith("/projects")) {
         setActiveId("projects");
+      } else if (location.pathname.startsWith("/case-stud")) {
+        setActiveId("case-studies");
       } else {
         setActiveId("");
       }
@@ -49,6 +52,7 @@ export function SiteHeader({
       "certificates",
       "stack",
       "projects",
+      "case-studies",
       "experience",
       "about",
     ];

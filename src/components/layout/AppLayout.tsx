@@ -10,6 +10,7 @@ const navLinks = [
   { label: "Home", href: "/#home", id: "home" },
   { label: "About", href: "/#about", id: "about" },
   { label: "Experience", href: "/#experience", id: "experience" },
+  { label: "Case Studies", href: "/#case-studies", id: "case-studies" },
   { label: "Projects", href: "/#projects", id: "projects" },
   { label: "Tech Stack", href: "/#stack", id: "stack" },
   { label: "Certificates", href: "/#certificates", id: "certificates" },
@@ -47,7 +48,9 @@ export function AppLayout() {
     ? "home"
     : location.pathname.startsWith("/projects")
       ? "projects"
-      : "";
+      : location.pathname.startsWith("/case-stud")
+        ? "case-studies"
+        : "";
 
   return (
     <StatusBadgeProvider>

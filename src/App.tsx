@@ -5,6 +5,7 @@ import ScrollToTop from "./ScrollToTop";
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
 import ProjectDetail from "./pages/ProjectDetail";
+import CaseStudyDetail from "./pages/CaseStudyDetail";
 
 import { LoadingScreen } from "./components/LoadingScreen";
 import { AppLayout } from "./components/layout/AppLayout";
@@ -35,6 +36,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/projects/:id" element={<ProjectDetail />} />
+          <Route path="/case-studies/:slug" element={<CaseStudyDetail />} />
+          <Route path="/case-study/:slug" element={<CaseStudyDetail />} />
         </Route>
       </Routes>
     </BrowserRouter>

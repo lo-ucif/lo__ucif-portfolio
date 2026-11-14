@@ -10,6 +10,7 @@ import { StatusBadge } from "../components/StatusBadge";
 import Student from "../features/student/Student";
 import Experience from "../features/certificates/Experience";
 import Certificates from "../features/certificates/Certificates";
+import { CaseStudiesSection } from "../features/case-studies/components/CaseStudiesSection";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
@@ -199,6 +200,7 @@ export default function Home() {
             </motion.a>
           </section>
           <Experience />
+          <CaseStudiesSection />
           <ProjectsSection />
           <TechStackSection />
           <Certificates />
@@ -209,6 +211,7 @@ export default function Home() {
         <FloatingBubble
           items={[
             { label: "About", id: "about" },
+            { label: "Case Studies", id: "case-studies" },
             { label: "Projects", id: "projects" },
             { label: "Contact", id: "contact" },
           ]}

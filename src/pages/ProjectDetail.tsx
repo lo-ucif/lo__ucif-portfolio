@@ -197,6 +197,14 @@ export default function ProjectDetail() {
                 {project.hackathon}
               </span>
             )}
+            {project.id === 1 && (
+              <Link
+                to="/case-studies/al-tabib-al-hafiz"
+                className="inline-flex items-center gap-1.5 rounded-full bg-[#5197ff] px-3.5 py-1 text-[#161513] font-['Poppins'] text-[13px] font-semibold transition-all hover:bg-white"
+              >
+                <span>Explore Full UI/UX Case Study →</span>
+              </Link>
+            )}
           </div>
         </motion.div>
 
@@ -220,6 +228,25 @@ export default function ProjectDetail() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: easeOut, delay: 0.15 }}
           >
+            {project.id === 1 && (
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-5 rounded-2xl bg-[#1A1917] border border-[#5197ff]/40 shadow-lg">
+                <div className="flex flex-col gap-1">
+                  <span className="font-['Itim'] text-[18px] text-white font-bold">
+                    In-Depth UI/UX Case Study Available
+                  </span>
+                  <p className="font-['Poppins'] text-[13.5px] text-[#A9A9A9]">
+                    Explore the complete research, user flows, design system, and screen breakdowns for this platform.
+                  </p>
+                </div>
+                <Link
+                  to="/case-studies/al-tabib-al-hafiz"
+                  className="shrink-0 rounded-full bg-white text-[#161513] px-5 py-2 font-['Poppins'] text-[14px] font-medium hover:bg-[#5197ff] hover:text-white transition-colors"
+                >
+                  Explore Case Study →
+                </Link>
+              </div>
+            )}
+
             <div className="flex flex-col gap-2">
               <h2 className="font-['Itim'] text-[22px] text-white">Overview</h2>
               <p className="font-['Poppins'] text-[15px] text-[#9CA3AF] leading-relaxed">
