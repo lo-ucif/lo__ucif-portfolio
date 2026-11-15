@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import type { CaseStudy } from "../types";
 import { FigmaIcon, LinkedinIcon } from "../../../constants/Icon";
 import { ThreePhoneShowcase } from "./ThreePhoneShowcase";
+import { DualLaptopShowcase } from "./DualLaptopShowcase";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
@@ -19,6 +20,7 @@ export function CaseStudyCard(props: CaseStudy) {
     heroImage,
     mockupImage,
     phoneMockups,
+    laptopMockups,
     presentationHeading: customHeading,
     platformType = "app",
     organization,
@@ -175,6 +177,12 @@ export function CaseStudyCard(props: CaseStudy) {
         {phoneMockups ? (
           <ThreePhoneShowcase
             phones={phoneMockups}
+            title={title}
+            isCardHovered={isHovered}
+          />
+        ) : laptopMockups ? (
+          <DualLaptopShowcase
+            laptops={laptopMockups}
             title={title}
             isCardHovered={isHovered}
           />

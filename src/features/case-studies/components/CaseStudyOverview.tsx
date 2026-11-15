@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import type { CaseStudy } from "../types";
+import { DualLaptopShowcase } from "./DualLaptopShowcase";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
@@ -89,13 +90,34 @@ export function CaseStudyOverview({ study, onOpenLightbox }: CaseStudyOverviewPr
         <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#5197ff]/10 blur-[120px] pointer-events-none rounded-full" />
 
         <div className="relative flex flex-col items-center justify-center">
-          <img
-            src={mainVisual}
-            alt={`${study.title} Main Visual`}
-            className="w-full max-w-4xl h-auto object-contain cursor-pointer transition-transform duration-500 group-hover:scale-[1.01]"
-            onClick={() => onOpenLightbox?.(mainVisual, `${study.title} — Main Visual`, study.subtitle)}
-            loading="eager"
-          />
+          {study.laptopMockups ? (
+            <div className="w-full max-w-4xl flex items-center justify-center py-4 sm:py-6">
+              <DualLaptopShowcase
+                laptops={study.laptopMockups}
+                title={study.title}
+                className="max-w-[760px]"
+                onLaptopClick={(laptop) => {
+                  const targetImg =
+                    laptop === "left"
+                      ? study.laptopMockups!.left
+                      : study.laptopMockups!.right;
+                  const targetTitle =
+                    laptop === "left"
+                      ? `${study.title} — Contact & Support Portal`
+                      : `${study.title} — Platform Hero Landing`;
+                  onOpenLightbox?.(targetImg, targetTitle, study.subtitle);
+                }}
+              />
+            </div>
+          ) : (
+            <img
+              src={mainVisual}
+              alt={`${study.title} Main Visual`}
+              className="w-full max-w-4xl h-auto object-contain cursor-pointer transition-transform duration-500 group-hover:scale-[1.01]"
+              onClick={() => onOpenLightbox?.(mainVisual, `${study.title} — Main Visual`, study.subtitle)}
+              loading="eager"
+            />
+          )}
 
           <div className="mt-4 flex flex-wrap items-center justify-between w-full max-w-4xl gap-3 border-t border-white/[0.08] pt-4">
             <span className="font-['Itim'] text-[13px] text-[#8491A0]">

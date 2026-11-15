@@ -5,6 +5,8 @@ import rokhsaMockup from "../../../assets/case-studies/mockups/rokhsa-transparen
 import rokhsaFramed from "../../../assets/case-studies/mockups/rokhsa-framed.webp";
 import hafezMockup from "../../../assets/case-studies/mockups/7afez-transparent.webp";
 import hafezFramed from "../../../assets/case-studies/mockups/7afez-framed.webp";
+import hafezLaptopLeft from "../../../assets/case-studies/mockups/7afez-laptop-left.webp";
+import hafezLaptopRight from "../../../assets/case-studies/mockups/7afez-laptop-right.webp";
 import hafezScreen01 from "../../../assets/case-studies/7afez/7afez-web-01.webp";
 import hafezScreen02 from "../../../assets/case-studies/7afez/7afez-web-02.webp";
 // Al-Tabib Al-Hafiz Screens (WebP)
@@ -921,6 +923,10 @@ export const caseStudies: CaseStudy[] = [
     heroImage: hafezMockup,
     mockupImage: hafezMockup,
     framedMockupImage: hafezFramed,
+    laptopMockups: {
+      left: hafezLaptopLeft,
+      right: hafezLaptopRight,
+    },
     galleryMockups: [
       {
         title: "Transparent Dual-Laptop Presentation",

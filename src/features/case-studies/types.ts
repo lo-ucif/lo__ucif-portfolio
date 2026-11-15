@@ -94,6 +94,11 @@ export type PhoneMockups = {
   right: string;
 };
 
+export type LaptopMockups = {
+  left: string;
+  right: string;
+};
+
 export type CaseStudy = {
   id: string;
   slug: string;
@@ -114,6 +119,7 @@ export type CaseStudy = {
   mockupImage?: string;
   framedMockupImage?: string;
   phoneMockups?: PhoneMockups;
+  laptopMockups?: LaptopMockups;
   galleryMockups?: { title: string; image: string; caption?: string }[];
   liveDemo?: string;
   figmaLink?: string;
