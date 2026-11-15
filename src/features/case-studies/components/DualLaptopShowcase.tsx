@@ -22,6 +22,8 @@ export function DualLaptopShowcase({
   // Track direct hover on individual laptops
   const [hoveredLaptop, setHoveredLaptop] = useState<"left" | "right" | null>(null);
 
+  const isInteractive = isCardHovered || hoveredLaptop !== null;
+
   return (
     <div
       className={`relative w-full max-w-[560px] aspect-[8787/4909] flex items-center justify-center select-none ${className}`}
@@ -36,13 +38,13 @@ export function DualLaptopShowcase({
         transition={{ duration: 0.55, ease: easeOut }}
       />
 
-      {/* Ground Contact Shadow */}
+      {/* Dynamic Ground Shadow that reacts to elevation */}
       <motion.div
         className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[280px] sm:w-[440px] h-[26px] bg-black/90 rounded-full blur-2xl pointer-events-none"
         animate={{
-          scaleX: hoveredLaptop ? 1.08 : isCardHovered ? 1.03 : 1,
-          opacity: hoveredLaptop ? 0.95 : 0.8,
-          y: hoveredLaptop ? 4 : 0,
+          scaleX: hoveredLaptop ? 1.1 : isCardHovered ? 1.04 : 1,
+          opacity: hoveredLaptop ? 0.95 : isCardHovered ? 0.85 : 0.75,
+          y: hoveredLaptop ? 4 : isCardHovered ? 2 : 0,
         }}
         transition={{ duration: 0.45, ease: easeOut }}
       />
@@ -50,9 +52,13 @@ export function DualLaptopShowcase({
       {/* ========================================================= */}
       {/* 1. LEFT LAPTOP (MacBook Pro 15 — Contact & Support)      */}
       {/* ========================================================= */}
-      <div
-        className="absolute left-0 top-0 w-[74.4%] h-[80.4%]"
+      <motion.div
+        className="absolute left-0 top-0 w-[74.4%] h-[80.4%] origin-bottom-right"
         style={{ zIndex: hoveredLaptop === "left" ? 30 : 10 }}
+        initial={{ opacity: 0, x: -35, y: 30 }}
+        whileInView={{ opacity: 1, x: 0, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.8, delay: 0.1, ease: easeOut }}
         onMouseEnter={() => setHoveredLaptop("left")}
         onMouseLeave={() => setHoveredLaptop(null)}
         onClick={(e) => {
@@ -62,72 +68,81 @@ export function DualLaptopShowcase({
           }
         }}
       >
+        {/* Continuous Levitation + Interactive Fan-Out & +10% Hover */}
         <motion.div
           className="relative w-full h-full cursor-pointer"
           animate={{
+            x:
+              hoveredLaptop === "left"
+                ? -10
+                : hoveredLaptop === "right"
+                  ? -6
+                  : isCardHovered
+                    ? -8
+                    : 0,
+            y:
+              hoveredLaptop === "left"
+                ? -14
+                : hoveredLaptop === "right"
+                  ? 8
+                  : isCardHovered
+                    ? -6
+                    : [-4, 5, -4],
+            rotate:
+              hoveredLaptop === "left"
+                ? -1
+                : hoveredLaptop === "right"
+                  ? 0
+                  : isCardHovered
+                    ? -0.5
+                    : [0, -0.8, 0],
             scale:
               hoveredLaptop === "left"
                 ? 1.1
                 : hoveredLaptop === "right"
                   ? 0.96
                   : isCardHovered
-                    ? 1.02
+                    ? 1.03
                     : 1,
-            y:
-              hoveredLaptop === "left"
-                ? -12
-                : hoveredLaptop === "right"
-                  ? 6
-                  : isCardHovered
-                    ? -4
-                    : 0,
-            x:
-              hoveredLaptop === "left"
-                ? -8
-                : hoveredLaptop === "right"
-                  ? -4
-                  : 0,
             opacity: hoveredLaptop === "right" ? 0.82 : 1,
-            filter:
-              hoveredLaptop === "left"
-                ? "drop-shadow(0 30px 45px rgba(0,0,0,0.95)) brightness(1.04)"
-                : hoveredLaptop === "right"
-                  ? "drop-shadow(0 14px 22px rgba(0,0,0,0.65)) brightness(0.92)"
-                  : "drop-shadow(0 20px 32px rgba(0,0,0,0.85)) brightness(1)",
           }}
-          transition={{ duration: 0.4, ease: easeOut }}
+          transition={
+            isInteractive
+              ? { duration: 0.45, ease: easeOut }
+              : {
+                  y: { duration: 5.6, repeat: Infinity, ease: "easeInOut" },
+                  rotate: { duration: 6.2, repeat: Infinity, ease: "easeInOut" },
+                  x: { duration: 0.45, ease: easeOut },
+                  scale: { duration: 0.45, ease: easeOut },
+                  opacity: { duration: 0.45, ease: easeOut },
+                }
+          }
         >
           <img
             src={laptops.left}
-            alt={`${title} — Contact & Inquiries Laptop Mockup`}
+            alt={`${title} — Left Laptop Interface`}
             loading="lazy"
-            className="w-full h-full object-contain block"
+            className={`w-full h-full object-contain block transition-all duration-300 ${
+              hoveredLaptop === "left"
+                ? "filter drop-shadow-[0_32px_50px_rgba(0,0,0,0.98)] brightness-105"
+                : hoveredLaptop === "right"
+                  ? "filter drop-shadow-[0_12px_20px_rgba(0,0,0,0.6)] brightness-90"
+                  : "filter drop-shadow-[0_20px_32px_rgba(0,0,0,0.85)] brightness-100"
+            }`}
           />
-
-          {/* Interactive Floating Badge on Hover */}
-          <motion.div
-            className="absolute -top-3 left-6 z-40 pointer-events-none"
-            initial={{ opacity: 0, y: 6 }}
-            animate={{
-              opacity: hoveredLaptop === "left" ? 1 : 0,
-              y: hoveredLaptop === "left" ? 0 : 6,
-            }}
-            transition={{ duration: 0.25, ease: easeOut }}
-          >
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#161513]/90 backdrop-blur-md px-3 py-1 border border-[#5197ff]/40 text-[#5197ff] font-['Itim'] text-[12px] shadow-lg shadow-black/80">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#5197ff] animate-pulse" />
-              <span>تواصل معنا · Support</span>
-            </span>
-          </motion.div>
         </motion.div>
-      </div>
+      </motion.div>
 
       {/* ========================================================= */}
       {/* 2. RIGHT LAPTOP (MacBook Pro 16 — Platform Hero Landing)  */}
       {/* ========================================================= */}
-      <div
-        className="absolute left-[25.6%] top-[19.6%] w-[74.4%] h-[80.4%]"
+      <motion.div
+        className="absolute left-[25.6%] top-[19.6%] w-[74.4%] h-[80.4%] origin-bottom-left"
         style={{ zIndex: hoveredLaptop === "right" ? 30 : hoveredLaptop === "left" ? 10 : 20 }}
+        initial={{ opacity: 0, x: 35, y: 30 }}
+        whileInView={{ opacity: 1, x: 0, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.8, delay: 0.25, ease: easeOut }}
         onMouseEnter={() => setHoveredLaptop("right")}
         onMouseLeave={() => setHoveredLaptop(null)}
         onClick={(e) => {
@@ -137,9 +152,34 @@ export function DualLaptopShowcase({
           }
         }}
       >
+        {/* Continuous Levitation + Interactive Fan-Out & +10% Hover */}
         <motion.div
           className="relative w-full h-full cursor-pointer"
           animate={{
+            x:
+              hoveredLaptop === "right"
+                ? 10
+                : hoveredLaptop === "left"
+                  ? 6
+                  : isCardHovered
+                    ? 8
+                    : 0,
+            y:
+              hoveredLaptop === "right"
+                ? -14
+                : hoveredLaptop === "left"
+                  ? 8
+                  : isCardHovered
+                    ? -6
+                    : [4, -5, 4],
+            rotate:
+              hoveredLaptop === "right"
+                ? 1
+                : hoveredLaptop === "left"
+                  ? 0
+                  : isCardHovered
+                    ? 0.5
+                    : [0, 0.8, 0],
             scale:
               hoveredLaptop === "right"
                 ? 1.1
@@ -148,54 +188,34 @@ export function DualLaptopShowcase({
                   : isCardHovered
                     ? 1.03
                     : 1,
-            y:
-              hoveredLaptop === "right"
-                ? -12
-                : hoveredLaptop === "left"
-                  ? 6
-                  : isCardHovered
-                    ? -5
-                    : 0,
-            x:
-              hoveredLaptop === "right"
-                ? 8
-                : hoveredLaptop === "left"
-                  ? 4
-                  : 0,
             opacity: hoveredLaptop === "left" ? 0.82 : 1,
-            filter:
-              hoveredLaptop === "right"
-                ? "drop-shadow(0 32px 50px rgba(0,0,0,0.98)) brightness(1.04)"
-                : hoveredLaptop === "left"
-                  ? "drop-shadow(0 14px 22px rgba(0,0,0,0.65)) brightness(0.92)"
-                  : "drop-shadow(0 24px 38px rgba(0,0,0,0.9)) brightness(1)",
           }}
-          transition={{ duration: 0.4, ease: easeOut }}
+          transition={
+            isInteractive
+              ? { duration: 0.45, ease: easeOut }
+              : {
+                  y: { duration: 5.2, repeat: Infinity, ease: "easeInOut", delay: 0.5 },
+                  rotate: { duration: 6.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 },
+                  x: { duration: 0.45, ease: easeOut },
+                  scale: { duration: 0.45, ease: easeOut },
+                  opacity: { duration: 0.45, ease: easeOut },
+                }
+          }
         >
           <img
             src={laptops.right}
-            alt={`${title} — Platform Hero Landing Laptop Mockup`}
+            alt={`${title} — Right Laptop Interface`}
             loading="lazy"
-            className="w-full h-full object-contain block"
+            className={`w-full h-full object-contain block transition-all duration-300 ${
+              hoveredLaptop === "right"
+                ? "filter drop-shadow-[0_32px_50px_rgba(0,0,0,0.98)] brightness-105"
+                : hoveredLaptop === "left"
+                  ? "filter drop-shadow-[0_12px_20px_rgba(0,0,0,0.6)] brightness-90"
+                  : "filter drop-shadow-[0_24px_38px_rgba(0,0,0,0.9)] brightness-100"
+            }`}
           />
-
-          {/* Interactive Floating Badge on Hover */}
-          <motion.div
-            className="absolute -top-3 right-6 z-40 pointer-events-none"
-            initial={{ opacity: 0, y: 6 }}
-            animate={{
-              opacity: hoveredLaptop === "right" ? 1 : 0,
-              y: hoveredLaptop === "right" ? 0 : 6,
-            }}
-            transition={{ duration: 0.25, ease: easeOut }}
-          >
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#161513]/90 backdrop-blur-md px-3 py-1 border border-[#5197ff]/40 text-[#5197ff] font-['Itim'] text-[12px] shadow-lg shadow-black/80">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#5197ff] animate-pulse" />
-              <span>منصة حافظ · Flagship Hub</span>
-            </span>
-          </motion.div>
         </motion.div>
-      </div>
+      </motion.div>
     </div>
   );
 }
