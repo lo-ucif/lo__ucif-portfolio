@@ -388,7 +388,7 @@ export function CaseStudyFinalDesign({
                   <span className="font-['Itim'] text-[13px] text-[#8491A0] uppercase tracking-wider mb-2.5">
                     • UX/UI Architecture &amp; Key Design Decisions:
                   </span>
-                  <div className="relative w-full min-h-[105px]">
+                  <div className="relative w-full">
                     <AnimatePresence mode="popLayout" initial={false}>
                       <motion.div
                         key={currentScreen.id}
@@ -396,7 +396,7 @@ export function CaseStudyFinalDesign({
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -8 }}
                         transition={{ duration: 0.25, ease: easeOut }}
-                        className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 w-full"
+                        className="flex flex-col gap-2.5 w-full"
                       >
                         {currentScreen.uxHighlights.map((highlight, hIdx) => (
                           <div
