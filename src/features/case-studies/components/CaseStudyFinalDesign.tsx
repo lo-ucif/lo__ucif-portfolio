@@ -1,12 +1,19 @@
 import { useState, useMemo, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { CaseStudy } from "../types";
+import type { LightboxItem } from "./ImageLightboxModal";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
 type CaseStudyFinalDesignProps = {
   study: CaseStudy;
-  onOpenLightbox: (imgUrl: string, title: string, subtitle?: string) => void;
+  onOpenLightbox: (
+    imgUrl: string,
+    title: string,
+    subtitle?: string,
+    initialIndex?: number,
+    items?: LightboxItem[]
+  ) => void;
 };
 
 export function CaseStudyFinalDesign({
@@ -33,6 +40,19 @@ export function CaseStudyFinalDesign({
     if (activeCategory === "All") return screens;
     return screens.filter((s) => s.category === activeCategory);
   }, [screens, activeCategory]);
+
+  // Lightbox items mapped from filtered screens to allow changing between pages in fullscreen modal
+  const lightboxItems = useMemo<LightboxItem[]>(() => {
+    return filteredScreens.map((s) => ({
+      imageUrl: s.image,
+      imageAlt: s.title,
+      title: s.title,
+      subtitle: s.subtitle,
+      arabicTitle: s.arabicTitle,
+      category: s.category,
+      number: s.number,
+    }));
+  }, [filteredScreens]);
 
   // Track active screen by ID (fallback to first filtered screen)
   const [selectedScreenId, setSelectedScreenId] = useState<string>("");
@@ -254,7 +274,13 @@ export function CaseStudyFinalDesign({
                   <div
                     className="group relative w-full rounded-2xl overflow-hidden bg-[#121212] border border-white/20 shadow-2xl cursor-pointer"
                     onClick={() =>
-                      onOpenLightbox(currentScreen.image, currentScreen.title, currentScreen.subtitle)
+                      onOpenLightbox(
+                        currentScreen.image,
+                        currentScreen.title,
+                        currentScreen.subtitle,
+                        currentIndexInFiltered,
+                        lightboxItems
+                      )
                     }
                   >
                     <div className="flex items-center gap-1.5 px-3 py-2 bg-[#222] border-b border-white/10">
@@ -277,17 +303,24 @@ export function CaseStudyFinalDesign({
                     </div>
                   </div>
                 ) : (
-                  // Direct Mobile Screen Image Display (No iPhone Mockup Frame)
+                  // Direct Mobile Screen Image Display (Exact Size: 240px w * 494px h)
                   <div
-                    className="group relative w-full max-w-[270px] sm:max-w-[300px] md:max-w-[325px] rounded-[26px] overflow-hidden border border-white/15 bg-[#121212] shadow-[0_20px_50px_rgba(0,0,0,0.85)] hover:border-[#5197ff]/50 hover:shadow-[#5197ff]/15 transition-all duration-300 cursor-pointer"
+                    className="group relative w-[240px] h-[494px] shrink-0 rounded-[24px] overflow-hidden border border-white/15 bg-[#121212] shadow-[0_20px_50px_rgba(0,0,0,0.85)] hover:border-[#5197ff]/50 hover:shadow-[#5197ff]/20 transition-all duration-300 cursor-pointer flex items-center justify-center"
+                    style={{ width: "240px", height: "494px" }}
                     onClick={() =>
-                      onOpenLightbox(currentScreen.image, currentScreen.title, currentScreen.subtitle)
+                      onOpenLightbox(
+                        currentScreen.image,
+                        currentScreen.title,
+                        currentScreen.subtitle,
+                        currentIndexInFiltered,
+                        lightboxItems
+                      )
                     }
                   >
                     <img
                       src={currentScreen.image}
                       alt={currentScreen.title}
-                      className="w-full h-auto object-contain block transition-transform duration-500 group-hover:scale-[1.02]"
+                      className="w-full h-full object-cover block transition-transform duration-500 group-hover:scale-[1.02]"
                     />
 
                     {/* Fullscreen Inspect Hover Overlay */}

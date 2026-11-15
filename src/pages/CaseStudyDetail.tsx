@@ -10,7 +10,7 @@ import { CaseStudyProblems } from "../features/case-studies/components/CaseStudy
 import { CaseStudyUserNeeds } from "../features/case-studies/components/CaseStudyUserNeeds";
 import { CaseStudyFinalDesign } from "../features/case-studies/components/CaseStudyFinalDesign";
 import FloatingBubble, { type BubbleItem } from "../components/FloatingBubble";
-import { ImageLightboxModal } from "../features/case-studies/components/ImageLightboxModal";
+import { ImageLightboxModal, type LightboxItem } from "../features/case-studies/components/ImageLightboxModal";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
@@ -31,26 +31,37 @@ export default function CaseStudyDetail() {
   );
   const study = currentIndex !== -1 ? caseStudies[currentIndex] : null;
 
-  // Lightbox modal state
+  // Lightbox modal state (supports single image or multi-page screen gallery)
   const [lightboxState, setLightboxState] = useState<{
     isOpen: boolean;
-    imageUrl: string;
-    title: string;
-    subtitle?: string;
+    items: LightboxItem[];
+    currentIndex: number;
   }>({
     isOpen: false,
-    imageUrl: "",
-    title: "",
-    subtitle: "",
+    items: [],
+    currentIndex: 0,
   });
 
-  const handleOpenLightbox = (imageUrl: string, title: string, subtitle?: string) => {
-    setLightboxState({
-      isOpen: true,
-      imageUrl,
-      title,
-      subtitle,
-    });
+  const handleOpenLightbox = (
+    imageUrl: string,
+    title: string,
+    subtitle?: string,
+    initialIndex?: number,
+    items?: LightboxItem[]
+  ) => {
+    if (items && items.length > 0) {
+      setLightboxState({
+        isOpen: true,
+        items,
+        currentIndex: initialIndex ?? 0,
+      });
+    } else {
+      setLightboxState({
+        isOpen: true,
+        items: [{ imageUrl, title, subtitle, imageAlt: title }],
+        currentIndex: 0,
+      });
+    }
   };
 
   const handleCloseLightbox = () => {
@@ -235,14 +246,15 @@ export default function CaseStudyDetail() {
         activeId={activeBubbleId}
       />
 
-      {/* Fullscreen Lightbox Modal */}
+      {/* Fullscreen Lightbox Modal (with multi-page navigation) */}
       <ImageLightboxModal
         isOpen={lightboxState.isOpen}
         onClose={handleCloseLightbox}
-        imageUrl={lightboxState.imageUrl}
-        imageAlt={lightboxState.title}
-        title={lightboxState.title}
-        subtitle={lightboxState.subtitle}
+        items={lightboxState.items}
+        initialIndex={lightboxState.currentIndex}
+        onIndexChange={(newIndex) => {
+          setLightboxState((prev) => ({ ...prev, currentIndex: newIndex }));
+        }}
       />
     </div>
   );

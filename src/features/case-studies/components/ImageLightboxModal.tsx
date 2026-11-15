@@ -1,11 +1,26 @@
-import { useEffect } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-type ImageLightboxModalProps = {
+export type LightboxItem = {
+  imageUrl: string;
+  imageAlt?: string;
+  title?: string;
+  subtitle?: string;
+  arabicTitle?: string;
+  category?: string;
+  number?: string;
+};
+
+export type ImageLightboxModalProps = {
   isOpen: boolean;
   onClose: () => void;
-  imageUrl: string;
-  imageAlt: string;
+  // Multi-item gallery support
+  items?: LightboxItem[];
+  initialIndex?: number;
+  onIndexChange?: (index: number) => void;
+  // Single-item fallback props (backward compatibility)
+  imageUrl?: string;
+  imageAlt?: string;
   title?: string;
   subtitle?: string;
 };
@@ -13,19 +28,75 @@ type ImageLightboxModalProps = {
 export function ImageLightboxModal({
   isOpen,
   onClose,
+  items,
+  initialIndex = 0,
+  onIndexChange,
   imageUrl,
   imageAlt,
   title,
   subtitle,
 }: ImageLightboxModalProps) {
+  // Consolidate single or multiple items into a unified list
+  const allItems: LightboxItem[] = useMemo(() => {
+    if (items && items.length > 0) return items;
+    if (imageUrl) {
+      return [
+        {
+          imageUrl,
+          imageAlt: imageAlt || title,
+          title,
+          subtitle,
+        },
+      ];
+    }
+    return [];
+  }, [items, imageUrl, imageAlt, title, subtitle]);
+
+  const [activeIndex, setActiveIndex] = useState<number>(initialIndex);
+
+  // Sync index when modal opens or initialIndex changes
+  useEffect(() => {
+    if (isOpen) {
+      setActiveIndex(initialIndex);
+    }
+  }, [isOpen, initialIndex]);
+
+  const hasMultiple = allItems.length > 1;
+  const currentItem = allItems[activeIndex] || allItems[0];
+
+  const handlePrev = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    if (!hasMultiple) return;
+    const nextIdx = activeIndex > 0 ? activeIndex - 1 : allItems.length - 1;
+    setActiveIndex(nextIdx);
+    onIndexChange?.(nextIdx);
+  };
+
+  const handleNext = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    if (!hasMultiple) return;
+    const nextIdx = activeIndex < allItems.length - 1 ? activeIndex + 1 : 0;
+    setActiveIndex(nextIdx);
+    onIndexChange?.(nextIdx);
+  };
+
+  // Keyboard navigation: Escape closes, Left/Right arrow changes page
   useEffect(() => {
     if (!isOpen) return;
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
+      if (e.key === "Escape") {
+        onClose();
+      } else if (e.key === "ArrowLeft") {
+        handlePrev();
+      } else if (e.key === "ArrowRight") {
+        handleNext();
+      }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, onClose]);
+  }, [isOpen, hasMultiple, activeIndex]);
+
+  if (!isOpen || allItems.length === 0) return null;
 
   return (
     <AnimatePresence>
@@ -35,63 +106,169 @@ export function ImageLightboxModal({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.25 }}
-          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/90 p-4 sm:p-8 backdrop-blur-md"
+          className="fixed inset-0 z-50 flex flex-col items-center justify-between bg-black/92 p-4 sm:p-6 backdrop-blur-md select-none"
           onClick={onClose}
         >
-          {/* Header bar */}
+          {/* Header Bar */}
           <div
-            className="flex w-full max-w-5xl items-center justify-between pb-4 text-white"
+            className="flex w-full max-w-6xl items-center justify-between pb-3 text-white z-40"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex flex-col text-left">
-              {title && (
-                <h4 className="font-['Itim'] text-[18px] sm:text-[22px] text-white">
-                  {title}
+            {/* Title & Info */}
+            <div className="flex flex-col text-left gap-1 max-w-xl">
+              <div className="flex flex-wrap items-center gap-2">
+                {hasMultiple && (
+                  <span className="font-['Itim'] text-[12px] sm:text-[13px] text-[#5197ff] uppercase tracking-wider font-semibold bg-[#5197ff]/15 border border-[#5197ff]/30 rounded-full px-2.5 py-0.5">
+                    Screen {currentItem.number || activeIndex + 1} of {allItems.length}
+                  </span>
+                )}
+                {currentItem.category && (
+                  <span className="font-['Itim'] text-[11.5px] sm:text-[12.5px] text-[#9CA3AF] bg-white/[0.06] border border-white/10 rounded-full px-2.5 py-0.5">
+                    {currentItem.category}
+                  </span>
+                )}
+                {currentItem.arabicTitle && (
+                  <span className="font-['Inter'] text-[13px] sm:text-[14.5px] text-[#5197ff] font-medium truncate">
+                    • {currentItem.arabicTitle}
+                  </span>
+                )}
+              </div>
+
+              {currentItem.title && (
+                <h4 className="font-['Itim'] text-[18px] sm:text-[23px] text-white font-bold truncate">
+                  {currentItem.title}
                 </h4>
               )}
-              {subtitle && (
-                <p className="font-['Poppins'] text-[12px] sm:text-[13px] text-[#9CA3AF]">
-                  {subtitle}
+
+              {currentItem.subtitle && (
+                <p className="font-['Poppins'] text-[12px] sm:text-[13.5px] text-[#A9A9A9] truncate">
+                  {currentItem.subtitle}
                 </p>
               )}
             </div>
 
-            <button
-              type="button"
-              onClick={onClose}
-              className="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 font-['Poppins'] text-[13px] text-white transition-colors duration-200 hover:bg-white hover:text-[#161513]"
-            >
-              <span>Close (Esc)</span>
-              <svg
-                className="h-4 w-4"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+            {/* Actions: Top Nav Buttons + Close */}
+            <div className="flex items-center gap-3">
+              {hasMultiple && (
+                <div className="flex items-center gap-1.5 bg-white/[0.06] border border-white/10 rounded-full p-1">
+                  <button
+                    type="button"
+                    onClick={handlePrev}
+                    aria-label="Previous screen"
+                    className="w-8 h-8 rounded-full bg-white/[0.08] hover:bg-white/20 active:scale-95 flex items-center justify-center text-white transition-all cursor-pointer"
+                  >
+                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <polyline points="15 18 9 12 15 6" />
+                    </svg>
+                  </button>
+                  <span className="font-['Poppins'] text-[12px] text-[#A9A9A9] px-2 font-medium">
+                    <span className="text-[#5197ff] font-semibold">{activeIndex + 1}</span> / {allItems.length}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={handleNext}
+                    aria-label="Next screen"
+                    className="w-8 h-8 rounded-full bg-white/[0.08] hover:bg-white/20 active:scale-95 flex items-center justify-center text-white transition-all cursor-pointer"
+                  >
+                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <polyline points="9 18 15 12 9 6" />
+                    </svg>
+                  </button>
+                </div>
+              )}
+
+              <button
+                type="button"
+                onClick={onClose}
+                className="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 font-['Poppins'] text-[13px] text-white transition-colors duration-200 hover:bg-white hover:text-[#161513] cursor-pointer"
               >
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
-            </button>
+                <span>Close (Esc)</span>
+                <svg
+                  className="h-4 w-4"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              </button>
+            </div>
           </div>
 
-          {/* Image display */}
-          <motion.div
-            initial={{ scale: 0.95, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.95, opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="relative flex max-h-[85vh] max-w-5xl items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-[#121212] p-2 shadow-2xl"
+          {/* Center Viewing Stage */}
+          <div className="relative flex flex-1 w-full max-w-6xl items-center justify-center py-2 overflow-hidden">
+            {/* Floating Previous Arrow Button (Left) */}
+            {hasMultiple && (
+              <button
+                type="button"
+                onClick={handlePrev}
+                aria-label="Previous screen"
+                className="absolute left-2 sm:left-4 z-30 w-12 h-12 rounded-full bg-black/60 hover:bg-[#5197ff] text-white hover:text-[#161513] border border-white/20 backdrop-blur-md flex items-center justify-center transition-all duration-200 cursor-pointer shadow-2xl active:scale-95 hover:scale-105"
+              >
+                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <polyline points="15 18 9 12 15 6" />
+                </svg>
+              </button>
+            )}
+
+            {/* Displayed Image */}
+            <div
+              className="relative flex items-center justify-center max-h-[78vh] max-w-full"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={currentItem.imageUrl + activeIndex}
+                  src={currentItem.imageUrl}
+                  alt={currentItem.imageAlt || currentItem.title || "Screen Preview"}
+                  initial={{ opacity: 0, scale: 0.97 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.97 }}
+                  transition={{ duration: 0.22, ease: "easeOut" }}
+                  className="max-h-[76vh] w-auto max-w-[90vw] rounded-2xl object-contain shadow-2xl border border-white/10 bg-[#121212]"
+                />
+              </AnimatePresence>
+            </div>
+
+            {/* Floating Next Arrow Button (Right) */}
+            {hasMultiple && (
+              <button
+                type="button"
+                onClick={handleNext}
+                aria-label="Next screen"
+                className="absolute right-2 sm:right-4 z-30 w-12 h-12 rounded-full bg-black/60 hover:bg-[#5197ff] text-white hover:text-[#161513] border border-white/20 backdrop-blur-md flex items-center justify-center transition-all duration-200 cursor-pointer shadow-2xl active:scale-95 hover:scale-105"
+              >
+                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
+              </button>
+            )}
+          </div>
+
+          {/* Footer Controls / Keyboard Navigation Tip */}
+          <div
+            className="flex items-center justify-center w-full pt-2 text-white/50 text-[12px] font-['Poppins'] z-40"
             onClick={(e) => e.stopPropagation()}
           >
-            <img
-              src={imageUrl}
-              alt={imageAlt}
-              className="max-h-[82vh] w-auto max-w-full rounded-xl object-contain"
-            />
-          </motion.div>
+            {hasMultiple ? (
+              <span className="flex items-center gap-2">
+                <span>Use</span>
+                <kbd className="px-1.5 py-0.5 rounded bg-white/10 border border-white/20 text-white font-mono text-[11px]">
+                  ←
+                </kbd>
+                <kbd className="px-1.5 py-0.5 rounded bg-white/10 border border-white/20 text-white font-mono text-[11px]">
+                  →
+                </kbd>
+                <span>arrow keys or click sides to change between screens</span>
+              </span>
+            ) : (
+              <span>Press <kbd className="px-1.5 py-0.5 rounded bg-white/10 border border-white/20 text-white font-mono text-[11px]">Esc</kbd> or click background to close</span>
+            )}
+          </div>
         </motion.div>
       )}
     </AnimatePresence>
