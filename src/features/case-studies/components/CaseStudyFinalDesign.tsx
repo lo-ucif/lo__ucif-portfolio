@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { CaseStudy } from "../types";
 
@@ -13,26 +13,58 @@ export function CaseStudyFinalDesign({
   study,
   onOpenLightbox,
 }: CaseStudyFinalDesignProps) {
-  const { solution, platformType = "app" } = study;
+  const { solution } = study;
   const screens = solution?.screens || [];
-  const [activeScreenIndex, setActiveScreenIndex] = useState(0);
 
-  // Reset screen index if study changes
-  useEffect(() => {
-    setActiveScreenIndex(0);
-  }, [study.id]);
+  // Active Category Filter State
+  const [activeCategory, setActiveCategory] = useState<string>("All");
+
+  // Derive categories dynamically from screens
+  const categories = useMemo(() => {
+    const set = new Set<string>();
+    screens.forEach((s) => {
+      if (s.category) set.add(s.category);
+    });
+    return ["All", ...Array.from(set)];
+  }, [screens]);
+
+  // Filtered screens based on selected category
+  const filteredScreens = useMemo(() => {
+    if (activeCategory === "All") return screens;
+    return screens.filter((s) => s.category === activeCategory);
+  }, [screens, activeCategory]);
+
+  // Track active screen by ID (fallback to first filtered screen)
+  const [selectedScreenId, setSelectedScreenId] = useState<string>("");
+
+  const currentScreen = useMemo(() => {
+    const match = filteredScreens.find((s) => s.id === selectedScreenId);
+    return match || filteredScreens[0] || screens[0];
+  }, [filteredScreens, selectedScreenId, screens]);
 
   if (screens.length === 0) return null;
 
-  const currentScreen = screens[activeScreenIndex] || screens[0];
-  const isWeb = platformType === "web";
+  // Determine if current screen should render in Web Browser or Mobile Device frame
+  const isScreenWeb =
+    currentScreen.aspectRatio === "web" ||
+    (!currentScreen.aspectRatio && study.platformType === "web" && currentScreen.number === "01");
+
+  const currentIndexInFiltered = filteredScreens.findIndex((s) => s.id === currentScreen.id);
 
   const handlePrev = () => {
-    setActiveScreenIndex((prev) => (prev > 0 ? prev - 1 : screens.length - 1));
+    const prevIdx =
+      currentIndexInFiltered > 0
+        ? currentIndexInFiltered - 1
+        : filteredScreens.length - 1;
+    setSelectedScreenId(filteredScreens[prevIdx].id);
   };
 
   const handleNext = () => {
-    setActiveScreenIndex((prev) => (prev < screens.length - 1 ? prev + 1 : 0));
+    const nextIdx =
+      currentIndexInFiltered < filteredScreens.length - 1
+        ? currentIndexInFiltered + 1
+        : 0;
+    setSelectedScreenId(filteredScreens[nextIdx].id);
   };
 
   return (
@@ -50,7 +82,10 @@ export function CaseStudyFinalDesign({
             04. Final Design
           </span>
           <span className="rounded-full bg-white/[0.06] border border-white/10 px-3 py-1 font-['Itim'] text-[13px] text-[#A9A9A9]">
-            Final Interface Presentation
+            {screens.length} Production Screens
+          </span>
+          <span className="rounded-full bg-[#5197ff]/10 border border-[#5197ff]/25 px-3 py-1 font-['Itim'] text-[13px] text-[#5197ff]">
+            Figma Design System &amp; Tokens
           </span>
         </div>
 
@@ -64,28 +99,82 @@ export function CaseStudyFinalDesign({
         )}
       </motion.div>
 
-      {/* Main Presentation Result Frame */}
-      <div className="relative flex flex-col items-center p-6 sm:p-10 rounded-3xl bg-gradient-to-b from-[#1E1D1A] via-[#1A1917] to-[#141312] border border-white/[0.1] shadow-2xl">
+      {/* Category Filter Pills (if multiple categories exist) */}
+      {categories.length > 2 && (
+        <div className="flex flex-wrap items-center gap-2 pb-1">
+          <span className="font-['Itim'] text-[13px] text-[#8491A0] mr-1 uppercase tracking-wider">
+            Filter Workflow:
+          </span>
+          {categories.map((cat) => {
+            const isSelected = activeCategory === cat;
+            const count =
+              cat === "All"
+                ? screens.length
+                : screens.filter((s) => s.category === cat).length;
+            return (
+              <button
+                key={cat}
+                type="button"
+                onClick={() => {
+                  setActiveCategory(cat);
+                  // Auto-select first screen in this category
+                  const firstInCat =
+                    cat === "All" ? screens[0] : screens.find((s) => s.category === cat);
+                  if (firstInCat) setSelectedScreenId(firstInCat.id);
+                }}
+                className={`inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 font-['Itim'] text-[13px] sm:text-[14px] transition-all cursor-pointer ${
+                  isSelected
+                    ? "bg-[#5197ff] text-[#161513] font-semibold shadow-md shadow-[#5197ff]/25"
+                    : "bg-[#1A1917] hover:bg-white/10 border border-white/10 text-[#d1d1d1]"
+                }`}
+              >
+                <span>{cat}</span>
+                <span
+                  className={`text-[11px] px-1.5 py-0.2 rounded-full ${
+                    isSelected ? "bg-[#161513]/25 text-[#161513]" : "bg-white/10 text-[#8491A0]"
+                  }`}
+                >
+                  {count}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      )}
+
+      {/* Main Interactive Showcase Container */}
+      <div className="relative flex flex-col items-center p-5 sm:p-10 rounded-3xl bg-gradient-to-b from-[#1E1D1A] via-[#1A1917] to-[#141312] border border-white/[0.1] shadow-2xl">
         {/* Top Controls Bar */}
-        <div className="flex items-center justify-between w-full border-b border-white/[0.08] pb-4 mb-6">
-          <div className="flex items-center gap-2">
-            <span className="font-['Itim'] text-[12px] sm:text-[13px] text-[#5197ff] uppercase tracking-wider">
+        <div className="flex flex-wrap items-center justify-between w-full border-b border-white/[0.08] pb-4 mb-6 gap-3">
+          <div className="flex items-center gap-2.5">
+            <span className="font-['Itim'] text-[12px] sm:text-[13.5px] text-[#5197ff] uppercase tracking-wider font-semibold">
               Screen {currentScreen.number} of {screens.length}
             </span>
-            <span className="text-white/30">•</span>
-            <span className="font-['Itim'] text-[14px] sm:text-[16px] text-white font-semibold truncate max-w-[200px] sm:max-w-md">
+            {currentScreen.category && (
+              <>
+                <span className="text-white/30">•</span>
+                <span className="font-['Itim'] text-[12px] sm:text-[13px] text-[#9CA3AF] bg-white/[0.05] border border-white/10 rounded-full px-2.5 py-0.5">
+                  {currentScreen.category}
+                </span>
+              </>
+            )}
+            <span className="text-white/30 hidden sm:inline">•</span>
+            <span className="font-['Itim'] text-[14px] sm:text-[16.5px] text-white font-semibold truncate max-w-[220px] sm:max-w-md hidden sm:inline">
               {currentScreen.title}
             </span>
           </div>
 
           {/* Navigation Arrows */}
-          {screens.length > 1 && (
+          {filteredScreens.length > 1 && (
             <div className="flex items-center gap-2">
+              <span className="font-['Poppins'] text-[12px] text-[#8491A0] mr-1 hidden md:inline">
+                {currentIndexInFiltered + 1} / {filteredScreens.length}
+              </span>
               <button
                 type="button"
                 onClick={handlePrev}
                 aria-label="Previous screen"
-                className="w-8 h-8 rounded-full bg-white/[0.08] hover:bg-white/20 border border-white/10 flex items-center justify-center text-white transition-colors cursor-pointer"
+                className="w-9 h-9 rounded-full bg-white/[0.08] hover:bg-white/20 border border-white/10 flex items-center justify-center text-white transition-colors cursor-pointer"
               >
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <polyline points="15 18 9 12 15 6" />
@@ -95,7 +184,7 @@ export function CaseStudyFinalDesign({
                 type="button"
                 onClick={handleNext}
                 aria-label="Next screen"
-                className="w-8 h-8 rounded-full bg-white/[0.08] hover:bg-white/20 border border-white/10 flex items-center justify-center text-white transition-colors cursor-pointer"
+                className="w-9 h-9 rounded-full bg-white/[0.08] hover:bg-white/20 border border-white/10 flex items-center justify-center text-white transition-colors cursor-pointer"
               >
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <polyline points="9 18 15 12 9 6" />
@@ -106,17 +195,17 @@ export function CaseStudyFinalDesign({
         </div>
 
         {/* Display Frame: Phone Mockup or Web Browser Window */}
-        <div className="w-full flex justify-center items-center py-2">
+        <div className="w-full flex justify-center items-center py-4">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentScreen.id}
-              initial={{ opacity: 0, scale: 0.98, y: 10 }}
+              initial={{ opacity: 0, scale: 0.97, y: 12 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.98, y: -10 }}
+              exit={{ opacity: 0, scale: 0.97, y: -12 }}
               transition={{ duration: 0.35, ease: easeOut }}
               className="flex justify-center w-full"
             >
-              {isWeb ? (
+              {isScreenWeb ? (
                 // Desktop Web Frame
                 <div
                   className="group relative w-full max-w-3xl rounded-2xl overflow-hidden bg-[#121212] border-2 border-white/20 shadow-2xl cursor-pointer"
@@ -128,8 +217,8 @@ export function CaseStudyFinalDesign({
                     <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
                     <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
                     <span className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
-                    <div className="ml-2 flex-1 rounded bg-black/40 px-2 py-0.5 text-[11px] font-mono text-[#8491A0] truncate">
-                      https://rokhsa.app
+                    <div className="ml-2 flex-1 rounded bg-black/40 px-2.5 py-0.5 text-[11px] font-mono text-[#8491A0] truncate">
+                      https://rokhsa.app/dashboard
                     </div>
                   </div>
                   <img
@@ -146,28 +235,32 @@ export function CaseStudyFinalDesign({
               ) : (
                 // Smartphone Device Frame
                 <div
-                  className="group relative w-full max-w-[300px] sm:max-w-[325px] rounded-[42px] overflow-hidden bg-[#121212] border-[3px] border-white/25 shadow-2xl shadow-black/80 cursor-pointer"
+                  className="group relative w-full max-w-[290px] sm:max-w-[325px] rounded-[44px] p-2 bg-[#1b1c1e] border-[3px] border-[#383a3f] shadow-2xl shadow-black/90 cursor-pointer"
                   onClick={() =>
                     onOpenLightbox(currentScreen.image, currentScreen.title, currentScreen.subtitle)
                   }
                 >
-                  {/* Smartphone Notch / Island */}
-                  <div className="absolute top-2.5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5">
-                    <div className="w-16 h-3.5 rounded-full bg-[#0a0a0a] border border-white/10 flex items-center justify-center">
-                      <div className="w-2 h-2 rounded-full bg-[#161513] border border-white/20" />
+                  {/* Outer Bezel Reflect & Shadow */}
+                  <div className="relative w-full rounded-[36px] overflow-hidden bg-black border border-white/10">
+                    {/* Smartphone Dynamic Island */}
+                    <div className="absolute top-2.5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5">
+                      <div className="w-20 h-4 rounded-full bg-black border border-white/15 flex items-center justify-between px-2">
+                        <div className="w-2 h-2 rounded-full bg-[#121212] border border-white/20" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#1e293b]" />
+                      </div>
                     </div>
-                  </div>
 
-                  <img
-                    src={currentScreen.image}
-                    alt={currentScreen.title}
-                    className="w-full h-auto object-contain block transition-transform duration-500 group-hover:scale-[1.01]"
-                  />
+                    <img
+                      src={currentScreen.image}
+                      alt={currentScreen.title}
+                      className="w-full h-auto object-contain block transition-transform duration-500 group-hover:scale-[1.01]"
+                    />
 
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-200 pointer-events-none">
-                    <span className="rounded-full bg-white text-[#161513] font-['Poppins'] text-[12.5px] font-semibold px-4 py-2 shadow-lg">
-                      Inspect Fullscreen 🔍
-                    </span>
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-200 pointer-events-none">
+                      <span className="rounded-full bg-white text-[#161513] font-['Poppins'] text-[12.5px] font-semibold px-4 py-2 shadow-lg">
+                        Inspect Fullscreen 🔍
+                      </span>
+                    </div>
                   </div>
                 </div>
               )}
@@ -175,60 +268,107 @@ export function CaseStudyFinalDesign({
           </AnimatePresence>
         </div>
 
-        {/* Screen Title & Subtitle */}
-        <div className="flex flex-col items-center text-center gap-1.5 max-w-xl pt-4">
-          <span className="font-['Itim'] text-[12px] sm:text-[13px] text-[#5197ff] uppercase tracking-wider">
-            Screen {currentScreen.number} Showcase
-          </span>
-          <h3 className="font-['Itim'] text-[22px] sm:text-[28px] text-white font-bold">
+        {/* Detailed Design Info Panel */}
+        <div className="flex flex-col items-center text-center gap-3 w-full max-w-2xl pt-6 border-t border-white/[0.08] mt-4">
+          <div className="flex flex-wrap items-center justify-center gap-2">
+            <span className="font-['Itim'] text-[12px] sm:text-[13px] text-[#5197ff] uppercase tracking-wider font-semibold">
+              Screen {currentScreen.number} Showcase
+            </span>
+            {currentScreen.arabicTitle && (
+              <>
+                <span className="text-white/30">•</span>
+                <span className="font-['Inter'] text-[15px] sm:text-[17px] text-[#5197ff] font-medium">
+                  {currentScreen.arabicTitle}
+                </span>
+              </>
+            )}
+          </div>
+
+          <h3 className="font-['Itim'] text-[24px] sm:text-[32px] text-white font-bold leading-snug">
             {currentScreen.title}
           </h3>
+
           {currentScreen.subtitle && (
-            <p className="font-['Poppins'] text-[13.5px] text-[#5197ff] font-medium">
+            <p className="font-['Poppins'] text-[14px] sm:text-[15.5px] text-[#5197ff] font-medium">
               {currentScreen.subtitle}
             </p>
           )}
+
           {currentScreen.description && (
-            <p className="font-['Poppins'] text-[14px] text-[#A9A9A9] leading-relaxed mt-1">
+            <p className="font-['Poppins'] text-[14px] sm:text-[15px] text-[#b4b4b4] leading-relaxed text-center max-w-xl">
               {currentScreen.description}
             </p>
+          )}
+
+          {/* UX Highlights & Design Decisions */}
+          {currentScreen.uxHighlights && currentScreen.uxHighlights.length > 0 && (
+            <div className="flex flex-col items-start w-full pt-4 mt-2 border-t border-white/[0.06] text-left">
+              <span className="font-['Itim'] text-[13px] text-[#8491A0] uppercase tracking-wider mb-2.5">
+                • UX/UI Architecture &amp; Key Design Decisions:
+              </span>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 w-full">
+                {currentScreen.uxHighlights.map((highlight, hIdx) => (
+                  <div
+                    key={hIdx}
+                    className="flex items-start gap-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] p-2.5 text-left"
+                  >
+                    <svg
+                      className="w-4 h-4 text-[#5197ff] shrink-0 mt-0.5"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    <span className="font-['Poppins'] text-[13px] text-[#d1d1d1] leading-relaxed">
+                      {highlight}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
           )}
         </div>
       </div>
 
-      {/* Interactive Thumbnail Selector Cards ("liek this" - matches user screenshot) */}
+      {/* Interactive Thumbnail Selector Cards */}
       <div className="flex flex-col gap-3 pt-2">
         <div className="flex items-center justify-between">
           <span className="font-['Itim'] text-[13px] text-[#8491A0] uppercase tracking-wider">
-            All Interface Screens ({screens.length})
+            {activeCategory === "All"
+              ? `All Interface Screens (${screens.length})`
+              : `${activeCategory} Screens (${filteredScreens.length})`}
           </span>
           <span className="font-['Poppins'] text-[12px] text-[#5197ff]">
-            Click any screen to view
+            Click any thumbnail to inspect
           </span>
         </div>
 
         <div
-          className={`grid gap-4 ${
-            isWeb ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-2 sm:grid-cols-4"
+          className={`grid gap-3.5 ${
+            isScreenWeb && filteredScreens.length <= 4
+              ? "grid-cols-1 sm:grid-cols-2"
+              : "grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6"
           }`}
         >
-          {screens.map((screen, idx) => {
-            const isActive = activeScreenIndex === idx;
+          {filteredScreens.map((screen) => {
+            const isActive = currentScreen.id === screen.id;
             return (
               <button
                 key={screen.id}
                 type="button"
-                onClick={() => setActiveScreenIndex(idx)}
-                className={`group relative flex flex-col p-3 rounded-2xl bg-[#1A1917] border text-left cursor-pointer transition-all duration-200 ${
+                onClick={() => setSelectedScreenId(screen.id)}
+                className={`group relative flex flex-col p-2.5 rounded-2xl bg-[#1A1917] border text-left cursor-pointer transition-all duration-200 ${
                   isActive
-                    ? "border-[#5197ff] ring-2 ring-[#5197ff]/40 shadow-lg shadow-[#5197ff]/20 scale-[1.02]"
+                    ? "border-[#5197ff] ring-2 ring-[#5197ff]/40 shadow-lg shadow-[#5197ff]/20 scale-[1.02] bg-[#1e232b]"
                     : "border-white/[0.08] hover:border-white/30 hover:scale-[1.01]"
                 }`}
               >
                 {/* Screen Preview Thumbnail */}
                 <div
-                  className={`w-full overflow-hidden rounded-xl bg-[#121212] mb-2.5 flex items-center justify-center p-1.5 ${
-                    isWeb ? "aspect-[16/10]" : "aspect-[9/16]"
+                  className={`w-full overflow-hidden rounded-xl bg-[#121212] mb-2 flex items-center justify-center p-1.5 ${
+                    screen.aspectRatio === "web" ? "aspect-[16/10]" : "aspect-[9/16]"
                   }`}
                 >
                   <img
@@ -239,14 +379,26 @@ export function CaseStudyFinalDesign({
                   />
                 </div>
 
-                {/* Screen Labels matching user image */}
+                {/* Screen Labels */}
                 <div className="flex flex-col gap-0.5">
-                  <span className="font-['Itim'] text-[11px] sm:text-[12px] text-[#5197ff] uppercase tracking-wider font-medium">
-                    SCREEN {screen.number}
-                  </span>
-                  <h4 className="font-['Itim'] text-[14px] sm:text-[15.5px] text-white font-semibold truncate">
+                  <div className="flex items-center justify-between">
+                    <span className="font-['Itim'] text-[11px] text-[#5197ff] uppercase tracking-wider font-semibold">
+                      SCREEN {screen.number}
+                    </span>
+                    {screen.category && (
+                      <span className="text-[9.5px] font-['Itim'] text-[#8491A0] truncate max-w-[70px]">
+                        {screen.category}
+                      </span>
+                    )}
+                  </div>
+                  <h4 className="font-['Itim'] text-[13px] sm:text-[14px] text-white font-semibold truncate">
                     {screen.title}
                   </h4>
+                  {screen.arabicTitle && (
+                    <span className="font-['Inter'] text-[11px] text-[#8491A0] truncate">
+                      {screen.arabicTitle}
+                    </span>
+                  )}
                 </div>
               </button>
             );

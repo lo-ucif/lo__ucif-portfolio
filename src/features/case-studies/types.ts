@@ -9,10 +9,12 @@ export type ScreenItem = {
   id: string;
   number: string;
   title: string;
+  arabicTitle?: string;
   subtitle: string;
   description: string;
   uxHighlights: string[];
   image: string;
+  category?: string;
   aspectRatio?: string;
 };
 

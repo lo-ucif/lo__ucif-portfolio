@@ -3,10 +3,45 @@ import tabibMockup from "../../../assets/case-studies/mockups/al-tabib-transpare
 import tabibFramed from "../../../assets/case-studies/mockups/al-tabib-framed.webp";
 import rokhsaMockup from "../../../assets/case-studies/mockups/rokhsa-transparent.webp";
 import rokhsaFramed from "../../../assets/case-studies/mockups/rokhsa-framed.webp";
-import splashImg from "../../../assets/case-studies/al-tabib/screen-1-splash.webp";
-import onboardingImg from "../../../assets/case-studies/al-tabib/screen-2-onboarding.webp";
-import loginImg from "../../../assets/case-studies/al-tabib/screen-3-login.webp";
-import dashboardImg from "../../../assets/case-studies/al-tabib/screen-4-dashboard.webp";
+// Al-Tabib Al-Hafiz Screens (WebP)
+import tabibScreen01 from "../../../assets/case-studies/al-tabib/iPhone 17 - 1.webp";
+import tabibScreen02 from "../../../assets/case-studies/al-tabib/iPhone 17 - 2.webp";
+import tabibScreen03 from "../../../assets/case-studies/al-tabib/iPhone 17 - 3.webp";
+import tabibScreen04 from "../../../assets/case-studies/al-tabib/iPhone 17 - 1099.webp";
+import tabibScreen05 from "../../../assets/case-studies/al-tabib/iPhone 17 - 106.webp";
+import tabibScreen06 from "../../../assets/case-studies/al-tabib/iPhone 17 - 17.webp";
+import tabibScreen07 from "../../../assets/case-studies/al-tabib/iPhone 17 - 18.webp";
+import tabibScreen08 from "../../../assets/case-studies/al-tabib/iPhone 17 - 20.webp";
+import tabibScreen09 from "../../../assets/case-studies/al-tabib/iPhone 17 - 21.webp";
+import tabibScreen10 from "../../../assets/case-studies/al-tabib/iPhone 17 - 28.webp";
+import tabibScreen11 from "../../../assets/case-studies/al-tabib/iPhone 17 - 40.webp";
+import tabibScreen12 from "../../../assets/case-studies/al-tabib/iPhone 17 - 46.webp";
+import tabibScreen13 from "../../../assets/case-studies/al-tabib/iPhone 17 - 49.webp";
+import tabibScreen14 from "../../../assets/case-studies/al-tabib/iPhone 17 - 50.webp";
+import tabibScreen15 from "../../../assets/case-studies/al-tabib/iPhone 17 - 85.webp";
+import tabibScreen16 from "../../../assets/case-studies/al-tabib/iPhone 17 - 86.webp";
+import tabibScreen17 from "../../../assets/case-studies/al-tabib/iPhone 17 - 88.webp";
+import tabibScreen18 from "../../../assets/case-studies/al-tabib/iPhone 17 - 91.webp";
+import tabibScreen19 from "../../../assets/case-studies/al-tabib/iPhone 17 - 96.webp";
+
+// Rokhsa Screens (WebP)
+import rokhsaScreen01 from "../../../assets/case-studies/rokhsa/iPhone 17 - 1.webp";
+import rokhsaScreen02 from "../../../assets/case-studies/rokhsa/iPhone 17 - 3.webp";
+import rokhsaScreen03 from "../../../assets/case-studies/rokhsa/iPhone 17 - 2.webp";
+import rokhsaScreen04 from "../../../assets/case-studies/rokhsa/iPhone 17 - 4.webp";
+import rokhsaScreen05 from "../../../assets/case-studies/rokhsa/iPhone 17 - 20.webp";
+import rokhsaScreen06 from "../../../assets/case-studies/rokhsa/iPhone 17 - 15.webp";
+import rokhsaScreen07 from "../../../assets/case-studies/rokhsa/iPhone 17 - 16.webp";
+import rokhsaScreen08 from "../../../assets/case-studies/rokhsa/iPhone 17 - 18.webp";
+import rokhsaScreen09 from "../../../assets/case-studies/rokhsa/iPhone 17 - 19.webp";
+import rokhsaScreen10 from "../../../assets/case-studies/rokhsa/iPhone 17 - 23.webp";
+import rokhsaScreen11 from "../../../assets/case-studies/rokhsa/iPhone 17 - 25.webp";
+import rokhsaScreen12 from "../../../assets/case-studies/rokhsa/iPhone 17 - 6.webp";
+import rokhsaScreen13 from "../../../assets/case-studies/rokhsa/iPhone 17 - 7.webp";
+import rokhsaScreen14 from "../../../assets/case-studies/rokhsa/iPhone 17 - 40.webp";
+import rokhsaScreen15 from "../../../assets/case-studies/rokhsa/iPhone 17 - 46.webp";
+import rokhsaScreen16 from "../../../assets/case-studies/rokhsa/iPhone 17 - 44.webp";
+import rokhsaScreen17 from "../../../assets/case-studies/rokhsa/iPhone 17 - 43.webp";
 import tabibPhoneLeft from "../../../assets/case-studies/mockups/phones/tabib-left.webp";
 import tabibPhoneCenter from "../../../assets/case-studies/mockups/phones/tabib-center.webp";
 import tabibPhoneRight from "../../../assets/case-studies/mockups/phones/tabib-right.webp";
@@ -449,24 +484,29 @@ export const caseStudies: CaseStudy[] = [
         "The final high-fidelity design delivers a harmonious balance between Islamic reverence and modern digital product design. Every screen was meticulously crafted with auto layout, component variants, and clear typography to serve students under demanding conditions.",
       screens: [
         {
-          id: "screen-1",
+          id: "tabib-screen-1",
           number: "01",
-          title: "Splash & Brand Identity",
+          title: "Splash & Institutional Identity",
+          arabicTitle: "شاشة البداية — هوية الطبيب الحافظ",
           subtitle: "Emblem uniting medical commitment with Quranic dedication",
+          category: "Onboarding & Auth",
           description:
-            "The launch screen introduces the official emblem of Al-Tabib Al-Hafiz: an intertwined heartbeat pulse, Quranic manuscript, and medical crescent, grounding the user in the core mission of Constantine's Faculty of Medicine.",
+            "The launch screen introduces the official emblem of Al-Tabib Al-Hafiz: an intertwined ECG heartbeat pulse, Quranic manuscript, and medical crescent, grounding the user in the core mission of Constantine's Faculty of Medicine.",
           uxHighlights: [
             "Minimalist presentation with generous white background for brand clarity.",
             "Official institutional attribution: 'كلية الطب - قسنطينة'.",
             "Zero loading distraction, swiftly transitioning to the introductory onboarding.",
           ],
-          image: splashImg,
+          image: tabibScreen01,
+          aspectRatio: "app",
         },
         {
-          id: "screen-2",
+          id: "tabib-screen-2",
           number: "02",
           title: "Purpose-Driven Onboarding",
+          arabicTitle: "رسالة المنصة وقيمها التعليمية",
           subtitle: "Clear mission framing with gentle visual resonance",
+          category: "Onboarding & Auth",
           description:
             "Presents the platform's vision with an artistic Quran bookstand illustration and precise copy: 'An educational platform for medical students, enabling Quran memorization and Islamic study while respecting their medical curriculum and intensive schedules.'",
           uxHighlights: [
@@ -474,13 +514,16 @@ export const caseStudies: CaseStudy[] = [
             "High-contrast dual CTAs: 'سجّل الآن' (Register Now) and 'تسجيل الدخول' (Sign In).",
             "Clear value proposition removing ambiguity before account creation.",
           ],
-          image: onboardingImg,
+          image: tabibScreen02,
+          aspectRatio: "app",
         },
         {
-          id: "screen-3",
+          id: "tabib-screen-3",
           number: "03",
           title: "Frictionless Authentication",
+          arabicTitle: "تسجيل الدخول — مرحباً بعودتك",
           subtitle: "Warm, empathetic welcome for returning students",
+          category: "Onboarding & Auth",
           description:
             "The login screen features an approachable illustration of a medical student in white coat and stethoscope reading the Holy Quran, accompanied by warm greeting copy: 'We missed you! Sign in and resume your Quranic journey.'",
           uxHighlights: [
@@ -488,13 +531,16 @@ export const caseStudies: CaseStudy[] = [
             "Prominent 'Forgot Password' recovery link preventing login frustration.",
             "Direct navigation escape hatch to return home if needed.",
           ],
-          image: loginImg,
+          image: tabibScreen03,
+          aspectRatio: "app",
         },
         {
-          id: "screen-4",
+          id: "tabib-screen-4",
           number: "04",
           title: "Centralized Student Dashboard",
+          arabicTitle: "لوحة التحكم الرئيسية للطالب",
           subtitle: "All essential tools visible in a single, glanceable viewport",
+          category: "Primary Workspace",
           description:
             "The operational nerve center of the application: personal greeting with student avatar (Ahmed Loucif), active notification bell, search bar, virtual classroom direct launcher, 30-Hizb memorization tracker, and attendance analytics.",
           uxHighlights: [
@@ -503,7 +549,263 @@ export const caseStudies: CaseStudy[] = [
             "Visual attendance donut chart tracking 22 total sessions with justified/unjustified absence breakdown.",
             "Ergonomic 5-tab bottom navigation with Home, Circles, Messages, Tracking, and More.",
           ],
-          image: dashboardImg,
+          image: tabibScreen04,
+          aspectRatio: "app",
+        },
+        {
+          id: "tabib-screen-5",
+          number: "05",
+          title: "Granular Memorization Progress",
+          arabicTitle: "شريط تقدّم الحفظ وسرعة المراجعة",
+          subtitle: "Separating newly memorized verses from active recurring revision",
+          category: "Primary Workspace",
+          description:
+            "A dedicated progress tracking screen illustrating individual Ahzab (أحزاب) and Athman (أثمان) milestones, preventing memory decay through structured visual velocity gauges.",
+          uxHighlights: [
+            "Strict separation between active new memorization (حفظ) and recurring revision (مراجعة).",
+            "High-contrast teal progress bar delivering instantaneous feedback.",
+            "Global search input for quick lookup of specific Surahs or instructors.",
+          ],
+          image: tabibScreen05,
+          aspectRatio: "app",
+        },
+        {
+          id: "tabib-screen-6",
+          number: "06",
+          title: "Virtual Halaqat Listing",
+          arabicTitle: "قائمة الحلقات القرآنية المتاحة",
+          subtitle: "Filterable recitation groups sorted by schedule and level",
+          category: "Study Circles (Halaqat)",
+          description:
+            "Browse active and upcoming recitation circles with detailed Sheikh attribution, timing (e.g. Maghrib session), and curriculum coverage (Surah Al-Baqarah).",
+          uxHighlights: [
+            "Dual filter tabs: 'حلقاتي' (My Enrolled Circles) vs 'الحلقات المتاحة' (Open Circles).",
+            "Concise session metadata tags: time, date, teacher, and recitation category.",
+            "Elevated cards with high readability under varied screen brightness.",
+          ],
+          image: tabibScreen06,
+          aspectRatio: "app",
+        },
+        {
+          id: "tabib-screen-7",
+          number: "07",
+          title: "Circle Details & Instructor Card",
+          arabicTitle: "تفاصيل جلسات التسميع والشيخ المشرف",
+          subtitle: "Detailed schedule and curriculum targets per circle",
+          category: "Study Circles (Halaqat)",
+          description:
+            "Provides deep insight into recitation objectives, instructor credentials, room capacity, and recurring daily session timetables.",
+          uxHighlights: [
+            "Clear status chips displaying live room availability.",
+            "Official supervisor accreditation to cultivate learner confidence.",
+            "Integrated calendar sync to prevent attendance conflicts with hospital rotations.",
+          ],
+          image: tabibScreen07,
+          aspectRatio: "app",
+        },
+        {
+          id: "tabib-screen-8",
+          number: "08",
+          title: "Direct Virtual Room Launcher",
+          arabicTitle: "روابط القاعات الافتراضية المباشرة",
+          subtitle: "Persistent 1-tap room launch eliminating scattered chat links",
+          category: "Study Circles (Halaqat)",
+          description:
+            "Solves the recurring friction of lost meeting URLs by providing direct, persistent classroom launchers for assigned teachers (e.g. Teacher Lina).",
+          uxHighlights: [
+            "Persistent 'دخول قاعة الأستاذ' buttons removing reliance on messy chat apps.",
+            "Clear teacher card layout with active connection status indicators.",
+            "Streamlined single-tap launch taking students into recitation in under 2 seconds.",
+          ],
+          image: tabibScreen08,
+          aspectRatio: "app",
+        },
+        {
+          id: "tabib-screen-9",
+          number: "09",
+          title: "1-on-1 Recitation Booking",
+          arabicTitle: "حجز جلسة تسميع خاصة",
+          subtitle: "Flexible appointment scheduling tailored to hospital on-call shifts",
+          category: "Study Circles (Halaqat)",
+          description:
+            "Enables medical students with irregular clinical shifts to reserve private 1-on-1 recitation evaluations with assigned Sheikhs during free windows.",
+          uxHighlights: [
+            "Dynamic time slot chips aligned with hospital shift transitions.",
+            "Direct instructor confirmation feedback loop.",
+            "Gentle cancellation policy designed for emergency surgical call-outs.",
+          ],
+          image: tabibScreen09,
+          aspectRatio: "app",
+        },
+        {
+          id: "tabib-screen-10",
+          number: "10",
+          title: "Revision & Goal Tracking Hub",
+          arabicTitle: "مركز متابعة المسيرة القرآنية",
+          subtitle: "Centralized action portal for recitation, listening, and exams",
+          category: "Analytics & Progress",
+          description:
+            "Action-oriented student launchpad with 4 primary interactive modules: Recitation (التسميع), Audio Player (المسجلات), Revision Logs (سجل المراجعة), and Tests (الدورات).",
+          uxHighlights: [
+            "Balanced 4-card grid layout with intuitive Islamic and medical iconography.",
+            "Empathetic contextual subtitle: 'من هنا يمكنك متابعة مسيرتك في الحفظ'.",
+            "Clear visual affordance guiding students to daily essential actions.",
+          ],
+          image: tabibScreen10,
+          aspectRatio: "app",
+        },
+        {
+          id: "tabib-screen-11",
+          number: "11",
+          title: "Private Audio Recitation Slots",
+          arabicTitle: "جلسات الاستماع والتسميع الفردي",
+          subtitle: "Audio-focused listening appointments for commute revision",
+          category: "Study Circles (Halaqat)",
+          description:
+            "Allows students to book targeted listening reviews, ideal for hands-free audio revision while traveling between university campus and hospital clinics.",
+          uxHighlights: [
+            "Optimized lightweight audio pipeline for low-bandwidth hospital networks.",
+            "Seat availability indicators showing remaining open appointments.",
+            "One-tap slot rescheduling up to 2 hours prior to session start.",
+          ],
+          image: tabibScreen11,
+          aspectRatio: "app",
+        },
+        {
+          id: "tabib-screen-12",
+          number: "12",
+          title: "Granular Revision Log Table",
+          arabicTitle: "سجل المراجعة اليومي المفصل",
+          subtitle: "Tabular ledger tracking Surah, Hizb, Thumn, and evaluator notes",
+          category: "Analytics & Progress",
+          description:
+            "A clean, scannable data grid documenting past recitation performance, verse ranges covered, examiner remarks, and exact score percentages.",
+          uxHighlights: [
+            "Compact row spacing presenting 10+ revision entries without horizontal scrolling.",
+            "Clear hierarchical column headers: Surah, Ahzab range, date, evaluation.",
+            "High contrast text formatting meeting WCAG 2.1 AA accessibility standards.",
+          ],
+          image: tabibScreen12,
+          aspectRatio: "app",
+        },
+        {
+          id: "tabib-screen-13",
+          number: "13",
+          title: "Monthly Exam & Evaluation Notice Board",
+          arabicTitle: "مواعيد الاختبارات الشهرية والتقييمات",
+          subtitle: "Official timetable for oral evaluations and Tajweed testing",
+          category: "Analytics & Progress",
+          description:
+            "Keeps students apprised of upcoming formal testing deadlines, oral jury sessions, and weekly memorization threshold exams.",
+          uxHighlights: [
+            "Chronological card feed highlighting upcoming assessment milestones.",
+            "Unobtrusive notification tags that encourage consistent preparation.",
+            "Exact date and hour chips preventing scheduling overlaps.",
+          ],
+          image: tabibScreen13,
+          aspectRatio: "app",
+        },
+        {
+          id: "tabib-screen-14",
+          number: "14",
+          title: "Smart Khatmah Completion Calculator",
+          arabicTitle: "حاسبة الختمة الذكية",
+          subtitle: "Predictive completion date estimator based on personalized pace",
+          category: "Analytics & Progress",
+          description:
+            "An interactive mathematical forecasting tool allowing students to configure daily pages and weekly days to calculate their estimated Khatmah (ختمة) milestone date.",
+          uxHighlights: [
+            "Interactive numerical stepper controls: daily amount (30 pages) & active days.",
+            "Dynamic predictive forecast banner: 'تاريخ الختمة المتوقع: 9 يوليو 2026 (خلال 21 يوم)'.",
+            "Encouraging tutor illustration fostering spiritual dedication.",
+          ],
+          image: tabibScreen14,
+          aspectRatio: "app",
+        },
+        {
+          id: "tabib-screen-15",
+          number: "15",
+          title: "Examination Scores & Grade Ledger",
+          arabicTitle: "دفتر العلامات ونتائج الاختبارات",
+          subtitle: "Official scores across Surah Al-Baqarah, Al-Imran, and An-Nisa",
+          category: "Certificates & Dossier",
+          description:
+            "The official student grading ledger compiling evaluation marks across Quranic sections with examiner validation and academic timestamps.",
+          uxHighlights: [
+            "Dual navigation tabs: 'دفتر العلامات' (Gradebook) and 'الشهادات' (Certificates).",
+            "Clear numerical marks paired with official faculty pass criteria.",
+            "Search and filter capability to inspect specific Surahs.",
+          ],
+          image: tabibScreen15,
+          aspectRatio: "app",
+        },
+        {
+          id: "tabib-screen-16",
+          number: "16",
+          title: "Digital Certificate of Memorization",
+          arabicTitle: "شهادة التميز في الحفظ والإتقان",
+          subtitle: "Cryptographically verifiable certificate with scannable QR code",
+          category: "Certificates & Dossier",
+          description:
+            "Formal digital accreditation awarded upon completing 5 Ahzab, featuring official Faculty of Medicine insignia, Sheikh signatures, and a verification QR code.",
+          uxHighlights: [
+            "Embedded QR code for third-party institutional authenticity verification.",
+            "Formal decorative border evoking Islamic scholastic tradition.",
+            "One-tap high-resolution PDF download: 'تحميل الشهادة'.",
+          ],
+          image: tabibScreen16,
+          aspectRatio: "app",
+        },
+        {
+          id: "tabib-screen-17",
+          number: "17",
+          title: "AI-Powered Tajweed & Study Assistant",
+          arabicTitle: "المساعد الذكي «حافظ»",
+          subtitle: "Conversational bot answering Tajweed rules and schedule planning",
+          category: "AI & Smart Tools",
+          description:
+            "A friendly conversational AI helper designed to assist students with quick Tajweed inquiries, pronunciation rules, and tailored revision reminders.",
+          uxHighlights: [
+            "Approachable robotic mascot avatar welcoming students: 'مرحباً أنا حافظ'.",
+            "Quick-suggestion chips for instant one-tap queries.",
+            "Ergonomic chat layout with generous bottom keyboard breathing room.",
+          ],
+          image: tabibScreen17,
+          aspectRatio: "app",
+        },
+        {
+          id: "tabib-screen-18",
+          number: "18",
+          title: "Administrative Announcements Feed",
+          arabicTitle: "لوحة إعلانات الحلقات والكلية",
+          subtitle: "Official broadcast notices from faculty leadership and Sheikhs",
+          category: "Primary Workspace",
+          description:
+            "Chronological notification stream delivering critical updates on schedule changes, holiday breaks, and upcoming academic Quran seminars.",
+          uxHighlights: [
+            "High-contrast megaphone alert badge for immediate visual recognition.",
+            "Timestamped updates attributed to system administration ('مدير النظام').",
+            "Urgent notices pinned to the top of the feed.",
+          ],
+          image: tabibScreen18,
+          aspectRatio: "app",
+        },
+        {
+          id: "tabib-screen-19",
+          number: "19",
+          title: "Student Profile & Medical Dossier",
+          arabicTitle: "الملف الشخصي والبيانات الأكاديمية",
+          subtitle: "Faculty affiliation, contact information, and study preferences",
+          category: "Certificates & Dossier",
+          description:
+            "Comprehensive profile dashboard for student Ahmed Loucif detailing university email, phone number, medical specialty, and memorization targets.",
+          uxHighlights: [
+            "Personalized header card with student avatar and institutional contact details.",
+            "Academic year and clinical department affiliation tags.",
+            "Direct access to notification preferences, privacy, and account settings.",
+          ],
+          image: tabibScreen19,
+          aspectRatio: "app",
         },
       ],
       coreFeatures: [
@@ -1007,7 +1309,9 @@ export const caseStudies: CaseStudy[] = [
           id: "rokhsa-screen-1",
           number: "01",
           title: "Centralized Web Management Dashboard",
+          arabicTitle: "لوحة التحكم السحابية لإدارة المدرسة",
           subtitle: "All driving school operations in one unified desktop command center",
+          category: "Desktop Web Platform",
           description:
             "The web dashboard enables school administrators to manage candidates, assign instructors, monitor vehicle fleets, and review real-time revenue and exam pass rates from any browser.",
           uxHighlights: [
@@ -1016,6 +1320,296 @@ export const caseStudies: CaseStudy[] = [
             "Direct action button 'سجل الآن' with responsive web scaling.",
           ],
           image: rokhsaImg,
+          aspectRatio: "web",
+        },
+        {
+          id: "rokhsa-screen-2",
+          number: "02",
+          title: "Rokhsa Mobile Launch Screen",
+          arabicTitle: "شاشة البداية — هوية تطبيق رخصة",
+          subtitle: "Modern steering wheel monogram against deep navy canvas",
+          category: "Onboarding & Auth",
+          description:
+            "The launch screen establishes the modern brand identity of Rokhsa with a clean steering wheel monogram on deep dark blue.",
+          uxHighlights: [
+            "High-contrast brand mark against dark slate background (#0E2841).",
+            "Zero loading delay, smoothly transitioning to school welcome onboarding.",
+            "Instant platform recognition across driving schools in Algeria.",
+          ],
+          image: rokhsaScreen01,
+          aspectRatio: "app",
+        },
+        {
+          id: "rokhsa-screen-3",
+          number: "03",
+          title: "Driving School Value Onboarding",
+          arabicTitle: "مرحباً بك في مدرستك الرقمية",
+          subtitle: "Empowering school managers to digitize candidates and payments",
+          category: "Onboarding & Auth",
+          description:
+            "Introduces driving school proprietors to the digital ecosystem: tracking candidates, logging driving sessions, managing state exams, and receiving installment payments.",
+          uxHighlights: [
+            "Clear value proposition: 'أدر المتدربين، وتابع الحصص، ونظم الامتحانات والدفعات بكل سهولة'.",
+            "Prominent primary CTA: 'ابدأ الآن' (Get Started) with high visual affordance.",
+            "Polished corporate palette instilling trust in administrative capabilities.",
+          ],
+          image: rokhsaScreen02,
+          aspectRatio: "app",
+        },
+        {
+          id: "rokhsa-screen-4",
+          number: "04",
+          title: "Secure Administrator Mobile Login",
+          arabicTitle: "تسجيل الدخول لإدارة مدرستك",
+          subtitle: "Role-based authentication for school owners and instructors",
+          category: "Onboarding & Auth",
+          description:
+            "Streamlined mobile sign-in portal with dedicated credentials inputs, password visibility toggle, and administrative support links.",
+          uxHighlights: [
+            "Pre-filled admin username hint reducing mobile typing friction.",
+            "Accessible support link: 'ليس لديك حساب؟ تواصل مع الإدارة'.",
+            "Immediate form validation preventing submission errors.",
+          ],
+          image: rokhsaScreen03,
+          aspectRatio: "app",
+        },
+        {
+          id: "rokhsa-screen-5",
+          number: "05",
+          title: "Mobile Command Center Dashboard",
+          arabicTitle: "لوحة التحكم الرئيسية عبر الهاتف",
+          subtitle: "Enrolled candidates (426), vehicle fleet, and live activity feed",
+          category: "Operations & Fleet",
+          description:
+            "The primary operational dashboard on mobile: at-a-glance candidate counts (426), revenue analytics (24,960 DA), and live chronological activity stream.",
+          uxHighlights: [
+            "Hero summary card highlighting 426 total active driving candidates.",
+            "Live activity timeline tracking new candidate registrations and payments.",
+            "Ergonomic bottom tab navigation for one-handed thumb interaction.",
+          ],
+          image: rokhsaScreen04,
+          aspectRatio: "app",
+        },
+        {
+          id: "rokhsa-screen-6",
+          number: "06",
+          title: "Modular Operations Navigation Drawer",
+          arabicTitle: "القائمة الجانبية وإدارة الأقسام",
+          subtitle: "Fast access to exams, packages, assistants, and timetables",
+          category: "Operations & Fleet",
+          description:
+            "A structured side drawer providing quick navigation to essential modules: Exams (الامتحانات), Packages (الباقات), Assistants (المساعدون), and Schedules (الجدول).",
+          uxHighlights: [
+            "Color-coded module icons enabling rapid optical recognition.",
+            "Direct access to school vehicle fleet status and settings.",
+            "Smooth animated open/close drawer transitions.",
+          ],
+          image: rokhsaScreen05,
+          aspectRatio: "app",
+        },
+        {
+          id: "rokhsa-screen-7",
+          number: "07",
+          title: "Driving Lesson Category Selector",
+          arabicTitle: "اختيار نوع الحصة التدريبية",
+          subtitle: "Code de la route, Maneuvers (Circuit), or Road Driving (Circulation)",
+          category: "Lesson Booking & Timer",
+          description:
+            "Allows driving instructors to initiate practical sessions by choosing between Highway Code (كود), Maneuvers (مناورات), or Road Driving (سياقة).",
+          uxHighlights: [
+            "Three official Algerian driving license curriculum test modules.",
+            "Daily training hours tracker at top displaying 5:30 cumulative hours.",
+            "Visual iconography illustrating each driving discipline.",
+          ],
+          image: rokhsaScreen06,
+          aspectRatio: "app",
+        },
+        {
+          id: "rokhsa-screen-8",
+          number: "08",
+          title: "Live In-Car Driving Lesson Timer",
+          arabicTitle: "عداد الحصة التدريبية المباشر",
+          subtitle: "Precision stopwatch ensuring candidates receive mandated road time",
+          category: "Lesson Booking & Timer",
+          description:
+            "A real-time session stopwatch (24:59) allowing instructors to start, pause, and log practical driving minutes directly from inside the training vehicle.",
+          uxHighlights: [
+            "Glanceable high-contrast numerical timer: 24:59 with circular countdown gauge.",
+            "Oversized 'ابدأ / توقف' (Start/Stop) touch targets optimized for car cabin usage.",
+            "Session metadata logging start time (10:30) and candidate assignment.",
+          ],
+          image: rokhsaScreen07,
+          aspectRatio: "app",
+        },
+        {
+          id: "rokhsa-screen-9",
+          number: "09",
+          title: "Candidate Selection for Practical Drive",
+          arabicTitle: "اختيار الطالب للجلسة التدريبية",
+          subtitle: "Searchable directory of enrolled learners with Category B filters",
+          category: "Lesson Booking & Timer",
+          description:
+            "Searchable list of driving students enabling instructors to quickly bind an active lesson to a specific candidate's national record.",
+          uxHighlights: [
+            "Fast filter pills: All, Road Driving, Maneuvers, Highway Code.",
+            "Candidate cards showing registered name, phone, and license class (صنف ب).",
+            "Real-time instant search bar supporting query by name or phone.",
+          ],
+          image: rokhsaScreen08,
+          aspectRatio: "app",
+        },
+        {
+          id: "rokhsa-screen-10",
+          number: "10",
+          title: "Completed Practical Sessions History",
+          arabicTitle: "سجل الحصص التدريبية المنتهية",
+          subtitle: "Archived ledger of driving hours and completed student lessons",
+          category: "Operations & Fleet",
+          description:
+            "A chronological log detailing all completed student drives with date stamps (e.g. Sunday 19 January 2026), instructor sign-offs, and vehicle mileage.",
+          uxHighlights: [
+            "Daily cumulative training hours meter: 'عدد ساعات اليوم 5:30'.",
+            "Clear card list highlighting student name, category, and completion stamp.",
+            "Floating '+' button facilitating quick manual lesson logging.",
+          ],
+          image: rokhsaScreen09,
+          aspectRatio: "app",
+        },
+        {
+          id: "rokhsa-screen-11",
+          number: "11",
+          title: "Official State Exam Candidates Ledger",
+          arabicTitle: "قائمة المترشحين للامتحان والنتائج",
+          subtitle: "Pass/Fail results across Highway Code, Circuit, and Road Drive",
+          category: "Exams & Candidates",
+          description:
+            "Formal state driving exam ledger tracking candidates scheduled for testing on Sunday 5 January, with official Green (Pass) and Red (Fail) result stamps.",
+          uxHighlights: [
+            "Official traffic inspection header and state exam date banner.",
+            "Color-coded status badges: Green for 'ناجح' (Pass) vs Red for 'راسب' (Fail).",
+            "Curriculum tabs: Information, Road Signs, Maneuvers, Highway Drive.",
+          ],
+          image: rokhsaScreen10,
+          aspectRatio: "app",
+        },
+        {
+          id: "rokhsa-screen-12",
+          number: "12",
+          title: "Create New State Exam Session",
+          arabicTitle: "إضافة موعد امتحان جديد",
+          subtitle: "Scheduling state driving exams with licensing authority dates",
+          category: "Exams & Candidates",
+          description:
+            "Form interface to register upcoming official exam sessions with candidate cohorts, exam discipline (Signs, Maneuvers, Driving), and venue.",
+          uxHighlights: [
+            "Calendar date picker for official state exam inspection days.",
+            "Category radio buttons: إشارات (Signs), مناورات (Circuit), سياقة (Road).",
+            "Dual actions: 'محو' (Reset) and 'التالي' (Next step).",
+          ],
+          image: rokhsaScreen11,
+          aspectRatio: "app",
+        },
+        {
+          id: "rokhsa-screen-13",
+          number: "13",
+          title: "Candidate Profile & Driving Dossier",
+          arabicTitle: "ملف المترشح والبيانات الشخصية",
+          subtitle: "Ahmed Loucif dossier, national registration code, and contact",
+          category: "Exams & Candidates",
+          description:
+            "Full student dossier for Ahmed Loucif displaying Category B classification, state registration number, registration date, phone, and address.",
+          uxHighlights: [
+            "4-tab dossier navigation: Info (المعلومات), Payments (المدفوعات), Sessions (الجلسات), Exams (الامتحانات).",
+            "Clear student metadata chips and quick action buttons for Edit and Delete.",
+            "Clean layout compliant with Algerian transport ministry documentation standards.",
+          ],
+          image: rokhsaScreen12,
+          aspectRatio: "app",
+        },
+        {
+          id: "rokhsa-screen-14",
+          number: "14",
+          title: "Candidate Payments & Installment Ledger",
+          arabicTitle: "سجل دفعات وأقساط المتدرب",
+          subtitle: "Total tuition (8,960 DA), paid installments, and remaining balance",
+          category: "Exams & Candidates",
+          description:
+            "A transparent financial ledger tracking student installment payments, receipt timestamps, and remaining account balance.",
+          uxHighlights: [
+            "Prominent summary card: 'المبلغ الإجمالي 8,960 دج'.",
+            "Itemized receipts for each installment with exact payment dates.",
+            "Prevents candidate exam registration if required tuition thresholds are unmet.",
+          ],
+          image: rokhsaScreen13,
+          aspectRatio: "app",
+        },
+        {
+          id: "rokhsa-screen-15",
+          number: "15",
+          title: "School Administrator Profile",
+          arabicTitle: "الملف التعريفي لمدير المدرسة",
+          subtitle: "License accreditation, school branding, and contact channels",
+          category: "School Management",
+          description:
+            "Owner profile screen detailing driving school accreditation number, commercial phone, email, and geographic location.",
+          uxHighlights: [
+            "School branding and official administrator avatar.",
+            "One-tap phone and email triggers for client inquiries.",
+            "Clear accreditation badge establishing state compliance.",
+          ],
+          image: rokhsaScreen14,
+          aspectRatio: "app",
+        },
+        {
+          id: "rokhsa-screen-16",
+          number: "16",
+          title: "Edit School Profile & Credentials",
+          arabicTitle: "تعديل معلومات وبيانات المدرسة",
+          subtitle: "Updating school address, commercial phone, and license classes",
+          category: "School Management",
+          description:
+            "Administrative form enabling proprietors to edit school name, commercial phone number, physical address, and offered license classes (A, B, C, D).",
+          uxHighlights: [
+            "Validated input fields for commercial contact numbers and physical address.",
+            "License category selector with multi-class support.",
+            "Save button with immediate update feedback.",
+          ],
+          image: rokhsaScreen15,
+          aspectRatio: "app",
+        },
+        {
+          id: "rokhsa-screen-17",
+          number: "17",
+          title: "Platform Settings & Subscription",
+          arabicTitle: "إعدادات التطبيق وخطة الاشتراك",
+          subtitle: "Cloud synchronization, billing tier, and alert notifications",
+          category: "School Management",
+          description:
+            "Central settings panel managing cloud backup frequency, active subscription plan, and candidate SMS reminder preferences.",
+          uxHighlights: [
+            "Subscription tier card displaying active service features.",
+            "Granular notification controls for candidate exam alerts.",
+            "One-tap data export for tax and transport ministry reporting.",
+          ],
+          image: rokhsaScreen16,
+          aspectRatio: "app",
+        },
+        {
+          id: "rokhsa-screen-18",
+          number: "18",
+          title: "Advanced Features & Future Roadmap",
+          arabicTitle: "ميزات متقدمة قادمة في التحديثات",
+          subtitle: "Preview of upcoming GPS fleet tracking and AI exam simulators",
+          category: "School Management",
+          description:
+            "Roadmap notice card previewing upcoming premium features such as real-time GPS tracking for driving school vehicles and AI-powered Highway Code test simulators.",
+          uxHighlights: [
+            "Friendly maintenance notice: 'هذا الإعداد غير متوفر حالياً! سيتوفر لاحقاً مع تحديثات قادمة'.",
+            "Clear roadmap expectation management.",
+            "Encourages school owners to request specific workflow additions.",
+          ],
+          image: rokhsaScreen17,
+          aspectRatio: "app",
         },
       ],
       coreFeatures: [
