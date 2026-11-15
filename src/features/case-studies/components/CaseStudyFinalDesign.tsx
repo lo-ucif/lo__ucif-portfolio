@@ -5,6 +5,68 @@ import type { LightboxItem } from "./ImageLightboxModal";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
+// Authentic iPhone 17 Pro Vector Mockup (from Figma Node 594:324 / 600:150)
+function IPhoneMockup({
+  screen,
+  isCenter = false,
+  onClick,
+}: {
+  screen: { image: string; title: string; subtitle?: string };
+  isCenter?: boolean;
+  onClick?: () => void;
+}) {
+  return (
+    <div
+      onClick={onClick}
+      style={{ width: "240px", height: "494px" }}
+      className={`relative w-[240px] h-[494px] shrink-0 rounded-[38px] bg-black overflow-hidden select-none transition-all duration-300 ${
+        isCenter
+          ? "cursor-pointer shadow-[0_25px_50px_rgba(0,0,0,0.95)] hover:scale-[1.015]"
+          : "cursor-pointer hover:opacity-60"
+      }`}
+    >
+      {/* Screen Content Layer */}
+      <div className="absolute inset-[6px_5.5px] rounded-[32px] overflow-hidden bg-black flex items-center justify-center z-10">
+        <img
+          src={screen.image}
+          alt={screen.title}
+          className="w-full h-full object-cover block"
+          loading="eager"
+        />
+
+        {/* Hover Inspect Overlay for Center Phone */}
+        {isCenter && (
+          <div className="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 flex items-center justify-center transition-opacity duration-200 z-30">
+            <span className="rounded-full bg-white text-[#161513] font-['Poppins'] text-[12px] font-semibold px-4 py-2 shadow-lg">
+              Inspect Fullscreen 🔍
+            </span>
+          </div>
+        )}
+      </div>
+
+      {/* Titanium Outer Frame & Metallic Bezel Reflections (Figma 594:325 / 600:151) */}
+      <div className="absolute inset-0 rounded-[38px] border-[1.5px] border-[#303640] pointer-events-none z-20" />
+      <div className="absolute inset-[1.5px] rounded-[36.5px] border-[2px] border-[#515868] pointer-events-none z-20" />
+      <div className="absolute inset-[2.5px] rounded-[35.5px] border border-[#717989]/70 pointer-events-none z-20" />
+      <div className="absolute inset-[4.5px] rounded-[33.5px] border border-[#646464]/50 pointer-events-none z-20" />
+
+      {/* Dynamic Island Pill with Dual Lenses (Figma 594:331 / 600:157) */}
+      <div className="absolute top-[12px] left-1/2 -translate-x-1/2 w-[70px] h-[20px] rounded-full bg-black z-30 flex items-center justify-between px-2.5 shadow-md shadow-black pointer-events-none">
+        <div className="w-2.5 h-2.5 rounded-full bg-[#141414] border border-white/10 flex items-center justify-center">
+          <div className="w-1 h-1 rounded-full bg-[#1e293b]" />
+        </div>
+        <div className="w-2 h-2 rounded-full bg-[#121212] border border-white/10" />
+      </div>
+
+      {/* Antenna Notches (Figma 594:332 / 600:158) */}
+      <div className="absolute top-[48px] left-0 w-[3px] h-[3px] bg-[#7c7c7c]/40 z-20 pointer-events-none" />
+      <div className="absolute top-[48px] right-0 w-[3px] h-[3px] bg-[#7c7c7c]/40 z-20 pointer-events-none" />
+      <div className="absolute bottom-[48px] left-0 w-[3px] h-[3px] bg-[#7c7c7c]/40 z-20 pointer-events-none" />
+      <div className="absolute bottom-[48px] right-0 w-[3px] h-[3px] bg-[#7c7c7c]/40 z-20 pointer-events-none" />
+    </div>
+  );
+}
+
 type CaseStudyFinalDesignProps = {
   study: CaseStudy;
   onOpenLightbox: (
@@ -70,6 +132,25 @@ export function CaseStudyFinalDesign({
     (!currentScreen.aspectRatio && study.platformType === "web" && currentScreen.number === "01");
 
   const currentIndexInFiltered = filteredScreens.findIndex((s) => s.id === currentScreen.id);
+
+  // Derive previous and next screens for the 3-phone presentation (Figma node 600:220)
+  const prevScreen = useMemo(() => {
+    if (filteredScreens.length <= 1) return null;
+    const prevIdx =
+      currentIndexInFiltered > 0
+        ? currentIndexInFiltered - 1
+        : filteredScreens.length - 1;
+    return filteredScreens[prevIdx];
+  }, [filteredScreens, currentIndexInFiltered]);
+
+  const nextScreen = useMemo(() => {
+    if (filteredScreens.length <= 1) return null;
+    const nextIdx =
+      currentIndexInFiltered < filteredScreens.length - 1
+        ? currentIndexInFiltered + 1
+        : 0;
+    return filteredScreens[nextIdx];
+  }, [filteredScreens, currentIndexInFiltered]);
 
   const handlePrev = () => {
     const prevIdx =
@@ -176,10 +257,10 @@ export function CaseStudyFinalDesign({
       )}
 
       {/* Main Interactive Showcase Container (Side-by-Side: Text on Left, Direct Image on Right) */}
-      <div className="relative flex flex-col p-5 sm:p-8 md:p-10 rounded-3xl bg-gradient-to-b from-[#1E1D1A] via-[#1A1917] to-[#141312] border border-white/[0.1] shadow-2xl">
+      <div className="relative flex flex-col p-5 sm:p-8 md:p-10 rounded-3xl bg-gradient-to-b from-[#1E1D1A] via-[#1A1917] to-[#141312] border border-white/[0.1] shadow-2xl overflow-hidden sm:overflow-visible">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center w-full">
           {/* LEFT COLUMN: Title, Subtitle, Description, UX Architecture */}
-          <div className={`${isScreenWeb ? "lg:col-span-5" : "lg:col-span-7"} flex flex-col items-start text-left w-full order-2 lg:order-1`}>
+          <div className={`${isScreenWeb ? "lg:col-span-5" : "lg:col-span-6"} flex flex-col items-start text-left w-full order-2 lg:order-1`}>
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentScreen.id}
@@ -258,8 +339,8 @@ export function CaseStudyFinalDesign({
             </AnimatePresence>
           </div>
 
-          {/* RIGHT COLUMN: Direct Screen Image Display + Navigation Buttons Below */}
-          <div className={`${isScreenWeb ? "lg:col-span-7" : "lg:col-span-5"} flex flex-col items-center justify-center w-full order-1 lg:order-2`}>
+          {/* RIGHT COLUMN: 3-Phone Presentation Stage (Figma Node 600:220) + Navigation Below */}
+          <div className={`${isScreenWeb ? "lg:col-span-7" : "lg:col-span-6"} flex flex-col items-center justify-center w-full order-1 lg:order-2 overflow-visible`}>
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentScreen.id}
@@ -267,7 +348,7 @@ export function CaseStudyFinalDesign({
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.97, y: -10 }}
                 transition={{ duration: 0.28, ease: easeOut }}
-                className="flex flex-col items-center w-full"
+                className="flex flex-col items-center w-full overflow-visible"
               >
                 {isScreenWeb ? (
                   // Desktop Web Frame (Directly shown with macOS header)
@@ -303,32 +384,56 @@ export function CaseStudyFinalDesign({
                     </div>
                   </div>
                 ) : (
-                  // Direct Mobile Screen Image Display (Exact Size: 240px w * 494px h)
-                  <div
-                    className="group relative w-[240px] h-[494px] shrink-0 rounded-[24px] overflow-hidden border border-white/15 bg-[#121212] shadow-[0_20px_50px_rgba(0,0,0,0.85)] hover:border-[#5197ff]/50 hover:shadow-[#5197ff]/20 transition-all duration-300 cursor-pointer flex items-center justify-center"
-                    style={{ width: "240px", height: "494px" }}
-                    onClick={() =>
-                      onOpenLightbox(
-                        currentScreen.image,
-                        currentScreen.title,
-                        currentScreen.subtitle,
-                        currentIndexInFiltered,
-                        lightboxItems
-                      )
-                    }
-                  >
-                    <img
-                      src={currentScreen.image}
-                      alt={currentScreen.title}
-                      className="w-full h-full object-cover block transition-transform duration-500 group-hover:scale-[1.02]"
-                    />
+                  // 3-Phone Presentation Stage (Exact Figma Node 600:220)
+                  <div className="relative flex items-center justify-center w-full min-h-[510px] py-2 overflow-hidden sm:overflow-visible select-none">
+                    {/* Left Phone (Figma 594:324 - Opacity 20%, Offset Left & Down) */}
+                    {prevScreen && (
+                      <div
+                        className="absolute z-10 transition-all duration-300 ease-out cursor-pointer group"
+                        style={{
+                          transform: "translateX(-148px) translateY(17px) scale(0.96)",
+                        }}
+                        onClick={handlePrev}
+                        title={`Previous: ${prevScreen.title}`}
+                      >
+                        <div className="opacity-20 group-hover:opacity-45 transition-opacity duration-300">
+                          <IPhoneMockup screen={prevScreen} />
+                        </div>
+                      </div>
+                    )}
 
-                    {/* Fullscreen Inspect Hover Overlay */}
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-200 pointer-events-none z-20">
-                      <span className="rounded-full bg-white text-[#161513] font-['Poppins'] text-[12px] font-semibold px-4 py-2 shadow-lg">
-                        Inspect Fullscreen 🔍
-                      </span>
+                    {/* Center Phone (Figma 600:150 - Active Screen, Size 240px w * 494px h) */}
+                    <div className="relative z-20">
+                      <IPhoneMockup
+                        screen={currentScreen}
+                        isCenter={true}
+                        onClick={() =>
+                          onOpenLightbox(
+                            currentScreen.image,
+                            currentScreen.title,
+                            currentScreen.subtitle,
+                            currentIndexInFiltered,
+                            lightboxItems
+                          )
+                        }
+                      />
                     </div>
+
+                    {/* Right Phone (Figma 600:185 - Opacity 20%, Offset Right & Down) */}
+                    {nextScreen && (
+                      <div
+                        className="absolute z-10 transition-all duration-300 ease-out cursor-pointer group"
+                        style={{
+                          transform: "translateX(148px) translateY(17px) scale(0.96)",
+                        }}
+                        onClick={handleNext}
+                        title={`Next: ${nextScreen.title}`}
+                      >
+                        <div className="opacity-20 group-hover:opacity-45 transition-opacity duration-300">
+                          <IPhoneMockup screen={nextScreen} />
+                        </div>
+                      </div>
+                    )}
                   </div>
                 )}
               </motion.div>
