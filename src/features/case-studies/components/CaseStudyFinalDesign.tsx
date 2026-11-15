@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { CaseStudy } from "../types";
+import iphoneFrameImg from "../../../assets/case-studies/mockups/iphone-17-pro-frame.webp";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
@@ -233,35 +234,38 @@ export function CaseStudyFinalDesign({
                   </div>
                 </div>
               ) : (
-                // Smartphone Device Frame
+                // Authentic iPhone 17 Pro Mockup Frame (from Figma Node 594:324)
                 <div
-                  className="group relative w-full max-w-[290px] sm:max-w-[325px] rounded-[44px] p-2 bg-[#1b1c1e] border-[3px] border-[#383a3f] shadow-2xl shadow-black/90 cursor-pointer"
+                  className="group relative w-full max-w-[280px] sm:max-w-[315px] aspect-[727/1500] cursor-pointer select-none filter drop-shadow-[0_25px_40px_rgba(0,0,0,0.92)] transition-transform duration-500 hover:scale-[1.015]"
                   onClick={() =>
                     onOpenLightbox(currentScreen.image, currentScreen.title, currentScreen.subtitle)
                   }
                 >
-                  {/* Outer Bezel Reflect & Shadow */}
-                  <div className="relative w-full rounded-[36px] overflow-hidden bg-black border border-white/10">
-                    {/* Smartphone Dynamic Island */}
-                    <div className="absolute top-2.5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5">
-                      <div className="w-20 h-4 rounded-full bg-black border border-white/15 flex items-center justify-between px-2">
-                        <div className="w-2 h-2 rounded-full bg-[#121212] border border-white/20" />
-                        <div className="w-1.5 h-1.5 rounded-full bg-[#1e293b]" />
+                  {/* Screen Content Layer (Positioned within internal device bezel bounds) */}
+                  <div className="absolute inset-0 px-[2.89%] pt-[1.67%] pb-[1.73%] flex items-center justify-center">
+                    <div className="relative w-full h-full rounded-[13.5%] overflow-hidden bg-black flex items-center justify-center">
+                      <img
+                        src={currentScreen.image}
+                        alt={currentScreen.title}
+                        className="w-full h-full object-cover block"
+                      />
+
+                      {/* Fullscreen Inspect Hover Overlay */}
+                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-200 pointer-events-none z-20">
+                        <span className="rounded-full bg-white text-[#161513] font-['Poppins'] text-[12px] font-semibold px-4 py-2 shadow-lg">
+                          Inspect Fullscreen 🔍
+                        </span>
                       </div>
                     </div>
-
-                    <img
-                      src={currentScreen.image}
-                      alt={currentScreen.title}
-                      className="w-full h-auto object-contain block transition-transform duration-500 group-hover:scale-[1.01]"
-                    />
-
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-200 pointer-events-none">
-                      <span className="rounded-full bg-white text-[#161513] font-['Poppins'] text-[12.5px] font-semibold px-4 py-2 shadow-lg">
-                        Inspect Fullscreen 🔍
-                      </span>
-                    </div>
                   </div>
+
+                  {/* Photorealistic iPhone 17 Pro Chassis, Metallic Edge, Antenna & Dynamic Island */}
+                  <img
+                    src={iphoneFrameImg}
+                    alt="iPhone 17 Pro Frame"
+                    className="absolute inset-0 w-full h-full object-contain pointer-events-none z-10"
+                    loading="eager"
+                  />
                 </div>
               )}
             </motion.div>
