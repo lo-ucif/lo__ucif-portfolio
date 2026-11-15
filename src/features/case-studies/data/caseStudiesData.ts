@@ -1461,12 +1461,12 @@ export const caseStudies: CaseStudy[] = [
         {
           id: "rokhsa-screen-10",
           number: "10",
-          title: "Completed Practical Sessions History",
+          title: "Archive of Completed Driving Lessons",
           arabicTitle: "سجل الحصص التدريبية المنتهية",
           subtitle: "Archived ledger of driving hours and completed student lessons",
           category: "Operations & Fleet",
           description:
-            "A chronological log detailing all completed student drives with date stamps (e.g. Sunday 19 January 2026), instructor sign-offs, and vehicle mileage.",
+            "A chronological record of completed lessons, instructor approvals, dates, and vehicle mileage.",
           uxHighlights: [
             "Daily cumulative training hours meter: 'عدد ساعات اليوم 5:30'.",
             "Clear card list highlighting student name, category, and completion stamp.",
