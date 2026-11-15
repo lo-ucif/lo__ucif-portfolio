@@ -9,55 +9,30 @@ const easeOut = [0.22, 1, 0.36, 1] as const;
 function IPhoneMockup({
   screen,
   isCenter = false,
-  direction = 0,
   onClick,
 }: {
   screen: { image: string; title: string; subtitle?: string };
   isCenter?: boolean;
-  direction?: number;
   onClick?: () => void;
 }) {
   return (
     <div
       onClick={onClick}
       style={{ width: "240px", height: "494px" }}
-      className={`relative w-[240px] h-[494px] shrink-0 rounded-[38px] bg-black overflow-hidden select-none transition-all duration-300 ${
+      className={`relative w-[240px] h-[494px] shrink-0 rounded-[38px] bg-black overflow-hidden select-none transition-shadow duration-300 ${
         isCenter
-          ? "cursor-pointer shadow-[0_25px_50px_rgba(0,0,0,0.95)] hover:scale-[1.015]"
-          : "cursor-pointer hover:opacity-60"
+          ? "cursor-pointer shadow-[0_25px_50px_rgba(0,0,0,0.95)]"
+          : "cursor-pointer"
       }`}
     >
       {/* Screen Content Layer */}
-      <div className="absolute inset-[6px_5.5px] rounded-[32px] overflow-hidden bg-black z-10">
-        <AnimatePresence initial={false} custom={direction}>
-          <motion.img
-            key={screen.image}
-            src={screen.image}
-            alt={screen.title}
-            custom={direction}
-            initial={{
-              opacity: 0,
-              x: direction > 0 ? 55 : direction < 0 ? -55 : 0,
-              scale: 0.98,
-            }}
-            animate={{
-              opacity: 1,
-              x: 0,
-              scale: 1,
-            }}
-            exit={{
-              opacity: 0,
-              x: direction > 0 ? -55 : direction < 0 ? 55 : 0,
-              scale: 0.98,
-            }}
-            transition={{
-              duration: 0.35,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-            className="absolute inset-0 w-full h-full object-cover block"
-            loading="eager"
-          />
-        </AnimatePresence>
+      <div className="absolute inset-[6px_5.5px] rounded-[32px] overflow-hidden bg-black flex items-center justify-center z-10">
+        <img
+          src={screen.image}
+          alt={screen.title}
+          className="w-full h-full object-cover block"
+          loading="eager"
+        />
 
         {/* Hover Inspect Overlay for Center Phone */}
         {isCenter && (
@@ -91,6 +66,49 @@ function IPhoneMockup({
     </div>
   );
 }
+
+// 3D Physical Phone Card Animation Variants (Whole Card Glides between Positions)
+const phoneCardVariants = {
+  enter: (direction: number) => ({
+    x: direction > 0 ? 280 : -280,
+    y: 17,
+    scale: 0.92,
+    opacity: 0,
+    zIndex: 5,
+  }),
+  center: {
+    x: 0,
+    y: 0,
+    scale: 1,
+    opacity: 1,
+    zIndex: 20,
+    transition: { duration: 0.45, ease: easeOut },
+  },
+  left: {
+    x: -148,
+    y: 17,
+    scale: 0.96,
+    opacity: 0.2,
+    zIndex: 10,
+    transition: { duration: 0.45, ease: easeOut },
+  },
+  right: {
+    x: 148,
+    y: 17,
+    scale: 0.96,
+    opacity: 0.2,
+    zIndex: 10,
+    transition: { duration: 0.45, ease: easeOut },
+  },
+  exit: (direction: number) => ({
+    x: direction > 0 ? -280 : 280,
+    y: 17,
+    scale: 0.92,
+    opacity: 0,
+    zIndex: 5,
+    transition: { duration: 0.35, ease: easeOut },
+  }),
+};
 
 type CaseStudyFinalDesignProps = {
   study: CaseStudy;
@@ -179,6 +197,25 @@ export function CaseStudyFinalDesign({
         : 0;
     return filteredScreens[nextIdx];
   }, [filteredScreens, currentIndexInFiltered]);
+
+  // Derived 3D cards to render for smooth coverflow animation
+  const cardsToRender = useMemo(() => {
+    if (filteredScreens.length === 0) return [];
+    if (filteredScreens.length === 1) {
+      return [{ screen: currentScreen, pos: "center" as const }];
+    }
+    if (filteredScreens.length === 2) {
+      return [
+        { screen: prevScreen!, pos: "left" as const },
+        { screen: currentScreen, pos: "center" as const },
+      ];
+    }
+    return [
+      { screen: prevScreen!, pos: "left" as const },
+      { screen: currentScreen, pos: "center" as const },
+      { screen: nextScreen!, pos: "right" as const },
+    ];
+  }, [filteredScreens.length, currentScreen, prevScreen, nextScreen]);
 
   const handlePrev = () => {
     setDirection(-1);
@@ -294,82 +331,98 @@ export function CaseStudyFinalDesign({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center w-full">
           {/* LEFT COLUMN: Title, Subtitle, Description, UX Architecture */}
           <div className={`${isScreenWeb ? "lg:col-span-5" : "lg:col-span-6"} flex flex-col items-start text-left w-full order-2 lg:order-1 min-h-[440px] sm:min-h-[480px]`}>
-            <AnimatePresence mode="wait" initial={false}>
-              <motion.div
-                key={currentScreen.id}
-                initial={{ opacity: 0, x: direction > 0 ? 18 : direction < 0 ? -18 : 0, y: 4 }}
-                animate={{ opacity: 1, x: 0, y: 0 }}
-                exit={{ opacity: 0, x: direction > 0 ? -18 : direction < 0 ? 18 : 0, y: -4 }}
-                transition={{ duration: 0.22, ease: easeOut }}
-                className="flex flex-col items-start gap-3.5 w-full"
-              >
-                {/* Screen Tag & Arabic Title */}
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="font-['Itim'] text-[12px] sm:text-[13px] text-[#5197ff] uppercase tracking-wider font-semibold bg-[#5197ff]/15 border border-[#5197ff]/30 rounded-full px-3 py-1">
-                    Screen {currentScreen.number} of {screens.length}
+            <div className="flex flex-col items-start gap-3.5 w-full">
+              {/* Screen Tag & Arabic Title (Fixed in place, no reload) */}
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="font-['Itim'] text-[12px] sm:text-[13px] text-[#5197ff] uppercase tracking-wider font-semibold bg-[#5197ff]/15 border border-[#5197ff]/30 rounded-full px-3 py-1">
+                  Screen {currentScreen.number} of {screens.length}
+                </span>
+                {currentScreen.category && (
+                  <span className="font-['Itim'] text-[12px] sm:text-[13px] text-[#9CA3AF] bg-white/[0.05] border border-white/10 rounded-full px-3 py-1">
+                    {currentScreen.category}
                   </span>
-                  {currentScreen.category && (
-                    <span className="font-['Itim'] text-[12px] sm:text-[13px] text-[#9CA3AF] bg-white/[0.05] border border-white/10 rounded-full px-3 py-1">
-                      {currentScreen.category}
-                    </span>
-                  )}
-                  {currentScreen.arabicTitle && (
-                    <span className="font-['Inter'] text-[14px] sm:text-[16px] text-[#5197ff] font-medium">
-                      • {currentScreen.arabicTitle}
-                    </span>
-                  )}
-                </div>
-
-                {/* Main Title */}
-                <h3 className="font-['Itim'] text-[26px] sm:text-[34px] lg:text-[38px] text-white font-bold leading-tight">
-                  {currentScreen.title}
-                </h3>
-
-                {/* Subtitle */}
-                {currentScreen.subtitle && (
-                  <p className="font-['Poppins'] text-[14.5px] sm:text-[16px] text-[#5197ff] font-medium">
-                    {currentScreen.subtitle}
-                  </p>
                 )}
-
-                {/* Description */}
-                {currentScreen.description && (
-                  <p className="font-['Poppins'] text-[14px] sm:text-[15px] text-[#b4b4b4] leading-relaxed text-left">
-                    {currentScreen.description}
-                  </p>
+                {currentScreen.arabicTitle && (
+                  <span className="font-['Inter'] text-[14px] sm:text-[16px] text-[#5197ff] font-medium">
+                    • {currentScreen.arabicTitle}
+                  </span>
                 )}
+              </div>
 
-                {/* UX Highlights & Key Design Decisions */}
-                {currentScreen.uxHighlights && currentScreen.uxHighlights.length > 0 && (
-                  <div className="flex flex-col items-start w-full pt-4 mt-1 border-t border-white/[0.08] text-left">
-                    <span className="font-['Itim'] text-[13px] text-[#8491A0] uppercase tracking-wider mb-2.5">
-                      • UX/UI Architecture &amp; Key Design Decisions:
-                    </span>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 w-full">
-                      {currentScreen.uxHighlights.map((highlight, hIdx) => (
-                        <div
-                          key={hIdx}
-                          className="flex items-start gap-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] p-2.5 text-left"
-                        >
-                          <svg
-                            className="w-4 h-4 text-[#5197ff] shrink-0 mt-0.5"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2.5"
+              {/* Title, Subtitle & Description Animated In-Place (No Blank Reload) */}
+              <div className="relative w-full min-h-[160px]">
+                <AnimatePresence mode="popLayout" initial={false}>
+                  <motion.div
+                    key={currentScreen.id}
+                    initial={{ opacity: 0, x: direction > 0 ? 25 : direction < 0 ? -25 : 0 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: direction > 0 ? -25 : direction < 0 ? 25 : 0 }}
+                    transition={{ duration: 0.28, ease: easeOut }}
+                    className="flex flex-col items-start gap-2 w-full"
+                  >
+                    {/* Main Title */}
+                    <h3 className="font-['Itim'] text-[26px] sm:text-[34px] lg:text-[38px] text-white font-bold leading-tight">
+                      {currentScreen.title}
+                    </h3>
+
+                    {/* Subtitle */}
+                    {currentScreen.subtitle && (
+                      <p className="font-['Poppins'] text-[14.5px] sm:text-[16px] text-[#5197ff] font-medium">
+                        {currentScreen.subtitle}
+                      </p>
+                    )}
+
+                    {/* Description */}
+                    {currentScreen.description && (
+                      <p className="font-['Poppins'] text-[14px] sm:text-[15px] text-[#b4b4b4] leading-relaxed text-left">
+                        {currentScreen.description}
+                      </p>
+                    )}
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+
+              {/* UX Highlights & Key Design Decisions (Permanent Section Header, Animated Pills) */}
+              {currentScreen.uxHighlights && currentScreen.uxHighlights.length > 0 && (
+                <div className="flex flex-col items-start w-full pt-4 mt-1 border-t border-white/[0.08] text-left">
+                  <span className="font-['Itim'] text-[13px] text-[#8491A0] uppercase tracking-wider mb-2.5">
+                    • UX/UI Architecture &amp; Key Design Decisions:
+                  </span>
+                  <div className="relative w-full min-h-[105px]">
+                    <AnimatePresence mode="popLayout" initial={false}>
+                      <motion.div
+                        key={currentScreen.id}
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -8 }}
+                        transition={{ duration: 0.25, ease: easeOut }}
+                        className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 w-full"
+                      >
+                        {currentScreen.uxHighlights.map((highlight, hIdx) => (
+                          <div
+                            key={hIdx}
+                            className="flex items-start gap-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] p-2.5 text-left"
                           >
-                            <polyline points="20 6 9 17 4 12" />
-                          </svg>
-                          <span className="font-['Poppins'] text-[13px] text-[#d1d1d1] leading-relaxed">
-                            {highlight}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
+                            <svg
+                              className="w-4 h-4 text-[#5197ff] shrink-0 mt-0.5"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2.5"
+                            >
+                              <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            <span className="font-['Poppins'] text-[13px] text-[#d1d1d1] leading-relaxed">
+                              {highlight}
+                            </span>
+                          </div>
+                        ))}
+                      </motion.div>
+                    </AnimatePresence>
                   </div>
-                )}
-              </motion.div>
-            </AnimatePresence>
+                </div>
+              )}
+            </div>
           </div>
 
           {/* RIGHT COLUMN: 3-Phone Presentation Stage (Figma Node 600:220) + Navigation Below */}
@@ -424,57 +477,58 @@ export function CaseStudyFinalDesign({
                 </div>
               </div>
             ) : (
-              // 3-Phone Presentation Stage (Exact Figma Node 600:220)
+              // 3-Phone Presentation Stage (Whole Phone Cards Glide between Positions)
               <div className="relative flex items-center justify-center w-full min-h-[510px] py-2 overflow-hidden sm:overflow-visible select-none">
-                {/* Left Phone (Figma 594:324 - Opacity 20%, Offset Left & Down) */}
-                {prevScreen && (
-                  <div
-                    className="absolute z-10 transition-all duration-300 ease-out cursor-pointer group"
-                    style={{
-                      transform: "translateX(-148px) translateY(17px) scale(0.96)",
-                    }}
-                    onClick={handlePrev}
-                    title={`Previous: ${prevScreen.title}`}
-                  >
-                    <div className="opacity-20 group-hover:opacity-45 transition-opacity duration-300">
-                      <IPhoneMockup screen={prevScreen} direction={direction} />
-                    </div>
-                  </div>
-                )}
+                <AnimatePresence initial={false} custom={direction}>
+                  {cardsToRender.map(({ screen, pos }) => {
+                    const isCenter = pos === "center";
+                    const isLeft = pos === "left";
+                    const isRight = pos === "right";
 
-                {/* Center Phone (Figma 600:150 - Active Screen, Size 240px w * 494px h) */}
-                <div className="relative z-20">
-                  <IPhoneMockup
-                    screen={currentScreen}
-                    isCenter={true}
-                    direction={direction}
-                    onClick={() =>
-                      onOpenLightbox(
-                        currentScreen.image,
-                        currentScreen.title,
-                        currentScreen.subtitle,
-                        currentIndexInFiltered,
-                        lightboxItems
-                      )
-                    }
-                  />
-                </div>
+                    const handleClick = () => {
+                      if (isCenter) {
+                        onOpenLightbox(
+                          screen.image,
+                          screen.title,
+                          screen.subtitle,
+                          currentIndexInFiltered,
+                          lightboxItems
+                        );
+                      } else if (isLeft) {
+                        handlePrev();
+                      } else if (isRight) {
+                        handleNext();
+                      }
+                    };
 
-                {/* Right Phone (Figma 600:185 - Opacity 20%, Offset Right & Down) */}
-                {nextScreen && (
-                  <div
-                    className="absolute z-10 transition-all duration-300 ease-out cursor-pointer group"
-                    style={{
-                      transform: "translateX(148px) translateY(17px) scale(0.96)",
-                    }}
-                    onClick={handleNext}
-                    title={`Next: ${nextScreen.title}`}
-                  >
-                    <div className="opacity-20 group-hover:opacity-45 transition-opacity duration-300">
-                      <IPhoneMockup screen={nextScreen} direction={direction} />
-                    </div>
-                  </div>
-                )}
+                    return (
+                      <motion.div
+                        key={screen.id}
+                        custom={direction}
+                        variants={phoneCardVariants}
+                        initial="enter"
+                        animate={pos}
+                        exit="exit"
+                        whileHover={!isCenter ? { opacity: 0.48 } : undefined}
+                        className="absolute flex items-center justify-center cursor-pointer"
+                        style={{ willChange: "transform, opacity" }}
+                        title={
+                          isLeft
+                            ? `Previous: ${screen.title}`
+                            : isRight
+                            ? `Next: ${screen.title}`
+                            : screen.title
+                        }
+                      >
+                        <IPhoneMockup
+                          screen={screen}
+                          isCenter={isCenter}
+                          onClick={handleClick}
+                        />
+                      </motion.div>
+                    );
+                  })}
+                </AnimatePresence>
               </div>
             )}
 
