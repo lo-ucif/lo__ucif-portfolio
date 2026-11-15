@@ -3,6 +3,10 @@ import tabibMockup from "../../../assets/case-studies/mockups/al-tabib-transpare
 import tabibFramed from "../../../assets/case-studies/mockups/al-tabib-framed.webp";
 import rokhsaMockup from "../../../assets/case-studies/mockups/rokhsa-transparent.webp";
 import rokhsaFramed from "../../../assets/case-studies/mockups/rokhsa-framed.webp";
+import hafezMockup from "../../../assets/case-studies/mockups/7afez-transparent.webp";
+import hafezFramed from "../../../assets/case-studies/mockups/7afez-framed.webp";
+import hafezScreen01 from "../../../assets/case-studies/7afez/7afez-web-01.webp";
+import hafezScreen02 from "../../../assets/case-studies/7afez/7afez-web-02.webp";
 // Al-Tabib Al-Hafiz Screens (WebP)
 import tabibScreen01 from "../../../assets/case-studies/al-tabib/iPhone 17 - 1.webp";
 import tabibScreen02 from "../../../assets/case-studies/al-tabib/iPhone 17 - 2.webp";
@@ -48,7 +52,12 @@ import tabibPhoneRight from "../../../assets/case-studies/mockups/phones/tabib-r
 import rokhsaPhoneLeft from "../../../assets/case-studies/mockups/phones/rokhsa-left.webp";
 import rokhsaPhoneCenter from "../../../assets/case-studies/mockups/phones/rokhsa-center.webp";
 import rokhsaPhoneRight from "../../../assets/case-studies/mockups/phones/rokhsa-right.webp";
-import { FigmaIcon } from "../../../constants/Icon";
+import {
+  FigmaIcon,
+  ReactIcon,
+  TypescriptIcon,
+  TaillwindIcon,
+} from "../../../constants/Icon";
 import type { CaseStudy } from "../types";
 
 export const caseStudies: CaseStudy[] = [
@@ -95,6 +104,11 @@ export const caseStudies: CaseStudy[] = [
         title: "Framed Presentation Showcase",
         image: tabibFramed,
         caption: "Framed Device Portfolio Presentation",
+      },
+      {
+        title: "7afez Web Platform Showcase",
+        image: hafezMockup,
+        caption: "Hi-Fi MacBook Pro Web Mockup in Figma (Node 595:449)",
       },
     ],
     presentationHeading: "Mobile Presentation",
@@ -879,6 +893,504 @@ export const caseStudies: CaseStudy[] = [
     },
   },
   {
+    id: "3",
+    slug: "7afez-web",
+    title: "7afez Web Platform",
+    arabicTitle: "منصة حافظ — المنظومة السحابية",
+    subtitle: "Quran Memorization & Study Circles Web Ecosystem",
+    shortDescription:
+      "A dedicated cloud web platform designed to streamline Quran memorization, coordinate academic halaqat, and connect students with certified instructors.",
+    projectType: "Responsive Web Platform",
+    platformType: "web",
+    presentationHeading: "Web Presentation",
+    role: "UI/UX Designer",
+    designResponsibilities: [
+      "User Interface Design",
+      "User Experience Design",
+      "Design System & Tokens",
+      "Arabic Typography & Visual Hierarchy",
+      "Responsive Desktop & Tablet Layouts",
+      "Component Variants & Auto Layout",
+      "Interactive Prototyping in Figma",
+    ],
+    mainDesignFocus:
+      "Serene spiritual aesthetic, structured halaqat administration, and frictionless inquiry workflows for academic reciters.",
+    platform: "Responsive Web (Desktop & Tablet)",
+    timeline: "2026",
+    organization: "Faculty of Medicine & Quranic Circles (كلية الطب والمراكز القرآنية)",
+    heroImage: hafezMockup,
+    mockupImage: hafezMockup,
+    framedMockupImage: hafezFramed,
+    galleryMockups: [
+      {
+        title: "Transparent Dual-Laptop Presentation",
+        image: hafezMockup,
+        caption: "Hi-Fi MacBook Pro Web Mockup in Figma (Node 595:449)",
+      },
+      {
+        title: "Framed Presentation Showcase",
+        image: hafezFramed,
+        caption: "Framed Device Portfolio Presentation",
+      },
+    ],
+    tools: [
+      { label: "Figma", icon: FigmaIcon },
+      { label: "React", icon: ReactIcon },
+      { label: "TypeScript", icon: TypescriptIcon },
+      { label: "Tailwind CSS", icon: TaillwindIcon },
+    ],
+    liveDemo: "https://7afez.platform",
+    linkedin:
+      "https://www.linkedin.com/posts/ahmed-loucif-757854342_Ui/Ux Design-uidesign-uxdesign-activity-7492710718945943552-9YBE",
+    figmaLink:
+      "https://www.figma.com/design/hx4E6cZLWqvRjPWsZ5nXpN/my-portfolio?node-id=595-449&t=4FLL2zwFHHIvH7Z5-4",
+
+    // 01 — Project Overview
+    overview: {
+      summary:
+        "7afez Web (منصة حافظ) is the desktop web extension of the Quran memorization ecosystem, designed to provide a comprehensive, distraction-free environment for medical students, reciters, and study circle supervisors. While mobile devices excel at quick daily revisions on the go, the web platform serves as the central operational hub: managing study circle schedules, exploring institutional halaqat, submitting inquiries, and fostering a structured daily habit with the Holy Quran.",
+      objectives: [
+        "Create a harmonious, culturally resonant Arabic design system centered on serene deep-teal and warm golden accents.",
+        "Provide a clear, conversion-optimized landing page articulating the platform's mission, circle features, and institutional benefits.",
+        "Streamline communication and inquiries through an empathetic, accessible support portal with friendly illustrative assistance.",
+        "Deliver high-fidelity interactive prototypes in Figma using rigorous Auto Layout, Component Variants, and Design Tokens.",
+      ],
+    },
+
+    // 02 — Problems (Short bullet points)
+    problemsList: [
+      {
+        title: "Fragmented Circle Coordination",
+        description:
+          "Halaqat leads and students rely on scattered messaging channels, losing track of recitation schedules, attendance, and student levels.",
+      },
+      {
+        title: "Cognitive Fatigue & Visual Noise",
+        description:
+          "Standard educational tools lack serene spiritual aesthetics, introducing visual clutter rather than fostering calm, focused Quran study.",
+      },
+      {
+        title: "Lack of Centralized Institutional Portal",
+        description:
+          "Faculties and Quranic associations lack a dedicated desktop web hub to showcase their halaqat, onboard cohorts, and handle inquiries.",
+      },
+    ],
+    problem: {
+      statement:
+        "Medical students and reciters balancing demanding academic coursework struggle with fragmented communication and cluttered tools that fail to support consistent, distraction-free Quran revision and halaqat coordination.",
+      context:
+        "Rigorous university curricula leave minimal discretionary time. Physical recitation circles require digital coordination to maintain attendance, log progress, and connect students with qualified sheikhs through a dependable, accessible platform.",
+      targetAudience:
+        "University students, Quran memorizers, halaqat supervisors, academic study circles, and Islamic educational institutions.",
+      challenges: [
+        {
+          number: "01",
+          title: "Arabic Cultural & Calligraphic Harmony",
+          description:
+            "Harmonizing modern web UI components with classical Arabic calligraphy accents and right-to-left visual balance.",
+          iconName: "book",
+        },
+        {
+          number: "02",
+          title: "Calm Spiritual Focus & Contrast",
+          description:
+            "Designing an atmospheric interface that minimizes cognitive load and induces tranquility through deep teal palettes and soft golden accents.",
+          iconName: "heart",
+        },
+        {
+          number: "03",
+          title: "Frictionless Inquiries & Onboarding Funnel",
+          description:
+            "Ensuring halaqat questions, registration assistance, and institutional demo requests ('طلب نسخة') flow without bureaucratic obstacles.",
+          iconName: "message",
+        },
+      ],
+    },
+
+    // 03 — User Needs (UML Use Case Diagram)
+    useCaseDiagram: {
+      systemName: "7afez Web Platform Ecosystem",
+      actors: [
+        {
+          id: "reciter",
+          name: "Reciter / Student",
+          arabicName: "الطالب الحافظ",
+          role: "Active Reciter & Circle Member",
+          useCases: [
+            "Explore Study Circles (تصفح الحلقات)",
+            "Request Platform Access (طلب نسخة)",
+            "Submit Inquiries & Questions (تواصل معنا)",
+            "Access Structured Memorization Schedules",
+          ],
+        },
+        {
+          id: "sheikh",
+          name: "Sheikh / Circle Supervisor",
+          arabicName: "الشيخ المشرف",
+          role: "Study Circle Leader",
+          useCases: [
+            "Manage Halaqat Cohorts",
+            "Review Recitation Progress",
+            "Publish Circle Schedules & Timetables",
+            "Respond to Student Queries & Advice",
+          ],
+        },
+        {
+          id: "admin",
+          name: "Institutional Administrator",
+          arabicName: "مدير المنظومة",
+          role: "Platform Coordinator",
+          useCases: [
+            "Monitor Institutional Enrollment",
+            "Manage System Licenses & Circle Quotas",
+            "Broadcast Announcements & Guidelines",
+            "Oversee Support Requests & Feedback",
+          ],
+        },
+      ],
+    },
+    research: {
+      overview:
+        "User research conducted with university students and Quranic supervisors underscored the necessity of a dedicated desktop web interface that complements the mobile app for scheduling, onboarding, and comprehensive circle administration.",
+      userNeeds: [
+        "Distraction-free environment with high contrast, calm colors, and legible Arabic typography.",
+        "Direct communication channels with project coordinators without intimidating multi-step forms.",
+        "Prominent demonstration request ('طلب نسخة') for institutions and study groups.",
+        "Responsive desktop and tablet experience that remains clear across varying screen resolutions.",
+      ],
+      persona: {
+        name: "Ahmed & Sheikh Abdelrahman",
+        tagline:
+          "Medical Student & Halaqat Supervisor — University of Constantine",
+        quote:
+          "«من خلال منصة حافظ، نسعى إلى جعل رحلة حفظ القرآن الكريم ومراجعته أكثر سهولة وتنظيماً واستمرارية مع كتاب الله»",
+        demographics: [
+          { label: "Primary Role", value: "Student Reciter & Circle Lead" },
+          { label: "Environment", value: "Desktop & Tablet Web" },
+          {
+            label: "Focus",
+            value: "Memorization Consistency & Halaqat Management",
+          },
+          { label: "Location", value: "Constantine, Algeria" },
+        ],
+        goals: [
+          "Establish an unbreakable daily Quran revision habit alongside medical studies.",
+          "Centralize circle communication and session schedules in one accessible web hub.",
+          "Provide intuitive onboarding for new reciters joining academic halaqat.",
+        ],
+        painPoints: [
+          "Disorganized messaging groups with buried announcements and missed sessions.",
+          "Complicated software interfaces that induce screen fatigue after intensive study.",
+          "Lack of dedicated desktop access for administrative and planning tasks.",
+        ],
+      },
+      journey: [
+        {
+          phase: "Discovery",
+          goal: "Explore 7afez Platform",
+          action:
+            "Lands on homepage, discovers core platform features, values, and project mission",
+          touchpoint: "Hero Section & Arabic Calligraphy Identity",
+          experience: "positive",
+        },
+        {
+          phase: "Evaluation",
+          goal: "Understand Value & Offerings",
+          action:
+            "Reviews system features, target audiences, and student benefits across sections",
+          touchpoint: "Features Bar & Target User Grid",
+          experience: "positive",
+        },
+        {
+          phase: "Inquiry",
+          goal: "Contact Team for Halaqat",
+          action:
+            "Submits inquiry form assisted by friendly illustrated guide for circle questions",
+          touchpoint: "Contact Us (تواصل معنا) Page",
+          experience: "positive",
+        },
+        {
+          phase: "Onboarding",
+          goal: "Request Platform Demo",
+          action:
+            "Clicks 'طلب نسخة' to begin institutional setup for their university circle",
+          touchpoint: "Demo Call-to-Action",
+          experience: "positive",
+        },
+      ],
+      keyInsights: [
+        {
+          number: "01",
+          title: "Desktop Ergonomics for Planning",
+          takeaway:
+            "While recitation happens on phones, scheduling and circle coordination benefit significantly from spacious desktop real estate.",
+        },
+        {
+          number: "02",
+          title: "Empathy Through Friendly Guidance",
+          takeaway:
+            "An illustrated mascot in the support section noticeably reduces intimidation for users asking questions about circles.",
+        },
+        {
+          number: "03",
+          title: "Serene Color Psychology",
+          takeaway:
+            "Deep teal hues (#173c52) paired with warm golden tones invoke cultural heritage and focus, enhancing spiritual serenity.",
+        },
+      ],
+    },
+
+    // 04 — Design Process & User Flow
+    designProcess: {
+      overview:
+        "The web platform's design process followed a human-centered approach: defining brand identity foundations, crafting atmospheric visual tokens, building reusable Auto Layout components, and assembling responsive desktop screens.",
+      informationArchitecture: {
+        description:
+          "Hierarchical structure organized to serve both prospective students exploring halaqat and registered institutions requiring direct communication.",
+        hierarchy: [
+          {
+            title: "Header Navigation",
+            items: [
+              "الرئيسية (Home)",
+              "مميزات النظام (Features)",
+              "المستخدمون (Users)",
+              "العروض (Offers)",
+              "الدعم (Support)",
+              "الشروط والأحكام (Terms)",
+            ],
+          },
+          {
+            title: "Flagship Actions",
+            items: [
+              "طلب نسخة (Request Demo / Enrollment)",
+              "إنشاء حساب (Create Account)",
+              "تسجيل الدخول (Sign In)",
+            ],
+          },
+          {
+            title: "Communication Portal",
+            items: [
+              "تواصل معنا (Direct Contact Form)",
+              "Halaqat Inquiry Categories",
+              "Institutional Onboarding Assistance",
+            ],
+          },
+        ],
+      },
+      userFlow: {
+        description:
+          "Frictionless user flow transitioning from brand discovery directly to demo request and inquiry submission in minimal steps.",
+        steps: [
+          "Landing Page (Explore Platform Values & Visual Calligraphy)",
+          "Discover Features (Understand Circles & Student Tracking)",
+          "Demo / Access Request (Submit 'طلب نسخة' for University Cohort)",
+          "Direct Communication (Reach project leads via friendly mascot assistant)",
+        ],
+        nodes: [
+          {
+            step: 1,
+            title: "Discover Vision",
+            touchpoint: "Hero Section",
+            userAction: "Lands on web hub and reads platform mission",
+            systemResponse: "Displays authentic Arabic typography and brand atmosphere",
+          },
+          {
+            step: 2,
+            title: "Evaluate Offerings",
+            touchpoint: "Features Bar",
+            userAction: "Reviews halaqat support and teacher coordination features",
+            systemResponse: "Highlights structured revision and institutional benefits",
+          },
+          {
+            step: 3,
+            title: "Inquire & Support",
+            touchpoint: "Contact Form",
+            userAction: "Fills full name, email, and halaqat question",
+            systemResponse: "Validates inputs and dispatches to project supervisors",
+          },
+          {
+            step: 4,
+            title: "Onboard Institution",
+            touchpoint: "Primary CTA",
+            userAction: "Clicks 'طلب نسخة' for medical circle adoption",
+            systemResponse: "Initiates institutional onboarding flow",
+          },
+        ],
+      },
+      wireframes: {
+        description:
+          "Desktop wireframes focused on balanced negative space, prominent Arabic typography hierarchy, and unobstructed conversion touchpoints.",
+        points: [
+          "Generous hero section with centered calligraphic emblem and high-contrast CTA.",
+          "Persistent desktop navigation bar with distinct sign-in and action buttons.",
+          "Two-column contact layout balancing illustrative warmth with clean input fields.",
+          "Responsive breakpoint adaptations preserving layout dignity across widescreen and laptop displays.",
+        ],
+      },
+      designSystem: [
+        {
+          category: "Color Palette",
+          description: "Serene deep teal, noble gold, and pure white surfaces.",
+          details: [
+            "Primary Ocean Teal: #173c52 / #102838 (Spiritual Depth & Stability)",
+            "Accent Gold: #C99738 / #dfa84a (Noble Calligraphy & Primary CTA)",
+            "Dark Background: #161513 / #1F1F1F (Deep Canvas Hierarchy)",
+            "Card Neutral: #FFFFFF & Slate Glass (Readability & Contrast)",
+            "Text Primary: #FFFFFF / #E5E7EB (Legibility & Scanning Ease)",
+          ],
+        },
+        {
+          category: "Typography",
+          description: "Expressive Arabic calligraphy paired with clean modern geometric sans-serif.",
+          details: [
+            "Display Arabic: Traditional Arabic & Cairo for expressive, dignified headers.",
+            "Body Prose: High-legibility line heights (1.6 - 1.8) for comfortable reading.",
+            "Latin & Monospace: Poppins and Inter for metadata and input placeholders.",
+          ],
+        },
+        {
+          category: "Auto Layout & Components",
+          description: "Strict 8-point spatial system and modular component library in Figma.",
+          details: [
+            "MacBook Pro 15 & 16 vector device frames with precise screen viewports.",
+            "Interactive form inputs with label, active focus ring, and helper states.",
+            "Floating pill buttons with smooth hover and active state transitions.",
+          ],
+        },
+      ],
+      componentsAndVariants: {
+        description:
+          "Engineered modular Figma components with interactive variants simulating real desktop software interactions.",
+        items: [
+          "Navigation Bar: Desktop sticky header with links, login buttons, and primary CTA pill.",
+          "Form Input Components: Name, Email, and Textarea inputs with RTL placeholder states.",
+          "MacBook Pro Presentation Frames: Authentic Apple vector hardware frames with screen clipping.",
+          "Mascot Visual Element: Friendly illustrated assistant guiding users through inquiries.",
+        ],
+      },
+      interactivePrototyping: {
+        description:
+          "Figma prototype showcasing realistic transitions, hover reactions, and screen connections.",
+        features: [
+          "Smooth 300ms ease-out transitions between landing page and inquiry hub.",
+          "Interactive hover effects on primary 'طلب نسخة' and contact submission buttons.",
+          "Responsive auto-layout resizing test across 1440px and 1280px screen widths.",
+        ],
+      },
+    },
+
+    // 05 — Solution Screens
+    solution: {
+      headline: "A Harmonious Desktop Sanctuary for Quranic Study & Community",
+      description:
+        "The finalized web platform provides an inspiring, distraction-free environment for medical students and halaqat leads. Every component is built with strict Auto Layout, bilingual typography harmony, and authentic Arabic spiritual aesthetics.",
+      coreFeatures: [
+        {
+          title: "Institutional Mission & Brand Presence",
+          arabicTitle: "الرئيسية — هوية المنصة ورسالتها",
+          description:
+            "A welcoming desktop landing page that immediately communicates the platform's vision of organized, effortless Quran memorization.",
+          impact: "Significantly enhances student trust and institutional credibility.",
+        },
+        {
+          title: "Empathetic Direct Support Portal",
+          arabicTitle: "تواصل معنا — خدمة المستفيدين",
+          description:
+            "A friendly, illustrated contact interface that simplifies submitting halaqat questions and registration inquiries.",
+          impact: "Reduces communication friction and encourages student engagement.",
+        },
+        {
+          title: "Multi-Device Desktop Presentation",
+          arabicTitle: "عرض تفاعلي بأجهزة ماك بوك",
+          description:
+            "Realistic MacBook Pro presentation mockup in Figma (Node 595:449) highlighting simultaneous desktop interactions.",
+          impact: "Provides stakeholders with clear real-world visual context.",
+        },
+      ],
+      screens: [
+        {
+          id: "7afez-web-screen-1",
+          number: "01",
+          title: "Platform Landing & Spiritual Brand Identity",
+          arabicTitle: "الرئيسية — هوية منصة حافظ ورسالة المشروع",
+          subtitle:
+            "Purpose-built desktop portal welcoming reciters and halaqat supervisors",
+          description:
+            "The landing page establishes the core brand message: empowering Quran memorization through structured daily habits, clear progress tracking, and supportive study communities. Features deep-ocean teal hues, golden accents, and authentic Arabic calligraphy typography.",
+          uxHighlights: [
+            "Atmospheric spiritual visual palette with deep teal and warm golden accents",
+            "Clear conversion funnel with prominent 'Request a Demo' (طلب نسخة) primary action",
+            "Transparent institutional value proposition addressing both learners and teachers",
+            "Contextual top navigation with quick authentication and circle discovery",
+          ],
+          image: hafezScreen01,
+          category: "Landing & Brand",
+          aspectRatio: "web",
+        },
+        {
+          id: "7afez-web-screen-2",
+          number: "02",
+          title: "Direct Inquiries & Project Communication Hub",
+          arabicTitle: "تواصل معنا — مركز الاستفسارات وخدمة المستفيدين",
+          subtitle:
+            "Approachable communication portal with friendly illustrated assistant",
+          description:
+            "A human-centered contact screen designed to lower friction for prospective study circles, student inquiries, and technical support. Features an illustrated mascot, clear input fields, and prompt direct feedback.",
+          uxHighlights: [
+            "Engaging illustrated guide providing friendly guidance and emotional warmth",
+            "Accessible Arabic form fields with clear visual labels and focus states",
+            "Direct routing for registration, halaqat inquiries, and technical assistance",
+            "Responsive card architecture maintaining readability across all viewports",
+          ],
+          image: hafezScreen02,
+          category: "Communication & Support",
+          aspectRatio: "web",
+        },
+      ],
+    },
+
+    // 06 — Reflection & Learnings
+    reflection: {
+      challenges: [
+        "Balancing modern web SaaS patterns with reverent spiritual themes without appearing overly commercial.",
+        "Ensuring seamless typography legibility for Arabic RTL text across all browser zoom levels.",
+        "Creating an overlapping multi-device presentation in Figma that highlights both macro messaging and micro interactions.",
+      ],
+      approaches: [
+        {
+          challenge: "Avoiding Commercial Clutter",
+          approach:
+            "Focused on spacious typographic layouts, subtle golden accents, and clear institutional benefits instead of aggressive marketing banners.",
+        },
+        {
+          challenge: "Arabic RTL Layout Precision",
+          approach:
+            "Built all components from the ground up using RTL-first flexbox logic and verified proper alignment in Figma auto layout.",
+        },
+        {
+          challenge: "Dual-Device Presentation Harmony",
+          approach:
+            "Offset the MacBook Pro 15 and MacBook Pro 16 frames with realistic physical perspective and drop shadows to establish natural depth.",
+        },
+      ],
+      learnings: [
+        "Color psychology plays a profound role in faith-based educational tools; deep teal evokes both intellect and spiritual tranquility.",
+        "Presenting web designs inside realistic multi-device desktop frames immediately conveys scale and real-world credibility.",
+        "Figma components and design tokens drastically accelerate bilingual adaptations and theme consistency.",
+      ],
+      improvements: [
+        "Incorporate an interactive audio recitation preview directly within the web hero section.",
+        "Develop an interactive timetable planner for virtual and physical halaqat sessions.",
+        "Add a multi-language switcher supporting Arabic, French, and English for international students.",
+      ],
+      futurePossibilities: [
+        "AI-assisted recitation pronunciation verification embedded directly into browser sessions.",
+        "Real-time synchronized Mushaf pages for live group recitation circles.",
+        "Unified mobile-and-web synchronization for seamless transitioning between transit revision and desktop study.",
+      ],
+    },
+  },
+  {
     id: "2",
     slug: "rokhsa",
     title: "Rokhsa — Smart Driving School Platform",
@@ -923,7 +1435,7 @@ export const caseStudies: CaseStudy[] = [
         caption: "Framed Portfolio Showcase",
       },
     ],
-    presentationHeading: "Mobile Presentation",
+    presentationHeading: "Driving School Platform",
     tools: [{ label: "Figma", icon: FigmaIcon }],
     liveDemo:
       "https://www.linkedin.com/posts/ahmed-loucif-757854342_Ui/Ux Design-uxdesign-figma-ugcPost-7490915921327198208-KWqx/",

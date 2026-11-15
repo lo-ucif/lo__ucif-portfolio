@@ -170,12 +170,11 @@ export function CaseStudyFinalDesign({
     return match || filteredScreens[0] || screens[0];
   }, [filteredScreens, selectedScreenId, screens]);
 
-  if (screens.length === 0) return null;
-
   // Determine if current screen should render in Web Browser or Mobile Device frame
   const isScreenWeb =
     currentScreen.aspectRatio === "web" ||
-    (!currentScreen.aspectRatio && study.platformType === "web" && currentScreen.number === "01");
+    (study.platformType === "web" &&
+      (!currentScreen.aspectRatio || currentScreen.aspectRatio === "web" || currentScreen.number === "01"));
 
   const currentIndexInFiltered = filteredScreens.findIndex((s) => s.id === currentScreen.id);
 
@@ -247,6 +246,8 @@ export function CaseStudyFinalDesign({
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [currentIndexInFiltered, filteredScreens]);
+
+  if (screens.length === 0 || !currentScreen) return null;
 
   return (
     <section id="final-design" className="flex flex-col gap-10 scroll-mt-28 text-left">
@@ -446,7 +447,9 @@ export function CaseStudyFinalDesign({
                   <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
                   <span className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
                   <div className="ml-2 flex-1 rounded bg-black/40 px-2.5 py-0.5 text-[11px] font-mono text-[#8491A0] truncate">
-                    https://rokhsa.app/dashboard
+                    {study.slug.includes("7afez")
+                      ? "https://7afez.platform/web"
+                      : study.liveDemo || "https://rokhsa.app/dashboard"}
                   </div>
                 </div>
                 <div className="relative w-full aspect-[16/10] overflow-hidden bg-[#121212]">

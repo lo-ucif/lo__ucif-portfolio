@@ -181,11 +181,11 @@ export function CaseStudyCard(props: CaseStudy) {
         ) : mockupImage ? (
           <>
             {/* Ambient Spotlight & Ground Shadow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] sm:w-[420px] h-[280px] sm:h-[420px] bg-[#5197ff]/12 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 w-[240px] sm:w-[380px] h-[24px] bg-black/90 rounded-full blur-2xl pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] sm:w-[420px] lg:w-[500px] h-[280px] sm:h-[420px] lg:h-[440px] bg-[#5197ff]/12 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 w-[240px] sm:w-[380px] lg:w-[460px] h-[24px] bg-black/90 rounded-full blur-2xl pointer-events-none" />
 
             <motion.div
-              className="relative w-full max-w-[440px] sm:max-w-[490px] flex items-center justify-center p-2"
+              className="relative w-full max-w-[440px] sm:max-w-[500px] lg:max-w-[560px] flex items-center justify-center p-2"
               whileHover={{ scale: 1.04, y: -6 }}
               transition={{ duration: 0.4, ease: easeOut }}
             >
