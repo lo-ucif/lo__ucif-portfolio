@@ -86,6 +86,12 @@ export type DesignTool = {
   description?: string;
 };
 
+export type PhoneMockups = {
+  left: string;
+  center: string;
+  right: string;
+};
+
 export type CaseStudy = {
   id: string;
   slug: string;
@@ -105,6 +111,7 @@ export type CaseStudy = {
   heroImage: string;
   mockupImage?: string;
   framedMockupImage?: string;
+  phoneMockups?: PhoneMockups;
   galleryMockups?: { title: string; image: string; caption?: string }[];
   liveDemo?: string;
   figmaLink?: string;

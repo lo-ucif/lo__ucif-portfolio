@@ -1,8 +1,10 @@
+import { useState } from "react";
+import type { MouseEvent } from "react";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
-import type { MouseEvent } from "react";
 import type { CaseStudy } from "../types";
 import { FigmaIcon, LinkedinIcon } from "../../../constants/Icon";
+import { ThreePhoneShowcase } from "./ThreePhoneShowcase";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
@@ -16,6 +18,7 @@ export function CaseStudyCard(props: CaseStudy) {
     mainDesignFocus,
     heroImage,
     mockupImage,
+    phoneMockups,
     presentationHeading: customHeading,
     platformType = "app",
     organization,
@@ -24,6 +27,7 @@ export function CaseStudyCard(props: CaseStudy) {
     linkedin,
   } = props;
 
+  const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
 
   const handleCardClick = () => {
@@ -53,6 +57,8 @@ export function CaseStudyCard(props: CaseStudy) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.7, ease: easeOut }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       className="group relative flex flex-col lg:flex-row items-center gap-10 lg:gap-14 w-full text-left"
     >
       {/* ========================================================= */}
@@ -166,23 +172,31 @@ export function CaseStudyCard(props: CaseStudy) {
         onClick={handleCardClick}
         className="relative w-full lg:w-1/2 shrink-0 flex items-center justify-center cursor-pointer select-none min-h-[340px] sm:min-h-[420px] lg:min-h-[460px]"
       >
-        {/* Ambient Spotlight & Ground Shadow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] sm:w-[420px] h-[280px] sm:h-[420px] bg-[#5197ff]/12 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 w-[240px] sm:w-[380px] h-[24px] bg-black/90 rounded-full blur-2xl pointer-events-none" />
+        {phoneMockups ? (
+          <ThreePhoneShowcase
+            phones={phoneMockups}
+            title={title}
+            isCardHovered={isHovered}
+          />
+        ) : mockupImage ? (
+          <>
+            {/* Ambient Spotlight & Ground Shadow */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] sm:w-[420px] h-[280px] sm:h-[420px] bg-[#5197ff]/12 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 w-[240px] sm:w-[380px] h-[24px] bg-black/90 rounded-full blur-2xl pointer-events-none" />
 
-        {mockupImage ? (
-          <motion.div
-            className="relative w-full max-w-[440px] sm:max-w-[490px] flex items-center justify-center p-2"
-            whileHover={{ scale: 1.04, y: -6 }}
-            transition={{ duration: 0.4, ease: easeOut }}
-          >
-            <img
-              src={mockupImage}
-              alt={`${title} Mockup Presentation`}
-              loading="lazy"
-              className="w-full h-auto object-contain filter drop-shadow-[0_20px_35px_rgba(0,0,0,0.85)]"
-            />
-          </motion.div>
+            <motion.div
+              className="relative w-full max-w-[440px] sm:max-w-[490px] flex items-center justify-center p-2"
+              whileHover={{ scale: 1.04, y: -6 }}
+              transition={{ duration: 0.4, ease: easeOut }}
+            >
+              <img
+                src={mockupImage}
+                alt={`${title} Mockup Presentation`}
+                loading="lazy"
+                className="w-full h-auto object-contain filter drop-shadow-[0_20px_35px_rgba(0,0,0,0.85)]"
+              />
+            </motion.div>
+          </>
         ) : (
           <motion.div
             className="relative w-full max-w-[480px] rounded-2xl overflow-hidden bg-[#121212] border border-white/[0.1] shadow-2xl shadow-black/80"

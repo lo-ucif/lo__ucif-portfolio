@@ -7,6 +7,12 @@ import splashImg from "../../../assets/case-studies/al-tabib/screen-1-splash.web
 import onboardingImg from "../../../assets/case-studies/al-tabib/screen-2-onboarding.webp";
 import loginImg from "../../../assets/case-studies/al-tabib/screen-3-login.webp";
 import dashboardImg from "../../../assets/case-studies/al-tabib/screen-4-dashboard.webp";
+import tabibPhoneLeft from "../../../assets/case-studies/mockups/phones/tabib-left.webp";
+import tabibPhoneCenter from "../../../assets/case-studies/mockups/phones/tabib-center.webp";
+import tabibPhoneRight from "../../../assets/case-studies/mockups/phones/tabib-right.webp";
+import rokhsaPhoneLeft from "../../../assets/case-studies/mockups/phones/rokhsa-left.webp";
+import rokhsaPhoneCenter from "../../../assets/case-studies/mockups/phones/rokhsa-center.webp";
+import rokhsaPhoneRight from "../../../assets/case-studies/mockups/phones/rokhsa-right.webp";
 import { FigmaIcon } from "../../../constants/Icon";
 import type { CaseStudy } from "../types";
 
@@ -39,6 +45,11 @@ export const caseStudies: CaseStudy[] = [
     heroImage: tabibMockup,
     mockupImage: tabibMockup,
     framedMockupImage: tabibFramed,
+    phoneMockups: {
+      left: tabibPhoneLeft,
+      center: tabibPhoneCenter,
+      right: tabibPhoneRight,
+    },
     galleryMockups: [
       {
         title: "Transparent Isometric Perspective",
@@ -593,6 +604,11 @@ export const caseStudies: CaseStudy[] = [
     heroImage: rokhsaMockup,
     mockupImage: rokhsaMockup,
     framedMockupImage: rokhsaFramed,
+    phoneMockups: {
+      left: rokhsaPhoneLeft,
+      center: rokhsaPhoneCenter,
+      right: rokhsaPhoneRight,
+    },
     galleryMockups: [
       {
         title: "Transparent Perspective Mockup",
