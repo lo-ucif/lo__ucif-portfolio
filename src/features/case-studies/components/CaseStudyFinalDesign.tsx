@@ -241,21 +241,28 @@ export function CaseStudyFinalDesign({
                     onOpenLightbox(currentScreen.image, currentScreen.title, currentScreen.subtitle)
                   }
                 >
-                  {/* Screen Content Layer (Positioned within internal device bezel bounds) */}
-                  <div className="absolute inset-0 px-[2.89%] pt-[1.67%] pb-[1.73%] flex items-center justify-center">
-                    <div className="relative w-full h-full rounded-[13.5%] overflow-hidden bg-black flex items-center justify-center">
-                      <img
-                        src={currentScreen.image}
-                        alt={currentScreen.title}
-                        className="w-full h-full object-cover block"
-                      />
+                  {/* Screen Content Layer (Seamless edge-to-edge underlap behind the frame bezel) */}
+                  <div
+                    className="absolute overflow-hidden"
+                    style={{
+                      left: "1.5%",
+                      right: "1.5%",
+                      top: "0.75%",
+                      bottom: "0.75%",
+                      borderRadius: "11.5%",
+                    }}
+                  >
+                    <img
+                      src={currentScreen.image}
+                      alt={currentScreen.title}
+                      className="w-full h-full object-cover block"
+                    />
 
-                      {/* Fullscreen Inspect Hover Overlay */}
-                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-200 pointer-events-none z-20">
-                        <span className="rounded-full bg-white text-[#161513] font-['Poppins'] text-[12px] font-semibold px-4 py-2 shadow-lg">
-                          Inspect Fullscreen 🔍
-                        </span>
-                      </div>
+                    {/* Fullscreen Inspect Hover Overlay */}
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-200 pointer-events-none z-20">
+                      <span className="rounded-full bg-white text-[#161513] font-['Poppins'] text-[12px] font-semibold px-4 py-2 shadow-lg">
+                        Inspect Fullscreen 🔍
+                      </span>
                     </div>
                   </div>
 
@@ -263,7 +270,7 @@ export function CaseStudyFinalDesign({
                   <img
                     src={iphoneFrameImg}
                     alt="iPhone 17 Pro Frame"
-                    className="absolute inset-0 w-full h-full object-contain pointer-events-none z-10"
+                    className="absolute inset-0 w-full h-full object-fill pointer-events-none z-10"
                     loading="eager"
                   />
                 </div>
