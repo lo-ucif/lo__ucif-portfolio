@@ -566,79 +566,7 @@ export function CaseStudyFinalDesign({
         </div>
       </div>
 
-      {/* Interactive Thumbnail Selector Cards */}
-      <div className="flex flex-col gap-3 pt-2">
-        <div className="flex items-center justify-between">
-          <span className="font-['Itim'] text-[13px] text-[#8491A0] uppercase tracking-wider">
-            {activeCategory === "All"
-              ? `All Interface Screens (${screens.length})`
-              : `${activeCategory} Screens (${filteredScreens.length})`}
-          </span>
-          <span className="font-['Poppins'] text-[12px] text-[#5197ff]">
-            Click any thumbnail to inspect
-          </span>
-        </div>
 
-        <div
-          className={`grid gap-3.5 ${
-            isScreenWeb && filteredScreens.length <= 4
-              ? "grid-cols-1 sm:grid-cols-2"
-              : "grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6"
-          }`}
-        >
-          {filteredScreens.map((screen) => {
-            const isActive = currentScreen.id === screen.id;
-            return (
-              <button
-                key={screen.id}
-                type="button"
-                onClick={() => setSelectedScreenId(screen.id)}
-                className={`group relative flex flex-col p-2.5 rounded-2xl bg-[#1A1917] border text-left cursor-pointer transition-all duration-200 ${
-                  isActive
-                    ? "border-[#5197ff] ring-2 ring-[#5197ff]/40 shadow-lg shadow-[#5197ff]/20 scale-[1.02] bg-[#1e232b]"
-                    : "border-white/[0.08] hover:border-white/30 hover:scale-[1.01]"
-                }`}
-              >
-                {/* Screen Preview Thumbnail */}
-                <div
-                  className={`w-full overflow-hidden rounded-xl bg-[#121212] mb-2 flex items-center justify-center p-1.5 ${
-                    screen.aspectRatio === "web" ? "aspect-[16/10]" : "aspect-[9/16]"
-                  }`}
-                >
-                  <img
-                    src={screen.image}
-                    alt={screen.title}
-                    className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                </div>
-
-                {/* Screen Labels */}
-                <div className="flex flex-col gap-0.5">
-                  <div className="flex items-center justify-between">
-                    <span className="font-['Itim'] text-[11px] text-[#5197ff] uppercase tracking-wider font-semibold">
-                      SCREEN {screen.number}
-                    </span>
-                    {screen.category && (
-                      <span className="text-[9.5px] font-['Itim'] text-[#8491A0] truncate max-w-[70px]">
-                        {screen.category}
-                      </span>
-                    )}
-                  </div>
-                  <h4 className="font-['Itim'] text-[13px] sm:text-[14px] text-white font-semibold truncate">
-                    {screen.title}
-                  </h4>
-                  {screen.arabicTitle && (
-                    <span className="font-['Inter'] text-[11px] text-[#8491A0] truncate">
-                      {screen.arabicTitle}
-                    </span>
-                  )}
-                </div>
-              </button>
-            );
-          })}
-        </div>
-      </div>
     </section>
   );
 }
