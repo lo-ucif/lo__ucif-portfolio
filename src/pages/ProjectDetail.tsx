@@ -145,7 +145,7 @@ export default function ProjectDetail() {
                 className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.05] border border-white/10 px-3.5 py-1.5 font-['Poppins'] text-[13px] text-[#d1d1d1] hover:text-[#5197ff] hover:border-[#5197ff]/40 transition-colors"
               >
                 <LinkIcon width={14} height={14} />
-                <span>Live Demo</span>
+                <span>{project.id === 12 ? "Live Website" : "Live Demo"}</span>
               </a>
             )}
             {project.figma && (

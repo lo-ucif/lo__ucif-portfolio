@@ -10,6 +10,7 @@ import hotel from "../assets/ChatGPT Image Aug 6, 2026, 12_56_04 PM.webp";
 import shoes from "../assets/ChatGPT Image Aug 6, 2026, 12_50_35 PM.webp";
 import rokhsa from "../assets/ChatGPT Image Aug 5, 2026, 11_48_00 PM 13.webp";
 import tabib from "../assets/Slide 4_3 - 1.webp";
+import tabibWeb from "../assets/tabib-hafiz-web.webp";
 import automate from "../assets/Screenshot 2026-10-06 201845.png";
 import soai from "../assets/Screenshot 2026-10-06 202012.png";
 
@@ -42,6 +43,7 @@ import {
   PostgreIcon,
   DjangoIcon,
   PythonIcon,
+  FramerMotionIcon,
 } from "./Icon";
 
 export const techGroups = [
@@ -646,6 +648,47 @@ export const projects: project[] = [
     github: "",
     figma:
       "https://www.figma.com/design/u3jcnp3N1n5IUYPxVqatKM/store-web?node-id=0-1&t=wlj0ZBzy51ESbxgt-1",
+  },
+  {
+    id: 12,
+    type: "development",
+    role: "frontend",
+    category: "client",
+    projectType: "Web Development",
+    team: "Frontend Developer",
+    status: "Completed",
+    year: "2026",
+    title: "Tabib Hafez – طبيب حافظ",
+    problem:
+      "Medical students and memorizers needed a dedicated digital environment to manage Quranic study circles, maintain daily memorization schedules, and monitor recitation consistency without cognitive overload.",
+    solution:
+      "A modern, responsive Arabic platform designed to support Quran memorization and manage Quranic learning circles. It provides a seamless digital experience with an intuitive interface, smooth interactions, and a user-friendly RTL layout.",
+    description:
+      "A modern, responsive Arabic platform designed to support Quran memorization and manage Quranic learning circles. It provides a seamless digital experience with an intuitive interface, smooth interactions, and a user-friendly RTL layout. As Frontend Developer, I engineered the client-side architecture using React.js, Vite, TypeScript, and Tailwind CSS, implementing accessible Arabic RTL layouts and smooth micro-interactions powered by Framer Motion.",
+    shortDescription:
+      "A modern, responsive Arabic platform designed to support Quran memorization and manage Quranic learning circles with intuitive RTL interactions.",
+    keyFeatures: [
+      "Intuitive Arabic RTL interface tailored for student memorization tracking",
+      "Dynamic study circle (Halaqat) schedule and cohort management",
+      "Digital student achievement card (بطاقة الإنجازات) and verification",
+      "Honor board and top reciters leaderboard (لوحة المتفوقين)",
+      "Interactive weekly progress charts and attendance statistics",
+      "Smooth micro-interactions and transitions built with Framer Motion",
+    ],
+    outcome:
+      "Successfully delivered and launched the production web platform at tabibhafiz.com, delivering a fluid, accessible, and fast experience for reciters and supervisors.",
+    image: tabibWeb,
+    tech: [
+      { label: "React", icon: ReactIcon },
+      { label: "TypeScript", icon: TypescriptIcon },
+      { label: "Vite", icon: ViteIcon },
+      { label: "Tailwind", icon: TaillwindIcon },
+      { label: "Framer Motion", icon: FramerMotionIcon },
+    ],
+    hackathon: "",
+    liveDemo: "https://tabibhafiz.com/",
+    github: "",
+    figma: "",
   },
 ];
 

@@ -5,9 +5,9 @@ import Projectcard from "../../../components/projectcard";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
-// Featured projects spanning full-stack development and UI/UX design (unified showcase)
-// IDs: 3 (AI Matching Platform), 2 (Rokhsa Platform), 4 (Works Exhibition), 1 (Al-Tabib Al-Hafed), 9 (Rihla Web)
-const FEATURED_PROJECT_IDS = [3, 2, 4, 1, 9];
+// Featured projects spanning web development, full-stack systems, and UI/UX design (unified showcase)
+// IDs: 12 (Tabib Hafez), 3 (AI Matching Platform), 2 (Rokhsa Platform), 4 (Works Exhibition), 1 (Al-Tabib Al-Hafed), 9 (Rihla Web)
+const FEATURED_PROJECT_IDS = [12, 3, 2, 4, 1, 9];
 const featuredProjects = FEATURED_PROJECT_IDS.map((id) =>
   projects.find((p) => p.id === id)
 ).filter((p): p is (typeof projects)[0] => Boolean(p));
