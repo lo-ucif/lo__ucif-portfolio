@@ -7,7 +7,6 @@ import { FigmaIcon } from "../constants/Icon";
 
 import { CaseStudyOverview } from "../features/case-studies/components/CaseStudyOverview";
 import { CaseStudyProblems } from "../features/case-studies/components/CaseStudyProblems";
-import { CaseStudyUserNeeds } from "../features/case-studies/components/CaseStudyUserNeeds";
 import { CaseStudyFinalDesign } from "../features/case-studies/components/CaseStudyFinalDesign";
 import FloatingBubble, { type BubbleItem } from "../components/FloatingBubble";
 import { ImageLightboxModal, type LightboxItem } from "../features/case-studies/components/ImageLightboxModal";
@@ -17,7 +16,6 @@ const easeOut = [0.22, 1, 0.36, 1] as const;
 const CASE_STUDY_BUBBLE_NAV: BubbleItem[] = [
   { label: "Overview", id: "overview" },
   { label: "Problems", id: "problems" },
-  { label: "User Needs", id: "user-needs" },
   { label: "Final Design", id: "final-design" },
   { label: "Top ↑", id: "top" },
 ];
@@ -78,7 +76,7 @@ export default function CaseStudyDetail() {
         setActiveBubbleId("overview");
         return;
       }
-      const sectionIds = ["final-design", "user-needs", "problems", "overview"];
+      const sectionIds = ["final-design", "problems", "overview"];
       for (const id of sectionIds) {
         const el = document.getElementById(id);
         if (el) {
@@ -193,12 +191,7 @@ export default function CaseStudyDetail() {
         <CaseStudyProblems study={study} />
 
         {/* ======================================================== */}
-        {/* 03. USER NEEDS (UML USE CASE DIAGRAM)                    */}
-        {/* ======================================================== */}
-        <CaseStudyUserNeeds study={study} />
-
-        {/* ======================================================== */}
-        {/* 04. FINAL DESIGN / PRESENTATION RESULT                   */}
+        {/* 03. FINAL DESIGN / PRESENTATION RESULT                   */}
         {/* ======================================================== */}
         <CaseStudyFinalDesign
           study={study}
