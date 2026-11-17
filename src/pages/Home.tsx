@@ -163,9 +163,6 @@ export default function Home() {
             </motion.div>
           </section>
 
-          {/* Core Services Section */}
-          <ServicesSection />
-
           <section
             id="about"
             className="flex flex-col items-center gap-7.5 text-center"
@@ -203,6 +200,9 @@ export default function Home() {
               Download CV
             </motion.a>
           </section>
+
+          {/* Core Services Section */}
+          <ServicesSection />
           <Experience />
           <ProjectsSection />
           <CaseStudiesSection />
@@ -214,8 +214,8 @@ export default function Home() {
         <ContactSection />
         <FloatingBubble
           items={[
-            { label: "Services", id: "services" },
             { label: "About", id: "about" },
+            { label: "Services", id: "services" },
             { label: "Projects", id: "projects" },
             { label: "Case Studies", id: "case-studies" },
             { label: "Contact", id: "contact" },
