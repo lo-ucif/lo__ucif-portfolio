@@ -14,6 +14,7 @@ type SiteHeaderProps = {
 // Optimized concise titles for professional navigation
 export const navItems = [
   { label: "Home", id: "home" },
+  { label: "Services", id: "services" },
   { label: "About", id: "about" },
   { label: "Experience", id: "experience" },
   { label: "Projects", id: "projects" },
@@ -55,6 +56,7 @@ export function SiteHeader({
       "projects",
       "experience",
       "about",
+      "services",
     ];
 
     const handleScroll = () => {

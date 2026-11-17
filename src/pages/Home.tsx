@@ -11,6 +11,7 @@ import Student from "../features/student/Student";
 import Experience from "../features/certificates/Experience";
 import Certificates from "../features/certificates/Certificates";
 import { CaseStudiesSection } from "../features/case-studies/components/CaseStudiesSection";
+import { ServicesSection } from "../features/services/components/ServicesSection";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
@@ -162,6 +163,9 @@ export default function Home() {
             </motion.div>
           </section>
 
+          {/* Core Services Section */}
+          <ServicesSection />
+
           <section
             id="about"
             className="flex flex-col items-center gap-7.5 text-center"
@@ -210,6 +214,7 @@ export default function Home() {
         <ContactSection />
         <FloatingBubble
           items={[
+            { label: "Services", id: "services" },
             { label: "About", id: "about" },
             { label: "Projects", id: "projects" },
             { label: "Case Studies", id: "case-studies" },
