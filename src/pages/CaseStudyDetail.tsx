@@ -6,7 +6,6 @@ import { SiteFooter } from "../components/layout/SiteFooter";
 import { FigmaIcon } from "../constants/Icon";
 
 import { CaseStudyOverview } from "../features/case-studies/components/CaseStudyOverview";
-import { CaseStudyProblems } from "../features/case-studies/components/CaseStudyProblems";
 import { CaseStudyFinalDesign } from "../features/case-studies/components/CaseStudyFinalDesign";
 import FloatingBubble, { type BubbleItem } from "../components/FloatingBubble";
 import { ImageLightboxModal, type LightboxItem } from "../features/case-studies/components/ImageLightboxModal";
@@ -15,7 +14,6 @@ const easeOut = [0.22, 1, 0.36, 1] as const;
 
 const CASE_STUDY_BUBBLE_NAV: BubbleItem[] = [
   { label: "Overview", id: "overview" },
-  { label: "Problems", id: "problems" },
   { label: "Final Design", id: "final-design" },
   { label: "Top ↑", id: "top" },
 ];
@@ -76,7 +74,7 @@ export default function CaseStudyDetail() {
         setActiveBubbleId("overview");
         return;
       }
-      const sectionIds = ["final-design", "problems", "overview"];
+      const sectionIds = ["final-design", "overview"];
       for (const id of sectionIds) {
         const el = document.getElementById(id);
         if (el) {
@@ -186,12 +184,7 @@ export default function CaseStudyDetail() {
         />
 
         {/* ======================================================== */}
-        {/* 02. PROBLEMS                                             */}
-        {/* ======================================================== */}
-        <CaseStudyProblems study={study} />
-
-        {/* ======================================================== */}
-        {/* 03. FINAL DESIGN / PRESENTATION RESULT                   */}
+        {/* FINAL DESIGN / PRESENTATION RESULT                       */}
         {/* ======================================================== */}
         <CaseStudyFinalDesign
           study={study}

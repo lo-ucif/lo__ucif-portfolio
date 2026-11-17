@@ -250,43 +250,23 @@ export function CaseStudyFinalDesign({
   if (screens.length === 0 || !currentScreen) return null;
 
   return (
-    <section id="final-design" className="flex flex-col gap-10 scroll-mt-28 text-left">
-      {/* Section Header */}
+    <section id="final-design" className="flex flex-col items-center gap-8 scroll-mt-28 text-center w-full">
+      {/* Section Header: Centered Small Title */}
       <motion.div
-        className="flex flex-col gap-2"
+        className="flex flex-col items-center justify-center text-center"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.6, ease: easeOut }}
       >
-        <div className="flex flex-wrap items-center gap-2">
-          <span className="inline-flex items-center rounded-full bg-[#5197ff]/20 border border-[#5197ff]/40 px-3.5 py-1 font-['Itim'] text-[13px] sm:text-[14px] text-[#5197ff]">
-            03. Final Design
-          </span>
-          <span className="rounded-full bg-white/[0.06] border border-white/10 px-3 py-1 font-['Itim'] text-[13px] text-[#A9A9A9]">
-            {screens.length} Production Screens
-          </span>
-          <span className="rounded-full bg-[#5197ff]/10 border border-[#5197ff]/25 px-3 py-1 font-['Itim'] text-[13px] text-[#5197ff]">
-            Figma Design System &amp; Tokens
-          </span>
-        </div>
-
-        <h2 className="font-['Itim'] text-[32px] sm:text-[44px] text-white font-bold leading-tight">
-          {solution?.headline || "Final Design Presentation"}
+        <h2 className="font-['Itim'] text-[32px] sm:text-[38px] text-white">
+          Final Design
         </h2>
-        {solution?.description && (
-          <p className="font-['Poppins'] text-[15px] sm:text-[16.5px] text-[#b4b4b4] leading-relaxed max-w-3xl">
-            {solution.description}
-          </p>
-        )}
       </motion.div>
 
       {/* Category Filter Pills (if multiple categories exist) */}
       {categories.length > 2 && (
-        <div className="flex flex-wrap items-center gap-2 pb-1">
-          <span className="font-['Itim'] text-[13px] text-[#8491A0] mr-1 uppercase tracking-wider">
-            Filter Workflow:
-          </span>
+        <div className="flex flex-wrap items-center justify-center gap-2 pb-1">
           {categories.map((cat) => {
             const isSelected = activeCategory === cat;
             const count =
@@ -327,249 +307,146 @@ export function CaseStudyFinalDesign({
         </div>
       )}
 
-      {/* Main Interactive Showcase Container (Clean: Background and stroke deleted as requested) */}
-      <div className="relative flex flex-col w-full py-4 overflow-hidden sm:overflow-visible">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center w-full">
-          {/* LEFT COLUMN: Title, Subtitle, Description, UX Architecture */}
-          <div className={`${isScreenWeb ? "lg:col-span-5" : "lg:col-span-6"} flex flex-col items-start text-left w-full order-2 lg:order-1 min-h-[440px] sm:min-h-[480px]`}>
-            <div className="flex flex-col items-start gap-3.5 w-full">
-              {/* Screen Tag & Arabic Title (Fixed in place, no reload) */}
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="font-['Itim'] text-[12px] sm:text-[13px] text-[#5197ff] uppercase tracking-wider font-semibold bg-[#5197ff]/15 border border-[#5197ff]/30 rounded-full px-3 py-1">
-                  Screen {currentScreen.number} of {screens.length}
-                </span>
-                {currentScreen.category && (
-                  <span className="font-['Itim'] text-[12px] sm:text-[13px] text-[#9CA3AF] bg-white/[0.05] border border-white/10 rounded-full px-3 py-1">
-                    {currentScreen.category}
-                  </span>
-                )}
-                {currentScreen.arabicTitle && (
-                  <span className="font-['Inter'] text-[14px] sm:text-[16px] text-[#5197ff] font-medium">
-                    • {currentScreen.arabicTitle}
-                  </span>
-                )}
+      {/* Presentation Stage Centered */}
+      <div className="relative flex flex-col items-center justify-center w-full py-2 overflow-hidden sm:overflow-visible">
+        {isScreenWeb ? (
+          // Desktop Web Frame
+          <div
+            className="group relative w-full max-w-4xl rounded-2xl overflow-hidden bg-[#121212] border border-white/20 shadow-2xl cursor-pointer mx-auto"
+            onClick={() =>
+              onOpenLightbox(
+                currentScreen.image,
+                currentScreen.title,
+                currentScreen.subtitle,
+                currentIndexInFiltered,
+                lightboxItems
+              )
+            }
+          >
+            <div className="flex items-center gap-1.5 px-3 py-2 bg-[#222] border-b border-white/10">
+              <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+              <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
+              <span className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
+              <div className="ml-2 flex-1 rounded bg-black/40 px-2.5 py-0.5 text-[11px] font-mono text-[#8491A0] truncate">
+                {study.slug.includes("7afez")
+                  ? "https://7afez.platform/web"
+                  : study.liveDemo || "https://rokhsa.app/dashboard"}
               </div>
-
-              {/* Title, Subtitle & Description Animated In-Place (No Blank Reload) */}
-              <div className="relative w-full min-h-[160px]">
-                <AnimatePresence mode="popLayout" initial={false}>
-                  <motion.div
-                    key={currentScreen.id}
-                    initial={{ opacity: 0, x: direction > 0 ? 25 : direction < 0 ? -25 : 0 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: direction > 0 ? -25 : direction < 0 ? 25 : 0 }}
-                    transition={{ duration: 0.28, ease: easeOut }}
-                    className="flex flex-col items-start gap-2 w-full"
-                  >
-                    {/* Main Title */}
-                    <h3 className="font-['Itim'] text-[26px] sm:text-[34px] lg:text-[38px] text-white font-bold leading-tight">
-                      {currentScreen.title}
-                    </h3>
-
-                    {/* Subtitle */}
-                    {currentScreen.subtitle && (
-                      <p className="font-['Poppins'] text-[14.5px] sm:text-[16px] text-[#5197ff] font-medium">
-                        {currentScreen.subtitle}
-                      </p>
-                    )}
-
-                    {/* Description */}
-                    {currentScreen.description && (
-                      <p className="font-['Poppins'] text-[14px] sm:text-[15px] text-[#b4b4b4] leading-relaxed text-left">
-                        {currentScreen.description}
-                      </p>
-                    )}
-                  </motion.div>
-                </AnimatePresence>
-              </div>
-
-              {/* UX Highlights & Key Design Decisions (Permanent Section Header, Animated Pills) */}
-              {currentScreen.uxHighlights && currentScreen.uxHighlights.length > 0 && (
-                <div className="flex flex-col items-start w-full pt-4 mt-1 border-t border-white/[0.08] text-left">
-                  <span className="font-['Itim'] text-[13px] text-[#8491A0] uppercase tracking-wider mb-2.5">
-                    • UX/UI Architecture &amp; Key Design Decisions:
-                  </span>
-                  <div className="relative w-full">
-                    <AnimatePresence mode="popLayout" initial={false}>
-                      <motion.div
-                        key={currentScreen.id}
-                        initial={{ opacity: 0, y: 8 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -8 }}
-                        transition={{ duration: 0.25, ease: easeOut }}
-                        className="flex flex-col gap-2.5 w-full"
-                      >
-                        {currentScreen.uxHighlights.map((highlight, hIdx) => (
-                          <div
-                            key={hIdx}
-                            className="flex items-start gap-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] p-2.5 text-left"
-                          >
-                            <svg
-                              className="w-4 h-4 text-[#5197ff] shrink-0 mt-0.5"
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth="2.5"
-                            >
-                              <polyline points="20 6 9 17 4 12" />
-                            </svg>
-                            <span className="font-['Poppins'] text-[13px] text-[#d1d1d1] leading-relaxed">
-                              {highlight}
-                            </span>
-                          </div>
-                        ))}
-                      </motion.div>
-                    </AnimatePresence>
-                  </div>
-                </div>
-              )}
+            </div>
+            <div className="relative w-full aspect-[16/10] overflow-hidden bg-[#121212]">
+              <AnimatePresence initial={false} custom={direction}>
+                <motion.img
+                  key={currentScreen.image}
+                  src={currentScreen.image}
+                  alt={currentScreen.title}
+                  custom={direction}
+                  initial={{
+                    opacity: 0,
+                    x: direction > 0 ? 60 : direction < 0 ? -60 : 0,
+                  }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{
+                    opacity: 0,
+                    x: direction > 0 ? -60 : direction < 0 ? 60 : 0,
+                  }}
+                  transition={{ duration: 0.32, ease: easeOut }}
+                  className="absolute inset-0 w-full h-full object-cover block"
+                />
+              </AnimatePresence>
+            </div>
+            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-200 pointer-events-none">
+              <span className="rounded-full bg-white text-[#161513] font-['Poppins'] text-[12px] font-semibold px-4 py-2 shadow-lg">
+                Inspect Fullscreen 🔍
+              </span>
             </div>
           </div>
+        ) : (
+          // 3-Phone Presentation Stage
+          <div className="relative flex items-center justify-center w-full max-w-2xl min-h-[510px] py-2 overflow-hidden sm:overflow-visible select-none mx-auto">
+            <AnimatePresence initial={false} custom={direction}>
+              {cardsToRender.map(({ screen, pos }) => {
+                const isCenter = pos === "center";
+                const isLeft = pos === "left";
+                const isRight = pos === "right";
 
-          {/* RIGHT COLUMN: 3-Phone Presentation Stage (Figma Node 600:220) + Navigation Below */}
-          <div className={`${isScreenWeb ? "lg:col-span-7" : "lg:col-span-6"} flex flex-col items-center justify-center w-full order-1 lg:order-2 overflow-visible`}>
-            {isScreenWeb ? (
-              // Desktop Web Frame (Directly shown with macOS header)
-              <div
-                className="group relative w-full rounded-2xl overflow-hidden bg-[#121212] border border-white/20 shadow-2xl cursor-pointer"
-                onClick={() =>
-                  onOpenLightbox(
-                    currentScreen.image,
-                    currentScreen.title,
-                    currentScreen.subtitle,
-                    currentIndexInFiltered,
-                    lightboxItems
-                  )
-                }
-              >
-                <div className="flex items-center gap-1.5 px-3 py-2 bg-[#222] border-b border-white/10">
-                  <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
-                  <div className="ml-2 flex-1 rounded bg-black/40 px-2.5 py-0.5 text-[11px] font-mono text-[#8491A0] truncate">
-                    {study.slug.includes("7afez")
-                      ? "https://7afez.platform/web"
-                      : study.liveDemo || "https://rokhsa.app/dashboard"}
-                  </div>
-                </div>
-                <div className="relative w-full aspect-[16/10] overflow-hidden bg-[#121212]">
-                  <AnimatePresence initial={false} custom={direction}>
-                    <motion.img
-                      key={currentScreen.image}
-                      src={currentScreen.image}
-                      alt={currentScreen.title}
-                      custom={direction}
-                      initial={{
-                        opacity: 0,
-                        x: direction > 0 ? 60 : direction < 0 ? -60 : 0,
-                      }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{
-                        opacity: 0,
-                        x: direction > 0 ? -60 : direction < 0 ? 60 : 0,
-                      }}
-                      transition={{ duration: 0.32, ease: easeOut }}
-                      className="absolute inset-0 w-full h-full object-cover block"
-                    />
-                  </AnimatePresence>
-                </div>
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-200 pointer-events-none">
-                  <span className="rounded-full bg-white text-[#161513] font-['Poppins'] text-[12px] font-semibold px-4 py-2 shadow-lg">
-                    Inspect Fullscreen 🔍
-                  </span>
-                </div>
-              </div>
-            ) : (
-              // 3-Phone Presentation Stage (Whole Phone Cards Glide between Positions)
-              <div className="relative flex items-center justify-center w-full min-h-[510px] py-2 overflow-hidden sm:overflow-visible select-none">
-                <AnimatePresence initial={false} custom={direction}>
-                  {cardsToRender.map(({ screen, pos }) => {
-                    const isCenter = pos === "center";
-                    const isLeft = pos === "left";
-                    const isRight = pos === "right";
-
-                    const handleClick = () => {
-                      if (isCenter) {
-                        onOpenLightbox(
-                          screen.image,
-                          screen.title,
-                          screen.subtitle,
-                          currentIndexInFiltered,
-                          lightboxItems
-                        );
-                      } else if (isLeft) {
-                        handlePrev();
-                      } else if (isRight) {
-                        handleNext();
-                      }
-                    };
-
-                    return (
-                      <motion.div
-                        key={screen.id}
-                        custom={direction}
-                        variants={phoneCardVariants}
-                        initial="enter"
-                        animate={pos}
-                        exit="exit"
-                        whileHover={!isCenter ? { opacity: 0.48 } : undefined}
-                        className="absolute flex items-center justify-center cursor-pointer"
-                        style={{ willChange: "transform, opacity" }}
-                        title={
-                          isLeft
-                            ? `Previous: ${screen.title}`
-                            : isRight
-                            ? `Next: ${screen.title}`
-                            : screen.title
-                        }
-                      >
-                        <IPhoneMockup
-                          screen={screen}
-                          isCenter={isCenter}
-                          onClick={handleClick}
-                        />
-                      </motion.div>
+                const handleClick = () => {
+                  if (isCenter) {
+                    onOpenLightbox(
+                      screen.image,
+                      screen.title,
+                      screen.subtitle,
+                      currentIndexInFiltered,
+                      lightboxItems
                     );
-                  })}
-                </AnimatePresence>
-              </div>
-            )}
+                  } else if (isLeft) {
+                    handlePrev();
+                  } else if (isRight) {
+                    handleNext();
+                  }
+                };
 
-            {/* Navigation Buttons Right Below the Image */}
-            {filteredScreens.length > 1 && (
-              <div className="flex items-center justify-center gap-4 pt-5 w-full">
-                <span className="font-['Poppins'] text-[13.5px] font-medium text-[#8491A0]">
-                  <span className="text-[#5197ff] font-semibold">{currentIndexInFiltered + 1}</span> / {filteredScreens.length}
-                </span>
-                <div className="flex items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={handlePrev}
-                    aria-label="Previous screen"
-                    className="w-10 h-10 rounded-full bg-white/[0.08] hover:bg-white/20 active:scale-95 border border-white/10 flex items-center justify-center text-white transition-all cursor-pointer"
+                return (
+                  <motion.div
+                    key={screen.id}
+                    custom={direction}
+                    variants={phoneCardVariants}
+                    initial="enter"
+                    animate={pos}
+                    exit="exit"
+                    whileHover={!isCenter ? { opacity: 0.48 } : undefined}
+                    className="absolute flex items-center justify-center cursor-pointer"
+                    style={{ willChange: "transform, opacity" }}
+                    title={
+                      isLeft
+                        ? `Previous: ${screen.title}`
+                        : isRight
+                        ? `Next: ${screen.title}`
+                        : screen.title
+                    }
                   >
-                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <polyline points="15 18 9 12 15 6" />
-                    </svg>
-                  </button>
-                  <button
-                    type="button"
-                    onClick={handleNext}
-                    aria-label="Next screen"
-                    className="w-10 h-10 rounded-full bg-white/[0.08] hover:bg-white/20 active:scale-95 border border-white/10 flex items-center justify-center text-white transition-all cursor-pointer"
-                  >
-                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <polyline points="9 18 15 12 9 6" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            )}
+                    <IPhoneMockup
+                      screen={screen}
+                      isCenter={isCenter}
+                      onClick={handleClick}
+                    />
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
           </div>
-        </div>
+        )}
+
+        {/* Navigation Buttons Right Below the Image */}
+        {filteredScreens.length > 1 && (
+          <div className="flex items-center justify-center gap-4 pt-5 w-full">
+            <span className="font-['Poppins'] text-[13.5px] font-medium text-[#8491A0]">
+              <span className="text-[#5197ff] font-semibold">{currentIndexInFiltered + 1}</span> / {filteredScreens.length}
+            </span>
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={handlePrev}
+                aria-label="Previous screen"
+                className="w-10 h-10 rounded-full bg-white/[0.08] hover:bg-white/20 active:scale-95 border border-white/10 flex items-center justify-center text-white transition-all cursor-pointer"
+              >
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <polyline points="15 18 9 12 15 6" />
+                </svg>
+              </button>
+              <button
+                type="button"
+                onClick={handleNext}
+                aria-label="Next screen"
+                className="w-10 h-10 rounded-full bg-white/[0.08] hover:bg-white/20 active:scale-95 border border-white/10 flex items-center justify-center text-white transition-all cursor-pointer"
+              >
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        )}
       </div>
-
-
     </section>
   );
 }
