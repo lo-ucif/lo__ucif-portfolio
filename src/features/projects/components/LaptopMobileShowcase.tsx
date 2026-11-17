@@ -30,7 +30,7 @@ export function LaptopMobileShowcase({
     >
       {/* Soft Ambient Spotlight Glow */}
       <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[480px] lg:w-[560px] h-[300px] sm:h-[420px] lg:h-[480px] bg-[#5197ff]/12 rounded-full blur-3xl pointer-events-none"
+        className="absolute top-[48%] left-[53%] -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[440px] lg:w-[500px] h-[280px] sm:h-[380px] lg:h-[440px] bg-[#5197ff]/12 rounded-full blur-3xl pointer-events-none"
         animate={{
           scale: isInteractive ? 1.15 : 1,
           opacity: isInteractive ? 0.95 : 0.45,
@@ -38,9 +38,9 @@ export function LaptopMobileShowcase({
         transition={{ duration: 0.5, ease: easeOut }}
       />
 
-      {/* Dynamic Ground Shadow underneath the laptop base */}
+      {/* Dynamic Ground Shadow underneath the laptop base (aligned to scaled base) */}
       <motion.div
-        className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[86%] h-[20px] bg-black/85 rounded-full blur-xl pointer-events-none"
+        className="absolute bottom-[8.5%] left-[53.16%] -translate-x-1/2 w-[74%] h-[18px] bg-black/85 rounded-full blur-xl pointer-events-none"
         animate={{
           scaleX: isInteractive ? 1.04 : 1,
           opacity: isInteractive ? 0.95 : 0.7,
@@ -51,10 +51,18 @@ export function LaptopMobileShowcase({
 
       {/* ========================================================= */}
       {/* 1. LAPTOP (MacBook Pro 15)                                */}
+      {/* Cloned exact layout from Figma node 632:453:             */}
+      {/* x: 674, y: 222, w: 5599.06, h: 3382 / frame 6534x3946.73  */}
       {/* ========================================================= */}
       <motion.div
-        className="absolute inset-0 w-full h-full origin-bottom"
-        style={{ zIndex: hoveredDevice === "laptop" ? 25 : 10 }}
+        className="absolute origin-bottom"
+        style={{
+          left: "10.315%",
+          top: "5.625%",
+          width: "85.691%",
+          height: "85.691%",
+          zIndex: hoveredDevice === "laptop" ? 25 : 10,
+        }}
         initial={{ opacity: 0, y: 25 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.15 }}
