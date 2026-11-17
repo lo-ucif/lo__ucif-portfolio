@@ -23,6 +23,7 @@ export type ImageLightboxModalProps = {
   imageAlt?: string;
   title?: string;
   subtitle?: string;
+  hidePagination?: boolean;
 };
 
 export function ImageLightboxModal({
@@ -35,6 +36,7 @@ export function ImageLightboxModal({
   imageAlt,
   title,
   subtitle,
+  hidePagination = false,
 }: ImageLightboxModalProps) {
   // Consolidate single or multiple items into a unified list
   const allItems: LightboxItem[] = useMemo(() => {
@@ -62,11 +64,12 @@ export function ImageLightboxModal({
   }, [isOpen, initialIndex]);
 
   const hasMultiple = allItems.length > 1;
+  const showNavigation = hasMultiple && !hidePagination;
   const currentItem = allItems[activeIndex] || allItems[0];
 
   const handlePrev = (e?: React.MouseEvent) => {
     e?.stopPropagation();
-    if (!hasMultiple) return;
+    if (!showNavigation) return;
     const nextIdx = activeIndex > 0 ? activeIndex - 1 : allItems.length - 1;
     setActiveIndex(nextIdx);
     onIndexChange?.(nextIdx);
@@ -74,7 +77,7 @@ export function ImageLightboxModal({
 
   const handleNext = (e?: React.MouseEvent) => {
     e?.stopPropagation();
-    if (!hasMultiple) return;
+    if (!showNavigation) return;
     const nextIdx = activeIndex < allItems.length - 1 ? activeIndex + 1 : 0;
     setActiveIndex(nextIdx);
     onIndexChange?.(nextIdx);
@@ -86,15 +89,15 @@ export function ImageLightboxModal({
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         onClose();
-      } else if (e.key === "ArrowLeft") {
+      } else if (showNavigation && e.key === "ArrowLeft") {
         handlePrev();
-      } else if (e.key === "ArrowRight") {
+      } else if (showNavigation && e.key === "ArrowRight") {
         handleNext();
       }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, hasMultiple, activeIndex]);
+  }, [isOpen, showNavigation, activeIndex]);
 
   if (!isOpen || allItems.length === 0) return null;
 
@@ -117,7 +120,7 @@ export function ImageLightboxModal({
             {/* Title & Info */}
             <div className="flex flex-col text-left gap-1 max-w-xl">
               <div className="flex flex-wrap items-center gap-2">
-                {hasMultiple && (
+                {showNavigation && (
                   <span className="font-['Itim'] text-[12px] sm:text-[13px] text-[#5197ff] uppercase tracking-wider font-semibold bg-[#5197ff]/15 border border-[#5197ff]/30 rounded-full px-2.5 py-0.5">
                     Screen {currentItem.number || activeIndex + 1} of {allItems.length}
                   </span>
@@ -149,7 +152,7 @@ export function ImageLightboxModal({
 
             {/* Actions: Top Nav Buttons + Close */}
             <div className="flex items-center gap-3">
-              {hasMultiple && (
+              {showNavigation && (
                 <div className="flex items-center gap-1.5 bg-white/[0.06] border border-white/10 rounded-full p-1">
                   <button
                     type="button"
@@ -202,7 +205,7 @@ export function ImageLightboxModal({
           {/* Center Viewing Stage */}
           <div className="relative flex flex-1 w-full max-w-6xl items-center justify-center py-2 overflow-hidden">
             {/* Floating Previous Arrow Button (Left) */}
-            {hasMultiple && (
+            {showNavigation && (
               <button
                 type="button"
                 onClick={handlePrev}
@@ -235,7 +238,7 @@ export function ImageLightboxModal({
             </div>
 
             {/* Floating Next Arrow Button (Right) */}
-            {hasMultiple && (
+            {showNavigation && (
               <button
                 type="button"
                 onClick={handleNext}
@@ -254,7 +257,7 @@ export function ImageLightboxModal({
             className="flex items-center justify-center w-full pt-2 text-white/50 text-[12px] font-['Poppins'] z-40"
             onClick={(e) => e.stopPropagation()}
           >
-            {hasMultiple ? (
+            {showNavigation ? (
               <span className="flex items-center gap-2">
                 <span>Use</span>
                 <kbd className="px-1.5 py-0.5 rounded bg-white/10 border border-white/20 text-white font-mono text-[11px]">

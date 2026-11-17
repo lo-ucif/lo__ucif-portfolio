@@ -1,20 +1,10 @@
 import { useState } from "react";
 import { easeOut, motion } from "framer-motion";
 import { certificateItems } from "../../constants/data";
-import {
-  ImageLightboxModal,
-  type LightboxItem,
-} from "../case-studies/components/ImageLightboxModal";
+import { ImageLightboxModal } from "../case-studies/components/ImageLightboxModal";
 
 export default function Certificates() {
-  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
-
-  const lightboxItems: LightboxItem[] = certificateItems.map((item) => ({
-    imageUrl: item.image,
-    imageAlt: item.alt,
-    title: item.title,
-    subtitle: item.label,
-  }));
+  const [selectedCert, setSelectedCert] = useState<(typeof certificateItems)[0] | null>(null);
 
   return (
     <section
@@ -52,7 +42,7 @@ export default function Certificates() {
               ease: easeOut,
               delay: index * 0.1,
             }}
-            onClick={() => setLightboxIndex(index)}
+            onClick={() => setSelectedCert(certificate)}
           >
             <div className="relative w-full h-65 overflow-hidden">
               <img
@@ -98,13 +88,15 @@ export default function Certificates() {
         ))}
       </div>
 
-      {lightboxIndex !== null && (
+      {selectedCert && (
         <ImageLightboxModal
-          isOpen={lightboxIndex !== null}
-          onClose={() => setLightboxIndex(null)}
-          items={lightboxItems}
-          initialIndex={lightboxIndex}
-          onIndexChange={(idx) => setLightboxIndex(idx)}
+          isOpen={selectedCert !== null}
+          onClose={() => setSelectedCert(null)}
+          imageUrl={selectedCert.image}
+          imageAlt={selectedCert.alt}
+          title={selectedCert.title}
+          subtitle={selectedCert.label}
+          hidePagination={true}
         />
       )}
     </section>
