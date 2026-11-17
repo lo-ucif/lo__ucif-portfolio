@@ -3,16 +3,30 @@ import booklibrary from "../assets/ChatGPT Image Aug 6, 2026, 01_04_31 PM.webp";
 import noteapp from "../assets/ChatGPT Image Aug 6, 2026, 01_49_32 PM.webp";
 import headphone from "../assets/ChatGPT Image Aug 6, 2026, 01_15_30 PM.webp";
 import weather from "../assets/ChatGPT Image Aug 6, 2026, 01_37_13 PM.webp";
-import estinhackathon from "../assets/ChatGPT Image Aug 6, 2026, 02_06_12 PM.webp";
-import rihlaweb from "../assets/ChatGPT Image Aug 6, 2026, 01_40_47 PM.webp";
-import sewing from "../assets/ChatGPT Image Aug 6, 2026, 01_57_53 PM.webp";
 import hotel from "../assets/ChatGPT Image Aug 6, 2026, 12_56_04 PM.webp";
 import shoes from "../assets/ChatGPT Image Aug 6, 2026, 12_50_35 PM.webp";
-import rokhsa from "../assets/ChatGPT Image Aug 5, 2026, 11_48_00 PM 13.webp";
-import tabib from "../assets/Slide 4_3 - 1.webp";
 import tabibWeb from "../assets/tabib-hafiz-web.webp";
+import alTabibMockup from "../assets/mockups/al-tabib-mockup.webp";
+import rokhsaMockup from "../assets/mockups/rokhsa-mockup.webp";
+import jobMatchingMockup from "../assets/mockups/job-matching-mockup.webp";
+import sewingMockup from "../assets/mockups/sewing-mockup.webp";
+import rihlaMockup from "../assets/mockups/rihla-mockup.webp";
 import automate from "../assets/Screenshot 2026-10-06 201845.png";
 import soai from "../assets/Screenshot 2026-10-06 202012.png";
+
+// Multi-device Mockup Assets (MacBook Pro 15 + iPhone 17 Pro with transparent backgrounds)
+import tabibHafezLaptop from "../assets/mockups/devices/tabib-hafez-laptop.webp";
+import tabibHafezMobile from "../assets/mockups/devices/tabib-hafez-mobile.webp";
+import aiMatchingLaptop from "../assets/mockups/devices/ai-matching-laptop.webp";
+import aiMatchingMobile from "../assets/mockups/devices/ai-matching-mobile.webp";
+import rokhsaLaptop from "../assets/mockups/devices/rokhsa-laptop.webp";
+import rokhsaMobile from "../assets/mockups/devices/rokhsa-mobile.webp";
+import sewingLaptop from "../assets/mockups/devices/sewing-laptop.webp";
+import sewingMobile from "../assets/mockups/devices/sewing-mobile.webp";
+import alTabibLaptop from "../assets/mockups/devices/al-tabib-laptop.webp";
+import alTabibMobile from "../assets/mockups/devices/al-tabib-mobile.webp";
+import rihlaLaptop from "../assets/mockups/devices/rihla-laptop.webp";
+import rihlaMobile from "../assets/mockups/devices/rihla-mobile.webp";
 
 import {
   JavascriptIcon,
@@ -218,6 +232,8 @@ export type project = {
   keyFeatures?: string[];
   outcome?: string;
   image: string;
+  laptopImage?: string;
+  mobileImage?: string;
   tech: TechItem[];
   liveDemo: string;
   github: string;
@@ -253,7 +269,9 @@ export const projects: project[] = [
     ],
     outcome:
       "Delivered a comprehensive interactive prototype with verified positive usability feedback from medical student peers.",
-    image: tabib,
+    image: alTabibMockup,
+    laptopImage: alTabibLaptop,
+    mobileImage: alTabibMobile,
     tech: [{ label: "Figma", icon: FigmaIcon }],
     hackathon: "",
     liveDemo:
@@ -288,7 +306,9 @@ export const projects: project[] = [
     ],
     outcome:
       "Created an end-to-end design system with over 20 high-fidelity screens spanning mobile and desktop viewports.",
-    image: rokhsa,
+    image: rokhsaMockup,
+    laptopImage: rokhsaLaptop,
+    mobileImage: rokhsaMobile,
     tech: [{ label: "Figma", icon: FigmaIcon }],
     hackathon: "",
     liveDemo:
@@ -323,7 +343,9 @@ export const projects: project[] = [
     ],
     outcome:
       "Designed, developed, and pitched a working MVP in 48 hours, earning a Certificate of Recognition as a hackathon finalist.",
-    image: estinhackathon,
+    image: jobMatchingMockup,
+    laptopImage: aiMatchingLaptop,
+    mobileImage: aiMatchingMobile,
     tech: [
       { label: "React", icon: ReactIcon },
       { label: "TypeScript", icon: TypescriptIcon },
@@ -367,7 +389,9 @@ export const projects: project[] = [
     ],
     outcome:
       "Successfully launched into production, giving the client a central professional showcase that elevated brand perception and client inquiry flow.",
-    image: sewing,
+    image: sewingMockup,
+    laptopImage: sewingLaptop,
+    mobileImage: sewingMobile,
     tech: [
       { label: "React", icon: ReactIcon },
       { label: "TypeScript", icon: TypescriptIcon },
@@ -568,7 +592,9 @@ export const projects: project[] = [
     ],
     outcome:
       "Pitched and demonstrated a functional travel platform MVP during the W-Hackathon.",
-    image: rihlaweb,
+    image: rihlaMockup,
+    laptopImage: rihlaLaptop,
+    mobileImage: rihlaMobile,
     tech: [
       { label: "Next.js", icon: NextjsIcon },
       { label: "TypeScript", icon: TypescriptIcon },
@@ -678,6 +704,8 @@ export const projects: project[] = [
     outcome:
       "Successfully delivered and launched the production web platform at tabibhafiz.com, delivering a fluid, accessible, and fast experience for reciters and supervisors.",
     image: tabibWeb,
+    laptopImage: tabibHafezLaptop,
+    mobileImage: tabibHafezMobile,
     tech: [
       { label: "React", icon: ReactIcon },
       { label: "TypeScript", icon: TypescriptIcon },

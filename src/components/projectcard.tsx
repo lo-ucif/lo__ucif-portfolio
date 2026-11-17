@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import type { MouseEvent } from "react";
@@ -8,6 +9,7 @@ import {
   LinkedinIcon,
 } from "../constants/Icon";
 import type { project as ProjectType } from "../constants/data";
+import { LaptopMobileShowcase } from "../features/projects/components/LaptopMobileShowcase";
 
 export type project = ProjectType;
 
@@ -21,6 +23,8 @@ export default function Projectcard({
   description,
   shortDescription,
   image,
+  laptopImage,
+  mobileImage,
   tech,
   liveDemo,
   github,
@@ -28,6 +32,7 @@ export default function Projectcard({
   linkedin,
   hackathon,
 }: ProjectType) {
+  const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
   const easeOut = [0.22, 1, 0.36, 1] as const;
 
@@ -60,21 +65,33 @@ export default function Projectcard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.6, ease: easeOut }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       className="group relative flex flex-col lg:flex-row items-center gap-8 lg:gap-14 w-full text-left"
     >
-      {/* Left Column: Project Image Preview */}
+      {/* Left Column: Project Mockup / Image Preview */}
       <div
         onClick={handleCardClick}
         className="w-full lg:w-1/2 shrink-0 cursor-pointer"
       >
-        <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl bg-[#121212] shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]">
-          <img
-            src={image}
-            alt={title}
-            loading="lazy"
-            className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+        {laptopImage && mobileImage ? (
+          <LaptopMobileShowcase
+            laptop={laptopImage}
+            mobile={mobileImage}
+            title={title}
+            isCardHovered={isHovered}
+            onDeviceClick={() => handleCardClick()}
           />
-        </div>
+        ) : (
+          <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl bg-[#121212] shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]">
+            <img
+              src={image}
+              alt={title}
+              loading="lazy"
+              className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+            />
+          </div>
+        )}
       </div>
 
       {/* Right Column: Project Story & Details */}
