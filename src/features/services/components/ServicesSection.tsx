@@ -131,14 +131,6 @@ export function ServicesSection() {
                 {service.description}
               </p>
             </div>
-
-            {/* Bottom accent line indicator */}
-            <div className="mt-8 pt-4 border-t border-white/5 flex items-center justify-between">
-              <span className="font-['Poppins'] text-[12px] text-[#6B7280] tracking-wide uppercase">
-                Expertise
-              </span>
-              <div className="w-2 h-2 rounded-full bg-[#5197ff]/40 group-hover:bg-[#5197ff] group-hover:shadow-[0_0_8px_#5197ff] transition-all duration-300" />
-            </div>
           </motion.div>
         ))}
       </div>
