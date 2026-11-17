@@ -14,7 +14,7 @@ import rihlaMockup from "../assets/mockups/rihla-mockup.webp";
 import automate from "../assets/Screenshot 2026-10-06 201845.png";
 import soai from "../assets/Screenshot 2026-10-06 202012.png";
 
-// Multi-device Mockup Assets (MacBook Pro 15 + iPhone 17 Pro with transparent backgrounds)
+// Multi-device Mockup Assets (MacBook Pro 16 + iPhone 17 Pro with transparent backgrounds)
 import tabibHafezLaptop from "../assets/mockups/devices/tabib-hafez-laptop.webp";
 import tabibHafezMobile from "../assets/mockups/devices/tabib-hafez-mobile.webp";
 import aiMatchingLaptop from "../assets/mockups/devices/ai-matching-laptop.webp";
@@ -27,6 +27,18 @@ import alTabibLaptop from "../assets/mockups/devices/al-tabib-laptop.webp";
 import alTabibMobile from "../assets/mockups/devices/al-tabib-mobile.webp";
 import rihlaLaptop from "../assets/mockups/devices/rihla-laptop.webp";
 import rihlaMobile from "../assets/mockups/devices/rihla-mobile.webp";
+import noteappLaptop from "../assets/mockups/devices/noteapp-laptop.webp";
+import noteappMobile from "../assets/mockups/devices/noteapp-mobile.webp";
+import headphoneLaptop from "../assets/mockups/devices/headphone-laptop.webp";
+import headphoneMobile from "../assets/mockups/devices/headphone-mobile.webp";
+import weatherLaptop from "../assets/mockups/devices/weather-laptop.webp";
+import weatherMobile from "../assets/mockups/devices/weather-mobile.webp";
+import booklibraryLaptop from "../assets/mockups/devices/booklibrary-laptop.webp";
+import booklibraryMobile from "../assets/mockups/devices/booklibrary-mobile.webp";
+import hotelLaptop from "../assets/mockups/devices/hotel-laptop.webp";
+import hotelMobile from "../assets/mockups/devices/hotel-mobile.webp";
+import shoesLaptop from "../assets/mockups/devices/shoes-laptop.webp";
+import shoesMobile from "../assets/mockups/devices/shoes-mobile.webp";
 
 import {
   JavascriptIcon,
@@ -432,6 +444,8 @@ export const projects: project[] = [
     outcome:
       "Deployed a responsive full-stack platform with secure authentication and reliable cloud persistence on MongoDB Atlas.",
     image: noteapp,
+    laptopImage: noteappLaptop,
+    mobileImage: noteappMobile,
     tech: [
       { label: "React", icon: ReactIcon },
       { label: "TypeScript", icon: TypescriptIcon },
@@ -474,6 +488,8 @@ export const projects: project[] = [
     outcome:
       "Created a pixel-perfect, mobile-friendly landing page with clean modular components.",
     image: headphone,
+    laptopImage: headphoneLaptop,
+    mobileImage: headphoneMobile,
     tech: [
       { label: "React", icon: ReactIcon },
       { label: "JavaScript", icon: JavascriptIcon },
@@ -513,6 +529,8 @@ export const projects: project[] = [
     outcome:
       "Delivered a fast, zero-ad weather tool with clean state management and responsive mobile behavior.",
     image: weather,
+    laptopImage: weatherLaptop,
+    mobileImage: weatherMobile,
     tech: [
       { label: "React", icon: ReactIcon },
       { label: "TypeScript", icon: TypescriptIcon },
@@ -554,6 +572,8 @@ export const projects: project[] = [
     outcome:
       "Refined front-end styling skills and component reusability with clean CSS layouts.",
     image: booklibrary,
+    laptopImage: booklibraryLaptop,
+    mobileImage: booklibraryMobile,
     tech: [
       { label: "React", icon: ReactIcon },
       { label: "JavaScript", icon: JavascriptIcon },
@@ -634,6 +654,8 @@ export const projects: project[] = [
     outcome:
       "Built a complete interactive Figma prototype covering search, room inspection, and checkout flows.",
     image: hotel,
+    laptopImage: hotelLaptop,
+    mobileImage: hotelMobile,
     tech: [{ label: "Figma", icon: FigmaIcon }],
     hackathon: "",
     liveDemo: "",
@@ -668,6 +690,8 @@ export const projects: project[] = [
     outcome:
       "Created an interactive mobile e-commerce prototype demonstrating modern UI patterns and retail UX principles.",
     image: shoes,
+    laptopImage: shoesLaptop,
+    mobileImage: shoesMobile,
     tech: [{ label: "Figma", icon: FigmaIcon }],
     hackathon: "",
     liveDemo: "",
