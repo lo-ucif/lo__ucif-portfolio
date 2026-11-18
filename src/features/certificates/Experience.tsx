@@ -151,12 +151,12 @@ export default function Experience() {
 
       {/* Main Vertical Timeline Container */}
       <div className="relative w-full max-w-5xl mx-auto px-4 sm:px-6">
-        
+
         {/* ======================================================== */}
         {/* DESKTOP ALTERNATING TIMELINE WITH WINDING PATH (>= md)   */}
         {/* ======================================================== */}
         <div className="relative hidden md:block">
-          
+
           {/* Central Vertical Multi-Strand Curved Ribbon Path */}
           <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-[240px] pointer-events-none select-none z-0">
             <svg
@@ -211,9 +211,8 @@ export default function Experience() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.15 }}
                   transition={{ duration: 0.45, ease: easeOut, delay: index * 0.05 }}
-                  className={`relative flex items-center ${
-                    isLeft ? "justify-start" : "justify-end"
-                  }`}
+                  className={`relative flex items-center ${isLeft ? "justify-start" : "justify-end"
+                    }`}
                 >
                   {/* Glowing Node Positioned Directly on the Wave Apex */}
                   <div
@@ -227,9 +226,8 @@ export default function Experience() {
 
                   {/* Clean Editorial Text Block */}
                   <div
-                    className={`w-full md:w-[42%] lg:w-[43%] flex flex-col items-start text-left ${
-                      isLeft ? "md:pr-8 lg:pr-10" : "md:pl-8 lg:pl-10"
-                    }`}
+                    className={`w-full md:w-[42%] lg:w-[43%] flex flex-col items-start text-left ${isLeft ? "md:pr-8 lg:pr-10" : "md:pl-8 lg:pl-10"
+                      }`}
                   >
                     {/* Year & Milestone Number Badge */}
                     <div className="flex items-center gap-2 mb-1">
@@ -277,8 +275,8 @@ export default function Experience() {
         {/* ======================================================== */}
         {/* MOBILE TIMELINE WITH LEFT WINDING PATH (< md)            */}
         {/* ======================================================== */}
-        <div className="relative flex flex-col gap-5 sm:gap-6 md:hidden text-left pl-6 py-2">
-          
+        <div className="relative flex flex-col gap-18 sm:gap-12 md:hidden text-left pl-6 py-2">
+
           {/* Vertical Multi-Strand Guide Line on Left */}
           <div className="absolute top-2 bottom-4 left-2 w-[2px] bg-gradient-to-b from-[#5197ff] via-[#ffffff] to-[#5197ff] shadow-[0_0_10px_#5197ff]" />
 
