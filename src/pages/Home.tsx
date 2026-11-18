@@ -7,7 +7,6 @@ import pdf from "../../public/Ahmed_Loucif_CV.pdf";
 import myimg from "../assets/portfolio img.webp";
 import FloatingBubble from "../components/FloatingBubble";
 import { StatusBadge } from "../components/StatusBadge";
-import Student from "../features/student/Student";
 import Experience from "../features/certificates/Experience";
 import Certificates from "../features/certificates/Certificates";
 import { CaseStudiesSection } from "../features/case-studies/components/CaseStudiesSection";
@@ -209,7 +208,6 @@ export default function Home() {
           <CaseStudiesSection />
           <TechStackSection />
           <Certificates />
-          <Student />
         </main>
 
         <ContactSection />

@@ -20,7 +20,6 @@ export const navItems = [
   { label: "Case Studies", id: "case-studies" },
   { label: "Tech Stack", id: "stack" },
   { label: "Certificates", id: "certificates" },
-  { label: "Education", id: "education" },
   { label: "Contact", id: "contact" },
 ];
 
@@ -48,7 +47,6 @@ export function SiteHeader({
 
     const sectionIds = [
       "contact",
-      "education",
       "certificates",
       "stack",
       "case-studies",
