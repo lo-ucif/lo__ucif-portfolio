@@ -5,45 +5,47 @@ const easeOut = [0.22, 1, 0.36, 1] as const;
 
 export function ContactSection() {
   return (
-    <footer
+    <section
       id="contact"
-      className="flex flex-col items-center w-full gap-8 text-center pt-10"
+      className="flex flex-col items-center w-full text-center pt-24 sm:pt-36 pb-6 px-4 scroll-mt-20"
     >
-      <motion.div
-        className="flex flex-col items-center gap-3"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.6, ease: easeOut }}
-      >
-        <h2 className="font-['Itim'] text-[36px] text-white">
-          Let's Build Something Together.
-        </h2>
-        <p className="max-w-160 font-['Poppins'] text-[15px] sm:text-[17px] leading-[1.6] text-[#a9a9a9]">
-          Have an idea, a project, or a challenge to solve? Let's connect and turn your vision into a meaningful digital experience with smart solutions and creative design.
-        </p>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.6, ease: easeOut }}
-      >
-        <motion.a
-          href="mailto:louciftamer3@gmail.com"
-          className="inline-block rounded-[38.182px] border border-white bg-white px-[28px] py-[11px] font-['Poppins'] text-[16px] text-[#161513] transition-colors duration-300 hover:bg-transparent hover:text-white"
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 0.95 }}
-          transition={{ duration: 0.18, ease: "easeOut" }}
+      <div className="flex flex-col items-center gap-8 sm:gap-10 max-w-3xl mx-auto">
+        <motion.div
+          className="flex flex-col items-center gap-4 sm:gap-5"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: easeOut }}
         >
-          Let's Talk
-        </motion.a>
-      </motion.div>
+          <h2 className="font-['Itim'] text-[36px] sm:text-[42px] text-white">
+            Let's Build Something Together.
+          </h2>
+          <p className="max-w-160 font-['Poppins'] text-[15px] sm:text-[17px] leading-[1.6] text-[#a9a9a9]">
+            Have an idea, a project, or a challenge to solve? Let's connect and turn your vision into a meaningful digital experience with smart solutions and creative design.
+          </p>
+        </motion.div>
 
-      <div className="w-full mt-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: easeOut }}
+        >
+          <motion.a
+            href="mailto:louciftamer3@gmail.com"
+            className="inline-block rounded-[38.182px] border border-white bg-white px-[28px] py-[11px] font-['Poppins'] text-[16px] text-[#161513] transition-colors duration-300 hover:bg-transparent hover:text-white"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ duration: 0.18, ease: "easeOut" }}
+          >
+            Let's Talk
+          </motion.a>
+        </motion.div>
+      </div>
+
+      <div className="w-full mt-20 sm:mt-28">
         <SiteFooter />
       </div>
-    </footer>
+    </section>
   );
 }
