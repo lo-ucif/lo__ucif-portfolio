@@ -1,91 +1,125 @@
 import { easeOut, motion } from "framer-motion";
 import {
+  BehanceIcon,
   CIcon,
+  CssIcon,
+  DjangoIcon,
+  ExpressjsIcon,
   FigmaIcon,
+  FramerMotionIcon,
   GitIcon,
   HackathonIcon,
+  HtmlIcon,
   JavaIcon,
+  JavascriptIcon,
+  LinkIcon,
   LinuxIcon,
+  MobilePhoneIcon,
+  MongodbIcon,
   MysqlIcon,
   NextjsIcon,
   NodejsIcon,
   PostgreIcon,
+  PythonIcon,
   ReactIcon,
   RestApiIcon,
   TaillwindIcon,
-  TypescriptIcon,
+  ViteIcon,
+  VScodeIcon,
 } from "../../constants/Icon";
 
 export const experienceMilestones = [
   {
     num: "01",
-    title: "Software Engineering Degree",
+    year: "2024",
+    title: "Programming Fundamentals",
     description:
-      "Focused on core computer science foundations, algorithm optimization, software architecture, and distributed database systems. Applied theoretical principles to practical engineering through rigorous problem-solving, clean code standards, and full-lifecycle software design.",
+      "Building a strong foundation in programming through algorithmic thinking, problem-solving, and object-oriented programming concepts.",
     tech: [
-      { label: "C / C++", icon: CIcon },
+      { label: "Algorithms", icon: GitIcon },
+      { label: "C", icon: CIcon },
       { label: "Java", icon: JavaIcon },
-      { label: "SQL & DB", icon: MysqlIcon },
-      { label: "Git", icon: GitIcon },
+      { label: "OOP", icon: VScodeIcon },
     ],
   },
   {
     num: "02",
-    title: "Web Developer & UI/UX Designer",
+    year: "2025",
+    title: "Front-End Developer",
     description:
-      "Architecting and delivering production-ready web applications from initial wireframes to deployed cloud systems. Partnering with clients to build responsive, accessible frontends and scalable backends using React, TypeScript, Next.js, and cohesive design systems.",
+      "Building responsive and interactive user interfaces.",
     tech: [
-      { label: "React", icon: ReactIcon },
-      { label: "Next.js", icon: NextjsIcon },
-      { label: "TypeScript", icon: TypescriptIcon },
-      { label: "Tailwind", icon: TaillwindIcon },
-      { label: "Figma", icon: FigmaIcon },
+      { label: "HTML", icon: HtmlIcon },
+      { label: "CSS", icon: CssIcon },
+      { label: "JavaScript", icon: JavascriptIcon },
+      { label: "React.js", icon: ReactIcon },
     ],
   },
   {
     num: "03",
-    title: "Design Team Member & Lead",
+    year: "2025",
+    title: "UI/UX Designer",
     description:
-      "Directed visual direction and UI/UX prototyping for student tech initiatives, hackathons, and community workshops. Created end-to-end design assets, brand guidelines, and interactive prototypes that elevated engagement across university tech events.",
+      "Designing intuitive user experiences and modern digital interfaces.",
     tech: [
       { label: "Figma", icon: FigmaIcon },
-      { label: "Community", icon: HackathonIcon },
+      { label: "UI Design", icon: BehanceIcon },
+      { label: "UX Design", icon: MobilePhoneIcon },
+      { label: "Prototyping", icon: FramerMotionIcon },
+      { label: "Design Systems", icon: TaillwindIcon },
     ],
   },
   {
     num: "04",
-    title: "Hackathon Finalist",
+    year: "2025 – 2026",
+    title: "Hackathons & MVP Development",
     description:
-      "Engineered an AI-driven talent matching platform in a fast-paced 48-hour sprint. Developed automated resume parsing, semantic compatibility scoring, and an intuitive recruiter portal to eliminate manual screening bottlenecks under strict deadlines.",
+      "Collaborating with teams to develop innovative ideas and build functional MVPs.",
     tech: [
-      { label: "React", icon: ReactIcon },
-      { label: "TypeScript", icon: TypescriptIcon },
-      { label: "Tailwind", icon: TaillwindIcon },
-      { label: "REST API", icon: RestApiIcon },
+      { label: "Hackathons", icon: HackathonIcon },
+      { label: "Teamwork", icon: GitIcon },
+      { label: "Problem Solving", icon: LinuxIcon },
+      { label: "MVP Development", icon: ViteIcon },
     ],
   },
   {
     num: "05",
-    title: "Full-Stack Hackathon Innovator",
+    year: "2026",
+    title: "MERN Stack Developer",
     description:
-      "Built and deployed a functional full-stack web application under tight competitive deadlines. Focused on resilient architecture, real-time API integrations, and intuitive user flows to solve real-world logistical challenges with rapid sprint delivery.",
+      "Developing full-stack web applications using the MERN stack.",
     tech: [
-      { label: "Next.js", icon: NextjsIcon },
-      { label: "TypeScript", icon: TypescriptIcon },
+      { label: "MongoDB", icon: MongodbIcon },
+      { label: "Express.js", icon: ExpressjsIcon },
+      { label: "React.js", icon: ReactIcon },
       { label: "Node.js", icon: NodejsIcon },
-      { label: "REST API", icon: RestApiIcon },
     ],
   },
   {
     num: "06",
-    title: "Scaling to Production & E-Commerce",
+    year: "2026",
+    title: "Backend / Web Developer",
     description:
-      "Engineered a high-performance multi-vendor marketplace with role-based dashboards, automated inventory workflows, and a 58-wilaya dynamic pricing engine. Architected robust microservices and secure database pipelines for high reliability.",
+      "Building backend systems, REST APIs, and database-driven web applications.",
     tech: [
-      { label: "Next.js", icon: NextjsIcon },
-      { label: "TypeScript", icon: TypescriptIcon },
+      { label: "Python", icon: PythonIcon },
+      { label: "Django", icon: DjangoIcon },
+      { label: "SQL", icon: MysqlIcon },
       { label: "PostgreSQL", icon: PostgreIcon },
-      { label: "Cloud & Linux", icon: LinuxIcon },
+      { label: "REST API", icon: RestApiIcon },
+    ],
+  },
+  {
+    num: "07",
+    year: "2026 – Present",
+    title: "Co-Founder of Hafez",
+    description:
+      "Co-founding and developing a digital platform for Quran school management and student progress tracking.",
+    tech: [
+      { label: "Community Building", icon: HackathonIcon },
+      { label: "Product Development", icon: NextjsIcon },
+      { label: "Entrepreneurship", icon: LinkIcon },
+      { label: "Team Leadership", icon: HackathonIcon },
     ],
   },
 ];
@@ -124,7 +158,7 @@ export default function Experience() {
           <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-[240px] pointer-events-none select-none z-0">
             <svg
               className="w-full h-full overflow-visible"
-              viewBox="0 0 240 1200"
+              viewBox="0 0 240 1400"
               preserveAspectRatio="none"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -137,7 +171,7 @@ export default function Experience() {
               {/* Multi-Strand Ribbon Path with Deeper Organic Curvature */}
               {/* Outer Cyan/Blue Glow Strand */}
               <path
-                d="M 119,0 C 119,35 31,45 31,100 C 31,230 209,170 209,300 C 209,430 31,370 31,500 C 31,630 209,570 209,700 C 209,830 31,770 31,900 C 31,1030 209,970 209,1100 C 209,1155 121,1165 121,1200"
+                d="M 119,0 C 119,35 31,45 31,100 C 31,230 209,170 209,300 C 209,430 31,370 31,500 C 31,630 209,570 209,700 C 209,830 31,770 31,900 C 31,1030 209,970 209,1100 C 209,1230 31,1170 31,1300 C 31,1355 121,1365 121,1400"
                 fill="none"
                 stroke="#5197ff"
                 strokeWidth="1.4"
@@ -145,7 +179,7 @@ export default function Experience() {
               />
               {/* Core Electric Blue Strand with Drop Glow */}
               <path
-                d="M 120,0 C 120,35 35,45 35,100 C 35,230 205,170 205,300 C 205,430 35,370 35,500 C 35,630 205,570 205,700 C 205,830 35,770 35,900 C 35,1030 205,970 205,1100 C 205,1155 120,1165 120,1200"
+                d="M 120,0 C 120,35 35,45 35,100 C 35,230 205,170 205,300 C 205,430 35,370 35,500 C 35,630 205,570 205,700 C 205,830 35,770 35,900 C 35,1030 205,970 205,1100 C 205,1230 35,1170 35,1300 C 35,1355 120,1365 120,1400"
                 fill="none"
                 stroke="#5197ff"
                 strokeWidth="2.6"
@@ -153,7 +187,7 @@ export default function Experience() {
               />
               {/* Sharp White Luminous Accent Strand */}
               <path
-                d="M 121,0 C 121,35 38,45 38,100 C 38,230 202,170 202,300 C 202,430 38,370 38,500 C 38,630 202,570 202,700 C 202,830 38,770 38,900 C 38,1030 202,970 202,1100 C 202,1155 119,1165 119,1200"
+                d="M 121,0 C 121,35 38,45 38,100 C 38,230 202,170 202,300 C 202,430 38,370 38,500 C 38,630 202,570 202,700 C 202,830 38,770 38,900 C 38,1030 202,970 202,1100 C 202,1230 38,1170 38,1300 C 38,1355 119,1365 119,1400"
                 fill="none"
                 stroke="#ffffff"
                 strokeWidth="1.4"
@@ -194,12 +228,23 @@ export default function Experience() {
                       isLeft ? "md:pr-8 lg:pr-10" : "md:pl-8 lg:pl-10"
                     }`}
                   >
+                    {/* Year & Milestone Number Badge */}
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="font-['Itim'] text-[14px] sm:text-[15px] font-semibold text-[#5197ff] tracking-wider">
+                        {item.year}
+                      </span>
+                      <span className="text-white/30 text-[13px]">·</span>
+                      <span className="font-['Itim'] text-[13px] text-[#8491A0]">
+                        {item.num}
+                      </span>
+                    </div>
+
                     {/* Milestone Title */}
                     <h3 className="font-['Itim'] text-[22px] sm:text-[26px] lg:text-[28px] font-bold text-white tracking-wide uppercase leading-tight hover:text-[#5197ff] transition-colors duration-200">
                       {item.title}
                     </h3>
 
-                    {/* Optimized Narrative Description */}
+                    {/* Narrative Description */}
                     <p className="mt-1.5 font-['Poppins'] text-[13.5px] sm:text-[14px] leading-[1.65] text-[#b4b4b4]">
                       {item.description}
                     </p>
@@ -213,7 +258,7 @@ export default function Experience() {
                             key={t.label}
                             className="flex items-center gap-1.5 text-white/90 whitespace-nowrap"
                           >
-                            <Icon width={15} height={15} />
+                            {Icon && <Icon width={15} height={15} />}
                             <span>{t.label}</span>
                           </div>
                         );
@@ -250,13 +295,24 @@ export default function Experience() {
 
               {/* Clean Editorial Text Block */}
               <div className="flex flex-col items-start text-left">
+                {/* Year & Milestone Number Badge */}
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="font-['Itim'] text-[13px] sm:text-[14px] font-semibold text-[#5197ff] tracking-wider">
+                    {item.year}
+                  </span>
+                  <span className="text-white/30 text-[12px]">·</span>
+                  <span className="font-['Itim'] text-[12px] text-[#8491A0]">
+                    {item.num}
+                  </span>
+                </div>
+
                 {/* Milestone Title */}
                 <h3 className="font-['Itim'] text-[22px] sm:text-[24px] font-bold text-white tracking-wide uppercase leading-tight">
                   {item.title}
                 </h3>
 
-                {/* Optimized Narrative Description */}
-                <p className="mt-2 font-['Poppins'] text-[13.5px] leading-[1.7] text-[#b4b4b4]">
+                {/* Narrative Description */}
+                <p className="mt-1.5 font-['Poppins'] text-[13.5px] leading-[1.7] text-[#b4b4b4]">
                   {item.description}
                 </p>
 
@@ -269,7 +325,7 @@ export default function Experience() {
                         key={t.label}
                         className="flex items-center gap-1.5 text-white/90 whitespace-nowrap"
                       >
-                        <Icon width={15} height={15} />
+                        {Icon && <Icon width={15} height={15} />}
                         <span>{t.label}</span>
                       </div>
                     );
