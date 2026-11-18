@@ -17,7 +17,7 @@ export const navItems = [
   { label: "About", id: "about" },
   { label: "Experience", id: "experience" },
   { label: "Projects", id: "projects" },
-  { label: "Case Studies", id: "case-studies" },
+  { label: "UI/UX Design", id: "case-studies" },
   { label: "Tech Stack", id: "stack" },
   { label: "Certificates", id: "certificates" },
   { label: "Contact", id: "contact" },

@@ -215,7 +215,7 @@ export default function Home() {
           items={[
             { label: "About", id: "about" },
             { label: "Projects", id: "projects" },
-            { label: "Case Studies", id: "case-studies" },
+            { label: "UI/UX Design", id: "case-studies" },
             { label: "Contact", id: "contact" },
           ]}
         />

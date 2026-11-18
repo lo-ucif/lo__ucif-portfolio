@@ -19,10 +19,10 @@ export function CaseStudiesSection() {
         transition={{ duration: 0.6, ease: easeOut }}
       >
         <h2 className="font-['Itim'] text-[36px] text-white">
-          Selected Case Studies
+          UI/UX Design
         </h2>
-        <p className="font-['Poppins'] text-[15px] sm:text-[16px] text-[#9CA3AF] max-w-2xl">
-          Exploring problems, designing meaningful experiences, and transforming ideas into intuitive digital solutions.
+        <p className="font-['Poppins'] text-[15px] sm:text-[16px] text-[#9CA3AF] max-w-2xl leading-relaxed">
+          Crafting human-centered digital experiences from research and wireframing to high-fidelity prototypes and scalable design systems.
         </p>
       </motion.div>
 
