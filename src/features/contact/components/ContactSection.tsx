@@ -7,7 +7,7 @@ export function ContactSection() {
   return (
     <section
       id="contact"
-      className="flex flex-col items-center w-full text-center pt-24 sm:pt-36 pb-6 px-4 scroll-mt-20"
+      className="flex flex-col items-center w-full text-center pt-24 sm:pt-36 pb-0 px-4 scroll-mt-20"
     >
       <div className="flex flex-col items-center gap-8 sm:gap-10 max-w-3xl mx-auto">
         <motion.div

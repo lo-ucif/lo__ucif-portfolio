@@ -211,15 +211,15 @@ export default function Home() {
         </main>
 
         <ContactSection />
-        <FloatingBubble
-          items={[
-            { label: "About", id: "about" },
-            { label: "Projects", id: "projects" },
-            { label: "UI/UX Design", id: "case-studies" },
-            { label: "Contact", id: "contact" },
-          ]}
-        />
       </div>
+      <FloatingBubble
+        items={[
+          { label: "About", id: "about" },
+          { label: "Projects", id: "projects" },
+          { label: "UI/UX Design", id: "case-studies" },
+          { label: "Contact", id: "contact" },
+        ]}
+      />
     </div>
   );
 }
