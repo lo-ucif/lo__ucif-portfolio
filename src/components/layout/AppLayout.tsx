@@ -8,8 +8,6 @@ import { StatusBadgeProvider } from "../../contexts/StatusBadgeProvider";
 
 const navLinks = [
   { label: "Home", href: "/#home", id: "home" },
-  { label: "About", href: "/#about", id: "about" },
-  { label: "Experience", href: "/#experience", id: "experience" },
   { label: "Projects", href: "/#projects", id: "projects" },
   { label: "UI/UX Design", href: "/#case-studies", id: "case-studies" },
   { label: "Tech Stack", href: "/#stack", id: "stack" },
