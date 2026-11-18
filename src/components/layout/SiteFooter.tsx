@@ -2,7 +2,7 @@ import { GithubIcon, LinkedinIcon, BehanceIcon } from "../../constants/Icon";
 
 export function SiteFooter() {
   return (
-    <footer className="w-full border-t border-white/[0.08] pt-6 pb-0 font-['Itim']">
+    <footer className="w-full border-t border-white/[0.08] pt-6 pb-5 font-['Itim']">
       <div className="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-center gap-x-3.5 gap-y-2 text-center text-[13.5px] sm:text-[14.5px] text-[#A9A9A9]">
         <span>Full-Stack Engineer &amp; Product Builder · © 2026 All rights reserved.</span>
         <span className="text-[#A9A9A9]/60">·</span>
