@@ -71,6 +71,8 @@ export const services = [
   },
 ];
 
+export { ServicesCard } from "./ServicesCard";
+
 export function ServicesSection() {
   return (
     <section id="services" className="flex flex-col items-center gap-10 w-full max-w-6xl">

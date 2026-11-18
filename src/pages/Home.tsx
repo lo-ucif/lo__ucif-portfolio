@@ -11,7 +11,7 @@ import Student from "../features/student/Student";
 import Experience from "../features/certificates/Experience";
 import Certificates from "../features/certificates/Certificates";
 import { CaseStudiesSection } from "../features/case-studies/components/CaseStudiesSection";
-import { ServicesSection } from "../features/services/components/ServicesSection";
+import { ServicesCard } from "../features/services/components/ServicesCard";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
@@ -186,6 +186,9 @@ export default function Home() {
               I'm a Software Engineering student with a passion for web development and UI/UX design. I enjoy solving problems, exploring new technologies, and transforming complex ideas into simple, intuitive, and functional digital products. My approach combines creative thinking with technical skills to build experiences that are both visually appealing and technically reliable.
             </motion.p>
 
+            {/* Services & Expertise Compact Card */}
+            <ServicesCard />
+
             <motion.a
               href={pdf}
               download
@@ -201,8 +204,6 @@ export default function Home() {
             </motion.a>
           </section>
 
-          {/* Core Services Section */}
-          <ServicesSection />
           <Experience />
           <ProjectsSection />
           <CaseStudiesSection />
@@ -215,7 +216,6 @@ export default function Home() {
         <FloatingBubble
           items={[
             { label: "About", id: "about" },
-            { label: "Services", id: "services" },
             { label: "Projects", id: "projects" },
             { label: "Case Studies", id: "case-studies" },
             { label: "Contact", id: "contact" },
