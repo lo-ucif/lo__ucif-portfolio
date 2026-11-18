@@ -1,31 +1,34 @@
 import { easeOut, motion } from "framer-motion";
 import {
-  BehanceIcon,
+  AlgorithmsIcon,
   CIcon,
+  CommunityIcon,
   CssIcon,
+  DesignSystemsIcon,
   DjangoIcon,
+  EntrepreneurshipIcon,
   ExpressjsIcon,
   FigmaIcon,
-  FramerMotionIcon,
-  GitIcon,
   HackathonIcon,
   HtmlIcon,
   JavaIcon,
   JavascriptIcon,
-  LinkIcon,
-  LinuxIcon,
-  MobilePhoneIcon,
+  LeadershipIcon,
   MongodbIcon,
+  MvpIcon,
   MysqlIcon,
   NextjsIcon,
   NodejsIcon,
+  OopIcon,
   PostgreIcon,
+  ProblemSolvingIcon,
+  PrototypingIcon,
   PythonIcon,
   ReactIcon,
   RestApiIcon,
-  TaillwindIcon,
-  ViteIcon,
-  VScodeIcon,
+  TeamworkIcon,
+  UiDesignIcon,
+  UxDesignIcon,
 } from "../../constants/Icon";
 
 export const experienceMilestones = [
@@ -36,10 +39,10 @@ export const experienceMilestones = [
     description:
       "Building a strong foundation in programming through algorithmic thinking, problem-solving, and object-oriented programming concepts.",
     tech: [
-      { label: "Algorithms", icon: GitIcon },
+      { label: "Algorithms", icon: AlgorithmsIcon },
       { label: "C", icon: CIcon },
       { label: "Java", icon: JavaIcon },
-      { label: "OOP", icon: VScodeIcon },
+      { label: "OOP", icon: OopIcon },
     ],
   },
   {
@@ -63,10 +66,10 @@ export const experienceMilestones = [
       "Designing intuitive user experiences and modern digital interfaces.",
     tech: [
       { label: "Figma", icon: FigmaIcon },
-      { label: "UI Design", icon: BehanceIcon },
-      { label: "UX Design", icon: MobilePhoneIcon },
-      { label: "Prototyping", icon: FramerMotionIcon },
-      { label: "Design Systems", icon: TaillwindIcon },
+      { label: "UI Design", icon: UiDesignIcon },
+      { label: "UX Design", icon: UxDesignIcon },
+      { label: "Prototyping", icon: PrototypingIcon },
+      { label: "Design Systems", icon: DesignSystemsIcon },
     ],
   },
   {
@@ -77,9 +80,9 @@ export const experienceMilestones = [
       "Collaborating with teams to develop innovative ideas and build functional MVPs.",
     tech: [
       { label: "Hackathons", icon: HackathonIcon },
-      { label: "Teamwork", icon: GitIcon },
-      { label: "Problem Solving", icon: LinuxIcon },
-      { label: "MVP Development", icon: ViteIcon },
+      { label: "Teamwork", icon: TeamworkIcon },
+      { label: "Problem Solving", icon: ProblemSolvingIcon },
+      { label: "MVP Development", icon: MvpIcon },
     ],
   },
   {
@@ -116,10 +119,10 @@ export const experienceMilestones = [
     description:
       "Co-founding and developing a digital platform for Quran school management and student progress tracking.",
     tech: [
-      { label: "Community Building", icon: HackathonIcon },
+      { label: "Community Building", icon: CommunityIcon },
       { label: "Product Development", icon: NextjsIcon },
-      { label: "Entrepreneurship", icon: LinkIcon },
-      { label: "Team Leadership", icon: HackathonIcon },
+      { label: "Entrepreneurship", icon: EntrepreneurshipIcon },
+      { label: "Team Leadership", icon: LeadershipIcon },
     ],
   },
 ];
