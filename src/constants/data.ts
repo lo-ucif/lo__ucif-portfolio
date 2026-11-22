@@ -1,6 +1,6 @@
 import type { ComponentType, SVGProps } from "react";
 import booklibraryWeb from "../assets/book-library-web.webp";
-import noteapp from "../assets/ChatGPT Image Aug 6, 2026, 01_49_32 PM.webp";
+import noteappWeb from "../assets/note-app-web.webp";
 import headphone from "../assets/headphone-showcase-web.webp";
 import weather from "../assets/weather-app-web.webp";
 import tabibWeb from "../assets/tabib-hafiz-web.webp";
@@ -291,28 +291,24 @@ export const projects: project[] = [
     type: "development",
     role: "fullstack",
     category: "personal",
-    projectType: "Full-Stack Web App",
-    team: "Solo Developer",
+    projectType: "Full-Stack Web App (MERN)",
+    team: "",
     status: "Completed",
     year: "2025",
     title: "Secure Cloud Note App",
-    problem:
-      "Local notes are vulnerable to loss and lack cross-device synchronization, while many third-party note applications are cluttered and slow.",
-    solution:
-      "Built a lightweight, secure note management application with JWT authentication, categorized tagging, and real-time cloud storage.",
     description:
-      "A full-stack web application designed for fast, distraction-free note taking. I built both the client and server from scratch, implementing RESTful endpoints, password hashing, and responsive UI components.",
+      "My first full-stack web application built with the MERN stack (MongoDB, Express, React, Node.js). Developed to practice connecting a React frontend with a Node/Express backend and performing CRUD operations on a NoSQL database (MongoDB Atlas).",
     shortDescription:
-      "A secure, cloud-synced note management application with authentication and category filters.",
+      "My first MERN stack full-stack project built to practice connecting a React frontend with an Express API and MongoDB NoSQL database.",
     keyFeatures: [
-      "User authentication and session management with JWT and bcrypt",
       "Full CRUD operations for notes with instant UI updates",
-      "Tag-based categorization and live title search",
+      "RESTful API endpoints built with Express.js and Node.js",
+      "NoSQL schema design and cloud persistence with MongoDB Atlas",
       "Responsive dark-mode interface built with React and Tailwind CSS",
     ],
     outcome:
-      "Deployed a responsive full-stack platform with secure authentication and reliable cloud persistence on MongoDB Atlas.",
-    image: noteapp,
+      "Mastered the full-stack MERN development lifecycle, from database schema modeling to building and consuming REST APIs in React.",
+    image: noteappWeb,
     laptopImage: noteappLaptop,
     mobileImage: noteappMobile,
     tech: [
