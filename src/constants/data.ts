@@ -5,7 +5,7 @@ import headphone from "../assets/headphone-showcase-web.webp";
 import weather from "../assets/weather-app-web.webp";
 import tabibWeb from "../assets/tabib-hafiz-web.webp";
 import jobMatchingMockup from "../assets/mockups/job-matching-mockup.webp";
-import rihlaMockup from "../assets/mockups/rihla-mockup.webp";
+import rihlaWeb from "../assets/rihla-web.webp";
 import automate from "../assets/Screenshot 2026-10-06 201845.png";
 import soai from "../assets/Screenshot 2026-10-06 202012.png";
 
@@ -473,7 +473,7 @@ export const projects: project[] = [
     ],
     outcome:
       "Pitched and demonstrated a functional travel platform MVP during the W-Hackathon.",
-    image: rihlaMockup,
+    image: rihlaWeb,
     laptopImage: rihlaLaptop,
     mobileImage: rihlaMobile,
     tech: [
