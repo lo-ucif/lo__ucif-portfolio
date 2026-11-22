@@ -2,7 +2,7 @@ import type { ComponentType, SVGProps } from "react";
 import booklibrary from "../assets/ChatGPT Image Aug 6, 2026, 01_04_31 PM.webp";
 import noteapp from "../assets/ChatGPT Image Aug 6, 2026, 01_49_32 PM.webp";
 import headphone from "../assets/ChatGPT Image Aug 6, 2026, 01_15_30 PM.webp";
-import weather from "../assets/ChatGPT Image Aug 6, 2026, 01_37_13 PM.webp";
+import weather from "../assets/weather-app-web.webp";
 import tabibWeb from "../assets/tabib-hafiz-web.webp";
 import jobMatchingMockup from "../assets/mockups/job-matching-mockup.webp";
 import rihlaMockup from "../assets/mockups/rihla-mockup.webp";
@@ -377,18 +377,14 @@ export const projects: project[] = [
     role: "frontend",
     category: "personal",
     projectType: "API Web Application",
-    team: "Solo Developer",
+    team: "",
     status: "Completed",
     year: "2025",
     title: "Weather Insights App",
-    problem:
-      "Standard weather websites are often crowded with heavy advertisements, slow loading times, and cluttered visual displays.",
-    solution:
-      "Built a streamlined weather forecasting app that integrates external meteorological APIs to deliver current atmospheric data and location forecasts instantaneously.",
     description:
-      "A responsive weather application built with React, TypeScript, and Axios. Features location-based lookups, debounced city searches, and dynamic weather condition cards.",
+      "A lightweight educational frontend project built to learn and practice connecting external REST weather APIs with modern React and TypeScript. Features real-time temperature tracking, atmospheric metrics, and city search integration.",
     shortDescription:
-      "A real-time weather forecasting app with location-based insights and API integration.",
+      "An educational frontend project built to practice consuming and integrating real-time weather APIs in React and TypeScript.",
     keyFeatures: [
       "Real-time temperature, humidity, and wind condition display",
       "Multi-day forecast breakdown with dynamic weather condition icons",
