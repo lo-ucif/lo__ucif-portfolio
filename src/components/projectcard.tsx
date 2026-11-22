@@ -110,7 +110,7 @@ export default function Projectcard({
         </h3>
 
         {/* Narrative Description */}
-        <p className="font-['Poppins'] text-[14px] sm:text-[15px] leading-[1.75] text-[#b4b4b4]">
+        <p className="font-['Poppins'] text-[14px] sm:text-[15px] leading-[1.75] text-[#b4b4b4] line-clamp-4">
           {narrative}
         </p>
 

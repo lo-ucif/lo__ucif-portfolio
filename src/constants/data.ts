@@ -251,9 +251,9 @@ export const projects: project[] = [
     year: "2026",
     title: "AI-Powered Job Matching Platform",
     problem:
-      "Job seekers struggle to find roles that match their exact skill sets, while recruiters spend dozens of hours manually reviewing unstructured resumes with high mismatch rates.",
+      "Recruiters spend hours manually screening resumes while candidates struggle to find matching roles.",
     solution:
-      "Built an automated recruitment platform that analyzes candidate skill profiles, computes match compatibility scores, and streamlines candidate evaluation through automated workflows.",
+      "Built an automated platform computing AI compatibility scores and streamlining hiring with n8n workflows.",
     description:
       "Developed for the Automate & Innovate Hackathon. As a Full-Stack Developer, I architected frontend components in React and TypeScript, integrated backend REST endpoints with MongoDB, and connected automated notification workflows using n8n.",
     shortDescription:
@@ -297,7 +297,7 @@ export const projects: project[] = [
     year: "2025",
     title: "Secure Cloud Note App",
     description:
-      "My first full-stack web application built with the MERN stack (MongoDB, Express, React, Node.js). Developed to practice connecting a React frontend with a Node/Express backend and performing CRUD operations on a NoSQL database (MongoDB Atlas).",
+      "My first full-stack MERN application (MongoDB, Express, React, Node.js), built to master full-stack architecture. Features RESTful API endpoints, seamless frontend integration, and full CRUD operations on MongoDB Atlas.",
     shortDescription:
       "My first MERN stack full-stack project built to practice connecting a React frontend with an Express API and MongoDB NoSQL database.",
     keyFeatures: [
@@ -337,7 +337,7 @@ export const projects: project[] = [
     year: "2025",
     title: "Headphone Product Showcase",
     description:
-      "An educational frontend project showcasing audio headphones. Built to practice core React concepts, dynamic element toggling, clean product presentation, responsive layout grids, and translating design systems accurately from Figma into production code.",
+      "An educational frontend showcase exploring Figma-to-code translation and core React principles. Features dynamic product element toggling, balanced typography hierarchy, and a fully responsive grid system across devices.",
     shortDescription:
       "An educational headphone showcase exploring Figma-to-code translation, dynamic element switching, and responsive design in React.",
     keyFeatures: [
@@ -374,7 +374,7 @@ export const projects: project[] = [
     year: "2025",
     title: "Weather Insights App",
     description:
-      "A lightweight educational frontend project built to learn and practice connecting external REST weather APIs with modern React and TypeScript. Features real-time temperature tracking, atmospheric metrics, and city search integration.",
+      "A lightweight educational frontend project built to practice integrating external REST weather APIs with React and TypeScript. Features real-time atmospheric metrics, city search queries, and responsive card layouts.",
     shortDescription:
       "An educational frontend project built to practice consuming and integrating real-time weather APIs in React and TypeScript.",
     keyFeatures: [
@@ -413,7 +413,7 @@ export const projects: project[] = [
     year: "2025",
     title: "Book Library Landing Page",
     description:
-      "An educational frontend showcase project built to learn and practice translating UI/UX designs from Figma into clean, modular React code line by line. Focused on mastering component hierarchy, typography hierarchy, responsive layouts, and cross-device adaptation.",
+      "An educational landing page built to master translating Figma UI/UX designs into modular React code line by line. Focused on component structure, typography hierarchy, and pixel-perfect responsiveness across all screen sizes.",
     shortDescription:
       "An educational frontend landing page built to practice translating Figma UI designs into clean, responsive React code line by line.",
     keyFeatures: [
@@ -450,9 +450,9 @@ export const projects: project[] = [
     year: "2026",
     title: "Rihla Web — Smart Travel Planner",
     problem:
-      "Travelers in Algeria often struggle to discover organized excursions, find verified local tour guides, and budget multi-day trips across diverse regions.",
+      "Travelers in Algeria struggle to discover organized excursions, verified local guides, and budget trips.",
     solution:
-      "Developed a smart travel planning platform that builds personalized itineraries based on user budget and destination preferences, complete with route guidance and guide coordination.",
+      "Developed a smart travel platform that generates personalized itineraries based on budget and destinations, with guide coordination.",
     description:
       "Built during the W-Hackathon. As Frontend Developer, I built responsive itinerary views, interactive budget calculations, and dynamic tour guide directory components using Next.js and TypeScript.",
     shortDescription:
@@ -491,9 +491,9 @@ export const projects: project[] = [
     year: "2026",
     title: "Al-Tabib Al-Hafiz",
     problem:
-      "Medical students struggle to manage memorization sessions and track student progress alongside demanding medical studies, making consistent Quran learning difficult to sustain.",
+      "Medical students struggle to manage Quran memorization circles alongside demanding academic coursework.",
     solution:
-      "A centralized platform that simplifies Quran learning, session management, and student progress monitoring in one organized, accessible workspace.",
+      "A centralized platform that streamlines learning circles, attendance, and progress tracking in an intuitive, accessible workspace.",
     description:
       "A digital platform helping medical students manage their Quran memorization journey through organized learning circles and progress tracking. As Front-End Developer, I built the responsive interfaces, reusable components, and smooth animations that power the experience, using React.js, TypeScript, Vite, and Tailwind CSS with motion design from Framer Motion.",
     shortDescription:
