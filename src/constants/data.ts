@@ -6,7 +6,6 @@ import weather from "../assets/ChatGPT Image Aug 6, 2026, 01_37_13 PM.webp";
 import hotel from "../assets/ChatGPT Image Aug 6, 2026, 12_56_04 PM.webp";
 import shoes from "../assets/ChatGPT Image Aug 6, 2026, 12_50_35 PM.webp";
 import tabibWeb from "../assets/tabib-hafiz-web.webp";
-import alTabibMockup from "../assets/mockups/al-tabib-mockup.webp";
 import rokhsaMockup from "../assets/mockups/rokhsa-mockup.webp";
 import jobMatchingMockup from "../assets/mockups/job-matching-mockup.webp";
 import sewingMockup from "../assets/mockups/sewing-mockup.webp";
@@ -23,8 +22,6 @@ import rokhsaLaptop from "../assets/mockups/devices/rokhsa-laptop.webp";
 import rokhsaMobile from "../assets/mockups/devices/rokhsa-mobile.webp";
 import sewingLaptop from "../assets/mockups/devices/sewing-laptop.webp";
 import sewingMobile from "../assets/mockups/devices/sewing-mobile.webp";
-import alTabibLaptop from "../assets/mockups/devices/al-tabib-laptop.webp";
-import alTabibMobile from "../assets/mockups/devices/al-tabib-mobile.webp";
 import rihlaLaptop from "../assets/mockups/devices/rihla-laptop.webp";
 import rihlaMobile from "../assets/mockups/devices/rihla-mobile.webp";
 import noteappLaptop from "../assets/mockups/devices/noteapp-laptop.webp";
@@ -255,43 +252,6 @@ export type project = {
 };
 
 export const projects: project[] = [
-  {
-    id: 1,
-    type: "uiux",
-    role: "design",
-    category: "personal",
-    projectType: "Mobile App Concept",
-    team: "Solo Designer",
-    status: "Completed",
-    year: "2026",
-    title: "Al-Tabib Al-Hafed",
-    problem:
-      "Medical students face demanding academic workloads that make it difficult to balance coursework with consistent Quran memorization and progress tracking.",
-    solution:
-      "Designed an empathetic, distraction-free mobile interface with clear daily revision schedules, habit consistency reminders, and structured progress tracking.",
-    description:
-      "A dedicated habit tracking and revision app concept designed specifically for medical students. As a UI/UX Designer, I focused on clean typography, calm visual hierarchy, and an intuitive user flow that eliminates cognitive fatigue.",
-    shortDescription:
-      "A UI/UX mobile design helping students balance Quran memorization with demanding academic schedules.",
-    keyFeatures: [
-      "Structured daily revision planner built around study breaks",
-      "Progress analytics and habit consistency tracking",
-      "Distraction-free reading view with soft night-friendly contrast",
-      "Complete interactive high-fidelity prototype in Figma",
-    ],
-    outcome:
-      "Delivered a comprehensive interactive prototype with verified positive usability feedback from medical student peers.",
-    image: alTabibMockup,
-    laptopImage: alTabibLaptop,
-    mobileImage: alTabibMobile,
-    tech: [{ label: "Figma", icon: FigmaIcon }],
-    hackathon: "",
-    liveDemo:
-      "https://www.linkedin.com/posts/ahmed-loucif-757854342_Ui/Ux Design-uidesign-uxdesign-activity-7492710718945943552-9YBE",
-    github: "",
-    figma:
-      "https://www.figma.com/design/hx4E6cZLWqvRjPWsZ5nXpN/my-portfolio?node-id=585-24",
-  },
   {
     id: 2,
     type: "uiux",

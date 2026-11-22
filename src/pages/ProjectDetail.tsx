@@ -80,7 +80,7 @@ export default function ProjectDetail() {
   }
 
   const caseStudyUrl =
-    project.id === 1
+    project.id === 12
       ? "/case-studies/al-tabib-al-hafiz"
       : project.id === 2
         ? "/case-studies/rokhsa"
