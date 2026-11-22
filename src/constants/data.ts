@@ -3,12 +3,8 @@ import booklibrary from "../assets/ChatGPT Image Aug 6, 2026, 01_04_31 PM.webp";
 import noteapp from "../assets/ChatGPT Image Aug 6, 2026, 01_49_32 PM.webp";
 import headphone from "../assets/ChatGPT Image Aug 6, 2026, 01_15_30 PM.webp";
 import weather from "../assets/ChatGPT Image Aug 6, 2026, 01_37_13 PM.webp";
-import hotel from "../assets/ChatGPT Image Aug 6, 2026, 12_56_04 PM.webp";
-import shoes from "../assets/ChatGPT Image Aug 6, 2026, 12_50_35 PM.webp";
 import tabibWeb from "../assets/tabib-hafiz-web.webp";
-import rokhsaMockup from "../assets/mockups/rokhsa-mockup.webp";
 import jobMatchingMockup from "../assets/mockups/job-matching-mockup.webp";
-import sewingMockup from "../assets/mockups/sewing-mockup.webp";
 import rihlaMockup from "../assets/mockups/rihla-mockup.webp";
 import automate from "../assets/Screenshot 2026-10-06 201845.png";
 import soai from "../assets/Screenshot 2026-10-06 202012.png";
@@ -18,10 +14,6 @@ import tabibHafezLaptop from "../assets/mockups/devices/tabib-hafez-laptop.webp"
 import tabibHafezMobile from "../assets/mockups/devices/tabib-hafez-mobile.webp";
 import aiMatchingLaptop from "../assets/mockups/devices/ai-matching-laptop.webp";
 import aiMatchingMobile from "../assets/mockups/devices/ai-matching-mobile.webp";
-import rokhsaLaptop from "../assets/mockups/devices/rokhsa-laptop.webp";
-import rokhsaMobile from "../assets/mockups/devices/rokhsa-mobile.webp";
-import sewingLaptop from "../assets/mockups/devices/sewing-laptop.webp";
-import sewingMobile from "../assets/mockups/devices/sewing-mobile.webp";
 import rihlaLaptop from "../assets/mockups/devices/rihla-laptop.webp";
 import rihlaMobile from "../assets/mockups/devices/rihla-mobile.webp";
 import noteappLaptop from "../assets/mockups/devices/noteapp-laptop.webp";
@@ -32,10 +24,6 @@ import weatherLaptop from "../assets/mockups/devices/weather-laptop.webp";
 import weatherMobile from "../assets/mockups/devices/weather-mobile.webp";
 import booklibraryLaptop from "../assets/mockups/devices/booklibrary-laptop.webp";
 import booklibraryMobile from "../assets/mockups/devices/booklibrary-mobile.webp";
-import hotelLaptop from "../assets/mockups/devices/hotel-laptop.webp";
-import hotelMobile from "../assets/mockups/devices/hotel-mobile.webp";
-import shoesLaptop from "../assets/mockups/devices/shoes-laptop.webp";
-import shoesMobile from "../assets/mockups/devices/shoes-mobile.webp";
 
 import {
   JavascriptIcon,
@@ -253,43 +241,6 @@ export type project = {
 
 export const projects: project[] = [
   {
-    id: 2,
-    type: "uiux",
-    role: "design",
-    category: "personal",
-    projectType: "Web App / Mobile App",
-    team: "Solo Designer",
-    status: "Completed",
-    year: "2026",
-    title: "Rokhsa — Smart Driving School Platform",
-    problem:
-      "Driving education in Algeria is largely managed through paper ledgers, phone calls, and manual records, leading to scheduling conflicts, lost student files, and administrative overhead.",
-    solution:
-      "Designed a dual-interface platform that digitizes the driving school workflow: a mobile app for learners to book sessions and track readiness, alongside a centralized web dashboard for schools to manage instructors, fleets, and exams.",
-    description:
-      "A modern digital ecosystem connecting driving students and schools. As the UI/UX Designer, I conducted user research, designed the responsive layout system, and built an interactive design system in Figma.",
-    shortDescription:
-      "A smart platform that digitizes driving school operations, lesson bookings, and student tracking.",
-    keyFeatures: [
-      "Intuitive student lesson booking and availability calendar",
-      "Progress tracking for traffic law and practical driving exams",
-      "Centralized school dashboard for student records and schedules",
-      "Accessible design system with clear visual status indicators",
-    ],
-    outcome:
-      "Created an end-to-end design system with over 20 high-fidelity screens spanning mobile and desktop viewports.",
-    image: rokhsaMockup,
-    laptopImage: rokhsaLaptop,
-    mobileImage: rokhsaMobile,
-    tech: [{ label: "Figma", icon: FigmaIcon }],
-    hackathon: "",
-    liveDemo:
-      "https://www.linkedin.com/posts/ahmed-loucif-757854342_Ui/Ux Design-uxdesign-figma-ugcPost-7490915921327198208-KWqx/",
-    github: "",
-    figma:
-      "https://www.figma.com/design/NzHDINBZtitHegyQ5X1jCS/rukhsa-app?node-id=435-2&t=kM44AgQOkcenheHH-1",
-  },
-  {
     id: 3,
     type: "development",
     role: "fullstack",
@@ -334,48 +285,6 @@ export const projects: project[] = [
       "https://www.figma.com/deck/h5Pmcq96LZC3Q5065s940j/Untitled?node-id=1-220&viewport=-5849%2C-109%2C0.53&t=08A4QFzdxSyXK653-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1",
     linkedin:
       "https://www.linkedin.com/posts/ahmed-loucif-757854342_ai-powered-job-matching-platform-activity-7492710718945943552-9YBE",
-  },
-  {
-    id: 4,
-    type: "development",
-    role: "frontend",
-    category: "client",
-    projectType: "Client Web Application",
-    team: "Solo Developer",
-    status: "Completed",
-    year: "2026",
-    title: "Works Exhibition — أم وائل",
-    problem:
-      "Managing custom bespoke tailoring orders through unorganized messaging apps led to lost client specifications, repetitive pricing questions, and lack of a professional brand showcase.",
-    solution:
-      "Developed a dedicated digital portfolio that organizes fashion collections by category, showcases high-resolution garment details, and provides a direct path for client inquiries.",
-    description:
-      "A production client platform built for a tailoring and couture atelier. As Frontend Developer and UI Designer, I crafted the interface in Figma and implemented the responsive web application using React, TypeScript, and Tailwind CSS.",
-    shortDescription:
-      "A digital portfolio platform that centralizes tailoring projects and client inquiry management.",
-    keyFeatures: [
-      "Categorized fashion collections and garment gallery",
-      "High-performance responsive image grid optimized with Vite",
-      "Detailed project specifications and pricing display",
-      "Direct WhatsApp contact integration for streamlined customer inquiries",
-    ],
-    outcome:
-      "Successfully launched into production, giving the client a central professional showcase that elevated brand perception and client inquiry flow.",
-    image: sewingMockup,
-    laptopImage: sewingLaptop,
-    mobileImage: sewingMobile,
-    tech: [
-      { label: "React", icon: ReactIcon },
-      { label: "TypeScript", icon: TypescriptIcon },
-      { label: "Tailwind", icon: TaillwindIcon },
-      { label: "Vite", icon: ViteIcon },
-      { label: "Figma", icon: FigmaIcon },
-    ],
-    hackathon: "",
-    liveDemo: "https://sewing-oum-wail-web.vercel.app/",
-    github: "https://github.com/lo-ucif/sewing-web.git",
-    figma:
-      "https://www.figma.com/design/LvzYoaNIgykoqBLv3c3SHR/Untitled?node-id=11-2&t=gQHOkTD7sn2QKCNR-1",
   },
   {
     id: 5,
@@ -586,78 +495,6 @@ export const projects: project[] = [
     liveDemo: "",
     github: "",
     figma: "https://www.figma.com/deck/F8gNPiNluy6D8r2CgLmZSQ",
-  },
-  {
-    id: 10,
-    type: "uiux",
-    role: "design",
-    category: "personal",
-    projectType: "Web App UI/UX",
-    team: "Solo Designer",
-    status: "Completed",
-    year: "2025",
-    title: "Hotel Booking Platform",
-    problem:
-      "Many hospitality websites suffer from confusing navigation, hidden fees, and cluttered checkout flows that lead to reservation abandonment.",
-    solution:
-      "Designed an intuitive reservation platform with clear pricing transparency, instant room comparison, and a simplified 3-step booking flow.",
-    description:
-      "A comprehensive UI/UX case study for a hospitality booking platform. Focused on clean user journeys, transparent pricing breakdowns, and component reusability in Figma.",
-    shortDescription:
-      "A UI/UX design for a hotel booking platform focused on clear navigation and streamlined checkout.",
-    keyFeatures: [
-      "Clean room comparison cards with amenity indicators",
-      "Transparent pricing breakdown without hidden costs",
-      "Simplified 3-step reservation workflow",
-      "Structured Figma design system with reusable UI tokens",
-    ],
-    outcome:
-      "Built a complete interactive Figma prototype covering search, room inspection, and checkout flows.",
-    image: hotel,
-    laptopImage: hotelLaptop,
-    mobileImage: hotelMobile,
-    tech: [{ label: "Figma", icon: FigmaIcon }],
-    hackathon: "",
-    liveDemo: "",
-    github: "",
-    figma:
-      "https://www.figma.com/design/Ud9huPl27nRy6pMLPBIlZb/Latest-Hotel-Booking-Website-Prototype--Community---Copy-?node-id=0-1&t=tG3MIkJrcfgWfCgy-1",
-  },
-  {
-    id: 11,
-    type: "uiux",
-    role: "design",
-    category: "personal",
-    projectType: "Mobile E-Commerce Design",
-    team: "Solo Designer",
-    status: "Completed",
-    year: "2025",
-    title: "Footwear E-Commerce Store",
-    problem:
-      "E-commerce stores often fail to provide effortless mobile browsing and clean product filtering on smaller viewports.",
-    solution:
-      "Crafted a modern, visual-first mobile shopping experience with bold product imagery, intuitive size and color selectors, and an uncluttered cart flow.",
-    description:
-      "A mobile-focused e-commerce concept designed in Figma. Emphasizes clean typography, organized product displays, and an effortless purchasing flow.",
-    shortDescription:
-      "An e-commerce mobile design offering organized product displays and an intuitive shopping experience.",
-    keyFeatures: [
-      "Visual product cards with variant and size quick-selectors",
-      "Streamlined slide-out cart and frictionless checkout screen",
-      "Clean mobile-first navigation and search filter drawer",
-      "Consistent typography and spacing hierarchy in Figma",
-    ],
-    outcome:
-      "Created an interactive mobile e-commerce prototype demonstrating modern UI patterns and retail UX principles.",
-    image: shoes,
-    laptopImage: shoesLaptop,
-    mobileImage: shoesMobile,
-    tech: [{ label: "Figma", icon: FigmaIcon }],
-    hackathon: "",
-    liveDemo: "",
-    github: "",
-    figma:
-      "https://www.figma.com/design/u3jcnp3N1n5IUYPxVqatKM/store-web?node-id=0-1&t=wlj0ZBzy51ESbxgt-1",
   },
   {
     id: 12,

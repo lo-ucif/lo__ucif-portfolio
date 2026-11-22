@@ -80,11 +80,7 @@ export default function ProjectDetail() {
   }
 
   const caseStudyUrl =
-    project.id === 12
-      ? "/case-studies/al-tabib-al-hafiz"
-      : project.id === 2
-        ? "/case-studies/rokhsa"
-        : null;
+    project.id === 12 ? "/case-studies/al-tabib-al-hafiz" : null;
 
   return (
     <div className="flex flex-col items-center min-h-screen bg-[#161513] px-5 pb-0 pt-20 text-white sm:px-10 lg:px-20 min-[601px]:pt-28 max-[600px]:pt-22">
