@@ -1,5 +1,5 @@
 import type { ComponentType, SVGProps } from "react";
-import booklibrary from "../assets/ChatGPT Image Aug 6, 2026, 01_04_31 PM.webp";
+import booklibraryWeb from "../assets/book-library-web.webp";
 import noteapp from "../assets/ChatGPT Image Aug 6, 2026, 01_49_32 PM.webp";
 import headphone from "../assets/headphone-showcase-web.webp";
 import weather from "../assets/weather-app-web.webp";
@@ -411,28 +411,24 @@ export const projects: project[] = [
     type: "development",
     role: "frontend",
     category: "personal",
-    projectType: "Website Component",
-    team: "Solo Developer",
+    projectType: "Landing Page / UI Showcase",
+    team: "",
     status: "Completed",
     year: "2025",
-    title: "Digital Library Hero Section",
-    problem:
-      "Online reading platforms often lack engaging entry points that encourage users to explore literary collections.",
-    solution:
-      "Designed and coded a modern hero component featuring trending book spotlights, clear navigation, and subtle hover interactions.",
+    title: "Book Library Landing Page",
     description:
-      "An editorial-style hero section for a digital book platform. Explored balanced typography, clean imagery placement, and engaging micro-interactions.",
+      "An educational frontend showcase project built to learn and practice translating UI/UX designs from Figma into clean, modular React code line by line. Focused on mastering component hierarchy, typography hierarchy, responsive layouts, and cross-device adaptation.",
     shortDescription:
-      "A modern hero section for a digital book platform designed for visual clarity and engagement.",
+      "An educational frontend landing page built to practice translating Figma UI designs into clean, responsive React code line by line.",
     keyFeatures: [
-      "Curated book showcase with interactive hover states",
-      "Quick search bar interaction for immediate book discovery",
-      "Responsive typography and fluid scaling",
-      "Clean component structure ready for CMS integration",
+      "Line-by-line translation of Figma UI designs into responsive React components",
+      "Immersive hero section with clear typography hierarchy and call-to-action buttons",
+      "Structured component hierarchy with modular CSS layout techniques",
+      "Cross-device responsive design tested for mobile and desktop screens",
     ],
     outcome:
-      "Refined front-end styling skills and component reusability with clean CSS layouts.",
-    image: booklibrary,
+      "Mastered the workflow of turning Figma prototypes into production-ready React components with clean responsive styling.",
+    image: booklibraryWeb,
     laptopImage: booklibraryLaptop,
     mobileImage: booklibraryMobile,
     tech: [
