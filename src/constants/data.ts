@@ -1,7 +1,7 @@
 import type { ComponentType, SVGProps } from "react";
 import booklibrary from "../assets/ChatGPT Image Aug 6, 2026, 01_04_31 PM.webp";
 import noteapp from "../assets/ChatGPT Image Aug 6, 2026, 01_49_32 PM.webp";
-import headphone from "../assets/ChatGPT Image Aug 6, 2026, 01_15_30 PM.webp";
+import headphone from "../assets/headphone-showcase-web.webp";
 import weather from "../assets/weather-app-web.webp";
 import tabibWeb from "../assets/tabib-hafiz-web.webp";
 import jobMatchingMockup from "../assets/mockups/job-matching-mockup.webp";
@@ -336,18 +336,14 @@ export const projects: project[] = [
     role: "frontend",
     category: "personal",
     projectType: "Product Landing Page",
-    team: "Solo Developer",
+    team: "",
     status: "Completed",
     year: "2025",
     title: "Headphone Product Showcase",
-    problem:
-      "Consumer electronics pages often feel static and fail to showcase product features through engaging visual storytelling.",
-    solution:
-      "Designed and coded a modern product landing page with dynamic feature sections, responsive layout grids, and interactive browsing.",
     description:
-      "A sleek e-commerce showcase page created for an audio headphone brand. Designed in Figma and built with React, focusing on visual hierarchy, clean spacing, and mobile responsiveness.",
+      "An educational frontend project showcasing audio headphones. Built to practice core React concepts, dynamic element toggling, clean product presentation, responsive layout grids, and translating design systems accurately from Figma into production code.",
     shortDescription:
-      "A modern product landing page for audio gear featuring responsive design and fluid visuals.",
+      "An educational headphone showcase exploring Figma-to-code translation, dynamic element switching, and responsive design in React.",
     keyFeatures: [
       "Hero section with product focal point and value callouts",
       "Interactive audio specification and feature breakdown",
