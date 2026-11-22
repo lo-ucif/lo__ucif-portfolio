@@ -4,7 +4,7 @@ import noteappWeb from "../assets/note-app-web.webp";
 import headphone from "../assets/headphone-showcase-web.webp";
 import weather from "../assets/weather-app-web.webp";
 import tabibWeb from "../assets/tabib-hafiz-web.webp";
-import jobMatchingMockup from "../assets/mockups/job-matching-mockup.webp";
+import aiMatchingWeb from "../assets/ai-matching-web.webp";
 import rihlaWeb from "../assets/rihla-web.webp";
 import automate from "../assets/Screenshot 2026-10-06 201845.png";
 import soai from "../assets/Screenshot 2026-10-06 202012.png";
@@ -266,7 +266,7 @@ export const projects: project[] = [
     ],
     outcome:
       "Designed, developed, and pitched a working MVP in 48 hours, earning a Certificate of Recognition as a hackathon finalist.",
-    image: jobMatchingMockup,
+    image: aiMatchingWeb,
     laptopImage: aiMatchingLaptop,
     mobileImage: aiMatchingMobile,
     tech: [
@@ -279,7 +279,7 @@ export const projects: project[] = [
       { label: "Figma", icon: FigmaIcon },
     ],
     hackathon: "Automate & Innovate",
-    liveDemo: "https://estin-hackathon.vercel.app/",
+    liveDemo: "",
     github: "https://github.com/lo-ucif/estin-hackathon.git",
     figma:
       "https://www.figma.com/deck/h5Pmcq96LZC3Q5065s940j/Untitled?node-id=1-220&viewport=-5849%2C-109%2C0.53&t=08A4QFzdxSyXK653-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1",
