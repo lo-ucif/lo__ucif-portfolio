@@ -283,8 +283,7 @@ export const projects: project[] = [
     github: "https://github.com/lo-ucif/estin-hackathon.git",
     figma:
       "https://www.figma.com/deck/h5Pmcq96LZC3Q5065s940j/Untitled?node-id=1-220&viewport=-5849%2C-109%2C0.53&t=08A4QFzdxSyXK653-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1",
-    linkedin:
-      "https://www.linkedin.com/posts/ahmed-loucif-757854342_ai-powered-job-matching-platform-activity-7492710718945943552-9YBE",
+    linkedin: "https://lnkd.in/p/dpdTM9YE",
   },
   {
     id: 5,
@@ -321,10 +320,11 @@ export const projects: project[] = [
       { label: "Figma", icon: FigmaIcon },
     ],
     hackathon: "",
-    liveDemo: "https://note-web-seven-smoky.vercel.app/",
+    liveDemo: "",
     github: "https://github.com/lo-ucif/note_web.git",
     figma:
       "https://www.figma.com/design/rm2Fvk9U1lDoC3paoBDvge/note-app?node-id=0-1&t=JMrUlY7hLogXADuu-1",
+    linkedin: "https://lnkd.in/p/dX5kKVJe",
   },
   {
     id: 6,
@@ -362,6 +362,7 @@ export const projects: project[] = [
     github: "https://github.com/lo-ucif/headphone.git",
     figma:
       "https://www.figma.com/design/8CyxT9T0MwuaRxzPNhJDl3/headbods?node-id=0-1&t=hLAwadaGzomyeBGf-1",
+    linkedin: "https://lnkd.in/p/dusyydBP",
   },
   {
     id: 7,
@@ -401,6 +402,7 @@ export const projects: project[] = [
     github: "https://github.com/lo-ucif/weather.git",
     figma:
       "https://www.figma.com/design/wXIbw0NNKQHh5LXUW9SMsg/weather-web?node-id=0-1&t=onOswin6pBI3t0Tu-1",
+    linkedin: "https://lnkd.in/p/dX5kKVJe",
   },
   {
     id: 8,
@@ -438,6 +440,7 @@ export const projects: project[] = [
     github: "https://github.com/lo-ucif/library-book.git",
     figma:
       "https://www.figma.com/design/jqsnmcwi1RK0rZuzMR3ESr/book-library?node-id=0-1&t=JBJeWvcJ6pyxEyGx-1",
+    linkedin: "https://lnkd.in/p/dQWYkDpi",
   },
   {
     id: 9,
@@ -479,6 +482,7 @@ export const projects: project[] = [
     liveDemo: "",
     github: "",
     figma: "https://www.figma.com/deck/F8gNPiNluy6D8r2CgLmZSQ",
+    linkedin: "https://lnkd.in/p/dqz2Nbn9",
   },
   {
     id: 12,
@@ -522,6 +526,7 @@ export const projects: project[] = [
     liveDemo: "https://tabibhafiz.com/",
     github: "",
     figma: "",
+    linkedin: "https://lnkd.in/p/dbtArdqU",
   },
 ];
 
