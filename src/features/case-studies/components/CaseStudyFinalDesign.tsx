@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { CaseStudy } from "../types";
 import type { LightboxItem } from "./ImageLightboxModal";
@@ -126,7 +126,7 @@ export function CaseStudyFinalDesign({
   onOpenLightbox,
 }: CaseStudyFinalDesignProps) {
   const { solution } = study;
-  const screens = solution?.screens || [];
+  const screens = useMemo(() => solution?.screens ?? [], [solution?.screens]);
 
   // Active Category Filter State
   const [activeCategory, setActiveCategory] = useState<string>("All");
@@ -216,23 +216,23 @@ export function CaseStudyFinalDesign({
     ];
   }, [filteredScreens.length, currentScreen, prevScreen, nextScreen]);
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     setDirection(-1);
     const prevIdx =
       currentIndexInFiltered > 0
         ? currentIndexInFiltered - 1
         : filteredScreens.length - 1;
     setSelectedScreenId(filteredScreens[prevIdx].id);
-  };
+  }, [currentIndexInFiltered, filteredScreens]);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     setDirection(1);
     const nextIdx =
       currentIndexInFiltered < filteredScreens.length - 1
         ? currentIndexInFiltered + 1
         : 0;
     setSelectedScreenId(filteredScreens[nextIdx].id);
-  };
+  }, [currentIndexInFiltered, filteredScreens]);
 
   // Keyboard navigation with arrow keys
   useEffect(() => {
@@ -245,7 +245,7 @@ export function CaseStudyFinalDesign({
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [currentIndexInFiltered, filteredScreens]);
+  }, [handlePrev, handleNext]);
 
   if (screens.length === 0 || !currentScreen) return null;
 

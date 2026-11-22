@@ -31,7 +31,7 @@ import {
   UxDesignIcon,
 } from "../../constants/Icon";
 
-export const experienceMilestones = [
+const experienceMilestones = [
   {
     num: "01",
     year: "2024",

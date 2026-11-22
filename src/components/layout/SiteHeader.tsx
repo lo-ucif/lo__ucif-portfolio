@@ -12,7 +12,7 @@ type SiteHeaderProps = {
 };
 
 // Optimized concise titles for professional navigation
-export const navItems = [
+const navItems = [
   { label: "Home", id: "home" },
   { label: "Projects", id: "projects" },
   { label: "UI/UX Design", id: "case-studies" },
@@ -28,18 +28,21 @@ export function SiteHeader({
 }: SiteHeaderProps) {
   const location = useLocation();
   const navigate = useNavigate();
-  const [activeId, setActiveId] = useState<string>("home");
+  const [activeScrollId, setActiveScrollId] = useState<string>("home");
 
-  // Track active section as user scrolls
+  // Derive active section for non-root routes; track scroll for home page
+  const activeId =
+    location.pathname !== "/"
+      ? location.pathname.startsWith("/projects")
+        ? "projects"
+        : location.pathname.startsWith("/case-stud")
+        ? "case-studies"
+        : ""
+      : activeScrollId;
+
+  // Track active section as user scrolls on home page
   useEffect(() => {
     if (location.pathname !== "/") {
-      if (location.pathname.startsWith("/projects")) {
-        setActiveId("projects");
-      } else if (location.pathname.startsWith("/case-stud")) {
-        setActiveId("case-studies");
-      } else {
-        setActiveId("");
-      }
       return;
     }
 
@@ -54,7 +57,7 @@ export function SiteHeader({
     const handleScroll = () => {
       const scrollY = window.scrollY;
       if (scrollY < 200) {
-        setActiveId("home");
+        setActiveScrollId("home");
         return;
       }
 
@@ -63,12 +66,12 @@ export function SiteHeader({
         if (el) {
           const top = el.getBoundingClientRect().top + window.scrollY;
           if (scrollY >= top - 250) {
-            setActiveId(id);
+            setActiveScrollId(id);
             return;
           }
         }
       }
-      setActiveId("home");
+      setActiveScrollId("home");
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });

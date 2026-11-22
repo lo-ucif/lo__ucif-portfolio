@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export type LightboxItem = {
@@ -54,34 +54,46 @@ export function ImageLightboxModal({
     return [];
   }, [items, imageUrl, imageAlt, title, subtitle]);
 
+  // Track previous props to sync index safely without triggering cascading renders in effects
+  const [prevProps, setPrevProps] = useState({ isOpen, initialIndex });
   const [activeIndex, setActiveIndex] = useState<number>(initialIndex);
 
-  // Sync index when modal opens or initialIndex changes
-  useEffect(() => {
+  if (prevProps.isOpen !== isOpen || prevProps.initialIndex !== initialIndex) {
+    setPrevProps({ isOpen, initialIndex });
     if (isOpen) {
       setActiveIndex(initialIndex);
     }
-  }, [isOpen, initialIndex]);
+  }
 
   const hasMultiple = allItems.length > 1;
   const showNavigation = hasMultiple && !hidePagination;
   const currentItem = allItems[activeIndex] || allItems[0];
 
-  const handlePrev = (e?: React.MouseEvent) => {
-    e?.stopPropagation();
-    if (!showNavigation) return;
-    const nextIdx = activeIndex > 0 ? activeIndex - 1 : allItems.length - 1;
-    setActiveIndex(nextIdx);
-    onIndexChange?.(nextIdx);
-  };
+  const handlePrev = useCallback(
+    (e?: React.MouseEvent) => {
+      e?.stopPropagation();
+      if (!showNavigation) return;
+      setActiveIndex((prev) => {
+        const nextIdx = prev > 0 ? prev - 1 : allItems.length - 1;
+        onIndexChange?.(nextIdx);
+        return nextIdx;
+      });
+    },
+    [showNavigation, allItems.length, onIndexChange]
+  );
 
-  const handleNext = (e?: React.MouseEvent) => {
-    e?.stopPropagation();
-    if (!showNavigation) return;
-    const nextIdx = activeIndex < allItems.length - 1 ? activeIndex + 1 : 0;
-    setActiveIndex(nextIdx);
-    onIndexChange?.(nextIdx);
-  };
+  const handleNext = useCallback(
+    (e?: React.MouseEvent) => {
+      e?.stopPropagation();
+      if (!showNavigation) return;
+      setActiveIndex((prev) => {
+        const nextIdx = prev < allItems.length - 1 ? prev + 1 : 0;
+        onIndexChange?.(nextIdx);
+        return nextIdx;
+      });
+    },
+    [showNavigation, allItems.length, onIndexChange]
+  );
 
   // Keyboard navigation: Escape closes, Left/Right arrow changes page
   useEffect(() => {
@@ -97,7 +109,7 @@ export function ImageLightboxModal({
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, showNavigation, activeIndex]);
+  }, [isOpen, showNavigation, onClose, handlePrev, handleNext]);
 
   if (!isOpen || allItems.length === 0) return null;
 
