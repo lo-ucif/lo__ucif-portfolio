@@ -1507,11 +1507,11 @@ export const caseStudies: CaseStudy[] = [
     presentationHeading: "Mobile Presentation",
     tools: [{ label: "Figma", icon: FigmaIcon }],
     liveDemo:
-      "https://www.linkedin.com/posts/ahmed-loucif-757854342_Ui/Ux Design-uxdesign-figma-ugcPost-7490915921327198208-KWqx/",
+      "https://lnkd.in/p/dz_eNQ82",
     figmaLink:
       "https://www.figma.com/design/hx4E6cZLWqvRjPWsZ5nXpN/my-portfolio?node-id=585-131",
     linkedin:
-      "https://www.linkedin.com/posts/ahmed-loucif-757854342_Ui/Ux Design-uxdesign-figma-ugcPost-7490915921327198208-KWqx/",
+      "https://lnkd.in/p/dz_eNQ82",
 
     // 01 — Overview
     overview: {
