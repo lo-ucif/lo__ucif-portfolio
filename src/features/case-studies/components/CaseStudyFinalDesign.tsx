@@ -110,6 +110,33 @@ const phoneCardVariants = {
   }),
 };
 
+// Mobile Single Phone Slide Animation (Smooth Left/Right Slide)
+const mobilePhoneVariants = {
+  enter: (direction: number) => ({
+    x: direction > 0 ? 280 : direction < 0 ? -280 : 0,
+    opacity: 0,
+    scale: 0.94,
+  }),
+  center: {
+    x: 0,
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.38,
+      ease: easeOut,
+    },
+  },
+  exit: (direction: number) => ({
+    x: direction > 0 ? -280 : 280,
+    opacity: 0,
+    scale: 0.94,
+    transition: {
+      duration: 0.3,
+      ease: easeOut,
+    },
+  }),
+};
+
 type CaseStudyFinalDesignProps = {
   study: CaseStudy;
   onOpenLightbox: (
@@ -233,6 +260,19 @@ export function CaseStudyFinalDesign({
         : 0;
     setSelectedScreenId(filteredScreens[nextIdx].id);
   }, [currentIndexInFiltered, filteredScreens]);
+
+  // Touch Swipe on Mobile
+  const handleDragEnd = (
+    _e: MouseEvent | TouchEvent | PointerEvent,
+    info: { offset: { x: number }; velocity: { x: number } }
+  ) => {
+    const swipeThreshold = 45;
+    if (info.offset.x < -swipeThreshold || info.velocity.x < -250) {
+      handleNext();
+    } else if (info.offset.x > swipeThreshold || info.velocity.x > 250) {
+      handlePrev();
+    }
+  };
 
   // Keyboard navigation with arrow keys
   useEffect(() => {
@@ -361,58 +401,127 @@ export function CaseStudyFinalDesign({
             </div>
           </div>
         ) : (
-          // 3-Phone Presentation Stage
+          // Phone Presentation Stage
           <div className="relative flex items-center justify-center w-full max-w-2xl min-h-[510px] py-2 overflow-hidden sm:overflow-visible select-none mx-auto">
-            <AnimatePresence initial={false} custom={direction}>
-              {cardsToRender.map(({ screen, pos }) => {
-                const isCenter = pos === "center";
-                const isLeft = pos === "left";
-                const isRight = pos === "right";
+            {/* Desktop Mode (>= 640px): 3-Phone Coverflow */}
+            <div className="hidden sm:flex items-center justify-center w-full h-full">
+              <AnimatePresence initial={false} custom={direction}>
+                {cardsToRender.map(({ screen, pos }) => {
+                  const isCenter = pos === "center";
+                  const isLeft = pos === "left";
+                  const isRight = pos === "right";
 
-                const handleClick = () => {
-                  if (isCenter) {
-                    onOpenLightbox(
-                      screen.image,
-                      screen.title,
-                      screen.subtitle,
-                      currentIndexInFiltered,
-                      lightboxItems
-                    );
-                  } else if (isLeft) {
-                    handlePrev();
-                  } else if (isRight) {
-                    handleNext();
-                  }
-                };
-
-                return (
-                  <motion.div
-                    key={screen.id}
-                    custom={direction}
-                    variants={phoneCardVariants}
-                    initial="enter"
-                    animate={pos}
-                    exit="exit"
-                    whileHover={!isCenter ? { opacity: 0.48 } : undefined}
-                    className="absolute flex items-center justify-center cursor-pointer"
-                    style={{ willChange: "transform, opacity" }}
-                    title={
-                      isLeft
-                        ? `Previous: ${screen.title}`
-                        : isRight
-                        ? `Next: ${screen.title}`
-                        : screen.title
+                  const handleClick = () => {
+                    if (isCenter) {
+                      onOpenLightbox(
+                        screen.image,
+                        screen.title,
+                        screen.subtitle,
+                        currentIndexInFiltered,
+                        lightboxItems
+                      );
+                    } else if (isLeft) {
+                      handlePrev();
+                    } else if (isRight) {
+                      handleNext();
                     }
+                  };
+
+                  return (
+                    <motion.div
+                      key={screen.id}
+                      custom={direction}
+                      variants={phoneCardVariants}
+                      initial="enter"
+                      animate={pos}
+                      exit="exit"
+                      whileHover={!isCenter ? { opacity: 0.48 } : undefined}
+                      className="absolute flex items-center justify-center cursor-pointer"
+                      style={{ willChange: "transform, opacity" }}
+                      title={
+                        isLeft
+                          ? `Previous: ${screen.title}`
+                          : isRight
+                          ? `Next: ${screen.title}`
+                          : screen.title
+                      }
+                    >
+                      <IPhoneMockup
+                        screen={screen}
+                        isCenter={isCenter}
+                        onClick={handleClick}
+                      />
+                    </motion.div>
+                  );
+                })}
+              </AnimatePresence>
+            </div>
+
+            {/* Mobile Mode (< 640px): Single focused phone with smooth left/right slide animation, touch swipe & floating side buttons */}
+            <div className="flex sm:hidden relative items-center justify-center w-full min-h-[510px]">
+              <AnimatePresence initial={false} custom={direction} mode="wait">
+                <motion.div
+                  key={currentScreen.id}
+                  custom={direction}
+                  variants={mobilePhoneVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  drag="x"
+                  dragConstraints={{ left: 0, right: 0 }}
+                  dragElastic={0.2}
+                  onDragEnd={handleDragEnd}
+                  className="relative flex items-center justify-center cursor-pointer touch-pan-y"
+                  style={{ willChange: "transform, opacity" }}
+                >
+                  <IPhoneMockup
+                    screen={currentScreen}
+                    isCenter={true}
+                    onClick={() =>
+                      onOpenLightbox(
+                        currentScreen.image,
+                        currentScreen.title,
+                        currentScreen.subtitle,
+                        currentIndexInFiltered,
+                        lightboxItems
+                      )
+                    }
+                  />
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Floating Side Arrow Buttons on Phone Mode for easy one-tap switching */}
+              {filteredScreens.length > 1 && (
+                <>
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handlePrev();
+                    }}
+                    aria-label="Previous screen"
+                    className="absolute left-1 top-1/2 -translate-y-1/2 z-40 w-11 h-11 rounded-full bg-black/75 backdrop-blur-md border border-white/20 flex items-center justify-center text-white active:scale-90 shadow-2xl transition-transform cursor-pointer"
                   >
-                    <IPhoneMockup
-                      screen={screen}
-                      isCenter={isCenter}
-                      onClick={handleClick}
-                    />
-                  </motion.div>
-                );
-              })}
-            </AnimatePresence>
+                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <polyline points="15 18 9 12 15 6" />
+                    </svg>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleNext();
+                    }}
+                    aria-label="Next screen"
+                    className="absolute right-1 top-1/2 -translate-y-1/2 z-40 w-11 h-11 rounded-full bg-black/75 backdrop-blur-md border border-white/20 flex items-center justify-center text-white active:scale-90 shadow-2xl transition-transform cursor-pointer"
+                  >
+                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <polyline points="9 18 15 12 9 6" />
+                    </svg>
+                  </button>
+                </>
+              )}
+            </div>
           </div>
         )}
 

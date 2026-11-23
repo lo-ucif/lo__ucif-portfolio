@@ -836,8 +836,8 @@ export const BootsrapIcon = (props: SVGProps<SVGSVGElement>) => (
         y2="16.9576"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="white" />
-        <stop offset="1" stop-color="#F1E5FC" />
+        <stop stopColor="white" />
+        <stop offset="1" stopColor="#F1E5FC" />
       </linearGradient>
       <clipPath id="clip0_67_1122">
         <rect width="26" height="26" fill="white" />
@@ -1136,50 +1136,50 @@ export const PythonIcon = (props: SVGProps<SVGSVGElement>) => (
   >
     <path
       d="M14.8563 2.87067C13.8668 2.87536 12.9223 2.9595 12.0907 3.10669C9.64149 3.53934 9.19712 4.44497 9.19712 6.11536V8.32106H14.9845V9.05629H7.02493C5.34305 9.05629 3.87024 10.0672 3.40946 11.9909C2.8779 14.1952 2.85446 15.571 3.40946 17.8728C3.82079 19.5863 4.80329 20.8069 6.4854 20.8069H8.47548V18.1627C8.47548 16.2523 10.1281 14.5674 12.0909 14.5674H17.8718C19.481 14.5674 20.7654 13.2422 20.7654 11.6265V6.11559C20.7654 4.54692 19.4421 3.36872 17.8718 3.10692C16.8771 2.94145 15.8456 2.86622 14.8563 2.87067ZM11.7265 4.64465C12.3241 4.64465 12.8126 5.14083 12.8126 5.75114C12.8126 6.35887 12.3244 6.85036 11.7265 6.85036C11.1265 6.85036 10.6406 6.35887 10.6406 5.75114C10.6404 5.14083 11.1265 4.64465 11.7265 4.64465Z"
-      fill="url(#paint0_linear_542_19)"
+      fill="url(#python_paint0_linear)"
     />
     <path
       d="M21.4872 9.05626V11.6264C21.4872 13.6186 19.7978 15.2956 17.8717 15.2956H12.0909C10.5074 15.2956 9.19727 16.651 9.19727 18.2367V23.7481C9.19727 25.3163 10.5609 26.239 12.0909 26.6888C13.9227 27.2271 15.6796 27.3246 17.8717 26.6888C19.3286 26.2667 20.7653 25.4178 20.7653 23.7481V21.5421H14.9847V20.8067H23.6594C25.3412 20.8067 25.9684 19.6336 26.5534 17.8725C27.1577 16.0596 27.1316 14.3161 26.5534 11.9906C26.1377 10.316 25.3438 9.05603 23.6594 9.05603L21.4872 9.05626ZM18.2357 23.0126C18.8359 23.0126 19.3218 23.5041 19.3218 24.1123C19.3218 24.7221 18.8357 25.2183 18.2357 25.2183C17.638 25.2183 17.1498 24.7221 17.1498 24.1123C17.1498 23.5041 17.638 23.0126 18.2357 23.0126Z"
-      fill="url(#paint1_linear_542_19)"
+      fill="url(#python_paint1_linear)"
     />
     <path
       opacity="0.444"
       d="M22.8066 28.0306C22.8066 28.861 19.3341 29.5343 15.0509 29.5343C10.7674 29.5343 7.29492 28.861 7.29492 28.0306C7.29492 27.2002 10.7672 26.5266 15.0509 26.5266C19.3341 26.5266 22.8066 27.1997 22.8066 28.0306Z"
-      fill="url(#paint2_radial_542_19)"
+      fill="url(#python_paint2_radial)"
     />
     <defs>
       <linearGradient
-        id="paint0_linear_542_19"
+        id="python_paint0_linear"
         x1="2.42178"
         y1="3.56035"
         x2="15.7703"
         y2="14.9439"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#5A9FD4" />
-        <stop offset="1" stop-color="#306998" />
+        <stop stopColor="#5A9FD4" />
+        <stop offset="1" stopColor="#306998" />
       </linearGradient>
       <linearGradient
-        id="paint1_linear_542_19"
+        id="python_paint1_linear"
         x1="20.7927"
         y1="22.0201"
         x2="16.0057"
         y2="15.3071"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#FFD43B" />
-        <stop offset="1" stop-color="#FFE873" />
+        <stop stopColor="#FFD43B" />
+        <stop offset="1" stopColor="#FFE873" />
       </linearGradient>
       <radialGradient
-        id="paint2_radial_542_19"
+        id="python_paint2_radial"
         cx="0"
         cy="0"
         r="1"
         gradientUnits="userSpaceOnUse"
         gradientTransform="translate(15.0195 27.9875) rotate(-90) scale(1.50429 6.61262)"
       >
-        <stop stop-color="#B8B8B8" stop-opacity="0.498" />
-        <stop offset="1" stop-color="#7F7F7F" stop-opacity="0" />
+        <stop stopColor="#B8B8B8" stopOpacity="0.498" />
+        <stop offset="1" stopColor="#7F7F7F" stopOpacity="0" />
       </radialGradient>
     </defs>
   </svg>
