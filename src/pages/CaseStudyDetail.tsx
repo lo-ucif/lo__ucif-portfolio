@@ -9,17 +9,19 @@ import { CaseStudyOverview } from "../features/case-studies/components/CaseStudy
 import { CaseStudyFinalDesign } from "../features/case-studies/components/CaseStudyFinalDesign";
 import FloatingBubble, { type BubbleItem } from "../components/FloatingBubble";
 import { ImageLightboxModal, type LightboxItem } from "../features/case-studies/components/ImageLightboxModal";
+import { useLanguage } from "../contexts/LanguageContext";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
-const CASE_STUDY_BUBBLE_NAV: BubbleItem[] = [
-  { label: "Overview", id: "overview" },
-  { label: "Final Design", id: "final-design" },
-  { label: "Top ↑", id: "top" },
-];
-
 export default function CaseStudyDetail() {
+  const { isArabic, t } = useLanguage();
   const { slug } = useParams<{ slug: string }>();
+
+  const caseStudyBubbleNav: BubbleItem[] = [
+    { label: isArabic ? "نظرة عامة" : "Overview", id: "overview" },
+    { label: isArabic ? "التصميم النهائي" : "Final Design", id: "final-design" },
+    { label: isArabic ? "للأعلى ↑" : "Top ↑", id: "top" },
+  ];
 
   // Find case study by slug or id
   const currentIndex = caseStudies.findIndex(
@@ -147,7 +149,7 @@ export default function CaseStudyDetail() {
                 <line x1="19" y1="12" x2="5" y2="12" />
                 <polyline points="12 19 5 12 12 5" />
               </svg>
-              <span>Back to Design</span>
+              <span>{isArabic ? "العودة لتصاميم واجهات المستخدم" : "Back to Design"}</span>
             </Link>
 
             <span className="text-white/20">|</span>
@@ -156,7 +158,7 @@ export default function CaseStudyDetail() {
               to="/projects"
               className="font-['Poppins'] text-[13px] text-[#8491A0] transition-colors hover:text-white"
             >
-              Projects
+              {t.nav.projects}
             </Link>
           </div>
 
@@ -169,7 +171,7 @@ export default function CaseStudyDetail() {
                 className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.05] border border-white/10 px-3.5 py-1.5 font-['Poppins'] text-[13px] text-[#d1d1d1] hover:text-[#5197ff] hover:border-[#5197ff]/40 transition-colors"
               >
                 <BehanceIcon width={14} height={14} />
-                <span>Behance Presentation</span>
+                <span>{isArabic ? "عرض بيهانس" : "Behance Presentation"}</span>
               </a>
             )}
             {study.figmaLink && (
@@ -180,7 +182,7 @@ export default function CaseStudyDetail() {
                 className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.05] border border-white/10 px-3.5 py-1.5 font-['Poppins'] text-[13px] text-[#d1d1d1] hover:text-[#5197ff] hover:border-[#5197ff]/40 transition-colors"
               >
                 <FigmaIcon width={14} height={14} />
-                <span>Figma Prototype</span>
+                <span>{isArabic ? "نموذج فيجما" : "Figma Prototype"}</span>
               </a>
             )}
           </div>
@@ -205,13 +207,13 @@ export default function CaseStudyDetail() {
         {/* Collaboration CTA */}
         <div className="flex flex-col items-center gap-4 p-8 sm:p-10 rounded-3xl bg-gradient-to-b from-[#1A1917] to-[#161513] border border-white/[0.1] text-center shadow-xl">
           <span className="font-['Itim'] text-[14px] text-[#5197ff] uppercase tracking-wider">
-            Collaboration &amp; Design Inquiries
+            {isArabic ? "التعاون واستفسارات التصميم" : "Collaboration & Design Inquiries"}
           </span>
           <h3 className="font-['Itim'] text-[28px] sm:text-[34px] text-white font-bold">
-            Have a project or concept to design?
+            {isArabic ? "هل لديك مشروع أو فكرة تريد تصميمها؟" : "Have a project or concept to design?"}
           </h3>
           <p className="font-['Poppins'] text-[14.5px] text-[#9CA3AF] max-w-lg leading-relaxed">
-            Let's build clean, human-centered digital experiences together.
+            {isArabic ? "دعنا نبني معاً تجارب رقمية نظيفة وعالية الجودة تتمحور حول المستخدم." : "Let's build clean, human-centered digital experiences together."}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
             <a
@@ -220,13 +222,13 @@ export default function CaseStudyDetail() {
               rel="noopener noreferrer"
               className="rounded-[38.182px] border border-white bg-white px-6 py-2.5 font-['Poppins'] text-[14.5px] font-medium text-[#161513] transition-colors duration-300 hover:bg-transparent hover:text-white"
             >
-              Let's Talk
+              {t.contact.letsTalk}
             </a>
             <Link
               to="/#case-studies"
               className="rounded-[38.182px] border border-white/20 px-6 py-2.5 font-['Poppins'] text-[14.5px] text-white transition-colors duration-300 hover:border-white"
             >
-              Back to Portfolio
+              {isArabic ? "العودة إلى المعرض" : "Back to Portfolio"}
             </Link>
           </div>
         </div>
@@ -240,7 +242,7 @@ export default function CaseStudyDetail() {
 
       {/* Floating Navigation Bubble */}
       <FloatingBubble
-        items={CASE_STUDY_BUBBLE_NAV}
+        items={caseStudyBubbleNav}
         onItemClick={handleBubbleClick}
         activeId={activeBubbleId}
       />

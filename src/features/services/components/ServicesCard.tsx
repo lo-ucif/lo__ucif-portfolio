@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLanguage } from "../../../contexts/LanguageContext";
 
 // High-fidelity presentation mockups
 import hafezMockup from "../../../assets/case-studies/mockups/7afez-transparent.webp";
@@ -17,37 +18,35 @@ interface ServiceRow {
   targetId: string;
 }
 
-const servicesData: ServiceRow[] = [
-  {
-    num: "01",
-    title: "UI/UX Design",
-    description:
-      "Creating intuitive, visually engaging interfaces that deliver seamless and meaningful user experiences.",
-    previewImg: hafezMockup,
-    targetId: "case-studies",
-  },
-  {
-    num: "02",
-    title: "Web Development",
-    description:
-      "Building modern, responsive, and high-performance websites and web applications tailored to your needs.",
-    previewImg: hafezWeb,
-    targetId: "projects",
-  },
-  {
-    num: "03",
-    title: "Digital Solutions",
-    description:
-      "Turning business ideas into tailored digital solutions that solve real problems and drive growth.",
-    previewImg: tabibMockup,
-    targetId: "case-studies",
-  },
-];
-
 export function ServicesCard() {
+  const { t } = useLanguage();
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const navigate = useNavigate();
   const location = useLocation();
+
+  const servicesData: ServiceRow[] = [
+    {
+      num: t.services.s1Num,
+      title: t.services.s1Title,
+      description: t.services.s1Desc,
+      previewImg: hafezMockup,
+      targetId: "case-studies",
+    },
+    {
+      num: t.services.s2Num,
+      title: t.services.s2Title,
+      description: t.services.s2Desc,
+      previewImg: hafezWeb,
+      targetId: "projects",
+    },
+    {
+      num: t.services.s3Num,
+      title: t.services.s3Title,
+      description: t.services.s3Desc,
+      previewImg: tabibMockup,
+      targetId: "case-studies",
+    },
+  ];
 
   const handleRowClick = (targetId: string) => {
     if (location.pathname === "/") {
@@ -73,7 +72,7 @@ export function ServicesCard() {
       <div className="flex items-center gap-2.5 mb-6 sm:mb-8">
         <span className="w-2 h-2 rounded-full bg-[#5197ff] shadow-[0_0_8px_#5197ff]" />
         <h3 className="font-['Itim'] text-[24px] sm:text-[28px] font-bold text-white tracking-wide">
-          Services
+          {t.services.title}
         </h3>
       </div>
 

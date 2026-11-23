@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { GithubIcon, LinkedinIcon } from "../../constants/Icon";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 type SiteHeaderProps = {
   activeSection: string;
@@ -11,21 +12,21 @@ type SiteHeaderProps = {
   menuButtonRef: React.RefObject<HTMLButtonElement | null>;
 };
 
-// Optimized concise titles for professional navigation
-const navItems = [
-  { label: "Home", id: "home" },
-  { label: "Projects", id: "projects" },
-  { label: "UI/UX Design", id: "case-studies" },
-  { label: "Tech Stack", id: "stack" },
-  { label: "Certificates", id: "certificates" },
-  { label: "Contact", id: "contact" },
-];
-
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function SiteHeader(_props?: Partial<SiteHeaderProps>) {
+  const { language, toggleLanguage, t } = useLanguage();
   const location = useLocation();
   const navigate = useNavigate();
   const [activeScrollId, setActiveScrollId] = useState<string>("home");
+
+  const navItems = [
+    { label: t.nav.home, id: "home" },
+    { label: t.nav.projects, id: "projects" },
+    { label: t.nav.caseStudies, id: "case-studies" },
+    { label: t.nav.stack, id: "stack" },
+    { label: t.nav.certificates, id: "certificates" },
+    { label: t.nav.contact, id: "contact" },
+  ];
 
   // Derive active section for non-root routes; track scroll for home page
   const activeId =
@@ -150,7 +151,7 @@ export function SiteHeader(_props?: Partial<SiteHeaderProps>) {
               })}
             </nav>
 
-            {/* Vertical Separator & Direct GitHub / LinkedIn Links */}
+            {/* Vertical Separator & Direct GitHub / LinkedIn Links + Language Switcher */}
             <div className="flex items-center gap-3 xl:gap-4">
               <span className="text-white/30 text-[15px] select-none">|</span>
               <motion.a
@@ -167,7 +168,7 @@ export function SiteHeader(_props?: Partial<SiteHeaderProps>) {
                   height={18}
                   className="shrink-0 transition-transform group-hover:scale-110"
                 />
-                <span>GitHub</span>
+                <span>{t.nav.github}</span>
               </motion.a>
 
               <motion.a
@@ -184,8 +185,22 @@ export function SiteHeader(_props?: Partial<SiteHeaderProps>) {
                   height={18}
                   className="shrink-0 transition-transform group-hover:scale-110"
                 />
-                <span>LinkedIn</span>
+                <span>{t.nav.linkedin}</span>
               </motion.a>
+
+              <span className="text-white/30 text-[15px] select-none">|</span>
+
+              <motion.button
+                type="button"
+                onClick={toggleLanguage}
+                aria-label={t.nav.switchLang}
+                className="flex items-center gap-1.5 font-['Itim'] text-[13.5px] text-white hover:text-[#5197ff] border border-white/20 hover:border-[#5197ff]/60 px-2.5 py-0.5 rounded-full transition-all duration-200 cursor-pointer select-none"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <span className="text-[12px] opacity-80">🌐</span>
+                <span>{language === "en" ? "العربية" : "EN"}</span>
+              </motion.button>
             </div>
           </div>
         </div>
@@ -205,7 +220,7 @@ export function SiteHeader(_props?: Partial<SiteHeaderProps>) {
           <img className="h-8.5 w-15 object-contain" src={logo} alt="Loucif logo" />
         </Link>
 
-        {/* Mobile Header Direct Links: GitHub | LinkedIn */}
+        {/* Mobile Header Direct Links: GitHub | LinkedIn | Language Switcher */}
         <div className="flex items-center gap-2 xs:gap-2.5">
           <motion.a
             href="https://github.com/lo-ucif"
@@ -220,7 +235,7 @@ export function SiteHeader(_props?: Partial<SiteHeaderProps>) {
               height={16}
               className="shrink-0 transition-transform group-hover:scale-110"
             />
-            <span>GitHub</span>
+            <span>{t.nav.github}</span>
           </motion.a>
 
           <span className="text-white/30 text-[13px] select-none">|</span>
@@ -238,8 +253,20 @@ export function SiteHeader(_props?: Partial<SiteHeaderProps>) {
               height={16}
               className="shrink-0 transition-transform group-hover:scale-110"
             />
-            <span>LinkedIn</span>
+            <span>{t.nav.linkedin}</span>
           </motion.a>
+
+          <span className="text-white/30 text-[13px] select-none">|</span>
+
+          <motion.button
+            type="button"
+            onClick={toggleLanguage}
+            aria-label={t.nav.switchLang}
+            className="flex items-center justify-center font-['Itim'] text-[12px] font-semibold text-white hover:text-[#5197ff] border border-white/20 hover:border-[#5197ff]/60 px-2 py-0.5 rounded-full transition-colors cursor-pointer select-none"
+            whileTap={{ scale: 0.92 }}
+          >
+            <span>{language === "en" ? "ع" : "EN"}</span>
+          </motion.button>
         </div>
       </motion.header>
     </>

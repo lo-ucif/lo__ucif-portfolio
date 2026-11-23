@@ -5,19 +5,12 @@ import { Outlet, useLocation } from "react-router-dom";
 import { MobileNav } from "./MobileNav";
 import { SiteHeader } from "./SiteHeader";
 import { StatusBadgeProvider } from "../../contexts/StatusBadgeProvider";
+import { LanguageProvider, useLanguage } from "../../contexts/LanguageContext";
 
-const navLinks = [
-  { label: "Home", href: "/#home", id: "home" },
-  { label: "Projects", href: "/#projects", id: "projects" },
-  { label: "UI/UX Design", href: "/#case-studies", id: "case-studies" },
-  { label: "Tech Stack", href: "/#stack", id: "stack" },
-  { label: "Certificates", href: "/#certificates", id: "certificates" },
-  { label: "Contact", href: "/#contact", id: "contact" },
-];
-
-export function AppLayout() {
+function AppLayoutContent() {
   const location = useLocation();
   const isHome = location.pathname === "/";
+  const { t } = useLanguage();
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
@@ -49,6 +42,15 @@ export function AppLayout() {
         ? "case-studies"
         : "";
 
+  const dynamicNavLinks = [
+    { label: t.nav.home, href: "/#home", id: "home" },
+    { label: t.nav.projects, href: "/#projects", id: "projects" },
+    { label: t.nav.caseStudies, href: "/#case-studies", id: "case-studies" },
+    { label: t.nav.stack, href: "/#stack", id: "stack" },
+    { label: t.nav.certificates, href: "/#certificates", id: "certificates" },
+    { label: t.nav.contact, href: "/#contact", id: "contact" },
+  ];
+
   return (
     <StatusBadgeProvider>
       <motion.div
@@ -67,10 +69,18 @@ export function AppLayout() {
           isOpen={isMobileMenuOpen}
           onLinkClick={() => setIsMobileMenuOpen(false)}
           menuRef={mobileMenuRef}
-          links={navLinks}
+          links={dynamicNavLinks}
         />
         <Outlet />
       </motion.div>
     </StatusBadgeProvider>
+  );
+}
+
+export function AppLayout() {
+  return (
+    <LanguageProvider>
+      <AppLayoutContent />
+    </LanguageProvider>
   );
 }

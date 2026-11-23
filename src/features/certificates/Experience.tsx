@@ -1,4 +1,5 @@
 import { easeOut, motion } from "framer-motion";
+import { useLanguage } from "../../contexts/LanguageContext";
 import {
   AlgorithmsIcon,
   CIcon,
@@ -128,6 +129,7 @@ const experienceMilestones = [
 ];
 
 export default function Experience() {
+  const { t } = useLanguage();
   return (
     <section
       id="experience"
@@ -142,10 +144,10 @@ export default function Experience() {
         transition={{ duration: 0.6, ease: easeOut }}
       >
         <h2 className="font-['Itim'] text-[36px] text-white">
-          Developer &amp; Designer
+          {t.timeline.title}
         </h2>
         <p className="font-['Poppins'] text-[15px] sm:text-[16px] text-[#9CA3AF]">
-          A continuous path of engineering scalable software, crafting user-centered interfaces, and building hackathon MVPs.
+          {t.timeline.subtitle}
         </p>
       </motion.div>
 

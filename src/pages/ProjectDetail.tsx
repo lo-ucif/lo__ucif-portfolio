@@ -4,6 +4,7 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import { projects, roleConfig, categoryConfig } from "../constants/data";
 import { SiteFooter } from "../components/layout/SiteFooter";
 import FloatingBubble, { type BubbleItem } from "../components/FloatingBubble";
+import { useLanguage } from "../contexts/LanguageContext";
 import {
   Github2Icon,
   LinkIcon,
@@ -13,17 +14,18 @@ import {
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
-const PROJECT_BUBBLE_NAV: BubbleItem[] = [
-  { label: "Projects", id: "projects" },
-  { label: "Overview", id: "overview" },
-  { label: "Tech", id: "technologies" },
-  { label: "Top ↑", id: "top" },
-];
-
 export default function ProjectDetail() {
+  const { isArabic, t } = useLanguage();
   const { id } = useParams();
   const navigate = useNavigate();
   const project = projects.find((p) => p.id === Number(id));
+
+  const projectBubbleNav: BubbleItem[] = [
+    { label: isArabic ? "المشاريع" : "Projects", id: "projects" },
+    { label: isArabic ? "نظرة عامة" : "Overview", id: "overview" },
+    { label: isArabic ? "التقنيات" : "Tech", id: "technologies" },
+    { label: isArabic ? "للأعلى ↑" : "Top ↑", id: "top" },
+  ];
 
   // Bubble active tracking
   const [activeBubbleId, setActiveBubbleId] = useState<string>("overview");
@@ -110,7 +112,7 @@ export default function ProjectDetail() {
                 <line x1="19" y1="12" x2="5" y2="12" />
                 <polyline points="12 19 5 12 12 5" />
               </svg>
-              <span>Back to Projects</span>
+              <span>{isArabic ? "العودة للمشاريع" : "Back to Projects"}</span>
             </Link>
 
             <span className="text-white/20">|</span>
@@ -119,7 +121,7 @@ export default function ProjectDetail() {
               to="/#projects"
               className="font-['Poppins'] text-[13px] text-[#8491A0] transition-colors hover:text-white"
             >
-              Portfolio
+              {isArabic ? "المعرض" : "Portfolio"}
             </Link>
           </div>
 
@@ -130,7 +132,7 @@ export default function ProjectDetail() {
                 to={caseStudyUrl}
                 className="inline-flex items-center gap-1.5 rounded-full bg-[#5197ff] px-3.5 py-1.5 text-[#161513] font-['Poppins'] text-[13px] font-semibold hover:bg-white transition-colors"
               >
-                <span>Explore Design →</span>
+                <span>{isArabic ? "استكشف التصميم ←" : "Explore Design →"}</span>
               </Link>
             )}
             {project.liveDemo && (
@@ -141,7 +143,11 @@ export default function ProjectDetail() {
                 className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.05] border border-white/10 px-3.5 py-1.5 font-['Poppins'] text-[13px] text-[#d1d1d1] hover:text-[#5197ff] hover:border-[#5197ff]/40 transition-colors"
               >
                 <LinkIcon width={14} height={14} />
-                <span>{project.id === 12 || project.id === 13 ? "Live Website" : "Live Demo"}</span>
+                <span>
+                  {project.id === 12 || project.id === 13
+                    ? (isArabic ? "الموقع الحي" : "Live Website")
+                    : (isArabic ? "معاينة حية" : "Live Demo")}
+                </span>
               </a>
             )}
             {project.figma && (
@@ -152,7 +158,7 @@ export default function ProjectDetail() {
                 className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.05] border border-white/10 px-3.5 py-1.5 font-['Poppins'] text-[13px] text-[#d1d1d1] hover:text-[#5197ff] hover:border-[#5197ff]/40 transition-colors"
               >
                 <FigmaIcon width={14} height={14} />
-                <span>Figma Prototype</span>
+                <span>{isArabic ? "نموذج فيجما" : "Figma Prototype"}</span>
               </a>
             )}
             {project.github && (
@@ -405,13 +411,13 @@ export default function ProjectDetail() {
         {/* Collaboration & Design Inquiries CTA (Image 2 style) */}
         <div className="flex flex-col items-center gap-4 p-8 sm:p-10 rounded-3xl bg-gradient-to-b from-[#1A1917] to-[#161513] border border-white/[0.1] text-center shadow-xl w-full">
           <span className="font-['Itim'] text-[14px] text-[#5197ff] uppercase tracking-wider">
-            Collaboration &amp; Design Inquiries
+            {isArabic ? "التعاون واستفسارات التصميم" : "Collaboration & Design Inquiries"}
           </span>
           <h3 className="font-['Itim'] text-[28px] sm:text-[34px] text-white font-bold">
-            Have a project or concept to design?
+            {isArabic ? "هل لديك مشروع أو فكرة تريد تصميمها أو برمجتها؟" : "Have a project or concept to design?"}
           </h3>
           <p className="font-['Poppins'] text-[14.5px] text-[#9CA3AF] max-w-lg leading-relaxed">
-            Let's build clean, human-centered digital experiences together.
+            {isArabic ? "دعنا نبني معاً حلولاً رقمية وتجارب مستخدم عصرية وسلسة." : "Let's build clean, human-centered digital experiences together."}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
             <a
@@ -420,13 +426,13 @@ export default function ProjectDetail() {
               rel="noopener noreferrer"
               className="rounded-[38.182px] border border-white bg-white px-6 py-2.5 font-['Poppins'] text-[14.5px] font-medium text-[#161513] transition-colors duration-300 hover:bg-transparent hover:text-white"
             >
-              Let's Talk
+              {t.contact.letsTalk}
             </a>
             <Link
               to="/projects"
               className="rounded-[38.182px] border border-white/20 px-6 py-2.5 font-['Poppins'] text-[14.5px] text-white transition-colors duration-300 hover:border-white"
             >
-              Back to Projects
+              {isArabic ? "العودة للمشاريع" : "Back to Projects"}
             </Link>
           </div>
         </div>
@@ -439,7 +445,7 @@ export default function ProjectDetail() {
 
       {/* Floating Navigation Bubble (Image 5 style) */}
       <FloatingBubble
-        items={PROJECT_BUBBLE_NAV}
+        items={projectBubbleNav}
         onItemClick={handleBubbleClick}
         activeId={activeBubbleId}
       />

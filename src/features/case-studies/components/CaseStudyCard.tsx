@@ -6,10 +6,12 @@ import type { CaseStudy } from "../types";
 import { BehanceIcon, FigmaIcon, LinkedinIcon } from "../../../constants/Icon";
 import { ThreePhoneShowcase } from "./ThreePhoneShowcase";
 import { DualLaptopShowcase } from "./DualLaptopShowcase";
+import { useLanguage } from "../../../contexts/LanguageContext";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
 export function CaseStudyCard(props: CaseStudy) {
+  const { isArabic, t } = useLanguage();
   const {
     slug,
     title,
@@ -44,8 +46,13 @@ export function CaseStudyCard(props: CaseStudy) {
     customHeading ||
     (platformType === "app" ? "Mobile Presentation" : "Web Presentation");
 
-  const targetLabel =
-    platformType === "app" ? "Target Institution" : "Target Sector";
+  const targetLabel = isArabic
+    ? platformType === "app"
+      ? "المؤسسة المستهدفة"
+      : "القطاع المستهدف"
+    : platformType === "app"
+      ? "Target Institution"
+      : "Target Sector";
 
   const targetValue =
     organization ||
@@ -91,10 +98,10 @@ export function CaseStudyCard(props: CaseStudy) {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 pb-2 border-t border-white/[0.08] w-full">
           <div className="flex flex-col">
             <span className="font-['Itim'] text-[12.5px] text-[#5197ff] uppercase tracking-wider">
-              • Role &amp; Methodology
+              {t.caseStudies.roleMethodology}
             </span>
             <span className="font-['Poppins'] text-[13.5px] text-white font-medium mt-1">
-              {role} · Auto Layout &amp; Tokens
+              {role} · {t.caseStudies.roleMethodologyValue}
             </span>
           </div>
 
@@ -114,7 +121,7 @@ export function CaseStudyCard(props: CaseStudy) {
             to={`/case-studies/${slug}`}
             className="inline-flex items-center gap-2 rounded-full border border-white bg-white px-6 py-3 font-['Poppins'] text-[15px] font-semibold text-[#161513] transition-all duration-300 hover:bg-transparent hover:text-white group/btn"
           >
-            <span>Explore Design</span>
+            <span>{t.caseStudies.exploreDesign}</span>
             <svg
               className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1"
               viewBox="0 0 24 24"

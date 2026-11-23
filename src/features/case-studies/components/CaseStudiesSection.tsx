@@ -1,10 +1,13 @@
 import { motion } from "framer-motion";
 import { caseStudies } from "../data/caseStudiesData";
 import { CaseStudyCard } from "./CaseStudyCard";
+import { useLanguage } from "../../../contexts/LanguageContext";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
 export function CaseStudiesSection() {
+  const { t } = useLanguage();
+
   return (
     <section
       id="case-studies"
@@ -19,10 +22,10 @@ export function CaseStudiesSection() {
         transition={{ duration: 0.6, ease: easeOut }}
       >
         <h2 className="font-['Itim'] text-[36px] text-white">
-          UI/UX Design
+          {t.caseStudies.title}
         </h2>
         <p className="font-['Poppins'] text-[15px] sm:text-[16px] text-[#9CA3AF] max-w-2xl leading-relaxed">
-          Crafting human-centered digital experiences from research and wireframing to high-fidelity prototypes and scalable design systems.
+          {t.caseStudies.overview}
         </p>
       </motion.div>
 

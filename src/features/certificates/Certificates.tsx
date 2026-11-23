@@ -2,8 +2,10 @@ import { useState } from "react";
 import { easeOut, motion } from "framer-motion";
 import { certificateItems } from "../../constants/data";
 import { ImageLightboxModal } from "../case-studies/components/ImageLightboxModal";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 export default function Certificates() {
+  const { t } = useLanguage();
   const [selectedCert, setSelectedCert] = useState<(typeof certificateItems)[0] | null>(null);
 
   return (
@@ -24,7 +26,7 @@ export default function Certificates() {
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, ease: easeOut }}
         >
-          Certificates & Achievements
+          {t.certificates.title}
         </motion.h2>
       </motion.div>
 

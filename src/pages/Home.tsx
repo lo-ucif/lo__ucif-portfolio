@@ -11,10 +11,12 @@ import Experience from "../features/certificates/Experience";
 import Certificates from "../features/certificates/Certificates";
 import { CaseStudiesSection } from "../features/case-studies/components/CaseStudiesSection";
 import { ServicesCard } from "../features/services/components/ServicesCard";
+import { useLanguage } from "../contexts/LanguageContext";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
 export default function Home() {
+  const { t } = useLanguage();
   return (
     <div className="min-h-screen bg-[#161513] px-5 pb-0 pt-5 text-[#e1e1e1] sm:px-10 lg:px-20 min-[601px]:pt-30 max-[600px]:pt-22.5">
       <div className="flex flex-col min-h-screen gap-20 mx-auto">
@@ -80,7 +82,7 @@ export default function Home() {
                       },
                     }}
                   >
-                    Ahmed Loucif
+                    {t.hero.name}
                   </motion.span>
                 </motion.div>
 
@@ -92,7 +94,7 @@ export default function Home() {
                   transition={{ duration: 0.6, ease: easeOut, delay: 0.5 }}
                 >
                   <span className="text-[#a9a9a9]">
-                    Crafting Digital Experiences & <span className="text-[#5197FF]">Building Modern Solutions.</span>
+                    {t.hero.taglinePrefix} <span className="text-[#5197FF]">{t.hero.taglineHighlight}</span>
                   </span>
                 </motion.div>
               </div>
@@ -117,7 +119,7 @@ export default function Home() {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, ease: easeOut }}
             >
-              Software Engineering Student | Web Developer | UI/UX Designer
+              {t.hero.roleSubtitle}
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -126,7 +128,7 @@ export default function Home() {
               transition={{ duration: 0.6, ease: easeOut, delay: 0.3 }}
             >
               <div className="inline-flex items-center gap-1.5 px-2.5 py-1.5 font-['Itim'] text-[16px] text-[#8491A0] max-[600px]:rounded-[15px] max-[600px]:px-0 max-[600px]:py-px max-[600px]:text-[12px]">
-                Last update: November 2026
+                {t.hero.lastUpdate}
               </div>
             </motion.div>
             <motion.div
@@ -145,7 +147,7 @@ export default function Home() {
                 whileTap={{ scale: 0.95 }}
                 transition={{ duration: 0.18, ease: "easeOut" }}
               >
-                Let's Talk
+                {t.hero.letsTalk}
               </motion.a>
               <motion.a
                 className="flex items-center gap-[8.38px] rounded-[38.182px] border border-white px-[16.76px] py-[12.57px] font-['Poppins'] text-[16.327px] text-white transition-colors duration-300 hover:bg-white hover:text-[#161513]"
@@ -175,7 +177,7 @@ export default function Home() {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, ease: easeOut }}
             >
-              A Little About Me
+              {t.about.title}
             </motion.h2>
             <motion.p
               className="max-w-225 font-['Inter'] text-[17px] leading-[1.6] text-[#e1e1e1]"
@@ -184,7 +186,7 @@ export default function Home() {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, ease: easeOut }}
             >
-              I'm a Software Engineering student with a passion for web development and UI/UX design. I enjoy solving problems, exploring new technologies, and transforming complex ideas into simple, intuitive, and functional digital products. My approach combines creative thinking with technical skills to build experiences that are both visually appealing and technically reliable.
+              {t.about.bio}
             </motion.p>
 
             {/* Services & Expertise Compact Card */}
@@ -201,7 +203,7 @@ export default function Home() {
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.18, ease: "easeOut" }}
             >
-              Download CV
+              {t.about.downloadCV}
             </motion.a>
           </section>
 
@@ -216,10 +218,10 @@ export default function Home() {
       </div>
       <FloatingBubble
         items={[
-          { label: "About", id: "about" },
-          { label: "Projects", id: "projects" },
-          { label: "UI/UX Design", id: "case-studies" },
-          { label: "Contact", id: "contact" },
+          { label: t.floatingBubble.about, id: "about" },
+          { label: t.floatingBubble.projects, id: "projects" },
+          { label: t.floatingBubble.caseStudies, id: "case-studies" },
+          { label: t.floatingBubble.contact, id: "contact" },
         ]}
       />
     </div>

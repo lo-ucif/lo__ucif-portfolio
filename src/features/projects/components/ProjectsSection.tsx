@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { projects } from "../../../constants/data";
 import Projectcard from "../../../components/projectcard";
+import { useLanguage } from "../../../contexts/LanguageContext";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
@@ -13,6 +14,8 @@ const featuredProjects = FEATURED_PROJECT_IDS.map((id) =>
 ).filter((p): p is (typeof projects)[0] => Boolean(p));
 
 export function ProjectsSection() {
+  const { t } = useLanguage();
+
   return (
     <section
       id="projects"
@@ -26,10 +29,10 @@ export function ProjectsSection() {
         transition={{ duration: 0.6, ease: easeOut }}
       >
         <h2 className="font-['Itim'] text-[36px] text-white">
-          A Selection of My Recent Work
+          {t.projects.title}
         </h2>
         <p className="font-['Poppins'] text-[15px] sm:text-[16px] text-[#9CA3AF]">
-          Turning Concepts Into Real-World Solutions.
+          {t.projects.badge}
         </p>
       </motion.div>
 
@@ -54,7 +57,7 @@ export function ProjectsSection() {
           className="inline-block rounded-[38.182px] border border-white px-[24px] py-[13px] font-['Poppins'] text-[15px] sm:text-[16px] text-white transition-colors duration-300 hover:bg-white hover:text-[#161513]"
           to="/projects"
         >
-          View All Projects ({projects.length})
+          {t.projects.viewAllProjects} ({projects.length})
         </Link>
       </motion.div>
     </section>

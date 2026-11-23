@@ -1,10 +1,13 @@
 import { motion } from "framer-motion";
 import { SiteFooter } from "../../../components/layout/SiteFooter";
 import { GmailIcon } from "../../../constants/Icon";
+import { useLanguage } from "../../../contexts/LanguageContext";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
 export function ContactSection() {
+  const { t } = useLanguage();
+
   return (
     <section
       id="contact"
@@ -19,10 +22,10 @@ export function ContactSection() {
           transition={{ duration: 0.6, ease: easeOut }}
         >
           <h2 className="font-['Itim'] text-[36px] sm:text-[42px] text-white">
-            Let's Build Something Together.
+            {t.contact.headline}
           </h2>
           <p className="max-w-160 font-['Poppins'] text-[15px] sm:text-[17px] leading-[1.6] text-[#a9a9a9]">
-            Have an idea, a project, or a challenge to solve? Let's connect and turn your vision into a meaningful digital experience with smart solutions and creative design.
+            {t.contact.description}
           </p>
         </motion.div>
 
@@ -42,7 +45,7 @@ export function ContactSection() {
             whileTap={{ scale: 0.95 }}
             transition={{ duration: 0.18, ease: "easeOut" }}
           >
-            Let's Talk
+            {t.contact.letsTalk}
           </motion.a>
 
           <motion.a
@@ -53,7 +56,7 @@ export function ContactSection() {
             transition={{ duration: 0.18, ease: "easeOut" }}
           >
             <GmailIcon width={18} height={18} />
-            <span>Email</span>
+            <span>{t.contact.email}</span>
           </motion.a>
         </motion.div>
       </div>

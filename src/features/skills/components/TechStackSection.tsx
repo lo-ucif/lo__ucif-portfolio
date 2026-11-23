@@ -1,9 +1,12 @@
 import { motion } from "framer-motion";
 import { skillCategories } from "../../../constants/data";
+import { useLanguage } from "../../../contexts/LanguageContext";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
 export function TechStackSection() {
+  const { t } = useLanguage();
+
   return (
     <section
       id="stack"
@@ -18,10 +21,10 @@ export function TechStackSection() {
         transition={{ duration: 0.6, ease: easeOut }}
       >
         <h2 className="font-['Itim'] text-[36px] sm:text-[40px] text-white">
-          Skills &amp; Technologies
+          {t.techStack.title}
         </h2>
         <p className="font-['Itim'] text-[16px] sm:text-[17px] text-[#A9A9A9] max-w-2xl">
-          A structured breakdown of my technical stack, architecture patterns, and engineering workflow.
+          {t.techStack.subtitle}
         </p>
       </motion.div>
 

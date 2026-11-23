@@ -4,6 +4,11 @@
   color-scheme: dark;
 }
 
+html[dir="rtl"],
+body.font-arabic {
+  font-family: 'Cairo', 'Poppins', sans-serif;
+}
+
 .loading-screen {
   position: fixed;
   inset: 0;

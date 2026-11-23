@@ -4,15 +4,17 @@ import { projects } from "../constants/data";
 import Projectcard from "../components/projectcard";
 import FloatingBubble, { type BubbleItem } from "../components/FloatingBubble";
 import { SiteFooter } from "../components/layout/SiteFooter";
-
-const BUBBLE_NAV: BubbleItem[] = [
-  { label: "Home", id: "home" },
-  { label: "Top ↑", id: "top" },
-];
+import { useLanguage } from "../contexts/LanguageContext";
 
 export default function Projects() {
   const easeOut = [0.22, 1, 0.36, 1] as const;
   const navigate = useNavigate();
+  const { isArabic } = useLanguage();
+
+  const bubbleNav: BubbleItem[] = [
+    { label: isArabic ? "الرئيسية" : "Home", id: "home" },
+    { label: isArabic ? "للأعلى ↑" : "Top ↑", id: "top" },
+  ];
 
   const handleBubbleClick = (item: BubbleItem) => {
     if (item.id === "home") {
@@ -33,10 +35,12 @@ export default function Projects() {
         transition={{ duration: 0.5, ease: easeOut }}
       >
         <h2 className="font-['Itim'] text-[36px] sm:text-[44px] text-white">
-          All Projects
+          {isArabic ? "جميع المشاريع" : "All Projects"}
         </h2>
         <p className="font-['Poppins'] text-[15px] sm:text-[16px] text-[#9CA3AF] max-w-xl">
-          A unified collection of web applications, full-stack systems, client solutions, and UI/UX design prototypes.
+          {isArabic
+            ? "مجموعة متكاملة من تطبيقات الويب، الحلول الرقمية، وتصاميم واجهات المستخدم."
+            : "A unified collection of web applications, full-stack systems, client solutions, and UI/UX design prototypes."}
         </p>
       </motion.div>
 
@@ -54,7 +58,7 @@ export default function Projects() {
 
       {/* Floating Navigation */}
       <FloatingBubble
-        items={BUBBLE_NAV}
+        items={bubbleNav}
         onItemClick={handleBubbleClick}
         activeId="all"
       />
