@@ -1,5 +1,7 @@
 import { useEffect, useState, useMemo, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLanguage } from "../../../contexts/LanguageContext";
+import { caseStudyCategoryTranslations } from "../../../constants/projectTranslations";
 
 export type LightboxItem = {
   imageUrl: string;
@@ -38,6 +40,7 @@ export function ImageLightboxModal({
   subtitle,
   hidePagination = false,
 }: ImageLightboxModalProps) {
+  const { isArabic } = useLanguage();
   // Consolidate single or multiple items into a unified list
   const allItems: LightboxItem[] = useMemo(() => {
     if (items && items.length > 0) return items;
@@ -130,16 +133,20 @@ export function ImageLightboxModal({
             onClick={(e) => e.stopPropagation()}
           >
             {/* Title & Info */}
-            <div className="flex flex-col text-left gap-1 max-w-xl">
+            <div className="flex flex-col text-start gap-1 max-w-xl">
               <div className="flex flex-wrap items-center gap-2">
                 {showNavigation && (
                   <span className="font-['Itim'] text-[12px] sm:text-[13px] text-[#5197ff] uppercase tracking-wider font-semibold bg-[#5197ff]/15 border border-[#5197ff]/30 rounded-full px-2.5 py-0.5">
-                    Screen {currentItem.number || activeIndex + 1} of {allItems.length}
+                    {isArabic
+                      ? `الشاشة ${currentItem.number || activeIndex + 1} من ${allItems.length}`
+                      : `Screen ${currentItem.number || activeIndex + 1} of ${allItems.length}`}
                   </span>
                 )}
                 {currentItem.category && (
                   <span className="font-['Itim'] text-[11.5px] sm:text-[12.5px] text-[#9CA3AF] bg-white/[0.06] border border-white/10 rounded-full px-2.5 py-0.5">
-                    {currentItem.category}
+                    {isArabic
+                      ? caseStudyCategoryTranslations[currentItem.category] || currentItem.category
+                      : currentItem.category}
                   </span>
                 )}
                 {currentItem.arabicTitle && (

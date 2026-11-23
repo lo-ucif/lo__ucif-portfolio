@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import type { CaseStudy } from "../types";
 import type { LightboxItem } from "./ImageLightboxModal";
 import { useLanguage } from "../../../contexts/LanguageContext";
+import { caseStudyCategoryTranslations } from "../../../constants/projectTranslations";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
@@ -314,6 +315,9 @@ export function CaseStudyFinalDesign({
               cat === "All"
                 ? screens.length
                 : screens.filter((s) => s.category === cat).length;
+            const label = isArabic
+              ? caseStudyCategoryTranslations[cat] || (cat === "All" ? "الكل" : cat)
+              : cat;
             return (
               <button
                 key={cat}
@@ -334,7 +338,7 @@ export function CaseStudyFinalDesign({
                     : "bg-[#1A1917] hover:bg-white/10 border border-white/10 text-[#d1d1d1]"
                 }`}
               >
-                <span>{cat}</span>
+                <span>{label}</span>
                 <span
                   className={`text-[11px] px-1.5 py-0.2 rounded-full ${
                     isSelected ? "bg-[#161513]/25 text-[#161513]" : "bg-white/10 text-[#8491A0]"
