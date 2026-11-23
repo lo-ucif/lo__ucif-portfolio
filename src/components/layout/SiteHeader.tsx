@@ -170,8 +170,6 @@ export function SiteHeader(_props?: Partial<SiteHeaderProps>) {
                 <span>GitHub</span>
               </motion.a>
 
-              <span className="text-white/30 text-[15px] select-none">|</span>
-
               <motion.a
                 href="https://www.linkedin.com/in/ahmed-loucif-757854342"
                 target="_blank"

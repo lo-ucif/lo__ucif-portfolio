@@ -138,7 +138,9 @@ export default function Home() {
             >
               <motion.a
                 className="rounded-[38.182px] border border-white bg-white px-[16.76px] py-[12.57px] font-['Poppins'] text-[16.327px] text-[#161513] transition-colors duration-300 hover:bg-transparent hover:text-white"
-                href="mailto:louciftamer3@gmail.com"
+                href="https://wa.me/213676244189"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ duration: 0.18, ease: "easeOut" }}

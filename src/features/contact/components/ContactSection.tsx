@@ -32,7 +32,9 @@ export function ContactSection() {
           transition={{ duration: 0.6, ease: easeOut }}
         >
           <motion.a
-            href="mailto:louciftamer3@gmail.com"
+            href="https://wa.me/213676244189"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-block rounded-[38.182px] border border-white bg-white px-[28px] py-[11px] font-['Poppins'] text-[16px] text-[#161513] transition-colors duration-300 hover:bg-transparent hover:text-white"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.95 }}

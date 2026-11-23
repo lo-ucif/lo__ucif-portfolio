@@ -215,7 +215,9 @@ export default function CaseStudyDetail() {
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
             <a
-              href="mailto:louciftamer3@gmail.com"
+              href="https://wa.me/213676244189"
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-[38.182px] border border-white bg-white px-6 py-2.5 font-['Poppins'] text-[14.5px] font-medium text-[#161513] transition-colors duration-300 hover:bg-transparent hover:text-white"
             >
               Let's Talk

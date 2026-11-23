@@ -16,7 +16,6 @@ export function CaseStudyCard(props: CaseStudy) {
     arabicTitle,
     shortDescription,
     role,
-    mainDesignFocus,
     heroImage,
     mockupImage,
     phoneMockups,
@@ -88,8 +87,8 @@ export function CaseStudyCard(props: CaseStudy) {
           {shortDescription}
         </p>
 
-        {/* Metadata Grid (Role, Institution/Sector, Design Focus) */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 pb-2 border-t border-white/[0.08] w-full">
+        {/* Metadata Grid (Role, Institution/Sector) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 pb-2 border-t border-white/[0.08] w-full">
           <div className="flex flex-col">
             <span className="font-['Itim'] text-[12.5px] text-[#5197ff] uppercase tracking-wider">
               • Role &amp; Methodology
@@ -105,15 +104,6 @@ export function CaseStudyCard(props: CaseStudy) {
             </span>
             <span className="font-['Poppins'] text-[13.5px] text-[#d1d1d1] mt-1">
               {targetValue}
-            </span>
-          </div>
-
-          <div className="flex flex-col">
-            <span className="font-['Itim'] text-[12.5px] text-[#5197ff] uppercase tracking-wider">
-              • Design Focus
-            </span>
-            <span className="font-['Poppins'] text-[13.5px] text-[#d1d1d1] mt-1 line-clamp-2">
-              {mainDesignFocus}
             </span>
           </div>
         </div>
