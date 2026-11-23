@@ -24,7 +24,7 @@ export function CaseStudiesSection() {
         <h2 className="font-['Itim'] text-[36px] text-white">
           {t.caseStudies.title}
         </h2>
-        <p className="font-['Poppins'] text-[15px] sm:text-[16px] text-[#9CA3AF] max-w-2xl leading-relaxed">
+        <p className="font-['Inter'] text-[15px] sm:text-[16px] text-[#9CA3AF] max-w-2xl leading-relaxed">
           {t.caseStudies.overview}
         </p>
       </motion.div>

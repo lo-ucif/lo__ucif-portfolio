@@ -24,7 +24,7 @@ export function ContactSection() {
           <h2 className="font-['Itim'] text-[36px] sm:text-[42px] text-white">
             {t.contact.headline}
           </h2>
-          <p className="max-w-160 font-['Poppins'] text-[15px] sm:text-[17px] leading-[1.6] text-[#a9a9a9]">
+          <p className="max-w-160 font-['Inter'] text-[15px] sm:text-[17px] leading-[1.6] text-[#a9a9a9]">
             {t.contact.description}
           </p>
         </motion.div>
@@ -40,7 +40,7 @@ export function ContactSection() {
             href="https://wa.me/213676244189"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block rounded-[38.182px] border border-white bg-white px-[28px] py-[11px] font-['Poppins'] text-[16px] text-[#161513] transition-colors duration-300 hover:bg-transparent hover:text-white"
+            className="inline-block rounded-[38.182px] border border-white bg-white px-[28px] py-[11px] font-['Inter'] text-[16px] text-[#161513] transition-colors duration-300 hover:bg-transparent hover:text-white"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.95 }}
             transition={{ duration: 0.18, ease: "easeOut" }}
@@ -50,7 +50,7 @@ export function ContactSection() {
 
           <motion.a
             href="mailto:louciftamer3@gmail.com"
-            className="flex items-center gap-2 rounded-[38.182px] border border-white px-[24px] py-[11px] font-['Poppins'] text-[16px] text-white transition-colors duration-300 hover:bg-white hover:text-[#161513]"
+            className="flex items-center gap-2 rounded-[38.182px] border border-white px-[24px] py-[11px] font-['Inter'] text-[16px] text-white transition-colors duration-300 hover:bg-white hover:text-[#161513]"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.95 }}
             transition={{ duration: 0.18, ease: "easeOut" }}

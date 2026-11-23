@@ -108,12 +108,12 @@ export default function CaseStudyDetail() {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen gap-6 bg-[#161513] px-5 text-white">
         <h1 className="font-['Itim'] text-[32px]">Design Not Found</h1>
-        <p className="font-['Poppins'] text-[#9CA3AF]">
+        <p className="font-['Inter'] text-[#9CA3AF]">
           The design you are looking for does not exist or has been moved.
         </p>
         <Link
           to="/"
-          className="rounded-[38.182px] border border-white px-6 py-2.5 font-['Poppins'] text-[15px] text-white transition-colors duration-300 hover:bg-white hover:text-[#161513]"
+          className="rounded-[38.182px] border border-white px-6 py-2.5 font-['Inter'] text-[15px] text-white transition-colors duration-300 hover:bg-white hover:text-[#161513]"
         >
           Return to Portfolio
         </Link>
@@ -135,7 +135,7 @@ export default function CaseStudyDetail() {
           <div className="flex items-center gap-4">
             <Link
               to="/#case-studies"
-              className="inline-flex items-center gap-2 font-['Poppins'] text-[14px] sm:text-[15px] text-[#9CA3AF] transition-colors duration-200 hover:text-white"
+              className="inline-flex items-center gap-2 font-['Inter'] text-[14px] sm:text-[15px] text-[#9CA3AF] transition-colors duration-200 hover:text-white"
             >
               <svg
                 className="w-4 h-4"
@@ -156,7 +156,7 @@ export default function CaseStudyDetail() {
 
             <Link
               to="/projects"
-              className="font-['Poppins'] text-[13px] text-[#8491A0] transition-colors hover:text-white"
+              className="font-['Inter'] text-[13px] text-[#8491A0] transition-colors hover:text-white"
             >
               {t.nav.projects}
             </Link>
@@ -168,7 +168,7 @@ export default function CaseStudyDetail() {
                 href={study.behanceLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.05] border border-white/10 px-3.5 py-1.5 font-['Poppins'] text-[13px] text-[#d1d1d1] hover:text-[#5197ff] hover:border-[#5197ff]/40 transition-colors"
+                className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.05] border border-white/10 px-3.5 py-1.5 font-['Inter'] text-[13px] text-[#d1d1d1] hover:text-[#5197ff] hover:border-[#5197ff]/40 transition-colors"
               >
                 <BehanceIcon width={14} height={14} />
                 <span>{isArabic ? "عرض بيهانس" : "Behance Presentation"}</span>
@@ -179,7 +179,7 @@ export default function CaseStudyDetail() {
                 href={study.figmaLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.05] border border-white/10 px-3.5 py-1.5 font-['Poppins'] text-[13px] text-[#d1d1d1] hover:text-[#5197ff] hover:border-[#5197ff]/40 transition-colors"
+                className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.05] border border-white/10 px-3.5 py-1.5 font-['Inter'] text-[13px] text-[#d1d1d1] hover:text-[#5197ff] hover:border-[#5197ff]/40 transition-colors"
               >
                 <FigmaIcon width={14} height={14} />
                 <span>{isArabic ? "نموذج فيجما" : "Figma Prototype"}</span>
@@ -212,7 +212,7 @@ export default function CaseStudyDetail() {
           <h3 className="font-['Itim'] text-[28px] sm:text-[34px] text-white font-bold">
             {isArabic ? "هل لديك مشروع أو فكرة تريد تصميمها؟" : "Have a project or concept to design?"}
           </h3>
-          <p className="font-['Poppins'] text-[14.5px] text-[#9CA3AF] max-w-lg leading-relaxed">
+          <p className="font-['Inter'] text-[14.5px] text-[#9CA3AF] max-w-lg leading-relaxed">
             {isArabic ? "دعنا نبني معاً تجارب رقمية نظيفة وعالية الجودة تتمحور حول المستخدم." : "Let's build clean, human-centered digital experiences together."}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
@@ -220,13 +220,13 @@ export default function CaseStudyDetail() {
               href="https://wa.me/213676244189"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-[38.182px] border border-white bg-white px-6 py-2.5 font-['Poppins'] text-[14.5px] font-medium text-[#161513] transition-colors duration-300 hover:bg-transparent hover:text-white"
+              className="rounded-[38.182px] border border-white bg-white px-6 py-2.5 font-['Inter'] text-[14.5px] font-medium text-[#161513] transition-colors duration-300 hover:bg-transparent hover:text-white"
             >
               {t.contact.letsTalk}
             </a>
             <Link
               to="/#case-studies"
-              className="rounded-[38.182px] border border-white/20 px-6 py-2.5 font-['Poppins'] text-[14.5px] text-white transition-colors duration-300 hover:border-white"
+              className="rounded-[38.182px] border border-white/20 px-6 py-2.5 font-['Inter'] text-[14.5px] text-white transition-colors duration-300 hover:border-white"
             >
               {isArabic ? "العودة إلى المعرض" : "Back to Portfolio"}
             </Link>

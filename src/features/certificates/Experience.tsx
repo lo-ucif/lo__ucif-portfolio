@@ -186,7 +186,7 @@ export default function Experience() {
         <h2 className="font-['Itim'] text-[36px] text-white">
           {t.timeline.title}
         </h2>
-        <p className="font-['Poppins'] text-[15px] sm:text-[16px] text-[#9CA3AF]">
+        <p className="font-['Inter'] text-[15px] sm:text-[16px] text-[#9CA3AF]">
           {t.timeline.subtitle}
         </p>
       </motion.div>
@@ -292,12 +292,12 @@ export default function Experience() {
                     </h3>
 
                     {/* Narrative Description */}
-                    <p className="mt-1.5 font-['Poppins'] text-[13.5px] sm:text-[14px] leading-[1.65] text-[#b4b4b4]">
+                    <p className="mt-1.5 font-['Inter'] text-[13.5px] sm:text-[14px] leading-[1.65] text-[#b4b4b4]">
                       {item.description}
                     </p>
 
                     {/* Tech Stack Row */}
-                    <div className="flex flex-wrap items-center gap-2.5 sm:gap-3.5 pt-2.5 border-t border-white/[0.08] w-full mt-2 font-['Poppins'] text-[12.5px] text-[#a9a9a9] justify-start">
+                    <div className="flex flex-wrap items-center gap-2.5 sm:gap-3.5 pt-2.5 border-t border-white/[0.08] w-full mt-2 font-['Inter'] text-[12.5px] text-[#a9a9a9] justify-start">
                       {item.tech.map((t) => {
                         const Icon = t.icon;
                         return (
@@ -359,12 +359,12 @@ export default function Experience() {
                 </h3>
 
                 {/* Narrative Description */}
-                <p className="mt-1.5 font-['Poppins'] text-[13.5px] leading-[1.7] text-[#b4b4b4]">
+                <p className="mt-1.5 font-['Inter'] text-[13.5px] leading-[1.7] text-[#b4b4b4]">
                   {item.description}
                 </p>
 
                 {/* Tech Stack Row */}
-                <div className="flex flex-wrap items-center gap-3 pt-3 border-t border-white/[0.08] w-full mt-2 font-['Poppins'] text-[12px] text-[#a9a9a9] justify-start">
+                <div className="flex flex-wrap items-center gap-3 pt-3 border-t border-white/[0.08] w-full mt-2 font-['Inter'] text-[12px] text-[#a9a9a9] justify-start">
                   {item.tech.map((t) => {
                     const Icon = t.icon;
                     return (

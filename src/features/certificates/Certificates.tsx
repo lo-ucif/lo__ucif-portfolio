@@ -69,7 +69,7 @@ export default function Certificates() {
               />
               {/* Hover Overlay with Preview Full Certificate */}
               <div className="absolute inset-0 bg-black/45 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#161513]/90 border border-white/20 text-white font-['Poppins'] text-[13px] shadow-2xl transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#161513]/90 border border-white/20 text-white font-['Inter'] text-[13px] shadow-2xl transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
                   <svg
                     className="w-4 h-4 text-[#5197ff]"
                     fill="none"
@@ -92,10 +92,10 @@ export default function Certificates() {
               <p className="font-['Itim'] text-[15px] text-[#5197ff]">
                 {certificate.label}
               </p>
-              <h3 className="font-['Poppins'] text-[20px] font-semibold text-white group-hover:text-[#5197ff] transition-colors duration-200">
+              <h3 className="font-['Inter'] text-[20px] font-semibold text-white group-hover:text-[#5197ff] transition-colors duration-200">
                 {certificate.title}
               </h3>
-              <p className="font-['Poppins'] text-sm leading-6 text-[#e1e1e1]">
+              <p className="font-['Inter'] text-sm leading-6 text-[#e1e1e1]">
                 {certificate.description}
               </p>
             </div>

@@ -113,7 +113,7 @@ export default function Home() {
             </div>
 
             <motion.p
-              className="max-w-180 font-['Poppins'] text-[16px] leading-[1.6] text-[#e1e1e1]"
+              className="max-w-180 font-['Inter'] text-[16px] leading-[1.6] text-[#e1e1e1]"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
@@ -139,7 +139,7 @@ export default function Home() {
               transition={{ duration: 0.6, ease: easeOut }}
             >
               <motion.a
-                className="rounded-[38.182px] border border-white bg-white px-[16.76px] py-[12.57px] font-['Poppins'] text-[16.327px] text-[#161513] transition-colors duration-300 hover:bg-transparent hover:text-white"
+                className="rounded-[38.182px] border border-white bg-white px-[16.76px] py-[12.57px] font-['Inter'] text-[16.327px] text-[#161513] transition-colors duration-300 hover:bg-transparent hover:text-white"
                 href="https://wa.me/213676244189"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -150,7 +150,7 @@ export default function Home() {
                 {t.hero.letsTalk}
               </motion.a>
               <motion.a
-                className="flex items-center gap-[8.38px] rounded-[38.182px] border border-white px-[16.76px] py-[12.57px] font-['Poppins'] text-[16.327px] text-white transition-colors duration-300 hover:bg-white hover:text-[#161513]"
+                className="flex items-center gap-[8.38px] rounded-[38.182px] border border-white px-[16.76px] py-[12.57px] font-['Inter'] text-[16.327px] text-white transition-colors duration-300 hover:bg-white hover:text-[#161513]"
                 href="https://github.com/lo-ucif"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -195,7 +195,7 @@ export default function Home() {
             <motion.a
               href={pdf}
               download
-              className="inline-block rounded-[38.182px] border border-white px-[16.76px] py-[12.57px] font-['Poppins'] text-[16.327px] text-white transition-colors duration-300 hover:bg-white hover:text-[#161513]"
+              className="inline-block rounded-[38.182px] border border-white px-[16.76px] py-[12.57px] font-['Inter'] text-[16.327px] text-white transition-colors duration-300 hover:bg-white hover:text-[#161513]"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}

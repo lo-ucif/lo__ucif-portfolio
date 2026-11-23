@@ -37,7 +37,7 @@ export default function Projects() {
         <h2 className="font-['Itim'] text-[36px] sm:text-[44px] text-white">
           {isArabic ? "جميع المشاريع" : "All Projects"}
         </h2>
-        <p className="font-['Poppins'] text-[15px] sm:text-[16px] text-[#9CA3AF] max-w-xl">
+        <p className="font-['Inter'] text-[15px] sm:text-[16px] text-[#9CA3AF] max-w-xl">
           {isArabic
             ? "مجموعة متكاملة من تطبيقات الويب، الحلول الرقمية، وتصاميم واجهات المستخدم."
             : "A unified collection of web applications, full-stack systems, client solutions, and UI/UX design prototypes."}

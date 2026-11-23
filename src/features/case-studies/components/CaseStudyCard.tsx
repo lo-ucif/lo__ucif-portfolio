@@ -103,7 +103,7 @@ export function CaseStudyCard(props: CaseStudy) {
         </div>
 
         {/* Description */}
-        <p className="font-['Poppins'] text-[14px] sm:text-[15.5px] text-[#b4b4b4] leading-relaxed">
+        <p className="font-['Inter'] text-[14px] sm:text-[15.5px] text-[#b4b4b4] leading-relaxed">
           {displayShortDesc}
         </p>
 
@@ -113,7 +113,7 @@ export function CaseStudyCard(props: CaseStudy) {
             <span className="font-['Itim'] text-[12.5px] text-[#5197ff] uppercase tracking-wider">
               {t.caseStudies.roleMethodology}
             </span>
-            <span className="font-['Poppins'] text-[13.5px] text-white font-medium mt-1">
+            <span className="font-['Inter'] text-[13.5px] text-white font-medium mt-1">
               {displayRole} · {t.caseStudies.roleMethodologyValue}
             </span>
           </div>
@@ -122,7 +122,7 @@ export function CaseStudyCard(props: CaseStudy) {
             <span className="font-['Itim'] text-[12.5px] text-[#5197ff] uppercase tracking-wider">
               • {targetLabel}
             </span>
-            <span className="font-['Poppins'] text-[13.5px] text-[#d1d1d1] mt-1">
+            <span className="font-['Inter'] text-[13.5px] text-[#d1d1d1] mt-1">
               {targetValue}
             </span>
           </div>
@@ -132,7 +132,7 @@ export function CaseStudyCard(props: CaseStudy) {
         <div className="flex flex-wrap items-center justify-between gap-4 pt-3 w-full">
           <Link
             to={`/case-studies/${slug}`}
-            className="inline-flex items-center gap-2 rounded-full border border-white bg-white px-6 py-3 font-['Poppins'] text-[15px] font-semibold text-[#161513] transition-all duration-300 hover:bg-transparent hover:text-white group/btn"
+            className="inline-flex items-center gap-2 rounded-full border border-white bg-white px-6 py-3 font-['Inter'] text-[15px] font-semibold text-[#161513] transition-all duration-300 hover:bg-transparent hover:text-white group/btn"
           >
             <span>{t.caseStudies.exploreDesign}</span>
             <svg
@@ -160,7 +160,7 @@ export function CaseStudyCard(props: CaseStudy) {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={stopPropagation}
-                className="inline-flex items-center gap-1.5 font-['Poppins'] text-[13px] text-[#8491A0] hover:text-[#5197ff] transition-colors"
+                className="inline-flex items-center gap-1.5 font-['Inter'] text-[13px] text-[#8491A0] hover:text-[#5197ff] transition-colors"
               >
                 <BehanceIcon width={15} height={15} />
                 <span>Behance</span>
@@ -172,7 +172,7 @@ export function CaseStudyCard(props: CaseStudy) {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={stopPropagation}
-                className="inline-flex items-center gap-1.5 font-['Poppins'] text-[13px] text-[#8491A0] hover:text-[#5197ff] transition-colors"
+                className="inline-flex items-center gap-1.5 font-['Inter'] text-[13px] text-[#8491A0] hover:text-[#5197ff] transition-colors"
               >
                 <LinkedinIcon width={15} height={15} />
                 <span>LinkedIn Post</span>
@@ -184,7 +184,7 @@ export function CaseStudyCard(props: CaseStudy) {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={stopPropagation}
-                className="inline-flex items-center gap-1.5 font-['Poppins'] text-[13px] text-[#8491A0] hover:text-[#5197ff] transition-colors"
+                className="inline-flex items-center gap-1.5 font-['Inter'] text-[13px] text-[#8491A0] hover:text-[#5197ff] transition-colors"
               >
                 <FigmaIcon width={15} height={15} />
                 <span>Figma</span>

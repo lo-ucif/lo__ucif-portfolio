@@ -119,7 +119,7 @@ export function ServicesCard() {
                   </div>
 
                   {/* Description */}
-                  <p className="font-['Poppins'] text-[13.5px] sm:text-[14.5px] leading-relaxed text-[#9ca3af] group-hover/row:text-[#e1e1e1] transition-colors duration-200">
+                  <p className="font-['Inter'] text-[13.5px] sm:text-[14.5px] leading-relaxed text-[#9ca3af] group-hover/row:text-[#e1e1e1] transition-colors duration-200">
                     {service.description}
                   </p>
                 </div>

@@ -56,7 +56,7 @@ export function CaseStudyOverview({ study, onOpenLightbox }: CaseStudyOverviewPr
         </div>
 
         {/* Short description of project & purpose */}
-        <p className="font-['Poppins'] text-[16px] sm:text-[18px] text-[#d1d1d1] leading-relaxed max-w-3xl">
+        <p className="font-['Inter'] text-[16px] sm:text-[18px] text-[#d1d1d1] leading-relaxed max-w-3xl">
           {displaySummary}
         </p>
 
@@ -66,7 +66,7 @@ export function CaseStudyOverview({ study, onOpenLightbox }: CaseStudyOverviewPr
             <span className="font-['Itim'] text-[12.5px] text-[#8491A0] uppercase tracking-wider">
               {isArabic ? "الدور:" : "My Role:"}
             </span>
-            <span className="font-['Poppins'] text-[14px] text-white font-medium">
+            <span className="font-['Inter'] text-[14px] text-white font-medium">
               {displayRole}
             </span>
           </div>
@@ -75,7 +75,7 @@ export function CaseStudyOverview({ study, onOpenLightbox }: CaseStudyOverviewPr
             <span className="font-['Itim'] text-[12.5px] text-[#8491A0] uppercase tracking-wider">
               {isArabic ? "السياق:" : "Context:"}
             </span>
-            <span className="font-['Poppins'] text-[14px] text-[#d1d1d1]">
+            <span className="font-['Inter'] text-[14px] text-[#d1d1d1]">
               {displayContext}
             </span>
           </div>
@@ -84,7 +84,7 @@ export function CaseStudyOverview({ study, onOpenLightbox }: CaseStudyOverviewPr
             <span className="font-['Itim'] text-[12.5px] text-[#8491A0] uppercase tracking-wider">
               {isArabic ? "الفترة الزمنية:" : "Timeline:"}
             </span>
-            <span className="font-['Poppins'] text-[14px] text-[#d1d1d1]">
+            <span className="font-['Inter'] text-[14px] text-[#d1d1d1]">
               {displayTimeline}
             </span>
           </div>
@@ -138,7 +138,7 @@ export function CaseStudyOverview({ study, onOpenLightbox }: CaseStudyOverviewPr
             <button
               type="button"
               onClick={() => onOpenLightbox?.(mainVisual, `${study.title} — Main Visual`, study.subtitle)}
-              className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.06] hover:bg-white/10 border border-white/15 px-3.5 py-1 font-['Poppins'] text-[12px] text-white transition-colors cursor-pointer"
+              className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.06] hover:bg-white/10 border border-white/15 px-3.5 py-1 font-['Inter'] text-[12px] text-white transition-colors cursor-pointer"
             >
               <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <circle cx="11" cy="11" r="8" />

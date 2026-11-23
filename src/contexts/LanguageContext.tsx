@@ -21,7 +21,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       const saved = localStorage.getItem("portfolio_lang_user_choice");
       if (saved === "ar" || saved === "en") return saved;
     }
-    return "ar";
+    return "en";
   });
 
   const setLanguage = (lang: Language) => {

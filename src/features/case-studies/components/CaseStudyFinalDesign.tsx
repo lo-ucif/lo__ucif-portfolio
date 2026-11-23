@@ -38,7 +38,7 @@ function IPhoneMockup({
         {/* Hover Inspect Overlay for Center Phone */}
         {isCenter && (
           <div className="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 flex items-center justify-center transition-opacity duration-200 z-30 pointer-events-none">
-            <span className="rounded-full bg-white text-[#161513] font-['Poppins'] text-[12px] font-semibold px-4 py-2 shadow-lg">
+            <span className="rounded-full bg-white text-[#161513] font-['Inter'] text-[12px] font-semibold px-4 py-2 shadow-lg">
               Inspect Fullscreen 🔍
             </span>
           </div>
@@ -396,7 +396,7 @@ export function CaseStudyFinalDesign({
               </AnimatePresence>
             </div>
             <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-200 pointer-events-none">
-              <span className="rounded-full bg-white text-[#161513] font-['Poppins'] text-[12px] font-semibold px-4 py-2 shadow-lg">
+              <span className="rounded-full bg-white text-[#161513] font-['Inter'] text-[12px] font-semibold px-4 py-2 shadow-lg">
                 Inspect Fullscreen 🔍
               </span>
             </div>
@@ -529,7 +529,7 @@ export function CaseStudyFinalDesign({
         {/* Navigation Buttons Right Below the Image */}
         {filteredScreens.length > 1 && (
           <div className="flex items-center justify-center gap-4 pt-5 w-full">
-            <span className="font-['Poppins'] text-[13.5px] font-medium text-[#8491A0]">
+            <span className="font-['Inter'] text-[13.5px] font-medium text-[#8491A0]">
               <span className="text-[#5197ff] font-semibold">{currentIndexInFiltered + 1}</span> / {filteredScreens.length}
             </span>
             <div className={`items-center gap-2 ${isScreenWeb ? "flex" : "hidden sm:flex"}`}>

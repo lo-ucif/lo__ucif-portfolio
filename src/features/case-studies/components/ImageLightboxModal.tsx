@@ -156,7 +156,7 @@ export function ImageLightboxModal({
               )}
 
               {currentItem.subtitle && (
-                <p className="font-['Poppins'] text-[12px] sm:text-[13.5px] text-[#A9A9A9] truncate">
+                <p className="font-['Inter'] text-[12px] sm:text-[13.5px] text-[#A9A9A9] truncate">
                   {currentItem.subtitle}
                 </p>
               )}
@@ -176,7 +176,7 @@ export function ImageLightboxModal({
                       <polyline points="15 18 9 12 15 6" />
                     </svg>
                   </button>
-                  <span className="font-['Poppins'] text-[12px] text-[#A9A9A9] px-2 font-medium">
+                  <span className="font-['Inter'] text-[12px] text-[#A9A9A9] px-2 font-medium">
                     <span className="text-[#5197ff] font-semibold">{activeIndex + 1}</span> / {allItems.length}
                   </span>
                   <button
@@ -195,7 +195,7 @@ export function ImageLightboxModal({
               <button
                 type="button"
                 onClick={onClose}
-                className="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 font-['Poppins'] text-[13px] text-white transition-colors duration-200 hover:bg-white hover:text-[#161513] cursor-pointer"
+                className="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 font-['Inter'] text-[13px] text-white transition-colors duration-200 hover:bg-white hover:text-[#161513] cursor-pointer"
               >
                 <span>Close (Esc)</span>
                 <svg
@@ -266,7 +266,7 @@ export function ImageLightboxModal({
 
           {/* Footer Controls / Keyboard Navigation Tip */}
           <div
-            className="flex items-center justify-center w-full pt-2 text-white/50 text-[12px] font-['Poppins'] z-40"
+            className="flex items-center justify-center w-full pt-2 text-white/50 text-[12px] font-['Inter'] z-40"
             onClick={(e) => e.stopPropagation()}
           >
             {showNavigation ? (

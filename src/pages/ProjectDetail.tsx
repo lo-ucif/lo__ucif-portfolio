@@ -84,7 +84,7 @@ export default function ProjectDetail() {
         <p className="font-['Itim'] text-[28px]">Project not found</p>
         <Link
           to="/projects"
-          className="rounded-[38.182px] border border-white px-6 py-2.5 font-['Poppins'] text-[16px] text-white transition-colors duration-300 hover:bg-white hover:text-[#161513]"
+          className="rounded-[38.182px] border border-white px-6 py-2.5 font-['Inter'] text-[16px] text-white transition-colors duration-300 hover:bg-white hover:text-[#161513]"
         >
           Back to Projects
         </Link>
@@ -109,7 +109,7 @@ export default function ProjectDetail() {
           <div className="flex items-center gap-4">
             <Link
               to="/projects"
-              className="inline-flex items-center gap-2 font-['Poppins'] text-[14px] sm:text-[15px] text-[#9CA3AF] transition-colors duration-200 hover:text-white"
+              className="inline-flex items-center gap-2 font-['Inter'] text-[14px] sm:text-[15px] text-[#9CA3AF] transition-colors duration-200 hover:text-white"
             >
               <svg
                 className="w-4 h-4 rtl:rotate-180 icon-directional"
@@ -130,7 +130,7 @@ export default function ProjectDetail() {
 
             <Link
               to="/#projects"
-              className="font-['Poppins'] text-[13px] text-[#8491A0] transition-colors hover:text-white"
+              className="font-['Inter'] text-[13px] text-[#8491A0] transition-colors hover:text-white"
             >
               {isArabic ? "المعرض" : "Portfolio"}
             </Link>
@@ -141,7 +141,7 @@ export default function ProjectDetail() {
             {caseStudyUrl && (
               <Link
                 to={caseStudyUrl}
-                className="inline-flex items-center gap-1.5 rounded-full bg-[#5197ff] px-3.5 py-1.5 text-[#161513] font-['Poppins'] text-[13px] font-semibold hover:bg-white transition-colors"
+                className="inline-flex items-center gap-1.5 rounded-full bg-[#5197ff] px-3.5 py-1.5 text-[#161513] font-['Inter'] text-[13px] font-semibold hover:bg-white transition-colors"
               >
                 <span>{isArabic ? "استكشف التصميم ←" : "Explore Design →"}</span>
               </Link>
@@ -151,7 +151,7 @@ export default function ProjectDetail() {
                 href={project.liveDemo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.05] border border-white/10 px-3.5 py-1.5 font-['Poppins'] text-[13px] text-[#d1d1d1] hover:text-[#5197ff] hover:border-[#5197ff]/40 transition-colors"
+                className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.05] border border-white/10 px-3.5 py-1.5 font-['Inter'] text-[13px] text-[#d1d1d1] hover:text-[#5197ff] hover:border-[#5197ff]/40 transition-colors"
               >
                 <LinkIcon width={14} height={14} />
                 <span>
@@ -166,7 +166,7 @@ export default function ProjectDetail() {
                 href={project.figma}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.05] border border-white/10 px-3.5 py-1.5 font-['Poppins'] text-[13px] text-[#d1d1d1] hover:text-[#5197ff] hover:border-[#5197ff]/40 transition-colors"
+                className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.05] border border-white/10 px-3.5 py-1.5 font-['Inter'] text-[13px] text-[#d1d1d1] hover:text-[#5197ff] hover:border-[#5197ff]/40 transition-colors"
               >
                 <FigmaIcon width={14} height={14} />
                 <span>{isArabic ? "نموذج فيجما" : "Figma Prototype"}</span>
@@ -177,7 +177,7 @@ export default function ProjectDetail() {
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.05] border border-white/10 px-3.5 py-1.5 font-['Poppins'] text-[13px] text-[#d1d1d1] hover:text-[#5197ff] hover:border-[#5197ff]/40 transition-colors"
+                className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.05] border border-white/10 px-3.5 py-1.5 font-['Inter'] text-[13px] text-[#d1d1d1] hover:text-[#5197ff] hover:border-[#5197ff]/40 transition-colors"
               >
                 <Github2Icon width={14} height={14} />
                 <span>GitHub</span>
@@ -188,7 +188,7 @@ export default function ProjectDetail() {
                 href={project.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.05] border border-white/10 px-3.5 py-1.5 font-['Poppins'] text-[13px] text-[#d1d1d1] hover:text-[#5197ff] hover:border-[#5197ff]/40 transition-colors"
+                className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.05] border border-white/10 px-3.5 py-1.5 font-['Inter'] text-[13px] text-[#d1d1d1] hover:text-[#5197ff] hover:border-[#5197ff]/40 transition-colors"
               >
                 <LinkedinIcon width={14} height={14} />
                 <span>LinkedIn</span>
@@ -217,7 +217,7 @@ export default function ProjectDetail() {
             {displayTitle}
           </h1>
 
-          <p className="font-['Poppins'] text-[16px] sm:text-[17.5px] text-[#d1d1d1] leading-relaxed max-w-3xl">
+          <p className="font-['Inter'] text-[16px] sm:text-[17.5px] text-[#d1d1d1] leading-relaxed max-w-3xl">
             {displayShortDesc}
           </p>
 
@@ -227,7 +227,7 @@ export default function ProjectDetail() {
               <span className="font-['Itim'] text-[12.5px] text-[#8491A0] uppercase tracking-wider">
                 {isArabic ? "الدور:" : "My Role:"}
               </span>
-              <span className="font-['Poppins'] text-[14px] text-white font-medium">
+              <span className="font-['Inter'] text-[14px] text-white font-medium">
                 {displayRole}
               </span>
             </div>
@@ -236,7 +236,7 @@ export default function ProjectDetail() {
               <span className="font-['Itim'] text-[12.5px] text-[#8491A0] uppercase tracking-wider">
                 {isArabic ? "السياق:" : "Context:"}
               </span>
-              <span className="font-['Poppins'] text-[14px] text-[#d1d1d1]">
+              <span className="font-['Inter'] text-[14px] text-[#d1d1d1]">
                 {categoryConfig[project.category]}
               </span>
             </div>
@@ -245,7 +245,7 @@ export default function ProjectDetail() {
               <span className="font-['Itim'] text-[12.5px] text-[#8491A0] uppercase tracking-wider">
                 {isArabic ? "الفترة الزمنية:" : "Timeline:"}
               </span>
-              <span className="font-['Poppins'] text-[14px] text-[#d1d1d1]">
+              <span className="font-['Inter'] text-[14px] text-[#d1d1d1]">
                 {project.year}
               </span>
             </div>
@@ -255,7 +255,7 @@ export default function ProjectDetail() {
                 <span className="font-['Itim'] text-[12.5px] text-[#8491A0] uppercase tracking-wider">
                   {isArabic ? "الفريق:" : "Team:"}
                 </span>
-                <span className="font-['Poppins'] text-[14px] text-[#d1d1d1]">
+                <span className="font-['Inter'] text-[14px] text-[#d1d1d1]">
                   {project.team}
                 </span>
               </div>
@@ -266,7 +266,7 @@ export default function ProjectDetail() {
                 <span className="font-['Itim'] text-[12.5px] text-[#8491A0] uppercase tracking-wider">
                   {isArabic ? "الحالة:" : "Status:"}
                 </span>
-                <span className="font-['Poppins'] text-[14px] text-[#5197ff]">
+                <span className="font-['Inter'] text-[14px] text-[#5197ff]">
                   {project.status}
                 </span>
               </div>
@@ -304,7 +304,7 @@ export default function ProjectDetail() {
               <h3 className="font-['Itim'] text-[20px] sm:text-[22px] text-white font-bold">
                 {isArabic ? "دراسة تصميم UI/UX معمقة متوفرة" : "In-Depth UI/UX Design Available"}
               </h3>
-              <p className="font-['Poppins'] text-[13.5px] text-[#A9A9A9]">
+              <p className="font-['Inter'] text-[13.5px] text-[#A9A9A9]">
                 {isArabic
                   ? "استكشف أبحاث المشكلة، ومخططات UML لتجربة المستخدم، ونماذج الشاشات التفاعلية عالية الدقة."
                   : "Explore the complete problem research, UML user needs diagrams, and high-fidelity interface presentations."}
@@ -312,7 +312,7 @@ export default function ProjectDetail() {
             </div>
             <Link
               to={caseStudyUrl}
-              className="shrink-0 rounded-full bg-white text-[#161513] px-5 py-2.5 font-['Poppins'] text-[14px] font-semibold hover:bg-[#5197ff] hover:text-white transition-colors"
+              className="shrink-0 rounded-full bg-white text-[#161513] px-5 py-2.5 font-['Inter'] text-[14px] font-semibold hover:bg-[#5197ff] hover:text-white transition-colors"
             >
               <span>{isArabic ? "استكشف التصميم ←" : "Explore Design →"}</span>
             </Link>
@@ -326,7 +326,7 @@ export default function ProjectDetail() {
             <h2 className="font-['Itim'] text-[24px] sm:text-[26px] text-white font-bold">
               {isArabic ? "نظرة عامة على المشروع" : "Project Overview"}
             </h2>
-            <p className="font-['Poppins'] text-[15px] sm:text-[16px] text-[#d1d1d1] leading-relaxed">
+            <p className="font-['Inter'] text-[15px] sm:text-[16px] text-[#d1d1d1] leading-relaxed">
               {displayDesc}
             </p>
           </div>
@@ -342,7 +342,7 @@ export default function ProjectDetail() {
                   <h3 className="font-['Itim'] text-[22px] text-white font-semibold">
                     {isArabic ? "التحدي التقني" : "The Challenge"}
                   </h3>
-                  <p className="font-['Poppins'] text-[14.5px] text-[#b4b4b4] leading-relaxed">
+                  <p className="font-['Inter'] text-[14.5px] text-[#b4b4b4] leading-relaxed">
                     {displayProblem}
                   </p>
                 </div>
@@ -356,7 +356,7 @@ export default function ProjectDetail() {
                   <h3 className="font-['Itim'] text-[22px] text-white font-semibold">
                     {isArabic ? "الحل الرقمي" : "The Solution"}
                   </h3>
-                  <p className="font-['Poppins'] text-[14.5px] text-[#b4b4b4] leading-relaxed">
+                  <p className="font-['Inter'] text-[14.5px] text-[#b4b4b4] leading-relaxed">
                     {displaySolution}
                   </p>
                 </div>
@@ -374,7 +374,7 @@ export default function ProjectDetail() {
                 {displayKeyFeatures.map((feature, idx) => (
                   <div
                     key={idx}
-                    className="flex items-start gap-2.5 p-3 rounded-xl bg-white/[0.02] border border-white/[0.04] font-['Poppins'] text-[14px] text-[#d1d1d1]"
+                    className="flex items-start gap-2.5 p-3 rounded-xl bg-white/[0.02] border border-white/[0.04] font-['Inter'] text-[14px] text-[#d1d1d1]"
                   >
                     <span className="text-[#5197ff] font-bold mt-0.5">✔</span>
                     <span>{feature}</span>
@@ -393,7 +393,7 @@ export default function ProjectDetail() {
               <h2 className="font-['Itim'] text-[22px] text-white font-bold">
                 {isArabic ? "المخرجات والإنجاز" : "The Outcome"}
               </h2>
-              <p className="font-['Poppins'] text-[15px] text-[#d1d1d1] leading-relaxed">
+              <p className="font-['Inter'] text-[15px] text-[#d1d1d1] leading-relaxed">
                 {displayOutcome}
               </p>
             </div>
@@ -429,7 +429,7 @@ export default function ProjectDetail() {
           <h3 className="font-['Itim'] text-[28px] sm:text-[34px] text-white font-bold">
             {isArabic ? "هل لديك مشروع أو فكرة تريد تصميمها أو برمجتها؟" : "Have a project or concept to design?"}
           </h3>
-          <p className="font-['Poppins'] text-[14.5px] text-[#9CA3AF] max-w-lg leading-relaxed">
+          <p className="font-['Inter'] text-[14.5px] text-[#9CA3AF] max-w-lg leading-relaxed">
             {isArabic ? "دعنا نبني معاً حلولاً رقمية وتجارب مستخدم عصرية وسلسة." : "Let's build clean, human-centered digital experiences together."}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
@@ -437,13 +437,13 @@ export default function ProjectDetail() {
               href="https://wa.me/213676244189"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-[38.182px] border border-white bg-white px-6 py-2.5 font-['Poppins'] text-[14.5px] font-medium text-[#161513] transition-colors duration-300 hover:bg-transparent hover:text-white"
+              className="rounded-[38.182px] border border-white bg-white px-6 py-2.5 font-['Inter'] text-[14.5px] font-medium text-[#161513] transition-colors duration-300 hover:bg-transparent hover:text-white"
             >
               {t.contact.letsTalk}
             </a>
             <Link
               to="/projects"
-              className="rounded-[38.182px] border border-white/20 px-6 py-2.5 font-['Poppins'] text-[14.5px] text-white transition-colors duration-300 hover:border-white"
+              className="rounded-[38.182px] border border-white/20 px-6 py-2.5 font-['Inter'] text-[14.5px] text-white transition-colors duration-300 hover:border-white"
             >
               {isArabic ? "العودة للمشاريع" : "Back to Projects"}
             </Link>

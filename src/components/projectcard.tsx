@@ -121,7 +121,7 @@ export default function Projectcard({
         </h3>
 
         {/* Narrative Description */}
-        <p className="font-['Poppins'] text-[14px] sm:text-[15.5px] leading-[1.8] text-[#b4b4b4] line-clamp-4">
+        <p className="font-['Inter'] text-[14px] sm:text-[15.5px] leading-[1.8] text-[#b4b4b4] line-clamp-4">
           {displayNarrative}
         </p>
 
@@ -134,7 +134,7 @@ export default function Projectcard({
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={stopPropagation}
-                className="inline-flex items-center gap-1.5 font-['Poppins'] text-[13px] text-[#8491A0] hover:text-[#5197ff] transition-colors"
+                className="inline-flex items-center gap-1.5 font-['Inter'] text-[13px] text-[#8491A0] hover:text-[#5197ff] transition-colors"
               >
                 <LinkIcon width={14} height={14} />
                 <span>
@@ -150,7 +150,7 @@ export default function Projectcard({
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={stopPropagation}
-                className="inline-flex items-center gap-1.5 font-['Poppins'] text-[13px] text-[#8491A0] hover:text-white transition-colors"
+                className="inline-flex items-center gap-1.5 font-['Inter'] text-[13px] text-[#8491A0] hover:text-white transition-colors"
               >
                 <Github2Icon width={14} height={14} />
                 <span>{isArabic ? "الكود" : "Code"}</span>
@@ -162,7 +162,7 @@ export default function Projectcard({
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={stopPropagation}
-                className="inline-flex items-center gap-1.5 font-['Poppins'] text-[13px] text-[#8491A0] hover:text-white transition-colors"
+                className="inline-flex items-center gap-1.5 font-['Inter'] text-[13px] text-[#8491A0] hover:text-white transition-colors"
               >
                 <FigmaIcon width={14} height={14} />
                 <span>{isArabic ? "فيجما" : "Figma"}</span>
@@ -174,7 +174,7 @@ export default function Projectcard({
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={stopPropagation}
-                className="inline-flex items-center gap-1.5 font-['Poppins'] text-[13px] text-[#8491A0] hover:text-white transition-colors"
+                className="inline-flex items-center gap-1.5 font-['Inter'] text-[13px] text-[#8491A0] hover:text-white transition-colors"
               >
                 <LinkedinIcon width={14} height={14} />
                 <span>{isArabic ? "لينكد إن" : "LinkedIn"}</span>
@@ -184,7 +184,7 @@ export default function Projectcard({
         )}
 
         {/* Tech Stack Row - strictly single line, responsive fit without overflow */}
-        <div className={`flex flex-nowrap items-center gap-3 sm:gap-4 pt-4 border-t border-white/[0.08] w-full mt-2 font-['Poppins'] text-[13px] text-[#a9a9a9] overflow-hidden min-w-0 ${
+        <div className={`flex flex-nowrap items-center gap-3 sm:gap-4 pt-4 border-t border-white/[0.08] w-full mt-2 font-['Inter'] text-[13px] text-[#a9a9a9] overflow-hidden min-w-0 ${
           isArabic ? "justify-end" : "justify-start"
         }`}>
           {tech.slice(0, 5).map((t, idx) => {

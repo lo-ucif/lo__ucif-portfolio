@@ -31,7 +31,7 @@ export function ProjectsSection() {
         <h2 className="font-['Itim'] text-[36px] text-white">
           {t.projects.title}
         </h2>
-        <p className="font-['Poppins'] text-[15px] sm:text-[16px] text-[#9CA3AF]">
+        <p className="font-['Inter'] text-[15px] sm:text-[16px] text-[#9CA3AF]">
           {t.projects.badge}
         </p>
       </motion.div>
@@ -54,7 +54,7 @@ export function ProjectsSection() {
         className="mt-4"
       >
         <Link
-          className="inline-block rounded-[38.182px] border border-white px-[24px] py-[13px] font-['Poppins'] text-[15px] sm:text-[16px] text-white transition-colors duration-300 hover:bg-white hover:text-[#161513]"
+          className="inline-block rounded-[38.182px] border border-white px-[24px] py-[13px] font-['Inter'] text-[15px] sm:text-[16px] text-white transition-colors duration-300 hover:bg-white hover:text-[#161513]"
           to="/projects"
         >
           {t.projects.viewAllProjects} ({projects.length})
