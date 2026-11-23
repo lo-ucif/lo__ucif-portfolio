@@ -127,7 +127,7 @@ export const translations: Record<"en" | "ar", Translations> = {
     },
     about: {
       title: "A Little About Me",
-      bio: "I'm a Software Engineering student with a passion for web development and UI/UX design. I enjoy solving problems, exploring new technologies, and transforming complex ideas into simple, intuitive, and functional digital products. My approach combines creative thinking with technical skills to build experiences that are both visually appealing and technically reliable.",
+      bio: "I'm a Software Engineering student passionate about delivering digital solutions that combine creative design with technical development. From crafting intuitive UI/UX experiences to building modern, responsive websites, I focus on performance, quality, and creating solutions that meet clients' needs.",
       downloadCV: "Download CV",
     },
     timeline: {
@@ -227,7 +227,7 @@ export const translations: Record<"en" | "ar", Translations> = {
     },
     about: {
       title: "نبذة عني",
-      bio: "أنا طالب هندسة برمجيات وشغوف بتطوير الويب وتصميم واجهات وتجربة المستخدم. أستمتع بحل المشكلات واستكشاف التقنيات الحديثة وتحويل الأفكار المعقدة إلى منتجات رقمية بسيطة، بديهية وفعالة. يجمع أسلوبي بين التفكير الإبداعي والمهارات التقنية لبناء تجارب جذابة بصرياً وقوية برمجياً.",
+      bio: "أنا طالب هندسة برمجيات أقدم حلولاً رقمية تجمع بين التصميم الإبداعي والتطوير التقني، بدءاً من تصميم واجهات المستخدم وتجربة الاستخدام، وصولاً إلى تطوير مواقع ويب عصرية ومتجاوبة، مع التركيز على الأداء والجودة وتلبية احتياجات العملاء.",
       downloadCV: "تحميل السيرة الذاتية",
     },
     timeline: {
