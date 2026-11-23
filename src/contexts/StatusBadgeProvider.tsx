@@ -8,6 +8,7 @@ export function StatusBadgeProvider({ children }: { children: ReactNode }) {
   const value = {
     ...statusBadgeData,
     text: t.hero.statusAvailable,
+    dotColor: statusBadgeData.dotColor,
   };
 
   return (

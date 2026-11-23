@@ -615,6 +615,6 @@ export const certificateItems = [
 ];
 
 export const statusBadgeData = {
-  text: "Under Modification",
-  dotColor: "#F59E0B",
+  text: "Open to Freelance Projects",
+  dotColor: "#22C55E",
 };

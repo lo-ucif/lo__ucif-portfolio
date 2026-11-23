@@ -114,7 +114,7 @@ export const translations: Record<"en" | "ar", Translations> = {
       langShort: "AR",
     },
     hero: {
-      statusAvailable: "Software Engineering Student · Available for Opportunities until November 2026",
+      statusAvailable: "Open to Freelance Projects",
       name: "Ahmed Loucif",
       taglinePrefix: "Crafting Digital Experiences & ",
       taglineHighlight: "Building Modern Solutions.",
@@ -214,7 +214,7 @@ export const translations: Record<"en" | "ar", Translations> = {
       langShort: "EN",
     },
     hero: {
-      statusAvailable: "طالب هندسة برمجيات · متاح للفرص والمشاريع حتى نوفمبر 2026",
+      statusAvailable: "متاح لمشاريع العمل الحر",
       name: "أحمد لوصيف",
       taglinePrefix: "صناعة تجارب رقمية و",
       taglineHighlight: "بناء حلول برمجية حديثة.",
