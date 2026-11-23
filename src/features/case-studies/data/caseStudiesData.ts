@@ -11,7 +11,6 @@ import hafezScreen01 from "../../../assets/case-studies/7afez/7afez-web-01.webp"
 import hafezScreen02 from "../../../assets/case-studies/7afez/7afez-web-02.webp";
 import hafezLogoHero from "../../../assets/case-studies/hafez-logo/hafez-logo-hero.webp";
 import hafezLogoIdentity from "../../../assets/case-studies/hafez-logo/hafez-logo-identity.webp";
-import hafezLogoElements from "../../../assets/case-studies/hafez-logo/hafez-logo-elements.webp";
 import hafezLogoColors from "../../../assets/case-studies/hafez-logo/hafez-logo-colors.webp";
 // Al-Tabib Al-Hafiz Screens (WebP)
 import tabibScreen01 from "../../../assets/case-studies/al-tabib/iPhone 17 - 1.webp";
@@ -943,11 +942,6 @@ export const caseStudies: CaseStudy[] = [
         caption: "Visual Identity & Arabic Calligraphy Typography on Behance",
       },
       {
-        title: "Logo Elements & Quran Symbolic Construction",
-        image: hafezLogoElements,
-        caption: "Quran Book Stand & Letterform Integration",
-      },
-      {
         title: "Color Palette & Visual Tokens",
         image: hafezLogoColors,
         caption: "Dark Teal Blue (#1A5A81) & Golden Beige (#CAB178)",
@@ -1407,29 +1401,12 @@ export const caseStudies: CaseStudy[] = [
           aspectRatio: "web",
         },
         {
-          id: "7afez-logo-elements",
-          number: "05",
-          title: "Logo Geometry & Deconstructed Elements",
-          arabicTitle: "عناصر الشعار والتفكيك الهندسي",
-          subtitle: "Deconstruction of the emblem into its sacred Quranic components",
-          category: "Brand Identity",
-          description:
-            "Visual breakdown highlighting the individual constituents: the Arabic letters 'ح' and 'فظ', the golden open book, and the teal Quran reading stand.",
-          uxHighlights: [
-            "Modular symbolic construction.",
-            "Balanced dual-tone contrast between teal and gold.",
-            "Vector scalability tested from micro-favicons to billboard banners.",
-          ],
-          image: hafezLogoElements,
-          aspectRatio: "web",
-        },
-        {
           id: "7afez-logo-colors",
-          number: "06",
+          number: "05",
           title: "Design Tokens & Brand Color Palette",
           arabicTitle: "ألوان الشعار وتوكنز الهوية البصرية",
           subtitle: "Dark Teal Blue (#1A5A81) and Golden Beige (#CAB178)",
-          category: "Design System",
+          category: "Brand Identity",
           description:
             "Core color tokens establishing the serene spiritual atmosphere of the platform: Dark Teal Blue (RGB: 26, 90, 129) evoking trust and focus, paired with Golden Beige (RGB: 202, 177, 120) reflecting warmth and noble tradition.",
           uxHighlights: [
@@ -1529,7 +1506,7 @@ export const caseStudies: CaseStudy[] = [
         caption: "Framed Portfolio Showcase",
       },
     ],
-    presentationHeading: "Driving School Platform",
+    presentationHeading: "Mobile Presentation",
     tools: [{ label: "Figma", icon: FigmaIcon }],
     liveDemo:
       "https://www.linkedin.com/posts/ahmed-loucif-757854342_Ui/Ux Design-uxdesign-figma-ugcPost-7490915921327198208-KWqx/",

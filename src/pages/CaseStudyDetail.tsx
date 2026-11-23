@@ -105,9 +105,9 @@ export default function CaseStudyDetail() {
   if (!study) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen gap-6 bg-[#161513] px-5 text-white">
-        <h1 className="font-['Itim'] text-[32px]">Case Study Not Found</h1>
+        <h1 className="font-['Itim'] text-[32px]">Design Not Found</h1>
         <p className="font-['Poppins'] text-[#9CA3AF]">
-          The case study you are looking for does not exist or has been moved.
+          The design you are looking for does not exist or has been moved.
         </p>
         <Link
           to="/"
@@ -147,7 +147,7 @@ export default function CaseStudyDetail() {
                 <line x1="19" y1="12" x2="5" y2="12" />
                 <polyline points="12 19 5 12 12 5" />
               </svg>
-              <span>Back to Case Studies</span>
+              <span>Back to Design</span>
             </Link>
 
             <span className="text-white/20">|</span>

@@ -130,7 +130,7 @@ export default function ProjectDetail() {
                 to={caseStudyUrl}
                 className="inline-flex items-center gap-1.5 rounded-full bg-[#5197ff] px-3.5 py-1.5 text-[#161513] font-['Poppins'] text-[13px] font-semibold hover:bg-white transition-colors"
               >
-                <span>Explore Case Study →</span>
+                <span>Explore Design →</span>
               </Link>
             )}
             {project.liveDemo && (
@@ -271,7 +271,7 @@ export default function ProjectDetail() {
           />
         </motion.div>
 
-        {/* Case Study Callout Banner (if available) */}
+        {/* Design Callout Banner (if available) */}
         {caseStudyUrl && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -282,10 +282,10 @@ export default function ProjectDetail() {
           >
             <div className="flex flex-col gap-1">
               <span className="font-['Itim'] text-[13px] text-[#5197ff] uppercase tracking-wider">
-                Comprehensive Case Study
+                Comprehensive Design Presentation
               </span>
               <h3 className="font-['Itim'] text-[20px] sm:text-[22px] text-white font-bold">
-                In-Depth UI/UX Case Study Available
+                In-Depth UI/UX Design Available
               </h3>
               <p className="font-['Poppins'] text-[13.5px] text-[#A9A9A9]">
                 Explore the complete problem research, UML user needs diagrams, and high-fidelity interface presentations.
@@ -295,7 +295,7 @@ export default function ProjectDetail() {
               to={caseStudyUrl}
               className="shrink-0 rounded-full bg-white text-[#161513] px-5 py-2.5 font-['Poppins'] text-[14px] font-semibold hover:bg-[#5197ff] hover:text-white transition-colors"
             >
-              Explore Case Study →
+              Explore Design →
             </Link>
           </motion.div>
         )}

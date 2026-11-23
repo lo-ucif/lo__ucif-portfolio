@@ -124,7 +124,7 @@ export function CaseStudyCard(props: CaseStudy) {
             to={`/case-studies/${slug}`}
             className="inline-flex items-center gap-2 rounded-full border border-white bg-white px-6 py-3 font-['Poppins'] text-[15px] font-semibold text-[#161513] transition-all duration-300 hover:bg-transparent hover:text-white group/btn"
           >
-            <span>Explore Case Study</span>
+            <span>Explore Design</span>
             <svg
               className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1"
               viewBox="0 0 24 24"
