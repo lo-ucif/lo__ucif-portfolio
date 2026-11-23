@@ -117,7 +117,7 @@ export default function Home() {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, ease: easeOut }}
             >
-              Software Engineering Student | Web Developer | UI/UX Designer <br /> Software Engineering Student · Available for Opportunities until November 2026
+              Software Engineering Student | Web Developer | UI/UX Designer
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -150,7 +150,7 @@ export default function Home() {
                 href="https://github.com/lo-ucif"
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.1 }}
+                whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ duration: 0.18, ease: "easeOut" }}
               >

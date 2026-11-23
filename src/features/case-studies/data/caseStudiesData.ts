@@ -920,7 +920,7 @@ export const caseStudies: CaseStudy[] = [
       "Serene spiritual aesthetic, structured halaqat administration, and frictionless inquiry workflows for academic reciters.",
     platform: "Responsive Web (Desktop & Tablet)",
     timeline: "2026",
-    organization: "Faculty of Medicine & Quranic Circles (كلية الطب والمراكز القرآنية)",
+    organization: "Quranic Circles (المدارس القرآنية)",
     heroImage: hafezMockup,
     mockupImage: hafezMockup,
     framedMockupImage: hafezFramed,
@@ -966,7 +966,7 @@ export const caseStudies: CaseStudy[] = [
     // 01 — Project Overview
     overview: {
       summary:
-        "7afez Web (منصة حافظ) is the desktop web extension of the Quran memorization ecosystem, designed to provide a comprehensive, distraction-free environment for medical students, reciters, and study circle supervisors. While mobile devices excel at quick daily revisions on the go, the web platform serves as the central operational hub: managing study circle schedules, exploring institutional halaqat, submitting inquiries, and fostering a structured daily habit with the Holy Quran.",
+        "7afez Web (منصة حافظ) is the desktop web extension of the Quran memorization ecosystem, designed to provide a comprehensive, distraction-free environment for students, reciters, and study circle supervisors. While mobile devices excel at quick daily revisions on the go, the web platform serves as the central operational hub: managing study circle schedules, exploring institutional halaqat, submitting inquiries, and fostering a structured daily habit with the Holy Quran.",
       objectives: [
         "Create a harmonious, culturally resonant Arabic design system centered on serene deep-teal and warm golden accents.",
         "Provide a clear, conversion-optimized landing page articulating the platform's mission, circle features, and institutional benefits.",
@@ -995,7 +995,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     problem: {
       statement:
-        "Medical students and reciters balancing demanding academic coursework struggle with fragmented communication and cluttered tools that fail to support consistent, distraction-free Quran revision and halaqat coordination.",
+        "Students and reciters balancing demanding academic coursework struggle with fragmented communication and cluttered tools that fail to support consistent, distraction-free Quran revision and halaqat coordination.",
       context:
         "Rigorous university curricula leave minimal discretionary time. Physical recitation circles require digital coordination to maintain attendance, log progress, and connect students with qualified sheikhs through a dependable, accessible platform.",
       targetAudience:
