@@ -1,4 +1,3 @@
-import rokhsaImg from "../../../assets/ChatGPT Image Aug 5, 2026, 11_48_00 PM 13.webp";
 import tabibMockup from "../../../assets/case-studies/mockups/al-tabib-transparent.webp";
 import tabibFramed from "../../../assets/case-studies/mockups/al-tabib-framed.webp";
 import rokhsaMockup from "../../../assets/case-studies/mockups/rokhsa-transparent.webp";
@@ -1889,25 +1888,8 @@ export const caseStudies: CaseStudy[] = [
         "Rokhsa delivers an end-to-end digital experience that brings efficiency, transparency, and pride to driving schools in Algeria. The platform seamlessly bridges admin oversight with student convenience.",
       screens: [
         {
-          id: "rokhsa-screen-1",
-          number: "01",
-          title: "Centralized Web Management Dashboard",
-          arabicTitle: "لوحة التحكم السحابية لإدارة المدرسة",
-          subtitle: "All driving school operations in one unified desktop command center",
-          category: "Desktop Web Platform",
-          description:
-            "The web dashboard enables school administrators to manage candidates, assign instructors, monitor vehicle fleets, and review real-time revenue and exam pass rates from any browser.",
-          uxHighlights: [
-            "High-impact Arabic branding banner: 'إدارة مدرستك من مكان واحد'.",
-            "At-a-glance metrics for candidates, exams, payments, and appointments.",
-            "Direct action button 'سجل الآن' with responsive web scaling.",
-          ],
-          image: rokhsaImg,
-          aspectRatio: "web",
-        },
-        {
           id: "rokhsa-screen-2",
-          number: "02",
+          number: "01",
           title: "Rokhsa Mobile Launch Screen",
           arabicTitle: "شاشة البداية — هوية تطبيق رخصة",
           subtitle: "Modern steering wheel monogram against deep navy canvas",
@@ -1924,7 +1906,7 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           id: "rokhsa-screen-3",
-          number: "03",
+          number: "02",
           title: "Driving School Value Onboarding",
           arabicTitle: "مرحباً بك في مدرستك الرقمية",
           subtitle: "Empowering school managers to digitize candidates and payments",
@@ -1941,7 +1923,7 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           id: "rokhsa-screen-4",
-          number: "04",
+          number: "03",
           title: "Secure Administrator Mobile Login",
           arabicTitle: "تسجيل الدخول لإدارة مدرستك",
           subtitle: "Role-based authentication for school owners and instructors",
@@ -1958,7 +1940,7 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           id: "rokhsa-screen-5",
-          number: "05",
+          number: "04",
           title: "Mobile Command Center Dashboard",
           arabicTitle: "لوحة التحكم الرئيسية عبر الهاتف",
           subtitle: "Enrolled candidates (426), vehicle fleet, and live activity feed",
@@ -1975,7 +1957,7 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           id: "rokhsa-screen-6",
-          number: "06",
+          number: "05",
           title: "Modular Operations Navigation Drawer",
           arabicTitle: "القائمة الجانبية وإدارة الأقسام",
           subtitle: "Fast access to exams, packages, assistants, and timetables",
@@ -1992,7 +1974,7 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           id: "rokhsa-screen-7",
-          number: "07",
+          number: "06",
           title: "Driving Lesson Category Selector",
           arabicTitle: "اختيار نوع الحصة التدريبية",
           subtitle: "Code de la route, Maneuvers (Circuit), or Road Driving (Circulation)",
@@ -2009,7 +1991,7 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           id: "rokhsa-screen-8",
-          number: "08",
+          number: "07",
           title: "Live In-Car Driving Lesson Timer",
           arabicTitle: "عداد الحصة التدريبية المباشر",
           subtitle: "Precision stopwatch ensuring candidates receive mandated road time",
@@ -2026,7 +2008,7 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           id: "rokhsa-screen-9",
-          number: "09",
+          number: "08",
           title: "Candidate Selection for Practical Drive",
           arabicTitle: "اختيار الطالب للجلسة التدريبية",
           subtitle: "Searchable directory of enrolled learners with Category B filters",
@@ -2043,7 +2025,7 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           id: "rokhsa-screen-10",
-          number: "10",
+          number: "09",
           title: "Archive of Completed Driving Lessons",
           arabicTitle: "سجل الحصص التدريبية المنتهية",
           subtitle: "Archived ledger of driving hours and completed student lessons",
@@ -2060,7 +2042,7 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           id: "rokhsa-screen-11",
-          number: "11",
+          number: "10",
           title: "Official State Exam Candidates Ledger",
           arabicTitle: "قائمة المترشحين للامتحان والنتائج",
           subtitle: "Pass/Fail results across Highway Code, Circuit, and Road Drive",
@@ -2077,7 +2059,7 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           id: "rokhsa-screen-12",
-          number: "12",
+          number: "11",
           title: "Create New State Exam Session",
           arabicTitle: "إضافة موعد امتحان جديد",
           subtitle: "Scheduling state driving exams with licensing authority dates",
@@ -2094,7 +2076,7 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           id: "rokhsa-screen-13",
-          number: "13",
+          number: "12",
           title: "Candidate Profile & Driving Dossier",
           arabicTitle: "ملف المترشح والبيانات الشخصية",
           subtitle: "Ahmed Loucif dossier, national registration code, and contact",
@@ -2111,7 +2093,7 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           id: "rokhsa-screen-14",
-          number: "14",
+          number: "13",
           title: "Candidate Payments & Installment Ledger",
           arabicTitle: "سجل دفعات وأقساط المتدرب",
           subtitle: "Total tuition (8,960 DA), paid installments, and remaining balance",
@@ -2128,7 +2110,7 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           id: "rokhsa-screen-15",
-          number: "15",
+          number: "14",
           title: "School Administrator Profile",
           arabicTitle: "الملف التعريفي لمدير المدرسة",
           subtitle: "License accreditation, school branding, and contact channels",
@@ -2145,7 +2127,7 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           id: "rokhsa-screen-16",
-          number: "16",
+          number: "15",
           title: "Edit School Profile & Credentials",
           arabicTitle: "تعديل معلومات وبيانات المدرسة",
           subtitle: "Updating school address, commercial phone, and license classes",
@@ -2162,7 +2144,7 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           id: "rokhsa-screen-17",
-          number: "17",
+          number: "16",
           title: "Platform Settings & Subscription",
           arabicTitle: "إعدادات التطبيق وخطة الاشتراك",
           subtitle: "Cloud synchronization, billing tier, and alert notifications",
@@ -2179,7 +2161,7 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           id: "rokhsa-screen-18",
-          number: "18",
+          number: "17",
           title: "Advanced Features & Future Roadmap",
           arabicTitle: "ميزات متقدمة قادمة في التحديثات",
           subtitle: "Preview of upcoming GPS fleet tracking and AI exam simulators",

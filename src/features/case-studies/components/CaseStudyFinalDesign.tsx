@@ -531,7 +531,7 @@ export function CaseStudyFinalDesign({
             <span className="font-['Poppins'] text-[13.5px] font-medium text-[#8491A0]">
               <span className="text-[#5197ff] font-semibold">{currentIndexInFiltered + 1}</span> / {filteredScreens.length}
             </span>
-            <div className="flex items-center gap-2">
+            <div className={`items-center gap-2 ${isScreenWeb ? "flex" : "hidden sm:flex"}`}>
               <button
                 type="button"
                 onClick={handlePrev}
