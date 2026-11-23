@@ -261,7 +261,7 @@ export const translations: Record<"en" | "ar", Translations> = {
     caseStudies: {
       badge: "التصميم",
       title: "مشاريع تصميم الواجهات (UI/UX)",
-      exploreDesign: "استكشف التصميم ←",
+      exploreDesign: "استكشف التصميم",
       roleMethodology: "• الدور والمنهجية",
       roleMethodologyValue: "أوتو لايوت ورموز التصميم",
       targetSector: "القطاع المستهدف",
