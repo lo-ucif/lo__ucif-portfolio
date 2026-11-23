@@ -194,12 +194,12 @@ export function SiteHeader(_props?: Partial<SiteHeaderProps>) {
                 type="button"
                 onClick={toggleLanguage}
                 aria-label={t.nav.switchLang}
-                className="flex items-center gap-1.5 font-['Itim'] text-[13.5px] text-white hover:text-[#5197ff] border border-white/20 hover:border-[#5197ff]/60 px-2.5 py-0.5 rounded-full transition-all duration-200 cursor-pointer select-none"
-                whileHover={{ scale: 1.05 }}
+                title={language === "en" ? "Switch to Arabic (AR)" : "Switch to English (EN)"}
+                className="flex items-center justify-center font-['Itim'] text-[13px] font-semibold text-white hover:text-[#5197ff] border border-white/20 hover:border-[#5197ff]/60 px-2.5 py-0.5 min-w-[34px] rounded-full transition-all duration-200 cursor-pointer select-none"
+                whileHover={{ scale: 1.08 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <span className="text-[12px] opacity-80">🌐</span>
-                <span>{language === "en" ? "العربية" : "EN"}</span>
+                <span>{language === "en" ? "AR" : "EN"}</span>
               </motion.button>
             </div>
           </div>
@@ -262,10 +262,11 @@ export function SiteHeader(_props?: Partial<SiteHeaderProps>) {
             type="button"
             onClick={toggleLanguage}
             aria-label={t.nav.switchLang}
-            className="flex items-center justify-center font-['Itim'] text-[12px] font-semibold text-white hover:text-[#5197ff] border border-white/20 hover:border-[#5197ff]/60 px-2 py-0.5 rounded-full transition-colors cursor-pointer select-none"
+            title={language === "en" ? "Switch to Arabic (AR)" : "Switch to English (EN)"}
+            className="flex items-center justify-center font-['Itim'] text-[12px] font-semibold text-white hover:text-[#5197ff] border border-white/20 hover:border-[#5197ff]/60 px-2 py-0.5 min-w-[32px] rounded-full transition-colors cursor-pointer select-none"
             whileTap={{ scale: 0.92 }}
           >
-            <span>{language === "en" ? "ع" : "EN"}</span>
+            <span>{language === "en" ? "AR" : "EN"}</span>
           </motion.button>
         </div>
       </motion.header>
