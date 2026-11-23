@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 // High-fidelity presentation mockups
 import hafezMockup from "../../../assets/case-studies/mockups/7afez-transparent.webp";
 import hafezWeb from "../../../assets/hafez-web.webp";
-import rokhsaMockup from "../../../assets/case-studies/mockups/rokhsa-transparent.webp";
+import tabibMockup from "../../../assets/case-studies/mockups/al-tabib-transparent.webp";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
@@ -39,8 +39,8 @@ const servicesData: ServiceRow[] = [
     title: "Digital Solutions",
     description:
       "Turning business ideas into tailored digital solutions that solve real problems and drive growth.",
-    previewImg: rokhsaMockup,
-    targetId: "projects",
+    previewImg: tabibMockup,
+    targetId: "case-studies",
   },
 ];
 
