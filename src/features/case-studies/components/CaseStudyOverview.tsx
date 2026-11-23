@@ -6,6 +6,18 @@ import { caseStudyTranslations } from "../../../constants/projectTranslations";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
+const projectTypeMapAr: Record<string, string> = {
+  "Mobile Application Concept": "نموذج تطبيق للهاتف",
+  "Responsive Web Platform": "منصة ويب متجاوبة",
+  "Mobile Application": "تطبيق الهاتف",
+};
+
+const platformMapAr: Record<string, string> = {
+  "Mobile App (iOS & Android)": "تطبيق هاتف (iOS و Android)",
+  "Responsive Web (Desktop & Tablet)": "منصة ويب متجاوبة (كمبيوتر ولوحي)",
+  "Mobile Application (iOS & Android)": "تطبيق هاتف (iOS و Android)",
+};
+
 type CaseStudyOverviewProps = {
   study: CaseStudy;
   onOpenLightbox?: (imgUrl: string, title: string, subtitle?: string) => void;
@@ -37,10 +49,10 @@ export function CaseStudyOverview({ study, onOpenLightbox }: CaseStudyOverviewPr
             {isArabic ? "01. نظرة عامة على المشروع" : "01. Project Overview"}
           </span>
           <span className="inline-flex items-center rounded-full bg-white/[0.06] border border-white/10 px-3 py-1 font-['Itim'] text-[13px] text-[#A9A9A9]">
-            {study.projectType}
+            {isArabic ? projectTypeMapAr[study.projectType] || study.projectType : study.projectType}
           </span>
           <span className="inline-flex items-center rounded-full bg-[#5197ff]/10 border border-[#5197ff]/30 px-3 py-1 font-['Itim'] text-[13px] text-[#5197ff]">
-            {study.platform}
+            {isArabic ? platformMapAr[study.platform] || study.platform : study.platform}
           </span>
         </div>
 

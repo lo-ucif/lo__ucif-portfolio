@@ -15,6 +15,36 @@ import {
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
+const categoryConfigAr: Record<string, string> = {
+  personal: "مشروع شخصي",
+  university: "مشروع جامعي",
+  client: "مشروع عميل",
+  hackathon: "هاكاثون",
+};
+
+const projectTypeAr: Record<string, string> = {
+  "SaaS Business · Founder": "مشروع SaaS · المؤسس",
+  "Personal Business · Founder": "مشروع خاص · المؤسس",
+  "Web App / SaaS MVP": "تطبيق ويب / نموذج أولي SaaS",
+  "Full-Stack Web App (MERN)": "تطبيق ويب متكامل (MERN)",
+  "Product Landing Page": "صفحة هبوط للمنتج",
+  "API Web Application": "تطبيق ويب للواجهات البرمجية (API)",
+  "Landing Page / UI Showcase": "صفحة هبوط / عرض الواجهات",
+  "Web App / SaaS Prototype": "تطبيق ويب / نموذج أولي SaaS",
+  "Web Application": "تطبيق ويب",
+};
+
+const statusAr: Record<string, string> = {
+  Completed: "مكتمل",
+  "In Progress": "قيد التنفيذ",
+};
+
+const teamAr: Record<string, string> = {
+  "Founder & Lead Developer": "المؤسس ومطور رئيسي",
+  "Team of 3 Developers": "فريق من 3 مطورين",
+  "Collaborative Project": "مشروع تعاوني",
+};
+
 export default function ProjectDetail() {
   const { isArabic, t } = useLanguage();
   const { id } = useParams();
@@ -112,7 +142,7 @@ export default function ProjectDetail() {
               className="inline-flex items-center gap-2 font-['Inter'] text-[14px] sm:text-[15px] text-[#9CA3AF] transition-colors duration-200 hover:text-white"
             >
               <svg
-                className="w-4 h-4 rtl:rotate-180 icon-directional"
+                className="w-4 h-4 rtl:rotate-180"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -206,10 +236,12 @@ export default function ProjectDetail() {
         >
           <div className="flex flex-wrap items-center gap-2">
             <span className="rounded-full bg-[#30496b] px-3.5 py-1 font-['Itim'] text-[13px] sm:text-[14px] text-white">
-              {project.hackathon ? project.hackathon : project.projectType}
+              {isArabic
+                ? (pTrans?.badge || (project.hackathon ? project.hackathon : projectTypeAr[project.projectType] || project.projectType))
+                : (project.hackathon ? project.hackathon : project.projectType)}
             </span>
             <span className="rounded-full bg-white/[0.06] border border-white/10 px-3 py-1 font-['Itim'] text-[13px] text-[#A9A9A9]">
-              {categoryConfig[project.category]}
+              {isArabic ? categoryConfigAr[project.category] || categoryConfig[project.category] : categoryConfig[project.category]}
             </span>
           </div>
 
@@ -237,7 +269,7 @@ export default function ProjectDetail() {
                 {isArabic ? "السياق:" : "Context:"}
               </span>
               <span className="font-['Inter'] text-[14px] text-[#d1d1d1]">
-                {categoryConfig[project.category]}
+                {isArabic ? categoryConfigAr[project.category] || categoryConfig[project.category] : categoryConfig[project.category]}
               </span>
             </div>
 
@@ -256,7 +288,7 @@ export default function ProjectDetail() {
                   {isArabic ? "الفريق:" : "Team:"}
                 </span>
                 <span className="font-['Inter'] text-[14px] text-[#d1d1d1]">
-                  {project.team}
+                  {isArabic ? teamAr[project.team] || project.team : project.team}
                 </span>
               </div>
             )}
@@ -267,7 +299,7 @@ export default function ProjectDetail() {
                   {isArabic ? "الحالة:" : "Status:"}
                 </span>
                 <span className="font-['Inter'] text-[14px] text-[#5197ff]">
-                  {project.status}
+                  {isArabic ? statusAr[project.status] || project.status : project.status}
                 </span>
               </div>
             )}
