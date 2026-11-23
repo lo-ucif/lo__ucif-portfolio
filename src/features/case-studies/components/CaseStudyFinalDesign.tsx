@@ -200,8 +200,7 @@ export function CaseStudyFinalDesign({
   // Determine if current screen should render in Web Browser or Mobile Device frame
   const isScreenWeb =
     currentScreen.aspectRatio === "web" ||
-    (study.platformType === "web" &&
-      (!currentScreen.aspectRatio || currentScreen.aspectRatio === "web" || currentScreen.number === "01"));
+    (study.platformType === "web" && currentScreen.aspectRatio !== "app");
 
   const currentIndexInFiltered = filteredScreens.findIndex((s) => s.id === currentScreen.id);
 
