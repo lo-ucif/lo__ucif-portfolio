@@ -117,7 +117,7 @@ export default function Home() {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, ease: easeOut }}
             >
-              Software Engineering Student | Web Developer | UI/UX Designer <br /> building modern digital experiences through , clean design, creative thinking, innovative development.
+              Software Engineering Student | Web Developer | UI/UX Designer <br /> Software Engineering Student · Available for Opportunities until November 2026
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -125,8 +125,8 @@ export default function Home() {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, ease: easeOut, delay: 0.3 }}
             >
-              <div className="inline-flex items-center gap-1.5  px-2.5 py-1.5 font-['Itim'] text-[16px] text-[#8491A0] max-[600px]:rounded-[15px] max-[600px]:px-0 max-[600px]:py-px max-[600px]:text-[12px]">
-                Software Engineering Student · Available for Opportunities until November 2026
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-1.5 font-['Itim'] text-[16px] text-[#8491A0] max-[600px]:rounded-[15px] max-[600px]:px-0 max-[600px]:py-px max-[600px]:text-[12px]">
+                Last update: November 2026
               </div>
             </motion.div>
             <motion.div
