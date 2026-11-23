@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { SiteFooter } from "../../../components/layout/SiteFooter";
+import { GmailIcon } from "../../../constants/Icon";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
@@ -26,6 +27,7 @@ export function ContactSection() {
         </motion.div>
 
         <motion.div
+          className="flex flex-wrap items-center justify-center gap-3.5 sm:gap-4"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
@@ -41,6 +43,17 @@ export function ContactSection() {
             transition={{ duration: 0.18, ease: "easeOut" }}
           >
             Let's Talk
+          </motion.a>
+
+          <motion.a
+            href="mailto:louciftamer3@gmail.com"
+            className="flex items-center gap-2 rounded-[38.182px] border border-white px-[24px] py-[11px] font-['Poppins'] text-[16px] text-white transition-colors duration-300 hover:bg-white hover:text-[#161513]"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ duration: 0.18, ease: "easeOut" }}
+          >
+            <GmailIcon width={18} height={18} />
+            <span>Email</span>
           </motion.a>
         </motion.div>
       </div>
