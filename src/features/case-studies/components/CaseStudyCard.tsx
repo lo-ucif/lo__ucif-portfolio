@@ -7,6 +7,7 @@ import { BehanceIcon, FigmaIcon, LinkedinIcon } from "../../../constants/Icon";
 import { ThreePhoneShowcase } from "./ThreePhoneShowcase";
 import { DualLaptopShowcase } from "./DualLaptopShowcase";
 import { useLanguage } from "../../../contexts/LanguageContext";
+import { caseStudyTranslations } from "../../../constants/projectTranslations";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
@@ -42,9 +43,18 @@ export function CaseStudyCard(props: CaseStudy) {
     e.stopPropagation();
   };
 
+  const csTrans = isArabic ? caseStudyTranslations[slug] : null;
+
   const presentationHeading =
+    csTrans?.presentationHeading ||
     customHeading ||
-    (platformType === "app" ? "Mobile Presentation" : "Web Presentation");
+    (platformType === "app"
+      ? (isArabic ? "عرض تطبيق الهاتف" : "Mobile Presentation")
+      : (isArabic ? "عرض المنصة السحابية والهوية" : "Web & Brand Presentation"));
+
+  const displayTitle = csTrans?.title || title;
+  const displaySubtitle = csTrans?.arabicTitle || arabicTitle;
+  const displayShortDesc = csTrans?.shortDescription || shortDescription;
 
   const targetLabel = isArabic
     ? platformType === "app"
@@ -55,10 +65,13 @@ export function CaseStudyCard(props: CaseStudy) {
       : "Target Sector";
 
   const targetValue =
+    csTrans?.targetSector ||
     organization ||
     (platformType === "app"
       ? "Constantine Faculty of Medicine"
       : "Algerian Driving Schools");
+
+  const displayRole = isArabic ? "مصمم واجهات وتجربة المستخدم" : role;
 
   return (
     <motion.article
@@ -82,16 +95,16 @@ export function CaseStudyCard(props: CaseStudy) {
           >
             {presentationHeading}
           </h3>
-          {arabicTitle && (
+          {displaySubtitle && (
             <span className="font-['Inter'] text-[17px] sm:text-[19px] text-[#5197ff] font-medium">
-              {title} · {arabicTitle}
+              {isArabic ? displaySubtitle : `${displayTitle} · ${displaySubtitle}`}
             </span>
           )}
         </div>
 
         {/* Description */}
         <p className="font-['Poppins'] text-[14px] sm:text-[15.5px] text-[#b4b4b4] leading-relaxed">
-          {shortDescription}
+          {displayShortDesc}
         </p>
 
         {/* Metadata Grid (Role, Institution/Sector) */}
@@ -101,7 +114,7 @@ export function CaseStudyCard(props: CaseStudy) {
               {t.caseStudies.roleMethodology}
             </span>
             <span className="font-['Poppins'] text-[13.5px] text-white font-medium mt-1">
-              {role} · {t.caseStudies.roleMethodologyValue}
+              {displayRole} · {t.caseStudies.roleMethodologyValue}
             </span>
           </div>
 

@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import type { CaseStudy } from "../types";
 import { DualLaptopShowcase } from "./DualLaptopShowcase";
+import { useLanguage } from "../../../contexts/LanguageContext";
+import { caseStudyTranslations } from "../../../constants/projectTranslations";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
@@ -10,7 +12,16 @@ type CaseStudyOverviewProps = {
 };
 
 export function CaseStudyOverview({ study, onOpenLightbox }: CaseStudyOverviewProps) {
+  const { isArabic } = useLanguage();
   const mainVisual = study.mockupImage || study.heroImage;
+  const csTrans = isArabic ? caseStudyTranslations[study.slug] : null;
+
+  const displayTitle = csTrans?.title || study.title;
+  const displayArabicTitle = csTrans?.arabicTitle || study.arabicTitle;
+  const displaySummary = csTrans?.overviewSummary || study.overview?.summary || study.shortDescription;
+  const displayRole = isArabic ? "مصمم واجهات وتجربة المستخدم" : study.role;
+  const displayContext = csTrans?.targetSector || study.organization || study.projectType;
+  const displayTimeline = csTrans?.timeline || study.timeline;
 
   return (
     <section id="overview" className="flex flex-col gap-8 scroll-mt-28 text-left">
@@ -23,7 +34,7 @@ export function CaseStudyOverview({ study, onOpenLightbox }: CaseStudyOverviewPr
       >
         <div className="flex flex-wrap items-center gap-2.5">
           <span className="inline-flex items-center rounded-full bg-[#30496b] px-3.5 py-1 font-['Itim'] text-[13px] sm:text-[14px] text-white">
-            01. Project Overview
+            {isArabic ? "01. نظرة عامة على المشروع" : "01. Project Overview"}
           </span>
           <span className="inline-flex items-center rounded-full bg-white/[0.06] border border-white/10 px-3 py-1 font-['Itim'] text-[13px] text-[#A9A9A9]">
             {study.projectType}
@@ -35,46 +46,46 @@ export function CaseStudyOverview({ study, onOpenLightbox }: CaseStudyOverviewPr
 
         <div className="flex flex-col gap-1">
           <h1 className="font-['Itim'] text-[36px] sm:text-[48px] lg:text-[54px] font-bold text-white uppercase tracking-tight leading-tight">
-            {study.title}
+            {displayTitle}
           </h1>
-          {study.arabicTitle && (
+          {displayArabicTitle && (
             <span className="font-['Inter'] text-[20px] sm:text-[26px] text-[#5197ff] font-medium">
-              {study.arabicTitle}
+              {displayArabicTitle}
             </span>
           )}
         </div>
 
         {/* Short description of project & purpose */}
         <p className="font-['Poppins'] text-[16px] sm:text-[18px] text-[#d1d1d1] leading-relaxed max-w-3xl">
-          {study.overview?.summary || study.shortDescription}
+          {displaySummary}
         </p>
 
         {/* Role & Context Pills */}
         <div className="flex flex-wrap items-center gap-3 pt-1">
           <div className="flex items-center gap-2 rounded-xl bg-[#1A1917] border border-white/[0.08] px-4 py-2">
             <span className="font-['Itim'] text-[12.5px] text-[#8491A0] uppercase tracking-wider">
-              My Role:
+              {isArabic ? "الدور:" : "My Role:"}
             </span>
             <span className="font-['Poppins'] text-[14px] text-white font-medium">
-              {study.role}
+              {displayRole}
             </span>
           </div>
 
           <div className="flex items-center gap-2 rounded-xl bg-[#1A1917] border border-white/[0.08] px-4 py-2">
             <span className="font-['Itim'] text-[12.5px] text-[#8491A0] uppercase tracking-wider">
-              Context:
+              {isArabic ? "السياق:" : "Context:"}
             </span>
             <span className="font-['Poppins'] text-[14px] text-[#d1d1d1]">
-              {study.organization || study.projectType}
+              {displayContext}
             </span>
           </div>
 
           <div className="flex items-center gap-2 rounded-xl bg-[#1A1917] border border-white/[0.08] px-4 py-2">
             <span className="font-['Itim'] text-[12.5px] text-[#8491A0] uppercase tracking-wider">
-              Timeline:
+              {isArabic ? "الفترة الزمنية:" : "Timeline:"}
             </span>
             <span className="font-['Poppins'] text-[14px] text-[#d1d1d1]">
-              {study.timeline}
+              {displayTimeline}
             </span>
           </div>
         </div>

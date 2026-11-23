@@ -3,10 +3,23 @@ import { easeOut, motion } from "framer-motion";
 import { certificateItems } from "../../constants/data";
 import { ImageLightboxModal } from "../case-studies/components/ImageLightboxModal";
 import { useLanguage } from "../../contexts/LanguageContext";
+import { certTranslations } from "../../constants/projectTranslations";
 
 export default function Certificates() {
-  const { t } = useLanguage();
+  const { isArabic, t } = useLanguage();
   const [selectedCert, setSelectedCert] = useState<(typeof certificateItems)[0] | null>(null);
+
+  const localizedCerts = certificateItems.map((certificate, index) => {
+    const list = isArabic ? certTranslations.ar : certTranslations.en;
+    const trans = list[index];
+    return {
+      ...certificate,
+      title: trans?.title || certificate.title,
+      label: trans?.label || certificate.label,
+      description: trans?.description || certificate.description,
+      previewText: trans?.preview || (isArabic ? "معاينة الشهادة كاملة" : "Preview Full Certificate"),
+    };
+  });
 
   return (
     <section
@@ -31,7 +44,7 @@ export default function Certificates() {
       </motion.div>
 
       <div className="flex flex-wrap justify-center w-full gap-8 max-w-225">
-        {certificateItems.map((certificate, index) => (
+        {localizedCerts.map((certificate, index) => (
           <motion.article
             key={certificate.title}
             className="group w-full max-w-105 overflow-hidden rounded-2xl bg-[#1F1F1F] text-left cursor-pointer"
@@ -70,7 +83,7 @@ export default function Certificates() {
                       d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"
                     />
                   </svg>
-                  <span>Preview Full Certificate</span>
+                  <span>{certificate.previewText}</span>
                 </div>
               </div>
             </div>

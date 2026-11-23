@@ -128,8 +128,48 @@ const experienceMilestones = [
   },
 ];
 
+const arabicMilestones: Record<string, { title: string; description: string }> = {
+  "01": {
+    title: "أساسيات البرمجة والخوارزميات",
+    description: "بناء قاعدة برمجية صلبة من خلال التفكير الخوارزمي، حل المشكلات المعقدة، ومفاهيم البرمجة كائنية التوجه (OOP).",
+  },
+  "02": {
+    title: "مطور واجهات أمامية (Front-End)",
+    description: "بناء واجهات مستخدم تفاعلية، متجاوبة وسريعة تلائم مختلف الشاشات بالاعتماد على أحدث المعايير.",
+  },
+  "03": {
+    title: "مصمم واجهات وتجربة المستخدم (UI/UX)",
+    description: "تصميم تجارب رقمية بديهية ومبتكرة، وبناء أنظمة تصميم شاملة (Design Systems) ونماذج تفاعلية.",
+  },
+  "04": {
+    title: "الهاكاثونات وتطوير النماذج الأولية (MVP)",
+    description: "العمل الجماعي المكثف ضمن فرق متعددة التخصصات لتطوير أفكار مبتكرة وتحويلها لنماذج برمجية فعالة خلال 48 ساعة.",
+  },
+  "05": {
+    title: "مطور Full-Stack (MERN Stack)",
+    description: "بناء وتطوير تطبيقات ويب متكاملة من الصفر بالاعتماد على منظومة MERN وربطها سحابياً.",
+  },
+  "06": {
+    title: "مطور أنظمة خلفية وويب (Backend Developer)",
+    description: "بناء الأنظمة الخلفية، وتطوير واجهات REST APIs عالية الكفاءة، وهندسة قواعد البيانات السحابية.",
+  },
+  "07": {
+    title: "الشريك المؤسس لمنصة حافظ (Co-Founder)",
+    description: "تأسيس وقيادة التطوير التقني والتصميمي لمنصة حافظ الرقمية لخدمة المدارس وحلقات القرآن الكريم.",
+  },
+};
+
 export default function Experience() {
-  const { t } = useLanguage();
+  const { isArabic, t } = useLanguage();
+
+  const localizedMilestones = experienceMilestones.map((m) => {
+    const ar = isArabic ? arabicMilestones[m.num] : null;
+    return {
+      ...m,
+      title: ar?.title || m.title,
+      description: ar?.description || m.description,
+    };
+  });
   return (
     <section
       id="experience"
@@ -203,7 +243,7 @@ export default function Experience() {
 
           {/* Timeline Milestones List with Clean 10px Gap */}
           <div className="relative z-10 flex flex-col gap-[10px] py-4">
-            {experienceMilestones.map((item, index) => {
+            {localizedMilestones.map((item, index) => {
               const isLeft = index % 2 === 0;
 
               return (
@@ -282,7 +322,7 @@ export default function Experience() {
           {/* Vertical Multi-Strand Guide Line on Left */}
           <div className="absolute top-2 bottom-4 left-2 w-[2px] bg-gradient-to-b from-[#5197ff] via-[#ffffff] to-[#5197ff] shadow-[0_0_10px_#5197ff]" />
 
-          {experienceMilestones.map((item, index) => (
+          {localizedMilestones.map((item, index) => (
             <motion.div
               key={`mob-${item.num}`}
               initial={{ opacity: 0, y: 20 }}

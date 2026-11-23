@@ -10,6 +10,8 @@ import {
 } from "../constants/Icon";
 import type { project as ProjectType } from "../constants/data";
 import { LaptopMobileShowcase } from "../features/projects/components/LaptopMobileShowcase";
+import { useLanguage } from "../contexts/LanguageContext";
+import { projectTranslations } from "../constants/projectTranslations";
 
 export type project = ProjectType;
 
@@ -34,6 +36,7 @@ export default function Projectcard({
 }: ProjectType) {
   const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
+  const { isArabic } = useLanguage();
   const easeOut = [0.22, 1, 0.36, 1] as const;
 
   const handleCardClick = () => {
@@ -44,7 +47,11 @@ export default function Projectcard({
     e.stopPropagation();
   };
 
-  const badgeText = hackathon
+  const pTrans = isArabic ? projectTranslations[id] : null;
+
+  const displayTitle = pTrans?.title || title;
+
+  const defaultBadgeText = hackathon
     ? hackathon
     : projectType === "Web Development"
       ? "Web Development"
@@ -54,10 +61,14 @@ export default function Projectcard({
           ? "University Project"
           : "Featured Work";
 
-  // Build a rich narrative description in the style of Havana Buy
-  const narrative = problem && solution
+  const displayBadgeText = pTrans?.badge || defaultBadgeText;
+
+  // Build a rich narrative description
+  const defaultNarrative = problem && solution
     ? `${problem} ${solution}`
     : description || shortDescription;
+
+  const displayNarrative = pTrans?.narrative || defaultNarrative;
 
   return (
     <motion.article
@@ -78,7 +89,7 @@ export default function Projectcard({
           <LaptopMobileShowcase
             laptop={laptopImage}
             mobile={mobileImage}
-            title={title}
+            title={displayTitle}
             isCardHovered={isHovered}
             onDeviceClick={() => handleCardClick()}
           />
@@ -86,7 +97,7 @@ export default function Projectcard({
           <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl bg-[#121212] shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]">
             <img
               src={image}
-              alt={title}
+              alt={displayTitle}
               loading="lazy"
               className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
             />
@@ -98,20 +109,20 @@ export default function Projectcard({
       <div className="w-full lg:w-1/2 flex flex-col items-start gap-4 min-w-0">
         {/* Status Badge */}
         <span className="inline-flex items-center rounded-[22px] bg-[#30496b] px-3.5 py-1 font-['Itim'] text-[15px] sm:text-[16px] text-white">
-          <span>{badgeText}</span>
+          <span>{displayBadgeText}</span>
         </span>
 
         {/* Project Title */}
         <h3
           onClick={handleCardClick}
-          className="font-['Itim'] text-[28px] sm:text-[36px] lg:text-[38px] font-bold text-white tracking-wide uppercase leading-tight cursor-pointer hover:text-[#5197ff] transition-colors duration-200"
+          className="font-['Itim'] text-[28px] sm:text-[36px] lg:text-[38px] font-bold text-white tracking-wide leading-tight cursor-pointer hover:text-[#5197ff] transition-colors duration-200"
         >
-          {title}
+          {displayTitle}
         </h3>
 
         {/* Narrative Description */}
-        <p className="font-['Poppins'] text-[14px] sm:text-[15px] leading-[1.75] text-[#b4b4b4] line-clamp-4">
-          {narrative}
+        <p className="font-['Poppins'] text-[14px] sm:text-[15.5px] leading-[1.8] text-[#b4b4b4] line-clamp-4">
+          {displayNarrative}
         </p>
 
         {/* External Actions (Live Demo, GitHub, Figma, LinkedIn) */}
@@ -126,7 +137,11 @@ export default function Projectcard({
                 className="inline-flex items-center gap-1.5 font-['Poppins'] text-[13px] text-[#8491A0] hover:text-[#5197ff] transition-colors"
               >
                 <LinkIcon width={14} height={14} />
-                <span>{id === 12 || id === 13 ? "Live Website" : "Live Demo"}</span>
+                <span>
+                  {id === 12 || id === 13
+                    ? (isArabic ? "الموقع الحي" : "Live Website")
+                    : (isArabic ? "معاينة حية" : "Live Demo")}
+                </span>
               </a>
             )}
             {github && (
@@ -138,7 +153,7 @@ export default function Projectcard({
                 className="inline-flex items-center gap-1.5 font-['Poppins'] text-[13px] text-[#8491A0] hover:text-white transition-colors"
               >
                 <Github2Icon width={14} height={14} />
-                <span>Code</span>
+                <span>{isArabic ? "الكود" : "Code"}</span>
               </a>
             )}
             {figma && (
@@ -150,7 +165,7 @@ export default function Projectcard({
                 className="inline-flex items-center gap-1.5 font-['Poppins'] text-[13px] text-[#8491A0] hover:text-white transition-colors"
               >
                 <FigmaIcon width={14} height={14} />
-                <span>Figma</span>
+                <span>{isArabic ? "فيجما" : "Figma"}</span>
               </a>
             )}
             {linkedin && (
@@ -162,7 +177,7 @@ export default function Projectcard({
                 className="inline-flex items-center gap-1.5 font-['Poppins'] text-[13px] text-[#8491A0] hover:text-white transition-colors"
               >
                 <LinkedinIcon width={14} height={14} />
-                <span>LinkedIn</span>
+                <span>{isArabic ? "لينكد إن" : "LinkedIn"}</span>
               </a>
             )}
           </div>

@@ -5,6 +5,7 @@ import { projects, roleConfig, categoryConfig } from "../constants/data";
 import { SiteFooter } from "../components/layout/SiteFooter";
 import FloatingBubble, { type BubbleItem } from "../components/FloatingBubble";
 import { useLanguage } from "../contexts/LanguageContext";
+import { projectTranslations } from "../constants/projectTranslations";
 import {
   Github2Icon,
   LinkIcon,
@@ -19,6 +20,15 @@ export default function ProjectDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
   const project = projects.find((p) => p.id === Number(id));
+
+  const pTrans = isArabic && project ? projectTranslations[project.id] : null;
+  const displayTitle = pTrans?.title || project?.title;
+  const displayShortDesc = pTrans?.shortDescription || project?.shortDescription;
+  const displayDesc = pTrans?.narrative || project?.description;
+  const displayProblem = pTrans?.problem || project?.problem;
+  const displaySolution = pTrans?.solution || project?.solution;
+  const displayKeyFeatures = pTrans?.keyFeatures || project?.keyFeatures;
+  const displayRole = pTrans?.role || (project ? roleConfig[project.role] : "");
 
   const projectBubbleNav: BubbleItem[] = [
     { label: isArabic ? "المشاريع" : "Projects", id: "projects" },
@@ -203,27 +213,27 @@ export default function ProjectDetail() {
           </div>
 
           <h1 className="font-['Itim'] text-[34px] sm:text-[46px] lg:text-[50px] font-bold text-white uppercase tracking-tight leading-tight">
-            {project.title}
+            {displayTitle}
           </h1>
 
           <p className="font-['Poppins'] text-[16px] sm:text-[17.5px] text-[#d1d1d1] leading-relaxed max-w-3xl">
-            {project.shortDescription}
+            {displayShortDesc}
           </p>
 
           {/* Metadata Pills Row (Image 3 style) */}
           <div className="flex flex-wrap items-center gap-3 pt-2">
             <div className="flex items-center gap-2 rounded-xl bg-[#1A1917] border border-white/[0.08] px-4 py-2">
               <span className="font-['Itim'] text-[12.5px] text-[#8491A0] uppercase tracking-wider">
-                My Role:
+                {isArabic ? "الدور:" : "My Role:"}
               </span>
               <span className="font-['Poppins'] text-[14px] text-white font-medium">
-                {roleConfig[project.role]}
+                {displayRole}
               </span>
             </div>
 
             <div className="flex items-center gap-2 rounded-xl bg-[#1A1917] border border-white/[0.08] px-4 py-2">
               <span className="font-['Itim'] text-[12.5px] text-[#8491A0] uppercase tracking-wider">
-                Context:
+                {isArabic ? "السياق:" : "Context:"}
               </span>
               <span className="font-['Poppins'] text-[14px] text-[#d1d1d1]">
                 {categoryConfig[project.category]}
@@ -232,7 +242,7 @@ export default function ProjectDetail() {
 
             <div className="flex items-center gap-2 rounded-xl bg-[#1A1917] border border-white/[0.08] px-4 py-2">
               <span className="font-['Itim'] text-[12.5px] text-[#8491A0] uppercase tracking-wider">
-                Timeline:
+                {isArabic ? "الفترة الزمنية:" : "Timeline:"}
               </span>
               <span className="font-['Poppins'] text-[14px] text-[#d1d1d1]">
                 {project.year}
@@ -242,7 +252,7 @@ export default function ProjectDetail() {
             {project.team && (
               <div className="flex items-center gap-2 rounded-xl bg-[#1A1917] border border-white/[0.08] px-4 py-2">
                 <span className="font-['Itim'] text-[12.5px] text-[#8491A0] uppercase tracking-wider">
-                  Team:
+                  {isArabic ? "الفريق:" : "Team:"}
                 </span>
                 <span className="font-['Poppins'] text-[14px] text-[#d1d1d1]">
                   {project.team}
@@ -253,7 +263,7 @@ export default function ProjectDetail() {
             {project.status && (
               <div className="flex items-center gap-2 rounded-xl bg-[#1A1917] border border-white/[0.08] px-4 py-2">
                 <span className="font-['Itim'] text-[12.5px] text-[#8491A0] uppercase tracking-wider">
-                  Status:
+                  {isArabic ? "الحالة:" : "Status:"}
                 </span>
                 <span className="font-['Poppins'] text-[14px] text-[#5197ff]">
                   {project.status}
@@ -272,7 +282,7 @@ export default function ProjectDetail() {
         >
           <img
             src={project.image}
-            alt={project.title}
+            alt={displayTitle}
             className="w-full h-auto object-cover block"
           />
         </motion.div>
@@ -288,20 +298,22 @@ export default function ProjectDetail() {
           >
             <div className="flex flex-col gap-1">
               <span className="font-['Itim'] text-[13px] text-[#5197ff] uppercase tracking-wider">
-                Comprehensive Design Presentation
+                {isArabic ? "عرض التصميم التفاعلي الشامل" : "Comprehensive Design Presentation"}
               </span>
               <h3 className="font-['Itim'] text-[20px] sm:text-[22px] text-white font-bold">
-                In-Depth UI/UX Design Available
+                {isArabic ? "دراسة تصميم UI/UX معمقة متوفرة" : "In-Depth UI/UX Design Available"}
               </h3>
               <p className="font-['Poppins'] text-[13.5px] text-[#A9A9A9]">
-                Explore the complete problem research, UML user needs diagrams, and high-fidelity interface presentations.
+                {isArabic
+                  ? "استكشف أبحاث المشكلة، ومخططات UML لتجربة المستخدم، ونماذج الشاشات التفاعلية عالية الدقة."
+                  : "Explore the complete problem research, UML user needs diagrams, and high-fidelity interface presentations."}
               </p>
             </div>
             <Link
               to={caseStudyUrl}
               className="shrink-0 rounded-full bg-white text-[#161513] px-5 py-2.5 font-['Poppins'] text-[14px] font-semibold hover:bg-[#5197ff] hover:text-white transition-colors"
             >
-              Explore Design →
+              {isArabic ? "استكشف التصميم ←" : "Explore Design →"}
             </Link>
           </motion.div>
         )}
@@ -311,40 +323,40 @@ export default function ProjectDetail() {
           {/* Overview */}
           <div className="flex flex-col gap-3 p-6 sm:p-8 rounded-2xl bg-[#1A1917] border border-white/[0.08]">
             <h2 className="font-['Itim'] text-[24px] sm:text-[26px] text-white font-bold">
-              Project Overview
+              {isArabic ? "نظرة عامة على المشروع" : "Project Overview"}
             </h2>
             <p className="font-['Poppins'] text-[15px] sm:text-[16px] text-[#d1d1d1] leading-relaxed">
-              {project.description}
+              {displayDesc}
             </p>
           </div>
 
           {/* The Challenge & Solution Grid */}
-          {(project.problem || project.solution) && (
+          {(displayProblem || displaySolution) && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {project.problem && (
+              {displayProblem && (
                 <div className="flex flex-col gap-3 p-6 sm:p-7 rounded-2xl bg-[#1A1917] border border-white/[0.08]">
                   <span className="font-['Itim'] text-[12px] text-[#f87171] uppercase tracking-wider">
-                    The Problem
+                    {isArabic ? "المشكلة" : "The Problem"}
                   </span>
                   <h3 className="font-['Itim'] text-[22px] text-white font-semibold">
-                    The Challenge
+                    {isArabic ? "التحدي التقني" : "The Challenge"}
                   </h3>
                   <p className="font-['Poppins'] text-[14.5px] text-[#b4b4b4] leading-relaxed">
-                    {project.problem}
+                    {displayProblem}
                   </p>
                 </div>
               )}
 
-              {project.solution && (
+              {displaySolution && (
                 <div className="flex flex-col gap-3 p-6 sm:p-7 rounded-2xl bg-[#1A1917] border border-white/[0.08]">
                   <span className="font-['Itim'] text-[12px] text-[#5197ff] uppercase tracking-wider">
-                    The Approach
+                    {isArabic ? "المنهجية والحل" : "The Approach"}
                   </span>
                   <h3 className="font-['Itim'] text-[22px] text-white font-semibold">
-                    The Solution
+                    {isArabic ? "الحل الرقمي" : "The Solution"}
                   </h3>
                   <p className="font-['Poppins'] text-[14.5px] text-[#b4b4b4] leading-relaxed">
-                    {project.solution}
+                    {displaySolution}
                   </p>
                 </div>
               )}
@@ -352,13 +364,13 @@ export default function ProjectDetail() {
           )}
 
           {/* Key Features */}
-          {project.keyFeatures && project.keyFeatures.length > 0 && (
+          {displayKeyFeatures && displayKeyFeatures.length > 0 && (
             <div className="flex flex-col gap-4 p-6 sm:p-8 rounded-2xl bg-[#1A1917] border border-white/[0.08]">
               <h2 className="font-['Itim'] text-[24px] text-white font-bold">
-                Key Features &amp; Capabilities
+                {isArabic ? "الميزات والقدرات الرئيسية" : "Key Features & Capabilities"}
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {project.keyFeatures.map((feature, idx) => (
+                {displayKeyFeatures.map((feature, idx) => (
                   <div
                     key={idx}
                     className="flex items-start gap-2.5 p-3 rounded-xl bg-white/[0.02] border border-white/[0.04] font-['Poppins'] text-[14px] text-[#d1d1d1]"
@@ -375,10 +387,10 @@ export default function ProjectDetail() {
           {project.outcome && (
             <div className="flex flex-col gap-3 p-6 sm:p-8 rounded-2xl bg-[#1A1917] border border-white/[0.08]">
               <span className="font-['Itim'] text-[12px] text-[#4ade80] uppercase tracking-wider">
-                Results
+                {isArabic ? "النتائج والأثر" : "Results"}
               </span>
               <h2 className="font-['Itim'] text-[22px] text-white font-bold">
-                The Outcome
+                {isArabic ? "المخرجات والإنجاز" : "The Outcome"}
               </h2>
               <p className="font-['Poppins'] text-[15px] text-[#d1d1d1] leading-relaxed">
                 {project.outcome}
@@ -389,7 +401,7 @@ export default function ProjectDetail() {
           {/* Technologies Used */}
           <div id="technologies" className="flex flex-col gap-4 p-6 sm:p-8 rounded-2xl bg-[#1A1917] border border-white/[0.08] scroll-mt-28">
             <h2 className="font-['Itim'] text-[24px] text-white font-bold">
-              Technologies &amp; Architecture
+              {isArabic ? "التقنيات وبنية النظام" : "Technologies & Architecture"}
             </h2>
             <div className="flex flex-wrap gap-2.5">
               {project.tech.map((t) => {

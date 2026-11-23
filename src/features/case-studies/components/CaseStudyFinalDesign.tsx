@@ -2,6 +2,7 @@ import { useState, useMemo, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { CaseStudy } from "../types";
 import type { LightboxItem } from "./ImageLightboxModal";
+import { useLanguage } from "../../../contexts/LanguageContext";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
@@ -152,6 +153,7 @@ export function CaseStudyFinalDesign({
   study,
   onOpenLightbox,
 }: CaseStudyFinalDesignProps) {
+  const { isArabic } = useLanguage();
   const { solution } = study;
   const screens = useMemo(() => solution?.screens ?? [], [solution?.screens]);
 
@@ -299,7 +301,7 @@ export function CaseStudyFinalDesign({
         transition={{ duration: 0.6, ease: easeOut }}
       >
         <h2 className="font-['Itim'] text-[32px] sm:text-[38px] text-white">
-          Final Design
+          {isArabic ? "التصميم النهائي للشاشات" : "Final Design"}
         </h2>
       </motion.div>
 
