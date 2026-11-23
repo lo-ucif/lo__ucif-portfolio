@@ -47,7 +47,9 @@ export default function Certificates() {
         {localizedCerts.map((certificate, index) => (
           <motion.article
             key={certificate.title}
-            className="group w-full max-w-105 overflow-hidden rounded-2xl bg-[#1F1F1F] text-left cursor-pointer"
+            className={`group w-full max-w-105 overflow-hidden rounded-2xl bg-[#1F1F1F] cursor-pointer ${
+              isArabic ? "text-right" : "text-left"
+            }`}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
@@ -88,7 +90,7 @@ export default function Certificates() {
               </div>
             </div>
 
-            <div className="flex flex-col gap-3 p-5">
+            <div className={`flex flex-col gap-3 p-5 ${isArabic ? "items-end text-right" : "items-start text-left"}`}>
               <p className="font-['Itim'] text-[15px] text-[#5197ff]">
                 {certificate.label}
               </p>

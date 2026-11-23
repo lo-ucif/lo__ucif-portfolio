@@ -78,7 +78,9 @@ export default function Projectcard({
       transition={{ duration: 0.6, ease: easeOut }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="group relative flex flex-col lg:flex-row items-center gap-8 lg:gap-14 w-full text-left"
+      className={`group relative flex flex-col lg:flex-row items-center gap-8 lg:gap-14 w-full ${
+        isArabic ? "text-right" : "text-left"
+      }`}
     >
       {/* Left Column: Project Mockup / Image Preview */}
       <div
@@ -106,7 +108,11 @@ export default function Projectcard({
       </div>
 
       {/* Right Column: Project Story & Details */}
-      <div className="w-full lg:w-1/2 flex flex-col items-start gap-4 min-w-0">
+      <div
+        className={`w-full lg:w-1/2 flex flex-col gap-4 min-w-0 ${
+          isArabic ? "items-end text-right" : "items-start text-left"
+        }`}
+      >
         {/* Status Badge */}
         <span className="inline-flex items-center rounded-[22px] bg-[#30496b] px-3.5 py-1 font-['Itim'] text-[15px] sm:text-[16px] text-white">
           <span>{displayBadgeText}</span>
@@ -127,7 +133,7 @@ export default function Projectcard({
 
         {/* External Actions (Live Demo, GitHub, Figma, LinkedIn) */}
         {(liveDemo || github || figma || linkedin) && (
-          <div className="flex flex-wrap items-center gap-5 mt-1">
+          <div className={`flex flex-wrap items-center gap-5 mt-1 ${isArabic ? "justify-end" : "justify-start"}`}>
             {liveDemo && (
               <a
                 href={liveDemo}
@@ -184,7 +190,9 @@ export default function Projectcard({
         )}
 
         {/* Tech Stack Row - strictly single line, responsive fit without overflow */}
-        <div className="flex flex-nowrap items-center gap-3 sm:gap-4 pt-4 border-t border-white/[0.08] w-full mt-2 font-['Poppins'] text-[13px] text-[#a9a9a9] overflow-hidden min-w-0">
+        <div className={`flex flex-nowrap items-center gap-3 sm:gap-4 pt-4 border-t border-white/[0.08] w-full mt-2 font-['Poppins'] text-[13px] text-[#a9a9a9] overflow-hidden min-w-0 ${
+          isArabic ? "justify-end" : "justify-start"
+        }`}>
           {tech.slice(0, 5).map((t, idx) => {
             const Icon = t.icon;
             return (

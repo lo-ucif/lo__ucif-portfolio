@@ -132,7 +132,7 @@ export function CaseStudyOverview({ study, onOpenLightbox }: CaseStudyOverviewPr
 
           <div className="mt-4 flex flex-wrap items-center justify-between w-full max-w-4xl gap-3 border-t border-white/[0.08] pt-4">
             <span className="font-['Itim'] text-[13px] text-[#8491A0]">
-              {study.presentationHeading || "UI/UX Design Presentation"}
+              {csTrans?.presentationHeading || study.presentationHeading || (isArabic ? "عرض تصميم واجهات وتجربة المستخدم" : "UI/UX Design Presentation")}
             </span>
 
             <button
@@ -146,7 +146,7 @@ export function CaseStudyOverview({ study, onOpenLightbox }: CaseStudyOverviewPr
                 <line x1="11" y1="8" x2="11" y2="14" />
                 <line x1="8" y1="11" x2="14" y2="11" />
               </svg>
-              <span>Inspect Screenshot</span>
+              <span>{isArabic ? "معاينة لقطة الشاشة" : "Inspect Screenshot"}</span>
             </button>
           </div>
         </div>

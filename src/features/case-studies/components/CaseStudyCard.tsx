@@ -81,12 +81,18 @@ export function CaseStudyCard(props: CaseStudy) {
       transition={{ duration: 0.7, ease: easeOut }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="group relative flex flex-col lg:flex-row items-center gap-10 lg:gap-14 w-full text-left"
+      className={`group relative flex flex-col lg:flex-row items-center gap-10 lg:gap-14 w-full ${
+        isArabic ? "text-right" : "text-left"
+      }`}
     >
       {/* ========================================================= */}
       {/* LEFT COLUMN: Text, Narrative, Metadata & Actions         */}
       {/* ========================================================= */}
-      <div className="flex flex-col items-start gap-5 w-full lg:w-1/2 z-10">
+      <div
+        className={`flex flex-col gap-5 w-full lg:w-1/2 z-10 ${
+          isArabic ? "items-end text-right" : "items-start text-left"
+        }`}
+      >
         {/* Title & Arabic Subtitle */}
         <div className="flex flex-col gap-1">
           <h3
@@ -136,7 +142,11 @@ export function CaseStudyCard(props: CaseStudy) {
           >
             <span>{t.caseStudies.exploreDesign}</span>
             <svg
-              className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1"
+              className={`w-4 h-4 transition-transform duration-300 ${
+                isArabic
+                  ? "group-hover/btn:-translate-x-1 rotate-180"
+                  : "group-hover/btn:translate-x-1"
+              }`}
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"

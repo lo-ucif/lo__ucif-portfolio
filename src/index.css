@@ -7,6 +7,18 @@
 html[dir="rtl"],
 body.font-arabic {
   font-family: 'Cairo', 'Poppins', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+
+html[dir="rtl"] .text-left,
+[dir="rtl"] .text-left {
+  text-align: right !important;
+}
+
+html[dir="rtl"] .text-right,
+[dir="rtl"] .text-right {
+  text-align: left !important;
 }
 
 .loading-screen {

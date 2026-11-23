@@ -19,7 +19,7 @@ interface ServiceRow {
 }
 
 export function ServicesCard() {
-  const { t } = useLanguage();
+  const { t, isArabic } = useLanguage();
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const navigate = useNavigate();
   const location = useLocation();
@@ -66,7 +66,7 @@ export function ServicesCard() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.7, ease: easeOut }}
-      className="relative w-full max-w-4xl text-left my-2"
+      className={`relative w-full max-w-4xl my-2 ${isArabic ? "text-right" : "text-left"}`}
     >
       {/* Services Section Title */}
       <div className="flex items-center gap-2.5 mb-6 sm:mb-8">
@@ -108,7 +108,7 @@ export function ServicesCard() {
             >
               <div className="flex items-center justify-between gap-6 w-full">
                 {/* Left Text Column: 01 — Title + Description */}
-                <div className="flex flex-col gap-2 max-w-xl sm:max-w-2xl text-left">
+                <div className={`flex flex-col gap-2 max-w-xl sm:max-w-2xl ${isArabic ? "text-right items-end" : "text-left items-start"}`}>
                   {/* Number — Title */}
                   <div className="flex items-baseline gap-2.5">
                     <h4 className="font-['Itim'] text-[24px] sm:text-[28px] lg:text-[32px] font-bold text-white group-hover/row:text-[#5197ff] transition-colors duration-200">
@@ -135,7 +135,7 @@ export function ServicesCard() {
                           animate={{ opacity: 1, scale: 1, y: 0 }}
                           exit={{ opacity: 0, scale: 0.94, y: 4 }}
                           transition={{ duration: 0.28, ease: easeOut }}
-                          className="absolute right-0 top-1/2 -translate-y-1/2 flex items-center justify-end pointer-events-none select-none w-full h-full"
+                          className={`absolute ${isArabic ? "left-0 justify-start" : "right-0 justify-end"} top-1/2 -translate-y-1/2 flex items-center pointer-events-none select-none w-full h-full`}
                         >
                           <img
                             src={service.previewImg}
@@ -157,7 +157,11 @@ export function ServicesCard() {
                     }`}
                   >
                     <svg
-                      className="w-4 h-4 transition-transform duration-300 group-hover/row:translate-x-0.5 group-hover/row:-translate-y-0.5"
+                      className={`w-4 h-4 transition-transform duration-300 ${
+                        isArabic
+                          ? "-scale-x-100 group-hover/row:-translate-x-0.5 group-hover/row:-translate-y-0.5"
+                          : "group-hover/row:translate-x-0.5 group-hover/row:-translate-y-0.5"
+                      }`}
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
