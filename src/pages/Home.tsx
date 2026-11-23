@@ -92,7 +92,7 @@ export default function Home() {
                   transition={{ duration: 0.6, ease: easeOut, delay: 0.5 }}
                 >
                   <span className="text-[#a9a9a9]">
-                    Designing Experiences & <span className="text-[#5197FF]">Engineering Solutions.</span>
+                    Crafting Digital Experiences & <span className="text-[#5197FF]">Building Modern Solutions.</span>
                   </span>
                 </motion.div>
               </div>

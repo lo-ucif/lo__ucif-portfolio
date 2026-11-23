@@ -170,6 +170,8 @@ export function SiteHeader(_props?: Partial<SiteHeaderProps>) {
                 <span>GitHub</span>
               </motion.a>
 
+              <span className="text-white/30 text-[15px] select-none">|</span>
+
               <motion.a
                 href="https://www.linkedin.com/in/ahmed-loucif-757854342"
                 target="_blank"
@@ -205,9 +207,8 @@ export function SiteHeader(_props?: Partial<SiteHeaderProps>) {
           <img className="h-8.5 w-15 object-contain" src={logo} alt="Loucif logo" />
         </Link>
 
-        {/* Mobile Header Direct Links: | GitHub LinkedIn */}
-        <div className="flex items-center gap-2.5 xs:gap-3">
-          <span className="text-white/30 text-[13px] select-none">|</span>
+        {/* Mobile Header Direct Links: GitHub | LinkedIn */}
+        <div className="flex items-center gap-2 xs:gap-2.5">
           <motion.a
             href="https://github.com/lo-ucif"
             target="_blank"
@@ -223,6 +224,8 @@ export function SiteHeader(_props?: Partial<SiteHeaderProps>) {
             />
             <span>GitHub</span>
           </motion.a>
+
+          <span className="text-white/30 text-[13px] select-none">|</span>
 
           <motion.a
             href="https://www.linkedin.com/in/ahmed-loucif-757854342"
