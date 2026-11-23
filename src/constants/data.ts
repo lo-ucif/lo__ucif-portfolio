@@ -8,10 +8,13 @@ import aiMatchingWeb from "../assets/ai-matching-web.webp";
 import rihlaWeb from "../assets/rihla-web.webp";
 import automate from "../assets/Screenshot 2026-10-06 201845.png";
 import soai from "../assets/Screenshot 2026-10-06 202012.png";
+import hafezWeb from "../assets/hafez-web.webp";
 
 // Multi-device Mockup Assets (MacBook Pro 16 + iPhone 17 Pro with transparent backgrounds)
 import tabibHafezLaptop from "../assets/mockups/devices/tabib-hafez-laptop.webp";
 import tabibHafezMobile from "../assets/mockups/devices/tabib-hafez-mobile.webp";
+import hafezLaptop from "../assets/mockups/devices/hafez-laptop.webp";
+import hafezMobile from "../assets/mockups/devices/hafez-mobile.webp";
 import aiMatchingLaptop from "../assets/mockups/devices/ai-matching-laptop.webp";
 import aiMatchingMobile from "../assets/mockups/devices/ai-matching-mobile.webp";
 import rihlaLaptop from "../assets/mockups/devices/rihla-laptop.webp";
@@ -240,6 +243,51 @@ export type project = {
 };
 
 export const projects: project[] = [
+  {
+    id: 13,
+    type: "development",
+    role: "fullstack",
+    category: "personal",
+    projectType: "SaaS Business · Founder",
+    team: "Founder & Lead Developer",
+    status: "Completed",
+    year: "2026",
+    title: "Hafez — Smart Quran Circles Platform",
+    problem:
+      "Students and Quran schools struggle to organize memorization circles, track daily recitation progress, and maintain structured attendance alongside demanding academic coursework.",
+    solution:
+      "A centralized platform that streamlines learning circles, attendance, and progress tracking in an intuitive, accessible workspace.",
+    description:
+      "A smart digital management platform for Quran memorization circles and schools (منصة ذكية لإدارة حلقات القرآن الكريم — تنظيم • متابعة • إدارة). As Founder and Lead Developer, I designed and built the complete web platform to empower Quran schools, supervisors, and students with centralized student management, daily and weekly memorization tracking, remote learning support, and dedicated teacher dashboards.",
+    shortDescription:
+      "A smart management platform for Quran memorization schools, streamlining learning circles, student attendance, and structured progress tracking.",
+    keyFeatures: [
+      "Student management with centralized profiles and enrollment records",
+      "Quran memorization tracking with structured daily and weekly progress",
+      "Learning circles (Halaqat) management for teachers and supervisors",
+      "Remote learning support for sessions held outside the classroom",
+      "Teacher dashboard for supervising circles and reviewing student work",
+      "Progress monitoring with clear visual indicators and statistics",
+    ],
+    outcome:
+      "Founded, designed, and launched in production at hafez.company, providing Quran schools with a streamlined digital workspace for student growth and circle supervision.",
+    image: hafezWeb,
+    laptopImage: hafezLaptop,
+    mobileImage: hafezMobile,
+    tech: [
+      { label: "React", icon: ReactIcon },
+      { label: "TypeScript", icon: TypescriptIcon },
+      { label: "Tailwind", icon: TaillwindIcon },
+      { label: "Framer Motion", icon: FramerMotionIcon },
+      { label: "REST API", icon: RestApiIcon },
+      { label: "Figma", icon: FigmaIcon },
+    ],
+    hackathon: "Personal Business · Founder",
+    liveDemo: "https://www.hafez.company/",
+    github: "",
+    figma: "",
+    linkedin: "https://lnkd.in/p/dbtArdqU",
+  },
   {
     id: 3,
     type: "development",

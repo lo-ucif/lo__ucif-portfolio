@@ -126,7 +126,7 @@ export default function Projectcard({
                 className="inline-flex items-center gap-1.5 font-['Poppins'] text-[13px] text-[#8491A0] hover:text-[#5197ff] transition-colors"
               >
                 <LinkIcon width={14} height={14} />
-                <span>{id === 12 ? "Live Website" : "Live Demo"}</span>
+                <span>{id === 12 || id === 13 ? "Live Website" : "Live Demo"}</span>
               </a>
             )}
             {github && (
