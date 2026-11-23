@@ -271,9 +271,9 @@ export default function Experience() {
 
                   {/* Clean Editorial Text Block */}
                   <div
-                    className={`w-full md:w-[42%] lg:w-[43%] flex flex-col ${
-                      isArabic ? "text-right items-end" : "text-left items-start"
-                    } ${isVisuallyLeft ? "md:pr-8 lg:pr-10" : "md:pl-8 lg:pl-10"}`}
+                    className={`w-full md:w-[42%] lg:w-[43%] flex flex-col text-start items-start ${
+                      isVisuallyLeft ? "md:pr-8 lg:pr-10" : "md:pl-8 lg:pl-10"
+                    }`}
                   >
                     {/* Year & Milestone Number Badge */}
                     <div className="flex items-center gap-2 mb-1">
@@ -297,9 +297,7 @@ export default function Experience() {
                     </p>
 
                     {/* Tech Stack Row */}
-                    <div className={`flex flex-wrap items-center gap-2.5 sm:gap-3.5 pt-2.5 border-t border-white/[0.08] w-full mt-2 font-['Poppins'] text-[12.5px] text-[#a9a9a9] ${
-                      isArabic ? "justify-end" : "justify-start"
-                    }`}>
+                    <div className="flex flex-wrap items-center gap-2.5 sm:gap-3.5 pt-2.5 border-t border-white/[0.08] w-full mt-2 font-['Poppins'] text-[12.5px] text-[#a9a9a9] justify-start">
                       {item.tech.map((t) => {
                         const Icon = t.icon;
                         return (
@@ -323,14 +321,10 @@ export default function Experience() {
         {/* ======================================================== */}
         {/* MOBILE TIMELINE WITH LEFT WINDING PATH (< md)            */}
         {/* ======================================================== */}
-        <div className={`relative flex flex-col gap-18 sm:gap-12 md:hidden ${
-          isArabic ? "text-right pr-6 py-2" : "text-left pl-6 py-2"
-        }`}>
+        <div className="relative flex flex-col gap-18 sm:gap-12 md:hidden text-start ps-6 py-2">
 
           {/* Vertical Multi-Strand Guide Line */}
-          <div className={`absolute top-2 bottom-4 ${
-            isArabic ? "right-2" : "left-2"
-          } w-[2px] bg-gradient-to-b from-[#5197ff] via-[#ffffff] to-[#5197ff] shadow-[0_0_10px_#5197ff]`} />
+          <div className="absolute top-2 bottom-4 start-2 w-[2px] bg-gradient-to-b from-[#5197ff] via-[#ffffff] to-[#5197ff] shadow-[0_0_10px_#5197ff]" />
 
           {localizedMilestones.map((item, index) => (
             <motion.div
@@ -339,17 +333,15 @@ export default function Experience() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.45, ease: easeOut, delay: index * 0.06 }}
-              className={`relative ${isArabic ? "pr-6" : "pl-6"}`}
+              className="relative ps-6"
             >
               {/* Glowing Node on Axis */}
-              <div className={`absolute ${
-                isArabic ? "-right-[23px]" : "-left-[23px]"
-              } top-1.5 flex items-center justify-center w-4.5 h-4.5 rounded-full border-2 border-[#5197ff] bg-[#161513] shadow-[0_0_8px_#5197ff]`}>
+              <div className="absolute -start-[23px] top-1.5 flex items-center justify-center w-4.5 h-4.5 rounded-full border-2 border-[#5197ff] bg-[#161513] shadow-[0_0_8px_#5197ff]">
                 <div className="w-1.5 h-1.5 rounded-full bg-white" />
               </div>
 
               {/* Clean Editorial Text Block */}
-              <div className={`flex flex-col ${isArabic ? "items-end text-right" : "items-start text-left"}`}>
+              <div className="flex flex-col text-start items-start">
                 {/* Year & Milestone Number Badge */}
                 <div className="flex items-center gap-2 mb-1">
                   <span className="font-['Itim'] text-[13px] sm:text-[14px] font-semibold text-[#5197ff] tracking-wider">
@@ -372,9 +364,7 @@ export default function Experience() {
                 </p>
 
                 {/* Tech Stack Row */}
-                <div className={`flex flex-wrap items-center gap-3 pt-3 border-t border-white/[0.08] w-full mt-2 font-['Poppins'] text-[12px] text-[#a9a9a9] ${
-                  isArabic ? "justify-end" : "justify-start"
-                }`}>
+                <div className="flex flex-wrap items-center gap-3 pt-3 border-t border-white/[0.08] w-full mt-2 font-['Poppins'] text-[12px] text-[#a9a9a9] justify-start">
                   {item.tech.map((t) => {
                     const Icon = t.icon;
                     return (

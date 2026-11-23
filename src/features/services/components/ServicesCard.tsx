@@ -66,10 +66,10 @@ export function ServicesCard() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.7, ease: easeOut }}
-      className={`relative w-full max-w-4xl my-2 ${isArabic ? "text-right" : "text-left"}`}
+      className="relative w-full max-w-4xl my-2 text-start"
     >
       {/* Services Section Title */}
-      <div className="flex items-center gap-2.5 mb-6 sm:mb-8">
+      <div className="flex items-center gap-2.5 mb-6 sm:mb-8 text-start">
         <span className="w-2 h-2 rounded-full bg-[#5197ff] shadow-[0_0_8px_#5197ff]" />
         <h3 className="font-['Itim'] text-[24px] sm:text-[28px] font-bold text-white tracking-wide">
           {t.services.title}
@@ -107,8 +107,8 @@ export function ServicesCard() {
               className="group/row relative py-7 sm:py-9 border-t border-white/[0.08] transition-all duration-300 cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-[#5197ff]"
             >
               <div className="flex items-center justify-between gap-6 w-full">
-                {/* Left Text Column: 01 — Title + Description */}
-                <div className={`flex flex-col gap-2 max-w-xl sm:max-w-2xl ${isArabic ? "text-right items-end" : "text-left items-start"}`}>
+                {/* Text Column: 01 — Title + Description */}
+                <div className="flex flex-col gap-2 max-w-xl sm:max-w-2xl text-start items-start">
                   {/* Number — Title */}
                   <div className="flex items-baseline gap-2.5">
                     <h4 className="font-['Itim'] text-[24px] sm:text-[28px] lg:text-[32px] font-bold text-white group-hover/row:text-[#5197ff] transition-colors duration-200">

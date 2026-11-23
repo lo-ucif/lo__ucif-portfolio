@@ -7,6 +7,7 @@ export interface ProjectTranslation {
   solution?: string;
   keyFeatures?: string[];
   role?: string;
+  outcome?: string;
 }
 
 export const projectTranslations: Record<number, ProjectTranslation> = {
@@ -30,6 +31,8 @@ export const projectTranslations: Record<number, ProjectTranslation> = {
       "مؤشرات ورسوم بيانية توضح معدلات الإنجاز والاستمرارية",
     ],
     role: "المؤسس ومطور Full-Stack رئيسي",
+    outcome:
+      "تأسيس المنصة الرقمية وقيادة تصميمها وبرمجتها بنجاح مع اعتمادها من قبل مدارس قرآنية وحلقات تعليمية محلية.",
   },
   12: {
     title: "الطبيب الحافظ — منصة وموقع الويب",
@@ -51,6 +54,8 @@ export const projectTranslations: Record<number, ProjectTranslation> = {
       "مؤشرات واضحة للتقدم تحد من الإرهاق الذهني وتحفز الاستمرارية",
     ],
     role: "مطور الواجهات الأمامية (Frontend Developer)",
+    outcome:
+      "بناء وتصميم واجهات المنصة بنجاح لدعم طلبة كلية الطب وتمكينهم من التوفيق بين دراستهم وحفظ القرآن الكريم.",
   },
   3: {
     title: "منصة توظيف المرشحين بالذكاء الاصطناعي",
@@ -70,6 +75,8 @@ export const projectTranslations: Record<number, ProjectTranslation> = {
       "واجهة مستخدم تفاعلية متجاوبة مبنية باستخدام React وTypeScript وTailwind CSS",
     ],
     role: "مطور Full-Stack ومصمم الواجهات",
+    outcome:
+      "تصميم وتطوير وتقديم نموذج أولي عملي (MVP) خلال 48 ساعة، والحصول على شهادة تقدير كمتأهل للتصفيات النهائية في الهاكاثون.",
   },
   5: {
     title: "تطبيق الملاحظات السحابي الآمن",
@@ -84,6 +91,8 @@ export const projectTranslations: Record<number, ProjectTranslation> = {
       "تصميم سريع وبسيط يدعم التعديل والحذف والتصنيف الفوري",
     ],
     role: "مطور Full-Stack",
+    outcome:
+      "إطلاق التطبيق بنجاح كأول نموذج Full-Stack متكامل بقواعد بيانات سحابية وتوثيق API كامل.",
   },
   9: {
     title: "رحلة ويب — مخطط السفر الذكي",
@@ -103,6 +112,8 @@ export const projectTranslations: Record<number, ProjectTranslation> = {
       "تصميم متجاوب وسريع مبني باستخدام Next.js وTypeScript وTailwind CSS",
     ],
     role: "مطور الواجهات الأمامية (Frontend Developer)",
+    outcome:
+      "بناء نموذج العمل الأولي لمنصة رحلة ويب في هاكاثون W-Hackathon والتأهل لمراحل التقييم النهائية.",
   },
   4: {
     title: "مكتبة الكتب — واجهة تفاعلية",
@@ -117,6 +128,8 @@ export const projectTranslations: Record<number, ProjectTranslation> = {
       "بنية مكونات معيارية ومنظمة وفق أفضل ممارسات تطوير الويب",
     ],
     role: "مطور واجهات أمامية",
+    outcome:
+      "بناء واجهة مستخدم نموذجية عالية الدقة تحاكي تصاميم Figma باحترافية كاملة.",
   },
   6: {
     title: "تطبيق أحوال الطقس المباشر",
@@ -202,14 +215,14 @@ export const certTranslations = {
       title: "شهادة تكريم كعضو في فريق التصميم",
       label: "مدرسة الذكاء الاصطناعي ببجاية (School of AI Bejaia)",
       description:
-        "تكريم للمساهمة الفعالة والالتزام طوال موسم 2025/2026 كعضو في فريق التصميم، والمشاركة في دعم أنشطة النادي وتطوير الهوية البصرية وتنظيم الفعاليات التقنية.",
+        "تكريم للمساهمة الفعالة والالتزام طوال موسم 2025/2026 كعضو في فريق التصميم، والمشاركة في دعم أنشطة النادي وتطوير الهوية البصرية وتنظيم الفعاليات التقنية\u200F.",
       preview: "معاينة الشهادة كاملة",
     },
     {
       title: "شهادة تقدير وتكريم",
       label: "هاكاثون Automate & Innovate",
       description:
-        "تكريم للمساهمات التقنية القيّمة، والعمل الجماعي، والتنفيذ الإبداعي في تطوير الحلول الرقمية خلال فعاليات هاكاثون Automate & Innovate.",
+        "تكريم للمساهمات التقنية القيّمة، والعمل الجماعي، والتنفيذ الإبداعي في تطوير الحلول الرقمية خلال فعاليات هاكاثون \u200EAutomate & Innovate\u200F.",
       preview: "معاينة الشهادة كاملة",
     },
   ],

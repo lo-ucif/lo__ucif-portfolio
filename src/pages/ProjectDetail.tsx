@@ -29,6 +29,7 @@ export default function ProjectDetail() {
   const displaySolution = pTrans?.solution || project?.solution;
   const displayKeyFeatures = pTrans?.keyFeatures || project?.keyFeatures;
   const displayRole = pTrans?.role || (project ? roleConfig[project.role] : "");
+  const displayOutcome = pTrans?.outcome || project?.outcome;
 
   const projectBubbleNav: BubbleItem[] = [
     { label: isArabic ? "المشاريع" : "Projects", id: "projects" },
@@ -111,7 +112,7 @@ export default function ProjectDetail() {
               className="inline-flex items-center gap-2 font-['Poppins'] text-[14px] sm:text-[15px] text-[#9CA3AF] transition-colors duration-200 hover:text-white"
             >
               <svg
-                className="w-4 h-4"
+                className="w-4 h-4 rtl:rotate-180 icon-directional"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -198,7 +199,7 @@ export default function ProjectDetail() {
 
         {/* Project Header Info */}
         <motion.div
-          className="flex flex-col gap-4 text-left"
+          className="flex flex-col gap-4 text-start"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: easeOut, delay: 0.05 }}
@@ -294,9 +295,9 @@ export default function ProjectDetail() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, ease: easeOut }}
-            className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-6 rounded-2xl bg-gradient-to-r from-[#1A1917] via-[#1f1e1b] to-[#1A1917] border border-[#5197ff]/40 shadow-xl text-left"
+            className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-6 rounded-2xl bg-gradient-to-r from-[#1A1917] via-[#1f1e1b] to-[#1A1917] border border-[#5197ff]/40 shadow-xl text-start"
           >
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-1 text-start">
               <span className="font-['Itim'] text-[13px] text-[#5197ff] uppercase tracking-wider">
                 {isArabic ? "عرض التصميم التفاعلي الشامل" : "Comprehensive Design Presentation"}
               </span>
@@ -313,13 +314,13 @@ export default function ProjectDetail() {
               to={caseStudyUrl}
               className="shrink-0 rounded-full bg-white text-[#161513] px-5 py-2.5 font-['Poppins'] text-[14px] font-semibold hover:bg-[#5197ff] hover:text-white transition-colors"
             >
-              {isArabic ? "استكشف التصميم ←" : "Explore Design →"}
+              <span>{isArabic ? "استكشف التصميم ←" : "Explore Design →"}</span>
             </Link>
           </motion.div>
         )}
 
         {/* Narrative & Details Content */}
-        <div id="overview" className="flex flex-col gap-8 text-left scroll-mt-28">
+        <div id="overview" className="flex flex-col gap-8 text-start scroll-mt-28">
           {/* Overview */}
           <div className="flex flex-col gap-3 p-6 sm:p-8 rounded-2xl bg-[#1A1917] border border-white/[0.08]">
             <h2 className="font-['Itim'] text-[24px] sm:text-[26px] text-white font-bold">
@@ -384,8 +385,8 @@ export default function ProjectDetail() {
           )}
 
           {/* Outcome */}
-          {project.outcome && (
-            <div className="flex flex-col gap-3 p-6 sm:p-8 rounded-2xl bg-[#1A1917] border border-white/[0.08]">
+          {displayOutcome && (
+            <div className="flex flex-col gap-3 p-6 sm:p-8 rounded-2xl bg-[#1A1917] border border-white/[0.08] text-start">
               <span className="font-['Itim'] text-[12px] text-[#4ade80] uppercase tracking-wider">
                 {isArabic ? "النتائج والأثر" : "Results"}
               </span>
@@ -393,7 +394,7 @@ export default function ProjectDetail() {
                 {isArabic ? "المخرجات والإنجاز" : "The Outcome"}
               </h2>
               <p className="font-['Poppins'] text-[15px] text-[#d1d1d1] leading-relaxed">
-                {project.outcome}
+                {displayOutcome}
               </p>
             </div>
           )}

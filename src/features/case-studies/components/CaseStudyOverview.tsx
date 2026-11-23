@@ -24,10 +24,10 @@ export function CaseStudyOverview({ study, onOpenLightbox }: CaseStudyOverviewPr
   const displayTimeline = csTrans?.timeline || study.timeline;
 
   return (
-    <section id="overview" className="flex flex-col gap-8 scroll-mt-28 text-left">
+    <section id="overview" className="flex flex-col gap-8 scroll-mt-28 text-start">
       {/* Title & Metadata Header */}
       <motion.div
-        className="flex flex-col gap-4"
+        className="flex flex-col gap-4 text-start"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: easeOut }}

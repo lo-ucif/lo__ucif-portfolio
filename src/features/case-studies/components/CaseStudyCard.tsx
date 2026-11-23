@@ -81,18 +81,12 @@ export function CaseStudyCard(props: CaseStudy) {
       transition={{ duration: 0.7, ease: easeOut }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`group relative flex flex-col lg:flex-row items-center gap-10 lg:gap-14 w-full ${
-        isArabic ? "text-right" : "text-left"
-      }`}
+      className="group relative flex flex-col lg:flex-row items-center gap-10 lg:gap-14 w-full text-start"
     >
       {/* ========================================================= */}
       {/* LEFT COLUMN: Text, Narrative, Metadata & Actions         */}
       {/* ========================================================= */}
-      <div
-        className={`flex flex-col gap-5 w-full lg:w-1/2 z-10 ${
-          isArabic ? "items-end text-right" : "items-start text-left"
-        }`}
-      >
+      <div className="flex flex-col gap-5 w-full lg:w-1/2 z-10 text-start items-start">
         {/* Title & Arabic Subtitle */}
         <div className="flex flex-col gap-1">
           <h3

@@ -30,9 +30,7 @@ export function TechStackSection() {
       </motion.div>
 
       {/* 4 Architecture Categories without card background or stroke */}
-      <div className={`grid w-full max-w-6xl grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-10 sm:gap-y-12 ${
-        isArabic ? "text-right" : "text-left"
-      }`}>
+      <div className="grid w-full max-w-6xl grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-10 sm:gap-y-12 text-start">
         {skillCategories.map((category, groupIndex) => {
           const trans = isArabic ? skillCategoryTranslations[category.title] : null;
           const displayTitle = trans?.title || category.title;
@@ -41,7 +39,7 @@ export function TechStackSection() {
           return (
             <motion.div
               key={category.title}
-              className={`flex flex-col gap-4 ${isArabic ? "items-end text-right" : "items-start text-left"}`}
+              className="flex flex-col gap-4 text-start items-start"
               initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
@@ -63,7 +61,7 @@ export function TechStackSection() {
               </div>
 
               {/* Skill Pills matching the last card style */}
-              <div className={`flex flex-wrap gap-2.5 sm:gap-3 pt-1 ${isArabic ? "justify-end" : "justify-start"}`}>
+              <div className="flex flex-wrap gap-2.5 sm:gap-3 pt-1 justify-start">
                 {category.items.map((item) => {
                   const Icon = item.icon;
 

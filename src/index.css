@@ -6,9 +6,11 @@
 
 html[dir="rtl"],
 body.font-arabic {
-  font-family: 'Playpen Sans Arabic', 'Cairo', 'Poppins', sans-serif;
+  font-family: 'Playpen Sans Arabic', 'Cairo', 'Tajawal', system-ui, sans-serif;
+  line-height: 1.7;
+  letter-spacing: 0;
   direction: rtl;
-  text-align: right;
+  text-align: start;
 }
 
 html[dir="rtl"] h1,
@@ -26,7 +28,7 @@ html[dir="rtl"] textarea,
 html[dir="rtl"] select,
 html[dir="rtl"] label,
 html[dir="rtl"] [class*="font-"] {
-  font-family: 'Playpen Sans Arabic', 'Cairo', 'Poppins', sans-serif !important;
+  font-family: 'Playpen Sans Arabic', 'Cairo', 'Tajawal', system-ui, sans-serif !important;
 }
 
 html[dir="rtl"] code,
@@ -34,42 +36,24 @@ html[dir="rtl"] pre,
 html[dir="rtl"] .font-mono,
 html[dir="rtl"] kbd {
   font-family: monospace, monospace !important;
+  direction: ltr !important;
+  unicode-bidi: isolate;
 }
 
 /* RTL Layout Direction Overrides */
 [dir="rtl"] {
   direction: rtl;
-  text-align: right;
+  text-align: start;
 }
 
-[dir="rtl"] .text-left {
-  text-align: right !important;
-}
-
-[dir="rtl"] .text-right {
-  text-align: left !important;
-}
-
-/* Keep phone numbers, emails, URLs, and code blocks left-to-right */
-[dir="rtl"] a[href^="tel:"],
-[dir="rtl"] a[href^="mailto:"] .email-val,
-[dir="rtl"] input[type="email"],
-[dir="rtl"] input[type="tel"],
-[dir="rtl"] input[type="url"],
-[dir="rtl"] input[type="password"],
-[dir="rtl"] input[type="number"],
-[dir="rtl"] .phone-number,
-[dir="rtl"] .email-address,
-[dir="rtl"] .url-text,
-[dir="rtl"] code,
-[dir="rtl"] pre,
-[dir="rtl"] [dir="ltr"] {
-  direction: ltr !important;
-  text-align: left;
-  unicode-bidi: isolate;
+[dir="rtl"] input,
+[dir="rtl"] textarea,
+[dir="rtl"] select {
+  text-align: start;
 }
 
 /* Mirror arrows, chevrons, and directional navigation icons */
+[dir="rtl"] .icon-directional,
 [dir="rtl"] .rtl-mirror,
 [dir="rtl"] [data-rtl-mirror] {
   transform: scaleX(-1);
@@ -87,19 +71,40 @@ html[dir="rtl"] kbd {
 [dir="rtl"] input:not([type="email"]):not([type="tel"]):not([type="url"]):not([type="number"]):not([type="password"]),
 [dir="rtl"] textarea,
 [dir="rtl"] select {
-  text-align: right;
+  text-align: start;
   direction: rtl;
 }
 
 [dir="rtl"] th,
 [dir="rtl"] td {
-  text-align: right;
+  text-align: start;
 }
 
 /* Modals, Dialogs, Dropdowns, and Pagination */
 [dir="rtl"] [role="dialog"],
 [dir="rtl"] .dropdown-menu {
-  text-align: right;
+  text-align: start;
+}
+
+/* Keep phone numbers, emails, URLs, and code blocks left-to-right */
+[dir="rtl"] .ltr-content,
+[dir="rtl"] a[href^="tel:"],
+[dir="rtl"] a[href^="mailto:"],
+[dir="rtl"] a[href*="wa.me"],
+[dir="rtl"] input[type="email"],
+[dir="rtl"] input[type="tel"],
+[dir="rtl"] input[type="url"],
+[dir="rtl"] input[type="password"],
+[dir="rtl"] input[type="number"],
+[dir="rtl"] .phone-number,
+[dir="rtl"] .email-address,
+[dir="rtl"] .url-text,
+[dir="rtl"] code,
+[dir="rtl"] pre,
+[dir="rtl"] [dir="ltr"] {
+  direction: ltr !important;
+  text-align: left;
+  unicode-bidi: isolate;
 }
 
 .loading-screen {
