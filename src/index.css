@@ -11,14 +11,70 @@ body.font-arabic {
   text-align: right;
 }
 
-html[dir="rtl"] .text-left,
+/* RTL Layout Direction Overrides */
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
 [dir="rtl"] .text-left {
   text-align: right !important;
 }
 
-html[dir="rtl"] .text-right,
 [dir="rtl"] .text-right {
   text-align: left !important;
+}
+
+/* Keep phone numbers, emails, URLs, and code blocks left-to-right */
+[dir="rtl"] a[href^="tel:"],
+[dir="rtl"] a[href^="mailto:"] .email-val,
+[dir="rtl"] input[type="email"],
+[dir="rtl"] input[type="tel"],
+[dir="rtl"] input[type="url"],
+[dir="rtl"] input[type="password"],
+[dir="rtl"] input[type="number"],
+[dir="rtl"] .phone-number,
+[dir="rtl"] .email-address,
+[dir="rtl"] .url-text,
+[dir="rtl"] code,
+[dir="rtl"] pre,
+[dir="rtl"] [dir="ltr"] {
+  direction: ltr !important;
+  text-align: left;
+  unicode-bidi: isolate;
+}
+
+/* Mirror arrows, chevrons, and directional navigation icons */
+[dir="rtl"] .rtl-mirror,
+[dir="rtl"] [data-rtl-mirror] {
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] .group:hover .group-hover\/btn\:translate-x-1 {
+  transform: translateX(-0.25rem) !important;
+}
+
+[dir="rtl"] .group:hover .group-hover\/row\:translate-x-0\.5 {
+  transform: translateX(-0.125rem) !important;
+}
+
+/* Forms, Inputs & Tables in RTL */
+[dir="rtl"] input:not([type="email"]):not([type="tel"]):not([type="url"]):not([type="number"]):not([type="password"]),
+[dir="rtl"] textarea,
+[dir="rtl"] select {
+  text-align: right;
+  direction: rtl;
+}
+
+[dir="rtl"] th,
+[dir="rtl"] td {
+  text-align: right;
+}
+
+/* Modals, Dialogs, Dropdowns, and Pagination */
+[dir="rtl"] [role="dialog"],
+[dir="rtl"] .dropdown-menu {
+  text-align: right;
 }
 
 .loading-screen {
