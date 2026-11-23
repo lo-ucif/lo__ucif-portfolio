@@ -49,9 +49,6 @@ export function ServicesCard() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Default to showing row 01 preview when none is actively hovered
-  const activePreviewIndex = hoveredIndex !== null ? hoveredIndex : 0;
-
   const handleRowClick = (targetId: string) => {
     if (location.pathname === "/") {
       const el = document.getElementById(targetId);
@@ -84,7 +81,7 @@ export function ServicesCard() {
       <div className="flex flex-col w-full border-b border-white/[0.08]">
         {servicesData.map((service, index) => {
           const isRowHovered = hoveredIndex === index;
-          const showPreview = activePreviewIndex === index;
+          const showPreview = isRowHovered;
 
           return (
             <motion.div
