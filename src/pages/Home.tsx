@@ -4,7 +4,7 @@ import { ProjectsSection } from "../features/projects/components/ProjectsSection
 import { ContactSection } from "../features/contact/components/ContactSection";
 import { GithubIcon } from "../constants/Icon";
 import pdf from "../../public/Ahmed_Loucif_CV.pdf";
-import myimg from "../assets/portfolio img.webp";
+import myimg from "../assets/profile.webp";
 import FloatingBubble from "../components/FloatingBubble";
 import { StatusBadge } from "../components/StatusBadge";
 import Experience from "../features/certificates/Experience";
@@ -30,7 +30,7 @@ export default function Home() {
                 <picture>
                   <source media="(max-width: 600px)" />
                   <motion.img
-                    className="h-[200%] w-[200%] object-cover"
+                    className="h-full w-full object-cover"
                     src={myimg}
                     alt="Ahmed Loucif"
                     loading="eager"
