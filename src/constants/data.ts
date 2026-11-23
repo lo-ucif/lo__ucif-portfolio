@@ -279,14 +279,14 @@ export const projects: project[] = [
       { label: "TypeScript", icon: TypescriptIcon },
       { label: "Tailwind", icon: TaillwindIcon },
       { label: "Framer Motion", icon: FramerMotionIcon },
-      { label: "REST API", icon: RestApiIcon },
       { label: "Figma", icon: FigmaIcon },
     ],
     hackathon: "Personal Business · Founder",
     liveDemo: "https://www.hafez.company/",
     github: "",
     figma: "",
-    linkedin: "https://lnkd.in/p/dbtArdqU",
+    linkedin:
+      "https://www.linkedin.com/posts/mnsthafez_%D9%84%D9%84%D8%AA%D9%88%D8%A7%D8%B5%D9%84-%D9%85%D8%B9%D9%86%D8%A7-%D9%88%D9%85%D8%AA%D8%A7%D8%A8%D8%B9%D8%A9-%D9%83%D9%84-%D8%AC%D8%AF%D9%8A%D8%AF-%D9%85%D9%86-%D9%85%D9%86%D8%B5%D8%A9-%D8%AD%D8%A7%D9%81%D8%B8-activity-7511505460752056321-Pqb6?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFXpNDMBGYVLG4eX6B6TNBGOovKR8MMeCbM",
   },
   {
     id: 3,
