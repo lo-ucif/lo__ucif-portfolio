@@ -125,6 +125,7 @@ export type CaseStudy = {
   figmaLink?: string;
   linkedin?: string;
   github?: string;
+  behanceLink?: string;
   tools: TechItem[];
 
   // 01 — Project Overview

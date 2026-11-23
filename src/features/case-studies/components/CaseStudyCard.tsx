@@ -3,7 +3,7 @@ import type { MouseEvent } from "react";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import type { CaseStudy } from "../types";
-import { FigmaIcon, LinkedinIcon } from "../../../constants/Icon";
+import { BehanceIcon, FigmaIcon, LinkedinIcon } from "../../../constants/Icon";
 import { ThreePhoneShowcase } from "./ThreePhoneShowcase";
 import { DualLaptopShowcase } from "./DualLaptopShowcase";
 
@@ -27,6 +27,7 @@ export function CaseStudyCard(props: CaseStudy) {
     figmaLink,
     liveDemo,
     linkedin,
+    behanceLink,
   } = props;
 
   const [isHovered, setIsHovered] = useState(false);
@@ -139,6 +140,18 @@ export function CaseStudyCard(props: CaseStudy) {
           </Link>
 
           <div className="flex items-center gap-4">
+            {behanceLink && (
+              <a
+                href={behanceLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={stopPropagation}
+                className="inline-flex items-center gap-1.5 font-['Poppins'] text-[13px] text-[#8491A0] hover:text-[#5197ff] transition-colors"
+              >
+                <BehanceIcon width={15} height={15} />
+                <span>Behance</span>
+              </a>
+            )}
             {(liveDemo || linkedin) && (
               <a
                 href={liveDemo || linkedin}

@@ -7,7 +7,7 @@ export function TechStackSection() {
   return (
     <section
       id="stack"
-      className="flex w-full flex-col items-center gap-10 sm:gap-12 text-center"
+      className="flex w-full flex-col items-center gap-10 sm:gap-12 text-center scroll-mt-24"
     >
       {/* Section Header */}
       <motion.div

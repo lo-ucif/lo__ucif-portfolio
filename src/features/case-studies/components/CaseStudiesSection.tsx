@@ -8,7 +8,7 @@ export function CaseStudiesSection() {
   return (
     <section
       id="case-studies"
-      className="flex w-full flex-col items-center gap-10 text-center"
+      className="flex w-full flex-col items-center gap-10 text-center scroll-mt-24"
     >
       {/* Section Header matching existing portfolio style */}
       <motion.div

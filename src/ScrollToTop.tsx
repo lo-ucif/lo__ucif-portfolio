@@ -7,13 +7,25 @@ const ScrollToTop = () => {
   useEffect(() => {
     if (location.hash) {
       const id = location.hash.replace("#", "");
-      const timer = setTimeout(() => {
+
+      const tryScroll = () => {
         const el = document.getElementById(id);
         if (el) {
           el.scrollIntoView({ behavior: "smooth" });
+          return true;
         }
-      }, 80);
-      return () => clearTimeout(timer);
+        return false;
+      };
+
+      if (!tryScroll()) {
+        const timers = [60, 150, 300, 600].map((delay) =>
+          setTimeout(() => {
+            tryScroll();
+          }, delay)
+        );
+        return () => timers.forEach(clearTimeout);
+      }
+      return;
     }
 
     window.scrollTo({

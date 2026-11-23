@@ -9,6 +9,10 @@ import hafezLaptopLeft from "../../../assets/case-studies/mockups/7afez-laptop-l
 import hafezLaptopRight from "../../../assets/case-studies/mockups/7afez-laptop-right.webp";
 import hafezScreen01 from "../../../assets/case-studies/7afez/7afez-web-01.webp";
 import hafezScreen02 from "../../../assets/case-studies/7afez/7afez-web-02.webp";
+import hafezLogoHero from "../../../assets/case-studies/hafez-logo/hafez-logo-hero.webp";
+import hafezLogoIdentity from "../../../assets/case-studies/hafez-logo/hafez-logo-identity.webp";
+import hafezLogoElements from "../../../assets/case-studies/hafez-logo/hafez-logo-elements.webp";
+import hafezLogoColors from "../../../assets/case-studies/hafez-logo/hafez-logo-colors.webp";
 // Al-Tabib Al-Hafiz Screens (WebP)
 import tabibScreen01 from "../../../assets/case-studies/al-tabib/iPhone 17 - 1.webp";
 import tabibScreen02 from "../../../assets/case-studies/al-tabib/iPhone 17 - 2.webp";
@@ -904,7 +908,7 @@ export const caseStudies: CaseStudy[] = [
       "A dedicated cloud web platform designed to streamline Quran memorization, coordinate academic halaqat, and connect students with certified instructors.",
     projectType: "Responsive Web Platform",
     platformType: "web",
-    presentationHeading: "Web Presentation",
+    presentationHeading: "Web & Brand Presentation",
     role: "UI/UX Designer",
     designResponsibilities: [
       "User Interface Design",
@@ -929,9 +933,24 @@ export const caseStudies: CaseStudy[] = [
     },
     galleryMockups: [
       {
-        title: "Transparent Dual-Laptop Presentation",
+        title: "Dual-Laptop Web Presentation",
         image: hafezMockup,
         caption: "Hi-Fi MacBook Pro Web Mockup in Figma (Node 595:449)",
+      },
+      {
+        title: "Hafez Brand Identity & Logo Showcase",
+        image: hafezLogoHero,
+        caption: "Visual Identity & Arabic Calligraphy Typography on Behance",
+      },
+      {
+        title: "Logo Elements & Quran Symbolic Construction",
+        image: hafezLogoElements,
+        caption: "Quran Book Stand & Letterform Integration",
+      },
+      {
+        title: "Color Palette & Visual Tokens",
+        image: hafezLogoColors,
+        caption: "Dark Teal Blue (#1A5A81) & Golden Beige (#CAB178)",
       },
       {
         title: "Framed Presentation Showcase",
@@ -950,6 +969,7 @@ export const caseStudies: CaseStudy[] = [
       "https://www.linkedin.com/posts/ahmed-loucif-757854342_Ui/Ux Design-uidesign-uxdesign-activity-7492710718945943552-9YBE",
     figmaLink:
       "https://www.figma.com/design/hx4E6cZLWqvRjPWsZ5nXpN/my-portfolio?node-id=595-449&t=4FLL2zwFHHIvH7Z5-4",
+    behanceLink: "https://www.behance.net/gallery/256578087/_",
 
     // 01 — Project Overview
     overview: {
@@ -1350,6 +1370,74 @@ export const caseStudies: CaseStudy[] = [
           ],
           image: hafezScreen02,
           category: "Communication & Support",
+          aspectRatio: "web",
+        },
+        {
+          id: "7afez-logo-hero",
+          number: "03",
+          title: "Brand Identity & Arabic Calligraphy Logo",
+          arabicTitle: "هوية منصة حافظ — الشعار والخط العربي الأصيل",
+          subtitle: "Harmonious fusion of Quranic sacred geometry, the open book, and classic calligraphy",
+          category: "Brand Identity",
+          description:
+            "Custom brandmark designed for Hafez Platform, integrating the letter 'ح' with an open Quran upon a reading stand, rendered in elegant spiritual proportions.",
+          uxHighlights: [
+            "Bespoke Arabic letterform craft communicating reverence and academic rigor.",
+            "Integrated open Quran icon signifying direct engagement with the scripture.",
+            "Complete Behance design showcase documenting the design methodology.",
+          ],
+          image: hafezLogoHero,
+          aspectRatio: "web",
+        },
+        {
+          id: "7afez-logo-identity",
+          number: "04",
+          title: "Brand Philosophy & Mission Typography",
+          arabicTitle: "فلسفة الهوية ورسالة المنظومة",
+          subtitle: "Digital platform empowering the Quran memorization journey with daily consistency",
+          category: "Brand Identity",
+          description:
+            "Typography and mission statement presentation: 'حافظ منصة رقمية تساعد على تنظيم رحلة حفظ القرآن الكريم ومراجعته، من خلال متابعة التقدم، تنظيم المهام، وبناء عادة يومية مستمرة مع كتاب الله.'",
+          uxHighlights: [
+            "Modern balanced Arabic typeface pairing.",
+            "Watermark Quranic typographic background.",
+            "Focused mission articulation for educational institutions.",
+          ],
+          image: hafezLogoIdentity,
+          aspectRatio: "web",
+        },
+        {
+          id: "7afez-logo-elements",
+          number: "05",
+          title: "Logo Geometry & Deconstructed Elements",
+          arabicTitle: "عناصر الشعار والتفكيك الهندسي",
+          subtitle: "Deconstruction of the emblem into its sacred Quranic components",
+          category: "Brand Identity",
+          description:
+            "Visual breakdown highlighting the individual constituents: the Arabic letters 'ح' and 'فظ', the golden open book, and the teal Quran reading stand.",
+          uxHighlights: [
+            "Modular symbolic construction.",
+            "Balanced dual-tone contrast between teal and gold.",
+            "Vector scalability tested from micro-favicons to billboard banners.",
+          ],
+          image: hafezLogoElements,
+          aspectRatio: "web",
+        },
+        {
+          id: "7afez-logo-colors",
+          number: "06",
+          title: "Design Tokens & Brand Color Palette",
+          arabicTitle: "ألوان الشعار وتوكنز الهوية البصرية",
+          subtitle: "Dark Teal Blue (#1A5A81) and Golden Beige (#CAB178)",
+          category: "Design System",
+          description:
+            "Core color tokens establishing the serene spiritual atmosphere of the platform: Dark Teal Blue (RGB: 26, 90, 129) evoking trust and focus, paired with Golden Beige (RGB: 202, 177, 120) reflecting warmth and noble tradition.",
+          uxHighlights: [
+            "WCAG AAA compliance against clean neutral backgrounds.",
+            "Accessible high-contrast palette.",
+            "Shared color tokens mapped directly from Figma into Tailwind CSS.",
+          ],
+          image: hafezLogoColors,
           aspectRatio: "web",
         },
       ],

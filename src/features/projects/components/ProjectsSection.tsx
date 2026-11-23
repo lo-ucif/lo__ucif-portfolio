@@ -16,7 +16,7 @@ export function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="flex w-full flex-col items-center gap-10 text-center"
+      className="flex w-full flex-col items-center gap-10 text-center scroll-mt-24"
     >
       <motion.div
         className="flex flex-col items-center gap-2"

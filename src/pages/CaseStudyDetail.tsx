@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { caseStudies } from "../features/case-studies/data/caseStudiesData";
 import { SiteFooter } from "../components/layout/SiteFooter";
-import { FigmaIcon } from "../constants/Icon";
+import { BehanceIcon, FigmaIcon } from "../constants/Icon";
 
 import { CaseStudyOverview } from "../features/case-studies/components/CaseStudyOverview";
 import { CaseStudyFinalDesign } from "../features/case-studies/components/CaseStudyFinalDesign";
@@ -161,6 +161,17 @@ export default function CaseStudyDetail() {
           </div>
 
           <div className="flex items-center gap-3">
+            {study.behanceLink && (
+              <a
+                href={study.behanceLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.05] border border-white/10 px-3.5 py-1.5 font-['Poppins'] text-[13px] text-[#d1d1d1] hover:text-[#5197ff] hover:border-[#5197ff]/40 transition-colors"
+              >
+                <BehanceIcon width={14} height={14} />
+                <span>Behance Presentation</span>
+              </a>
+            )}
             {study.figmaLink && (
               <a
                 href={study.figmaLink}

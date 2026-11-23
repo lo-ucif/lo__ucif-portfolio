@@ -84,13 +84,19 @@ export function SiteHeader({
     if (location.pathname === "/") {
       if (id === "home") {
         window.scrollTo({ top: 0, behavior: "smooth" });
+        window.history.replaceState(null, "", "/");
       } else {
         const el = document.getElementById(id);
         if (el) {
           el.scrollIntoView({ behavior: "smooth" });
+          window.history.replaceState(null, "", `/#${id}`);
         }
       }
     } else {
+      if (location.pathname === "/projects" && id === "projects") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        return;
+      }
       if (id === "home") {
         navigate("/");
       } else {

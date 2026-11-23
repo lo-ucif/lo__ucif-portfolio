@@ -9,7 +9,7 @@ export default function Certificates() {
   return (
     <section
       id="certificates"
-      className="flex w-full flex-col items-center gap-7.5 text-center"
+      className="flex w-full flex-col items-center gap-7.5 text-center scroll-mt-24"
     >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
