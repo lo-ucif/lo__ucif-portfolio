@@ -9,15 +9,12 @@ export function SiteFooter() {
       {/* Phone Mode (< 640px) */}
       <div className="flex sm:hidden flex-col items-center justify-center gap-1.5 text-center px-4">
         <span className="text-[13.5px] text-[#A9A9A9]">{t.footer.role}</span>
-        <span className="text-[13px] text-[#8491A0]">{t.footer.stack}</span>
         <span className="text-[12px] text-[#6B7280]">{t.footer.rights}</span>
       </div>
 
       {/* Desktop Mode (>= 640px) */}
       <div className="hidden sm:flex mx-auto w-full max-w-7xl flex-wrap items-center justify-center gap-x-3.5 gap-y-2 text-center text-[13.5px] sm:text-[14.5px] text-[#A9A9A9]">
         <span>{t.footer.role} · {t.footer.rights}</span>
-        <span className="text-[#A9A9A9]/60">·</span>
-        <span>{t.footer.stack}</span>
         <span className="text-[#A9A9A9]/60 mx-1">|</span>
         <a
           href="https://github.com/lo-ucif"
