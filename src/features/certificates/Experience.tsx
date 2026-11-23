@@ -146,7 +146,7 @@ const arabicMilestones: Record<string, { title: string; description: string }> =
     description: "العمل الجماعي المكثف ضمن فرق متعددة التخصصات لتطوير أفكار مبتكرة وتحويلها لنماذج برمجية فعالة خلال 48 ساعة.",
   },
   "05": {
-    title: "مطور Full-Stack (MERN Stack)",
+    title: "مطور (MERN Stack)",
     description: "بناء وتطوير تطبيقات ويب متكاملة من الصفر بالاعتماد على منظومة MERN وربطها سحابياً.",
   },
   "06": {
