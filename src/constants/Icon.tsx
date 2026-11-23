@@ -17,7 +17,7 @@ export const GithubIcon = (props: SVGProps<SVGSVGElement>) => (
 );
 
 export const LinkedinIcon = ({
-  fill = "currentColor",
+  fill = "#ffffff",
   ...props
 }: SVGProps<SVGSVGElement>) => (
   <svg

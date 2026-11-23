@@ -190,7 +190,7 @@ export default function ProjectDetail() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.05] border border-white/10 px-3.5 py-1.5 font-['Inter'] text-[13px] text-[#d1d1d1] hover:text-[#5197ff] hover:border-[#5197ff]/40 transition-colors"
               >
-                <LinkedinIcon width={14} height={14} />
+                <LinkedinIcon width={14} height={14} fill="#ffffff" />
                 <span>LinkedIn</span>
               </a>
             )}

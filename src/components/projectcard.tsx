@@ -176,7 +176,7 @@ export default function Projectcard({
                 onClick={stopPropagation}
                 className="inline-flex items-center gap-1.5 font-['Inter'] text-[13px] text-[#8491A0] hover:text-white transition-colors"
               >
-                <LinkedinIcon width={14} height={14} />
+                <LinkedinIcon width={14} height={14} fill="#ffffff" />
                 <span>{isArabic ? "لينكد إن" : "LinkedIn"}</span>
               </a>
             )}

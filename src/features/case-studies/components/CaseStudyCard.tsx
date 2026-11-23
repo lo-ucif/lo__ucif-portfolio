@@ -174,7 +174,7 @@ export function CaseStudyCard(props: CaseStudy) {
                 onClick={stopPropagation}
                 className="inline-flex items-center gap-1.5 font-['Inter'] text-[13px] text-[#8491A0] hover:text-[#5197ff] transition-colors"
               >
-                <LinkedinIcon width={15} height={15} />
+                <LinkedinIcon width={15} height={15} fill="#ffffff" />
                 <span>LinkedIn Post</span>
               </a>
             )}
