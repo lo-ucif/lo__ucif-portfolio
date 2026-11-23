@@ -1,4 +1,4 @@
-import { GithubIcon, LinkedinIcon, BehanceIcon } from "../../constants/Icon";
+import { GithubIcon, LinkedinIcon, BehanceIcon, GmailIcon } from "../../constants/Icon";
 
 export function SiteFooter() {
   return (
@@ -7,6 +7,13 @@ export function SiteFooter() {
       <div className="flex sm:hidden flex-col items-center justify-center gap-1.5 text-center px-4">
         <span className="text-[13.5px] text-[#A9A9A9]">Full-Stack Engineer &amp; Product Builder</span>
         <span className="text-[13px] text-[#8491A0]">React · Django · Figma · PostgreSQL</span>
+        <a
+          href="mailto:louciftamer3@gmail.com"
+          className="inline-flex items-center gap-1.5 text-[13px] text-[#A9A9A9] hover:text-white transition-colors duration-200"
+        >
+          <GmailIcon width={15} height={15} />
+          <span>louciftamer3@gmail.com</span>
+        </a>
         <span className="text-[12px] text-[#6B7280]">© 2026 All rights reserved.</span>
       </div>
 
@@ -16,6 +23,14 @@ export function SiteFooter() {
         <span className="text-[#A9A9A9]/60">·</span>
         <span>React · Django · Figma · PostgreSQL</span>
         <span className="text-[#A9A9A9]/60 mx-1">|</span>
+        <a
+          href="mailto:louciftamer3@gmail.com"
+          aria-label="Email"
+          className="inline-flex items-center gap-1.5 text-[#A9A9A9] hover:text-white transition-colors duration-200"
+        >
+          <GmailIcon width={17} height={17} />
+          <span>louciftamer3@gmail.com</span>
+        </a>
         <a
           href="https://github.com/lo-ucif"
           target="_blank"
