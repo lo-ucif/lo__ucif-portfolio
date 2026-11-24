@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { caseStudies } from "../features/case-studies/data/caseStudiesData";
 import { SiteFooter } from "../components/layout/SiteFooter";
@@ -16,8 +16,10 @@ const easeOut = [0.22, 1, 0.36, 1] as const;
 export default function CaseStudyDetail() {
   const { isArabic, t } = useLanguage();
   const { slug } = useParams<{ slug: string }>();
+  const navigate = useNavigate();
 
   const caseStudyBubbleNav: BubbleItem[] = [
+    { label: isArabic ? "كل التصاميم" : "All Designs", id: "all-designs" },
     { label: isArabic ? "نظرة عامة" : "Overview", id: "overview" },
     { label: isArabic ? "التصميم النهائي" : "Final Design", id: "final-design" },
     { label: isArabic ? "للأعلى ↑" : "Top ↑", id: "top" },
@@ -94,7 +96,9 @@ export default function CaseStudyDetail() {
   }, []);
 
   const handleBubbleClick = (item: BubbleItem) => {
-    if (item.id === "top") {
+    if (item.id === "all-designs") {
+      navigate("/#case-studies");
+    } else if (item.id === "top") {
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
       const el = document.getElementById(item.id);
