@@ -100,7 +100,7 @@ export default function CaseStudyDetail() {
       navigate("/#case-studies");
     } else if (item.id === "top") {
       window.scrollTo({ top: 0, behavior: "smooth" });
-    } else {
+    } else if (/^[a-zA-Z0-9_-]{1,64}$/.test(item.id)) {
       const el = document.getElementById(item.id);
       if (el) {
         el.scrollIntoView({ behavior: "smooth", block: "start" });

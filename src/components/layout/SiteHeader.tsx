@@ -5,15 +5,7 @@ import { useEffect, useState } from "react";
 import { GithubIcon, LinkedinIcon } from "../../constants/Icon";
 import { useLanguage } from "../../contexts/LanguageContext";
 
-type SiteHeaderProps = {
-  activeSection: string;
-  isMobileMenuOpen: boolean;
-  onToggleMobileMenu: () => void;
-  menuButtonRef: React.RefObject<HTMLButtonElement | null>;
-};
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function SiteHeader(_props?: Partial<SiteHeaderProps>) {
+export function SiteHeader() {
   const { language, toggleLanguage, t } = useLanguage();
   const location = useLocation();
   const navigate = useNavigate();
@@ -79,6 +71,7 @@ export function SiteHeader(_props?: Partial<SiteHeaderProps>) {
 
   const handleNavClick = (id: string, e: React.MouseEvent) => {
     e.preventDefault();
+    if (!/^[a-zA-Z0-9_-]{1,64}$/.test(id)) return;
     if (location.pathname === "/") {
       if (id === "home") {
         window.scrollTo({ top: 0, behavior: "smooth" });

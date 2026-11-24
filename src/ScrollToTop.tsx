@@ -1,31 +1,38 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
+// Strict pattern for safe HTML ID attributes to prevent DOM injection / selector injection
+const SAFE_ID_PATTERN = /^[a-zA-Z0-9_-]{1,64}$/;
+
 const ScrollToTop = () => {
   const location = useLocation();
 
   useEffect(() => {
     if (location.hash) {
-      const id = location.hash.replace("#", "");
+      // Sanitize and decode URL hash, stripping leading '#' characters
+      const rawId = decodeURIComponent(location.hash.replace(/^#+/, ""));
 
-      const tryScroll = () => {
-        const el = document.getElementById(id);
-        if (el) {
-          el.scrollIntoView({ behavior: "smooth" });
-          return true;
+      // Only proceed if the ID conforms strictly to a safe identifier
+      if (SAFE_ID_PATTERN.test(rawId)) {
+        const tryScroll = () => {
+          const el = document.getElementById(rawId);
+          if (el) {
+            el.scrollIntoView({ behavior: "smooth" });
+            return true;
+          }
+          return false;
+        };
+
+        if (!tryScroll()) {
+          const timers = [60, 150, 300, 600].map((delay) =>
+            setTimeout(() => {
+              tryScroll();
+            }, delay)
+          );
+          return () => timers.forEach(clearTimeout);
         }
-        return false;
-      };
-
-      if (!tryScroll()) {
-        const timers = [60, 150, 300, 600].map((delay) =>
-          setTimeout(() => {
-            tryScroll();
-          }, delay)
-        );
-        return () => timers.forEach(clearTimeout);
+        return;
       }
-      return;
     }
 
     window.scrollTo({

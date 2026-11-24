@@ -100,7 +100,7 @@ export default function ProjectDetail() {
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else if (item.id === "projects") {
       navigate("/projects");
-    } else {
+    } else if (/^[a-zA-Z0-9_-]{1,64}$/.test(item.id)) {
       const el = document.getElementById(item.id);
       if (el) {
         el.scrollIntoView({ behavior: "smooth", block: "start" });
