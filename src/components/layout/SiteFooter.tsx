@@ -9,7 +9,7 @@ export function SiteFooter() {
       {/* Phone Mode (< 640px) */}
       <div className="flex sm:hidden flex-col items-center justify-center gap-1.5 text-center px-4">
         <span className="text-[13.5px] text-[#A9A9A9]">{t.footer.role}</span>
-        <span className="text-[12px] text-[#6B7280]">{t.footer.rights}</span>
+        <span className="text-[12px] text-[#A9A9A9]">{t.footer.rights}</span>
       </div>
 
       {/* Desktop Mode (>= 640px) */}
