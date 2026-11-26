@@ -3,6 +3,7 @@ import { TechStackSection } from "@/features/skills";
 import { ProjectsSection } from "@/features/projects";
 import { ContactSection } from "@/features/contact";
 import { GithubIcon } from "@/constants/icons";
+import { WHATSAPP_URL } from "@/constants/contact";
 import myimg from "@/assets/profile.webp";
 import FloatingBubble from "@/components/FloatingBubble";
 import { StatusBadge } from "@/components/StatusBadge";
@@ -139,7 +140,7 @@ export default function Home() {
             >
               <motion.a
                 className="rounded-[38.182px] border border-white bg-white px-[16.76px] py-[12.57px] font-['Inter'] text-[16.327px] text-[#161513] transition-colors duration-300 hover:bg-transparent hover:text-white"
-                href="https://wa.me/213676244189"
+                href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.03 }}

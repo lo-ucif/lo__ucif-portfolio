@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { SiteFooter } from "@/layouts/SiteFooter";
 import { GmailIcon } from "@/constants/icons";
+import { WHATSAPP_URL } from "@/constants/contact";
 import { useLanguage } from "@/store/LanguageContext";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
@@ -37,7 +38,7 @@ export function ContactSection() {
           transition={{ duration: 0.6, ease: easeOut }}
         >
           <motion.a
-            href="https://wa.me/213676244189"
+            href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block rounded-[38.182px] border border-white bg-white px-[28px] py-[11px] font-['Inter'] text-[16px] text-[#161513] transition-colors duration-300 hover:bg-transparent hover:text-white"

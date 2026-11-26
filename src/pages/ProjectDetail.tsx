@@ -6,6 +6,7 @@ import { SiteFooter } from "@/layouts/SiteFooter";
 import FloatingBubble, { type BubbleItem } from "@/components/FloatingBubble";
 import { useLanguage } from "@/store/LanguageContext";
 import { projectTranslations } from "@/constants/projectTranslations";
+import { WHATSAPP_URL } from "@/constants/contact";
 import {
   Github2Icon,
   LinkIcon,
@@ -466,7 +467,7 @@ export default function ProjectDetail() {
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
             <a
-              href="https://wa.me/213676244189"
+              href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-[38.182px] border border-white bg-white px-6 py-2.5 font-['Inter'] text-[14.5px] font-medium text-[#161513] transition-colors duration-300 hover:bg-transparent hover:text-white"
