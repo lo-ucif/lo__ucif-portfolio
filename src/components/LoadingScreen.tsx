@@ -1,16 +1,15 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import { motion } from "framer-motion";
 import { EASE_OUT_EXPO } from "@/constants/motion";
+import { useLanguage } from "@/store/LanguageContext";
 
 type LoadingScreenProps = {
   onComplete: () => void;
 };
 
 const WELCOME_DURATION_MS = 2350;
-const FONT_READY_TIMEOUT_MS = 180;
-const LINE_1 = "hi, i'm ahmed";
-const LINE_2 = "explore my work!";
+const FONT_READY_TIMEOUT_MS = 220;
 
 function buildHandwritingTimings(lines: string[]) {
   // Snappy, fluid handwriting cadence across ~2.2s with brief pen-lift pauses
@@ -31,14 +30,23 @@ function buildHandwritingTimings(lines: string[]) {
   });
 }
 
-const LINE_TIMINGS = buildHandwritingTimings([LINE_1, LINE_2]);
-
 export function LoadingScreen({ onComplete }: LoadingScreenProps) {
+  const { isArabic, t } = useLanguage();
+  const line1 = t.loading.line1;
+  const line2 = t.loading.line2;
+
+  const lineTimings = useMemo(
+    () => (isArabic ? [] : buildHandwritingTimings([line1, line2])),
+    [isArabic, line1, line2]
+  );
+
   const onCompleteRef = useRef(onComplete);
   const completedRef = useRef(false);
   const [fontReady, setFontReady] = useState(() => {
     if (typeof document === "undefined" || !document.fonts?.check) return true;
-    return document.fonts.check("64px Itim");
+    return document.fonts.check(
+      isArabic ? '56px "Playpen Sans Arabic"' : "64px Itim"
+    );
   });
 
   useEffect(() => {
@@ -51,7 +59,7 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
     onCompleteRef.current();
   }, []);
 
-  // Wait briefly for the handwritten Itim font so glyphs don't swap mid-stroke
+  // Wait briefly for the handwritten font so glyphs don't swap mid-stroke
   useEffect(() => {
     if (fontReady) return;
     let active = true;
@@ -92,7 +100,7 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
 
   return (
     <motion.div
-      dir="ltr"
+      dir={isArabic ? "rtl" : "ltr"}
       className="loading-screen cursor-pointer"
       aria-live="polite"
       aria-busy="true"
@@ -104,14 +112,32 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
       <div className="hello-svg-wrap">
         {fontReady && (
           <svg
-            viewBox="0 0 800 210"
+            viewBox="0 0 800 220"
             className="block mx-auto w-[min(90vw,720px)] h-auto overflow-visible"
             role="img"
-            aria-label="hi, i'm ahmed explore my work!"
+            aria-label={`${line1} ${line2}`}
           >
             <defs>
-              {/* Diagonal pen-nib feathered edge for natural left-to-right writing sweep */}
-              <linearGradient id="pen-nib-grad" x1="0%" y1="0%" x2="100%" y2="25%">
+              {/* Feathered pen-nib edge for natural writing sweep (LTR vs RTL) */}
+              <linearGradient
+                id="pen-nib-grad-ltr"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="25%"
+              >
+                <stop offset="0%" stopColor="white" stopOpacity="1" />
+                <stop offset="86%" stopColor="white" stopOpacity="1" />
+                <stop offset="100%" stopColor="white" stopOpacity="0" />
+              </linearGradient>
+
+              <linearGradient
+                id="pen-nib-grad-rtl"
+                x1="100%"
+                y1="0%"
+                x2="0%"
+                y2="25%"
+              >
                 <stop offset="0%" stopColor="white" stopOpacity="1" />
                 <stop offset="86%" stopColor="white" stopOpacity="1" />
                 <stop offset="100%" stopColor="white" stopOpacity="0" />
@@ -119,66 +145,107 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
 
               <mask id="write-mask-1">
                 <rect
-                  x="90"
+                  x="40"
                   y="0"
-                  width="620"
-                  height="120"
-                  fill="url(#pen-nib-grad)"
-                  className="hello-sweep hello-sweep-1"
+                  width="720"
+                  height="118"
+                  fill={isArabic ? "url(#pen-nib-grad-rtl)" : "url(#pen-nib-grad-ltr)"}
+                  className={
+                    isArabic
+                      ? "hello-sweep-rtl hello-sweep-1"
+                      : "hello-sweep hello-sweep-1"
+                  }
                 />
               </mask>
 
               <mask id="write-mask-2">
                 <rect
-                  x="90"
-                  y="105"
-                  width="620"
-                  height="105"
-                  fill="url(#pen-nib-grad)"
-                  className="hello-sweep hello-sweep-2"
+                  x="40"
+                  y="108"
+                  width="720"
+                  height="112"
+                  fill={isArabic ? "url(#pen-nib-grad-rtl)" : "url(#pen-nib-grad-ltr)"}
+                  className={
+                    isArabic
+                      ? "hello-sweep-rtl hello-sweep-2"
+                      : "hello-sweep hello-sweep-2"
+                  }
                 />
               </mask>
             </defs>
 
-            <g mask="url(#write-mask-1)">
-              <text
-                x="400"
-                y="84"
-                textAnchor="middle"
-                fontSize="64"
-                className="hello-text"
-              >
-                {LINE_TIMINGS[0].map((item, idx) => (
-                  <tspan
-                    key={`l1-${idx}`}
-                    className="hello-char"
-                    style={{ ["--char-delay"]: `${item.delay.toFixed(3)}s` } as CSSProperties}
+            {isArabic ? (
+              <>
+                {/* Keep Arabic strings unbroken in single <text> nodes to preserve ligatures */}
+                <g mask="url(#write-mask-1)">
+                  <text
+                    x="400"
+                    y="82"
+                    textAnchor="middle"
+                    direction="rtl"
+                    fontSize="56"
+                    className="hello-text-ar hello-ar-line-1"
                   >
-                    {item.char}
-                  </tspan>
-                ))}
-              </text>
-            </g>
+                    {line1}
+                  </text>
+                </g>
 
-            <g mask="url(#write-mask-2)">
-              <text
-                x="400"
-                y="156"
-                textAnchor="middle"
-                fontSize="50"
-                className="hello-text"
-              >
-                {LINE_TIMINGS[1].map((item, idx) => (
-                  <tspan
-                    key={`l2-${idx}`}
-                    className="hello-char"
-                    style={{ ["--char-delay"]: `${item.delay.toFixed(3)}s` } as CSSProperties}
+                <g mask="url(#write-mask-2)">
+                  <text
+                    x="400"
+                    y="160"
+                    textAnchor="middle"
+                    direction="rtl"
+                    fontSize="44"
+                    className="hello-text-ar hello-ar-line-2"
                   >
-                    {item.char}
-                  </tspan>
-                ))}
-              </text>
-            </g>
+                    {line2}
+                  </text>
+                </g>
+              </>
+            ) : (
+              <>
+                <g mask="url(#write-mask-1)">
+                  <text
+                    x="400"
+                    y="84"
+                    textAnchor="middle"
+                    fontSize="64"
+                    className="hello-text"
+                  >
+                    {lineTimings[0]?.map((item, idx) => (
+                      <tspan
+                        key={`l1-${idx}`}
+                        className="hello-char"
+                        style={{ ["--char-delay"]: `${item.delay.toFixed(3)}s` } as CSSProperties}
+                      >
+                        {item.char}
+                      </tspan>
+                    ))}
+                  </text>
+                </g>
+
+                <g mask="url(#write-mask-2)">
+                  <text
+                    x="400"
+                    y="156"
+                    textAnchor="middle"
+                    fontSize="50"
+                    className="hello-text"
+                  >
+                    {lineTimings[1]?.map((item, idx) => (
+                      <tspan
+                        key={`l2-${idx}`}
+                        className="hello-char"
+                        style={{ ["--char-delay"]: `${item.delay.toFixed(3)}s` } as CSSProperties}
+                      >
+                        {item.char}
+                      </tspan>
+                    ))}
+                  </text>
+                </g>
+              </>
+            )}
           </svg>
         )}
       </div>

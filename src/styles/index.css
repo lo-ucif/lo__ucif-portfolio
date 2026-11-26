@@ -115,7 +115,6 @@ html[dir="rtl"] kbd {
   background: #161513;
   color: #ffffff;
   overflow: hidden;
-  direction: ltr;
   will-change: opacity, transform;
 }
 
@@ -132,6 +131,30 @@ html[dir="rtl"] kbd {
   font-weight: 400;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+.hello-text-ar {
+  font-family: "Playpen Sans Arabic", "Tajawal", sans-serif !important;
+  font-weight: 400;
+  fill: #ffffff;
+  stroke: #ffffff;
+  stroke-width: 1.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill-opacity: 0;
+  stroke-opacity: 1;
+}
+
+.hello-ar-line-1 {
+  animation:
+    helloCharInk 0.42s ease-out 0.1s forwards,
+    helloCharSettle 0.35s ease-out 0.32s forwards;
+}
+
+.hello-ar-line-2 {
+  animation:
+    helloCharInk 0.45s ease-out 0.98s forwards,
+    helloCharSettle 0.35s ease-out 1.2s forwards;
 }
 
 .hello-char {
@@ -176,7 +199,12 @@ html[dir="rtl"] kbd {
 }
 
 .hello-sweep {
-  transform: translateX(-620px);
+  transform: translateX(-720px);
+  will-change: transform;
+}
+
+.hello-sweep-rtl {
+  transform: translateX(720px);
   will-change: transform;
 }
 
@@ -188,9 +216,26 @@ html[dir="rtl"] kbd {
   animation: helloSweepMask 1.18s cubic-bezier(0.25, 0.1, 0.25, 1) 0.94s forwards;
 }
 
+.hello-sweep-rtl.hello-sweep-1 {
+  animation: helloSweepMaskRtl 0.98s cubic-bezier(0.25, 0.1, 0.25, 1) 0.03s forwards;
+}
+
+.hello-sweep-rtl.hello-sweep-2 {
+  animation: helloSweepMaskRtl 1.18s cubic-bezier(0.25, 0.1, 0.25, 1) 0.94s forwards;
+}
+
 @keyframes helloSweepMask {
   from {
-    transform: translateX(-620px);
+    transform: translateX(-720px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes helloSweepMaskRtl {
+  from {
+    transform: translateX(720px);
   }
   to {
     transform: translateX(0);
@@ -200,16 +245,20 @@ html[dir="rtl"] kbd {
 @media (prefers-reduced-motion: reduce) {
   .loading-screen,
   .hello-char,
-  .hello-sweep {
+  .hello-text-ar,
+  .hello-sweep,
+  .hello-sweep-rtl {
     animation: none !important;
     transition: none !important;
   }
 
-  .hello-sweep {
+  .hello-sweep,
+  .hello-sweep-rtl {
     transform: translateX(0) !important;
   }
 
-  .hello-char {
+  .hello-char,
+  .hello-text-ar {
     fill-opacity: 1 !important;
     stroke-opacity: 0 !important;
     stroke-dashoffset: 0 !important;

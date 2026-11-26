@@ -1,4 +1,8 @@
 export interface Translations {
+  loading: {
+    line1: string;
+    line2: string;
+  };
   nav: {
     home: string;
     projects: string;
@@ -79,6 +83,10 @@ export interface Translations {
 
 export const translations: Record<"en" | "ar", Translations> = {
   en: {
+    loading: {
+      line1: "hi, i'm ahmed",
+      line2: "explore my work!",
+    },
     nav: {
       home: "Home",
       projects: "Projects",
@@ -157,6 +165,10 @@ export const translations: Record<"en" | "ar", Translations> = {
     },
   },
   ar: {
+    loading: {
+      line1: "أهلاً، أنا أحمد",
+      line2: "استكشف أعمالي!",
+    },
     nav: {
       home: "الرئيسية",
       projects: "المشاريع",

@@ -17,7 +17,9 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<Language>(() => {
     if (typeof window !== "undefined") {
-      const saved = localStorage.getItem("portfolio_lang_user_choice");
+      const saved =
+        localStorage.getItem("portfolio_lang_user_choice") ??
+        localStorage.getItem("portfolio_lang");
       if (saved === "ar" || saved === "en") return saved;
     }
     return "en";
