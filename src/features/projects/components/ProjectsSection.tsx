@@ -3,8 +3,11 @@ import { Link } from "react-router-dom";
 import { projects } from "@/features/projects/data/projectsData";
 import ProjectCard from "@/features/projects/components/ProjectCard";
 import { useLanguage } from "@/store/LanguageContext";
-
-const easeOut = [0.22, 1, 0.36, 1] as const;
+import {
+  EASE_OUT_EXPO,
+  SPRING_INTERACTIVE,
+  VIEWPORT_ONCE,
+} from "@/constants/motion";
 
 // Featured projects spanning web development, full-stack systems, and UI/UX design
 // IDs: 13 (Hafez Platform), 12 (Al-Tabib Al-Hafiz), 3 (AI Matching Platform)
@@ -23,10 +26,10 @@ export function ProjectsSection() {
     >
       <motion.div
         className="flex flex-col items-center gap-2"
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 18 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.6, ease: easeOut }}
+        viewport={VIEWPORT_ONCE}
+        transition={{ duration: 0.55, ease: EASE_OUT_EXPO }}
       >
         <h2 className="font-['Itim'] text-[36px] text-white">
           {t.projects.title}
@@ -45,20 +48,24 @@ export function ProjectsSection() {
 
       {/* CTA to View All Projects */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 18 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        whileHover={{ scale: 1.03 }}
-        whileTap={{ scale: 0.95 }}
-        transition={{ duration: 0.18, ease: "easeOut" }}
+        viewport={VIEWPORT_ONCE}
+        transition={{ duration: 0.55, ease: EASE_OUT_EXPO }}
         className="mt-4"
       >
-        <Link
-          className="inline-block rounded-[38.182px] border border-white px-[24px] py-[13px] font-['Inter'] text-[15px] sm:text-[16px] text-white transition-colors duration-300 hover:bg-white hover:text-[#161513]"
-          to="/projects"
+        <motion.div
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.96 }}
+          transition={SPRING_INTERACTIVE}
         >
-          {t.projects.viewAllProjects} ({projects.length})
-        </Link>
+          <Link
+            className="inline-block rounded-[38.182px] border border-white px-[24px] py-[13px] font-['Inter'] text-[15px] sm:text-[16px] text-white transition-colors duration-300 hover:bg-white hover:text-[#161513]"
+            to="/projects"
+          >
+            {t.projects.viewAllProjects} ({projects.length})
+          </Link>
+        </motion.div>
       </motion.div>
     </section>
   );

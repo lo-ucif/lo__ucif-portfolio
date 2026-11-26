@@ -2,8 +2,7 @@ import { motion } from "framer-motion";
 import { caseStudySummaries } from "@/features/case-studies/data/caseStudiesSummary";
 import { CaseStudyCard } from "@/features/case-studies/components/CaseStudyCard";
 import { useLanguage } from "@/store/LanguageContext";
-
-const easeOut = [0.22, 1, 0.36, 1] as const;
+import { EASE_OUT_EXPO, VIEWPORT_ONCE } from "@/constants/motion";
 
 export function CaseStudiesSection() {
   const { t } = useLanguage();
@@ -16,10 +15,10 @@ export function CaseStudiesSection() {
       {/* Section Header matching existing portfolio style */}
       <motion.div
         className="flex flex-col items-center gap-2"
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 18 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.6, ease: easeOut }}
+        viewport={VIEWPORT_ONCE}
+        transition={{ duration: 0.55, ease: EASE_OUT_EXPO }}
       >
         <h2 className="font-['Itim'] text-[36px] text-white">
           {t.caseStudies.title}

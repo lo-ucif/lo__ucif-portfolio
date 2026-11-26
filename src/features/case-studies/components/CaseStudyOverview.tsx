@@ -2,9 +2,9 @@ import { motion } from "framer-motion";
 import type { CaseStudy } from "@/features/case-studies/types";
 import { DualLaptopShowcase } from "@/features/case-studies/components/DualLaptopShowcase";
 import { useLanguage } from "@/store/LanguageContext";
+import { useAppReady } from "@/store/AppReadyContext";
 import { caseStudyTranslations } from "@/constants/projectTranslations";
-
-const easeOut = [0.22, 1, 0.36, 1] as const;
+import { EASE_OUT_EXPO } from "@/constants/motion";
 
 const projectTypeMapAr: Record<string, string> = {
   "Mobile Application Concept": "نموذج تطبيق للهاتف",
@@ -25,6 +25,7 @@ type CaseStudyOverviewProps = {
 
 export function CaseStudyOverview({ study, onOpenLightbox }: CaseStudyOverviewProps) {
   const { isArabic } = useLanguage();
+  const isReady = useAppReady();
   const mainVisual = study.mockupImage || study.heroImage;
   const csTrans = isArabic ? caseStudyTranslations[study.slug] : null;
 
@@ -40,9 +41,9 @@ export function CaseStudyOverview({ study, onOpenLightbox }: CaseStudyOverviewPr
       {/* Title & Metadata Header */}
       <motion.div
         className="flex flex-col gap-4 text-start"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: easeOut }}
+        initial={{ opacity: 0, y: 18 }}
+        animate={isReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
+        transition={{ duration: 0.55, ease: EASE_OUT_EXPO }}
       >
         <div className="flex flex-wrap items-center gap-2.5">
           <span className="inline-flex items-center rounded-full bg-[#30496b] px-3.5 py-1 font-['Itim'] text-[13px] sm:text-[14px] text-white">
@@ -106,11 +107,11 @@ export function CaseStudyOverview({ study, onOpenLightbox }: CaseStudyOverviewPr
       {/* Main Project Visual */}
       <motion.div
         className="group relative w-full overflow-hidden rounded-3xl border border-white/[0.1] bg-gradient-to-b from-[#1c1b18] via-[#161513] to-[#121212] p-4 sm:p-10 shadow-2xl"
-        initial={{ opacity: 0, y: 25 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: easeOut, delay: 0.15 }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={isReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+        transition={{ duration: 0.6, ease: EASE_OUT_EXPO, delay: 0.1 }}
       >
-        <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#5197ff]/10 blur-[120px] pointer-events-none rounded-full" />
+        <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-96 bg-[radial-gradient(circle,rgba(81,151,255,0.12)_0%,transparent_70%)] pointer-events-none rounded-full" />
 
         <div className="relative flex flex-col items-center justify-center">
           {study.laptopMockups ? (
@@ -139,6 +140,7 @@ export function CaseStudyOverview({ study, onOpenLightbox }: CaseStudyOverviewPr
               className="w-full max-w-4xl h-auto object-contain cursor-pointer transition-transform duration-500 group-hover:scale-[1.01]"
               onClick={() => onOpenLightbox?.(mainVisual, `${study.title} — Main Visual`, study.subtitle)}
               loading="eager"
+              decoding="async"
             />
           )}
 

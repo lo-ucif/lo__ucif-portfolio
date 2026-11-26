@@ -1,33 +1,81 @@
+import { lazy, Suspense, useEffect } from "react";
 import { motion } from "framer-motion";
-import { TechStackSection } from "@/features/skills";
-import { ProjectsSection } from "@/features/projects";
-import { ContactSection } from "@/features/contact";
 import { GithubIcon } from "@/constants/icons";
 import { WHATSAPP_URL } from "@/constants/contact";
 import myimg from "@/assets/profile.webp";
-import FloatingBubble from "@/components/FloatingBubble";
 import { StatusBadge } from "@/components/StatusBadge";
-import { ExperienceSection } from "@/features/experience";
-import { CertificatesSection } from "@/features/certificates";
-import { CaseStudiesSection } from "@/features/case-studies";
 import { ServicesCard } from "@/features/services";
 import { useAppReady } from "@/store/AppReadyContext";
 import { useLanguage } from "@/store/LanguageContext";
+import {
+  EASE_OUT_EXPO,
+  SPRING_INTERACTIVE,
+  SPRING_SMOOTH,
+  VIEWPORT_ONCE,
+} from "@/constants/motion";
 
-const easeOut = [0.22, 1, 0.36, 1] as const;
+const loadExperienceSection = () => import("@/features/experience/components/ExperienceSection");
+const loadProjectsSection = () =>
+  import("@/features/projects/components/ProjectsSection").then((m) => ({
+    default: m.ProjectsSection,
+  }));
+const loadCaseStudiesSection = () =>
+  import("@/features/case-studies/components/CaseStudiesSection").then((m) => ({
+    default: m.CaseStudiesSection,
+  }));
+const loadTechStackSection = () =>
+  import("@/features/skills/components/TechStackSection").then((m) => ({
+    default: m.TechStackSection,
+  }));
+const loadCertificatesSection = () => import("@/features/certificates/components/CertificatesSection");
+const loadContactSection = () =>
+  import("@/features/contact/components/ContactSection").then((m) => ({
+    default: m.ContactSection,
+  }));
+const loadFloatingBubble = () => import("@/components/FloatingBubble");
+
+const ExperienceSection = lazy(loadExperienceSection);
+const ProjectsSection = lazy(loadProjectsSection);
+const CaseStudiesSection = lazy(loadCaseStudiesSection);
+const TechStackSection = lazy(loadTechStackSection);
+const CertificatesSection = lazy(loadCertificatesSection);
+const ContactSection = lazy(loadContactSection);
+const FloatingBubble = lazy(loadFloatingBubble);
 
 export default function Home() {
   const isReady = useAppReady();
   const { t } = useLanguage();
+
+  // Prefetch below-the-fold sections silently while the loading screen plays
+  useEffect(() => {
+    const prefetchAll = () => {
+      void loadExperienceSection();
+      void loadProjectsSection();
+      void loadCaseStudiesSection();
+      void loadTechStackSection();
+      void loadCertificatesSection();
+      void loadContactSection();
+      void loadFloatingBubble();
+    };
+
+    if (window.location.hash) {
+      prefetchAll();
+      return;
+    }
+
+    const timer = window.setTimeout(prefetchAll, 120);
+    return () => window.clearTimeout(timer);
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#161513] px-5 pb-0 pt-5 text-[#e1e1e1] sm:px-10 lg:px-20 min-[601px]:pt-30 max-[600px]:pt-22.5">
       <div className="flex flex-col min-h-screen gap-20 mx-auto">
         <main className="flex flex-col items-center gap-40 max-[600px]:gap-50">
           <section id="home" className="flex flex-col items-center gap-6.25 text-center scroll-mt-24">
             <motion.div
-              initial={{ opacity: 0, y: 20, scale: 0.94 }}
-              animate={isReady ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 20, scale: 0.94 }}
-              transition={{ duration: 0.55, ease: easeOut }}
+              initial={{ opacity: 0, y: 18, scale: 0.95 }}
+              animate={isReady ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 18, scale: 0.95 }}
+              transition={{ duration: 0.52, ease: EASE_OUT_EXPO }}
             >
               <div className="relative grid h-53.25 w-53.25 place-items-center overflow-hidden rounded-full bg-[#262626]">
                 <picture>
@@ -39,11 +87,9 @@ export default function Home() {
                     loading="eager"
                     decoding="async"
                     fetchPriority="high"
-                    whileHover={{
-                      scale: 1.2,
-                    }}
-                    whileTap={{ scale: 1.4 }}
-                    transition={{ duration: 0.35, ease: easeOut }}
+                    whileHover={{ scale: 1.08 }}
+                    whileTap={{ scale: 1.02 }}
+                    transition={SPRING_SMOOTH}
                   />
                 </picture>
               </div>
@@ -53,41 +99,18 @@ export default function Home() {
               <div className="flex flex-col items-center">
                 <motion.div
                   className="font-['Itim'] text-[64px] text-white max-[600px]:w-82.5 max-[600px]:text-[48px]"
-                  initial="hidden"
-                  animate={isReady ? "visible" : "hidden"}
-                  variants={{
-                    hidden: {},
-                    visible: {
-                      transition: {
-                        staggerChildren: 0.14,
-                        delayChildren: 0.12,
-                      },
-                    },
-                  }}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={isReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+                  transition={{ duration: 0.52, ease: EASE_OUT_EXPO, delay: 0.08 }}
                 >
-                  <motion.span
-                    className="block"
-                    variants={{
-                      hidden: { opacity: 0, x: -24 },
-                      visible: {
-                        opacity: 1,
-                        x: 0,
-                        transition: {
-                          duration: 0.55,
-                          ease: easeOut,
-                        },
-                      },
-                    }}
-                  >
-                    {t.hero.name}
-                  </motion.span>
+                  <span className="block">{t.hero.name}</span>
                 </motion.div>
 
                 <motion.div
                   className="flex items-center gap-2.5 font-['Itim'] text-[26px] max-[600px]:text-[19.58px]"
-                  initial={{ opacity: 0, y: 18 }}
-                  animate={isReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
-                  transition={{ duration: 0.5, ease: easeOut, delay: 0.24 }}
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={isReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
+                  transition={{ duration: 0.48, ease: EASE_OUT_EXPO, delay: 0.14 }}
                 >
                   <span className="text-[#a9a9a9]">
                     {t.hero.taglinePrefix} <span className="text-[#5197FF]">{t.hero.taglineHighlight}</span>
@@ -96,12 +119,18 @@ export default function Home() {
               </div>
 
               <motion.div
-                initial={{ opacity: 0, y: 14, scale: 0.92 }}
-                animate={isReady ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 14, scale: 0.92 }}
-                transition={{ duration: 0.45, ease: easeOut, delay: 0.32 }}
-                whileHover={{
-                  scale: 1.2,
+                initial="hidden"
+                animate={isReady ? "visible" : "hidden"}
+                variants={{
+                  hidden: { opacity: 0, y: 12, scale: 0.94 },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    transition: { duration: 0.45, ease: EASE_OUT_EXPO, delay: 0.2 },
+                  },
                 }}
+                whileHover={{ scale: 1.07, transition: SPRING_INTERACTIVE }}
               >
                 <StatusBadge />
               </motion.div>
@@ -109,16 +138,16 @@ export default function Home() {
 
             <motion.p
               className="max-w-180 font-['Inter'] text-[16px] leading-[1.6] text-[#e1e1e1]"
-              initial={{ opacity: 0, y: 16 }}
-              animate={isReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
-              transition={{ duration: 0.5, ease: easeOut, delay: 0.38 }}
+              initial={{ opacity: 0, y: 14 }}
+              animate={isReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
+              transition={{ duration: 0.48, ease: EASE_OUT_EXPO, delay: 0.25 }}
             >
               {t.hero.roleSubtitle}
             </motion.p>
             <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              animate={isReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
-              transition={{ duration: 0.45, ease: easeOut, delay: 0.44 }}
+              initial={{ opacity: 0, y: 12 }}
+              animate={isReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
+              transition={{ duration: 0.45, ease: EASE_OUT_EXPO, delay: 0.3 }}
             >
               <div className="inline-flex items-center gap-1.5 px-2.5 py-1.5 font-['Itim'] text-[16px] text-[#8491A0] max-[600px]:rounded-[15px] max-[600px]:px-0 max-[600px]:py-px max-[600px]:text-[12px]">
                 {t.hero.lastUpdate}
@@ -126,9 +155,9 @@ export default function Home() {
             </motion.div>
             <motion.div
               className="flex flex-wrap items-center justify-center gap-[16.76px]"
-              initial={{ opacity: 0, y: 16 }}
-              animate={isReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
-              transition={{ duration: 0.5, ease: easeOut, delay: 0.5 }}
+              initial={{ opacity: 0, y: 14 }}
+              animate={isReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
+              transition={{ duration: 0.48, ease: EASE_OUT_EXPO, delay: 0.35 }}
             >
               <motion.a
                 className="rounded-[38.182px] border border-white bg-white px-[16.76px] py-[12.57px] font-['Inter'] text-[16.327px] text-[#161513] transition-colors duration-300 hover:bg-transparent hover:text-white"
@@ -136,8 +165,8 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ duration: 0.18, ease: "easeOut" }}
+                whileTap={{ scale: 0.96 }}
+                transition={SPRING_INTERACTIVE}
               >
                 {t.hero.letsTalk}
               </motion.a>
@@ -147,8 +176,8 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ duration: 0.18, ease: "easeOut" }}
+                whileTap={{ scale: 0.96 }}
+                transition={SPRING_INTERACTIVE}
               >
                 GitHub
                 <div>
@@ -164,19 +193,19 @@ export default function Home() {
           >
             <motion.h2
               className="font-['Itim'] text-[36px] text-white"
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, ease: easeOut }}
+              viewport={VIEWPORT_ONCE}
+              transition={{ duration: 0.55, ease: EASE_OUT_EXPO }}
             >
               {t.about.title}
             </motion.h2>
             <motion.p
               className="max-w-225 font-['Inter'] text-[17px] leading-[1.6] text-[#e1e1e1]"
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, ease: easeOut }}
+              viewport={VIEWPORT_ONCE}
+              transition={{ duration: 0.55, ease: EASE_OUT_EXPO, delay: 0.06 }}
             >
               {t.about.bio}
             </motion.p>
@@ -184,38 +213,50 @@ export default function Home() {
             {/* Services & Expertise Compact Card */}
             <ServicesCard />
 
-            <motion.a
-              href="/Ahmed_Loucif_CV.pdf"
-              download
-              className="inline-block rounded-[38.182px] border border-white px-[16.76px] py-[12.57px] font-['Inter'] text-[16.327px] text-white transition-colors duration-300 hover:bg-white hover:text-[#161513]"
-              initial={{ opacity: 0, y: 20 }}
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ duration: 0.18, ease: "easeOut" }}
+              viewport={VIEWPORT_ONCE}
+              transition={{ duration: 0.55, ease: EASE_OUT_EXPO }}
             >
-              {t.about.downloadCV}
-            </motion.a>
+              <motion.a
+                href="/Ahmed_Loucif_CV.pdf"
+                download
+                className="inline-block rounded-[38.182px] border border-white px-[16.76px] py-[12.57px] font-['Inter'] text-[16.327px] text-white transition-colors duration-300 hover:bg-white hover:text-[#161513]"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.96 }}
+                transition={SPRING_INTERACTIVE}
+              >
+                {t.about.downloadCV}
+              </motion.a>
+            </motion.div>
           </section>
 
-          <ExperienceSection />
-          <ProjectsSection />
-          <CaseStudiesSection />
-          <TechStackSection />
-          <CertificatesSection />
+          <Suspense fallback={null}>
+            <ExperienceSection />
+            <ProjectsSection />
+            <CaseStudiesSection />
+            <TechStackSection />
+            <CertificatesSection />
+          </Suspense>
         </main>
 
-        <ContactSection />
+        <Suspense fallback={null}>
+          <ContactSection />
+        </Suspense>
       </div>
-      <FloatingBubble
-        items={[
-          { label: t.floatingBubble.about, id: "about" },
-          { label: t.floatingBubble.projects, id: "projects" },
-          { label: t.floatingBubble.caseStudies, id: "case-studies" },
-          { label: t.floatingBubble.contact, id: "contact" },
-        ]}
-      />
+      {isReady && (
+        <Suspense fallback={null}>
+          <FloatingBubble
+            items={[
+              { label: t.floatingBubble.about, id: "about" },
+              { label: t.floatingBubble.projects, id: "projects" },
+              { label: t.floatingBubble.caseStudies, id: "case-studies" },
+              { label: t.floatingBubble.contact, id: "contact" },
+            ]}
+          />
+        </Suspense>
+      )}
     </div>
   );
 }

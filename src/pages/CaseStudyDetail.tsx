@@ -11,12 +11,13 @@ import { BehanceIcon, FigmaIcon } from "@/constants/icons";
 import FloatingBubble, { type BubbleItem } from "@/components/FloatingBubble";
 import { ImageLightboxModal, type LightboxItem } from "@/components/ImageLightboxModal";
 import { useLanguage } from "@/store/LanguageContext";
+import { useAppReady } from "@/store/AppReadyContext";
 import { WHATSAPP_URL } from "@/constants/contact";
-
-const easeOut = [0.22, 1, 0.36, 1] as const;
+import { EASE_OUT_EXPO } from "@/constants/motion";
 
 export default function CaseStudyDetail() {
   const { isArabic, t } = useLanguage();
+  const isReady = useAppReady();
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
 
@@ -74,27 +75,39 @@ export default function CaseStudyDetail() {
   const [activeBubbleId, setActiveBubbleId] = useState<string>("overview");
 
   useEffect(() => {
-    const handleScroll = () => {
+    let rafId = 0;
+
+    const updateActiveBubble = () => {
+      rafId = 0;
       const scrollY = window.scrollY;
       if (scrollY < 250) {
-        setActiveBubbleId("overview");
+        setActiveBubbleId((prev) => (prev === "overview" ? prev : "overview"));
         return;
       }
       const sectionIds = ["final-design", "overview"];
       for (const id of sectionIds) {
         const el = document.getElementById(id);
         if (el) {
-          const top = el.getBoundingClientRect().top + window.scrollY;
+          const top = el.getBoundingClientRect().top + scrollY;
           if (scrollY >= top - 260) {
-            setActiveBubbleId(id);
+            setActiveBubbleId((prev) => (prev === id ? prev : id));
             return;
           }
         }
       }
     };
+
+    const handleScroll = () => {
+      if (rafId !== 0) return;
+      rafId = window.requestAnimationFrame(updateActiveBubble);
+    };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+    updateActiveBubble();
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (rafId !== 0) window.cancelAnimationFrame(rafId);
+    };
   }, []);
 
   const handleBubbleClick = (item: BubbleItem) => {
@@ -134,8 +147,8 @@ export default function CaseStudyDetail() {
         {/* Back Navigation Bar */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45, ease: easeOut }}
+          animate={isReady ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }}
+          transition={{ duration: 0.45, ease: EASE_OUT_EXPO }}
           className="flex flex-wrap items-center justify-between gap-4 border-b border-white/[0.08] pb-5"
         >
           <div className="flex items-center gap-4">

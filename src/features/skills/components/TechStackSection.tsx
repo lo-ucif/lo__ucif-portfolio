@@ -2,8 +2,11 @@ import { motion } from "framer-motion";
 import { skillCategories } from "@/features/skills/data/skillsData";
 import { useLanguage } from "@/store/LanguageContext";
 import { skillCategoryTranslations } from "@/constants/projectTranslations";
-
-const easeOut = [0.22, 1, 0.36, 1] as const;
+import {
+  EASE_OUT_EXPO,
+  SPRING_INTERACTIVE,
+  VIEWPORT_ONCE,
+} from "@/constants/motion";
 
 export function TechStackSection() {
   const { isArabic, t } = useLanguage();
@@ -16,10 +19,10 @@ export function TechStackSection() {
       {/* Section Header */}
       <motion.div
         className="flex flex-col items-center gap-2"
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 18 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.6, ease: easeOut }}
+        viewport={VIEWPORT_ONCE}
+        transition={{ duration: 0.55, ease: EASE_OUT_EXPO }}
       >
         <h2 className="font-['Itim'] text-[36px] sm:text-[40px] text-white">
           {t.techStack.title}
@@ -40,13 +43,20 @@ export function TechStackSection() {
             <motion.div
               key={category.title}
               className="flex flex-col gap-4 text-start items-start"
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.15 }}
-              transition={{
-                duration: 0.6,
-                ease: easeOut,
-                delay: groupIndex * 0.08,
+              initial="hidden"
+              whileInView="visible"
+              viewport={VIEWPORT_ONCE}
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    duration: 0.55,
+                    ease: EASE_OUT_EXPO,
+                    delay: Math.min(groupIndex * 0.06, 0.18),
+                  },
+                },
               }}
             >
               <div>
@@ -69,9 +79,9 @@ export function TechStackSection() {
                     <motion.div
                       key={item.label}
                       className="inline-flex items-center gap-2 rounded-[22px] bg-[#303030] px-3.5 py-2 text-white font-['Itim'] text-[15px] sm:text-[16px] transition-colors duration-200 hover:bg-[#3d3d3d] cursor-default"
-                      whileHover={{ scale: 1.05 }}
+                      whileHover={{ scale: 1.05, y: -1 }}
                       whileTap={{ scale: 0.97 }}
-                      transition={{ duration: 0.2, ease: "easeOut" }}
+                      transition={SPRING_INTERACTIVE}
                     >
                       <div className="flex h-5 w-5 shrink-0 items-center justify-center">
                         <Icon

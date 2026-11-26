@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
-
-const easeOut = [0.22, 1, 0.36, 1] as const;
+import { useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
+import { useAppReady } from "@/store/AppReadyContext";
+import { EASE_OUT_EXPO, VIEWPORT_ONCE } from "@/constants/motion";
 
 interface LaptopMobileShowcaseProps {
   laptop: string;
@@ -20,33 +20,38 @@ export function LaptopMobileShowcase({
   className = "",
   onDeviceClick,
 }: LaptopMobileShowcaseProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { margin: "120px" });
+  const isReady = useAppReady();
   const [hoveredDevice, setHoveredDevice] = useState<"laptop" | "mobile" | null>(null);
 
   const isInteractive = isCardHovered || hoveredDevice !== null;
+  const shouldFloat = isReady && isInView && !isInteractive;
 
   return (
     <div
+      ref={containerRef}
       className={`relative w-full aspect-[5947/3592] flex items-center justify-center select-none overflow-visible ${className}`}
     >
-      {/* Soft Ambient Spotlight Glow */}
+      {/* Soft Ambient Spotlight Glow (radial gradient avoids heavy blur-3xl compositing) */}
       <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[480px] lg:w-[560px] h-[300px] sm:h-[420px] lg:h-[480px] bg-[#5197ff]/12 rounded-full blur-3xl pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[360px] sm:w-[500px] lg:w-[580px] h-[320px] sm:h-[440px] lg:h-[500px] rounded-full bg-[radial-gradient(circle,rgba(81,151,255,0.16)_0%,rgba(81,151,255,0.05)_45%,transparent_72%)] pointer-events-none"
         animate={{
-          scale: isInteractive ? 1.15 : 1,
-          opacity: isInteractive ? 0.95 : 0.45,
+          scale: isInteractive ? 1.12 : 1,
+          opacity: isInteractive ? 0.95 : 0.55,
         }}
-        transition={{ duration: 0.5, ease: easeOut }}
+        transition={{ duration: 0.48, ease: EASE_OUT_EXPO }}
       />
 
       {/* Dynamic Ground Shadow underneath the laptop base */}
       <motion.div
-        className="absolute bottom-[4.5%] left-1/2 -translate-x-1/2 w-[88%] h-[20px] bg-black/85 rounded-full blur-xl pointer-events-none"
+        className="absolute bottom-[4%] left-1/2 -translate-x-1/2 w-[90%] h-[30px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.85)_0%,transparent_72%)] pointer-events-none"
         animate={{
           scaleX: isInteractive ? 1.04 : 1,
-          opacity: isInteractive ? 0.95 : 0.7,
+          opacity: isInteractive ? 0.95 : 0.72,
           y: isInteractive ? 4 : 0,
         }}
-        transition={{ duration: 0.45, ease: easeOut }}
+        transition={{ duration: 0.45, ease: EASE_OUT_EXPO }}
       />
 
       {/* ========================================================= */}
@@ -63,10 +68,10 @@ export function LaptopMobileShowcase({
           height: "95.74%",
           zIndex: hoveredDevice === "laptop" ? 25 : 10,
         }}
-        initial={{ opacity: 0, y: 25 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.15 }}
-        transition={{ duration: 0.7, ease: easeOut }}
+        viewport={VIEWPORT_ONCE}
+        transition={{ duration: 0.6, ease: EASE_OUT_EXPO }}
         onMouseEnter={() => setHoveredDevice("laptop")}
         onMouseLeave={() => setHoveredDevice(null)}
         onClick={(e) => {
@@ -77,23 +82,30 @@ export function LaptopMobileShowcase({
         }}
       >
         <motion.div
-          className="w-full h-full cursor-pointer"
+          className="w-full h-full cursor-pointer transform-gpu"
           animate={{
             y:
               hoveredDevice === "laptop"
                 ? -8
                 : isCardHovered
                   ? -4
-                  : [-2, 3, -2],
+                  : shouldFloat
+                    ? [-2.5, 2.5]
+                    : 0,
             scale: hoveredDevice === "laptop" ? 1.03 : isCardHovered ? 1.015 : 1,
           }}
           transition={
-            isCardHovered || hoveredDevice === "laptop"
-              ? { duration: 0.45, ease: easeOut }
-              : {
-                  y: { duration: 5.4, repeat: Infinity, ease: "easeInOut" },
-                  scale: { duration: 0.45, ease: easeOut },
+            shouldFloat
+              ? {
+                  y: {
+                    duration: 2.7,
+                    repeat: Infinity,
+                    repeatType: "mirror",
+                    ease: "easeInOut",
+                  },
+                  scale: { duration: 0.42, ease: EASE_OUT_EXPO },
                 }
+              : { duration: 0.42, ease: EASE_OUT_EXPO }
           }
         >
           <img
@@ -101,7 +113,7 @@ export function LaptopMobileShowcase({
             alt={`${title} — Desktop Preview`}
             loading="lazy"
             decoding="async"
-            className="w-full h-full object-contain filter drop-shadow-[0_15px_30px_rgba(0,0,0,0.65)]"
+            className="w-full h-full object-contain drop-shadow-[0_14px_24px_rgba(0,0,0,0.58)]"
           />
         </motion.div>
       </motion.div>
@@ -120,10 +132,10 @@ export function LaptopMobileShowcase({
           height: "73.55%",
           zIndex: hoveredDevice === "laptop" ? 15 : 30,
         }}
-        initial={{ opacity: 0, y: 35, rotate: 2 }}
+        initial={{ opacity: 0, y: 26, rotate: 2 }}
         whileInView={{ opacity: 1, y: 0, rotate: 0 }}
-        viewport={{ once: true, amount: 0.15 }}
-        transition={{ duration: 0.7, delay: 0.15, ease: easeOut }}
+        viewport={VIEWPORT_ONCE}
+        transition={{ duration: 0.62, delay: 0.1, ease: EASE_OUT_EXPO }}
         onMouseEnter={() => setHoveredDevice("mobile")}
         onMouseLeave={() => setHoveredDevice(null)}
         onClick={(e) => {
@@ -134,7 +146,7 @@ export function LaptopMobileShowcase({
         }}
       >
         <motion.div
-          className="w-full h-full cursor-pointer"
+          className="w-full h-full cursor-pointer transform-gpu"
           animate={{
             x:
               hoveredDevice === "mobile"
@@ -144,32 +156,48 @@ export function LaptopMobileShowcase({
                   : 0,
             y:
               hoveredDevice === "mobile"
-                ? -16
+                ? -14
                 : isCardHovered
-                  ? -10
-                  : [-4, 4, -4],
+                  ? -8
+                  : shouldFloat
+                    ? [-3.5, 3.5]
+                    : 0,
             scale:
               hoveredDevice === "mobile"
-                ? 1.10
+                ? 1.09
                 : isCardHovered
-                  ? 1.06
+                  ? 1.05
                   : 1,
             rotate:
               hoveredDevice === "mobile"
                 ? -2
                 : isCardHovered
-                  ? -1.2
-                  : [0, 0.8, 0],
+                  ? -1.1
+                  : shouldFloat
+                    ? [-0.5, 0.7]
+                    : 0,
           }}
           transition={
-            isCardHovered || hoveredDevice === "mobile"
-              ? { duration: 0.4, ease: easeOut }
-              : {
-                  y: { duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 0.4 },
-                  rotate: { duration: 5.6, repeat: Infinity, ease: "easeInOut", delay: 0.4 },
-                  scale: { duration: 0.4, ease: easeOut },
-                  x: { duration: 0.4, ease: easeOut },
+            shouldFloat
+              ? {
+                  y: {
+                    duration: 2.4,
+                    repeat: Infinity,
+                    repeatType: "mirror",
+                    ease: "easeInOut",
+                    delay: 0.35,
+                  },
+                  rotate: {
+                    duration: 2.8,
+                    repeat: Infinity,
+                    repeatType: "mirror",
+                    ease: "easeInOut",
+                    delay: 0.35,
+                  },
+                  scale: { duration: 0.38, ease: EASE_OUT_EXPO },
+                  x: { duration: 0.38, ease: EASE_OUT_EXPO },
                 }
+              : { duration: 0.38, ease: EASE_OUT_EXPO }
           }
         >
           <img
@@ -177,7 +205,7 @@ export function LaptopMobileShowcase({
             alt={`${title} — Mobile Preview`}
             loading="lazy"
             decoding="async"
-            className="w-full h-full object-contain filter drop-shadow-[0_22px_35px_rgba(0,0,0,0.95)] drop-shadow-[0_4px_10px_rgba(0,0,0,0.7)]"
+            className="w-full h-full object-contain drop-shadow-[0_18px_28px_rgba(0,0,0,0.8)]"
           />
         </motion.div>
       </motion.div>

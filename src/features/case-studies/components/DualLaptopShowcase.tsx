@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
 import type { LaptopMockups } from "@/features/case-studies/types";
-
-const easeOut = [0.22, 1, 0.36, 1] as const;
+import { useAppReady } from "@/store/AppReadyContext";
+import { EASE_OUT_EXPO, VIEWPORT_ONCE } from "@/constants/motion";
 
 interface DualLaptopShowcaseProps {
   laptops: LaptopMockups;
@@ -19,34 +19,39 @@ export function DualLaptopShowcase({
   className = "",
   onLaptopClick,
 }: DualLaptopShowcaseProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { margin: "120px" });
+  const isReady = useAppReady();
   // Track direct hover on individual laptops
   const [hoveredLaptop, setHoveredLaptop] = useState<"left" | "right" | null>(null);
 
   const isInteractive = isCardHovered || hoveredLaptop !== null;
+  const shouldFloat = isReady && isInView && !isInteractive;
 
   return (
     <div
+      ref={containerRef}
       className={`relative w-full max-w-[560px] aspect-[8787/4909] flex items-center justify-center select-none ${className}`}
     >
       {/* Ambient Spotlight Glow */}
       <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[460px] lg:w-[520px] h-[320px] sm:h-[460px] lg:h-[480px] bg-[#5197ff]/14 rounded-full blur-3xl pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[480px] lg:w-[540px] h-[340px] sm:h-[480px] lg:h-[500px] rounded-full bg-[radial-gradient(circle,rgba(81,151,255,0.16)_0%,rgba(81,151,255,0.05)_45%,transparent_72%)] pointer-events-none"
         animate={{
-          scale: isCardHovered || hoveredLaptop ? 1.18 : 1,
-          opacity: isCardHovered || hoveredLaptop ? 0.95 : 0.65,
+          scale: isInteractive ? 1.15 : 1,
+          opacity: isInteractive ? 0.95 : 0.65,
         }}
-        transition={{ duration: 0.55, ease: easeOut }}
+        transition={{ duration: 0.48, ease: EASE_OUT_EXPO }}
       />
 
       {/* Dynamic Ground Shadow that reacts to elevation */}
       <motion.div
-        className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[280px] sm:w-[440px] h-[26px] bg-black/90 rounded-full blur-2xl pointer-events-none"
+        className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[300px] sm:w-[460px] h-[34px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.88)_0%,transparent_72%)] pointer-events-none"
         animate={{
-          scaleX: hoveredLaptop ? 1.1 : isCardHovered ? 1.04 : 1,
+          scaleX: hoveredLaptop ? 1.08 : isCardHovered ? 1.04 : 1,
           opacity: hoveredLaptop ? 0.95 : isCardHovered ? 0.85 : 0.75,
           y: hoveredLaptop ? 4 : isCardHovered ? 2 : 0,
         }}
-        transition={{ duration: 0.45, ease: easeOut }}
+        transition={{ duration: 0.42, ease: EASE_OUT_EXPO }}
       />
 
       {/* ========================================================= */}
@@ -55,10 +60,10 @@ export function DualLaptopShowcase({
       <motion.div
         className="absolute left-0 top-0 w-[74.4%] h-[80.4%] origin-bottom-right"
         style={{ zIndex: hoveredLaptop === "left" ? 30 : 10 }}
-        initial={{ opacity: 0, x: -35, y: 30 }}
+        initial={{ opacity: 0, x: -28, y: 22 }}
         whileInView={{ opacity: 1, x: 0, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.8, delay: 0.1, ease: easeOut }}
+        viewport={VIEWPORT_ONCE}
+        transition={{ duration: 0.65, delay: 0.06, ease: EASE_OUT_EXPO }}
         onMouseEnter={() => setHoveredLaptop("left")}
         onMouseLeave={() => setHoveredLaptop(null)}
         onClick={(e) => {
@@ -70,7 +75,7 @@ export function DualLaptopShowcase({
       >
         {/* Continuous Levitation + Interactive Fan-Out & +10% Hover */}
         <motion.div
-          className="relative w-full h-full cursor-pointer"
+          className="relative w-full h-full cursor-pointer transform-gpu"
           animate={{
             x:
               hoveredLaptop === "left"
@@ -87,7 +92,9 @@ export function DualLaptopShowcase({
                   ? 8
                   : isCardHovered
                     ? -6
-                    : [-4, 5, -4],
+                    : shouldFloat
+                      ? [-4, 4]
+                      : 0,
             rotate:
               hoveredLaptop === "left"
                 ? -1
@@ -95,10 +102,12 @@ export function DualLaptopShowcase({
                   ? 0
                   : isCardHovered
                     ? -0.5
-                    : [0, -0.8, 0],
+                    : shouldFloat
+                      ? [-0.6, 0.4]
+                      : 0,
             scale:
               hoveredLaptop === "left"
-                ? 1.1
+                ? 1.08
                 : hoveredLaptop === "right"
                   ? 0.96
                   : isCardHovered
@@ -107,15 +116,25 @@ export function DualLaptopShowcase({
             opacity: hoveredLaptop === "right" ? 0.82 : 1,
           }}
           transition={
-            isInteractive
-              ? { duration: 0.45, ease: easeOut }
-              : {
-                  y: { duration: 5.6, repeat: Infinity, ease: "easeInOut" },
-                  rotate: { duration: 6.2, repeat: Infinity, ease: "easeInOut" },
-                  x: { duration: 0.45, ease: easeOut },
-                  scale: { duration: 0.45, ease: easeOut },
-                  opacity: { duration: 0.45, ease: easeOut },
+            shouldFloat
+              ? {
+                  y: {
+                    duration: 2.7,
+                    repeat: Infinity,
+                    repeatType: "mirror",
+                    ease: "easeInOut",
+                  },
+                  rotate: {
+                    duration: 3.1,
+                    repeat: Infinity,
+                    repeatType: "mirror",
+                    ease: "easeInOut",
+                  },
+                  x: { duration: 0.42, ease: EASE_OUT_EXPO },
+                  scale: { duration: 0.42, ease: EASE_OUT_EXPO },
+                  opacity: { duration: 0.35, ease: EASE_OUT_EXPO },
                 }
+              : { duration: 0.42, ease: EASE_OUT_EXPO }
           }
         >
           <img
@@ -123,12 +142,12 @@ export function DualLaptopShowcase({
             alt={`${title} — Left Laptop Interface`}
             loading="lazy"
             decoding="async"
-            className={`w-full h-full object-contain block transition-all duration-300 ${
+            className={`w-full h-full object-contain block transition-[filter] duration-300 ${
               hoveredLaptop === "left"
-                ? "filter drop-shadow-[0_32px_50px_rgba(0,0,0,0.98)] brightness-105"
+                ? "drop-shadow-[0_24px_36px_rgba(0,0,0,0.9)] brightness-105"
                 : hoveredLaptop === "right"
-                  ? "filter drop-shadow-[0_12px_20px_rgba(0,0,0,0.6)] brightness-90"
-                  : "filter drop-shadow-[0_20px_32px_rgba(0,0,0,0.85)] brightness-100"
+                  ? "drop-shadow-[0_12px_18px_rgba(0,0,0,0.55)] brightness-90"
+                  : "drop-shadow-[0_18px_26px_rgba(0,0,0,0.75)] brightness-100"
             }`}
           />
         </motion.div>
@@ -140,10 +159,10 @@ export function DualLaptopShowcase({
       <motion.div
         className="absolute left-[25.6%] top-[19.6%] w-[74.4%] h-[80.4%] origin-bottom-left"
         style={{ zIndex: hoveredLaptop === "right" ? 30 : hoveredLaptop === "left" ? 10 : 20 }}
-        initial={{ opacity: 0, x: 35, y: 30 }}
+        initial={{ opacity: 0, x: 28, y: 22 }}
         whileInView={{ opacity: 1, x: 0, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.8, delay: 0.25, ease: easeOut }}
+        viewport={VIEWPORT_ONCE}
+        transition={{ duration: 0.65, delay: 0.14, ease: EASE_OUT_EXPO }}
         onMouseEnter={() => setHoveredLaptop("right")}
         onMouseLeave={() => setHoveredLaptop(null)}
         onClick={(e) => {
@@ -155,7 +174,7 @@ export function DualLaptopShowcase({
       >
         {/* Continuous Levitation + Interactive Fan-Out & +10% Hover */}
         <motion.div
-          className="relative w-full h-full cursor-pointer"
+          className="relative w-full h-full cursor-pointer transform-gpu"
           animate={{
             x:
               hoveredLaptop === "right"
@@ -172,7 +191,9 @@ export function DualLaptopShowcase({
                   ? 8
                   : isCardHovered
                     ? -6
-                    : [4, -5, 4],
+                    : shouldFloat
+                      ? [4, -4]
+                      : 0,
             rotate:
               hoveredLaptop === "right"
                 ? 1
@@ -180,10 +201,12 @@ export function DualLaptopShowcase({
                   ? 0
                   : isCardHovered
                     ? 0.5
-                    : [0, 0.8, 0],
+                    : shouldFloat
+                      ? [-0.4, 0.6]
+                      : 0,
             scale:
               hoveredLaptop === "right"
-                ? 1.1
+                ? 1.08
                 : hoveredLaptop === "left"
                   ? 0.96
                   : isCardHovered
@@ -192,15 +215,27 @@ export function DualLaptopShowcase({
             opacity: hoveredLaptop === "left" ? 0.82 : 1,
           }}
           transition={
-            isInteractive
-              ? { duration: 0.45, ease: easeOut }
-              : {
-                  y: { duration: 5.2, repeat: Infinity, ease: "easeInOut", delay: 0.5 },
-                  rotate: { duration: 6.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 },
-                  x: { duration: 0.45, ease: easeOut },
-                  scale: { duration: 0.45, ease: easeOut },
-                  opacity: { duration: 0.45, ease: easeOut },
+            shouldFloat
+              ? {
+                  y: {
+                    duration: 2.6,
+                    repeat: Infinity,
+                    repeatType: "mirror",
+                    ease: "easeInOut",
+                    delay: 0.4,
+                  },
+                  rotate: {
+                    duration: 3.2,
+                    repeat: Infinity,
+                    repeatType: "mirror",
+                    ease: "easeInOut",
+                    delay: 0.25,
+                  },
+                  x: { duration: 0.42, ease: EASE_OUT_EXPO },
+                  scale: { duration: 0.42, ease: EASE_OUT_EXPO },
+                  opacity: { duration: 0.35, ease: EASE_OUT_EXPO },
                 }
+              : { duration: 0.42, ease: EASE_OUT_EXPO }
           }
         >
           <img
@@ -208,12 +243,12 @@ export function DualLaptopShowcase({
             alt={`${title} — Right Laptop Interface`}
             loading="lazy"
             decoding="async"
-            className={`w-full h-full object-contain block transition-all duration-300 ${
+            className={`w-full h-full object-contain block transition-[filter] duration-300 ${
               hoveredLaptop === "right"
-                ? "filter drop-shadow-[0_32px_50px_rgba(0,0,0,0.98)] brightness-105"
+                ? "drop-shadow-[0_24px_36px_rgba(0,0,0,0.9)] brightness-105"
                 : hoveredLaptop === "left"
-                  ? "filter drop-shadow-[0_12px_20px_rgba(0,0,0,0.6)] brightness-90"
-                  : "filter drop-shadow-[0_24px_38px_rgba(0,0,0,0.9)] brightness-100"
+                  ? "drop-shadow-[0_12px_18px_rgba(0,0,0,0.55)] brightness-90"
+                  : "drop-shadow-[0_20px_28px_rgba(0,0,0,0.8)] brightness-100"
             }`}
           />
         </motion.div>

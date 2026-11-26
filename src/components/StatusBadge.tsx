@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useStatusBadge } from "@/store/StatusBadgeContext";
+import { SPRING_INTERACTIVE } from "@/constants/motion";
 
 export function StatusBadge() {
   const { text, dotColor } = useStatusBadge();
@@ -8,8 +9,9 @@ export function StatusBadge() {
     <div className="inline-flex items-center gap-1.5 rounded-[20px] bg-[#2e2e2e] px-2.5 py-1.5 font-['Itim'] text-[12px] text-white max-[600px]:rounded-[15px] max-[600px]:px-[7.5px] max-[600px]:py-[4.5px] max-[600px]:font-['Itim'] max-[600px]:text-[7.5px]">
       <motion.span
         whileHover={{
-          scale: 1.8,
+          scale: 1.5,
         }}
+        transition={SPRING_INTERACTIVE}
         style={
           {
             backgroundColor: dotColor,

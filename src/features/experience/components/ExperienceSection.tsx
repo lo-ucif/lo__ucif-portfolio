@@ -1,5 +1,6 @@
-import { easeOut, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useLanguage } from "@/store/LanguageContext";
+import { EASE_OUT_EXPO, VIEWPORT_ONCE } from "@/constants/motion";
 import {
   AlgorithmsIcon,
   CIcon,
@@ -178,10 +179,10 @@ export default function Experience() {
       {/* Section Header matching ProjectsSection style */}
       <motion.div
         className="flex flex-col items-center gap-2"
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 18 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.6, ease: easeOut }}
+        viewport={VIEWPORT_ONCE}
+        transition={{ duration: 0.55, ease: EASE_OUT_EXPO }}
       >
         <h2 className="font-['Itim'] text-[36px] text-white">
           {t.timeline.title}
@@ -253,10 +254,14 @@ export default function Experience() {
               return (
                 <motion.div
                   key={item.num}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 18 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.15 }}
-                  transition={{ duration: 0.45, ease: easeOut, delay: index * 0.05 }}
+                  viewport={VIEWPORT_ONCE}
+                  transition={{
+                    duration: 0.48,
+                    ease: EASE_OUT_EXPO,
+                    delay: Math.min(index * 0.04, 0.16),
+                  }}
                   className={`relative flex items-center ${justifyClass}`}
                 >
                   {/* Glowing Node Positioned Directly on the Wave Apex */}
@@ -329,10 +334,14 @@ export default function Experience() {
           {localizedMilestones.map((item, index) => (
             <motion.div
               key={`mob-${item.num}`}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.45, ease: easeOut, delay: index * 0.06 }}
+              viewport={VIEWPORT_ONCE}
+              transition={{
+                duration: 0.48,
+                ease: EASE_OUT_EXPO,
+                delay: Math.min(index * 0.04, 0.16),
+              }}
               className="relative ps-6"
             >
               {/* Glowing Node on Axis */}

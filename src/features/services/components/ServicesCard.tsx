@@ -2,13 +2,12 @@ import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/store/LanguageContext";
+import { EASE_OUT_EXPO, VIEWPORT_ONCE } from "@/constants/motion";
 
 // High-fidelity presentation mockups
 import hafezMockup from "@/assets/case-studies/mockups/7afez-transparent.webp";
 import hafezWeb from "@/assets/hafez-web.webp";
 import tabibMockup from "@/assets/case-studies/mockups/al-tabib-transparent.webp";
-
-const easeOut = [0.22, 1, 0.36, 1] as const;
 
 interface ServiceRow {
   num: string;
@@ -62,10 +61,10 @@ export function ServicesCard() {
   return (
     <motion.div
       id="services"
-      initial={{ opacity: 0, y: 25 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
-      transition={{ duration: 0.7, ease: easeOut }}
+      viewport={VIEWPORT_ONCE}
+      transition={{ duration: 0.58, ease: EASE_OUT_EXPO }}
       className="relative w-full max-w-4xl my-2 text-start"
     >
       {/* Services Section Title */}
@@ -88,13 +87,20 @@ export function ServicesCard() {
               onClick={() => handleRowClick(service.targetId)}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{
-                duration: 0.45,
-                delay: index * 0.08,
-                ease: easeOut,
+              initial="hidden"
+              whileInView="visible"
+              viewport={VIEWPORT_ONCE}
+              variants={{
+                hidden: { opacity: 0, y: 14 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    duration: 0.45,
+                    delay: index * 0.06,
+                    ease: EASE_OUT_EXPO,
+                  },
+                },
               }}
               role="button"
               tabIndex={0}
@@ -104,7 +110,7 @@ export function ServicesCard() {
                   handleRowClick(service.targetId);
                 }
               }}
-              className="group/row relative py-7 sm:py-9 border-t border-white/[0.08] transition-all duration-300 cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-[#5197ff]"
+              className="group/row relative py-7 sm:py-9 border-t border-white/[0.08] transition-colors duration-200 cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-[#5197ff]"
             >
               <div className="flex items-center justify-between gap-6 w-full">
                 {/* Text Column: 01 — Title + Description */}
@@ -131,17 +137,17 @@ export function ServicesCard() {
                     <AnimatePresence>
                       {showPreview && (
                         <motion.div
-                          initial={{ opacity: 0, scale: 0.92, y: 6 }}
+                          initial={{ opacity: 0, scale: 0.94, y: 6 }}
                           animate={{ opacity: 1, scale: 1, y: 0 }}
-                          exit={{ opacity: 0, scale: 0.94, y: 4 }}
-                          transition={{ duration: 0.28, ease: easeOut }}
+                          exit={{ opacity: 0, scale: 0.95, y: 4 }}
+                          transition={{ duration: 0.25, ease: EASE_OUT_EXPO }}
                           className={`absolute ${isArabic ? "left-0 justify-start" : "right-0 justify-end"} top-1/2 -translate-y-1/2 flex items-center pointer-events-none select-none w-full h-full`}
                         >
                           <img
                             src={service.previewImg}
                             alt={service.title}
                             className="w-full h-full object-contain drop-shadow-[0_12px_24px_rgba(0,0,0,0.65)]"
-                            loading="lazy"
+                            decoding="async"
                           />
                         </motion.div>
                       )}

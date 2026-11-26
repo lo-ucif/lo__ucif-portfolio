@@ -5,16 +5,16 @@ import { projects, roleConfig, categoryConfig } from "@/features/projects";
 import { SiteFooter } from "@/layouts/SiteFooter";
 import FloatingBubble, { type BubbleItem } from "@/components/FloatingBubble";
 import { useLanguage } from "@/store/LanguageContext";
+import { useAppReady } from "@/store/AppReadyContext";
 import { projectTranslations } from "@/constants/projectTranslations";
 import { WHATSAPP_URL } from "@/constants/contact";
+import { EASE_OUT_EXPO, VIEWPORT_ONCE } from "@/constants/motion";
 import {
   Github2Icon,
   LinkIcon,
   FigmaIcon,
   LinkedinIcon,
 } from "@/constants/icons";
-
-const easeOut = [0.22, 1, 0.36, 1] as const;
 
 const categoryConfigAr: Record<string, string> = {
   personal: "مشروع شخصي",
@@ -48,6 +48,7 @@ const teamAr: Record<string, string> = {
 
 export default function ProjectDetail() {
   const { isArabic, t } = useLanguage();
+  const isReady = useAppReady();
   const { id } = useParams();
   const navigate = useNavigate();
   const project = projects.find((p) => p.id === Number(id));
@@ -73,27 +74,39 @@ export default function ProjectDetail() {
   const [activeBubbleId, setActiveBubbleId] = useState<string>("overview");
 
   useEffect(() => {
-    const handleScroll = () => {
+    let rafId = 0;
+
+    const updateActiveBubble = () => {
+      rafId = 0;
       const scrollY = window.scrollY;
       if (scrollY < 200) {
-        setActiveBubbleId("overview");
+        setActiveBubbleId((prev) => (prev === "overview" ? prev : "overview"));
         return;
       }
       const sectionIds = ["technologies", "overview"];
       for (const secId of sectionIds) {
         const el = document.getElementById(secId);
         if (el) {
-          const top = el.getBoundingClientRect().top + window.scrollY;
+          const top = el.getBoundingClientRect().top + scrollY;
           if (scrollY >= top - 260) {
-            setActiveBubbleId(secId);
+            setActiveBubbleId((prev) => (prev === secId ? prev : secId));
             return;
           }
         }
       }
     };
+
+    const handleScroll = () => {
+      if (rafId !== 0) return;
+      rafId = window.requestAnimationFrame(updateActiveBubble);
+    };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+    updateActiveBubble();
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (rafId !== 0) window.cancelAnimationFrame(rafId);
+    };
   }, []);
 
   const handleBubbleClick = (item: BubbleItem) => {
@@ -133,8 +146,8 @@ export default function ProjectDetail() {
         {/* Top Navigation Bar (Image 1 style) */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45, ease: easeOut }}
+          animate={isReady ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }}
+          transition={{ duration: 0.45, ease: EASE_OUT_EXPO }}
           className="flex flex-wrap items-center justify-between gap-4 border-b border-white/[0.08] pb-5 w-full"
         >
           <div className="flex items-center gap-4">
@@ -231,9 +244,9 @@ export default function ProjectDetail() {
         {/* Project Header Info */}
         <motion.div
           className="flex flex-col gap-4 text-start"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: easeOut, delay: 0.05 }}
+          initial={{ opacity: 0, y: 18 }}
+          animate={isReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
+          transition={{ duration: 0.55, ease: EASE_OUT_EXPO, delay: 0.05 }}
         >
           <div className="flex flex-wrap items-center gap-2">
             <span className="rounded-full bg-[#30496b] px-3.5 py-1 font-['Itim'] text-[13px] sm:text-[14px] text-white">
@@ -310,13 +323,14 @@ export default function ProjectDetail() {
         {/* Featured Project Visual */}
         <motion.div
           className="w-full overflow-hidden rounded-3xl border border-white/[0.1] bg-[#121212] shadow-2xl"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: easeOut, delay: 0.1 }}
+          initial={{ opacity: 0, y: 18 }}
+          animate={isReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
+          transition={{ duration: 0.55, ease: EASE_OUT_EXPO, delay: 0.1 }}
         >
           <img
             src={project.image}
             alt={displayTitle}
+            decoding="async"
             className="w-full h-auto object-cover block"
           />
         </motion.div>
@@ -324,10 +338,10 @@ export default function ProjectDetail() {
         {/* Design Callout Banner (if available) */}
         {caseStudyUrl && (
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, ease: easeOut }}
+            viewport={VIEWPORT_ONCE}
+            transition={{ duration: 0.5, ease: EASE_OUT_EXPO }}
             className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-6 rounded-2xl bg-gradient-to-r from-[#1A1917] via-[#1f1e1b] to-[#1A1917] border border-[#5197ff]/40 shadow-xl text-start"
           >
             <div className="flex flex-col gap-1 text-start">

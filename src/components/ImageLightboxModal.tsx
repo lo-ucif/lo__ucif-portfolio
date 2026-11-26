@@ -2,6 +2,7 @@ import { useEffect, useState, useMemo, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/store/LanguageContext";
 import { caseStudyCategoryTranslations } from "@/constants/projectTranslations";
+import { EASE_OUT_EXPO } from "@/constants/motion";
 
 export type LightboxItem = {
   imageUrl: string;
@@ -98,6 +99,20 @@ export function ImageLightboxModal({
     [showNavigation, allItems.length, onIndexChange]
   );
 
+  // Preload adjacent gallery images for instant screen switching
+  useEffect(() => {
+    if (!isOpen || !showNavigation || allItems.length <= 1) return;
+    const prevIdx = activeIndex > 0 ? activeIndex - 1 : allItems.length - 1;
+    const nextIdx = activeIndex < allItems.length - 1 ? activeIndex + 1 : 0;
+    const targets = [allItems[prevIdx]?.imageUrl, allItems[nextIdx]?.imageUrl].filter(Boolean);
+    targets.forEach((src) => {
+      if (!src) return;
+      const img = new Image();
+      img.decoding = "async";
+      img.src = src;
+    });
+  }, [isOpen, showNavigation, activeIndex, allItems]);
+
   // Keyboard navigation: Escape closes, Left/Right arrow changes page
   useEffect(() => {
     if (!isOpen) return;
@@ -123,8 +138,8 @@ export function ImageLightboxModal({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.25 }}
-          className="fixed inset-0 z-50 flex flex-col items-center justify-between bg-black/92 p-4 sm:p-6 backdrop-blur-md select-none"
+          transition={{ duration: 0.22, ease: EASE_OUT_EXPO }}
+          className="fixed inset-0 z-[10001] flex flex-col items-center justify-between bg-black/92 p-4 sm:p-6 backdrop-blur-md select-none"
           onClick={onClose}
         >
           {/* Header Bar */}
@@ -242,15 +257,16 @@ export function ImageLightboxModal({
               className="relative flex items-center justify-center max-h-[78vh] max-w-full"
               onClick={(e) => e.stopPropagation()}
             >
-              <AnimatePresence mode="wait">
+              <AnimatePresence mode="popLayout">
                 <motion.img
                   key={currentItem.imageUrl + activeIndex}
                   src={currentItem.imageUrl}
                   alt={currentItem.imageAlt || currentItem.title || "Screen Preview"}
+                  decoding="async"
                   initial={{ opacity: 0, scale: 0.97 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.97 }}
-                  transition={{ duration: 0.22, ease: "easeOut" }}
+                  transition={{ duration: 0.18, ease: EASE_OUT_EXPO }}
                   className="max-h-[76vh] w-auto max-w-[90vw] rounded-2xl object-contain shadow-2xl border border-white/10 bg-[#121212]"
                 />
               </AnimatePresence>

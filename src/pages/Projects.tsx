@@ -4,9 +4,9 @@ import { projects, ProjectCard } from "@/features/projects";
 import FloatingBubble, { type BubbleItem } from "@/components/FloatingBubble";
 import { SiteFooter } from "@/layouts/SiteFooter";
 import { useLanguage } from "@/store/LanguageContext";
+import { EASE_OUT_EXPO, VIEWPORT_ONCE } from "@/constants/motion";
 
 export default function Projects() {
-  const easeOut = [0.22, 1, 0.36, 1] as const;
   const navigate = useNavigate();
   const { isArabic } = useLanguage();
 
@@ -28,10 +28,10 @@ export default function Projects() {
       {/* Header */}
       <motion.div
         className="flex flex-col items-center gap-2 text-center"
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 18 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.5, ease: easeOut }}
+        viewport={VIEWPORT_ONCE}
+        transition={{ duration: 0.5, ease: EASE_OUT_EXPO }}
       >
         <h2 className="font-['Itim'] text-[36px] sm:text-[44px] text-white">
           {isArabic ? "جميع المشاريع" : "All Projects"}

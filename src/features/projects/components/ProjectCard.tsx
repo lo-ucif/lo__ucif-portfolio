@@ -12,6 +12,7 @@ import type { Project } from "@/features/projects/types";
 import { LaptopMobileShowcase } from "@/features/projects/components/LaptopMobileShowcase";
 import { useLanguage } from "@/store/LanguageContext";
 import { projectTranslations } from "@/constants/projectTranslations";
+import { EASE_OUT_EXPO, VIEWPORT_ONCE } from "@/constants/motion";
 
 export default function ProjectCard({
   id,
@@ -35,7 +36,6 @@ export default function ProjectCard({
   const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
   const { isArabic } = useLanguage();
-  const easeOut = [0.22, 1, 0.36, 1] as const;
 
   const handleCardClick = () => {
     navigate(`/projects/${id}`);
@@ -70,10 +70,10 @@ export default function ProjectCard({
 
   return (
     <motion.article
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
-      transition={{ duration: 0.6, ease: easeOut }}
+      viewport={VIEWPORT_ONCE}
+      transition={{ duration: 0.58, ease: EASE_OUT_EXPO }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className="group relative flex flex-col lg:flex-row items-center gap-8 lg:gap-14 w-full text-start"

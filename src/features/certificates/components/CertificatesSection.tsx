@@ -1,9 +1,14 @@
 import { useState } from "react";
-import { easeOut, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { certificateItems } from "@/features/certificates/data/certificatesData";
 import { ImageLightboxModal } from "@/components/ImageLightboxModal";
 import { useLanguage } from "@/store/LanguageContext";
 import { certTranslations } from "@/constants/projectTranslations";
+import {
+  EASE_OUT_EXPO,
+  SPRING_INTERACTIVE,
+  VIEWPORT_ONCE,
+} from "@/constants/motion";
 
 export default function Certificates() {
   const { isArabic, t } = useLanguage();
@@ -26,37 +31,37 @@ export default function Certificates() {
       id="certificates"
       className="flex w-full flex-col items-center gap-7.5 text-center scroll-mt-24"
     >
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
+      <motion.h2
+        className="font-['Itim'] text-[36px] text-white"
+        initial={{ opacity: 0, y: 18 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.6, ease: easeOut }}
+        viewport={VIEWPORT_ONCE}
+        transition={{ duration: 0.55, ease: EASE_OUT_EXPO }}
       >
-        <motion.h2
-          className="font-['Itim'] text-[36px] text-white"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, ease: easeOut }}
-        >
-          {t.certificates.title}
-        </motion.h2>
-      </motion.div>
+        {t.certificates.title}
+      </motion.h2>
 
       <div className="flex flex-wrap justify-center w-full gap-8 max-w-225">
         {localizedCerts.map((certificate, index) => (
           <motion.article
             key={certificate.title}
             className="group w-full max-w-105 overflow-hidden rounded-2xl bg-[#1F1F1F] cursor-pointer text-start"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            whileHover={{ y: -5 }}
-            transition={{
-              duration: 0.35,
-              ease: easeOut,
-              delay: index * 0.1,
+            initial="hidden"
+            whileInView="visible"
+            viewport={VIEWPORT_ONCE}
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: {
+                  duration: 0.52,
+                  ease: EASE_OUT_EXPO,
+                  delay: Math.min(index * 0.08, 0.16),
+                },
+              },
             }}
+            whileHover={{ y: -6, transition: SPRING_INTERACTIVE }}
             onClick={() => setSelectedCert(certificate)}
           >
             <div className="relative w-full h-65 overflow-hidden">

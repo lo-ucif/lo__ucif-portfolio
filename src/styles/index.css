@@ -108,7 +108,7 @@ html[dir="rtl"] kbd {
 .loading-screen {
   position: fixed;
   inset: 0;
-  z-index: 50;
+  z-index: 10000;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -116,6 +116,7 @@ html[dir="rtl"] kbd {
   color: #ffffff;
   overflow: hidden;
   direction: ltr;
+  will-change: opacity, transform;
 }
 
 .hello-svg-wrap {
@@ -137,27 +138,22 @@ html[dir="rtl"] kbd {
   fill: #ffffff;
   fill-opacity: 0;
   stroke: #ffffff;
-  stroke-width: 1.65;
+  stroke-width: 1.55;
+  stroke-opacity: 1;
   stroke-dasharray: 210;
   stroke-dashoffset: 210;
   animation:
-    helloCharWrite 0.34s cubic-bezier(0.25, 0.46, 0.45, 0.94) var(--char-delay, 0s) forwards,
-    helloCharInk 0.24s ease-out calc(var(--char-delay, 0s) + 0.12s) forwards,
-    helloCharSettle 0.22s ease-out calc(var(--char-delay, 0s) + 0.24s) forwards;
+    helloCharWrite 0.28s cubic-bezier(0.22, 1, 0.36, 1) var(--char-delay, 0s) forwards,
+    helloCharInk 0.2s ease-out calc(var(--char-delay, 0s) + 0.08s) forwards,
+    helloCharSettle 0.18s ease-out calc(var(--char-delay, 0s) + 0.18s) forwards;
 }
 
 @keyframes helloCharWrite {
   0% {
     stroke-dashoffset: 210;
-    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.55));
-  }
-  75% {
-    stroke-dashoffset: 18;
-    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.35));
   }
   100% {
     stroke-dashoffset: 0;
-    filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
   }
 }
 
@@ -172,22 +168,50 @@ html[dir="rtl"] kbd {
 
 @keyframes helloCharSettle {
   from {
-    stroke-width: 1.65;
+    stroke-opacity: 1;
   }
   to {
-    stroke-width: 0;
+    stroke-opacity: 0;
+  }
+}
+
+.hello-sweep {
+  transform: translateX(-620px);
+  will-change: transform;
+}
+
+.hello-sweep-1 {
+  animation: helloSweepMask 0.98s cubic-bezier(0.25, 0.1, 0.25, 1) 0.03s forwards;
+}
+
+.hello-sweep-2 {
+  animation: helloSweepMask 1.18s cubic-bezier(0.25, 0.1, 0.25, 1) 0.94s forwards;
+}
+
+@keyframes helloSweepMask {
+  from {
+    transform: translateX(-620px);
+  }
+  to {
+    transform: translateX(0);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .loading-screen,
-  .hello-char {
+  .hello-char,
+  .hello-sweep {
     animation: none !important;
     transition: none !important;
   }
 
+  .hello-sweep {
+    transform: translateX(0) !important;
+  }
+
   .hello-char {
     fill-opacity: 1 !important;
+    stroke-opacity: 0 !important;
     stroke-dashoffset: 0 !important;
   }
 }

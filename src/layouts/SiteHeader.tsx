@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { GithubIcon, LinkedinIcon } from "@/constants/icons";
 import { useAppReady } from "@/store/AppReadyContext";
 import { useLanguage } from "@/store/LanguageContext";
+import { EASE_OUT_EXPO, SPRING_INTERACTIVE } from "@/constants/motion";
 
 export function SiteHeader() {
   const isReady = useAppReady();
@@ -32,7 +33,7 @@ export function SiteHeader() {
         : ""
       : activeScrollId;
 
-  // Track active section as user scrolls on home page
+  // Track active section as user scrolls on home page (rAF-throttled)
   useEffect(() => {
     if (location.pathname !== "/") {
       return;
@@ -46,29 +47,40 @@ export function SiteHeader() {
       "projects",
     ];
 
-    const handleScroll = () => {
+    let rafId = 0;
+
+    const updateActiveSection = () => {
+      rafId = 0;
       const scrollY = window.scrollY;
       if (scrollY < 200) {
-        setActiveScrollId("home");
+        setActiveScrollId((prev) => (prev === "home" ? prev : "home"));
         return;
       }
 
       for (const id of sectionIds) {
         const el = document.getElementById(id);
         if (el) {
-          const top = el.getBoundingClientRect().top + window.scrollY;
+          const top = el.getBoundingClientRect().top + scrollY;
           if (scrollY >= top - 250) {
-            setActiveScrollId(id);
+            setActiveScrollId((prev) => (prev === id ? prev : id));
             return;
           }
         }
       }
-      setActiveScrollId("home");
+      setActiveScrollId((prev) => (prev === "home" ? prev : "home"));
+    };
+
+    const handleScroll = () => {
+      if (rafId !== 0) return;
+      rafId = window.requestAnimationFrame(updateActiveSection);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+    updateActiveSection();
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (rafId !== 0) window.cancelAnimationFrame(rafId);
+    };
   }, [location.pathname]);
 
   const handleNavClick = (id: string, e: React.MouseEvent) => {
@@ -103,13 +115,17 @@ export function SiteHeader() {
       {/* Desktop Header */}
       <motion.header
         className="fixed left-0 right-0 top-0 z-50 hidden w-full bg-[#161513]/95 backdrop-blur min-[601px]:flex"
-        initial={{ opacity: 0, y: -16 }}
-        animate={isReady ? { opacity: 1, y: 0 } : { opacity: 0, y: -16 }}
-        transition={{ duration: 0.45, ease: "easeOut" }}
+        initial={{ opacity: 0, y: -14 }}
+        animate={isReady ? { opacity: 1, y: 0 } : { opacity: 0, y: -14 }}
+        transition={{ duration: 0.48, ease: EASE_OUT_EXPO }}
       >
         <div className="mx-auto flex w-full max-w-300 items-center justify-between gap-6 px-10 xl:px-16 py-3.5">
           {/* Logo on Left */}
-          <motion.div className="h-12.5 w-22.25 shrink-0" whileHover={{ scale: 1.03 }}>
+          <motion.div
+            className="h-12.5 w-22.25 shrink-0"
+            whileHover={{ scale: 1.03 }}
+            transition={SPRING_INTERACTIVE}
+          >
             <Link
               to="/"
               onClick={(e) => handleNavClick("home", e)}
@@ -133,6 +149,7 @@ export function SiteHeader() {
                     key={item.id}
                     whileHover={{ y: -2 }}
                     whileTap={{ scale: 0.97 }}
+                    transition={SPRING_INTERACTIVE}
                   >
                     <a
                       href={`/#${item.id}`}
@@ -207,7 +224,7 @@ export function SiteHeader() {
         className="fixed left-0 right-0 top-0 z-40 hidden w-full items-center justify-between bg-[#161513]/40 px-5 py-3 backdrop-blur max-[600px]:flex"
         initial={{ opacity: 0, y: -12 }}
         animate={isReady ? { opacity: 1, y: 0 } : { opacity: 0, y: -12 }}
-        transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
+        transition={{ duration: 0.45, ease: EASE_OUT_EXPO, delay: 0.06 }}
       >
         <Link
           to="/"

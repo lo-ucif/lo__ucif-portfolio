@@ -3,6 +3,8 @@ import { AnimatePresence } from "framer-motion";
 import { LoadingScreen } from "@/components/LoadingScreen";
 import { AppProviders } from "@/app/providers";
 import { AppRouter } from "@/app/router";
+import profileImg from "@/assets/profile.webp";
+import logoImg from "@/assets/8.webp";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -12,16 +14,32 @@ function App() {
     if ("scrollRestoration" in window.history) {
       window.history.scrollRestoration = "manual";
     }
-    window.scrollTo(0, 0);
+    if (!window.location.hash) {
+      window.scrollTo(0, 0);
+    }
+
+    // Warm critical above-the-fold hero & header images while the intro plays
+    const preloadSources = [profileImg, logoImg];
+    const preloaded = preloadSources.map((src) => {
+      const img = new Image();
+      img.decoding = "async";
+      img.src = src;
+      return img;
+    });
+
+    return () => {
+      preloaded.length = 0;
+    };
   }, []);
 
   useEffect(() => {
     if (isLoading) {
       document.body.style.overflow = "hidden";
-      window.scrollTo(0, 0);
+      if (!window.location.hash) {
+        window.scrollTo(0, 0);
+      }
     } else {
       document.body.style.overflow = "";
-      window.scrollTo(0, 0);
     }
 
     return () => {

@@ -1,13 +1,17 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { useAppReady } from "@/store/AppReadyContext";
 
 // Strict pattern for safe HTML ID attributes to prevent DOM injection / selector injection
 const SAFE_ID_PATTERN = /^[a-zA-Z0-9_-]{1,64}$/;
 
 const ScrollToTop = () => {
   const location = useLocation();
+  const isReady = useAppReady();
 
   useEffect(() => {
+    if (!isReady) return;
+
     if (location.hash) {
       // Sanitize and decode URL hash, stripping leading '#' characters.
       // A malformed percent escape makes decodeURIComponent throw, so fall back
@@ -46,7 +50,7 @@ const ScrollToTop = () => {
       top: 0,
       behavior: "smooth",
     });
-  }, [location.pathname, location.search, location.hash]);
+  }, [isReady, location.pathname, location.search, location.hash]);
 
   return null;
 };

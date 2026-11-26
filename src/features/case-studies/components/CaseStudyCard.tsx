@@ -8,8 +8,11 @@ import { ThreePhoneShowcase } from "@/features/case-studies/components/ThreePhon
 import { DualLaptopShowcase } from "@/features/case-studies/components/DualLaptopShowcase";
 import { useLanguage } from "@/store/LanguageContext";
 import { caseStudyTranslations } from "@/constants/projectTranslations";
-
-const easeOut = [0.22, 1, 0.36, 1] as const;
+import {
+  EASE_OUT_EXPO,
+  SPRING_SMOOTH,
+  VIEWPORT_ONCE,
+} from "@/constants/motion";
 
 export function CaseStudyCard(props: CaseStudySummary) {
   const { isArabic, t } = useLanguage();
@@ -75,10 +78,10 @@ export function CaseStudyCard(props: CaseStudySummary) {
 
   return (
     <motion.article
-      initial={{ opacity: 0, y: 35 }}
+      initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.1 }}
-      transition={{ duration: 0.7, ease: easeOut }}
+      viewport={VIEWPORT_ONCE}
+      transition={{ duration: 0.58, ease: EASE_OUT_EXPO }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className="group relative flex flex-col lg:flex-row items-center gap-10 lg:gap-14 w-full text-start"
@@ -216,19 +219,20 @@ export function CaseStudyCard(props: CaseStudySummary) {
         ) : mockupImage ? (
           <>
             {/* Ambient Spotlight & Ground Shadow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] sm:w-[420px] lg:w-[500px] h-[280px] sm:h-[420px] lg:h-[440px] bg-[#5197ff]/12 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 w-[240px] sm:w-[380px] lg:w-[460px] h-[24px] bg-black/90 rounded-full blur-2xl pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[440px] lg:w-[520px] h-[300px] sm:h-[440px] lg:h-[460px] bg-[radial-gradient(circle,rgba(81,151,255,0.14)_0%,transparent_70%)] rounded-full pointer-events-none" />
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 w-[260px] sm:w-[400px] lg:w-[480px] h-[28px] bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.85)_0%,transparent_72%)] rounded-full pointer-events-none" />
 
             <motion.div
               className="relative w-full max-w-[440px] sm:max-w-[500px] lg:max-w-[560px] flex items-center justify-center p-2"
               whileHover={{ scale: 1.04, y: -6 }}
-              transition={{ duration: 0.4, ease: easeOut }}
+              transition={SPRING_SMOOTH}
             >
               <img
                 src={mockupImage}
                 alt={`${title} Mockup Presentation`}
                 loading="lazy"
-                className="w-full h-auto object-contain filter drop-shadow-[0_20px_35px_rgba(0,0,0,0.85)]"
+                decoding="async"
+                className="w-full h-auto object-contain drop-shadow-[0_18px_28px_rgba(0,0,0,0.75)]"
               />
             </motion.div>
           </>
@@ -236,12 +240,13 @@ export function CaseStudyCard(props: CaseStudySummary) {
           <motion.div
             className="relative w-full max-w-[480px] rounded-2xl overflow-hidden bg-[#121212] border border-white/[0.1] shadow-2xl shadow-black/80"
             whileHover={{ scale: 1.025 }}
-            transition={{ duration: 0.4, ease: easeOut }}
+            transition={SPRING_SMOOTH}
           >
             <img
               src={heroImage}
               alt={title}
               loading="lazy"
+              decoding="async"
               className="w-full h-auto object-cover object-top transition-transform duration-700 hover:scale-105"
             />
             <div className="absolute top-3 left-3 z-10 flex items-center gap-2 rounded-full bg-[#161513]/85 backdrop-blur px-3 py-1 border border-white/10 text-white font-['Itim'] text-[12px]">

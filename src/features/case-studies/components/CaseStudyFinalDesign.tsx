@@ -4,8 +4,7 @@ import type { CaseStudy } from "@/features/case-studies/types";
 import type { LightboxItem } from "@/components/ImageLightboxModal";
 import { useLanguage } from "@/store/LanguageContext";
 import { caseStudyCategoryTranslations } from "@/constants/projectTranslations";
-
-const easeOut = [0.22, 1, 0.36, 1] as const;
+import { EASE_OUT_EXPO, VIEWPORT_ONCE } from "@/constants/motion";
 
 // Authentic iPhone 17 Pro Vector Mockup (from Figma Node 594:324 / 600:150)
 function IPhoneMockup({
@@ -34,6 +33,7 @@ function IPhoneMockup({
           alt={screen.title}
           className="w-full h-full object-cover block"
           loading="eager"
+          decoding="async"
         />
 
         {/* Hover Inspect Overlay for Center Phone */}
@@ -84,7 +84,7 @@ const phoneCardVariants = {
     scale: 1,
     opacity: 1,
     zIndex: 20,
-    transition: { duration: 0.45, ease: easeOut },
+    transition: { duration: 0.42, ease: EASE_OUT_EXPO },
   },
   left: {
     x: -148,
@@ -92,7 +92,7 @@ const phoneCardVariants = {
     scale: 0.96,
     opacity: 0.2,
     zIndex: 10,
-    transition: { duration: 0.45, ease: easeOut },
+    transition: { duration: 0.42, ease: EASE_OUT_EXPO },
   },
   right: {
     x: 148,
@@ -100,7 +100,7 @@ const phoneCardVariants = {
     scale: 0.96,
     opacity: 0.2,
     zIndex: 10,
-    transition: { duration: 0.45, ease: easeOut },
+    transition: { duration: 0.42, ease: EASE_OUT_EXPO },
   },
   exit: (direction: number) => ({
     x: direction > 0 ? -280 : 280,
@@ -108,7 +108,7 @@ const phoneCardVariants = {
     scale: 0.92,
     opacity: 0,
     zIndex: 5,
-    transition: { duration: 0.35, ease: easeOut },
+    transition: { duration: 0.32, ease: EASE_OUT_EXPO },
   }),
 };
 
@@ -124,8 +124,8 @@ const mobilePhoneVariants = {
     opacity: 1,
     scale: 1,
     transition: {
-      duration: 0.38,
-      ease: easeOut,
+      duration: 0.35,
+      ease: EASE_OUT_EXPO,
     },
   },
   exit: (direction: number) => ({
@@ -133,8 +133,8 @@ const mobilePhoneVariants = {
     opacity: 0,
     scale: 0.94,
     transition: {
-      duration: 0.3,
-      ease: easeOut,
+      duration: 0.26,
+      ease: EASE_OUT_EXPO,
     },
   }),
 };
@@ -276,6 +276,17 @@ export function CaseStudyFinalDesign({
     }
   };
 
+  // Preload adjacent screens for instant, stutter-free coverflow transitions
+  useEffect(() => {
+    if (filteredScreens.length <= 1) return;
+    [prevScreen?.image, nextScreen?.image].forEach((src) => {
+      if (!src) return;
+      const img = new Image();
+      img.decoding = "async";
+      img.src = src;
+    });
+  }, [filteredScreens.length, prevScreen?.image, nextScreen?.image]);
+
   // Keyboard navigation with arrow keys
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -296,10 +307,10 @@ export function CaseStudyFinalDesign({
       {/* Section Header: Centered Small Title */}
       <motion.div
         className="flex flex-col items-center justify-center text-center"
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 18 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.6, ease: easeOut }}
+        viewport={VIEWPORT_ONCE}
+        transition={{ duration: 0.55, ease: EASE_OUT_EXPO }}
       >
         <h2 className="font-['Itim'] text-[32px] sm:text-[38px] text-white">
           {isArabic ? "التصميم النهائي للشاشات" : "Final Design"}
@@ -394,7 +405,8 @@ export function CaseStudyFinalDesign({
                     opacity: 0,
                     x: direction > 0 ? -60 : direction < 0 ? 60 : 0,
                   }}
-                  transition={{ duration: 0.32, ease: easeOut }}
+                  transition={{ duration: 0.28, ease: EASE_OUT_EXPO }}
+                  decoding="async"
                   className="absolute inset-0 w-full h-full object-cover block"
                 />
               </AnimatePresence>
