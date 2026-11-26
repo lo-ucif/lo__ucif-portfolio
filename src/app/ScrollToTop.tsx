@@ -9,8 +9,15 @@ const ScrollToTop = () => {
 
   useEffect(() => {
     if (location.hash) {
-      // Sanitize and decode URL hash, stripping leading '#' characters
-      const rawId = decodeURIComponent(location.hash.replace(/^#+/, ""));
+      // Sanitize and decode URL hash, stripping leading '#' characters.
+      // A malformed percent escape makes decodeURIComponent throw, so fall back
+      // to the raw (still pattern-checked) value instead of crashing the tree.
+      let rawId = location.hash.replace(/^#+/, "");
+      try {
+        rawId = decodeURIComponent(rawId);
+      } catch {
+        // Ignore malformed escapes; rawId stays as the un-decoded fragment.
+      }
 
       // Only proceed if the ID conforms strictly to a safe identifier
       if (SAFE_ID_PATTERN.test(rawId)) {
