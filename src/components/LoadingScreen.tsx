@@ -1,8 +1,10 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties } from "react";
-import { motion } from "framer-motion";
+import { motion, useIsPresent } from "framer-motion";
+import { useLocation } from "react-router-dom";
 import { EASE_OUT_EXPO } from "@/constants/motion";
 import { useLanguage } from "@/store/LanguageContext";
+import profileImg from "@/assets/profile.webp";
 
 type LoadingScreenProps = {
   onComplete: () => void;
@@ -32,6 +34,9 @@ function buildHandwritingTimings(lines: string[]) {
 
 export function LoadingScreen({ onComplete }: LoadingScreenProps) {
   const { isArabic, t } = useLanguage();
+  const location = useLocation();
+  const isPresent = useIsPresent();
+  const isHomeRoute = location.pathname === "/";
   const line1 = t.loading.line1;
   const line2 = t.loading.line2;
 
@@ -106,10 +111,36 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
       aria-busy="true"
       onClick={finish}
       initial={{ opacity: 1 }}
-      exit={{ opacity: 0, scale: 1.015 }}
-      transition={{ duration: 0.42, ease: EASE_OUT_EXPO }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.45, ease: EASE_OUT_EXPO }}
     >
-      <div className="hello-svg-wrap">
+      <div className="hello-svg-wrap flex-col gap-5 sm:gap-6">
+        {/* Small circular avatar that morphs smoothly into the Home hero avatar */}
+        {isHomeRoute && !isPresent ? (
+          <div className="h-16 w-16 sm:h-18 sm:w-18 shrink-0" aria-hidden="true" />
+        ) : (
+          <motion.div
+            layoutId={isHomeRoute ? "hero-avatar" : undefined}
+            style={{ borderRadius: "50%" }}
+            className="relative grid h-16 w-16 sm:h-18 sm:w-18 shrink-0 place-items-center overflow-hidden bg-[#262626] ring-1 ring-white/15 shadow-[0_12px_32px_rgba(0,0,0,0.45)]"
+            transition={{
+              layout: { duration: 0.72, ease: EASE_OUT_EXPO },
+            }}
+          >
+            <motion.img
+              src={profileImg}
+              alt="Ahmed Loucif"
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
+              initial={{ opacity: 0, scale: 0.86 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.42, ease: EASE_OUT_EXPO }}
+              className="h-full w-full object-cover"
+            />
+          </motion.div>
+        )}
+
         {fontReady && (
           <svg
             viewBox="0 0 800 220"

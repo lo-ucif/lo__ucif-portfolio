@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { AnimatePresence } from "framer-motion";
-import { LoadingScreen } from "@/components/LoadingScreen";
+import { LayoutGroup } from "framer-motion";
 import { AppProviders } from "@/app/providers";
 import { AppRouter } from "@/app/router";
 import profileImg from "@/assets/profile.webp";
@@ -48,12 +47,14 @@ function App() {
   }, [isLoading]);
 
   return (
-    <AppProviders isReady={isReady}>
-      <AppRouter />
-      <AnimatePresence>
-        {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
-      </AnimatePresence>
-    </AppProviders>
+    <LayoutGroup>
+      <AppProviders isReady={isReady}>
+        <AppRouter
+          isLoading={isLoading}
+          onLoadingComplete={() => setIsLoading(false)}
+        />
+      </AppProviders>
+    </LayoutGroup>
   );
 }
 

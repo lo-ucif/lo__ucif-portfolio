@@ -1,7 +1,9 @@
 import { lazy, Suspense } from "react";
+import { AnimatePresence } from "framer-motion";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ScrollToTop from "@/app/ScrollToTop";
 import { MainLayout } from "@/layouts/MainLayout";
+import { LoadingScreen } from "@/components/LoadingScreen";
 import Home from "@/pages/Home";
 
 const Projects = lazy(() => import("@/pages/Projects"));
@@ -10,7 +12,12 @@ const CaseStudyDetail = lazy(() => import("@/pages/CaseStudyDetail"));
 
 const RouteFallback = () => <div className="min-h-screen bg-[#161513]" />;
 
-export function AppRouter() {
+type AppRouterProps = {
+  isLoading: boolean;
+  onLoadingComplete: () => void;
+};
+
+export function AppRouter({ isLoading, onLoadingComplete }: AppRouterProps) {
   return (
     <BrowserRouter>
       <ScrollToTop />
@@ -25,6 +32,9 @@ export function AppRouter() {
           </Route>
         </Routes>
       </Suspense>
+      <AnimatePresence>
+        {isLoading && <LoadingScreen onComplete={onLoadingComplete} />}
+      </AnimatePresence>
     </BrowserRouter>
   );
 }

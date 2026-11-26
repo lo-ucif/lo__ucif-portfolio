@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { GithubIcon } from "@/constants/icons";
 import { WHATSAPP_URL } from "@/constants/contact";
@@ -45,6 +45,13 @@ const FloatingBubble = lazy(loadFloatingBubble);
 export default function Home() {
   const isReady = useAppReady();
   const { t } = useLanguage();
+  const [isAvatarMorphing, setIsAvatarMorphing] = useState(() => !isReady);
+
+  useEffect(() => {
+    if (!isReady) return;
+    const timer = window.setTimeout(() => setIsAvatarMorphing(false), 800);
+    return () => window.clearTimeout(timer);
+  }, [isReady]);
 
   // Prefetch below-the-fold sections silently while the loading screen plays
   useEffect(() => {
@@ -72,13 +79,19 @@ export default function Home() {
       <div className="flex flex-col min-h-screen gap-20 mx-auto">
         <main className="flex flex-col items-center gap-40 max-[600px]:gap-50">
           <section id="home" className="flex flex-col items-center gap-6.25 text-center scroll-mt-24">
-            <motion.div
-              initial={{ opacity: 0, y: 18, scale: 0.95 }}
-              animate={isReady ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 18, scale: 0.95 }}
-              transition={{ duration: 0.52, ease: EASE_OUT_EXPO }}
-            >
-              <div className="relative grid h-53.25 w-53.25 place-items-center overflow-hidden rounded-full bg-[#262626]">
-                <picture>
+            {isReady ? (
+              <motion.div
+                layoutId="hero-avatar"
+                style={{ borderRadius: "50%" }}
+                onLayoutAnimationComplete={() => setIsAvatarMorphing(false)}
+                transition={{
+                  layout: { duration: 0.72, ease: EASE_OUT_EXPO },
+                }}
+                className={`relative grid h-53.25 w-53.25 place-items-center overflow-hidden bg-[#262626] ${
+                  isAvatarMorphing ? "z-[10001]" : ""
+                }`}
+              >
+                <picture className="h-full w-full">
                   <source media="(max-width: 600px)" />
                   <motion.img
                     className="h-full w-full object-cover"
@@ -92,8 +105,10 @@ export default function Home() {
                     transition={SPRING_SMOOTH}
                   />
                 </picture>
-              </div>
-            </motion.div>
+              </motion.div>
+            ) : (
+              <div className="h-53.25 w-53.25 shrink-0" aria-hidden="true" />
+            )}
 
             <div className="flex w-full flex-col items-center gap-2.5">
               <div className="flex flex-col items-center">
@@ -101,7 +116,7 @@ export default function Home() {
                   className="font-['Itim'] text-[64px] text-white max-[600px]:w-82.5 max-[600px]:text-[48px]"
                   initial={{ opacity: 0, y: 16 }}
                   animate={isReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
-                  transition={{ duration: 0.52, ease: EASE_OUT_EXPO, delay: 0.08 }}
+                  transition={{ duration: 0.52, ease: EASE_OUT_EXPO, delay: 0.24 }}
                 >
                   <span className="block">{t.hero.name}</span>
                 </motion.div>
@@ -110,7 +125,7 @@ export default function Home() {
                   className="flex items-center gap-2.5 font-['Itim'] text-[26px] max-[600px]:text-[19.58px]"
                   initial={{ opacity: 0, y: 14 }}
                   animate={isReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
-                  transition={{ duration: 0.48, ease: EASE_OUT_EXPO, delay: 0.14 }}
+                  transition={{ duration: 0.48, ease: EASE_OUT_EXPO, delay: 0.3 }}
                 >
                   <span className="text-[#a9a9a9]">
                     {t.hero.taglinePrefix} <span className="text-[#5197FF]">{t.hero.taglineHighlight}</span>
@@ -127,7 +142,7 @@ export default function Home() {
                     opacity: 1,
                     y: 0,
                     scale: 1,
-                    transition: { duration: 0.45, ease: EASE_OUT_EXPO, delay: 0.2 },
+                    transition: { duration: 0.45, ease: EASE_OUT_EXPO, delay: 0.36 },
                   },
                 }}
                 whileHover={{ scale: 1.07, transition: SPRING_INTERACTIVE }}
@@ -140,14 +155,14 @@ export default function Home() {
               className="max-w-180 font-['Inter'] text-[16px] leading-[1.6] text-[#e1e1e1]"
               initial={{ opacity: 0, y: 14 }}
               animate={isReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
-              transition={{ duration: 0.48, ease: EASE_OUT_EXPO, delay: 0.25 }}
+              transition={{ duration: 0.48, ease: EASE_OUT_EXPO, delay: 0.4 }}
             >
               {t.hero.roleSubtitle}
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={isReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
-              transition={{ duration: 0.45, ease: EASE_OUT_EXPO, delay: 0.3 }}
+              transition={{ duration: 0.45, ease: EASE_OUT_EXPO, delay: 0.44 }}
             >
               <div className="inline-flex items-center gap-1.5 px-2.5 py-1.5 font-['Itim'] text-[16px] text-[#8491A0] max-[600px]:rounded-[15px] max-[600px]:px-0 max-[600px]:py-px max-[600px]:text-[12px]">
                 {t.hero.lastUpdate}
@@ -157,7 +172,7 @@ export default function Home() {
               className="flex flex-wrap items-center justify-center gap-[16.76px]"
               initial={{ opacity: 0, y: 14 }}
               animate={isReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
-              transition={{ duration: 0.48, ease: EASE_OUT_EXPO, delay: 0.35 }}
+              transition={{ duration: 0.48, ease: EASE_OUT_EXPO, delay: 0.48 }}
             >
               <motion.a
                 className="rounded-[38.182px] border border-white bg-white px-[16.76px] py-[12.57px] font-['Inter'] text-[16.327px] text-[#161513] transition-colors duration-300 hover:bg-transparent hover:text-white"
