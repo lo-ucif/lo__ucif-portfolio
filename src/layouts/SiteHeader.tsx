@@ -3,9 +3,11 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { GithubIcon, LinkedinIcon } from "@/constants/icons";
+import { useAppReady } from "@/store/AppReadyContext";
 import { useLanguage } from "@/store/LanguageContext";
 
 export function SiteHeader() {
+  const isReady = useAppReady();
   const { language, toggleLanguage, t } = useLanguage();
   const location = useLocation();
   const navigate = useNavigate();
@@ -102,7 +104,7 @@ export function SiteHeader() {
       <motion.header
         className="fixed left-0 right-0 top-0 z-50 hidden w-full bg-[#161513]/95 backdrop-blur min-[601px]:flex"
         initial={{ opacity: 0, y: -16 }}
-        animate={{ opacity: 1, y: 0 }}
+        animate={isReady ? { opacity: 1, y: 0 } : { opacity: 0, y: -16 }}
         transition={{ duration: 0.45, ease: "easeOut" }}
       >
         <div className="mx-auto flex w-full max-w-300 items-center justify-between gap-6 px-10 xl:px-16 py-3.5">
@@ -204,7 +206,7 @@ export function SiteHeader() {
       <motion.header
         className="fixed left-0 right-0 top-0 z-40 hidden w-full items-center justify-between bg-[#161513]/40 px-5 py-3 backdrop-blur max-[600px]:flex"
         initial={{ opacity: 0, y: -12 }}
-        animate={{ opacity: 1, y: 0 }}
+        animate={isReady ? { opacity: 1, y: 0 } : { opacity: 0, y: -12 }}
         transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
       >
         <Link

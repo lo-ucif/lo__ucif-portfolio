@@ -111,76 +111,9 @@ html[dir="rtl"] kbd {
   z-index: 50;
   display: grid;
   place-items: center;
-  background: #02040a;
+  background: #161513;
   color: #ffffff;
   overflow: hidden;
-}
-
-.hello-bg {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 85% 65% at 50% 45%, rgba(16, 48, 122, 0.72) 0%, rgba(7, 19, 54, 0.85) 45%, #02040a 100%),
-    linear-gradient(145deg, #020510 0%, #071739 50%, #030816 100%);
-  opacity: 0;
-  animation: helloBgReveal 1.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-.hello-streak {
-  position: absolute;
-  pointer-events: none;
-  border-radius: 9999px;
-  transform: rotate(-28deg);
-  filter: blur(48px);
-  opacity: 0;
-  will-change: opacity, transform;
-}
-
-.hello-streak--blue-main {
-  width: 140vw;
-  height: 22vh;
-  top: 22%;
-  left: -20vw;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(37, 99, 235, 0.25) 25%,
-    rgba(56, 189, 248, 0.42) 50%,
-    rgba(99, 102, 241, 0.28) 75%,
-    transparent 100%
-  );
-  animation: helloStreakReveal 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards;
-}
-
-.hello-streak--purple-accent {
-  width: 120vw;
-  height: 18vh;
-  top: 46%;
-  left: -10vw;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(139, 92, 246, 0.24) 30%,
-    rgba(59, 130, 246, 0.36) 60%,
-    rgba(168, 85, 247, 0.2) 85%,
-    transparent 100%
-  );
-  animation: helloStreakRevealSoft 1.8s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
-}
-
-.hello-streak--deep-glow {
-  width: 110vw;
-  height: 28vh;
-  bottom: 8%;
-  left: -15vw;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(29, 78, 216, 0.28) 40%,
-    rgba(124, 58, 237, 0.22) 70%,
-    transparent 100%
-  );
-  animation: helloStreakRevealSoft 1.9s cubic-bezier(0.22, 1, 0.36, 1) 0.25s forwards;
 }
 
 .hello-svg-wrap {
@@ -191,7 +124,7 @@ html[dir="rtl"] kbd {
   justify-content: center;
   width: 100%;
   padding: 24px;
-  animation: helloFinalGlow 0.9s ease-in-out 2.15s forwards;
+  animation: helloFinalGlow 1s ease-in-out 2.9s forwards;
 }
 
 .hello-text {
@@ -208,14 +141,14 @@ html[dir="rtl"] kbd {
   stroke-width: 1.5;
   stroke-dasharray: 650;
   stroke-dashoffset: 650;
-  animation: helloDrawStroke 1.15s cubic-bezier(0.37, 0, 0.22, 1) 0.35s forwards;
+  animation: helloDrawStroke 1.5s cubic-bezier(0.37, 0, 0.22, 1) 0.3s forwards;
 }
 
 .hello-fill-line-1 {
   fill: #ffffff;
   stroke: none;
   opacity: 0;
-  animation: helloFillFade 0.65s ease-out 0.85s forwards;
+  animation: helloFillFade 0.7s ease-out 0.95s forwards;
 }
 
 .hello-stroke-line-2 {
@@ -224,45 +157,14 @@ html[dir="rtl"] kbd {
   stroke-width: 1.35;
   stroke-dasharray: 650;
   stroke-dashoffset: 650;
-  animation: helloDrawStroke 1.1s cubic-bezier(0.37, 0, 0.22, 1) 1.2s forwards;
+  animation: helloDrawStroke 1.45s cubic-bezier(0.37, 0, 0.22, 1) 1.55s forwards;
 }
 
 .hello-fill-line-2 {
   fill: #ffffff;
   stroke: none;
   opacity: 0;
-  animation: helloFillFade 0.65s ease-out 1.7s forwards;
-}
-
-@keyframes helloBgReveal {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes helloStreakReveal {
-  from {
-    opacity: 0;
-    transform: rotate(-28deg) translateX(-4%) scale(0.96);
-  }
-  to {
-    opacity: 0.85;
-    transform: rotate(-28deg) translateX(0%) scale(1);
-  }
-}
-
-@keyframes helloStreakRevealSoft {
-  from {
-    opacity: 0;
-    transform: rotate(-28deg) translateX(4%) scale(0.96);
-  }
-  to {
-    opacity: 0.65;
-    transform: rotate(-28deg) translateX(0%) scale(1);
-  }
+  animation: helloFillFade 0.7s ease-out 2.2s forwards;
 }
 
 @keyframes helloDrawStroke {
@@ -285,20 +187,18 @@ html[dir="rtl"] kbd {
 
 @keyframes helloFinalGlow {
   0% {
-    filter: drop-shadow(0 0 10px rgba(147, 197, 253, 0.22));
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.16));
   }
   50% {
-    filter: drop-shadow(0 0 22px rgba(191, 219, 254, 0.45));
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.38));
   }
   100% {
-    filter: drop-shadow(0 0 16px rgba(191, 219, 254, 0.32));
+    filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.26));
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .loading-screen,
-  .hello-bg,
-  .hello-streak,
   .hello-svg-wrap,
   .hello-stroke-line-1,
   .hello-fill-line-1,
@@ -308,8 +208,6 @@ html[dir="rtl"] kbd {
     transition: none !important;
   }
 
-  .hello-bg,
-  .hello-streak,
   .hello-fill-line-1,
   .hello-fill-line-2 {
     opacity: 1 !important;

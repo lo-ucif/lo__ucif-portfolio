@@ -5,7 +5,7 @@ type LoadingScreenProps = {
   onComplete: () => void;
 };
 
-const WELCOME_DURATION_MS = 3000;
+const WELCOME_DURATION_MS = 4000;
 
 export function LoadingScreen({ onComplete }: LoadingScreenProps) {
   const onCompleteRef = useRef(onComplete);
@@ -28,15 +28,9 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
       aria-live="polite"
       aria-busy="true"
       initial={{ opacity: 1 }}
-      exit={{ opacity: 0, scale: 1.015 }}
-      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
     >
-      {/* Apple Hello inspired dark navy/blue gradient & diagonal light streaks */}
-      <div className="hello-bg" aria-hidden="true" />
-      <div className="hello-streak hello-streak--blue-main" aria-hidden="true" />
-      <div className="hello-streak hello-streak--purple-accent" aria-hidden="true" />
-      <div className="hello-streak hello-streak--deep-glow" aria-hidden="true" />
-
       {/* Centered Handwritten Cursive SVG Welcome Text */}
       <div className="hello-svg-wrap">
         <svg
@@ -48,7 +42,7 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
           <defs>
             {/* Subtle luminous glow along writing path */}
             <filter id="hello-glow" x="-20%" y="-30%" width="140%" height="160%">
-              <feGaussianBlur stdDeviation="3.5" result="blur" />
+              <feGaussianBlur stdDeviation="3" result="blur" />
               <feMerge>
                 <feMergeNode in="blur" />
                 <feMergeNode in="SourceGraphic" />
@@ -70,7 +64,7 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
                 fill="url(#sweep-grad-1)"
                 initial={{ width: 0 }}
                 animate={{ width: 1050 }}
-                transition={{ duration: 1.15, delay: 0.35, ease: [0.37, 0, 0.22, 1] }}
+                transition={{ duration: 1.5, delay: 0.3, ease: [0.37, 0, 0.22, 1] }}
               />
             </mask>
 
@@ -82,7 +76,7 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
                 fill="url(#sweep-grad-1)"
                 initial={{ width: 0 }}
                 animate={{ width: 1050 }}
-                transition={{ duration: 1.1, delay: 1.2, ease: [0.37, 0, 0.22, 1] }}
+                transition={{ duration: 1.45, delay: 1.55, ease: [0.37, 0, 0.22, 1] }}
               />
             </mask>
           </defs>
