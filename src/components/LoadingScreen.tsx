@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 
 type LoadingScreenProps = {
   onComplete: () => void;
@@ -17,6 +18,7 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
   useEffect(() => {
     const start = performance.now();
     let rafId = 0;
+    let doneTimer = 0;
 
     const tick = (now: number) => {
       const elapsed = now - start;
@@ -26,19 +28,27 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
       if (elapsed < LOADING_DURATION_MS) {
         rafId = requestAnimationFrame(tick);
       } else {
-        onCompleteRef.current();
+        doneTimer = window.setTimeout(() => {
+          onCompleteRef.current();
+        }, 120);
       }
     };
 
     rafId = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafId);
+    return () => {
+      cancelAnimationFrame(rafId);
+      window.clearTimeout(doneTimer);
+    };
   }, []);
 
   return (
-    <div
+    <motion.div
       className="loading-screen"
       aria-live="polite"
       aria-busy="true"
+      initial={{ opacity: 1 }}
+      exit={{ opacity: 0, y: -10 }}
+      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
     >
       <div className="loading-content">
         <div className="loading-text">
@@ -47,14 +57,16 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
           </h1>
         </div>
 
-        <div className="h-8 loader-wrap" aria-hidden="true">
-          <div
-            className="loader"
-            style={{ ["--progress" as string]: `${progress}%` }}
-          />
+        <div className="loader-wrap" aria-hidden="true">
+          <div className="loader">
+            <div
+              className="loader-fill"
+              style={{ transform: `scaleX(${progress / 100})` }}
+            />
+          </div>
           <div className="loader-percent">{progress}%</div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

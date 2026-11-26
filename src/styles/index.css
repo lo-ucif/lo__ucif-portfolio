@@ -149,13 +149,25 @@ html[dir="rtl"] kbd {
 }
 
 .loader {
-  width: 120px;
-  height: 20px;
+  position: relative;
+  width: 140px;
+  height: 6px;
+  flex-shrink: 0;
   border-radius: 999px;
-  background:
-    linear-gradient(#ffffff 0 0) 0/var(--progress, 0%) 100% no-repeat
-    rgba(221, 221, 221, 0.2);
-  transition: background-size 0.08s linear;
+  background: rgba(221, 221, 221, 0.2);
+  overflow: hidden;
+}
+
+.loader-fill {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: #ffffff;
+  transform-origin: left center;
+}
+
+html[dir="rtl"] .loader-fill {
+  transform-origin: right center;
 }
 
 .loader-percent {
