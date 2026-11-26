@@ -114,13 +114,6 @@ html[dir="rtl"] kbd {
   background: #000000;
   color: #f8f8ff;
   overflow: hidden;
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.loading-screen--hide {
-  opacity: 0;
-  transform: translateY(-10px) scale(0.98);
-  pointer-events: none;
 }
 
 .loading-content {
@@ -178,9 +171,5 @@ html[dir="rtl"] kbd {
   .loader-wrap {
     animation: none !important;
     transition: none !important;
-  }
-
-  .loading-screen--hide {
-    opacity: 0;
   }
 }

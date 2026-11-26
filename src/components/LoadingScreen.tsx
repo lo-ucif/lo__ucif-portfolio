@@ -1,24 +1,32 @@
-﻿import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
 type LoadingScreenProps = {
-  isHiding?: boolean;
+  onComplete: () => void;
 };
 
-export function LoadingScreen({ isHiding = false }: LoadingScreenProps) {
+const LOADING_DURATION_MS = 1200;
+
+export function LoadingScreen({ onComplete }: LoadingScreenProps) {
   const [progress, setProgress] = useState(0);
+  const onCompleteRef = useRef(onComplete);
 
   useEffect(() => {
-    const durationMs = 3000;
+    onCompleteRef.current = onComplete;
+  }, [onComplete]);
+
+  useEffect(() => {
     const start = performance.now();
     let rafId = 0;
 
     const tick = (now: number) => {
       const elapsed = now - start;
-      const next = Math.min(100, Math.round((elapsed / durationMs) * 100));
+      const next = Math.min(100, Math.round((elapsed / LOADING_DURATION_MS) * 100));
       setProgress(next);
-      if (elapsed < durationMs) {
+
+      if (elapsed < LOADING_DURATION_MS) {
         rafId = requestAnimationFrame(tick);
+      } else {
+        onCompleteRef.current();
       }
     };
 
@@ -27,56 +35,26 @@ export function LoadingScreen({ isHiding = false }: LoadingScreenProps) {
   }, []);
 
   return (
-    <motion.div
-      className={`loading-screen ${isHiding ? "loading-screen--hide" : ""}`}
+    <div
+      className="loading-screen"
       aria-live="polite"
       aria-busy="true"
-      initial={{ opacity: 0, scale: 1.02 }}
-      animate={
-        isHiding
-          ? { opacity: 0, y: -10, scale: 0.98 }
-          : { opacity: 1, y: 0, scale: 1 }
-      }
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
     >
-      <motion.div
-        className="loading-content"
-        initial="hidden"
-        animate="visible"
-        variants={{
-          hidden: {},
-          visible: {
-            transition: { staggerChildren: 0.2, delayChildren: 0.2 },
-          },
-        }}
-      >
-        <motion.div
-          className="loading-text"
-          variants={{
-            hidden: { opacity: 0, y: 10 },
-            visible: { opacity: 1, y: 0, transition: { duration: 0.7 } },
-          }}
-        >
+      <div className="loading-content">
+        <div className="loading-text">
           <h1 className="loading-title">
-            Hi, I'm Ahmed <br /> explore my work!
+            Hi, I&apos;m Ahmed <br /> explore my work!
           </h1>
-        </motion.div>
+        </div>
 
-        <motion.div
-          className="h-8 loader-wrap"
-          aria-hidden="true"
-          variants={{
-            hidden: { opacity: 0, y: 10 },
-            visible: { opacity: 1, y: 0, transition: { duration: 0.7 } },
-          }}
-        >
+        <div className="h-8 loader-wrap" aria-hidden="true">
           <div
             className="loader"
             style={{ ["--progress" as string]: `${progress}%` }}
           />
           <div className="loader-percent">{progress}%</div>
-        </motion.div>
-      </motion.div>
-    </motion.div>
+        </div>
+      </div>
+    </div>
   );
 }

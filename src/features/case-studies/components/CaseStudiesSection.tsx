@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { caseStudies } from "@/features/case-studies/data/caseStudiesData";
+import { caseStudySummaries } from "@/features/case-studies/data/caseStudiesSummary";
 import { CaseStudyCard } from "@/features/case-studies/components/CaseStudyCard";
 import { useLanguage } from "@/store/LanguageContext";
 
@@ -31,7 +31,7 @@ export function CaseStudiesSection() {
 
       {/* Case Studies Cards Column */}
       <div className="flex flex-col items-center gap-16 sm:gap-24 w-full max-w-6xl">
-        {caseStudies.map((study) => (
+        {caseStudySummaries.map((study) => (
           <CaseStudyCard key={study.id} {...study} />
         ))}
       </div>

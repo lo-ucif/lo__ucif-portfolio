@@ -100,6 +100,7 @@ export function LaptopMobileShowcase({
             src={laptop}
             alt={`${title} — Desktop Preview`}
             loading="lazy"
+            decoding="async"
             className="w-full h-full object-contain filter drop-shadow-[0_15px_30px_rgba(0,0,0,0.65)]"
           />
         </motion.div>
@@ -175,6 +176,7 @@ export function LaptopMobileShowcase({
             src={mobile}
             alt={`${title} — Mobile Preview`}
             loading="lazy"
+            decoding="async"
             className="w-full h-full object-contain filter drop-shadow-[0_22px_35px_rgba(0,0,0,0.95)] drop-shadow-[0_4px_10px_rgba(0,0,0,0.7)]"
           />
         </motion.div>

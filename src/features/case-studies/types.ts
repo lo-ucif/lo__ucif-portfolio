@@ -99,6 +99,26 @@ export type LaptopMockups = {
   right: string;
 };
 
+export type CaseStudySummary = {
+  id: string;
+  slug: string;
+  title: string;
+  arabicTitle?: string;
+  shortDescription: string;
+  platformType?: "app" | "web";
+  presentationHeading?: string;
+  role: string;
+  organization?: string;
+  heroImage: string;
+  mockupImage?: string;
+  phoneMockups?: PhoneMockups;
+  laptopMockups?: LaptopMockups;
+  liveDemo?: string;
+  figmaLink?: string;
+  linkedin?: string;
+  behanceLink?: string;
+};
+
 export type CaseStudy = {
   id: string;
   slug: string;

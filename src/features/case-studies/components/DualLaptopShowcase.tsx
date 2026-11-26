@@ -122,6 +122,7 @@ export function DualLaptopShowcase({
             src={laptops.left}
             alt={`${title} — Left Laptop Interface`}
             loading="lazy"
+            decoding="async"
             className={`w-full h-full object-contain block transition-all duration-300 ${
               hoveredLaptop === "left"
                 ? "filter drop-shadow-[0_32px_50px_rgba(0,0,0,0.98)] brightness-105"
@@ -206,6 +207,7 @@ export function DualLaptopShowcase({
             src={laptops.right}
             alt={`${title} — Right Laptop Interface`}
             loading="lazy"
+            decoding="async"
             className={`w-full h-full object-contain block transition-all duration-300 ${
               hoveredLaptop === "right"
                 ? "filter drop-shadow-[0_32px_50px_rgba(0,0,0,0.98)] brightness-105"

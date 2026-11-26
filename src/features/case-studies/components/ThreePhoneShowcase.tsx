@@ -81,6 +81,7 @@ export function ThreePhoneShowcase({
             src={phones.left}
             alt={`${title} — Left Interface`}
             loading="lazy"
+            decoding="async"
             className="w-full h-auto object-contain filter drop-shadow-[0_20px_25px_rgba(0,0,0,0.75)] transition-all duration-300"
           />
         </motion.div>
@@ -122,6 +123,7 @@ export function ThreePhoneShowcase({
             src={phones.right}
             alt={`${title} — Right Interface`}
             loading="lazy"
+            decoding="async"
             className="w-full h-auto object-contain filter drop-shadow-[0_20px_25px_rgba(0,0,0,0.75)] transition-all duration-300"
           />
         </motion.div>
@@ -159,6 +161,7 @@ export function ThreePhoneShowcase({
             src={phones.center}
             alt={`${title} — Center Hero Interface`}
             loading="lazy"
+            decoding="async"
             className="w-full h-auto object-contain filter drop-shadow-[0_28px_40px_rgba(0,0,0,0.92)] transition-all duration-300"
           />
         </motion.div>

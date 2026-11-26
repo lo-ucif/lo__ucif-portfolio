@@ -116,6 +116,7 @@ export function SiteHeader() {
                 className="object-contain w-full h-full"
                 src={logo}
                 alt="Loucif logo"
+                decoding="async"
               />
             </Link>
           </motion.div>
@@ -210,7 +211,7 @@ export function SiteHeader() {
           to="/"
           onClick={(e) => handleNavClick("home", e)}
         >
-          <img className="h-8.5 w-15 object-contain" src={logo} alt="Loucif logo" />
+          <img className="h-8.5 w-15 object-contain" src={logo} alt="Loucif logo" decoding="async" />
         </Link>
 
         {/* Mobile Header Direct Links: GitHub | LinkedIn | Language Switcher */}

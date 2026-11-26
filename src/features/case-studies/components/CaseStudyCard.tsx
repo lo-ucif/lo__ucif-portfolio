@@ -2,7 +2,7 @@ import { useState } from "react";
 import type { MouseEvent } from "react";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
-import type { CaseStudy } from "@/features/case-studies/types";
+import type { CaseStudySummary } from "@/features/case-studies/types";
 import { BehanceIcon, FigmaIcon, LinkedinIcon } from "@/constants/icons";
 import { ThreePhoneShowcase } from "@/features/case-studies/components/ThreePhoneShowcase";
 import { DualLaptopShowcase } from "@/features/case-studies/components/DualLaptopShowcase";
@@ -11,7 +11,7 @@ import { caseStudyTranslations } from "@/constants/projectTranslations";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
-export function CaseStudyCard(props: CaseStudy) {
+export function CaseStudyCard(props: CaseStudySummary) {
   const { isArabic, t } = useLanguage();
   const {
     slug,
