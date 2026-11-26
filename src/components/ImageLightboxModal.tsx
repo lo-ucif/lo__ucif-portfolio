@@ -138,8 +138,8 @@ export function ImageLightboxModal({
                 {showNavigation && (
                   <span className="font-['Itim'] text-[12px] sm:text-[13px] text-[#5197ff] uppercase tracking-wider font-semibold bg-[#5197ff]/15 border border-[#5197ff]/30 rounded-full px-2.5 py-0.5">
                     {isArabic
-                      ? `الشاشة ${currentItem.number || activeIndex + 1} من ${allItems.length}`
-                      : `Screen ${currentItem.number || activeIndex + 1} of ${allItems.length}`}
+                      ? `الشاشة ${activeIndex + 1} من ${allItems.length}`
+                      : `Screen ${activeIndex + 1} of ${allItems.length}`}
                   </span>
                 )}
                 {currentItem.category && (
