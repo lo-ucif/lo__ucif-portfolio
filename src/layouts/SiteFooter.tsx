@@ -23,7 +23,7 @@ export function SiteFooter() {
           aria-label="GitHub Profile"
           className="inline-flex items-center gap-1.5 text-[#A9A9A9] hover:text-white transition-colors duration-200"
         >
-          <GithubIcon width={17} height={17} />
+          <GithubIcon width={17} height={17} className="text-white" />
           <span>{t.nav.github}</span>
         </a>
         <a
