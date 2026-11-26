@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import { SiteFooter } from "../../../components/layout/SiteFooter";
-import { GmailIcon } from "../../../constants/Icon";
-import { useLanguage } from "../../../contexts/LanguageContext";
+import { SiteFooter } from "@/layouts/SiteFooter";
+import { GmailIcon } from "@/constants/icons";
+import { useLanguage } from "@/store/LanguageContext";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 

@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { useLanguage } from "../../../contexts/LanguageContext";
+import { useLanguage } from "@/store/LanguageContext";
 
 // High-fidelity presentation mockups
-import hafezMockup from "../../../assets/case-studies/mockups/7afez-transparent.webp";
-import hafezWeb from "../../../assets/hafez-web.webp";
-import tabibMockup from "../../../assets/case-studies/mockups/al-tabib-transparent.webp";
+import hafezMockup from "@/assets/case-studies/mockups/7afez-transparent.webp";
+import hafezWeb from "@/assets/hafez-web.webp";
+import tabibMockup from "@/assets/case-studies/mockups/al-tabib-transparent.webp";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 

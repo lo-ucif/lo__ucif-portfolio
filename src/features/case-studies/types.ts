@@ -5,7 +5,7 @@ export type TechItem = {
   icon?: ComponentType<SVGProps<SVGSVGElement>>;
 };
 
-export type ScreenItem = {
+type ScreenItem = {
   id: string;
   number: string;
   title: string;
@@ -18,14 +18,14 @@ export type ScreenItem = {
   aspectRatio?: string;
 };
 
-export type ProblemChallenge = {
+type ProblemChallenge = {
   number: string;
   title: string;
   description: string;
   iconName?: string;
 };
 
-export type PersonaData = {
+type PersonaData = {
   name: string;
   tagline: string;
   quote: string;
@@ -35,7 +35,7 @@ export type PersonaData = {
   isPlaceholder?: boolean;
 };
 
-export type UserJourneyStep = {
+type UserJourneyStep = {
   phase: string;
   goal: string;
   action: string;
@@ -43,24 +43,24 @@ export type UserJourneyStep = {
   experience: "neutral" | "positive" | "challenging";
 };
 
-export type KeyInsight = {
+type KeyInsight = {
   number: string;
   title: string;
   takeaway: string;
 };
 
-export type DesignSystemItem = {
+type DesignSystemItem = {
   category: string;
   description: string;
   details: string[];
 };
 
-export type ChallengeApproach = {
+type ChallengeApproach = {
   challenge: string;
   approach: string;
 };
 
-export type FlowDiagramNode = {
+type FlowDiagramNode = {
   step: number;
   title: string;
   userAction: string;
@@ -68,7 +68,7 @@ export type FlowDiagramNode = {
   touchpoint: string;
 };
 
-export type UseCaseActor = {
+type UseCaseActor = {
   id: string;
   name: string;
   arabicName?: string;
@@ -76,12 +76,12 @@ export type UseCaseActor = {
   useCases: string[];
 };
 
-export type UseCaseDiagramData = {
+type UseCaseDiagramData = {
   systemName: string;
   actors: UseCaseActor[];
 };
 
-export type DesignTool = {
+type DesignTool = {
   name: string;
   category: string;
   icon?: ComponentType<SVGProps<SVGSVGElement>>;

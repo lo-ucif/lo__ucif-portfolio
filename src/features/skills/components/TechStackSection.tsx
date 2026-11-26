@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import { skillCategories } from "../../../constants/data";
-import { useLanguage } from "../../../contexts/LanguageContext";
-import { skillCategoryTranslations } from "../../../constants/projectTranslations";
+import { skillCategories } from "@/features/skills/data/skillsData";
+import { useLanguage } from "@/store/LanguageContext";
+import { skillCategoryTranslations } from "@/constants/projectTranslations";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 

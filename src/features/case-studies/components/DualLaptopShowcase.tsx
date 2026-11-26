@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import type { LaptopMockups } from "../types";
+import type { LaptopMockups } from "@/features/case-studies/types";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 

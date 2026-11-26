@@ -1,4 +1,4 @@
-export interface ProjectTranslation {
+interface ProjectTranslation {
   title: string;
   badge: string;
   shortDescription: string;
@@ -162,22 +162,6 @@ export const projectTranslations: Record<number, ProjectTranslation> = {
     role: "مطور واجهات أمامية",
     outcome:
       "إتقان مسار تحويل نماذج Figma التفاعلية إلى مكونات React جاهزة للإنتاج بتنسيقات متجاوبة واحترافية.",
-  },
-  4: {
-    title: "مكتبة الكتب — واجهة تفاعلية",
-    badge: "مشروع شخصي",
-    shortDescription:
-      "تطبيق مكتبة تفاعلي لعرض الكتب وتصنيفها وتحويل تصاميم فيجما إلى كود برمجي دقيق.",
-    narrative:
-      "مشروع تطبيقي يركز على تحويل تصاميم Figma بدقة بكسلية إلى مكونات React متجاوبة، مع تجربة مستخدم سلسة وعرض جذاب للكتب.",
-    keyFeatures: [
-      "تحويل دقيق لتصاميم Figma UI إلى مكونات React متجاوبة بالكامل",
-      "قسم بداية جذاب مع تسلسل بصري واضح وتنسيق طباعي مريح",
-      "بنية مكونات معيارية ومنظمة وفق أفضل ممارسات تطوير الويب",
-    ],
-    role: "مطور واجهات أمامية",
-    outcome:
-      "بناء واجهة مستخدم نموذجية عالية الدقة تحاكي تصاميم Figma باحترافية كاملة.",
   },
 };
 

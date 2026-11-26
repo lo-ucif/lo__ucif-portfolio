@@ -1,67 +1,67 @@
-import tabibMockup from "../../../assets/case-studies/mockups/al-tabib-transparent.webp";
-import tabibFramed from "../../../assets/case-studies/mockups/al-tabib-framed.webp";
-import rokhsaMockup from "../../../assets/case-studies/mockups/rokhsa-transparent.webp";
-import rokhsaFramed from "../../../assets/case-studies/mockups/rokhsa-framed.webp";
-import hafezMockup from "../../../assets/case-studies/mockups/7afez-transparent.webp";
-import hafezFramed from "../../../assets/case-studies/mockups/7afez-framed.webp";
-import hafezLaptopLeft from "../../../assets/case-studies/mockups/7afez-laptop-left.webp";
-import hafezLaptopRight from "../../../assets/case-studies/mockups/7afez-laptop-right.webp";
-import hafezScreen01 from "../../../assets/case-studies/7afez/7afez-web-01.webp";
-import hafezScreen02 from "../../../assets/case-studies/7afez/7afez-web-02.webp";
-import hafezLogoHero from "../../../assets/case-studies/hafez-logo/hafez-logo-hero.webp";
-import hafezLogoIdentity from "../../../assets/case-studies/hafez-logo/hafez-logo-identity.webp";
-import hafezLogoColors from "../../../assets/case-studies/hafez-logo/hafez-logo-colors.webp";
+import tabibMockup from "@/assets/case-studies/mockups/al-tabib-transparent.webp";
+import tabibFramed from "@/assets/case-studies/mockups/al-tabib-framed.webp";
+import rokhsaMockup from "@/assets/case-studies/mockups/rokhsa-transparent.webp";
+import rokhsaFramed from "@/assets/case-studies/mockups/rokhsa-framed.webp";
+import hafezMockup from "@/assets/case-studies/mockups/7afez-transparent.webp";
+import hafezFramed from "@/assets/case-studies/mockups/7afez-framed.webp";
+import hafezLaptopLeft from "@/assets/case-studies/mockups/7afez-laptop-left.webp";
+import hafezLaptopRight from "@/assets/case-studies/mockups/7afez-laptop-right.webp";
+import hafezScreen01 from "@/assets/case-studies/7afez/7afez-web-01.webp";
+import hafezScreen02 from "@/assets/case-studies/7afez/7afez-web-02.webp";
+import hafezLogoHero from "@/assets/case-studies/hafez-logo/hafez-logo-hero.webp";
+import hafezLogoIdentity from "@/assets/case-studies/hafez-logo/hafez-logo-identity.webp";
+import hafezLogoColors from "@/assets/case-studies/hafez-logo/hafez-logo-colors.webp";
 // Al-Tabib Al-Hafiz Screens (WebP)
-import tabibScreen01 from "../../../assets/case-studies/al-tabib/iPhone 17 - 1.webp";
-import tabibScreen02 from "../../../assets/case-studies/al-tabib/iPhone 17 - 2.webp";
-import tabibScreen03 from "../../../assets/case-studies/al-tabib/iPhone 17 - 3.webp";
-import tabibScreen04 from "../../../assets/case-studies/al-tabib/iPhone 17 - 1099.webp";
-import tabibScreen05 from "../../../assets/case-studies/al-tabib/iPhone 17 - 106.webp";
-import tabibScreen06 from "../../../assets/case-studies/al-tabib/iPhone 17 - 17.webp";
-import tabibScreen07 from "../../../assets/case-studies/al-tabib/iPhone 17 - 18.webp";
-import tabibScreen08 from "../../../assets/case-studies/al-tabib/iPhone 17 - 20.webp";
-import tabibScreen09 from "../../../assets/case-studies/al-tabib/iPhone 17 - 21.webp";
-import tabibScreen10 from "../../../assets/case-studies/al-tabib/iPhone 17 - 28.webp";
-import tabibScreen11 from "../../../assets/case-studies/al-tabib/iPhone 17 - 40.webp";
-import tabibScreen12 from "../../../assets/case-studies/al-tabib/iPhone 17 - 46.webp";
-import tabibScreen13 from "../../../assets/case-studies/al-tabib/iPhone 17 - 49.webp";
-import tabibScreen14 from "../../../assets/case-studies/al-tabib/iPhone 17 - 50.webp";
-import tabibScreen15 from "../../../assets/case-studies/al-tabib/iPhone 17 - 85.webp";
-import tabibScreen16 from "../../../assets/case-studies/al-tabib/iPhone 17 - 86.webp";
-import tabibScreen17 from "../../../assets/case-studies/al-tabib/iPhone 17 - 88.webp";
-import tabibScreen18 from "../../../assets/case-studies/al-tabib/iPhone 17 - 91.webp";
-import tabibScreen19 from "../../../assets/case-studies/al-tabib/iPhone 17 - 96.webp";
+import tabibScreen01 from "@/assets/case-studies/al-tabib/iPhone 17 - 1.webp";
+import tabibScreen02 from "@/assets/case-studies/al-tabib/iPhone 17 - 2.webp";
+import tabibScreen03 from "@/assets/case-studies/al-tabib/iPhone 17 - 3.webp";
+import tabibScreen04 from "@/assets/case-studies/al-tabib/iPhone 17 - 1099.webp";
+import tabibScreen05 from "@/assets/case-studies/al-tabib/iPhone 17 - 106.webp";
+import tabibScreen06 from "@/assets/case-studies/al-tabib/iPhone 17 - 17.webp";
+import tabibScreen07 from "@/assets/case-studies/al-tabib/iPhone 17 - 18.webp";
+import tabibScreen08 from "@/assets/case-studies/al-tabib/iPhone 17 - 20.webp";
+import tabibScreen09 from "@/assets/case-studies/al-tabib/iPhone 17 - 21.webp";
+import tabibScreen10 from "@/assets/case-studies/al-tabib/iPhone 17 - 28.webp";
+import tabibScreen11 from "@/assets/case-studies/al-tabib/iPhone 17 - 40.webp";
+import tabibScreen12 from "@/assets/case-studies/al-tabib/iPhone 17 - 46.webp";
+import tabibScreen13 from "@/assets/case-studies/al-tabib/iPhone 17 - 49.webp";
+import tabibScreen14 from "@/assets/case-studies/al-tabib/iPhone 17 - 50.webp";
+import tabibScreen15 from "@/assets/case-studies/al-tabib/iPhone 17 - 85.webp";
+import tabibScreen16 from "@/assets/case-studies/al-tabib/iPhone 17 - 86.webp";
+import tabibScreen17 from "@/assets/case-studies/al-tabib/iPhone 17 - 88.webp";
+import tabibScreen18 from "@/assets/case-studies/al-tabib/iPhone 17 - 91.webp";
+import tabibScreen19 from "@/assets/case-studies/al-tabib/iPhone 17 - 96.webp";
 
 // Rokhsa Screens (WebP)
-import rokhsaScreen02 from "../../../assets/case-studies/rokhsa/iPhone 17 - 3.webp";
-import rokhsaScreen03 from "../../../assets/case-studies/rokhsa/iPhone 17 - 2.webp";
-import rokhsaScreen04 from "../../../assets/case-studies/rokhsa/iPhone 17 - 4.webp";
-import rokhsaScreen05 from "../../../assets/case-studies/rokhsa/iPhone 17 - 20.webp";
-import rokhsaScreen06 from "../../../assets/case-studies/rokhsa/iPhone 17 - 15.webp";
-import rokhsaScreen07 from "../../../assets/case-studies/rokhsa/iPhone 17 - 16.webp";
-import rokhsaScreen08 from "../../../assets/case-studies/rokhsa/iPhone 17 - 18.webp";
-import rokhsaScreen09 from "../../../assets/case-studies/rokhsa/iPhone 17 - 19.webp";
-import rokhsaScreen10 from "../../../assets/case-studies/rokhsa/iPhone 17 - 23.webp";
-import rokhsaScreen11 from "../../../assets/case-studies/rokhsa/iPhone 17 - 25.webp";
-import rokhsaScreen12 from "../../../assets/case-studies/rokhsa/iPhone 17 - 6.webp";
-import rokhsaScreen13 from "../../../assets/case-studies/rokhsa/iPhone 17 - 7.webp";
-import rokhsaScreen14 from "../../../assets/case-studies/rokhsa/iPhone 17 - 40.webp";
-import rokhsaScreen15 from "../../../assets/case-studies/rokhsa/iPhone 17 - 46.webp";
-import rokhsaScreen16 from "../../../assets/case-studies/rokhsa/iPhone 17 - 44.webp";
-import rokhsaScreen17 from "../../../assets/case-studies/rokhsa/iPhone 17 - 43.webp";
-import tabibPhoneLeft from "../../../assets/case-studies/mockups/phones/tabib-left.webp";
-import tabibPhoneCenter from "../../../assets/case-studies/mockups/phones/tabib-center.webp";
-import tabibPhoneRight from "../../../assets/case-studies/mockups/phones/tabib-right.webp";
-import rokhsaPhoneLeft from "../../../assets/case-studies/mockups/phones/rokhsa-left.webp";
-import rokhsaPhoneCenter from "../../../assets/case-studies/mockups/phones/rokhsa-center.webp";
-import rokhsaPhoneRight from "../../../assets/case-studies/mockups/phones/rokhsa-right.webp";
+import rokhsaScreen02 from "@/assets/case-studies/rokhsa/iPhone 17 - 3.webp";
+import rokhsaScreen03 from "@/assets/case-studies/rokhsa/iPhone 17 - 2.webp";
+import rokhsaScreen04 from "@/assets/case-studies/rokhsa/iPhone 17 - 4.webp";
+import rokhsaScreen05 from "@/assets/case-studies/rokhsa/iPhone 17 - 20.webp";
+import rokhsaScreen06 from "@/assets/case-studies/rokhsa/iPhone 17 - 15.webp";
+import rokhsaScreen07 from "@/assets/case-studies/rokhsa/iPhone 17 - 16.webp";
+import rokhsaScreen08 from "@/assets/case-studies/rokhsa/iPhone 17 - 18.webp";
+import rokhsaScreen09 from "@/assets/case-studies/rokhsa/iPhone 17 - 19.webp";
+import rokhsaScreen10 from "@/assets/case-studies/rokhsa/iPhone 17 - 23.webp";
+import rokhsaScreen11 from "@/assets/case-studies/rokhsa/iPhone 17 - 25.webp";
+import rokhsaScreen12 from "@/assets/case-studies/rokhsa/iPhone 17 - 6.webp";
+import rokhsaScreen13 from "@/assets/case-studies/rokhsa/iPhone 17 - 7.webp";
+import rokhsaScreen14 from "@/assets/case-studies/rokhsa/iPhone 17 - 40.webp";
+import rokhsaScreen15 from "@/assets/case-studies/rokhsa/iPhone 17 - 46.webp";
+import rokhsaScreen16 from "@/assets/case-studies/rokhsa/iPhone 17 - 44.webp";
+import rokhsaScreen17 from "@/assets/case-studies/rokhsa/iPhone 17 - 43.webp";
+import tabibPhoneLeft from "@/assets/case-studies/mockups/phones/tabib-left.webp";
+import tabibPhoneCenter from "@/assets/case-studies/mockups/phones/tabib-center.webp";
+import tabibPhoneRight from "@/assets/case-studies/mockups/phones/tabib-right.webp";
+import rokhsaPhoneLeft from "@/assets/case-studies/mockups/phones/rokhsa-left.webp";
+import rokhsaPhoneCenter from "@/assets/case-studies/mockups/phones/rokhsa-center.webp";
+import rokhsaPhoneRight from "@/assets/case-studies/mockups/phones/rokhsa-right.webp";
 import {
   FigmaIcon,
   ReactIcon,
   TypescriptIcon,
   TaillwindIcon,
-} from "../../../constants/Icon";
-import type { CaseStudy } from "../types";
+} from "@/constants/icons";
+import type { CaseStudy } from "@/features/case-studies/types";
 
 export const caseStudies: CaseStudy[] = [
   {

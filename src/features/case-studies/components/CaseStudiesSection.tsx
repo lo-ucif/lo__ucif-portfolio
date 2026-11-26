@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import { caseStudies } from "../data/caseStudiesData";
-import { CaseStudyCard } from "./CaseStudyCard";
-import { useLanguage } from "../../../contexts/LanguageContext";
+import { caseStudies } from "@/features/case-studies/data/caseStudiesData";
+import { CaseStudyCard } from "@/features/case-studies/components/CaseStudyCard";
+import { useLanguage } from "@/store/LanguageContext";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 

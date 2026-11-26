@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { projects } from "../../../constants/data";
-import Projectcard from "../../../components/projectcard";
-import { useLanguage } from "../../../contexts/LanguageContext";
+import { projects } from "@/features/projects/data/projectsData";
+import ProjectCard from "@/features/projects/components/ProjectCard";
+import { useLanguage } from "@/store/LanguageContext";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
@@ -39,7 +39,7 @@ export function ProjectsSection() {
       {/* Unified Project Showcase Cards */}
       <div className="flex flex-col items-center gap-16 sm:gap-24 w-full max-w-6xl">
         {featuredProjects.map((project) => (
-          <Projectcard key={project.id} {...project} />
+          <ProjectCard key={project.id} {...project} />
         ))}
       </div>
 

@@ -1,9 +1,9 @@
 import { useState, useMemo, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import type { CaseStudy } from "../types";
-import type { LightboxItem } from "./ImageLightboxModal";
-import { useLanguage } from "../../../contexts/LanguageContext";
-import { caseStudyCategoryTranslations } from "../../../constants/projectTranslations";
+import type { CaseStudy } from "@/features/case-studies/types";
+import type { LightboxItem } from "@/components/ImageLightboxModal";
+import { useLanguage } from "@/store/LanguageContext";
+import { caseStudyCategoryTranslations } from "@/constants/projectTranslations";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 

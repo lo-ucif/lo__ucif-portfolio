@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { caseStudies } from "../features/case-studies/data/caseStudiesData";
-import { SiteFooter } from "../components/layout/SiteFooter";
-import { BehanceIcon, FigmaIcon } from "../constants/Icon";
-
-import { CaseStudyOverview } from "../features/case-studies/components/CaseStudyOverview";
-import { CaseStudyFinalDesign } from "../features/case-studies/components/CaseStudyFinalDesign";
-import FloatingBubble, { type BubbleItem } from "../components/FloatingBubble";
-import { ImageLightboxModal, type LightboxItem } from "../features/case-studies/components/ImageLightboxModal";
-import { useLanguage } from "../contexts/LanguageContext";
+import {
+  caseStudies,
+  CaseStudyOverview,
+  CaseStudyFinalDesign,
+} from "@/features/case-studies";
+import { SiteFooter } from "@/layouts/SiteFooter";
+import { BehanceIcon, FigmaIcon } from "@/constants/icons";
+import FloatingBubble, { type BubbleItem } from "@/components/FloatingBubble";
+import { ImageLightboxModal, type LightboxItem } from "@/components/ImageLightboxModal";
+import { useLanguage } from "@/store/LanguageContext";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 

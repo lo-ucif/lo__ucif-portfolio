@@ -1,17 +1,16 @@
 import { motion } from "framer-motion";
-import { TechStackSection } from "../features/skills/components/TechStackSection";
-import { ProjectsSection } from "../features/projects/components/ProjectsSection";
-import { ContactSection } from "../features/contact/components/ContactSection";
-import { GithubIcon } from "../constants/Icon";
-import pdf from "../../public/Ahmed_Loucif_CV.pdf";
-import myimg from "../assets/profile.webp";
-import FloatingBubble from "../components/FloatingBubble";
-import { StatusBadge } from "../components/StatusBadge";
-import Experience from "../features/certificates/Experience";
-import Certificates from "../features/certificates/Certificates";
-import { CaseStudiesSection } from "../features/case-studies/components/CaseStudiesSection";
-import { ServicesCard } from "../features/services/components/ServicesCard";
-import { useLanguage } from "../contexts/LanguageContext";
+import { TechStackSection } from "@/features/skills";
+import { ProjectsSection } from "@/features/projects";
+import { ContactSection } from "@/features/contact";
+import { GithubIcon } from "@/constants/icons";
+import myimg from "@/assets/profile.webp";
+import FloatingBubble from "@/components/FloatingBubble";
+import { StatusBadge } from "@/components/StatusBadge";
+import { ExperienceSection } from "@/features/experience";
+import { CertificatesSection } from "@/features/certificates";
+import { CaseStudiesSection } from "@/features/case-studies";
+import { ServicesCard } from "@/features/services";
+import { useLanguage } from "@/store/LanguageContext";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
@@ -193,7 +192,7 @@ export default function Home() {
             <ServicesCard />
 
             <motion.a
-              href={pdf}
+              href="/Ahmed_Loucif_CV.pdf"
               download
               className="inline-block rounded-[38.182px] border border-white px-[16.76px] py-[12.57px] font-['Inter'] text-[16.327px] text-white transition-colors duration-300 hover:bg-white hover:text-[#161513]"
               initial={{ opacity: 0, y: 20 }}
@@ -207,11 +206,11 @@ export default function Home() {
             </motion.a>
           </section>
 
-          <Experience />
+          <ExperienceSection />
           <ProjectsSection />
           <CaseStudiesSection />
           <TechStackSection />
-          <Certificates />
+          <CertificatesSection />
         </main>
 
         <ContactSection />

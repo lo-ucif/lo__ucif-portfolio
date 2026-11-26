@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
-import type { CaseStudy } from "../types";
-import { DualLaptopShowcase } from "./DualLaptopShowcase";
-import { useLanguage } from "../../../contexts/LanguageContext";
-import { caseStudyTranslations } from "../../../constants/projectTranslations";
+import type { CaseStudy } from "@/features/case-studies/types";
+import { DualLaptopShowcase } from "@/features/case-studies/components/DualLaptopShowcase";
+import { useLanguage } from "@/store/LanguageContext";
+import { caseStudyTranslations } from "@/constants/projectTranslations";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 

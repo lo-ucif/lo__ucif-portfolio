@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useStatusBadge } from "../contexts/useStatusBadge";
+import { useStatusBadge } from "@/store/StatusBadgeContext";
 
 export function StatusBadge() {
   const { text, dotColor } = useStatusBadge();

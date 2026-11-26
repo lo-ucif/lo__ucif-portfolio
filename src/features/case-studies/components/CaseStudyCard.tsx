@@ -2,12 +2,12 @@ import { useState } from "react";
 import type { MouseEvent } from "react";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
-import type { CaseStudy } from "../types";
-import { BehanceIcon, FigmaIcon, LinkedinIcon } from "../../../constants/Icon";
-import { ThreePhoneShowcase } from "./ThreePhoneShowcase";
-import { DualLaptopShowcase } from "./DualLaptopShowcase";
-import { useLanguage } from "../../../contexts/LanguageContext";
-import { caseStudyTranslations } from "../../../constants/projectTranslations";
+import type { CaseStudy } from "@/features/case-studies/types";
+import { BehanceIcon, FigmaIcon, LinkedinIcon } from "@/constants/icons";
+import { ThreePhoneShowcase } from "@/features/case-studies/components/ThreePhoneShowcase";
+import { DualLaptopShowcase } from "@/features/case-studies/components/DualLaptopShowcase";
+import { useLanguage } from "@/store/LanguageContext";
+import { caseStudyTranslations } from "@/constants/projectTranslations";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 

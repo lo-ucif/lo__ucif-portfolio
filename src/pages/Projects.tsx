@@ -1,10 +1,9 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { projects } from "../constants/data";
-import Projectcard from "../components/projectcard";
-import FloatingBubble, { type BubbleItem } from "../components/FloatingBubble";
-import { SiteFooter } from "../components/layout/SiteFooter";
-import { useLanguage } from "../contexts/LanguageContext";
+import { projects, ProjectCard } from "@/features/projects";
+import FloatingBubble, { type BubbleItem } from "@/components/FloatingBubble";
+import { SiteFooter } from "@/layouts/SiteFooter";
+import { useLanguage } from "@/store/LanguageContext";
 
 export default function Projects() {
   const easeOut = [0.22, 1, 0.36, 1] as const;
@@ -47,7 +46,7 @@ export default function Projects() {
       {/* Unified Project Showcase Cards (All Projects in One Column) */}
       <div className="flex flex-col items-center gap-16 sm:gap-24 w-full max-w-6xl">
         {projects.map((project) => (
-          <Projectcard key={project.id} {...project} />
+          <ProjectCard key={project.id} {...project} />
         ))}
       </div>
 

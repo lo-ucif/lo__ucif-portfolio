@@ -1,17 +1,17 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link, useParams, useNavigate } from "react-router-dom";
-import { projects, roleConfig, categoryConfig } from "../constants/data";
-import { SiteFooter } from "../components/layout/SiteFooter";
-import FloatingBubble, { type BubbleItem } from "../components/FloatingBubble";
-import { useLanguage } from "../contexts/LanguageContext";
-import { projectTranslations } from "../constants/projectTranslations";
+import { projects, roleConfig, categoryConfig } from "@/features/projects";
+import { SiteFooter } from "@/layouts/SiteFooter";
+import FloatingBubble, { type BubbleItem } from "@/components/FloatingBubble";
+import { useLanguage } from "@/store/LanguageContext";
+import { projectTranslations } from "@/constants/projectTranslations";
 import {
   Github2Icon,
   LinkIcon,
   FigmaIcon,
   LinkedinIcon,
-} from "../constants/Icon";
+} from "@/constants/icons";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
