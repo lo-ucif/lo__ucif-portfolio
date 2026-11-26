@@ -1,66 +1,67 @@
-import rokhsaImg from "../../../assets/ChatGPT Image Aug 5, 2026, 11_48_00 PM 13.webp";
-import tabibMockup from "../../../assets/case-studies/mockups/al-tabib-transparent.webp";
-import tabibFramed from "../../../assets/case-studies/mockups/al-tabib-framed.webp";
-import rokhsaMockup from "../../../assets/case-studies/mockups/rokhsa-transparent.webp";
-import rokhsaFramed from "../../../assets/case-studies/mockups/rokhsa-framed.webp";
-import hafezMockup from "../../../assets/case-studies/mockups/7afez-transparent.webp";
-import hafezFramed from "../../../assets/case-studies/mockups/7afez-framed.webp";
-import hafezLaptopLeft from "../../../assets/case-studies/mockups/7afez-laptop-left.webp";
-import hafezLaptopRight from "../../../assets/case-studies/mockups/7afez-laptop-right.webp";
-import hafezScreen01 from "../../../assets/case-studies/7afez/7afez-web-01.webp";
-import hafezScreen02 from "../../../assets/case-studies/7afez/7afez-web-02.webp";
+import tabibMockup from "@/assets/case-studies/mockups/al-tabib-transparent.webp";
+import tabibFramed from "@/assets/case-studies/mockups/al-tabib-framed.webp";
+import rokhsaMockup from "@/assets/case-studies/mockups/rokhsa-transparent.webp";
+import rokhsaFramed from "@/assets/case-studies/mockups/rokhsa-framed.webp";
+import hafezMockup from "@/assets/case-studies/mockups/7afez-transparent.webp";
+import hafezFramed from "@/assets/case-studies/mockups/7afez-framed.webp";
+import hafezLaptopLeft from "@/assets/case-studies/mockups/7afez-laptop-left.webp";
+import hafezLaptopRight from "@/assets/case-studies/mockups/7afez-laptop-right.webp";
+import hafezScreen01 from "@/assets/case-studies/7afez/7afez-web-01.webp";
+import hafezScreen02 from "@/assets/case-studies/7afez/7afez-web-02.webp";
+import hafezLogoHero from "@/assets/case-studies/hafez-logo/hafez-logo-hero.webp";
+import hafezLogoIdentity from "@/assets/case-studies/hafez-logo/hafez-logo-identity.webp";
+import hafezLogoColors from "@/assets/case-studies/hafez-logo/hafez-logo-colors.webp";
 // Al-Tabib Al-Hafiz Screens (WebP)
-import tabibScreen01 from "../../../assets/case-studies/al-tabib/iPhone 17 - 1.webp";
-import tabibScreen02 from "../../../assets/case-studies/al-tabib/iPhone 17 - 2.webp";
-import tabibScreen03 from "../../../assets/case-studies/al-tabib/iPhone 17 - 3.webp";
-import tabibScreen04 from "../../../assets/case-studies/al-tabib/iPhone 17 - 1099.webp";
-import tabibScreen05 from "../../../assets/case-studies/al-tabib/iPhone 17 - 106.webp";
-import tabibScreen06 from "../../../assets/case-studies/al-tabib/iPhone 17 - 17.webp";
-import tabibScreen07 from "../../../assets/case-studies/al-tabib/iPhone 17 - 18.webp";
-import tabibScreen08 from "../../../assets/case-studies/al-tabib/iPhone 17 - 20.webp";
-import tabibScreen09 from "../../../assets/case-studies/al-tabib/iPhone 17 - 21.webp";
-import tabibScreen10 from "../../../assets/case-studies/al-tabib/iPhone 17 - 28.webp";
-import tabibScreen11 from "../../../assets/case-studies/al-tabib/iPhone 17 - 40.webp";
-import tabibScreen12 from "../../../assets/case-studies/al-tabib/iPhone 17 - 46.webp";
-import tabibScreen13 from "../../../assets/case-studies/al-tabib/iPhone 17 - 49.webp";
-import tabibScreen14 from "../../../assets/case-studies/al-tabib/iPhone 17 - 50.webp";
-import tabibScreen15 from "../../../assets/case-studies/al-tabib/iPhone 17 - 85.webp";
-import tabibScreen16 from "../../../assets/case-studies/al-tabib/iPhone 17 - 86.webp";
-import tabibScreen17 from "../../../assets/case-studies/al-tabib/iPhone 17 - 88.webp";
-import tabibScreen18 from "../../../assets/case-studies/al-tabib/iPhone 17 - 91.webp";
-import tabibScreen19 from "../../../assets/case-studies/al-tabib/iPhone 17 - 96.webp";
+import tabibScreen01 from "@/assets/case-studies/al-tabib/iPhone 17 - 1.webp";
+import tabibScreen02 from "@/assets/case-studies/al-tabib/iPhone 17 - 2.webp";
+import tabibScreen03 from "@/assets/case-studies/al-tabib/iPhone 17 - 3.webp";
+import tabibScreen04 from "@/assets/case-studies/al-tabib/iPhone 17 - 1099.webp";
+import tabibScreen05 from "@/assets/case-studies/al-tabib/iPhone 17 - 106.webp";
+import tabibScreen06 from "@/assets/case-studies/al-tabib/iPhone 17 - 17.webp";
+import tabibScreen07 from "@/assets/case-studies/al-tabib/iPhone 17 - 18.webp";
+import tabibScreen08 from "@/assets/case-studies/al-tabib/iPhone 17 - 20.webp";
+import tabibScreen09 from "@/assets/case-studies/al-tabib/iPhone 17 - 21.webp";
+import tabibScreen10 from "@/assets/case-studies/al-tabib/iPhone 17 - 28.webp";
+import tabibScreen11 from "@/assets/case-studies/al-tabib/iPhone 17 - 40.webp";
+import tabibScreen12 from "@/assets/case-studies/al-tabib/iPhone 17 - 46.webp";
+import tabibScreen13 from "@/assets/case-studies/al-tabib/iPhone 17 - 49.webp";
+import tabibScreen14 from "@/assets/case-studies/al-tabib/iPhone 17 - 50.webp";
+import tabibScreen15 from "@/assets/case-studies/al-tabib/iPhone 17 - 85.webp";
+import tabibScreen16 from "@/assets/case-studies/al-tabib/iPhone 17 - 86.webp";
+import tabibScreen17 from "@/assets/case-studies/al-tabib/iPhone 17 - 88.webp";
+import tabibScreen18 from "@/assets/case-studies/al-tabib/iPhone 17 - 91.webp";
+import tabibScreen19 from "@/assets/case-studies/al-tabib/iPhone 17 - 96.webp";
 
 // Rokhsa Screens (WebP)
-import rokhsaScreen01 from "../../../assets/case-studies/rokhsa/iPhone 17 - 1.webp";
-import rokhsaScreen02 from "../../../assets/case-studies/rokhsa/iPhone 17 - 3.webp";
-import rokhsaScreen03 from "../../../assets/case-studies/rokhsa/iPhone 17 - 2.webp";
-import rokhsaScreen04 from "../../../assets/case-studies/rokhsa/iPhone 17 - 4.webp";
-import rokhsaScreen05 from "../../../assets/case-studies/rokhsa/iPhone 17 - 20.webp";
-import rokhsaScreen06 from "../../../assets/case-studies/rokhsa/iPhone 17 - 15.webp";
-import rokhsaScreen07 from "../../../assets/case-studies/rokhsa/iPhone 17 - 16.webp";
-import rokhsaScreen08 from "../../../assets/case-studies/rokhsa/iPhone 17 - 18.webp";
-import rokhsaScreen09 from "../../../assets/case-studies/rokhsa/iPhone 17 - 19.webp";
-import rokhsaScreen10 from "../../../assets/case-studies/rokhsa/iPhone 17 - 23.webp";
-import rokhsaScreen11 from "../../../assets/case-studies/rokhsa/iPhone 17 - 25.webp";
-import rokhsaScreen12 from "../../../assets/case-studies/rokhsa/iPhone 17 - 6.webp";
-import rokhsaScreen13 from "../../../assets/case-studies/rokhsa/iPhone 17 - 7.webp";
-import rokhsaScreen14 from "../../../assets/case-studies/rokhsa/iPhone 17 - 40.webp";
-import rokhsaScreen15 from "../../../assets/case-studies/rokhsa/iPhone 17 - 46.webp";
-import rokhsaScreen16 from "../../../assets/case-studies/rokhsa/iPhone 17 - 44.webp";
-import rokhsaScreen17 from "../../../assets/case-studies/rokhsa/iPhone 17 - 43.webp";
-import tabibPhoneLeft from "../../../assets/case-studies/mockups/phones/tabib-left.webp";
-import tabibPhoneCenter from "../../../assets/case-studies/mockups/phones/tabib-center.webp";
-import tabibPhoneRight from "../../../assets/case-studies/mockups/phones/tabib-right.webp";
-import rokhsaPhoneLeft from "../../../assets/case-studies/mockups/phones/rokhsa-left.webp";
-import rokhsaPhoneCenter from "../../../assets/case-studies/mockups/phones/rokhsa-center.webp";
-import rokhsaPhoneRight from "../../../assets/case-studies/mockups/phones/rokhsa-right.webp";
+import rokhsaScreen02 from "@/assets/case-studies/rokhsa/iPhone 17 - 3.webp";
+import rokhsaScreen03 from "@/assets/case-studies/rokhsa/iPhone 17 - 2.webp";
+import rokhsaScreen04 from "@/assets/case-studies/rokhsa/iPhone 17 - 4.webp";
+import rokhsaScreen05 from "@/assets/case-studies/rokhsa/iPhone 17 - 20.webp";
+import rokhsaScreen06 from "@/assets/case-studies/rokhsa/iPhone 17 - 15.webp";
+import rokhsaScreen07 from "@/assets/case-studies/rokhsa/iPhone 17 - 16.webp";
+import rokhsaScreen08 from "@/assets/case-studies/rokhsa/iPhone 17 - 18.webp";
+import rokhsaScreen09 from "@/assets/case-studies/rokhsa/iPhone 17 - 19.webp";
+import rokhsaScreen10 from "@/assets/case-studies/rokhsa/iPhone 17 - 23.webp";
+import rokhsaScreen11 from "@/assets/case-studies/rokhsa/iPhone 17 - 25.webp";
+import rokhsaScreen12 from "@/assets/case-studies/rokhsa/iPhone 17 - 6.webp";
+import rokhsaScreen13 from "@/assets/case-studies/rokhsa/iPhone 17 - 7.webp";
+import rokhsaScreen14 from "@/assets/case-studies/rokhsa/iPhone 17 - 40.webp";
+import rokhsaScreen15 from "@/assets/case-studies/rokhsa/iPhone 17 - 46.webp";
+import rokhsaScreen16 from "@/assets/case-studies/rokhsa/iPhone 17 - 44.webp";
+import rokhsaScreen17 from "@/assets/case-studies/rokhsa/iPhone 17 - 43.webp";
+import tabibPhoneLeft from "@/assets/case-studies/mockups/phones/tabib-left.webp";
+import tabibPhoneCenter from "@/assets/case-studies/mockups/phones/tabib-center.webp";
+import tabibPhoneRight from "@/assets/case-studies/mockups/phones/tabib-right.webp";
+import rokhsaPhoneLeft from "@/assets/case-studies/mockups/phones/rokhsa-left.webp";
+import rokhsaPhoneCenter from "@/assets/case-studies/mockups/phones/rokhsa-center.webp";
+import rokhsaPhoneRight from "@/assets/case-studies/mockups/phones/rokhsa-right.webp";
 import {
   FigmaIcon,
   ReactIcon,
   TypescriptIcon,
   TaillwindIcon,
-} from "../../../constants/Icon";
-import type { CaseStudy } from "../types";
+} from "@/constants/icons";
+import type { CaseStudy } from "@/features/case-studies/types";
 
 export const caseStudies: CaseStudy[] = [
   {
@@ -904,7 +905,7 @@ export const caseStudies: CaseStudy[] = [
       "A dedicated cloud web platform designed to streamline Quran memorization, coordinate academic halaqat, and connect students with certified instructors.",
     projectType: "Responsive Web Platform",
     platformType: "web",
-    presentationHeading: "Web Presentation",
+    presentationHeading: "Web & Brand Presentation",
     role: "UI/UX Designer",
     designResponsibilities: [
       "User Interface Design",
@@ -919,7 +920,7 @@ export const caseStudies: CaseStudy[] = [
       "Serene spiritual aesthetic, structured halaqat administration, and frictionless inquiry workflows for academic reciters.",
     platform: "Responsive Web (Desktop & Tablet)",
     timeline: "2026",
-    organization: "Faculty of Medicine & Quranic Circles (كلية الطب والمراكز القرآنية)",
+    organization: "Quranic Circles (المدارس القرآنية)",
     heroImage: hafezMockup,
     mockupImage: hafezMockup,
     framedMockupImage: hafezFramed,
@@ -929,9 +930,19 @@ export const caseStudies: CaseStudy[] = [
     },
     galleryMockups: [
       {
-        title: "Transparent Dual-Laptop Presentation",
+        title: "Dual-Laptop Web Presentation",
         image: hafezMockup,
         caption: "Hi-Fi MacBook Pro Web Mockup in Figma (Node 595:449)",
+      },
+      {
+        title: "Hafez Brand Identity & Logo Showcase",
+        image: hafezLogoHero,
+        caption: "Visual Identity & Arabic Calligraphy Typography on Behance",
+      },
+      {
+        title: "Color Palette & Visual Tokens",
+        image: hafezLogoColors,
+        caption: "Dark Teal Blue (#1A5A81) & Golden Beige (#CAB178)",
       },
       {
         title: "Framed Presentation Showcase",
@@ -950,11 +961,12 @@ export const caseStudies: CaseStudy[] = [
       "https://www.linkedin.com/posts/ahmed-loucif-757854342_Ui/Ux Design-uidesign-uxdesign-activity-7492710718945943552-9YBE",
     figmaLink:
       "https://www.figma.com/design/hx4E6cZLWqvRjPWsZ5nXpN/my-portfolio?node-id=595-449&t=4FLL2zwFHHIvH7Z5-4",
+    behanceLink: "https://www.behance.net/gallery/256578087/_",
 
     // 01 — Project Overview
     overview: {
       summary:
-        "7afez Web (منصة حافظ) is the desktop web extension of the Quran memorization ecosystem, designed to provide a comprehensive, distraction-free environment for medical students, reciters, and study circle supervisors. While mobile devices excel at quick daily revisions on the go, the web platform serves as the central operational hub: managing study circle schedules, exploring institutional halaqat, submitting inquiries, and fostering a structured daily habit with the Holy Quran.",
+        "7afez Web (منصة حافظ) is the desktop web extension of the Quran memorization ecosystem, designed to provide a comprehensive, distraction-free environment for students, reciters, and study circle supervisors. While mobile devices excel at quick daily revisions on the go, the web platform serves as the central operational hub: managing study circle schedules, exploring institutional halaqat, submitting inquiries, and fostering a structured daily habit with the Holy Quran.",
       objectives: [
         "Create a harmonious, culturally resonant Arabic design system centered on serene deep-teal and warm golden accents.",
         "Provide a clear, conversion-optimized landing page articulating the platform's mission, circle features, and institutional benefits.",
@@ -983,7 +995,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     problem: {
       statement:
-        "Medical students and reciters balancing demanding academic coursework struggle with fragmented communication and cluttered tools that fail to support consistent, distraction-free Quran revision and halaqat coordination.",
+        "Students and reciters balancing demanding academic coursework struggle with fragmented communication and cluttered tools that fail to support consistent, distraction-free Quran revision and halaqat coordination.",
       context:
         "Rigorous university curricula leave minimal discretionary time. Physical recitation circles require digital coordination to maintain attendance, log progress, and connect students with qualified sheikhs through a dependable, accessible platform.",
       targetAudience:
@@ -1352,6 +1364,57 @@ export const caseStudies: CaseStudy[] = [
           category: "Communication & Support",
           aspectRatio: "web",
         },
+        {
+          id: "7afez-logo-hero",
+          number: "03",
+          title: "Brand Identity & Arabic Calligraphy Logo",
+          arabicTitle: "هوية منصة حافظ — الشعار والخط العربي الأصيل",
+          subtitle: "Harmonious fusion of Quranic sacred geometry, the open book, and classic calligraphy",
+          category: "Brand Identity",
+          description:
+            "Custom brandmark designed for Hafez Platform, integrating the letter 'ح' with an open Quran upon a reading stand, rendered in elegant spiritual proportions.",
+          uxHighlights: [
+            "Bespoke Arabic letterform craft communicating reverence and academic rigor.",
+            "Integrated open Quran icon signifying direct engagement with the scripture.",
+            "Complete Behance design showcase documenting the design methodology.",
+          ],
+          image: hafezLogoHero,
+          aspectRatio: "web",
+        },
+        {
+          id: "7afez-logo-identity",
+          number: "04",
+          title: "Brand Philosophy & Mission Typography",
+          arabicTitle: "فلسفة الهوية ورسالة المنظومة",
+          subtitle: "Digital platform empowering the Quran memorization journey with daily consistency",
+          category: "Brand Identity",
+          description:
+            "Typography and mission statement presentation: 'حافظ منصة رقمية تساعد على تنظيم رحلة حفظ القرآن الكريم ومراجعته، من خلال متابعة التقدم، تنظيم المهام، وبناء عادة يومية مستمرة مع كتاب الله.'",
+          uxHighlights: [
+            "Modern balanced Arabic typeface pairing.",
+            "Watermark Quranic typographic background.",
+            "Focused mission articulation for educational institutions.",
+          ],
+          image: hafezLogoIdentity,
+          aspectRatio: "web",
+        },
+        {
+          id: "7afez-logo-colors",
+          number: "05",
+          title: "Design Tokens & Brand Color Palette",
+          arabicTitle: "ألوان الشعار وتوكنز الهوية البصرية",
+          subtitle: "Dark Teal Blue (#1A5A81) and Golden Beige (#CAB178)",
+          category: "Brand Identity",
+          description:
+            "Core color tokens establishing the serene spiritual atmosphere of the platform: Dark Teal Blue (RGB: 26, 90, 129) evoking trust and focus, paired with Golden Beige (RGB: 202, 177, 120) reflecting warmth and noble tradition.",
+          uxHighlights: [
+            "WCAG AAA compliance against clean neutral backgrounds.",
+            "Accessible high-contrast palette.",
+            "Shared color tokens mapped directly from Figma into Tailwind CSS.",
+          ],
+          image: hafezLogoColors,
+          aspectRatio: "web",
+        },
       ],
     },
 
@@ -1401,24 +1464,23 @@ export const caseStudies: CaseStudy[] = [
     slug: "rokhsa",
     title: "Rokhsa — Smart Driving School Platform",
     arabicTitle: "رخصة — منصة ذكية لمدارس تعليم السياقة",
-    subtitle: "Modern Web Dashboard & Mobile Ecosystem for Driving Education",
+    subtitle: "Modern Mobile Ecosystem for Driving Education",
     shortDescription:
-      "A smart platform that digitizes driving school operations, lesson bookings, and student tracking.",
-    projectType: "Web App & Mobile Platform",
-    platformType: "web",
+      "A smart mobile platform that digitizes driving school operations, lesson bookings, and student tracking.",
+    projectType: "Mobile Application",
+    platformType: "app",
     role: "UI/UX Designer",
     designResponsibilities: [
       "User Research",
       "User Interface Design",
       "User Experience Design",
       "Design System & Tokens",
-      "Responsive Desktop Dashboard",
       "Learner Mobile App",
       "Figma High-Fidelity Prototype",
     ],
     mainDesignFocus:
-      "Dual-interface architecture digitizing driving school operations across desktop management and mobile student booking.",
-    platform: "Responsive Web & Mobile",
+      "Mobile ecosystem digitizing driving school operations, lesson booking, and candidate tracking.",
+    platform: "Mobile Application (iOS & Android)",
     timeline: "2026",
     organization: "Driving Education Ecosystem",
     heroImage: rokhsaMockup,
@@ -1441,14 +1503,14 @@ export const caseStudies: CaseStudy[] = [
         caption: "Framed Portfolio Showcase",
       },
     ],
-    presentationHeading: "Driving School Platform",
+    presentationHeading: "Mobile Presentation",
     tools: [{ label: "Figma", icon: FigmaIcon }],
     liveDemo:
-      "https://www.linkedin.com/posts/ahmed-loucif-757854342_Ui/Ux Design-uxdesign-figma-ugcPost-7490915921327198208-KWqx/",
+      "https://lnkd.in/p/dz_eNQ82",
     figmaLink:
       "https://www.figma.com/design/hx4E6cZLWqvRjPWsZ5nXpN/my-portfolio?node-id=585-131",
     linkedin:
-      "https://www.linkedin.com/posts/ahmed-loucif-757854342_Ui/Ux Design-uxdesign-figma-ugcPost-7490915921327198208-KWqx/",
+      "https://lnkd.in/p/dz_eNQ82",
 
     // 01 — Overview
     overview: {
@@ -1824,42 +1886,8 @@ export const caseStudies: CaseStudy[] = [
         "Rokhsa delivers an end-to-end digital experience that brings efficiency, transparency, and pride to driving schools in Algeria. The platform seamlessly bridges admin oversight with student convenience.",
       screens: [
         {
-          id: "rokhsa-screen-1",
-          number: "01",
-          title: "Centralized Web Management Dashboard",
-          arabicTitle: "لوحة التحكم السحابية لإدارة المدرسة",
-          subtitle: "All driving school operations in one unified desktop command center",
-          category: "Desktop Web Platform",
-          description:
-            "The web dashboard enables school administrators to manage candidates, assign instructors, monitor vehicle fleets, and review real-time revenue and exam pass rates from any browser.",
-          uxHighlights: [
-            "High-impact Arabic branding banner: 'إدارة مدرستك من مكان واحد'.",
-            "At-a-glance metrics for candidates, exams, payments, and appointments.",
-            "Direct action button 'سجل الآن' with responsive web scaling.",
-          ],
-          image: rokhsaImg,
-          aspectRatio: "web",
-        },
-        {
-          id: "rokhsa-screen-2",
-          number: "02",
-          title: "Rokhsa Mobile Launch Screen",
-          arabicTitle: "شاشة البداية — هوية تطبيق رخصة",
-          subtitle: "Modern steering wheel monogram against deep navy canvas",
-          category: "Onboarding & Auth",
-          description:
-            "The launch screen establishes the modern brand identity of Rokhsa with a clean steering wheel monogram on deep dark blue.",
-          uxHighlights: [
-            "High-contrast brand mark against dark slate background (#0E2841).",
-            "Zero loading delay, smoothly transitioning to school welcome onboarding.",
-            "Instant platform recognition across driving schools in Algeria.",
-          ],
-          image: rokhsaScreen01,
-          aspectRatio: "app",
-        },
-        {
           id: "rokhsa-screen-3",
-          number: "03",
+          number: "01",
           title: "Driving School Value Onboarding",
           arabicTitle: "مرحباً بك في مدرستك الرقمية",
           subtitle: "Empowering school managers to digitize candidates and payments",
@@ -1876,7 +1904,7 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           id: "rokhsa-screen-4",
-          number: "04",
+          number: "02",
           title: "Secure Administrator Mobile Login",
           arabicTitle: "تسجيل الدخول لإدارة مدرستك",
           subtitle: "Role-based authentication for school owners and instructors",
@@ -1893,7 +1921,7 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           id: "rokhsa-screen-5",
-          number: "05",
+          number: "03",
           title: "Mobile Command Center Dashboard",
           arabicTitle: "لوحة التحكم الرئيسية عبر الهاتف",
           subtitle: "Enrolled candidates (426), vehicle fleet, and live activity feed",
@@ -1910,7 +1938,7 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           id: "rokhsa-screen-6",
-          number: "06",
+          number: "04",
           title: "Modular Operations Navigation Drawer",
           arabicTitle: "القائمة الجانبية وإدارة الأقسام",
           subtitle: "Fast access to exams, packages, assistants, and timetables",
@@ -1927,7 +1955,7 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           id: "rokhsa-screen-7",
-          number: "07",
+          number: "05",
           title: "Driving Lesson Category Selector",
           arabicTitle: "اختيار نوع الحصة التدريبية",
           subtitle: "Code de la route, Maneuvers (Circuit), or Road Driving (Circulation)",
@@ -1944,7 +1972,7 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           id: "rokhsa-screen-8",
-          number: "08",
+          number: "06",
           title: "Live In-Car Driving Lesson Timer",
           arabicTitle: "عداد الحصة التدريبية المباشر",
           subtitle: "Precision stopwatch ensuring candidates receive mandated road time",
@@ -1961,7 +1989,7 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           id: "rokhsa-screen-9",
-          number: "09",
+          number: "07",
           title: "Candidate Selection for Practical Drive",
           arabicTitle: "اختيار الطالب للجلسة التدريبية",
           subtitle: "Searchable directory of enrolled learners with Category B filters",
@@ -1978,7 +2006,7 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           id: "rokhsa-screen-10",
-          number: "10",
+          number: "08",
           title: "Archive of Completed Driving Lessons",
           arabicTitle: "سجل الحصص التدريبية المنتهية",
           subtitle: "Archived ledger of driving hours and completed student lessons",
@@ -1995,7 +2023,7 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           id: "rokhsa-screen-11",
-          number: "11",
+          number: "09",
           title: "Official State Exam Candidates Ledger",
           arabicTitle: "قائمة المترشحين للامتحان والنتائج",
           subtitle: "Pass/Fail results across Highway Code, Circuit, and Road Drive",
@@ -2012,7 +2040,7 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           id: "rokhsa-screen-12",
-          number: "12",
+          number: "10",
           title: "Create New State Exam Session",
           arabicTitle: "إضافة موعد امتحان جديد",
           subtitle: "Scheduling state driving exams with licensing authority dates",
@@ -2029,7 +2057,7 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           id: "rokhsa-screen-13",
-          number: "13",
+          number: "11",
           title: "Candidate Profile & Driving Dossier",
           arabicTitle: "ملف المترشح والبيانات الشخصية",
           subtitle: "Ahmed Loucif dossier, national registration code, and contact",
@@ -2046,7 +2074,7 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           id: "rokhsa-screen-14",
-          number: "14",
+          number: "12",
           title: "Candidate Payments & Installment Ledger",
           arabicTitle: "سجل دفعات وأقساط المتدرب",
           subtitle: "Total tuition (8,960 DA), paid installments, and remaining balance",
@@ -2063,7 +2091,7 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           id: "rokhsa-screen-15",
-          number: "15",
+          number: "13",
           title: "School Administrator Profile",
           arabicTitle: "الملف التعريفي لمدير المدرسة",
           subtitle: "License accreditation, school branding, and contact channels",
@@ -2080,7 +2108,7 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           id: "rokhsa-screen-16",
-          number: "16",
+          number: "14",
           title: "Edit School Profile & Credentials",
           arabicTitle: "تعديل معلومات وبيانات المدرسة",
           subtitle: "Updating school address, commercial phone, and license classes",
@@ -2097,7 +2125,7 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           id: "rokhsa-screen-17",
-          number: "17",
+          number: "15",
           title: "Platform Settings & Subscription",
           arabicTitle: "إعدادات التطبيق وخطة الاشتراك",
           subtitle: "Cloud synchronization, billing tier, and alert notifications",
@@ -2114,7 +2142,7 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           id: "rokhsa-screen-18",
-          number: "18",
+          number: "16",
           title: "Advanced Features & Future Roadmap",
           arabicTitle: "ميزات متقدمة قادمة في التحديثات",
           subtitle: "Preview of upcoming GPS fleet tracking and AI exam simulators",

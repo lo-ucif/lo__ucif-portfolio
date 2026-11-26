@@ -1,9 +1,17 @@
 import { motion } from "framer-motion";
-import { SiteFooter } from "../../../components/layout/SiteFooter";
-
-const easeOut = [0.22, 1, 0.36, 1] as const;
+import { SiteFooter } from "@/layouts/SiteFooter";
+import { GmailIcon } from "@/constants/icons";
+import { WHATSAPP_URL } from "@/constants/contact";
+import { useLanguage } from "@/store/LanguageContext";
+import {
+  EASE_OUT_EXPO,
+  SPRING_INTERACTIVE,
+  VIEWPORT_ONCE,
+} from "@/constants/motion";
 
 export function ContactSection() {
+  const { t } = useLanguage();
+
   return (
     <section
       id="contact"
@@ -12,33 +20,47 @@ export function ContactSection() {
       <div className="flex flex-col items-center gap-8 sm:gap-10 max-w-3xl mx-auto">
         <motion.div
           className="flex flex-col items-center gap-4 sm:gap-5"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, ease: easeOut }}
+          viewport={VIEWPORT_ONCE}
+          transition={{ duration: 0.55, ease: EASE_OUT_EXPO }}
         >
           <h2 className="font-['Itim'] text-[36px] sm:text-[42px] text-white">
-            Let's Build Something Together.
+            {t.contact.headline}
           </h2>
-          <p className="max-w-160 font-['Poppins'] text-[15px] sm:text-[17px] leading-[1.6] text-[#a9a9a9]">
-            Have an idea, a project, or a challenge to solve? Let's connect and turn your vision into a meaningful digital experience with smart solutions and creative design.
+          <p className="max-w-160 font-['Inter'] text-[15px] sm:text-[17px] leading-[1.6] text-[#a9a9a9]">
+            {t.contact.description}
           </p>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          className="flex flex-wrap items-center justify-center gap-3.5 sm:gap-4"
+          initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, ease: easeOut }}
+          viewport={VIEWPORT_ONCE}
+          transition={{ duration: 0.55, ease: EASE_OUT_EXPO, delay: 0.06 }}
         >
           <motion.a
-            href="mailto:louciftamer3@gmail.com"
-            className="inline-block rounded-[38.182px] border border-white bg-white px-[28px] py-[11px] font-['Poppins'] text-[16px] text-[#161513] transition-colors duration-300 hover:bg-transparent hover:text-white"
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block rounded-[38.182px] border border-white bg-white px-[28px] py-[11px] font-['Inter'] text-[16px] text-[#161513] transition-colors duration-300 hover:bg-transparent hover:text-white"
             whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.18, ease: "easeOut" }}
+            whileTap={{ scale: 0.96 }}
+            transition={SPRING_INTERACTIVE}
           >
-            Let's Talk
+            {t.contact.letsTalk}
+          </motion.a>
+
+          <motion.a
+            href="mailto:louciftamer3@gmail.com"
+            className="flex items-center gap-2 rounded-[38.182px] border border-white px-[24px] py-[11px] font-['Inter'] text-[16px] text-white transition-colors duration-300 hover:bg-white hover:text-[#161513]"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.96 }}
+            transition={SPRING_INTERACTIVE}
+          >
+            <GmailIcon width={18} height={18} />
+            <span>{t.contact.email}</span>
           </motion.a>
         </motion.div>
       </div>

@@ -1,25 +1,32 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { caseStudies } from "../features/case-studies/data/caseStudiesData";
-import { SiteFooter } from "../components/layout/SiteFooter";
-import { FigmaIcon } from "../constants/Icon";
-
-import { CaseStudyOverview } from "../features/case-studies/components/CaseStudyOverview";
-import { CaseStudyFinalDesign } from "../features/case-studies/components/CaseStudyFinalDesign";
-import FloatingBubble, { type BubbleItem } from "../components/FloatingBubble";
-import { ImageLightboxModal, type LightboxItem } from "../features/case-studies/components/ImageLightboxModal";
-
-const easeOut = [0.22, 1, 0.36, 1] as const;
-
-const CASE_STUDY_BUBBLE_NAV: BubbleItem[] = [
-  { label: "Overview", id: "overview" },
-  { label: "Final Design", id: "final-design" },
-  { label: "Top ↑", id: "top" },
-];
+import {
+  caseStudies,
+  CaseStudyOverview,
+  CaseStudyFinalDesign,
+} from "@/features/case-studies";
+import { SiteFooter } from "@/layouts/SiteFooter";
+import { BehanceIcon, FigmaIcon } from "@/constants/icons";
+import FloatingBubble, { type BubbleItem } from "@/components/FloatingBubble";
+import { ImageLightboxModal, type LightboxItem } from "@/components/ImageLightboxModal";
+import { useLanguage } from "@/store/LanguageContext";
+import { useAppReady } from "@/store/AppReadyContext";
+import { WHATSAPP_URL } from "@/constants/contact";
+import { EASE_OUT_EXPO } from "@/constants/motion";
 
 export default function CaseStudyDetail() {
+  const { isArabic, t } = useLanguage();
+  const isReady = useAppReady();
   const { slug } = useParams<{ slug: string }>();
+  const navigate = useNavigate();
+
+  const caseStudyBubbleNav: BubbleItem[] = [
+    { label: isArabic ? "كل التصاميم" : "All Designs", id: "all-designs" },
+    { label: isArabic ? "نظرة عامة" : "Overview", id: "overview" },
+    { label: isArabic ? "التصميم النهائي" : "Final Design", id: "final-design" },
+    { label: isArabic ? "للأعلى ↑" : "Top ↑", id: "top" },
+  ];
 
   // Find case study by slug or id
   const currentIndex = caseStudies.findIndex(
@@ -68,33 +75,47 @@ export default function CaseStudyDetail() {
   const [activeBubbleId, setActiveBubbleId] = useState<string>("overview");
 
   useEffect(() => {
-    const handleScroll = () => {
+    let rafId = 0;
+
+    const updateActiveBubble = () => {
+      rafId = 0;
       const scrollY = window.scrollY;
       if (scrollY < 250) {
-        setActiveBubbleId("overview");
+        setActiveBubbleId((prev) => (prev === "overview" ? prev : "overview"));
         return;
       }
       const sectionIds = ["final-design", "overview"];
       for (const id of sectionIds) {
         const el = document.getElementById(id);
         if (el) {
-          const top = el.getBoundingClientRect().top + window.scrollY;
+          const top = el.getBoundingClientRect().top + scrollY;
           if (scrollY >= top - 260) {
-            setActiveBubbleId(id);
+            setActiveBubbleId((prev) => (prev === id ? prev : id));
             return;
           }
         }
       }
     };
+
+    const handleScroll = () => {
+      if (rafId !== 0) return;
+      rafId = window.requestAnimationFrame(updateActiveBubble);
+    };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+    updateActiveBubble();
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (rafId !== 0) window.cancelAnimationFrame(rafId);
+    };
   }, []);
 
   const handleBubbleClick = (item: BubbleItem) => {
-    if (item.id === "top") {
+    if (item.id === "all-designs") {
+      navigate("/#case-studies");
+    } else if (item.id === "top") {
       window.scrollTo({ top: 0, behavior: "smooth" });
-    } else {
+    } else if (/^[a-zA-Z0-9_-]{1,64}$/.test(item.id)) {
       const el = document.getElementById(item.id);
       if (el) {
         el.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -105,13 +126,13 @@ export default function CaseStudyDetail() {
   if (!study) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen gap-6 bg-[#161513] px-5 text-white">
-        <h1 className="font-['Itim'] text-[32px]">Case Study Not Found</h1>
-        <p className="font-['Poppins'] text-[#9CA3AF]">
-          The case study you are looking for does not exist or has been moved.
+        <h1 className="font-['Itim'] text-[32px]">Design Not Found</h1>
+        <p className="font-['Inter'] text-[#9CA3AF]">
+          The design you are looking for does not exist or has been moved.
         </p>
         <Link
           to="/"
-          className="rounded-[38.182px] border border-white px-6 py-2.5 font-['Poppins'] text-[15px] text-white transition-colors duration-300 hover:bg-white hover:text-[#161513]"
+          className="rounded-[38.182px] border border-white px-6 py-2.5 font-['Inter'] text-[15px] text-white transition-colors duration-300 hover:bg-white hover:text-[#161513]"
         >
           Return to Portfolio
         </Link>
@@ -126,14 +147,14 @@ export default function CaseStudyDetail() {
         {/* Back Navigation Bar */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45, ease: easeOut }}
+          animate={isReady ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }}
+          transition={{ duration: 0.45, ease: EASE_OUT_EXPO }}
           className="flex flex-wrap items-center justify-between gap-4 border-b border-white/[0.08] pb-5"
         >
           <div className="flex items-center gap-4">
             <Link
               to="/#case-studies"
-              className="inline-flex items-center gap-2 font-['Poppins'] text-[14px] sm:text-[15px] text-[#9CA3AF] transition-colors duration-200 hover:text-white"
+              className="inline-flex items-center gap-2 font-['Inter'] text-[14px] sm:text-[15px] text-[#9CA3AF] transition-colors duration-200 hover:text-white"
             >
               <svg
                 className="w-4 h-4"
@@ -147,29 +168,40 @@ export default function CaseStudyDetail() {
                 <line x1="19" y1="12" x2="5" y2="12" />
                 <polyline points="12 19 5 12 12 5" />
               </svg>
-              <span>Back to Case Studies</span>
+              <span>{isArabic ? "العودة لتصاميم واجهات المستخدم" : "Back to Design"}</span>
             </Link>
 
             <span className="text-white/20">|</span>
 
             <Link
               to="/projects"
-              className="font-['Poppins'] text-[13px] text-[#8491A0] transition-colors hover:text-white"
+              className="font-['Inter'] text-[13px] text-[#8491A0] transition-colors hover:text-white"
             >
-              Projects
+              {t.nav.projects}
             </Link>
           </div>
 
           <div className="flex items-center gap-3">
+            {study.behanceLink && (
+              <a
+                href={study.behanceLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.05] border border-white/10 px-3.5 py-1.5 font-['Inter'] text-[13px] text-[#d1d1d1] hover:text-[#5197ff] hover:border-[#5197ff]/40 transition-colors"
+              >
+                <BehanceIcon width={14} height={14} />
+                <span>{isArabic ? "عرض بيهانس" : "Behance Presentation"}</span>
+              </a>
+            )}
             {study.figmaLink && (
               <a
                 href={study.figmaLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.05] border border-white/10 px-3.5 py-1.5 font-['Poppins'] text-[13px] text-[#d1d1d1] hover:text-[#5197ff] hover:border-[#5197ff]/40 transition-colors"
+                className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.05] border border-white/10 px-3.5 py-1.5 font-['Inter'] text-[13px] text-[#d1d1d1] hover:text-[#5197ff] hover:border-[#5197ff]/40 transition-colors"
               >
                 <FigmaIcon width={14} height={14} />
-                <span>Figma Prototype</span>
+                <span>{isArabic ? "نموذج فيجما" : "Figma Prototype"}</span>
               </a>
             )}
           </div>
@@ -194,26 +226,28 @@ export default function CaseStudyDetail() {
         {/* Collaboration CTA */}
         <div className="flex flex-col items-center gap-4 p-8 sm:p-10 rounded-3xl bg-gradient-to-b from-[#1A1917] to-[#161513] border border-white/[0.1] text-center shadow-xl">
           <span className="font-['Itim'] text-[14px] text-[#5197ff] uppercase tracking-wider">
-            Collaboration &amp; Design Inquiries
+            {isArabic ? "التعاون واستفسارات التصميم" : "Collaboration & Design Inquiries"}
           </span>
           <h3 className="font-['Itim'] text-[28px] sm:text-[34px] text-white font-bold">
-            Have a project or concept to design?
+            {isArabic ? "هل لديك مشروع أو فكرة تريد تصميمها؟" : "Have a project or concept to design?"}
           </h3>
-          <p className="font-['Poppins'] text-[14.5px] text-[#9CA3AF] max-w-lg leading-relaxed">
-            Let's build clean, human-centered digital experiences together.
+          <p className="font-['Inter'] text-[14.5px] text-[#9CA3AF] max-w-lg leading-relaxed">
+            {isArabic ? "دعنا نبني معاً تجارب رقمية نظيفة وعالية الجودة تتمحور حول المستخدم." : "Let's build clean, human-centered digital experiences together."}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
             <a
-              href="mailto:louciftamer3@gmail.com"
-              className="rounded-[38.182px] border border-white bg-white px-6 py-2.5 font-['Poppins'] text-[14.5px] font-medium text-[#161513] transition-colors duration-300 hover:bg-transparent hover:text-white"
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-[38.182px] border border-white bg-white px-6 py-2.5 font-['Inter'] text-[14.5px] font-medium text-[#161513] transition-colors duration-300 hover:bg-transparent hover:text-white"
             >
-              Let's Talk
+              {t.contact.letsTalk}
             </a>
             <Link
               to="/#case-studies"
-              className="rounded-[38.182px] border border-white/20 px-6 py-2.5 font-['Poppins'] text-[14.5px] text-white transition-colors duration-300 hover:border-white"
+              className="rounded-[38.182px] border border-white/20 px-6 py-2.5 font-['Inter'] text-[14.5px] text-white transition-colors duration-300 hover:border-white"
             >
-              Back to Portfolio
+              {isArabic ? "العودة إلى المعرض" : "Back to Portfolio"}
             </Link>
           </div>
         </div>
@@ -227,7 +261,7 @@ export default function CaseStudyDetail() {
 
       {/* Floating Navigation Bubble */}
       <FloatingBubble
-        items={CASE_STUDY_BUBBLE_NAV}
+        items={caseStudyBubbleNav}
         onItemClick={handleBubbleClick}
         activeId={activeBubbleId}
       />

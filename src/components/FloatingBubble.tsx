@@ -31,9 +31,20 @@ const getSaved = (): { side: Side; y: number } => {
     const saved = localStorage.getItem("bubble-pos");
     if (saved) {
       const parsed = JSON.parse(saved);
-      const maxY = window.innerHeight - SIZE - 10;
-      parsed.y = Math.max(10, Math.min(parsed.y, maxY));
-      return parsed;
+      if (
+        parsed &&
+        typeof parsed === "object" &&
+        !Array.isArray(parsed) &&
+        (parsed.side === "left" || parsed.side === "right") &&
+        typeof parsed.y === "number" &&
+        Number.isFinite(parsed.y)
+      ) {
+        const maxY = window.innerHeight - SIZE - 10;
+        return {
+          side: parsed.side,
+          y: Math.max(10, Math.min(parsed.y, maxY)),
+        };
+      }
     }
   } catch {
     /* empty */
@@ -99,9 +110,11 @@ const FloatingBubble = ({ items, onItemClick, activeId }: Props) => {
     if (onItemClick) {
       onItemClick(item);
     } else {
-      // default: scroll to element by id
-      const el = document.getElementById(item.id);
-      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      // default: scroll to element by id with safe identifier validation
+      if (/^[a-zA-Z0-9_-]{1,64}$/.test(item.id)) {
+        const el = document.getElementById(item.id);
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
     }
     setOpen(false);
   };

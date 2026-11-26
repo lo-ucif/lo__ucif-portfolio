@@ -1,0 +1,266 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Any Poppins references map cleanly to Inter in English */
+[class*="font-['Poppins']"] {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+
+html[dir="rtl"],
+body.font-arabic {
+  font-family: 'Playpen Sans Arabic', 'Cairo', 'Tajawal', system-ui, sans-serif;
+  line-height: 1.7;
+  letter-spacing: 0;
+  direction: rtl;
+  text-align: start;
+}
+
+html[dir="rtl"] h1,
+html[dir="rtl"] h2,
+html[dir="rtl"] h3,
+html[dir="rtl"] h4,
+html[dir="rtl"] h5,
+html[dir="rtl"] h6,
+html[dir="rtl"] p,
+html[dir="rtl"] span,
+html[dir="rtl"] a,
+html[dir="rtl"] button,
+html[dir="rtl"] input,
+html[dir="rtl"] textarea,
+html[dir="rtl"] select,
+html[dir="rtl"] label,
+html[dir="rtl"] [class*="font-"] {
+  font-family: 'Playpen Sans Arabic', 'Cairo', 'Tajawal', system-ui, sans-serif !important;
+}
+
+html[dir="rtl"] code,
+html[dir="rtl"] pre,
+html[dir="rtl"] .font-mono,
+html[dir="rtl"] kbd {
+  font-family: monospace, monospace !important;
+  direction: ltr !important;
+  unicode-bidi: isolate;
+}
+
+/* RTL Layout Direction Overrides */
+[dir="rtl"] {
+  direction: rtl;
+  text-align: start;
+}
+
+[dir="rtl"] input,
+[dir="rtl"] textarea,
+[dir="rtl"] select {
+  text-align: start;
+}
+
+[dir="rtl"] .group:hover .group-hover\/btn\:translate-x-1 {
+  transform: translateX(-0.25rem) !important;
+}
+
+[dir="rtl"] .group:hover .group-hover\/row\:translate-x-0\.5 {
+  transform: translateX(-0.125rem) !important;
+}
+
+/* Forms, Inputs & Tables in RTL */
+[dir="rtl"] input:not([type="email"]):not([type="tel"]):not([type="url"]):not([type="number"]):not([type="password"]),
+[dir="rtl"] textarea,
+[dir="rtl"] select {
+  text-align: start;
+  direction: rtl;
+}
+
+[dir="rtl"] th,
+[dir="rtl"] td {
+  text-align: start;
+}
+
+/* Modals, Dialogs */
+[dir="rtl"] [role="dialog"] {
+  text-align: start;
+}
+
+/* Keep phone numbers, emails, URLs, and code blocks left-to-right */
+[dir="rtl"] a[href^="tel:"],
+[dir="rtl"] a[href^="mailto:"],
+[dir="rtl"] a[href*="wa.me"],
+[dir="rtl"] input[type="email"],
+[dir="rtl"] input[type="tel"],
+[dir="rtl"] input[type="url"],
+[dir="rtl"] input[type="password"],
+[dir="rtl"] input[type="number"],
+[dir="rtl"] code,
+[dir="rtl"] pre,
+[dir="rtl"] [dir="ltr"] {
+  direction: ltr !important;
+  text-align: left;
+  unicode-bidi: isolate;
+}
+
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #161513;
+  color: #ffffff;
+  overflow: hidden;
+  will-change: opacity, transform;
+}
+
+.hello-svg-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.hello-text {
+  font-family: "Itim", sans-serif !important;
+  font-weight: 400;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.hello-text-ar {
+  font-family: "Playpen Sans Arabic", "Tajawal", sans-serif !important;
+  font-weight: 400;
+  fill: #ffffff;
+  stroke: #ffffff;
+  stroke-width: 1.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill-opacity: 0;
+  stroke-opacity: 1;
+}
+
+.hello-ar-line-1 {
+  animation:
+    helloCharInk 0.42s ease-out 0.1s forwards,
+    helloCharSettle 0.35s ease-out 0.32s forwards;
+}
+
+.hello-ar-line-2 {
+  animation:
+    helloCharInk 0.45s ease-out 0.98s forwards,
+    helloCharSettle 0.35s ease-out 1.2s forwards;
+}
+
+.hello-char {
+  fill: #ffffff;
+  fill-opacity: 0;
+  stroke: #ffffff;
+  stroke-width: 1.55;
+  stroke-opacity: 1;
+  stroke-dasharray: 210;
+  stroke-dashoffset: 210;
+  animation:
+    helloCharWrite 0.28s cubic-bezier(0.22, 1, 0.36, 1) var(--char-delay, 0s) forwards,
+    helloCharInk 0.2s ease-out calc(var(--char-delay, 0s) + 0.08s) forwards,
+    helloCharSettle 0.18s ease-out calc(var(--char-delay, 0s) + 0.18s) forwards;
+}
+
+@keyframes helloCharWrite {
+  0% {
+    stroke-dashoffset: 210;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes helloCharInk {
+  from {
+    fill-opacity: 0;
+  }
+  to {
+    fill-opacity: 1;
+  }
+}
+
+@keyframes helloCharSettle {
+  from {
+    stroke-opacity: 1;
+  }
+  to {
+    stroke-opacity: 0;
+  }
+}
+
+.hello-sweep {
+  transform: translateX(-720px);
+  will-change: transform;
+}
+
+.hello-sweep-rtl {
+  transform: translateX(720px);
+  will-change: transform;
+}
+
+.hello-sweep-1 {
+  animation: helloSweepMask 0.98s cubic-bezier(0.25, 0.1, 0.25, 1) 0.03s forwards;
+}
+
+.hello-sweep-2 {
+  animation: helloSweepMask 1.18s cubic-bezier(0.25, 0.1, 0.25, 1) 0.94s forwards;
+}
+
+.hello-sweep-rtl.hello-sweep-1 {
+  animation: helloSweepMaskRtl 0.98s cubic-bezier(0.25, 0.1, 0.25, 1) 0.03s forwards;
+}
+
+.hello-sweep-rtl.hello-sweep-2 {
+  animation: helloSweepMaskRtl 1.18s cubic-bezier(0.25, 0.1, 0.25, 1) 0.94s forwards;
+}
+
+@keyframes helloSweepMask {
+  from {
+    transform: translateX(-720px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes helloSweepMaskRtl {
+  from {
+    transform: translateX(720px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loading-screen,
+  .hello-char,
+  .hello-text-ar,
+  .hello-sweep,
+  .hello-sweep-rtl {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .hello-sweep,
+  .hello-sweep-rtl {
+    transform: translateX(0) !important;
+  }
+
+  .hello-char,
+  .hello-text-ar {
+    fill-opacity: 1 !important;
+    stroke-opacity: 0 !important;
+    stroke-dashoffset: 0 !important;
+  }
+}

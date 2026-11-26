@@ -1,9 +1,10 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import type { CaseStudy } from "../types";
-import type { LightboxItem } from "./ImageLightboxModal";
-
-const easeOut = [0.22, 1, 0.36, 1] as const;
+import type { CaseStudy } from "@/features/case-studies/types";
+import type { LightboxItem } from "@/components/ImageLightboxModal";
+import { useLanguage } from "@/store/LanguageContext";
+import { caseStudyCategoryTranslations } from "@/constants/projectTranslations";
+import { EASE_OUT_EXPO, VIEWPORT_ONCE } from "@/constants/motion";
 
 // Authentic iPhone 17 Pro Vector Mockup (from Figma Node 594:324 / 600:150)
 function IPhoneMockup({
@@ -32,12 +33,13 @@ function IPhoneMockup({
           alt={screen.title}
           className="w-full h-full object-cover block"
           loading="eager"
+          decoding="async"
         />
 
         {/* Hover Inspect Overlay for Center Phone */}
         {isCenter && (
           <div className="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 flex items-center justify-center transition-opacity duration-200 z-30 pointer-events-none">
-            <span className="rounded-full bg-white text-[#161513] font-['Poppins'] text-[12px] font-semibold px-4 py-2 shadow-lg">
+            <span className="rounded-full bg-white text-[#161513] font-['Inter'] text-[12px] font-semibold px-4 py-2 shadow-lg">
               Inspect Fullscreen 🔍
             </span>
           </div>
@@ -82,7 +84,7 @@ const phoneCardVariants = {
     scale: 1,
     opacity: 1,
     zIndex: 20,
-    transition: { duration: 0.45, ease: easeOut },
+    transition: { duration: 0.42, ease: EASE_OUT_EXPO },
   },
   left: {
     x: -148,
@@ -90,7 +92,7 @@ const phoneCardVariants = {
     scale: 0.96,
     opacity: 0.2,
     zIndex: 10,
-    transition: { duration: 0.45, ease: easeOut },
+    transition: { duration: 0.42, ease: EASE_OUT_EXPO },
   },
   right: {
     x: 148,
@@ -98,7 +100,7 @@ const phoneCardVariants = {
     scale: 0.96,
     opacity: 0.2,
     zIndex: 10,
-    transition: { duration: 0.45, ease: easeOut },
+    transition: { duration: 0.42, ease: EASE_OUT_EXPO },
   },
   exit: (direction: number) => ({
     x: direction > 0 ? -280 : 280,
@@ -106,7 +108,34 @@ const phoneCardVariants = {
     scale: 0.92,
     opacity: 0,
     zIndex: 5,
-    transition: { duration: 0.35, ease: easeOut },
+    transition: { duration: 0.32, ease: EASE_OUT_EXPO },
+  }),
+};
+
+// Mobile Single Phone Slide Animation (Smooth Left/Right Slide)
+const mobilePhoneVariants = {
+  enter: (direction: number) => ({
+    x: direction > 0 ? 280 : direction < 0 ? -280 : 0,
+    opacity: 0,
+    scale: 0.94,
+  }),
+  center: {
+    x: 0,
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.35,
+      ease: EASE_OUT_EXPO,
+    },
+  },
+  exit: (direction: number) => ({
+    x: direction > 0 ? -280 : 280,
+    opacity: 0,
+    scale: 0.94,
+    transition: {
+      duration: 0.26,
+      ease: EASE_OUT_EXPO,
+    },
   }),
 };
 
@@ -125,8 +154,9 @@ export function CaseStudyFinalDesign({
   study,
   onOpenLightbox,
 }: CaseStudyFinalDesignProps) {
+  const { isArabic } = useLanguage();
   const { solution } = study;
-  const screens = solution?.screens || [];
+  const screens = useMemo(() => solution?.screens ?? [], [solution?.screens]);
 
   // Active Category Filter State
   const [activeCategory, setActiveCategory] = useState<string>("All");
@@ -173,8 +203,7 @@ export function CaseStudyFinalDesign({
   // Determine if current screen should render in Web Browser or Mobile Device frame
   const isScreenWeb =
     currentScreen.aspectRatio === "web" ||
-    (study.platformType === "web" &&
-      (!currentScreen.aspectRatio || currentScreen.aspectRatio === "web" || currentScreen.number === "01"));
+    (study.platformType === "web" && currentScreen.aspectRatio !== "app");
 
   const currentIndexInFiltered = filteredScreens.findIndex((s) => s.id === currentScreen.id);
 
@@ -216,23 +245,47 @@ export function CaseStudyFinalDesign({
     ];
   }, [filteredScreens.length, currentScreen, prevScreen, nextScreen]);
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     setDirection(-1);
     const prevIdx =
       currentIndexInFiltered > 0
         ? currentIndexInFiltered - 1
         : filteredScreens.length - 1;
     setSelectedScreenId(filteredScreens[prevIdx].id);
-  };
+  }, [currentIndexInFiltered, filteredScreens]);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     setDirection(1);
     const nextIdx =
       currentIndexInFiltered < filteredScreens.length - 1
         ? currentIndexInFiltered + 1
         : 0;
     setSelectedScreenId(filteredScreens[nextIdx].id);
+  }, [currentIndexInFiltered, filteredScreens]);
+
+  // Touch Swipe on Mobile
+  const handleDragEnd = (
+    _e: MouseEvent | TouchEvent | PointerEvent,
+    info: { offset: { x: number }; velocity: { x: number } }
+  ) => {
+    const swipeThreshold = 45;
+    if (info.offset.x < -swipeThreshold || info.velocity.x < -250) {
+      handleNext();
+    } else if (info.offset.x > swipeThreshold || info.velocity.x > 250) {
+      handlePrev();
+    }
   };
+
+  // Preload adjacent screens for instant, stutter-free coverflow transitions
+  useEffect(() => {
+    if (filteredScreens.length <= 1) return;
+    [prevScreen?.image, nextScreen?.image].forEach((src) => {
+      if (!src) return;
+      const img = new Image();
+      img.decoding = "async";
+      img.src = src;
+    });
+  }, [filteredScreens.length, prevScreen?.image, nextScreen?.image]);
 
   // Keyboard navigation with arrow keys
   useEffect(() => {
@@ -245,7 +298,7 @@ export function CaseStudyFinalDesign({
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [currentIndexInFiltered, filteredScreens]);
+  }, [handlePrev, handleNext]);
 
   if (screens.length === 0 || !currentScreen) return null;
 
@@ -254,13 +307,13 @@ export function CaseStudyFinalDesign({
       {/* Section Header: Centered Small Title */}
       <motion.div
         className="flex flex-col items-center justify-center text-center"
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 18 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.6, ease: easeOut }}
+        viewport={VIEWPORT_ONCE}
+        transition={{ duration: 0.55, ease: EASE_OUT_EXPO }}
       >
         <h2 className="font-['Itim'] text-[32px] sm:text-[38px] text-white">
-          Final Design
+          {isArabic ? "التصميم النهائي للشاشات" : "Final Design"}
         </h2>
       </motion.div>
 
@@ -273,6 +326,9 @@ export function CaseStudyFinalDesign({
               cat === "All"
                 ? screens.length
                 : screens.filter((s) => s.category === cat).length;
+            const label = isArabic
+              ? caseStudyCategoryTranslations[cat] || (cat === "All" ? "الكل" : cat)
+              : cat;
             return (
               <button
                 key={cat}
@@ -293,7 +349,7 @@ export function CaseStudyFinalDesign({
                     : "bg-[#1A1917] hover:bg-white/10 border border-white/10 text-[#d1d1d1]"
                 }`}
               >
-                <span>{cat}</span>
+                <span>{label}</span>
                 <span
                   className={`text-[11px] px-1.5 py-0.2 rounded-full ${
                     isSelected ? "bg-[#161513]/25 text-[#161513]" : "bg-white/10 text-[#8491A0]"
@@ -349,80 +405,150 @@ export function CaseStudyFinalDesign({
                     opacity: 0,
                     x: direction > 0 ? -60 : direction < 0 ? 60 : 0,
                   }}
-                  transition={{ duration: 0.32, ease: easeOut }}
+                  transition={{ duration: 0.28, ease: EASE_OUT_EXPO }}
+                  decoding="async"
                   className="absolute inset-0 w-full h-full object-cover block"
                 />
               </AnimatePresence>
             </div>
             <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-200 pointer-events-none">
-              <span className="rounded-full bg-white text-[#161513] font-['Poppins'] text-[12px] font-semibold px-4 py-2 shadow-lg">
+              <span className="rounded-full bg-white text-[#161513] font-['Inter'] text-[12px] font-semibold px-4 py-2 shadow-lg">
                 Inspect Fullscreen 🔍
               </span>
             </div>
           </div>
         ) : (
-          // 3-Phone Presentation Stage
+          // Phone Presentation Stage
           <div className="relative flex items-center justify-center w-full max-w-2xl min-h-[510px] py-2 overflow-hidden sm:overflow-visible select-none mx-auto">
-            <AnimatePresence initial={false} custom={direction}>
-              {cardsToRender.map(({ screen, pos }) => {
-                const isCenter = pos === "center";
-                const isLeft = pos === "left";
-                const isRight = pos === "right";
+            {/* Desktop Mode (>= 640px): 3-Phone Coverflow */}
+            <div className="hidden sm:flex items-center justify-center w-full h-full">
+              <AnimatePresence initial={false} custom={direction}>
+                {cardsToRender.map(({ screen, pos }) => {
+                  const isCenter = pos === "center";
+                  const isLeft = pos === "left";
+                  const isRight = pos === "right";
 
-                const handleClick = () => {
-                  if (isCenter) {
-                    onOpenLightbox(
-                      screen.image,
-                      screen.title,
-                      screen.subtitle,
-                      currentIndexInFiltered,
-                      lightboxItems
-                    );
-                  } else if (isLeft) {
-                    handlePrev();
-                  } else if (isRight) {
-                    handleNext();
-                  }
-                };
-
-                return (
-                  <motion.div
-                    key={screen.id}
-                    custom={direction}
-                    variants={phoneCardVariants}
-                    initial="enter"
-                    animate={pos}
-                    exit="exit"
-                    whileHover={!isCenter ? { opacity: 0.48 } : undefined}
-                    className="absolute flex items-center justify-center cursor-pointer"
-                    style={{ willChange: "transform, opacity" }}
-                    title={
-                      isLeft
-                        ? `Previous: ${screen.title}`
-                        : isRight
-                        ? `Next: ${screen.title}`
-                        : screen.title
+                  const handleClick = () => {
+                    if (isCenter) {
+                      onOpenLightbox(
+                        screen.image,
+                        screen.title,
+                        screen.subtitle,
+                        currentIndexInFiltered,
+                        lightboxItems
+                      );
+                    } else if (isLeft) {
+                      handlePrev();
+                    } else if (isRight) {
+                      handleNext();
                     }
+                  };
+
+                  return (
+                    <motion.div
+                      key={screen.id}
+                      custom={direction}
+                      variants={phoneCardVariants}
+                      initial="enter"
+                      animate={pos}
+                      exit="exit"
+                      whileHover={!isCenter ? { opacity: 0.48 } : undefined}
+                      className="absolute flex items-center justify-center cursor-pointer"
+                      style={{ willChange: "transform, opacity" }}
+                      title={
+                        isLeft
+                          ? `Previous: ${screen.title}`
+                          : isRight
+                          ? `Next: ${screen.title}`
+                          : screen.title
+                      }
+                    >
+                      <IPhoneMockup
+                        screen={screen}
+                        isCenter={isCenter}
+                        onClick={handleClick}
+                      />
+                    </motion.div>
+                  );
+                })}
+              </AnimatePresence>
+            </div>
+
+            {/* Mobile Mode (< 640px): Single focused phone with smooth left/right slide animation, touch swipe & floating side buttons */}
+            <div className="flex sm:hidden relative items-center justify-center w-full min-h-[510px]">
+              <AnimatePresence initial={false} custom={direction} mode="wait">
+                <motion.div
+                  key={currentScreen.id}
+                  custom={direction}
+                  variants={mobilePhoneVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  drag="x"
+                  dragConstraints={{ left: 0, right: 0 }}
+                  dragElastic={0.2}
+                  onDragEnd={handleDragEnd}
+                  className="relative flex items-center justify-center cursor-pointer touch-pan-y"
+                  style={{ willChange: "transform, opacity" }}
+                >
+                  <IPhoneMockup
+                    screen={currentScreen}
+                    isCenter={true}
+                    onClick={() =>
+                      onOpenLightbox(
+                        currentScreen.image,
+                        currentScreen.title,
+                        currentScreen.subtitle,
+                        currentIndexInFiltered,
+                        lightboxItems
+                      )
+                    }
+                  />
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Floating Side Arrow Buttons on Phone Mode for easy one-tap switching */}
+              {filteredScreens.length > 1 && (
+                <>
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handlePrev();
+                    }}
+                    aria-label="Previous screen"
+                    className="absolute left-1 top-1/2 -translate-y-1/2 z-40 w-11 h-11 rounded-full bg-black/75 backdrop-blur-md border border-white/20 flex items-center justify-center text-white active:scale-90 shadow-2xl transition-transform cursor-pointer"
                   >
-                    <IPhoneMockup
-                      screen={screen}
-                      isCenter={isCenter}
-                      onClick={handleClick}
-                    />
-                  </motion.div>
-                );
-              })}
-            </AnimatePresence>
+                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <polyline points="15 18 9 12 15 6" />
+                    </svg>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleNext();
+                    }}
+                    aria-label="Next screen"
+                    className="absolute right-1 top-1/2 -translate-y-1/2 z-40 w-11 h-11 rounded-full bg-black/75 backdrop-blur-md border border-white/20 flex items-center justify-center text-white active:scale-90 shadow-2xl transition-transform cursor-pointer"
+                  >
+                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <polyline points="9 18 15 12 9 6" />
+                    </svg>
+                  </button>
+                </>
+              )}
+            </div>
           </div>
         )}
 
         {/* Navigation Buttons Right Below the Image */}
         {filteredScreens.length > 1 && (
           <div className="flex items-center justify-center gap-4 pt-5 w-full">
-            <span className="font-['Poppins'] text-[13.5px] font-medium text-[#8491A0]">
+            <span className="font-['Inter'] text-[13.5px] font-medium text-[#8491A0]">
               <span className="text-[#5197ff] font-semibold">{currentIndexInFiltered + 1}</span> / {filteredScreens.length}
             </span>
-            <div className="flex items-center gap-2">
+            <div className={`items-center gap-2 ${isScreenWeb ? "flex" : "hidden sm:flex"}`}>
               <button
                 type="button"
                 onClick={handlePrev}
