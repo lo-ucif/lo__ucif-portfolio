@@ -8,8 +8,8 @@ function App() {
   const [isHiding, setIsHiding] = useState(false);
 
   useEffect(() => {
-    const hideTimer = window.setTimeout(() => setIsHiding(true), 4500);
-    const removeTimer = window.setTimeout(() => setIsLoading(false), 3000);
+    const hideTimer = window.setTimeout(() => setIsHiding(true), 3000);
+    const removeTimer = window.setTimeout(() => setIsLoading(false), 4500);
 
     return () => {
       window.clearTimeout(hideTimer);
