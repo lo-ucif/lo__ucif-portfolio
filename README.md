@@ -53,4 +53,4 @@ I'm always open to new opportunities and collaborations. Feel free to reach out!
 
 ---
 
-Developed with ❤️ by Ahmed Loucif.
+Developed with  by Ahmed Loucif.
